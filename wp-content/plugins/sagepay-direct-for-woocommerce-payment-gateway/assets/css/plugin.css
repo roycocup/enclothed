@@ -1,0 +1,47 @@
+.ds-sagepay-transaction-wrapper {
+    margin: 0;
+}
+#ds-sagepay-order-transactions .inside {
+    background: none repeat scroll 0 0 #FEFEFE;
+    margin: 0;
+    padding: 0;    
+}
+.ds-sagepay-transaction-wrapper table.ds-sagepay-transactions{
+    background: none repeat scroll 0 0 #FFFFFF;
+    width: 100%;    
+}
+
+.ds-sagepay-transaction-wrapper table.ds-sagepay-transactions thead th {
+    background: none repeat scroll 0 0 #ECECEC;
+    font-size: 11px;
+    padding: 8px;
+    text-align: left;
+}
+.ds-sagepay-transaction-wrapper table.ds-sagepay-transactions thead th.center {
+    text-align: center;
+}
+
+.ds-sagepay-transaction-wrapper table.ds-sagepay-transactions td {
+    border-bottom: 1px dotted #ECECEC;
+    line-height: 26px;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+.ds-sagepay-transaction-wrapper table.ds-sagepay-transactions td.center {
+    text-align: center;
+}
+
+table.ds-sagepay-transactions .redcell {
+    background-color: red;
+    color: white;
+    padding: 2px 5px; 
+}
+
+table.ds-sagepay-transactions .greencell {
+    background-color: #00cc00;
+    color: black;   
+    padding: 2px 5px; 
+}
+
+

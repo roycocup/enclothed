@@ -16,6 +16,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+define('WP_HOME','http://enclothed.dev');
+define( 'FS_METHOD', 'direct' );
 define('DB_NAME', 'database_name_here');
 
 /** MySQL database username */

@@ -14,6 +14,7 @@
  * @package WordPress
  */
 
+define('WP_HOME','http://enclothed.dev');
 define( 'FS_METHOD', 'direct' );
 //define( 'FS_CHMOD_DIR', 0777 );
 //define( 'FS_CHMOD_FILE', 0777 );

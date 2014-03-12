@@ -1,0 +1,423 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce SagePay Direct Payment Gateway v0.1.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-01-27 17:30:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: ds-sagepay-direct.php:769
+#@ ds-sagepay
+msgid "Date"
+msgstr ""
+
+#: ds-sagepay-direct.php:187
+#: ds-sagepay-direct.php:226
+#@ ds-sagepay
+msgid "SagePay Direct"
+msgstr ""
+
+#: ds-sagepay-direct.php:202
+#@ ds-sagepay
+msgid "Simulator"
+msgstr ""
+
+#: ds-sagepay-direct.php:202
+#@ ds-sagepay
+msgid "Test"
+msgstr ""
+
+#: ds-sagepay-direct.php:202
+#@ ds-sagepay
+msgid "Live"
+msgstr ""
+
+#: ds-sagepay-direct.php:205
+#@ ds-sagepay
+msgid "Payment"
+msgstr ""
+
+#: ds-sagepay-direct.php:205
+#@ ds-sagepay
+msgid "Deferred"
+msgstr ""
+
+#: ds-sagepay-direct.php:205
+#@ ds-sagepay
+msgid "Authenticate"
+msgstr ""
+
+#: ds-sagepay-direct.php:217
+#@ ds-sagepay
+msgid "Enable/Disable"
+msgstr ""
+
+#: ds-sagepay-direct.php:219
+#@ ds-sagepay
+msgid "Enable SagePay Direct"
+msgstr ""
+
+#: ds-sagepay-direct.php:223
+#@ ds-sagepay
+msgid "Title"
+msgstr ""
+
+#: ds-sagepay-direct.php:225
+#@ ds-sagepay
+msgid "This is the title displayed to the user during checkout."
+msgstr ""
+
+#: ds-sagepay-direct.php:229
+#@ ds-sagepay
+msgid "Description"
+msgstr ""
+
+#: ds-sagepay-direct.php:231
+#@ ds-sagepay
+msgid "This is the description which the user sees during checkout."
+msgstr ""
+
+#: ds-sagepay-direct.php:232
+#@ ds-sagepay
+msgid "Payment via SagePay Gateway, you can pay by credit or debit card"
+msgstr ""
+
+#: ds-sagepay-direct.php:235
+#@ ds-sagepay
+msgid "Vendor Name"
+msgstr ""
+
+#: ds-sagepay-direct.php:237
+#@ ds-sagepay
+msgid "Please enter your vendor name provided by SagePay."
+msgstr ""
+
+#: ds-sagepay-direct.php:241
+#@ ds-sagepay
+msgid "Mode Type"
+msgstr ""
+
+#: ds-sagepay-direct.php:244
+#@ ds-sagepay
+msgid "Select Simulator, Test or Live modes."
+msgstr ""
+
+#: ds-sagepay-direct.php:247
+#@ ds-sagepay
+msgid "Transition Type"
+msgstr ""
+
+#: ds-sagepay-direct.php:250
+#@ ds-sagepay
+msgid "Select Payment, Deferred or Authenticated."
+msgstr ""
+
+#: ds-sagepay-direct.php:260
+#@ ds-sagepay
+msgid "Gateway Currency"
+msgstr ""
+
+#: ds-sagepay-direct.php:263
+#@ ds-sagepay
+msgid "Select the currency you are using for this payment gateway."
+msgstr ""
+
+#: ds-sagepay-direct.php:277
+#@ ds-sagepay
+msgid "Supported Cards"
+msgstr ""
+
+#: ds-sagepay-direct.php:281
+#@ ds-sagepay
+msgid "Debug"
+msgstr ""
+
+#: ds-sagepay-direct.php:287
+#@ ds-sagepay
+msgid "Debug Email Address"
+msgstr ""
+
+#: ds-sagepay-direct.php:289
+#@ ds-sagepay
+msgid "Email address to catch debug information.  Only available in <b>Simulator</b> &amp; <b>Test</b> modes."
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "http://www.devicesoftware.com/devblog"
+msgstr ""
+
+#: ds-sagepay-direct.php:283
+#@ ds-sagepay
+msgid "Enable logging"
+msgstr ""
+
+#: ds-sagepay-direct.php:188
+#@ ds-sagepay
+msgid "SagePay Direct communicates directly with SagePay's gateway keeping the look and feel the same throughout the transaction."
+msgstr ""
+
+#: ds-sagepay-direct.php:343
+#: ds-sagepay-direct.php:344
+#@ ds-sagepay
+msgid "Fullname"
+msgstr ""
+
+#: ds-sagepay-direct.php:347
+#@ ds-sagepay
+msgid "Card Type"
+msgstr ""
+
+#: ds-sagepay-direct.php:355
+#: ds-sagepay-direct.php:356
+#@ ds-sagepay
+msgid "Card Number"
+msgstr ""
+
+#: ds-sagepay-direct.php:359
+#@ ds-sagepay
+msgid "Valid From"
+msgstr ""
+
+#: ds-sagepay-direct.php:368
+#@ ds-sagepay
+msgid "Valid Until"
+msgstr ""
+
+#: ds-sagepay-direct.php:378
+#: ds-sagepay-direct.php:379
+#: ds-sagepay-direct.php:773
+#@ ds-sagepay
+msgid "CV2"
+msgstr ""
+
+#: ds-sagepay-direct.php:380
+#@ ds-sagepay
+msgid "The last 3 digits on the signature side."
+msgstr ""
+
+#: ds-sagepay-direct.php:396
+#@ ds-sagepay
+msgid "SagePay Direct - Fullname required."
+msgstr ""
+
+#: ds-sagepay-direct.php:398
+#@ ds-sagepay
+msgid "SagePay Direct - Card number required."
+msgstr ""
+
+#: ds-sagepay-direct.php:400
+#@ ds-sagepay
+msgid "SagePay Direct - CV2 required."
+msgstr ""
+
+#: ds-sagepay-direct.php:488
+#@ ds-sagepay
+msgid "SagePay Direct Debug - Process Payment Request"
+msgstr ""
+
+#: ds-sagepay-direct.php:512
+#@ ds-sagepay
+msgid "SagePay Direct Debug - Process Payment Response"
+msgstr ""
+
+#: ds-sagepay-direct.php:554
+#@ ds-sagepay
+msgid "Your card is not in the 3D-Secure scheme."
+msgstr ""
+
+#: ds-sagepay-direct.php:557
+#@ ds-sagepay
+msgid "Your card issuer is not in the 3D-Secure scheme."
+msgstr ""
+
+#: ds-sagepay-direct.php:560
+#@ ds-sagepay
+msgid "You failed to authenticate with your Issuing Bank."
+msgstr ""
+
+#: ds-sagepay-direct.php:563
+#@ ds-sagepay
+msgid "You attempted to authenticate but the process did not complete."
+msgstr ""
+
+#: ds-sagepay-direct.php:566
+#@ ds-sagepay
+msgid "You failed to authentication was unable to complete."
+msgstr ""
+
+#: ds-sagepay-direct.php:569
+#@ ds-sagepay
+msgid "There was a problem with the 3D-Secure data."
+msgstr ""
+
+#: ds-sagepay-direct.php:596
+#@ ds-sagepay
+msgid "Sagepay Direct payment completed"
+msgstr ""
+
+#: ds-sagepay-direct.php:647
+#: ds-sagepay-direct.php:653
+#@ ds-sagepay
+msgid " - unknown error."
+msgstr ""
+
+#: ds-sagepay-direct.php:724
+#@ ds-sagepay
+msgid "SagePay Direct Debug - 3D Secure Response"
+msgstr ""
+
+#. translators: plugin header field 'Name'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "WooCommerce SagePay Direct Payment Gateway"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "http://devicesoftware.com/devblog/shop/sagepay-direct-lite/"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "Extends WooCommerce with SagePay Direct payment gateway."
+msgstr ""
+
+#: ds-sagepay-direct.php:253
+#@ ds-sagepay
+msgid "Admin Order Page"
+msgstr ""
+
+#: ds-sagepay-direct.php:255
+#@ ds-sagepay
+msgid "Show Transaction Table"
+msgstr ""
+
+#: ds-sagepay-direct.php:256
+#@ ds-sagepay
+msgid "displays the transaction process."
+msgstr ""
+
+#: ds-sagepay-direct.php:733
+#@ ds-sagepay
+msgid "Click here to try another payment method."
+msgstr ""
+
+#: ds-sagepay-direct.php:769
+#@ ds-sagepay
+msgid "Payment Type"
+msgstr ""
+
+#: ds-sagepay-direct.php:769
+#@ ds-sagepay
+msgid "Value"
+msgstr ""
+
+#: ds-sagepay-direct.php:769
+#@ ds-sagepay
+msgid "Status"
+msgstr ""
+
+#: ds-sagepay-direct.php:769
+#@ ds-sagepay
+msgid "Status Detail"
+msgstr ""
+
+#: ds-sagepay-direct.php:770
+#@ ds-sagepay
+msgid "Address Verification Service /<br /> 3 or 4 digit security code"
+msgstr ""
+
+#: ds-sagepay-direct.php:770
+#@ ds-sagepay
+msgid "AVS/CV2"
+msgstr ""
+
+#: ds-sagepay-direct.php:771
+#@ ds-sagepay
+msgid "Address Verification"
+msgstr ""
+
+#: ds-sagepay-direct.php:771
+#@ ds-sagepay
+msgid "Address"
+msgstr ""
+
+#: ds-sagepay-direct.php:772
+#@ ds-sagepay
+msgid "Postcode Verification"
+msgstr ""
+
+#: ds-sagepay-direct.php:772
+#@ ds-sagepay
+msgid "Postcode"
+msgstr ""
+
+#: ds-sagepay-direct.php:773
+#@ ds-sagepay
+msgid "Card Verification"
+msgstr ""
+
+#: ds-sagepay-direct.php:774
+#@ ds-sagepay
+msgid "3D Authentication"
+msgstr ""
+
+#: ds-sagepay-direct.php:774
+#@ ds-sagepay
+msgid "3DSec"
+msgstr ""
+
+#: ds-sagepay-direct.php:775
+#@ ds-sagepay
+msgid "Payment Actions"
+msgstr ""
+
+#: ds-sagepay-direct.php:775
+#@ ds-sagepay
+msgid "Action(s)"
+msgstr ""
+
+#: ds-sagepay-direct.php:796
+#@ ds-sagepay
+msgid "N/A"
+msgstr ""
+
+#: ds-sagepay-direct.php:819
+#@ ds-sagepay
+msgid "Contacting bank for authorization."
+msgstr "Contacting bank for authorisation."
+
+#: ds-sagepay-direct.php:822
+#@ ds-sagepay
+msgid " 3D-Authentication is required."
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "DeviceSoftware"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: ds-sagepay-direct.php:0
+#@ ds-sagepay
+msgid "0.1.5"
+msgstr ""
+
