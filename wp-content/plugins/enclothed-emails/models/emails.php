@@ -36,17 +36,6 @@ class Emails_model extends db{
 	}
 
 
-	public function sendmail($to, $subject, $template_name, $data){
-		//pick an template
-		$template = $this->getMailTemplate($template_name);
-		$content = $this->_replace($template, $data);
-		$headers = "MIME-Version: 1.0" . "\r\n";
-		$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
-
-		wp_mail($to, $subject, $content, $headers);
-		$this->saveEmail($template_name, $to, $content);
-	}
-
 	public function saveEmail($template_name, $to, $content){
 		$data['email_template_name'] = $template_name;
 		$data['to'] = $to;
@@ -55,7 +44,7 @@ class Emails_model extends db{
 	}
 
 
-	private function _replace($template, $data){
+	public function _replace($template, $data){
 		//collect all the items
 		$pattern = '/%([\s\w\_]*)%/sim';
 		preg_match_all($pattern, $template->body, $matches);

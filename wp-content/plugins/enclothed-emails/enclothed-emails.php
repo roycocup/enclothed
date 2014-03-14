@@ -3,11 +3,11 @@
 /**
 *
 * Plugin Name: Enclothed Emails
-* Provides: enc_emails
 * Description: A custom built plugin to enable emails to be sent from a bespoke database table
 * Author: Like Digital Media
 * Url: http://likedigitalmedia.com
 * Version: 0.1
+* Provides: enc_emails
 *
 **/
 
@@ -24,9 +24,22 @@ function enc_emails_init(){
 
 class EnclothedEmails {
 
+	public $model;
 	
 	public function __construct(){
-			
+		$this->model = new Emails_model();
+	}
+
+
+	public function sendmail($to, $subject, $template_name, $data){
+		//pick an template
+		$template = $this->model->getMailTemplate($template_name);
+		$content = $this->model->_replace($template, $data);
+		$headers = "MIME-Version: 1.0" . "\r\n";
+		$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
+
+		wp_mail($to, $subject, $content, $headers);
+		$this->model->saveEmail($template_name, $to, $content);
 	}
 
 			

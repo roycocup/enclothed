@@ -5,6 +5,8 @@ class db {
 	public $table = '';
 	public $wpdb;
 
+	public $templates_table = 'wp_enc_email_templates'; 
+	public $emails_table = 'wp_enc_emails';
 
 
 
