@@ -52,6 +52,11 @@ class db {
 	}
 
 
+	/**
+	*
+	* Does what it says on the tin really...
+	*
+	**/
 	public function fieldExists($table, $field){
 		$sql = "SELECT TABLE_NAME 
 				FROM information_schema.COLUMNS 
@@ -59,6 +64,23 @@ class db {
 				TABLE_NAME = '{$table}' 
 				AND COLUMN_NAME = '{$field}'";
 		return $this->wpdb->get_var($sql);
+	}
+
+
+	/**
+	*
+	* Use this to get a prepared statement and safer query
+	* parameters must be included in the sql as %s (string), %d (integer) and %f (float) 
+	* and the parameters can be an array with the respective values in order
+	* @param string $sql
+	* @param array $params 
+	* @return array of objects
+	*
+	**/
+	public function query($sql, $params){
+		$prep_stmt = $this->wpdb->prepare($sql, $params);
+		$results = $this->wpdb->get_results($prep_stmt); 
+		return $results;
 	}
 
 }

@@ -1,5 +1,10 @@
 <?php 
 
+/*==========================================
+=            assorted functions            =
+==========================================*/
+
+
 if (!function_exists('logme')){
 	function logme($message,$success,$end=false) {
 		// Timestamp
@@ -30,6 +35,11 @@ if (!function_exists('get_uri')){
 }
 
 
+/*-----  End of assorted functions  ------*/
+
+/*=====================================
+=            Flashmessages            =
+=====================================*/
 
 
 /**
@@ -79,3 +89,26 @@ if (!function_exists('flashMessagesDisplay')){
 		unset($_SESSION['messages']);	
 	}
 }
+
+/*-----  End of Flashmessages  ------*/
+
+
+/*=================================
+=            Ecryption            =
+=================================*/
+
+if (!function_exists('enc_encrypt')){
+	function enc_encrypt($key, $message){
+		return $message;
+	}
+}
+
+
+if (!function_exists('enc_decrypt')){
+	function enc_decrypt($key, $message){
+		return $message;
+	}
+}
+/*-----  End of Ecryption  ------*/
+
+

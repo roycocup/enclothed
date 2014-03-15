@@ -17,6 +17,7 @@ require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
 
 
+
 add_action('init', 'enc_main_init');
 function enc_main_init(){
 	new EnclothedMain();
@@ -24,10 +25,10 @@ function enc_main_init(){
 
 class EnclothedMain {
 
-	public $model;
+	public $emails_model; 
 	
 	public function __construct(){
-		$this->model = new Emails_model();
+		$this->emails_model = new Emails_model();
 	}
 
 
@@ -38,13 +39,13 @@ class EnclothedMain {
 	**/
 	public function sendmail($to, $subject, $template_name, $data){
 		//pick an template
-		$template = $this->model->getMailTemplate($template_name);
-		$content = $this->model->_replace($template, $data);
+		$template = $this->emails_model->getMailTemplate($template_name);
+		$content = $this->emails_model->_replace($template, $data);
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
 
 		wp_mail($to, $subject, $content, $headers);
-		$this->model->saveEmail($template_name, $to, $content);
+		$this->emails_model->saveEmail($template_name, $to, $content);
 	}
 
 			
