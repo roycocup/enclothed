@@ -11,7 +11,7 @@
 *
 **/
 
-include_once(ABSPATH . 'wp-content/plugins/enclothed-emails/models/emails.php'); 
+include_once(ABSPATH . 'wp-content/plugins/enclothed-main/models/emails.php'); 
 
 
 /**

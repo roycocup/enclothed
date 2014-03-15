@@ -2,12 +2,12 @@
 
 /**
 *
-* Plugin Name: Enclothed Emails
-* Description: A custom built plugin to enable emails to be sent from a bespoke database table
+* Plugin Name: Enclothed Main
+* Description: A custom built plugin to enable the main bespoke functionality for the enclothed website
 * Author: Like Digital Media
-* Url: http://likedigitalmedia.com
+* Author URI: http://likedigitalmedia.com
 * Version: 0.1
-* Provides: enc_emails
+* Provides: enc_main
 *
 **/
 
@@ -17,12 +17,12 @@ require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
 
 
-add_action('init', 'enc_emails_init');
-function enc_emails_init(){
-	new EnclothedEmails();
+add_action('init', 'enc_main_init');
+function enc_main_init(){
+	new EnclothedMain();
 }
 
-class EnclothedEmails {
+class EnclothedMain {
 
 	public $model;
 	
@@ -31,6 +31,11 @@ class EnclothedEmails {
 	}
 
 
+	/**
+	*
+	* Enabling email sending using a model that looks for templates in the database
+	*
+	**/
 	public function sendmail($to, $subject, $template_name, $data){
 		//pick an template
 		$template = $this->model->getMailTemplate($template_name);

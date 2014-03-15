@@ -6,17 +6,16 @@
 * Provides: enc_profile
 * Description: A custom built plugin to intake and process specific user profile forms
 * Author: Like Digital Media
-* Url: http://likedigitalmedia.com
+* Author URI: http://likedigitalmedia.com
 * Version: 0.1
-* Depends: enc_emails
+* Depends: enc_main
 * Provides: enc_profile
 *
 **/
 
 
-require_once(dirname(plugin_dir_path(__FILE__)) . "/enclothed-emails/enclothed-emails.php");
-//helpers 
-// require_once(dirname(plugin_dir_path(__FILE__)) . "/enclothed-emails/helpers.php");
+require_once(dirname(plugin_dir_path(__FILE__)) . "/enclothed-main/enclothed-main.php");
+
 
 add_action('init', 'enc_profile_init');
 function enc_profile_init(){
@@ -28,10 +27,10 @@ function enc_profile_init(){
 
 class EnclothedProfile {
 
-	public $emails; //emails class
+	public $main; //main class
 
 	public function __construct(){
-		$this->emails = new EnclothedEmails(); 
+		$this->main = new EnclothedMain(); 
 	}
 
 
@@ -61,7 +60,7 @@ class EnclothedProfile {
 	public function process_sizing_form(){
 		$data = 'this is the data';
 		global $current_user;
-		$this->emails->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
+		$this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 		wp_redirect( home_url().'/profile/style' ); 
 		exit;
 	}
