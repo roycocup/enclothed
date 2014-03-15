@@ -13,6 +13,7 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<h2>Test Form</h2>
+			<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 			<form action="" method="POST">
 				<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 				<input type="text" name="name">
