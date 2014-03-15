@@ -1,9 +1,9 @@
 === WordPress-to-lead for Salesforce CRM ===
 Contributors: stonydaddydonkeylabscom, nickciske
 Tags: crm, contact form, contactform, wordpress to lead, wordpresstolead, salesforce.com, salesforce, salesforce crm, contact form plugin, contact form builder, Wordpress CRM
-Requires at least: 3.0
-Tested up to: 3.8
-Stable tag: 2.2.5
+Requires at least: 3.5.2
+Tested up to: 3.8.1
+Stable tag: 2.3.1
 License: GPLv2
 Donate link: http://thoughtrefinery.com/donate/?item=salesforce
 
@@ -98,6 +98,9 @@ Right now, the only way of ordering input fields is by changing the position num
 = How do I apply my own styling to the form? =
 Instructions for disabling or overriding the CSS are included on the plugin settings screen (see Style Settings).
 
+= What does "Use WPCF7 CSS integration" do? =
+This option adds the WPCF7 classes to the form fields so you get the WPCF7 CSS styles applied (if that plugin is also activated).
+
 = Is it possible to make multiple forms with this plugin? =
 Yes, version 2.0 introduces this feature. Version 2.1 allows you to duplicate forms to reduce re-entering data.
 
@@ -140,12 +143,12 @@ See also: [How many leads can we capture from our website?](https://help.salesfo
 
 **salesforce_w2l_api_url**
 
-Change the API url the plugin posts data to
+Change the API url the plugin posts data to. Passes the form type (lead or case)
 
 `
-add_filter( 'salesforce_w2l_api_url', 'my_w2l_api_url' );
+add_filter( 'salesforce_w2l_api_url', 'my_w2l_api_url', 10, 2 );
 
-function my_w2l_api_url( $url ){
+function my_w2l_api_url( $url, $form_type ){
 	return 'https://my.custom-api-url.com/something/';
 }
 `
@@ -250,6 +253,25 @@ function salesforce_filter_admin_message( $message ){
 `
 
 == Changelog ==
+
+= 2.3.1 =
+* Version number bumps
+
+= 2.3 =
+* Allow some settings to be overridden per form (Success Message, Captcha, OrgId, etc)
+* Support for option to use placeholders instead of labels (per form)
+* Remove newlines in form HTML that were being converted to <br> upon output
+* Add Settings link to plugin list screen
+* Grey out non enabled fields in admin
+* Set a default checkbox width as some themes think input{ width: 100% } is a good idea...
+* All default CSS now uses relative sizes
+* Prevent multiple submission of form data (even if it's the same form id on the page multiple times)
+* Remember "send me a copy" between submits
+* Defined DONOTCACHEPAGE if captcha is enabled
+* Fix PHP notices when form is submitted
+* Update ads and landing page URLs
+* Add support links to plugin list page, restore WP.org plugin link
+* Load text domain on plugin init, add .pot file
 
 = 2.2.5 =
 * Fix PHP warnings and notices
