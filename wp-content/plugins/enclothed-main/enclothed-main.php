@@ -53,6 +53,8 @@ class EnclothedMain {
 	//$this->emails->sendmail($primary->email, __('Thank you!', 'duckjoy_orders'), Emails_model::TEMPLATE_THANK_YOU, $data);
 	//wp_redirect('/');
 	//setFlashMessage('error', __('Your paypal order was canceled.', 'duckjoy_orders') );
+	// $main = new EnclothedMain();
+	// $t = $main->emails_model->query('select * from wp_posts order by %s asc limit %d', array('ID', 1)); 
 
 
 } //end of class
