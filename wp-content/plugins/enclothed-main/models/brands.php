@@ -53,11 +53,12 @@ class Brands_model extends db{
 	public function updateDbBrands($use_webservice = true, $manual_brands = array()){
 		if ($use_webservice){
 			//get brands array
-			$all_brands = $this->getBrandsList();
+			$all_brands = $this->getBrandsRemoteList();
 			foreach ($all_brands as $brand) {
 				//at this point we are only updating the name of the brand as we dont have any logos
 				$aBrand['name'] = $brand; 
-				$aBrand['img_url'] = get_stylesheet_directory_uri().'/default_brand.jpg';
+				//$aBrand['img_url'] = get_stylesheet_directory_uri().'/default_brand.jpg';
+				$aBrand['img_url'] = wp_get_attachment_url(307);
 				$this->updateBrand($aBrand); 
 			}	
 		}
@@ -84,9 +85,11 @@ class Brands_model extends db{
 
 		$data['brand_name'] = $brand['name'];
 		$data['brand_logo'] = $brand['img_url'];
+		
+		//where brand name is = to xxxx
 		$where['brand_name'] = $brand['name'];
 
-		$this->replace($data, $where, $this->table); 
+		$ok = $this->replace($data, $where, $this->table); 
 	}
 
 

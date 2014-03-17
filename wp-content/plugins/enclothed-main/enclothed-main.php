@@ -23,7 +23,7 @@ add_action('init', 'enc_main_init');
 function enc_main_init(){
 	$enclothed = new EnclothedMain();
 	//$enclothed->updateBrands();
-	//add_shortcode('brands', array($enclothed, 'displayBrands')); 
+	add_shortcode('brands', array($enclothed, 'displayBrands')); 
 }
 
 class EnclothedMain {
@@ -58,10 +58,13 @@ class EnclothedMain {
 		$brands = $this->brands_model->getBrandsList();
 		$str = ''; //final string to be displayed; 
 		foreach ($brands as $key => $brand) {
-			$logo = $brand['brand_logo']; 
-			$name = $brand['brand_name']; 
-			$str .= "<div class='thumbnail image' name='{$name}'><img src='{$logo}' /></div>" ; 
+			$logo = $brand->brand_logo; 
+			$name = $brand->brand_name; 
+			$str .= "<h4>{$name}</h4>";
+			$str .= "<div class='thumbnail image' name='{$name}'><img src='{$logo}' alt='{$name}'/></div>" ; 
 		}
+
+		return $str; 
 	}
 
 

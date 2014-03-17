@@ -60,11 +60,7 @@ class db {
 	**/
 	public function replace ($data, $where, $table = ''){
 		$table = (empty($table)) ? $this->table : $table;
-		$now = date('Y-m-d H:i:s', time());
-		$modified_exists = $this->fieldExists($table, 'modified');
-		$created_exists = $this->fieldExists($table, 'created');
-		if ($modified_exists) $data['modified'] = $now;
-		if ($created_exists) $data['created'] = $now;
+		
 
 		//check that the value already exists (must be unique!)
 		$sql = "SELECT * FROM {$table} ";
@@ -77,7 +73,7 @@ class db {
 
 		if (!empty($record)){
 			//update
-			$ok = $this->update($table, $data, $where);
+			$ok = $this->update($data, $where, $table);
 			return $ok;	
 		}else {
 			//insert
