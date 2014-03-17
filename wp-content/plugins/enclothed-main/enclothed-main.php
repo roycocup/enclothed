@@ -15,20 +15,25 @@
 
 require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
+require_once(dirname(__FILE__)."/models/brands.php");
 
 
 
 add_action('init', 'enc_main_init');
 function enc_main_init(){
-	new EnclothedMain();
+	$enclothed = new EnclothedMain();
+	//$enclothed->updateBrands();
+	//add_shortcode('brands', array($enclothed, 'displayBrands')); 
 }
 
 class EnclothedMain {
 
 	public $emails_model; 
+	public $brands_model; 
 	
 	public function __construct(){
 		$this->emails_model = new Emails_model();
+		$this->brands_model = new Brands_model();
 	}
 
 
@@ -48,8 +53,29 @@ class EnclothedMain {
 		$this->emails_model->saveEmail($template_name, $to, $content);
 	}
 
+
+	public function displayBrands(){
+		$brands = $this->brands_model->getBrandsList();
+		$str = ''; //final string to be displayed; 
+		foreach ($brands as $key => $brand) {
+			$logo = $brand['brand_logo']; 
+			$name = $brand['brand_name']; 
+			$str .= "<div class='thumbnail image' name='{$name}'><img src='{$logo}' /></div>" ; 
+		}
+	}
+
+
+	public function updateBrands (){
+		// $manual_brands =  array('Abercrombie & Fitch' => 'Abercrombie & Fitchiiiiiii', );
+		$manual_brands = array();
+		$this->brands_model->updateDbBrands(true, $manual_brands);
+	}
+
+
+	
+
 			
-	//anything else
+	//everything else
 	//$this->emails->sendmail($primary->email, __('Thank you!', 'duckjoy_orders'), Emails_model::TEMPLATE_THANK_YOU, $data);
 	//wp_redirect('/');
 	//setFlashMessage('error', __('Your paypal order was canceled.', 'duckjoy_orders') );

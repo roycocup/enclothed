@@ -5,8 +5,9 @@ class db {
 	public $table = '';
 	public $wpdb;
 
-	public $templates_table = 'wp_enc_email_templates'; 
-	public $emails_table = 'wp_enc_emails';
+	public $templates_table 	= 'wp_enc_email_templates'; 
+	public $emails_table 		= 'wp_enc_emails';
+	public $brands_table 		= 'wp_enc_brands';
 
 
 
@@ -49,6 +50,42 @@ class db {
 
 		$ok = $this->wpdb->update($table, $data, $where);
 		return $ok;
+	}
+
+
+	/**
+	*
+	* This will replace which meand it tries to update the value and if does not exist, it will insert it. 
+	*
+	**/
+	public function replace ($data, $where, $table = ''){
+		$table = (empty($table)) ? $this->table : $table;
+		$now = date('Y-m-d H:i:s', time());
+		$modified_exists = $this->fieldExists($table, 'modified');
+		$created_exists = $this->fieldExists($table, 'created');
+		if ($modified_exists) $data['modified'] = $now;
+		if ($created_exists) $data['created'] = $now;
+
+		//check that the value already exists (must be unique!)
+		$sql = "SELECT * FROM {$table} ";
+		$sql .= " WHERE 1 "; 
+		foreach ($where as $key => $value) {
+			$sql .= ' AND ';
+			$sql .= " `{$key}` = '{$value}' "; 
+		}
+		$record = $this->wpdb->get_results($sql);
+
+		if (!empty($record)){
+			//update
+			$ok = $this->update($table, $data, $where);
+			return $ok;	
+		}else {
+			//insert
+			$id = $this->insert($data, $table);
+			return $id;
+		}
+
+		
 	}
 
 
