@@ -1,50 +1,48 @@
 <?php
-  $app_id = '748506205174109';
-  $app_secret = '6936252636534325c809b7898a23d8fa';
-  $my_url = 'enclothed.dev';
 
-  $code = $_REQUEST["code"];
+require_once 'fb/facebook.php';
 
- // auth user
- if(empty($code)) {
-    $dialog_url = 'https://www.facebook.com/dialog/oauth?client_id=' 
-    . $app_id . '&redirect_uri=' . urlencode($my_url) ;
-    echo("<script>top.location.href='" . $dialog_url . "'</script>");
-  }
+$appId = '748506205174109';
+$secret = '6936252636534325c809b7898a23d8fa';
+$ret_url = 'enclothed.dev';
 
-  // get user access_token
-  $token_url = 'https://graph.facebook.com/oauth/access_token?client_id='
-    . $app_id . '&redirect_uri=' . urlencode($my_url) 
-    . '&client_secret=' . $app_secret 
-    . '&code=' . $code;
 
-  // response is of the format "access_token=AAAC..."
-  $access_token = substr(file_get_contents($token_url), 13);
+$config = array(
+	'appId' => $appId,
+	'secret' => $secret,
+	'allowSignedRequest' => false,
+);
 
-  // run fql query
-  $fql_query_url = 'https://graph.facebook.com/'
-    . 'fql?q=SELECT+uid2+FROM+friend+WHERE+uid1=me()'
-    . '&access_token=' . $access_token;
-  $fql_query_result = file_get_contents($fql_query_url);
-  $fql_query_obj = json_decode($fql_query_result, true);
+$facebook = new Facebook($config);
+$user_id = $facebook->getUser();
 
-  // display results of fql query
-  echo '<pre>';
-  print_r("query results:");
-  print_r($fql_query_obj);
-  echo '</pre>';
+if($user_id) {
 
-  // run fql multiquery
-  $fql_multiquery_url = 'https://graph.facebook.com/'
-    . 'fql?q={"all+friends":"SELECT+uid2+FROM+friend+WHERE+uid1=me()",'
-    . '"my+name":"SELECT+name+FROM+user+WHERE+uid=me()"}'
-    . '&access_token=' . $access_token;
-  $fql_multiquery_result = file_get_contents($fql_multiquery_url);
-  $fql_multiquery_obj = json_decode($fql_multiquery_result, true);
+      // We have a user ID, so probably a logged in user.
+      // If not, we'll get an exception, which we handle below.
+      try {
 
-  // display results of fql multiquery
-  echo '<pre>';
-  print_r("multi query results:");
-  print_r($fql_multiquery_obj);
-  echo '</pre>';
+        $user_profile = $facebook->api('/me','GET');
+        echo "Name: " . $user_profile['name'];
+
+      } catch(FacebookApiException $e) {
+        // If the user is logged out, you can have a 
+        // user ID even though the access token is invalid.
+        // In this case, we'll get an exception, so we'll
+        // just ask the user to login again here.
+        $login_url = $facebook->getLoginUrl(); 
+        echo 'Please <a href="' . $login_url . '">login.</a>';
+        error_log($e->getType());
+        error_log($e->getMessage());
+      }   
+    } else {
+
+      // No user, print a link for the user to login
+      $login_url = $facebook->getLoginUrl();
+      echo 'Please <a href="' . $login_url . '">login.</a>';
+
+    }
+
+
+die;
 ?>
