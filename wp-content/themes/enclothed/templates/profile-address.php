@@ -35,7 +35,7 @@
 			<option value="0">Select One</option>
 			<option value="1">Word of Mouth</option>
 			<option value="2">Magazine</option>
-			<option value="3">Other</option>
+			<option value="other">Other</option>
 		</select>
 		<input type="text" name="section_1[feedback_2]" placeholder='What other...'>
 	</div>
@@ -46,5 +46,4 @@
 
 	<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 	<button onclick="submit()">Save and Continue</button>
-	<!-- <input type="submit" value="section_1[submit]"> -->
 </form>

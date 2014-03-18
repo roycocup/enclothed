@@ -35,6 +35,7 @@ class EnclothedProfile {
 
 
 	//This will process every single form for the user extended profile.
+	//it will also check the nonce from the form to make sure it comes from the right place
 	public function process_my_forms() {
 		if (!empty($_POST['nonce'])){
 
@@ -53,6 +54,52 @@ class EnclothedProfile {
 		// setFlashMessage('error', 'this is an error message');
 		// setFlashMessage('success', 'this is a success message');
 
+		dump($_POST);
+		if (isset($_POST['section_1'])){
+			$section = $_POST['section_1']; 
+		}
+
+		//validation
+		$errors = array();
+		//no name
+		if (empty($section['name'])) {
+			$str = 'Please enter a name.';
+			$errors[$str]; 
+			setFlashMessage('error', $str);
+		}
+		//no email
+		if (empty($section['email'])){
+			$str = 'Please enter an email.';
+			$errors[$str]; 
+			setFlashMessage('error', $str);	
+		}
+
+		//check that its a valid email address
+		preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/', $section['email'], $match); 
+
+		if (empty($match[0])){
+			$str = 'Please enter a valid email.';
+			$errors[$str]; 
+			setFlashMessage('error', $str);		
+		}
+		
+		//no dob
+		if (empty($section['dob'])) {
+			$str = 'Please enter your date of birth.';
+			$errors[$str]; 
+			setFlashMessage('error', $str);
+		}
+
+		//no password
+
+
+		//feedback 'other' and no text on other
+
+
+		//sanitization before db
+
+
+
 		dump($_POST); die;
 		wp_redirect( home_url().'/profile/sizing' ); 
 		exit;
@@ -67,38 +114,6 @@ class EnclothedProfile {
 		exit;
 	}
 
-
-	/*
-	public function register_post_type(){
-		$args = array(
-			'labels' => array(
-				'name'              => 'Profile',
-				'singular_name'     => 'Profile',
-				'menu_name'         => 'User Profile',
-				'all_items'         => 'User Profiles',
-				'add_new'			=> 'Add New',
-				'add_new_item'		=> 'Add New user profile',
-				'edit_item'			=> 'Edit User Profile',
-				'new_item'			=> 'New User Profile',
-				'view_item'			=> 'View User Profile',
-				'search_items'		=> 'Search User Profile',
-				'not_found'			=> 'No user profiles found',
-				'not_found_in_trash'=> 'No user profiles in trash',
-				'parent_item_colon'	=> '',
-				),
-			'public' => true, 
-			'exclude_from_search' => true,
-			//'menu_icon' => admin_url() . '/images/wpspin_light.gif',
-			'supports' => array(
-				'title',
-				'thumbnail',
-				),
-			);
-
-		register_post_type($this->post_type, $args);
-
-	}
-	*/
 
 } //end of class
 
