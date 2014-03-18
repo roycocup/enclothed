@@ -54,9 +54,11 @@ class EnclothedProfile {
 		// setFlashMessage('error', 'this is an error message');
 		// setFlashMessage('success', 'this is a success message');
 
-		dump($_POST);
 		if (isset($_POST['section_1'])){
+			//a more convenient variable
 			$section = $_POST['section_1']; 
+			//pass all these to the session so we can reuse them on the form later after validation
+			$_SESSION['section_1'] = $_POST['section_1'];
 		}
 
 		//validation
@@ -64,13 +66,13 @@ class EnclothedProfile {
 		//no name
 		if (empty($section['name'])) {
 			$str = 'Please enter a name.';
-			$errors[$str]; 
+			$errors[] = $str; 
 			setFlashMessage('error', $str);
 		}
 		//no email
 		if (empty($section['email'])){
 			$str = 'Please enter an email.';
-			$errors[$str]; 
+			$errors[] = $str; 
 			setFlashMessage('error', $str);	
 		}
 
@@ -79,30 +81,42 @@ class EnclothedProfile {
 
 		if (empty($match[0])){
 			$str = 'Please enter a valid email.';
-			$errors[$str]; 
+			$errors[] = $str; 
 			setFlashMessage('error', $str);		
 		}
 		
 		//no dob
 		if (empty($section['dob'])) {
 			$str = 'Please enter your date of birth.';
-			$errors[$str]; 
+			$errors[] = $str; 
 			setFlashMessage('error', $str);
 		}
 
 		//no password
-
+		if (empty($section['password'])) {
+			$str = 'Please enter a password.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}else if (count($section['password']) < 6) {
+			$str = 'Password needs to be at least 6 characters.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}
 
 		//feedback 'other' and no text on other
 
 
 		//sanitization before db
 
-
-
-		dump($_POST); die;
-		wp_redirect( home_url().'/profile/sizing' ); 
-		exit;
+		//go back to the page if validation failed
+		if (!empty($errors)){
+			wp_redirect( home_url().get_uri() ); 
+			exit;	
+		} else {
+			wp_redirect( home_url().'/profile/sizing' ); 
+			exit;	
+		}
+		
 	}
 
 
