@@ -50,8 +50,10 @@ class EnclothedProfile {
 
 
 	public function process_address_form(){
-		setFlashMessage('error', 'this is an error message');
-		setFlashMessage('success', 'this is a success message');
+		// setFlashMessage('error', 'this is an error message');
+		// setFlashMessage('success', 'this is a success message');
+
+		dump($_POST); die;
 		wp_redirect( home_url().'/profile/sizing' ); 
 		exit;
 	}
