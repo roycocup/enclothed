@@ -46,6 +46,9 @@ class EnclothedProfile {
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/sizing/' ) ) {
 				$this->process_sizing_form();
 			}
+			if ( wp_verify_nonce( $_POST['nonce'], '/profile/style/' ) ) {
+				$this->process_style_form();
+			}
 		}
 	}
 
@@ -140,9 +143,15 @@ class EnclothedProfile {
 
 	public function process_sizing_form(){
 		$data = 'this is the data';
+		wp_redirect( home_url().'/profile/style' ); 
+		exit;
+	}
+
+	public function process_style_form(){
+		$data = 'this is the data';
 		global $current_user;
 		$this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
-		wp_redirect( home_url().'/profile/style' ); 
+		wp_redirect( home_url().'/profile/authorize' ); 
 		exit;
 	}
 

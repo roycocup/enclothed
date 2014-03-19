@@ -9,11 +9,7 @@ class Emails_model extends db{
 
 	const TEMPLATE_THANK_YOU 				= 'thank_you'; //right after creation - to user
 	const TEMPLATE_ORDER_IN 				= 'order_in'; //an order made but not confirmed yet - to agency
-	const TEMPLATE_REFUND					= 'refund'; // to user
-	const TEMPLATE_REFUND_REQUEST_CLIENT	= 'refund-request-client'; // to user confirming that he requested a refund
-	const TEMPLATE_REFUND_REQUEST_AGENCY	= 'refund-request-agency'; // to user confirming that he requested a refund
-	const TEMPLATE_CONFIRM 					= 'confirm'; //to user confirming that the trip is booked and money was received
-	const TEMPLATE_REVIEW_SUBMITTED			= 'review-submitted'; //this is to the agnecy be informed of a review that was submitted by a momber
+
 
 	public $table = 'wp_enc_emails';
 	

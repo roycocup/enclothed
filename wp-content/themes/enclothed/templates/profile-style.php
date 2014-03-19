@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* template name: Profile Sizing
+* template name: Profile Style
 *
 **/
 

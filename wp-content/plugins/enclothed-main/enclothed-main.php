@@ -45,11 +45,14 @@ class EnclothedMain {
 	public function sendmail($to, $subject, $template_name, $data){
 		//pick an template
 		$template = $this->emails_model->getMailTemplate($template_name);
+		//replace the placeholders
 		$content = $this->emails_model->_replace($template, $data);
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
-
+		$headers .= 'From: Enclothed <enclothed@enclothed.co.uk>' . "\r\n";
+		//actually send the email
 		wp_mail($to, $subject, $content, $headers);
+		//save the email to the database emails table
 		$this->emails_model->saveEmail($template_name, $to, $content);
 	}
 

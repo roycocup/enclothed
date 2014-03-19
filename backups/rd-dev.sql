@@ -99,10 +99,12 @@ CREATE TABLE IF NOT EXISTS `wp_enc_email_templates` (
   `name` varchar(50) DEFAULT NULL,
   `body` text,
   PRIMARY KEY (`email_template_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_enc_email_templates: ~0 rows (approximately)
+-- Dumping data for table enclothed.wp_enc_email_templates: ~1 rows (approximately)
 /*!40000 ALTER TABLE `wp_enc_email_templates` DISABLE KEYS */;
+REPLACE INTO `wp_enc_email_templates` (`email_template_id`, `name`, `body`) VALUES
+	(2, 'thank_you', 'Thank you mate');
 /*!40000 ALTER TABLE `wp_enc_email_templates` ENABLE KEYS */;
 
 
@@ -159,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `wp_enc_shirt_style` (
   PRIMARY KEY (`shirt_style_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_enc_shirt_style: ~0 rows (approximately)
+-- Dumping data for table enclothed.wp_enc_shirt_style: ~3 rows (approximately)
 /*!40000 ALTER TABLE `wp_enc_shirt_style` DISABLE KEYS */;
 REPLACE INTO `wp_enc_shirt_style` (`shirt_style_id`, `name`) VALUES
 	(1, 'slim'),
@@ -176,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `wp_enc_shirt_wear` (
   PRIMARY KEY (`shirt_wear_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_enc_shirt_wear: ~0 rows (approximately)
+-- Dumping data for table enclothed.wp_enc_shirt_wear: ~4 rows (approximately)
 /*!40000 ALTER TABLE `wp_enc_shirt_wear` DISABLE KEYS */;
 REPLACE INTO `wp_enc_shirt_wear` (`shirt_wear_id`, `name`) VALUES
 	(1, 'work'),
@@ -265,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1008 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_options: ~1,126 rows (approximately)
+-- Dumping data for table enclothed.wp_options: ~342 rows (approximately)
 /*!40000 ALTER TABLE `wp_options` DISABLE KEYS */;
 REPLACE INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(1, 'siteurl', 'http://enclothed.dev', 'yes'),
@@ -562,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_postmeta: ~610 rows (approximately)
+-- Dumping data for table enclothed.wp_postmeta: ~696 rows (approximately)
 /*!40000 ALTER TABLE `wp_postmeta` DISABLE KEYS */;
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 	(7, 8, '_edit_last', '1'),
@@ -1135,7 +1137,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   KEY `post_author` (`post_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=347 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_posts: ~104 rows (approximately)
+-- Dumping data for table enclothed.wp_posts: ~103 rows (approximately)
 /*!40000 ALTER TABLE `wp_posts` DISABLE KEYS */;
 REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(3, 1, '2014-03-11 14:33:17', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2014-03-11 14:33:17', '0000-00-00 00:00:00', '', 0, 'http://enclothed.dev/?p=3', 0, 'post', '', 0),
@@ -1765,7 +1767,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
--- Dumping data for table enclothed.wp_usermeta: ~75 rows (approximately)
+-- Dumping data for table enclothed.wp_usermeta: ~77 rows (approximately)
 /*!40000 ALTER TABLE `wp_usermeta` DISABLE KEYS */;
 REPLACE INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
 	(1, 1, 'first_name', ''),
