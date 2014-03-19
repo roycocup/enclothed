@@ -57,8 +57,6 @@ class EnclothedProfile {
 		if (isset($_POST['section_1'])){
 			//a more convenient variable
 			$section = $_POST['section_1']; 
-			//pass all these to the session so we can reuse them on the form later after validation
-			$_SESSION['section_1'] = $_POST['section_1'];
 		}
 
 		//validation
@@ -110,9 +108,12 @@ class EnclothedProfile {
 
 		//go back to the page if validation failed
 		if (!empty($errors)){
-			wp_redirect( home_url().get_uri() ); 
-			exit;	
+			//clear the session just in case something was wrong this time.
+			unset($_SESSION['section_1']); 
+			return; 
 		} else {
+			//if all went well then just remember the answers in the session
+			$_SESSION['section_1'] = $_POST['section_1'];
 			wp_redirect( home_url().'/profile/sizing' ); 
 			exit;	
 		}

@@ -7,6 +7,8 @@
 
 if (isset($_SESSION['section_1'])){
 	$section = $_SESSION['section_1'];	
+}else {
+	$section = $_POST['section_1'];
 }
 
 
