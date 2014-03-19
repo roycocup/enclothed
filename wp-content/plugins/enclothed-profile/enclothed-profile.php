@@ -113,7 +113,7 @@ class EnclothedProfile {
 			return; 
 		} else {
 			//if all went well then just remember the answers in the session
-			$_SESSION['section_1'] = $_POST['section_1'];
+			//$this->save();
 			wp_redirect( home_url().'/profile/sizing' ); 
 			exit;	
 		}

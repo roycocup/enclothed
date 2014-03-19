@@ -10,7 +10,7 @@
 <?php if ( is_user_logged_in() ) :?>
 	<h2>Dashboard</h2>
 	
-	<div><a href="#">Edit your Profile</a></div>
+	<div><a href="/profile/address">Edit your Profile</a></div>
 	<div><a href="#">Edit your Style</a></div>
 	<div><a href="#">Edit your Sizes and Colours</a></div>
 	<div><a href="#">Edit your Prices</a></div>
