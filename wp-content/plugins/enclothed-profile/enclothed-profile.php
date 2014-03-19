@@ -90,19 +90,36 @@ class EnclothedProfile {
 			setFlashMessage('error', $str);
 		}
 
+		if (!empty($section['dob'])){
+			//dob is not right format
+			preg_match('/^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/', $section['dob'], $match);
+			if (empty($match[0])){
+				$str = 'Please insert a birth date using dd-mm-yyyy format.';
+				$errors[] = $str; 
+				setFlashMessage('error', $str);
+			}
+		}
+		
+		
 		//no password
 		if (empty($section['password'])) {
 			$str = 'Please enter a password.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
-		}else if (count($section['password']) < 6) {
+		}else if (strlen($section['password']) < 6) {
 			$str = 'Password needs to be at least 6 characters.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
 		}
 
 		//feedback 'other' and no text on other
-
+		if (!empty($section['feedback_1']) && $section['feedback_1'] == 'other') {
+			if (empty($section['feedback_2'])) {
+				$str = 'Please tell us how you heard about us.';
+				$errors[] = $str; 
+				setFlashMessage('error', $str);
+			}
+		}
 
 		//sanitization before db
 
