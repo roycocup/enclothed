@@ -19,7 +19,8 @@ if (isset($_SESSION['section_1'])){
 	<?php $nonce = wp_create_nonce( get_uri() ); ?>
 	<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-	<input type="text" name="name">
+	Going to Sagepay for a authorization of £500
+	
 	
 	<br><br><br><br><br><br>
 

@@ -19,7 +19,8 @@ class SagePay
 		$vendorTxCode = '',	// vendor transaction code. must be unqiue
 		$acsurl = '',		// used to store data for 3D Secure
 		$pareq = '',		// used to store data for 3D Secure
-		$md = '';			// used to store data for 3D Secure
+		$md = '',			// used to store data for 3D Secure
+		$description = '';	// Description of the order sent to SagePay
 	private
 		$env = '',			// environment, set according to 'ENV' site constant
 		$url = '',			// the URL to post the cURL request to (set further down)
@@ -27,11 +28,10 @@ class SagePay
 		$price = 0,			// transaction amount
 		$standardFields = array(), // holds standard SagePay info (currency etc)
 		$response = array(),	// response from SagePay cURL request
-		$description = 'New order from your online store',	// Description of the order sent to SagePay
 		$curl_str = '';		// the url encoded string derrived from the $this->data array
 	const
 		TYPE = 'PAYMENT',	// Transaction type
-		PROTOCOL_VERSION = '2.22',	// SagePay protocol vers no
+		PROTOCOL_VERSION = '3.00',	// SagePay protocol vers no
 		VENDOR = 'enclothed',	// Your SagePay vendor name
 		CURRENCY = 'gbp';	// Currency transaction is to be in. For multi-currency sites, you need to change this from a constant to a property
 		
@@ -49,6 +49,7 @@ class SagePay
 		// sets the url to post to based on ENV
 		$this->setUrls();
 		$this->setPrice($data['Amount']);
+		$this->description = $data['Description'];
 		// adds all of the config fields to the data array
 		$this->setData($data);
 		// converts $this->data from an array into a query string
@@ -78,11 +79,14 @@ class SagePay
 		
 		// set the vendorTxCode
 		$this->vendorTxCode = $data['VendorTxCode'];
+
+		//adding the transaction type to data to be more dynamic. By the default will be payment
+		$tx_type = (!empty($data['TxType']))? $data['TxType'] : self::TYPE; 
 		
 		// set the required fields to pass to SagePay
 		$this->standardFields = array(
 			'VPSProtocol' => self::PROTOCOL_VERSION,
-			'TxType' => self::TYPE,
+			'TxType' => $tx_type,
 			'Vendor' => self::VENDOR,
 			'VendorTxCode' => $this->vendorTxCode,
 			'Amount' => $this->price,
