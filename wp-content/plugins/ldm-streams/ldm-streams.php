@@ -24,9 +24,6 @@ class ldmStreams {
 		$this->config = parse_ini_file(dirname(__FILE__)."/".$this->config_filename, true); 
 	}	
 
-	public function getFacebookPosts(){
-		return recent_facebook_posts();
-	}
 
 }
 
