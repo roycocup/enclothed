@@ -74,13 +74,17 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !i
 }
 
 h1 {
-	font-size:24px;
-	letter-spacing:4px;
+font-size: 38px !important;
+line-height: 44px !important;
+letter-spacing: 10px !important;
 }
 h2 {
 	font-size:20px;
+	line-height: 30px;
 	letter-spacing:6px;
 }
+
+p{ font-size:16px; letter-spacing:1px;}
 
 
 .no-margin-top { margin-top: 0 !important;}
@@ -216,7 +220,7 @@ text-transform: uppercase;
 letter-spacing: 2px;}
 
 nav#main-navigation .menu > li > a span.nav-line {
-background-color: #af8535 !important;
+background-color: #f7b666 !important;
 height: 3px !important;
 max-height: 3px !important;
 bottom: 3px !important;
@@ -246,3 +250,33 @@ padding-top: 200px !important; }
 @media only screen and (max-width: 767px){
 .big-padding-top{ padding-top: 150px !important; }
 }
+
+#logo a.mobile-menu-show {
+float: right;
+padding: 9px 4px 11px 10px;
+font-size: 22px;
+width: 42px;
+height: 35px;
+background:url(images/mobile_nav_icon.png) no-repeat -42px 0;
+content:"";
+transition:none !important;
+margin-top: 5px;
+}
+
+#logo a.mobile-menu-show:hover {
+background:url(images/mobile_nav_icon.png) no-repeat 0px 0;
+transition:none !important;
+}
+
+.page-id-85 #logo a.mobile-menu-show {
+background:url(images/mobile_nav_icon.png) no-repeat 0 0;
+}
+
+.page-id-85 #logo a.mobile-menu-show:hover {
+background:url(images/mobile_nav_icon.png) no-repeat -42px 0;
+}
+
+#logo a.mobile-menu-show:before {
+	content:"";
+}
+.ss-rows,.ss-rows:before, .ss-rows.right:after{ content:"";}
