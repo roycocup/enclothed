@@ -8,6 +8,7 @@ Author URI: http://dannyvankooten.com/
 Text Domain: recent-facebook-posts
 Domain Path: /languages/
 License: GPL3 or later
+Version: 1000
 
 Recent Facebook Posts Plugin
 Copyright (C) 2012-2013, Danny van Kooten, hi@dannyvankooten.com
@@ -30,7 +31,7 @@ if(! defined("ABSPATH") ) {
     exit;
 }
 
-define("RFBP_VERSION", "1.8.5");
+//define("RFBP_VERSION", "3000");
 define("RFBP_PLUGIN_DIR", plugin_dir_path(__FILE__)); 
 
 // define WP_CONTENT_DIR since we're using it..
