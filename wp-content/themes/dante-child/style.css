@@ -85,6 +85,8 @@ h2 {
 
 .no-margin-top { margin-top: 0 !important;}
 .no-border-top { border-top: none !important;}
+.no-margin-bottom { margin-bottom: 0 !important;}
+.no-border-bottom { border-bottom: none !important;}
 @media only screen and (min-width: 1200px) {
 	.container {width: 980px;}
 }
@@ -230,6 +232,12 @@ box-shadow: none;
 -moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
 -webkit-box-shadow: none;
 box-shadow: none;
+}
+
+.spb_parallax_asset {
+padding-bottom: 120px;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
 }
 
 .big-padding-top{
