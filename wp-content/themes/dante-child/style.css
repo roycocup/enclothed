@@ -301,3 +301,14 @@ color: #f7b666 !important;
 	color: #f7b666 !important;
 }
 #mobile-menu-wrap{ background-color:#111 !important;}
+
+a.sf-button{ border-radius: 0 !important; padding:18px 40px 16px 40px; border:1px solid #fff !important; min-width:280px;}
+a.sf-button:hover{ background-color: #fff !important;}
+a.sf-button:hover span{ color: #f7b666 !important;transition: all 0.2s ease-in-out;
+-moz-transition: all 0.2s ease-in-out;
+-webkit-transition: all 0.2s ease-in-out;
+-o-transition: all 0.2s ease-in-out;}
+a.sf-button span{ font-size:16pt !important; letter-spacing:3px;}
+a.sf-button.transparent{  border:1px solid #666 !important;}
+a.sf-button.transparent:hover{ background-color: transparent !important;}
+
