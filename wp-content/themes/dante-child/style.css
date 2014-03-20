@@ -24,6 +24,40 @@
 @import url("../dante/style.css");
 
 
+@font-face {
+    font-family: 'proxbold';
+    src: url('fonts/proximanova-bold-webfont.eot');
+    src: url('fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'proxlight';
+    src: url('fonts/proximanova-light-webfont.eot');
+    src: url('fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-light-webfont.woff') format('woff'),
+         url('fonts/proximanova-light-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'proxregular';
+    src: url('fonts/proximanova-regular-webfont.eot');
+    src: url('fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* --------------------------------------------
 	CHILD THEME CSS
 -------------------------------------------- */
@@ -104,7 +138,7 @@ padding-top: 0!important;
 margin-top: 0;
 }
 @media only screen and (max-width: 991px) {
-.page-id-85 #logo {
+#logo {
 width: 90%;
 margin: 0 5%;
 }
@@ -119,7 +153,60 @@ top: 0;
 
 #logo {
 background: transparent url('images/logo-black.png') no-repeat;
-width: 232px !important;
+width: 90% !important;
+max-width: 232px !important;
 height:48px !important;
 max-height:48px !important;
+}
+
+#logo a h1{
+width: 232px !important;
+}
+
+#header-section.header-6 #header {
+padding: 40px 0 30px 0;
+}
+
+.page-id-85 #header-section.header-6 #header {
+padding: 20px 0 30px 0;
+}
+
+@media only screen and (max-width: 991px){
+.header-6 #logo {
+padding: 0 15px;
+left: 0;
+height: auto;
+position: relative;
+width: 90% !important;
+max-width: none !important;
+}
+}
+
+.mobile-search-form{ display:none !important;}
+
+.page-id-85 nav#main-navigation .menu > li > a{ color:#fff; letter-spacing: 3px; font-size:14px; padding:15px 0 12px;}
+
+nav#main-navigation .menu > li > a{ color: #000000;
+text-decoration: none;
+font: 13px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;}
+
+nav#main-navigation .menu > li > a span.nav-line {
+background-color: #af8535 !important;
+height: 3px !important;
+max-height: 3px !important;
+bottom: 3px !important;
+}
+
+.header-shadow #header-section {
+-moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.header-shadow #header-section:before {
+-moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
+-webkit-box-shadow: none;
+box-shadow: none;
 }
