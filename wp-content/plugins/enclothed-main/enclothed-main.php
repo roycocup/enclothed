@@ -16,6 +16,7 @@
 require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
 require_once(dirname(__FILE__)."/models/brands.php");
+require_once(dirname(__FILE__)."/models/profiles.php");
 
 
 
@@ -30,10 +31,15 @@ class EnclothedMain {
 
 	public $emails_model; 
 	public $brands_model; 
+	public $users_model; 
+	public $profiles_model; 
+
 	
 	public function __construct(){
 		$this->emails_model = new Emails_model();
 		$this->brands_model = new Brands_model();
+		$this->users_model = new Users_model();
+		$this->profiles_model = new Profiles_model();
 	}
 
 
@@ -76,6 +82,10 @@ class EnclothedMain {
 		$manual_brands = array();
 		$this->brands_model->updateDbBrands(true, $manual_brands);
 	}
+
+
+
+	
 
 
 	

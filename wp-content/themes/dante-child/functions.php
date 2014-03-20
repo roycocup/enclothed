@@ -42,6 +42,15 @@ if (!function_exists('get_fb_posts')){
 		}		
 	}
 }
+
+
+if ( !function_exists( 'debug_log' ) ) {
+	function debug_log( $msg, $status = 'DEBUG', $file = 'debug_log.txt' ) {
+		$location = 
+		$msg = gmdate( 'Y-m-d H:i:s' ) . ' - ' . $status . ' - ' .print_r( $msg, TRUE ) . "\n";
+		file_put_contents( $file , $msg, FILE_APPEND);
+	}
+}
 	
 			
 

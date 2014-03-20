@@ -54,8 +54,6 @@ class EnclothedProfile {
 
 
 	public function process_address_form(){
-		// setFlashMessage('error', 'this is an error message');
-		// setFlashMessage('success', 'this is a success message');
 
 		if (isset($_POST['section_1'])){
 			//a more convenient variable
@@ -93,8 +91,8 @@ class EnclothedProfile {
 			setFlashMessage('error', $str);
 		}
 
+		//dob is not right format
 		if (!empty($section['dob'])){
-			//dob is not right format
 			preg_match('/^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/', $section['dob'], $match);
 			if (empty($match[0])){
 				$str = 'Please insert a birth date using dd-mm-yyyy format.';
@@ -103,6 +101,32 @@ class EnclothedProfile {
 			}
 		}
 		
+		//no phone number
+		if (empty($section['phone'])){
+			$str = 'Please give us a phone number.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		} else if (!empty($section['phone'])) {
+			if(strlen($section['phone'] < 8)){
+				$str = 'Please give us a valid phone number.';
+				$errors[] = $str; 
+				setFlashMessage('error', $str);		
+			}
+		}
+
+		//no address
+		if (empty($section['address'])){
+			$str = 'Please enter an address.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}
+
+		//no post code
+		if (empty($section['post_code'])){
+			$str = 'Please enter a post code.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}		
 		
 		//no password
 		if (empty($section['password'])) {
@@ -115,7 +139,7 @@ class EnclothedProfile {
 			setFlashMessage('error', $str);
 		}
 
-		//feedback 'other' and no text on other
+		//feedback 'other' and no text on other (not required)
 		if (!empty($section['feedback_1']) && $section['feedback_1'] == 'other') {
 			if (empty($section['feedback_2'])) {
 				$str = 'Please tell us how you heard about us.';
@@ -124,21 +148,51 @@ class EnclothedProfile {
 			}
 		}
 
-		//sanitization before db
-
 		//go back to the page if validation failed
 		if (!empty($errors)){
 			//clear the session just in case something was wrong this time.
 			unset($_SESSION['section_1']); 
 			return; 
+
+		//if all went well then just remember the answers in the session
 		} else {
-			//if all went well then just remember the answers in the session
-			//$this->save();
+
+			//sanitization before db
+			$data['name'] = sanitize_text_field($section['name']); 
+			$data['email'] = sanitize_email($section['email']);
+			$data['dob'] = sanitize_text_field($section['dob']);
+			$data['address'] = sanitize_text_field($section['address']);
+			$data['post_code'] = sanitize_text_field($section['post_code']);
+			$data['password'] = $section['password'];
+			$data['feedback_1'] = sanitize_text_field($section['feedback_1']);
+			$data['feedback_2'] = sanitize_text_field($section['feedback_2']);
+			$data['occupation'] = sanitize_text_field($section['occupation']);
+
+			
+			$this->saveNewProfile($data);
 			wp_redirect( home_url().'/profile/sizing' ); 
 			exit;	
 		}
 		
 	}
+
+
+	public function saveNewProfile($data){
+		debug_log('Trying to create user without either password or email');
+		//create a user
+		if (empty($data['email']) || empty($data['password'])) {
+			debug_log('Trying to create user without either password or email');
+			wp_redirect(home_url());
+			exit;
+		}
+		//create a new user
+		$id = $this->main->users_model->createUser($data['email'], $data['password']);
+		$this->main->profile_model->saveNewProfile($data);
+	}
+
+
+
+		
 
 
 	public function process_sizing_form(){

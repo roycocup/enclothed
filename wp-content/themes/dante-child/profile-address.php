@@ -31,7 +31,7 @@ if (isset($_SESSION['section_1'])){
 	
 	<div style="float:left; padding-left:30px;">
 		<input type="text" name="section_1[post_code]" placeholder='Post Code' value="<?php echo $section['post_code']; ?>"><br>
-		<input type="text" name="section_1[address]" placeholder='Phone Number' value="<?php echo $section['address']; ?>"><br>
+		<input type="text" name="section_1[phone]" placeholder='Phone Number' value="<?php echo $section['phone']; ?>"><br>
 		<input type="text" name="section_1[occupation]" placeholder='Occupation' value="<?php echo $section['occupation']; ?>"><br>
 		<input type="password" name="section_1[password]" placeholder='Password' value="<?php echo $section['password']; ?>"><br>
 	</div>
@@ -44,8 +44,8 @@ if (isset($_SESSION['section_1'])){
 		<h5>How did you hear about Enclothed</h5>
 		<select name="section_1[feedback_1]">
 			<option value="0">Select One</option>
-			<option value="1">Word of Mouth</option>
-			<option value="2">Magazine</option>
+			<option value="word">Word of Mouth</option>
+			<option value="Magazine">Magazine</option>
 			<option value="other">Other</option>
 		</select>
 		<input type="text" name="section_1[feedback_2]" placeholder='What other...'>
