@@ -21,6 +21,28 @@
 //	if (!is_admin()) {
 //	add_action('wp', 'spb_regsiter_assets', 2);
 //	}
+
+if (!function_exists('get_fb_posts')){
+	function get_fb_posts($num, $truncate_words = false){
+		$posts = get_facebook_posts();
+		$i = 1;
+		foreach ($posts as $post) {
+			if ($i > $num) break;
+			$post_content = $post['content']; 
+			if (!empty($truncate_words)){
+				$post_content = wp_trim_words( $post_content, $truncate_words); 
+			}
+			$time = time_elapsed($post['timestamp']);
+
+			echo "<div class='fb_post' style='padding-bottom:20px'>";
+			echo "<div class='fb_post_content'>$post_content</div>";
+			echo "<div class='fb_time'>$time</div>";	
+			echo "</div>";
+			$i++;
+		}		
+	}
+}
+	
 			
 
 ?>
