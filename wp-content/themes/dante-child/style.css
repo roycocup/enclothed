@@ -27,3 +27,99 @@
 /* --------------------------------------------
 	CHILD THEME CSS
 -------------------------------------------- */
+
+.no-margin-top { margin-top: 0 !important;}
+.no-border-top { border-top: none !important;}
+@media only screen and (min-width: 1200px) {
+	.container {width: 980px;}
+}
+
+.page-id-85 #top-bar, .page-id-85 #top-header {
+display: none;
+}
+.page-id-85 #header-section:before {
+background: transparent;
+}
+.page-id-85 .header-wrap {
+width: 100%;
+position: absolute;
+top: 40px;
+left: 0;
+z-index: 7;
+}
+.page-id-85 #header-section, .page-id-85 #header-section:before, .page-id-85 #header .is-sticky .sticky-header, .page-id-85 .is-sticky #header.sticky-header {
+-moz-box-shadow: none!important;
+-webkit-box-shadow: none!important;
+box-shadow: none!important;
+background: transparent!important;
+}
+.page-id-85 #header .is-sticky .sticky-header, .page-id-85 .is-sticky #header.sticky-header {
+background: transparent;
+transition: background 0.5s ease-in-out;
+-moz-transition: background 0.5s ease-in-out;
+-webkit-transition: background 0.5s ease-in-out;
+-o-transition: background 0.5s ease-in-out;
+-webkit-animation-fill-mode: both;
+-moz-animation-fill-mode: both;
+-o-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+.page-id-85 #logo img {
+display: none!important;
+}
+.page-id-85 #logo {
+background: transparent url('images/logo-header.png') no-repeat;
+}
+
+.page-id-85 #logo a {
+	display:block;
+color: #fff;
+}
+.page-id-85 nav .menu > li a {
+color: #fff;
+}
+.page-id-85 #header .is-sticky .sticky-header.sticky-header-resized, .page-id-85 .is-sticky #header.sticky-header.sticky-header-resized {
+background: #fff!important;
+-moz-box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
+-webkit-box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
+box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
+}
+.page-id-85 .sticky-header-resized #logo img.retina {
+display: block!important;
+}
+.page-id-85 .sticky-header-resized #logo h1 {
+color: #222!important;
+}
+.page-id-85 .sticky-header-resized #logo a {
+color: #333;
+}
+.page-id-85 .sticky-header-resized #logo {
+background-image: none;
+}
+.page-id-85 .sticky-header-resized nav .menu > li a {
+color: #252525;
+}
+.page-id-85 .inner-page-wrap {
+padding-top: 0!important;
+margin-top: 0;
+}
+@media only screen and (max-width: 991px) {
+.page-id-85 #logo {
+width: 90%;
+margin: 0 5%;
+}
+}
+@media only screen and (max-width: 767px) {
+.page-id-85 .header-wrap {
+top: 0;
+}
+}
+
+#logo h1 { visibility: hidden; } 
+
+#logo {
+background: transparent url('images/logo-black.png') no-repeat;
+width: 232px !important;
+height:48px !important;
+max-height:48px !important;
+}
