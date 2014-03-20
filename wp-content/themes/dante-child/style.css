@@ -226,6 +226,13 @@ max-height: 3px !important;
 bottom: 3px !important;
 }
 
+#mobile-menu ul li a, #mobile-menu ul li:hover a {
+text-decoration: none;
+font: 13px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
 .header-shadow #header-section {
 -moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
 -webkit-box-shadow: none;
@@ -280,3 +287,17 @@ background:url(images/mobile_nav_icon.png) no-repeat -42px 0;
 	content:"";
 }
 .ss-rows,.ss-rows:before, .ss-rows.right:after{ content:"";}
+
+.mobile-menu-close {
+padding: 9px 13px 9px 13px;
+}
+
+.mobile-menu-close:hover {
+padding: 9px 13px 9px 13px;
+color: #f7b666 !important;
+}
+
+.carousel-wrap > a:hover, #mobile-menu ul li:hover > a{
+	color: #f7b666 !important;
+}
+#mobile-menu-wrap{ background-color:#111 !important;}

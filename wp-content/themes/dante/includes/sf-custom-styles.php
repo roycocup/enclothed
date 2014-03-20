@@ -20,7 +20,7 @@
 			$enable_responsive = $options['enable_responsive'];
 			
 			// Standard Styling
-			$accent_color = get_option('accent_color', '#1dc6df');
+			$accent_color = get_option('accent_color', '#f7b666');
 			$accent_alt_color = get_option('accent_alt_color', '#ffffff');
 			$secondary_accent_color = get_option('secondary_accent_color', '#222222');
 			$secondary_accent_alt_color = get_option('secondary_accent_alt_color', '#ffffff');
