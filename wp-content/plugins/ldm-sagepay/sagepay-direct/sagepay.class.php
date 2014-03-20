@@ -33,7 +33,8 @@ class SagePay
 		TYPE = 'PAYMENT',	// Transaction type
 		PROTOCOL_VERSION = '3.00',	// SagePay protocol vers no
 		VENDOR = 'enclothed',	// Your SagePay vendor name
-		CURRENCY = 'gbp';	// Currency transaction is to be in. For multi-currency sites, you need to change this from a constant to a property
+		CURRENCY = 'gbp',	// Currency transaction is to be in. For multi-currency sites, you need to change this from a constant to a property
+		ENV = 'DEVELOPMENT'; //DEVELOPMENT or anything else
 		
 	
 	/**
@@ -45,7 +46,7 @@ class SagePay
 	 **/
 	public function __construct($data)
 	{
-		$this->env = ENV;
+		$this->env = self::ENV;
 		// sets the url to post to based on ENV
 		$this->setUrls();
 		$this->setPrice($data['Amount']);
@@ -104,6 +105,9 @@ class SagePay
 		$this->data['VendorTxCode'] = $this->vendorTxCode;
 		$this->data['Description'] = $this->description;
 		$this->data['Vendor'] = self::VENDOR;
+		$this->data['CardType'] = 'visa';
+		$this->data['CardNumber'] = '8763495873459';
+		$this->data['ExpiryDate'] = '01/15';
 	}
 	
 	
@@ -193,6 +197,7 @@ class SagePay
 
 		// Send the request and convert the return value to an array
 		$response = preg_split('/$\R?^/m',curl_exec($curl_session));
+
 		
 		// Check that it actually reached the SagePay server
 		// If it didn't, set the status as FAIL and the error as the cURL error
@@ -248,6 +253,12 @@ class SagePay
 				$this->status = 'fail';
 				$this->error = 'An unexpected error has occurred. Please try again.';
 				break;
+			case 'MALFORMED':
+				// errors for if the transaction fails for any reason
+				$this->status = 'fail';
+				$this->error = 'Message was malformed. '.$response[2];
+				return $response;
+				break;
 			default:
 				// default error if none of the above conditions are met
 				$this->status = 'error';
@@ -290,6 +301,7 @@ class SagePay
 			$data['BillingPostCode'] = '412';
 			$data['Amount'] = $arr['total'];
 		} else {
+			
 			// this is where the VendorTxCode is set. Once it's set here, don't set it anywhere else, use this one
 			$data['VendorTxCode'] = 'prefix_' . time() . rand(0, 9999);
 			

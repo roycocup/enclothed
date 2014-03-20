@@ -10,17 +10,18 @@
 *
 **/
 
-
-require_once 'sagepay/sagepay.class.php'; 
-
+/*
+require_once 'sagepay-direct/sagepay.class.php'; 
 $data['TxType'] 		= 'Deferred';
-$data['VendorTxCode'] 	= '';
+$data['VendorTxCode'] 	= 'enclothed';
 $data['Amount'] 		= 500;
 $data['Description'] 	= 'A box full of the most amazing designer clothes';
-
-
+$data['Environment']	= 'DEVELOPMENT'; //DEVELOPMENT or anything else
 $sagepay = new Sagepay($data);
-dump($sagepay); 
+$sagepay->execute();
+dump($sagepay->status); 
+dump($sagepay->error); 
+*/
 
 
 
