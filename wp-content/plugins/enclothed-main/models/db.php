@@ -58,20 +58,21 @@ class db {
 	* This will replace which meand it tries to update the value and if does not exist, it will insert it. 
 	*
 	**/
-	public function replace ($data, $where, $table = ''){
+	public function replace ($data, $where = '', $table = ''){
 		$table = (empty($table)) ? $this->table : $table;
 		
-
 		//check that the value already exists (must be unique!)
-		$sql = "SELECT * FROM {$table} ";
-		$sql .= " WHERE 1 "; 
-		foreach ($where as $key => $value) {
-			$sql .= ' AND ';
-			$sql .= " `{$key}` = '{$value}' "; 
+		if (!empty($where)){
+			$sql = "SELECT * FROM {$table} ";
+			$sql .= " WHERE 1 "; 
+			foreach ($where as $key => $value) {
+				$sql .= ' AND ';
+				$sql .= " `{$key}` = '{$value}' "; 
+			}
+			$record = $this->wpdb->get_results($sql);
 		}
-		$record = $this->wpdb->get_results($sql);
-
-		if (!empty($record)){
+		
+		if (!empty($record) && !empty($where)){
 			//update
 			$ok = $this->update($data, $where, $table);
 			return $ok;	

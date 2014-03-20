@@ -162,6 +162,7 @@ class EnclothedProfile {
 			$data['email'] = sanitize_email($section['email']);
 			$data['dob'] = sanitize_text_field($section['dob']);
 			$data['address'] = sanitize_text_field($section['address']);
+			$data['phone'] = sanitize_text_field($section['phone']);
 			$data['post_code'] = sanitize_text_field($section['post_code']);
 			$data['password'] = $section['password'];
 			$data['feedback_1'] = sanitize_text_field($section['feedback_1']);
@@ -177,22 +178,40 @@ class EnclothedProfile {
 	}
 
 
-	public function saveNewProfile($data){
+	public function saveNewProfile($profile){
 		debug_log('Trying to create user without either password or email');
-		//create a user
-		if (empty($data['email']) || empty($data['password'])) {
+		
+		//check that we have what it takes to create the user
+		if (empty($profile['email']) || empty($profile['password'])) {
 			debug_log('Trying to create user without either password or email');
 			wp_redirect(home_url());
 			exit;
 		}
 		//create a new user
-		$id = $this->main->users_model->createUser($data['email'], $data['password']);
-		$this->main->profile_model->saveNewProfile($data);
+		//$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
+		$new_user_id = 10;
+
+		//if there is a problem creating
+		if (is_object($new_user_id)){
+			debug_log('There was a problem creating the user '.__FILE__);
+
+			if (!empty($new_user_id['existing_user_login'])){
+				debug_log('The user already exists. Needs to login instead of register');
+			}
+			wp_redirect(home_url());
+			exit;
+		}
+
+		$data = array();
+		$data['profile_id'] = (int) $new_user_id;
+		$data['email'] 		= $profile['email'];
+		$data['first_name'] = $profile['name'];
+		$data['phone'] 		= $profile['phone'];
+		$data['dob'] 		= $profile['dob'];
+		$data['occupation'] = $profile['occupation'];
+		$this->main->profiles_model->save($data);
 	}
 
-
-
-		
 
 
 	public function process_sizing_form(){

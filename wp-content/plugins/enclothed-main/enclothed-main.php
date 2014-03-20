@@ -16,6 +16,7 @@
 require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
 require_once(dirname(__FILE__)."/models/brands.php");
+require_once(dirname(__FILE__)."/models/users.php");
 require_once(dirname(__FILE__)."/models/profiles.php");
 
 
