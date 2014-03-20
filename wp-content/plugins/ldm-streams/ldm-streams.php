@@ -10,7 +10,7 @@
 *
 **/
 
-//include_once 'facebook.php';
+// include_once 'facebook3.php';
 //include_once 'twitter.php';
 
 
@@ -18,13 +18,21 @@ class ldmStreams {
 
 	public $config_filename = 'ldm-streams.ini';
 	public $config; 
+	public $facebook; 
 
 	public function __construct(){
 		$this->config = parse_ini_file(dirname(__FILE__)."/".$this->config_filename, true); 
 	}	
 
+	public function getFacebookPosts(){
+		return recent_facebook_posts();
+	}
+
 }
 
 
-new ldmStreams();
+$streams = new ldmStreams();
+// $posts = $streams->getFacebookPosts();
+// var_dump($posts); 
+
 

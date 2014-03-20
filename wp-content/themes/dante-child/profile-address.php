@@ -5,6 +5,9 @@
 *
 **/
 
+get_header(); ?>
+
+<?php 
 if (isset($_SESSION['section_1'])){
 	$section = $_SESSION['section_1'];	
 }else {
@@ -55,3 +58,6 @@ if (isset($_SESSION['section_1'])){
 	<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 	<button onclick="submit()">Save and Continue</button>
 </form>
+
+
+<?php get_footer(); ?>
