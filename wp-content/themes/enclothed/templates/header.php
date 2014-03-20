@@ -9,7 +9,7 @@
 				</button>
 				<!-- END RESPONSIVE MENU TOGGLER -->
 				<!-- BEGIN LOGO (you can use logo image instead of text)-->
-				<a class="navbar-brand logo-v1" href="index.html">
+				<a class="navbar-brand logo-v1" href="/">
 					<img src="<?php bloginfo('template_directory'); ?>/assets/img/logo-black.png" id="logoimg" alt="">
 				</a>
 				<!-- END LOGO -->
