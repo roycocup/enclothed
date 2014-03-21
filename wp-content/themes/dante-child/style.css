@@ -74,9 +74,9 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !i
 }
 
 h1 {
-font-size: 38px !important;
-line-height: 44px !important;
-letter-spacing: 10px !important;
+font-size: 28px !important;
+line-height: 38px !important;
+letter-spacing: 3px !important;
 }
 h2 {
 	font-size:20px;
@@ -91,6 +91,8 @@ p{ font-size:16px; letter-spacing:1px;}
 .no-border-top { border-top: none !important;}
 .no-margin-bottom { margin-bottom: 0 !important;}
 .no-border-bottom { border-bottom: none !important;}
+.no-padding-top{ padding-top:0 !important;}
+.no-padding-bottom{ padding-bottom:0 !important;}
 @media only screen and (min-width: 1200px) {
 	.container {width: 980px;}
 }
@@ -226,6 +228,9 @@ max-height: 3px !important;
 bottom: 3px !important;
 }
 
+#main-navigation{ margin-top:5px;}
+.page-id-85 #main-navigation{ margin-top:0px;}
+
 #mobile-menu ul li a, #mobile-menu ul li:hover a {
 text-decoration: none;
 font: 13px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -302,7 +307,7 @@ color: #f7b666 !important;
 }
 #mobile-menu-wrap{ background-color:#111 !important;}
 
-a.sf-button{ border-radius: 0 !important; padding:18px 40px 16px 40px; border:1px solid #fff !important; min-width:280px;}
+a.sf-button{ border-radius: 0 !important; padding:18px 40px 16px 40px; border:1px solid #fff !important; min-width:280px; margin-top:50px;}
 a.sf-button:hover{ background-color: #fff !important;}
 a.sf-button:hover span{ color: #f7b666 !important;transition: all 0.2s ease-in-out;
 -moz-transition: all 0.2s ease-in-out;
@@ -311,4 +316,37 @@ a.sf-button:hover span{ color: #f7b666 !important;transition: all 0.2s ease-in-o
 a.sf-button span{ font-size:16pt !important; letter-spacing:3px;}
 a.sf-button.transparent{  border:1px solid #666 !important;}
 a.sf-button.transparent:hover{ background-color: transparent !important;}
+.fa-facebook.sf-icon.sf-icon-medium { font-size:34px !important; width: auto;height: auto; color:#000; }
+.fa-twitter.sf-icon.sf-icon-medium { font-size:34px !important; width: auto;height: auto;  color:#000;}
+.fa-instagram.sf-icon.sf-icon-medium { font-size:34px !important; width: auto;height: auto; color:#000; }
+.fa-pinterest.sf-icon.sf-icon-medium { font-size:34px !important; width: auto;height: auto;  color:#000;}
+.sf-icon-cont {
+border-color: #999 !important;
+border-radius: 0 !important;
+padding: 5px !important;
+}
+.sf-icon-cont:hover, .sf-hover .sf-icon-cont, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont, .sf-hover .sf-icon-box-hr { background: none !important; background-color:#f7b666 !important;}
+.social_buttons{ text-align:center;}
 
+.spb_box_text.whitestroke .box-content-wrap {
+background-color: transparent !important;
+border-color: transparent !important;
+}
+.sf-icon-cont.cont-medium{ margin: 10px 16px 10px 16px !important; }
+
+#copyright nav .menu{ float:none; text-align:center;}
+#copyright nav .menu li{ float:none; border:none;}
+
+#footer{ display:none;}
+#copyright{ padding:60px 0 60px 0; border-top: 6px solid #f7b666 !important;}
+nav.std-menu .menu li > a { font-weight:bold; margin:0 20px;}
+
+#back-to-top{ border-radius:0;}
+
+#main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+
+.inner-page-wrap {
+margin-top: 30px;
+margin-bottom: 60px;
+min-height: 500px;
+}
