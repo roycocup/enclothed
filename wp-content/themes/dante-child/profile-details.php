@@ -85,7 +85,7 @@ if (isset($_SESSION['section_1'])){
 					<option value="Other">Other</option>
 			</select>
 			
-			<select class="selectmenu" tabindex="11" name="section_1[feedback_2]">
+			<select class="selectmenu" tabindex="11" name="section_1[another_person]">
 					<option value="Date of Birth">Are you purchasing for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
