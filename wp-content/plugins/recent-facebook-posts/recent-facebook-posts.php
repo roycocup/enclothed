@@ -31,7 +31,7 @@ if(! defined("ABSPATH") ) {
     exit;
 }
 
-//define("RFBP_VERSION", "3000");
+define("RFBP_VERSION", "1000");
 define("RFBP_PLUGIN_DIR", plugin_dir_path(__FILE__)); 
 
 // define WP_CONTENT_DIR since we're using it..
