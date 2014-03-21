@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* template name: Profile Address
+* template name: Profile Details
 *
 **/
 

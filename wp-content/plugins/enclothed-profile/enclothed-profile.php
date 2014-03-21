@@ -40,8 +40,8 @@ class EnclothedProfile {
 		if (!empty($_POST['nonce'])){
 
 			//we will call each method based on 
-			if ( wp_verify_nonce( $_POST['nonce'], '/profile/address/' ) ) {
-				$this->process_address_form();
+			if ( wp_verify_nonce( $_POST['nonce'], '/profile/details/' ) ) {
+				$this->process_details_form();
 			}	
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/sizing/' ) ) {
 				$this->process_sizing_form();
@@ -53,7 +53,7 @@ class EnclothedProfile {
 	}
 
 
-	public function process_address_form(){
+	public function process_details_form(){
 
 		if (isset($_POST['section_1'])){
 			//a more convenient variable
