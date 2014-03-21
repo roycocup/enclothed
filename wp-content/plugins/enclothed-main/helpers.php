@@ -146,6 +146,19 @@ if (!function_exists('time_elapsed')){
 }
 
 
+/**
+*
+* Helper function to help with form fields default value
+*
+**/
+if (!function_exists('echo_if_exists')){
+	function echo_if_exists($str = ''){
+		echo $str;
+	}
+}
+
+
+
 
 
 
