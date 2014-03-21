@@ -1,505 +1,650 @@
 <?php
 
+/**
+ * Sage Pay Form class
+ *
+ * This CodeIgniter library to integrate the Sage Pay Go Form service
+ * http://www.sagepay.com/products_services/sage_pay_go/integration/form
+ * 
+ * @package   sagepay_form
+ * @author    Ollie Rattue, Too many tabs <orattue[at]toomanytabs.com>
+ * @copyright Copyright (c) 2011, Ollie Rattue
+ * @license   http://www.opensource.org/licenses/mit-license.php
+ * @link      https://github.com/ollierattue/codeigniter-sagepay-form
+ */
+
 class Sagepay {
 
-	public function __construct() {
-		global $woocommerce;
-
-		$this->id               = 'sagepayserver';
-		$this->method_title     = __('SagePay Server', 'patsatech-woo-sagepay-server');
-		$this->icon     		= apply_filters( 'woocommerce_sagepayserver_icon', '' );
-		$this->has_fields       = false;
-		$this->notify_url   	= str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'woocommerce_sagepayserver', home_url( '/' ) ) );
-
-		$default_card_type_options = array(
-			'VISA' => 'VISA',
-			'MC' => 'MasterCard',
-			'AMEX' => 'American Express',
-			'DISC' => 'Discover',
-			'DC' => 'Diner\'s Club',
-			'JCB' => 'JCB Card'
-			);
-		$this->card_type_options = apply_filters( 'woocommerce_sagepayserver_card_types', $default_card_type_options );
-
-        // load form fields
-		$this->init_form_fields();
-
-        // initialise settings
-		$this->init_settings();
-
-        // variables            
-		$this->title            = $this->settings['title'];
-		$this->description      = $this->settings['description'];
-		$this->vendor_name      = $this->settings['vendorname'];
-		$this->mode             = $this->settings['mode'];        
-		$this->transtype        = $this->settings['transtype'];
-		$this->paymentpage      = $this->settings['paymentpage'];
-		$this->iframe        	= $this->settings['iframe'];
-		$this->currency         = $this->settings['currency'];
-		$this->cardtypes		= $this->settings['cardtypes'];
-
-		if( $this->mode == 'test' ){
-			$this->gateway_url = 'https://test.sagepay.com/gateway/service/vspserver-register.vsp';
-		}else if( $this->mode == 'live' ){
-			$this->gateway_url = 'https://live.sagepay.com/gateway/service/vspserver-register.vsp';
-		}
-
-        // actions
-		add_action( 'init', array(&$this, 'successful_request') );
-		add_action( 'woocommerce_api_woocommerce_sagepayserver', array( &$this, 'successful_request' ) );
-		add_action( 'woocommerce_receipt_sagepayserver', array( &$this, 'receipt_page' ) );
-		add_action( 'woocommerce_update_options_payment_gateways', array(&$this, 'process_admin_options' ) );
-		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( &$this, 'process_admin_options' ) );
-
-		if ( !$this->is_valid_for_use() ) $this->enabled = false; 
-	}
-
+	public $protocol_version = "3.00";
+	public $config;
+	public $vendor_name;
+	public $your_site_fqdn;
+	public $transaction_type;
+	public $encryption_password;
+	public $purchase_url;
+	public $partner_id;
+	public $currency;
+	public $vendor_tx_code;
+	public $total;
+	public $description;
+	public $billing_first_names;
+	public $billing_surname;
+	public $billing_address1;
+	public $billing_address2;
+	public $billing_city;
+	public $billing_postcode;
+	public $billing_country;
+	public $billing_state;
+	public $billing_phone;
+	public $delivery_first_names;
+	public $delivery_surname;
+	public $delivery_address1;
+	public $delivery_address2;
+	public $delivery_city;
+	public $delivery_postcode;
+	public $delivery_country;
+	public $delivery_state;
+	public $delivery_phone;
+	public $send_email;
+	public $vendor_email;
+	public $customer_email;
+	public $email_message;
+	public $allow_gift_aid = 0;
+	public $billing_agreement = 0;
+	public $apply_avscv2 = 0;
+	public $apply_3d_secure = 0;
+	public $submit_btn; // Image/Form button
+	public $CI;
+	
 	/**
-	 * get_icon function.
+	 * Constructor
 	 *
-	 * @access public
-	 * @return string
+	 * @access	public
 	 */
-	function get_icon() {
-		global $woocommerce;
+
+	public function __construct()
+	{
 		
-		$icon = '';
-		if ( $this->icon ) {
-			// default behavior
-			$icon = '<img src="' . $woocommerce->force_ssl( $this->icon ) . '" alt="' . $this->title . '" />';
-		} elseif ( $this->cardtypes ) {
-			// display icons for the selected card types
-			$icon = '';
-			foreach ( $this->cardtypes as $cardtype ) {
-				if ( file_exists( plugin_dir_path( __FILE__ ) . '/images/card-' . strtolower( $cardtype ) . '.png' ) ) {
-					$icon .= '<img src="' . $woocommerce->force_ssl( plugins_url( '/images/card-' . strtolower( $cardtype ) . '.png', __FILE__ ) ) . '" alt="' . strtolower( $cardtype ) . '" />';
-				}
+		$this->vendor_name 			= 'Enclothedldt';
+		$this->your_site_fqdn 		= 'your_site_fqdn';
+		$this->encryption_password 	= '9e40c05e600d6300';
+		$this->partner_id 			= 'partner_id';
+		$this->currency 			= 'gbp';
+		$this->transaction_type 	= 'deferred';
+		$this->send_email 			= 'rodrigo@rodderscode.co.uk';
+		$this->vendor_email 		= 'rodrigo@rodderscode.co.uk';
+		$this->purchase_url 		= 'https://test.sagepay.com/gateway/service/vspserver-register.vsp';
+		$this->success_url			= 'http://enclothed.dev/thank_you';
+		$this->failure_url			= 'http://enclothed.dev/cancel';
+	}
+
+	public function form_close($extra = ''){
+			return "</form>".$extra;
+	}
+	
+
+	public function form_prep($str = '', $field_name = '')
+	{
+		static $prepped_fields = array();
+
+		// if the field name is an array we do this recursively
+		if (is_array($str))
+		{
+			foreach ($str as $key => $val)
+			{
+				$str[$key] = form_prep($val);
+			}
+
+			return $str;
+		}
+
+		if ($str === '')
+		{
+			return '';
+		}
+
+		// we've already prepped a field with this name
+		// @todo need to figure out a way to namespace this so
+		// that we know the *exact* field and not just one with
+		// the same name
+		if (isset($prepped_fields[$field_name]))
+		{
+			return $str;
+		}
+
+		$str = htmlspecialchars($str);
+
+		// In case htmlspecialchars misses these.
+		$str = str_replace(array("'", '"'), array("&#39;", "&quot;"), $str);
+
+		if ($field_name != '')
+		{
+			$prepped_fields[$field_name] = $field_name;
+		}
+
+		return $str;
+	}
+
+	public function form_hidden($name, $value = '', $recursing = FALSE)
+	{
+		static $form;
+
+		if ($recursing === FALSE)
+		{
+			$form = "\n";
+		}
+
+		if (is_array($name))
+		{
+			foreach ($name as $key => $val)
+			{
+				form_hidden($key, $val, TRUE);
+			}
+			return $form;
+		}
+
+		if ( ! is_array($value))
+		{
+			$form .= '<input type="hidden" name="'.$name.'" value="'.$this->form_prep($value, $name).'" />'."\n";
+		}
+		else
+		{
+			foreach ($value as $k => $v)
+			{
+				$k = (is_int($k)) ? '' : $k;
+				form_hidden($name.'['.$k.']', $v, TRUE);
+			}
+		}
+
+		return $form;
+	}
+
+	// --------------------------------------------------------------------
+	
+	function set_field($field = NULL, $value = NULL)
+	{
+		$this->{$field} = $value;
+	}
+
+	// --------------------------------------------------------------------
+	
+	function set_same_delivery_address()
+	{
+		$this->delivery_first_names = $this->billing_first_names;
+		$this->delivery_surname = $this->billing_surname;
+		$this->delivery_address1 = $this->billing_address1;
+		$this->delivery_address2 = $this->billing_address2;
+		$this->delivery_city = $this->billing_city;
+		$this->delivery_postcode = $this->billing_postcode;
+		$this->delivery_country = $this->billing_country;
+		$this->delivery_state = $this->billing_state;
+		$this->delivery_phone = $this->billing_phone;
+	}
+
+	// --------------------------------------------------------------------
+		
+	// Creates a unique string
+	// Called by controller and the value would be stored in db against the purchase
+	function create_vendor_tx_code()
+	{
+		$timestamp = date("y-m-d-H-i-s", time());
+		$random_number = rand(0,32000)*rand(0,32000);
+		$this->vendor_tx_code = "{$timestamp}-{$random_number}";
+		
+		return $this->vendor_tx_code;
+	}
+
+	// --------------------------------------------------------------------
+	
+	function form($form_name = 'SagePayForm')
+	{
+		$strCrypt = $this->_build_form_crypt();
+		
+		$str = '<form action="'.$this->purchase_url.'" method="POST" id="SagePayForm" name="'.$form_name.'">' . "\n";
+		
+		$str .= $this->form_hidden('navigate', "") . "\n";
+		$str .= $this->form_hidden('VPSProtocol', $this->protocol_version) . "\n";
+		$str .= $this->form_hidden('TxType', $this->transaction_type) . "\n";
+		$str .= $this->form_hidden('Vendor', $this->vendor_name) . "\n";
+		$str .= $this->form_hidden('Crypt', $strCrypt) . "\n";
+											
+		$str .= $this->submit_btn;
+		$str .= $this->form_close() . "\n";
+
+		return $str;
+	}
+
+	// --------------------------------------------------------------------
+	
+	// This function actually generates an entire HTML page consisting of
+	// a form with hidden elements which is submitted to Sage Pay via the 
+	// BODY element's onLoad attribute.  We do this so that you can validate
+	// any POST vars from your custom form before submitting to Sage Pay.  
+	
+	// You would have your own form which is submitted to your script
+	// to validate the data, which in turn calls this function to create
+	// another hidden form and submit to Sage Pay.
+	
+	function auto_form()
+	{
+		$this->button('Click here if you\'re not automatically redirected...');
+
+		echo '<html>' . "\n";
+		echo '<head><title>Processing Payment...</title></head>' . "\n";
+		echo '<body onLoad="document.forms[\'sagepay_auto_form\'].submit();">' . "\n";
+		echo '<p>Please wait, your order is being processed and you will be redirected to our payment partner.</p>' . "\n";
+		echo $this->form('sagepay_auto_form');
+		echo '</body></html>';
+	}
+
+	// --------------------------------------------------------------------
+	
+	function button($value = NULL)
+	{
+		// changes the default caption of the submit button
+		$this->submit_btn = form_submit('sagepay_submit', $value);
+	}
+
+	// --------------------------------------------------------------------
+	
+	function _build_form_crypt()
+	{
+		// ** TODO ADD in basket basket support **
+		
+		// Now to build the Form crypt field.
+		if ($this->vendor_tx_code == '')
+		{
+			// This is a fallback in the instance that the controller
+			// did not call this function which it should to store the
+			// value in the db for records.
+			$this->create_vendor_tx_code();
+		}
+		
+		$strPost = "VendorTxCode={$this->vendor_tx_code}";
+		
+		// Optional: If you are a Sage Pay Partner and wish to flag the transactions with your unique partner id, it should be passed here
+		if (strlen($this->partner_id) > 0)
+		{
+		    $strPost .= "&ReferrerID={$this->partner_id}";			
+		}
+
+		$strPost .= "&Amount=".number_format($this->total, 2); // Formatted to 2 decimal places with leading digit
+		$strPost .= "&Currency={$this->currency}";
+		
+		// Up to 100 chars of free format description
+		$strPost .= "&Description={$this->description}"; //*********** HARD CODDED ****************
+
+		/* The SuccessURL is the page to which Form returns the customer if the transaction is successful 
+		** You can change this for each transaction, perhaps passing a session ID or state flag if you wish */
+		$strPost .= "&SuccessURL={$this->your_site_fqdn}{$this->success_url}"; //*********** HARD CODDED ****************
+
+		/* The FailureURL is the page to which Form returns the customer if the transaction is unsuccessful
+		** You can change this for each transaction, perhaps passing a session ID or state flag if you wish */
+		$strPost .= "&FailureURL={$this->your_site_fqdn}{$this->failure_url}"; //*********** HARD CODDED ****************
+
+		// This is an Optional setting. Here we are just using the Billing names given.
+		$strPost .= "&CustomerName={$this->billing_first_names} {$this->billing_surname}";
+		
+		/* Email settings:
+		** Flag 'SendEMail' is an Optional setting. 
+		** 0 = Do not send either customer or vendor e-mails, 
+		** 1 = Send customer and vendor e-mails if address(es) are provided(DEFAULT). 
+		** 2 = Send Vendor Email but not Customer Email. If you do not supply this field, 1 is assumed and e-mails are sent if addresses are provided. **/
+		if ($this->send_email == 0)
+		{
+			$strPost .= "&SendEMail=0";
+		}
+		else
+		{
+			if ($this->send_email == 1) 
+			{
+		    	$strPost .= "&SendEMail=1";
+		    } 
+			else 
+			{
+		    	$strPost .= "&SendEMail=2";
+		    }
+
+		    if (strlen($this->customer_email) > 0)
+			{
+				$strPost .= "&CustomerEMail={$this->customer_email}";  // This is an Optional setting
+			}
+		        
+		    if ($this->vendor_email <> "")
+			{
+				$strPost .= "&VendorEMail={$this->vendor_email}";  // This is an Optional setting
+			}
+			    
+		    // You can specify any custom message to send to your customers in their confirmation e-mail here
+		    // The field can contain HTML if you wish, and be different for each order.  This field is optional
+		    if (strlen($this->email_message) > 0)
+			{
+				$strPost .= "&eMailMessage={$this->email_message}";
+			}
+		}
+
+		// Billing Details:
+		$strPost .= "&BillingFirstnames={$this->billing_first_names}";
+		$strPost .= "&BillingSurname={$this->billing_surname}";
+		$strPost .= "&BillingAddress1={$this->billing_address1}";
+		
+		if (strlen($this->billing_address2) > 0)
+		{
+			$strPost .= "&BillingAddress2={$this->billing_address2}";	
+		}
+		
+		$strPost .= "&BillingCity={$this->billing_city}";
+		$strPost .= "&BillingPostCode={$this->billing_postcode}";
+		$strPost .= "&BillingCountry={$this->billing_country}";
+		
+		if (strlen($this->billing_state) > 0)
+		{
+			$strPost .= "&BillingState={$this->billing_state}";
+		}
+		
+		if (strlen($this->billing_phone) > 0)
+		{
+			$strPost .= "&BillingPhone={$this->billing_phone}";
+		}
+
+		// Delivery Details:
+		$strPost .= "&DeliveryFirstnames={$this->delivery_first_names}";
+		$strPost .= "&DeliverySurname={$this->delivery_surname}";
+		$strPost .= "&DeliveryAddress1={$this->delivery_address1}";
+		
+		if (strlen($this->delivery_address2) > 0)
+		{
+			$strPost .= "&DeliveryAddress2={$this->delivery_address2}";
+		}
+		$strPost .= "&DeliveryCity={$this->delivery_city}";
+		$strPost .= "&DeliveryPostCode={$this->delivery_postcode}";
+		$strPost .= "&DeliveryCountry={$this->delivery_country}";
+		
+		if (strlen($this->delivery_state) > 0)
+		{
+			$strPost .= "&DeliveryState={$this->delivery_state}";	
+		}
+		
+		if (strlen($this->delivery_phone) > 0)
+		{
+			$strPost .= "&DeliveryPhone={$this->delivery_phone}";
+		}
+		
+		// For charities registered for Gift Aid, set to 1 to display the Gift Aid check box on the payment pages
+		if ($this->allow_gift_aid == 1)
+		{
+			$strPost .= "&AllowGiftAid=1"; //*********** HARD CODDED ****************
+		}
+		else
+		{
+			$strPost .= "&AllowGiftAid=0";
+		}
+		
+		/* Allow fine control over AVS/CV2 checks and rules by changing this value. 0 is Default 
+		** It can be changed dynamically, per transaction, if you wish. See the Form Protocol document */
+		if ($this->transaction_type !== "AUTHENTICATE")
+		{
+			switch($this->apply_avscv2)
+			{
+				case "1":
+				case "2":
+				case "3":
+					$strPost .= "&ApplyAVSCV2={$this->apply_avscv2}";
+				break;
+
+				default:
+					$strPost .= "&ApplyAVSCV2=0";
+				break;
 			}
 		}
 		
-		return apply_filters( 'woocommerce_gateway_icon', $icon, $this->id );
+		/* Allow fine control over 3D-Secure checks and rules by changing this value. 0 is Default 
+		** It can be changed dynamically, per transaction, if you wish.  See the Form Protocol document */
+		
+		switch($this->apply_3d_secure)
+		{
+			case "1":
+			case "2":
+			case "3":
+				$strPost .= "&Apply3DSecure={$this->apply_3d_secure}"; //*********** HARD CODDED ****************
+			break;
+
+			default:
+				$strPost .= "&Apply3DSecure=0"; //*********** HARD CODDED ****************
+			break;
+		}
+		
+		/* This field must be set for PAYPAL REFERENCE transactions 
+		All non-PayPal transactions can be repeated without this 
+		flag.
+		
+		If you wish to register this transaction as the first in a series of 
+		regular payments, this field should be set to 1.  
+		
+		If you do not have a PayPal account set up for use via Sage Pay, then this field 
+		is not necessary and should be omitted or set to 0. */
+		if ($this->billing_agreement == 1)
+		{
+			$strPost .= "&BillingAgreement=1";
+		}
+		else
+		{
+			$strPost .= "&BillingAgreement=0";
+		}
+		
+		// Encrypt the plaintext string for inclusion in the hidden field
+		$strCrypt = $this->_encode_crypt($strPost);
+		
+		return $strCrypt;
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/* The getToken function.                                                                                       **
+	** NOTE: A function of convenience that extracts the value from the "name=value&name2=value2..." reply string 	**
+	** Works even if one of the values is a URL containing the & or = signs.                                      	*/
+
+	function getToken($thisString) {
+
+	  // List the possible tokens
+	  $Tokens = array(
+	    "Status",
+	    "StatusDetail",
+	    "VendorTxCode",
+	    "VPSTxId",
+	    "TxAuthNo",
+	    "Amount",
+	    "AVSCV2", 
+	    "AddressResult", 
+	    "PostCodeResult", 
+	    "CV2Result", 
+	    "GiftAid", 
+	    "3DSecureStatus", 
+	    "CAVV",
+		"AddressStatus",
+		"CardType",
+		"Last4Digits",
+		"PayerStatus","CardType");
+
+	  // Initialise arrays
+	  $output = array();
+	  $resultArray = array();
+
+	  // Get the next token in the sequence
+	  for ($i = count($Tokens)-1; $i >= 0 ; $i--){
+	    // Find the position in the string
+	    $start = strpos($thisString, $Tokens[$i]);
+		// If it's present
+	    if ($start !== false){
+	      // Record position and token name
+	      $resultArray[$i]->start = $start;
+	      $resultArray[$i]->token = $Tokens[$i];
+	    }
+	  }
+
+	  // Sort in order of position
+	  sort($resultArray);
+		// Go through the result array, getting the token values
+	  for ($i = 0; $i<count($resultArray); $i++){
+	    // Get the start point of the value
+	    $valueStart = $resultArray[$i]->start + strlen($resultArray[$i]->token) + 1;
+		// Get the length of the value
+	    if ($i==(count($resultArray)-1)) {
+	      $output[$resultArray[$i]->token] = substr($thisString, $valueStart);
+	    } else {
+	      $valueLength = $resultArray[$i+1]->start - $resultArray[$i]->start - strlen($resultArray[$i]->token) - 2;
+		  $output[$resultArray[$i]->token] = substr($thisString, $valueStart, $valueLength);
+	    }      
+
+	  }
+
+	  // Return the ouput array
+	  return $output;
 	}
 
-     /**
-     * Check if this gateway is enabled and available in the user's country
-     */
-     function is_valid_for_use() {
-     	if (!in_array(get_option('woocommerce_currency'), array('USD','AUD','CAD','CHF','DKK','EUR','GBP','HKD','IDR','JPY','LUF','NOK','NZD','SEK','SGD','TRL'))) return false;
+	// --------------------------------------------------------------------
+	
+	// Filters unwanted characters out of an input string.  Useful for tidying up FORM field inputs.
+	function _cleanInput($strRawText,$strType) 
+	{
 
-     	return true;
-     }
+		if ($strType=="Number") {
+			$strClean="0123456789.";
+			$bolHighOrder=false;
+		}
+		else if ($strType=="VendorTxCode") {
+			$strClean="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.";
+			$bolHighOrder=false;
+		}
+		else {
+	  		$strClean=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,'/{}@():?-_&£$=%~<>*+\"";
+			$bolHighOrder=true;
+		}
 
-    /**
-    * Admin Panel Options 
-    **/       
-    public function admin_options()
-    {
-    	?>
-    	<h3><?php _e('SagePay Server', 'patsatech-woo-sagepay-server'); ?></h3>
-    	<p><?php _e('SagePay Server works by processing Credit Cards on site. So users do not leave your site to enter their payment information.', 'patsatech-woo-sagepay-server'); ?></p>
-    	<table class="form-table">
-    		<?php           
-    		if ( $this->is_valid_for_use() ) :
+		$strCleanedText="";
+		$iCharPos = 0;
 
-    			// Generate the HTML For the settings form.
-    			$this->generate_settings_html();
+		do
+			{
+	    		// Only include valid characters
+				$chrThisChar=substr($strRawText,$iCharPos,1);
 
-    		else :
-
-    			?>
-    		<div class="inline error"><p><strong><?php _e( 'Gateway Disabled', 'woothemes' ); ?></strong>: <?php _e( 'SagePay Server does not support your store currency.', 'woothemes' ); ?></p></div>
-    		<?php
-
-    		endif;
-    		?>
-    	</table><!--/.form-table-->
-    	<?php
-    }
-
-    /**
-    * Initialise Gateway Settings Form Fields
-    */
-    public function init_form_fields() {
-
-		//  array to generate admin form
-    	$this->form_fields = array(
-    		'enabled' => array(
-    			'title' => __( 'Enable/Disable', 'patsatech-woo-sagepay-server' ), 
-    			'type' => 'checkbox', 
-    			'label' => __( 'Enable SagePay Server', 'patsatech-woo-sagepay-server' ), 
-    			'default' => 'yes'
-    			),
-    		'title' => array(
-    			'title' => __( 'Title', 'patsatech-woo-sagepay-server' ), 
-    			'type' => 'text', 
-    			'description' => __( 'This is the title displayed to the user during checkout.', 'patsatech-woo-sagepay-server' ), 
-    			'default' => __( 'SagePay Server', 'patsatech-woo-sagepay-server' )
-    			),
-    		'description' => array(
-    			'title' => __( 'Description', 'patsatech-woo-sagepay-server' ), 
-    			'type' => 'textarea', 
-    			'description' => __( 'This is the description which the user sees during checkout.', 'patsatech-woo-sagepay-server' ), 
-    			'default' => __("Payment via SagePay, Please enter your credit or debit card below.", 'patsatech-woo-sagepay-server')
-    			),
-    		'vendorname' => array(
-    			'title' => __( 'Vendor Name', 'patsatech-woo-sagepay-server' ), 
-    			'type' => 'text', 
-    			'description' => __( 'Please enter your vendor name provided by SagePay.', 'patsatech-woo-sagepay-server' ), 
-    			'default' => ''
-    			),
-    		'mode' => array(
-    			'title' => __('Mode Type', 'patsatech-woo-sagepay-server'),
-    			'type' => 'select',
-    			'options' => array( 
-    				'test' => 'Test',
-    				'live' => 'Live'
-    				),
-    			'default' => 'test',
-    			'description' => __( 'Select Test or Live modes.', 'patsatech-woo-sagepay-server' )
-    			),
-    		'paymentpage' => array(
-    			'title' => __('Payment Page Type', 'patsatech-woo-sagepay-server'),
-    			'type' => 'select',
-    			'options' => array( 
-    				'LOW' => 'LOW',
-    				'NORMAL' => 'NORMAL'
-    				),
-    			'default' => 'low',
-    			'description' => __( 'This is used to indicate what type of payment page should be displayed. <br>LOW returns simpler payment pages which have only one step and minimal formatting. Designed to run in i-Frames. <br>NORMAL returns the normal card selection screen. We suggest you disable i-Frame if you select NORMAL.', 'patsatech-woo-sagepay-server' )
-    			),
-    		'iframe' => array(
-    			'title' => __( 'Enable/Disable', 'patsatech-woo-sagepay-server' ), 
-    			'type' => 'checkbox', 
-    			'label' => __( 'Enable i-Frame Mode', 'patsatech-woo-sagepay-server' ), 
-    			'default' => 'yes',
-    			'description' => __( 'Make sure your site is SSL Protected before using this feature.', 'patsatech-woo-sagepay-server' )
-    			),
-    		'transtype'	=> array(
-    			'title' => __('Transaction Type', 'patsatech-woo-sagepay-server'),
-    			'type' => 'select',
-    			'options' => array(
-    				'PAYMENT' => __('Payment', 'patsatech-woo-sagepay-server'), 
-    				'DEFFERRED' => __('Deferred', 'patsatech-woo-sagepay-server'), 
-    				'AUTHENTICATE' => __('Authenticate', 'patsatech-woo-sagepay-server')
-    				),
-    			'description' => __( 'Select Payment, Deferred or Authenticated.', 'patsatech-woo-sagepay-server' )
-    			),
-    		'cardtypes'	=> array(
-    			'title' => __( 'Accepted Cards', 'woothemes' ),
-    			'type' => 'multiselect', 
-    			'description' => __( 'Select which card types to accept.', 'woothemes' ), 
-    			'default' => 'VISA',
-    			'options' => $this->card_type_options,
-    			)
-    		);
-
-
-
-	/**
-	 * Generate the sagepayserver button link
-	 **/
-	public function generate_sagepayserver_form( $order_id ) {
-		global $woocommerce;
-		
-		$order = new WC_Order( $order_id );
-		
-		if($this->iframe == 'yes'){
-
-			return '<iframe src="'. esc_url( get_transient('sagepay_server_next_url') ) .'" name="sagepayserver_payment_form" width="100%" height="900px" ></iframe>';
-			
-		}else{
-			
-			$woocommerce->add_inline_js('
-				jQuery("body").block({
-					message: "<img src=\"'.esc_url( $woocommerce->plugin_url() ).'/assets/images/ajax-loader.gif\" alt=\"Redirecting...\" style=\"float:left; margin-right: 10px;\" />'.__('Thank you for your order. We are now redirecting you to verify your card.', 'woothemes').'",
-					overlayCSS:
-					{
-						background: "#fff",
-						opacity: 0.6
-					},
-					css: {
-						padding:        20,
-						textAlign:      "center",
-						color:          "#555",
-						border:         "3px solid #aaa",
-						backgroundColor:"#fff",
-						cursor:         "wait",
-						lineHeight:		"32px"
+				if (strspn($chrThisChar,$strClean,0,strlen($strClean))>0) { 
+					$strCleanedText=$strCleanedText . $chrThisChar;
+				}
+				else if ($bolHighOrder==true) {
+					// Fix to allow accented characters and most high order bit chars which are harmless 
+					if (bin2hex($chrThisChar)>=191) {
+						$strCleanedText=$strCleanedText . $chrThisChar;
 					}
-				});
-			jQuery("#submit_sagepayserver_payment_form").click();
-			');
-			
-			return '<form action="'.esc_url( get_transient('sagepay_server_next_url') ).'" method="post" id="sagepayserver_payment_form">
-			<input type="submit" class="button alt" id="submit_sagepayserver_payment_form" value="'.__('Submit', 'woothemes').'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__('Cancel order &amp; restore cart', 'woothemes').'</a>
-		</form>';
-
-	}
-
-}
-
-	/**
-	* 
-    * process payment
-    * 
-    */
-	function process_payment( $order_id ) {
-		global $woocommerce;
-		
-		$order = new WC_Order( $order_id );
-
-		$time_stamp = date("ymdHis");
-		$orderid = $this->vendor_name . "-" . $time_stamp . "-" . $order_id;
-		
-		$sd_arg['ReferrerID'] 			= 'CC923B06-40D5-4713-85C1-700D690550BF';
-		$sd_arg['Amount'] 				= $order->order_total;
-		$sd_arg['CustomerEMail'] 		= $order->billing_email;
-		$sd_arg['BillingSurname'] 		= $order->billing_last_name;
-		$sd_arg['BillingFirstnames'] 	= $order->billing_first_name;
-		$sd_arg['BillingAddress1'] 		= $order->billing_address_1;
-		$sd_arg['BillingAddress2'] 		= $order->billing_address_2;
-		$sd_arg['BillingCity'] 			= $order->billing_city;
-		if( $order->billing_state == 'US' ){
-			$sd_arg['BillingState'] 		= $order->billing_state;
-		}else{
-			$sd_arg['BillingState'] 		= '';
-		}
-		$sd_arg['BillingPostCode'] 		= $order->billing_postcode;
-		$sd_arg['BillingCountry'] 		= $order->billing_country;
-		$sd_arg['BillingPhone'] 		= $order->billing_phone;
-		
-		if( $this->cart_has_virtual_product() == true ){
-			
-			$sd_arg['DeliverySurname'] 		= $order->billing_last_name;
-			$sd_arg['DeliveryFirstnames'] 	= $order->billing_first_name;
-			$sd_arg['DeliveryAddress1'] 	= $order->billing_address_1;
-			$sd_arg['DeliveryAddress2'] 	= $order->billing_address_2;
-			$sd_arg['DeliveryCity'] 		= $order->billing_city;
-			if( $order->billing_state == 'US' ){
-				$sd_arg['DeliveryState'] 		= $order->billing_state;
-			}else{
-				$sd_arg['DeliveryState'] 		= '';
-			}
-			$sd_arg['DeliveryPostCode'] 	= $order->billing_postcode;
-			$sd_arg['DeliveryCountry'] 		= $order->billing_country;	
-
-		}else{
-			
-			$sd_arg['DeliverySurname'] 		= $order->shipping_last_name;
-			$sd_arg['DeliveryFirstnames'] 	= $order->shipping_first_name;
-			$sd_arg['DeliveryAddress1'] 	= $order->shipping_address_1;
-			$sd_arg['DeliveryAddress2'] 	= $order->shipping_address_2;
-			$sd_arg['DeliveryCity'] 		= $order->shipping_city;
-			if( $order->shipping_state == 'US' ){
-				$sd_arg['DeliveryState'] 		= $order->shipping_state;
-			}else{
-				$sd_arg['DeliveryState'] 		= '';
-			}
-			$sd_arg['DeliveryPostCode'] 	= $order->shipping_postcode;
-			$sd_arg['DeliveryCountry'] 		= $order->shipping_country;	
-		}
-		
-		$sd_arg['Description'] 			= sprintf(__('Order #%s' , 'woothemes'), $order->id);
-		$sd_arg['Currency'] 			= get_option('woocommerce_currency');
-		$sd_arg['VPSProtocol'] 			= 3.00;
-		$sd_arg['Vendor'] 				= $this->vendor_name;
-		$sd_arg['TxType'] 				= $this->transtype;
-		$sd_arg['VendorTxCode'] 		= $orderid;    
-		$sd_arg['Profile'] 				= $this->paymentpage;
-		$sd_arg['NotificationURL'] 		= $this->notify_url;    
-		
-		$post_values = "";
-		foreach( $sd_arg as $key => $value ) {
-			$post_values .= "$key=" . urlencode( $value ) . "&";
-		}
-		$post_values = rtrim( $post_values, "& " );
-
-		$response = wp_remote_post($this->gateway_url, array( 
-			'body' => $post_values,
-			'method' => 'POST',
-			'headers' => array( 'Content-Type' => 'application/x-www-form-urlencoded' ),
-			'sslverify' => FALSE
-			));
-		
-		if (!is_wp_error($response) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) { 
-			
-			$resp = array();   
-
-			$lines = preg_split( '/\r\n|\r|\n/', $response['body'] );
-			foreach($lines as $line){            
-				$key_value = preg_split( '/=/', $line, 2 );
-				if(count($key_value) > 1)
-					$resp[trim($key_value[0])] = trim($key_value[1]);
-			}
-
-			if(isset($resp['Status'])) update_post_meta($order->id, 'Status', $resp['Status']);
-
-			if(isset($resp['StatusDetail'])) update_post_meta($order->id, 'StatusDetail', $resp['StatusDetail']);
-
-			if(isset($resp['VPSTxId'])) update_post_meta($order->id, 'VPSTxId', $resp['VPSTxId']);
-
-			if(isset($resp['CAVV'])) update_post_meta($order->id, 'CAVV', $resp['CAVV']);
-
-			if(isset($resp['SecurityKey'])) update_post_meta($order->id, 'SecurityKey', $resp['SecurityKey']);
-
-			if(isset($resp['TxAuthNo'])) update_post_meta($order->id, 'TxAuthNo', $resp['TxAuthNo']);
-
-			if(isset($resp['AVSCV2'])) update_post_meta($order->id, 'AVSCV2', $resp['AVSCV2']);
-
-			if(isset($resp['AddressResult'])) update_post_meta($order->id, 'AddressResult', $resp['AddressResult']);
-
-			if(isset($resp['PostCodeResult'])) update_post_meta($order->id, 'PostCodeResult', $resp['PostCodeResult']);
-
-			if(isset($resp['CV2Result'])) update_post_meta($order->id, 'CV2Result', $resp['CV2Result']);
-
-			if(isset($resp['3DSecureStatus'])) update_post_meta($order->id, '3DSecureStatus', $resp['3DSecureStatus']);
-
-			if(isset($orderid)) update_post_meta($order->id, 'VendorTxCode', $orderid );
-
-			if ( $resp['Status'] == "OK" ) 
-			{		
-
-				$order->add_order_note( $resp['StatusDetail'] );
-				
-				set_transient( 'sagepay_server_next_url', $resp['NextURL'] ); 
-
-				return array(
-					'result' 	=> 'success',
-					'redirect'	=>  add_query_arg('order', $order->id, add_query_arg('key', $order->order_key, get_permalink(woocommerce_get_page_id('pay'))))
-					);
-
-			}else{
-				
-				if(isset($resp['StatusDetail'])){
-
-					$woocommerce->add_error( 'Transaction Failed. '.$resp['Status'].' - '.$resp['StatusDetail'] );
-
 				}
-				else{
 
-					$woocommerce->add_error( 'Transaction Failed with '.$resp['Status'].' - unknown error.' );
-
-				}
+			$iCharPos=$iCharPos+1;
 			}
-			
-		}else{
-			
-			$woocommerce->add_error( __('Gateway Error. Please Notify the Store Owner about this error.', 'patsatech-woo-sagepay-server'));
-			
-		}
+		while ($iCharPos<strlen($strRawText));
+
+	  	$cleanInput = ltrim($strCleanedText);
+		return $cleanInput;
+
 	}
 	
-	/**
-	 * receipt_page
-	 **/
-	function receipt_page( $order ) {
-		global $woocommerce;
-		
-		echo '<p>'.__('Thank you for your order.', 'woothemes').'</p>';
-		
-		echo $this->generate_sagepayserver_form( $order );
-		
-	}
-
-
-	/**
-	 * Successful Payment!
-	 **/
-	function successful_request() {
-		global $woocommerce;
-
-		$eoln = chr(13) . chr(10);
-
-		$params = array();
-
-		$params['Status'] = 'INVALID';
-
-		if( isset( $_POST['VendorTxCode'] ) ){
-			
-			$vendor_tx_code = explode('-',$_POST['VendorTxCode']);
-
-			$order = new WC_Order( $vendor_tx_code[2] );
-
-			if( $_POST['Status'] == 'OK' ){
-				$params = array('Status' => 'OK', 'StatusDetail' => __('Transaction acknowledged.', 'patsatech-woo-sagepay-server') );
-				$redirect_url = $this->get_return_url( $order );      
-				$order->add_order_note( __('Sagepay Direct payment completed', 'patsatech-woo-sagepay-server') . ' ( ' . __('Transaction ID: ','patsatech-woo-sagepay-server') . $_POST['VendorTxCode'] . ' )' );			
-				$order->payment_complete();
-			}elseif( $_POST['Status'] == 'ABORT' ){
-				$params = array('Status' => 'INVALID', 'StatusDetail' => __('Transaction aborted - ', 'patsatech-woo-sagepay-server') . $_POST['StatusDetail'] );	
-				wc_add_error(__('Aborted by user.', 'patsatech-woo-sagepay-server'));
-				$redirect_url = get_permalink( woocommerce_get_page_id( 'checkout' ) );
-			}elseif( $_POST['Status'] == 'ERROR' ){
-				$params = array('Status' => 'INVALID', 'StatusDetail' => __('Transaction errored - ', 'patsatech-woo-sagepay-server') . $_POST['StatusDetail'] );
-				$redirect_url = $order->get_cancel_order_url();
-			}else{
-				$params = array('Status' => 'INVALID', 'StatusDetail' => __('Transaction failed - ', 'patsatech-woo-sagepay-server') . $_POST['StatusDetail'] );
-				$redirect_url = $order->get_cancel_order_url();
-			}
-		}else{
-			$params['StatusDetail'] =  __('SagePay Server, No VendorTxCode posted.', 'patsatech-woo-sagepay-server');        
-		}
-
-		$params['RedirectURL'] =  $woocommerce->force_ssl( $redirect_url );
-
-		if($this->iframe == 'yes'){
-			$params['RedirectURL'] =  add_query_arg( 'page', urlencode( $redirect_url ), 
-				$woocommerce->force_ssl( WP_PLUGIN_URL ."/" . plugin_basename( dirname(__FILE__) ) . '/includes/pages/redirect.php' ) 
-				);
-		}else{
-			$params['RedirectURL'] =  $woocommerce->force_ssl( $redirect_url );
-		}
-
-		$param_string = "";
-		foreach( $params as $key => $value ) {
-			$param_string .= $key . "=" . $value  . $eoln;
-		}
-
-		ob_clean();                              
-		echo $param_string;
-		exit();
-		
+	// --------------------------------------------------------------------
+	
+	// Wrapper function to encrypt data to store in hidden field which is sent to Sage Pay
+	function _encode_crypt($post = NULL)
+	{
+		return $this->_base64Encode($this->_SimpleXor($post, $this->encryption_password));
 	}
 	
-	/**
-	* Check if the cart contains virtual product
-	*
-	* @return bool
-	*/
-	private function cart_has_virtual_product() {
-		global $woocommerce;
-		
-		$has_virtual_products = false;
-		
-		$virtual_products = 0;
-		
-		$products = $woocommerce->cart->get_cart();
-		
-		foreach( $products as $product ) {
-
-			$product_id = $product['product_id'];
-			$is_virtual = get_post_meta( $product_id, '_virtual', true );
-			// Update $has_virtual_product if product is virtual
-			if( $is_virtual == 'yes' )
-				$virtual_products += 1;
-		}
-		if( count($products) == $virtual_products ){
-			$has_virtual_products = true;
-		}
-
-		return $has_virtual_products;
-
+	// --------------------------------------------------------------------
+	
+	// Wrapper function to decrypt the response data sent back from Sage Pay to success/failure url via url string
+	function decode_crypt($crypt = NULL)
+	{
+		return $this->_simpleXor($this->_base64Decode($crypt), $this->encryption_password);
 	}
-} 
+	
+	// --------------------------------------------------------------------
+	
+	/* Base 64 Encoding function **
+	** PHP does it natively but just for consistency and ease of maintenance, let's declare our own function **/
 
-/**
- * Add the gateway to WooCommerce
- **/
-function add_sagepayserver_gateway( $methods ) 
-{
-	$methods[] = 'woocommerce_sagepayserver'; 
-	return $methods;
-}
-add_filter('woocommerce_payment_gateways', 'add_sagepayserver_gateway' );
+	function _base64Encode($plain) {
+	  // Initialise output variable
+	  $output = "";
 
+	  // Do encoding
+	  $output = base64_encode($plain);
+
+	  // Return the result
+	  return $output;
+	}
+
+	// --------------------------------------------------------------------
+	
+	/* Base 64 decoding function **
+	** PHP does it natively but just for consistency and ease of maintenance, let's declare our own function **/
+
+	function _base64Decode($scrambled) {
+	  // Initialise output variable
+	  $output = "";
+
+	  // Fix plus to space conversion issue
+	  $scrambled = str_replace(" ","+",$scrambled);
+
+	  // Do encoding
+	  $output = base64_decode($scrambled);
+
+	  // Return the result
+	  return $output;
+	}
+
+	// --------------------------------------------------------------------
+
+	/*  The SimpleXor encryption algorithm                                                                                **
+	**  NOTE: This is a placeholder really.  Future releases of Form will use AES or TwoFish.  Proper encryption      	  **
+	**  This simple function and the Base64 will deter script kiddies and prevent the "View Source" type tampering        **
+	**  It won't stop a half decent hacker though, but the most they could do is change the amount field to something     **
+	**  else, so provided the vendor checks the reports and compares amounts, there is no harm done.  It's still          **
+	**  more secure than the other PSPs who don't both encrypting their forms at all                                      */
+
+	function _simpleXor($InString, $Key) 
+	{
+	  // Initialise key array
+	  $KeyList = array();
+	  // Initialise out variable
+	  $output = "";
+
+	  // Convert $Key into array of ASCII values
+	  for($i = 0; $i < strlen($Key); $i++){
+	    $KeyList[$i] = ord(substr($Key, $i, 1));
+	  }
+
+	  // Step through string a character at a time
+	  for($i = 0; $i < strlen($InString); $i++) {
+	    // Get ASCII code from string, get ASCII code from key (loop through with MOD), XOR the two, get the character from the result
+	    // % is MOD (modulus), ^ is XOR
+	    $output.= chr(ord(substr($InString, $i, 1)) ^ ($KeyList[$i % strlen($Key)]));
+	  }
+
+	  // Return the result
+	  return $output;
+	}
+
+	// --------------------------------------------------------------------
+	
+	// Function to check validity of email address entered in form fields
+	function _is_valid_email($email)
+	{
+	  $result = TRUE;
+	  if(!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $email)) {
+	    $result = FALSE;
+	  }
+	  return $result;
+	}
+	
+	// --------------------------------------------------------------------
 }
+
+/* End of file sagepay_form.php */
+/* Location: ./application/libraries/sagepay_form.php */

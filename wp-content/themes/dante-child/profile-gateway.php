@@ -5,12 +5,6 @@
 *
 **/
 
-if (isset($_SESSION['section_1'])){
-	$section = $_SESSION['section_1'];	
-}else {
-	$section = $_POST['section_1'];
-}
-
 
 ?>
 
@@ -27,4 +21,15 @@ if (isset($_SESSION['section_1'])){
 
 	<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 	<button onclick="submit()">Save and Continue</button>
+</form>
+
+<!-- <form action="https://test.sagepay.com/gateway/service/vspserver-register.vsp" method="POST" id="SagePayForm" name="SagePayForm"> -->
+<form action="https://test.sagepay.com/gateway/service/vspform-register.vsp" method="POST" id="SagePayForm" name="SagePayForm">
+<input type="hidden" name="navigate" value="" />
+<input type="hidden" name="VPSProtocol" value="3.00" />
+<input type="hidden" name="TxType" value="deferred" />
+<input type="hidden" name="Vendor" value="Enclothedldt" />
+
+<input type="hidden" name="Crypt" value="bwBaVAxCYR11X1QBCwIEHQlWGQJSHQRSGwECSQYHHQIMVgMHWwEBQ2RVVgFEQVVCcCEJQAJCQQtTQm8NUhVxXVYQWkReABtVBhZzEURBVV5aHAlXAUATIVNDUxZfQ0RZVgsJFjBFVgZTQ0MxZH8NSVYQRm8QWUEAaVZBAFhbRERJXxsfBl5WCVlEWAFSHVRVT0pAWAJeXjpPX0VCcFJZXEwXUWUxfAgcWUVCO0VaRFVmA0VUDVhBEUYKH0tTXVNcVhFcVQceUQBAH1MFWFBVXB8mQUMXX1gARH5RCVMOEBZqAFpUJn1UDFoNAEJ0WlxcUAtTdgpCRhFYUV0BRQ4WclAJWFkNV2YQRF5RCVMOFnJQCVhZDVd0AVJCVRdFAg0WewxYXApeUiZfRElZEHFZXFUMWlczX0YRdV9UAQsVcllVCV1eBHNaEFhEQh0LFXRVVQxCVRFJcwxEQ0QKV15VQwRDcFUPWUMAREljEURdUV1cWBJ0BlxcE1NCSSVSV0JVShYFDUV0UAlfRlUWT3BZREBYEnQGXFwTU0JJNFlARHNWAVENRXRQCV9GVRZPcF9FVxFGSV4WdAlaX0cjX1VEcVABCQBFcUUVWklxMmVwZgIEVRJxE0BZHAV0YwFVRkJVBFUScgpcWQxYV3EDRFZVXVwLQA1T" />
+<input type="submit">
 </form>
