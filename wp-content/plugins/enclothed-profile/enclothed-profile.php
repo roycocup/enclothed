@@ -188,8 +188,7 @@ class EnclothedProfile {
 			exit;
 		}
 		//create a new user
-		//$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
-		$new_user_id = 10;
+		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
 
 		//if there is a problem creating
 		if (is_object($new_user_id)){
