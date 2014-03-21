@@ -64,25 +64,19 @@
 
 html, body, p{ 
 color: #000000;
-font-family: proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+font-family: proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
 
 
 h1, h2, h3, h4, h5, h6 { 
 color: #000000;
-font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
 
-h1 {
-font-size: 28px !important;
-line-height: 38px !important;
-letter-spacing: 3px !important;
+h1{
+	letter-spacing: 3px; font-size: 30px;
 }
-h2 {
-	font-size:20px;
-	line-height: 30px;
-	letter-spacing:6px;
-}
+
 
 p{ font-size:16px; letter-spacing:1px;}
 
@@ -213,11 +207,11 @@ max-width: none !important;
 
 .mobile-search-form{ display:none !important;}
 
-.page-id-85 nav#main-navigation .menu > li > a{ color:#fff; letter-spacing: 3px; font-size:14px; padding:15px 0 12px;}
+.page-id-85 nav#main-navigation .menu > li > a{ color:#fff; letter-spacing: 3px;  padding:15px 0 12px;}
 
 nav#main-navigation .menu > li > a{ color: #000000;
 text-decoration: none;
-font: 13px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 text-transform: uppercase;
 letter-spacing: 2px;}
 

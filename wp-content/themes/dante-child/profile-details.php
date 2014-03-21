@@ -19,6 +19,8 @@ if (isset($_SESSION['section_1'])){
 
 ?>
 
+
+
 <h3><?php the_title(); ?></h3> 
 <form action="" method="POST" name='section_1'>
 	<?php $nonce = wp_create_nonce( get_uri() ); ?>
