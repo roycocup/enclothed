@@ -4,12 +4,13 @@
 * template name: Profile 
 *
 **/
-?>
-
-
-<?php //if the user us logged in he does not need to enrol again. Maybe he just wants another box ?>
-<?php if ( is_user_logged_in() ) :?>
-	<?php get_header(); ?>
+ //if the user us logged in he does not need to enrol again. Maybe he just wants another box 
+if ( !is_user_logged_in() ) :
+	wp_redirect(get_uri()."/address/"); 
+	exit;
+ //if the user is not logged in then bring him to the registration form 
+else : 
+get_header(); ?>
 	<h2>Dashboard</h2>
 	
 	<div><a href="/profile/address">Edit your Profile</a></div>
@@ -32,9 +33,6 @@
 		<input type="submit" value="submit">
 	</form>
 	<?php get_footer(); ?>
-<?php //if the user is not logged in then bring him to the registration form ?>
-<?php else : ?>
-	<?php wp_redirect(get_uri()."/address/") ?>
 <?php endif; ?>
 
 
