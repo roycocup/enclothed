@@ -4,11 +4,13 @@
 * template name: Profile Style
 *
 **/
-
-if (isset($_SESSION['section_1'])){
-	$section = $_SESSION['section_1'];	
-}else {
-	$section = $_POST['section_1'];
+get_header();
+if (isset($_SESSION['section_2'])){
+	$section = $_SESSION['section_2'];	
+}else if(isset($_POST['section_2'])){
+	$section = $_POST['section_2'];
+} else {
+	$section = array();
 }
 
 
@@ -27,3 +29,5 @@ if (isset($_SESSION['section_1'])){
 	<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 	<button onclick="submit()">Save and Continue</button>
 </form>
+
+<?php get_footer(); ?>

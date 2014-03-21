@@ -53,6 +53,40 @@ class EnclothedProfile {
 	}
 
 
+	public function saveNewProfile($profile){
+		debug_log('Trying to create user without either password or email');
+		
+		//check that we have what it takes to create the user
+		if (empty($profile['email']) || empty($profile['password'])) {
+			debug_log('Trying to create user without either password or email');
+			wp_redirect(home_url());
+			exit;
+		}
+		//create a new user
+		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
+
+		//if there is a problem creating
+		if (is_object($new_user_id)){
+			debug_log('There was a problem creating the user '.__FILE__);
+
+			if (!empty($new_user_id['existing_user_login'])){
+				debug_log('The user already exists. Needs to login instead of register');
+			}
+			wp_redirect(home_url());
+			exit;
+		}
+
+		$data = array();
+		$data['profile_id'] = (int) $new_user_id;
+		$data['email'] 		= $profile['email'];
+		$data['first_name'] = $profile['name'];
+		$data['phone'] 		= $profile['phone'];
+		$data['dob'] 		= $profile['dob'];
+		$data['occupation'] = $profile['occupation'];
+		$this->main->profiles_model->save($data);
+	}
+
+
 	public function process_details_form(){
 
 		if (isset($_POST['section_1'])){
@@ -171,61 +205,28 @@ class EnclothedProfile {
 
 			
 			$this->saveNewProfile($data);
-			wp_redirect( home_url().'/profile/sizing' ); 
+			wp_redirect( home_url().'/profile/style' ); 
 			exit;	
 		}
 		
 	}
 
 
-	public function saveNewProfile($profile){
-		debug_log('Trying to create user without either password or email');
-		
-		//check that we have what it takes to create the user
-		if (empty($profile['email']) || empty($profile['password'])) {
-			debug_log('Trying to create user without either password or email');
-			wp_redirect(home_url());
-			exit;
-		}
-		//create a new user
-		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
-
-		//if there is a problem creating
-		if (is_object($new_user_id)){
-			debug_log('There was a problem creating the user '.__FILE__);
-
-			if (!empty($new_user_id['existing_user_login'])){
-				debug_log('The user already exists. Needs to login instead of register');
-			}
-			wp_redirect(home_url());
-			exit;
-		}
-
-		$data = array();
-		$data['profile_id'] = (int) $new_user_id;
-		$data['email'] 		= $profile['email'];
-		$data['first_name'] = $profile['name'];
-		$data['phone'] 		= $profile['phone'];
-		$data['dob'] 		= $profile['dob'];
-		$data['occupation'] = $profile['occupation'];
-		$this->main->profiles_model->save($data);
-	}
-
-
-
-	public function process_sizing_form(){
+	public function process_style_form(){
 		$data = 'this is the data';
-		wp_redirect( home_url().'/profile/style' ); 
+		wp_redirect( home_url().'/profile/sizing' ); 
 		exit;
 	}
 
-	public function process_style_form(){
+	public function process_sizing_form(){
 		$data = 'this is the data';
 		global $current_user;
 		$this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 		wp_redirect( home_url().'/profile/authorize' ); 
 		exit;
 	}
+
+	
 
 
 } //end of class
