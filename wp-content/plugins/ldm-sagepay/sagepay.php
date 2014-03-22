@@ -26,7 +26,7 @@ Surname&CustomerEMail=customer@example.com&BillingSurname=Surname&BillingFirstna
 Line 1&BillingCity=BillCity&BillingPostCode=W1A 
 1BL&BillingCountry=GB&BillingPhone=447933000000&DeliveryFirstnames=Fname&DeliverySurname=Surname&DeliveryAddress1=BillAd
 dress Line 1&DeliveryCity=BillCity&DeliveryPostCode=W1A 
-1BL&DeliveryCountry=GB&DeliveryPhone=447933000000&SuccessURL=https://example.com/success&FailureURL=https://example.com/failure';
+1BL&DeliveryCountry=GB&DeliveryPhone=447933000000&SuccessURL=http://example.com/success&FailureURL=http://example.com/failure';
 $datapadded = pkcs5_pad($str,16);
 $cryptpadded = "@" . encryptFieldData($datapadded);
 ?>
