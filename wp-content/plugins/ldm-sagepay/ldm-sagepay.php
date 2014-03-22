@@ -10,6 +10,10 @@
 *
 **/
 
+
+require_once 'sagepay.php'; 
+
+
 /*
 require_once 'sagepay-direct/sagepay.class.php'; 
 $data['TxType'] 		= 'Deferred';
@@ -23,6 +27,7 @@ dump($sagepay->status);
 dump($sagepay->error); 
 */
 
+/*
 require_once 'sagepay.php'; 
 
 $sagepay = new Sagepay();
@@ -37,7 +42,7 @@ if ( !function_exists( 'debug_log' ) ) {
 
 $t = $sagepay->form();
 debug_log($t);
-
+*/
 
 
 // <form action="http://test.sagepay.com/" method="POST" id="SagePayForm" name="SagePayForm">
