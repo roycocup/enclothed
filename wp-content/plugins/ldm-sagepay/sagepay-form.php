@@ -4,6 +4,7 @@ class Sagepay {
 
 	public $encryption_key = "9e40c05e600d6300";
 	public $crypt; 
+	public $txtype = array('payment'=>'PAYMENT', 'deferred'=>'DEFERRED', 'authenticate'=>'AUTHENTICATE');
 
 	public function __construct(){
 
@@ -31,7 +32,7 @@ class Sagepay {
 	}
 
 	public function getString(){
-		$str = 'VendorTxCode=TxCode-1310917599-223087284&Amount=36.95&Currency=GBP&Description=description&CustomerName=Fname 
+		$str = 'VendorTxCode='.$this->getTxCode().'&Amount=1.00&Currency=GBP&Description=description&CustomerName=Fname 
 		Surname&CustomerEMail=customer@example.com&BillingSurname=Surname&BillingFirstnames=Fname&BillingAddress1=BillAddress 
 		Line 1&BillingCity=BillCity&BillingPostCode=W1A 
 		1BL&BillingCountry=GB&BillingPhone=447933000000&DeliveryFirstnames=Fname&DeliverySurname=Surname&DeliveryAddress1=BillAd
@@ -40,13 +41,18 @@ class Sagepay {
 		return $str;
 	}
 
+	public function getTxCode(){
+		return time(); 
+		//TxCode-1310917599-223087285
+	}
+
 	
 
 	public function renderForm(){
 		$form = '
 			<form name="pp_form" action="https://test.sagepay.com/gateway/service/vspform-register.vsp" method="post">
 				<input name="VPSProtocol" type="hidden" value="3.00" />
-				<input name="TxType" type="hidden" value="PAYMENT" />
+				<input name="TxType" type="hidden" value="'.$this->txtype['authenticate'].'" />
 				<input name="Vendor" type="hidden" value="EnclothedLtd" />
 				<input name="Currency" type="hidden" value="GBP" />
 				<input name="Crypt" type="hidden" value="'.$this->crypt.'" />
