@@ -14,7 +14,7 @@
 require_once 'sagepay-form.php'; 
 
 $sagepay = new Sagepay();
-echo $sagepay->renderForm();
+//echo $sagepay->renderForm();
 
 
 
