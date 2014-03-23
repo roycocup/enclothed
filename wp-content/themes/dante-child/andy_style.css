@@ -1,6 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
+html, body, body div, span, object, iframe, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
 
 
 /* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
@@ -428,25 +436,25 @@ sans-serif;
 }
 
 .button4{
-	width: 285px;
+	width: 90%;
+	max-width: 290px;
 	height: 55px;
 	position: relative;
 	display: inline-block;
 	border: 3px solid #000000;
-	margin: 25px;
+	margin: 10px 0 10px 0;
 	background-color: #000000;
 	font: 18px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-transform: uppercase;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	line-height: 50px;
+	font-size:16px;
 }
 
 .button1:hover, .button2:hover, .button3:hover, .button4:hover{
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
+	color:#f7b666;
+
 }
 
 .intro{
@@ -631,16 +639,16 @@ sans-serif;
 
 .details-menu{
 	width: 100%;
-	max-width: 946px;
 	height: 72px;
 	display: block;
 	background-color: #ffffff;
 	border: 1px solid #cccdcc;
 	margin: 50px auto 0px auto;
+	position:relative;
 }
 
 .details-menu ul{
-	width: 946px;
+	width: 100%;
 	max-height: 70px;
 	height: 100%;
 	display: block;
@@ -649,8 +657,8 @@ sans-serif;
 	margin: 0 auto;
 }
  
-.details-menu li a{
-	width: 189px;
+.details-menu li span{
+	width: 20%;
 	height: 70px;
 	display: inline-block;
 	border-bottom: 6px solid #f0f0f0;
@@ -661,15 +669,19 @@ sans-serif;
 	float: left;
 	position: relative;
 	text-transform: uppercase;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	padding: 5px;
 	margin: 0px;
 	border-right: 1px solid #cccdcc;
 	z-index: 800;
 }
 
-details-menu li a:last-child{
+details-menu li span:last-child{
 	border-style: none;
+}
+
+.details-menu li span.active {
+	border-bottom: 6px solid #f7b666;
 }
 
 .shadow{
@@ -678,27 +690,15 @@ details-menu li a:last-child{
 	z-index: 600;
 }
  
-.details-menu li a:hover{
-	border-bottom: 6px solid #f7b666;
-} 
-
-.details-menu li a:active{
-	border-bottom: 6px solid #f7b666;
-	box-shadow: inset 0 0 16px #a4a4a4;
-} 
-
-.details-menu li a:focus{
-	box-shadow: inset 0 0 16px #a4a4a4;
-} 
 
 .styles-block{
 	position: relative;
-	max-width: 946px;
   	width: 100%;
 	height: auto;
 	margin: 0 auto;
 	border-right-style: solid;
-	border-bottom: 1px solid #cccdcc;
+	border-right: 1px solid #c1c1c1;
+	border-left: 1px solid #c1c1c1;
 }
 
 .styles-block2{
@@ -734,7 +734,7 @@ details-menu li a:last-child{
 	top:55px ;
 	width: 30%;
 	z-index: 0;
-	opacity: 0.6;
+	opacity: 1;
 }
 
 .title{
@@ -753,9 +753,7 @@ details-menu li a:last-child{
 	height: auto;
 	color: #000;
 	padding: 0 30px 0 30px;
-	border-right: 1px solid #cccdcc;
-	border-left: 1px solid #cccdcc;
-	border-bottom: 1px solid #cccdcc;
+/*	border-bottom: 1px solid #cccdcc; */
 	background: url(images/texture.png) 2px -5px repeat-x;
 }
 
@@ -3155,7 +3153,8 @@ select{
 }
 
 .selectmenu{
-	width: 445px;
+	width: 90%;
+	max-width: 445px;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
@@ -3168,7 +3167,7 @@ select{
 	border-radius: 0px;
 	/* Remove default */
 	-webkit-appearance: none;	
-	background: url(images/arrow-down.png) 405px center no-repeat;
+	background: url(images/arrow-down.png) 95% center no-repeat;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
@@ -3193,7 +3192,8 @@ select{
 }
 	
 .key-info{
-	width: 305px;
+	width: 90%;
+	max-width: 310px;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
@@ -3259,6 +3259,7 @@ input.other:-moz-placeholder , value {
 	border-bottom: 1px solid #cccdcc;	
 	border-top: 1px solid #cccdcc;	
 	margin-bottom: 60px;
+	background: url(images/texture.png) 2px -5px repeat-x #fff;
 }
 
 .numbering2{
@@ -3270,7 +3271,7 @@ input.other:-moz-placeholder , value {
 	color:#f7b666;
 	top:20px ;
 	left: 60px;
-	opacity: 0.6;
+	opacity: 1;
 	display: inline-block;
 }
 
@@ -3299,7 +3300,8 @@ input.other:-moz-placeholder , value {
 }
 
 .customer-info{
-	width: 630px;
+	width: 90%;
+	max-width: 637px;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
@@ -3317,7 +3319,8 @@ input.other:-moz-placeholder , value {
 }
 
 .customer-info2{
-	width: 630px;
+	width: 90%;
+	max-width: 637px;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
@@ -3510,9 +3513,15 @@ generic-menu2 li a:last-child{
 }
 
 .shadow{
-	position: relative;
-	top: -7px;
+	position: absolute;
+	bottom: 0;
+	top:auto;
 	z-index: 600;
+	height:8px;
+}
+
+.shadow img{
+	height:8px;
 }
  
 .generic-menu2 li a:hover{

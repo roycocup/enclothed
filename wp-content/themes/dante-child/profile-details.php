@@ -35,17 +35,18 @@ if (isset($_SESSION['section_1'])){
 				<!-- Main Menu -->
  		<div class="details-menu">
  		<ul>
- 			<li><a href="http:/#/">Your Details</a></li>
- 			<li><a href="http:/#/">Pick your Style</a></li>
- 			<li><a href="http:/#/">Size and Color</a></li>
- 			<li><a href="http:/#/">Price and Summary</a></li>
- 			<li><a href="http:/#/">Delivery</a></li>
+ 			<li><span class="active">Your Details</span></li>
+ 			<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
+ 			<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+ 			<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
+ 			<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
  		</ul>
  <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
  </div><!--details-menu-->
   
  	<div class="styles-block">
- 	
+ 	<div class="fade-border-left"></div>
+ 	<div class="fade-border-right"></div>
     <form action="" method="POST" name='section_1'>
         <?php $nonce = wp_create_nonce( get_uri() ); ?>
             <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
@@ -53,7 +54,7 @@ if (isset($_SESSION['section_1'])){
 				<div class="mini-wrapper-forms">
 		 	  	<div class="numbering">01</div>
 		 	  	<p>Some Key Pieces of information we need about you.</p>
-		 	  	<input type="text" class="key-info" tabindex="1" name="section_1[name]" placeholder='Full Name' value="<?php @echo_if_exists($section['name']); ?>">
+		 	  	<input type="text" class="key-info" tabindex="1" name="section_1[name]" placeholder='Full Name' value="<?php @echo_if_exists($section['name']); ?>" >
 		 	  	<input type="text" class="key-info" tabindex="2" name="section_1[address]" placeholder='Address' value="<?php @echo_if_exists($section['address']); ?>">
 		 	  	<input type="text" class="key-info" tabindex="3" name="section_1[city]" placeholder='Town / City' value="<?php @echo_if_exists($section['city']); ?>">
 		 	  	<input type="text" class="key-info" tabindex="4" name="section_1[email]" placeholder='Email' value="<?php @echo_if_exists($section['email']); ?>">
@@ -105,5 +106,5 @@ if (isset($_SESSION['section_1'])){
 		</div>
 </div>
 
-
+</div>
 <?php get_footer(); ?>
