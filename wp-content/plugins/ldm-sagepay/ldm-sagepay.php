@@ -11,10 +11,44 @@
 **/
 
 
-require_once 'sagepay-form.php'; 
+require_once 'sagepay-form.php';
 
-$sagepay = new Sagepay();
-//echo $sagepay->renderForm();
+class ldm_sagepay {
+
+	public $config = array(); 
+	
+	public function __construct() {
+		$this->config['encryption_key'] 	= '9e40c05e600d6300'; 
+		$this->config['txtype'] 			= 'AUTHENTICATE';
+		$this->config['protocol_version'] 	= '3.00';
+		$this->config['vendor_name'] 		= 'EnclothedLtd';
+		$this->config['currency'] 			= 'GBP';
+		$this->config['total'] 				= '1.00';
+		$this->config['description'] 		= 'Enclothed concierge service.';
+		$this->config['customer_name']		= 'Rodrigo Dias';
+		$this->config['billing_first_names'] = 'Rodrigo';
+		$this->config['billing_surname'] 	= 'Dias';
+		$this->config['billing_address1']	= '14';
+		$this->config['billing_address2']	= 'Old Street';
+		$this->config['billing_city']		= 'London';
+		$this->config['billing_postcode']	= 'E3 3HR';
+		$this->config['billing_country']	= 'GB';
+		$this->config['billing_phone']		= '';
+		$this->config['success_url']		= 'http://enclothed.dev/thank_you';
+		$this->config['failure_url']		= 'http://enclothed.dev/failure';
+	}
+
+	public function getConfig(){
+		return $this->config; 
+	}
+
+	public function getInstance($config){
+		return new Sagepay($config);	
+	}
+} 
+
+
+
 
 
 
