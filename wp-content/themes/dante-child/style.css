@@ -248,12 +248,14 @@ letter-spacing: 2px;
 
 .header-shadow #header-section {
 -moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
+-moz-box-shadow: none;
 -webkit-box-shadow: none;
 box-shadow: none;
 }
 
 .header-shadow #header-section:before {
 -moz-box-shadow: 0 3px 5px rgba(0,0,0,.1);
+-moz-box-shadow: none;
 -webkit-box-shadow: none;
 box-shadow: none;
 }

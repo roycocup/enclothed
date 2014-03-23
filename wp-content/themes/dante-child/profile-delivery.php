@@ -38,7 +38,6 @@ if (isset($_SESSION['section_2'])){
  			<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
  			<li><span  class="active" style="border-right:none;">Delivery</span></li>
  		</ul>
- <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
  </div><!--details-menu-->
   
  	<div class="styles-block">
@@ -47,30 +46,18 @@ if (isset($_SESSION['section_2'])){
     <form action="" method="POST" name='section_2'>
         <?php $nonce = wp_create_nonce( get_uri() ); ?>
             <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
- 	<div class="title-header">
+ 	<div class="title-header no-border-top">
  	<div class="numbering2">01</div>
  	<div class="accordian-title">Customer information</div>
  	<div class="arrow-click"></div>
  	</div>
  	
 				<div class="mini-wrapper-forms">
-		 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 1" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 2" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="town" class="key-info" tabindex="1" value="Town/City" required
-		 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="key-info" tabindex="1" value="Post Code" required
-		 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="customer-info2" tabindex="1" value="Name this Address"
-		 	  	required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
+		 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="" value="">		 	  	
+		 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="" value="">
+		 	  	<input type="town" class="key-info" tabindex="1" placeholder="Town/City" name="" value="">
+		 	  	<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">		 	  	
+		 	  	<input type="text" class="customer-info2" tabindex="1" placeholder="Name this Address" name="" value="">
 		 	  	
 		 	  	</div><!--mini-wrapper-forms-->
 	
@@ -78,26 +65,15 @@ if (isset($_SESSION['section_2'])){
 	<div class="numbering2">02</div>
 	<div class="accordian-title">Alternative Address</div>
 	<div class="arrow-click"></div>
+    <div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 	</div>
 	
 				<div class="mini-wrapper-forms">
-		 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 1" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 2" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="town" class="key-info" tabindex="1" value="Town/City" required
-		 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="key-info" tabindex="1" value="Post Code" required
-		 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-		 	  	
-		 	  	<input type="text" class="customer-info2" tabindex="2" value="Name this Address"
-		 	  	required onfocus="if(this.value==this.defaultValue)this.value=''"    
-		 	  	onblur="if(this.value=='')this.value=this.defaultValue">
+		 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
+		 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
+		 	  	<input type="town" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
+		 	  	<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
+		 	  	<input type="text" class="customer-info2" tabindex="2" placeholder="Name this Address" name="" value="">
 		 	  	
 		 	  	</div><!--mini-wrapper-forms-->
 
@@ -105,27 +81,16 @@ if (isset($_SESSION['section_2'])){
 	<div class="numbering2">03</div>
 	<div class="accordian-title">Billing Address</div>
 	<div class="arrow-click"></div>
+    <div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 	</div>
 
 			<div class="mini-wrapper-forms">
-	 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 1" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-	 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-	 	  	
-	 	  	<input type="text" class="customer-info" tabindex="1" value="Customer Address Line 2" required onfocus="if(this.value==this.defaultValue)this.value=''"    
-	 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-	 	  	
-	 	  	<input type="town" class="key-info" tabindex="1" value="Town/City" required
-	 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-	 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-	 	  	
-	 	  	<input type="text" class="key-info" tabindex="1" value="Post Code" required
-	 	  	onfocus="if(this.value==this.defaultValue)this.value=''"    
-	 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-	 	  	
-	 	  	<input type="text" class="customer-info2" tabindex="2" value="Name this Address"
-	 	  	required onfocus="if(this.value==this.defaultValue)this.value=''"    
-	 	  	onblur="if(this.value=='')this.value=this.defaultValue">
-	 	  	
+	 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Billing Address Line 1" name="" value="">
+	 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Billing Address Line 2" name="" value="">
+	 	  	<input type="town" class="key-info" tabindex="1" placeholder="Billing Town/City" name="" value="">
+	 	  	<input type="text" class="key-info" tabindex="1" placeholder="Billing Post Code" name="" value="">
+	 	  	<input type="text" class="customer-info2" tabindex="2" placeholder="Name this Address" name="" value="">
+            
 	 	  	</div><!--mini-wrapper-forms-->
 		 	  	
 		  <div class="mini-wrapper5">
