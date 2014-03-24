@@ -5,7 +5,11 @@
 *
 **/
 ?>
+
+<?php get_header(); ?>
+
 <?php
+
 	$options = get_option('sf_dante_options');
 	
 	$default_show_page_heading = $options['default_show_page_heading'];
@@ -117,7 +121,6 @@
 <div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
 		
 	<?php if (have_posts()) : the_post(); ?>
-
 	<!-- OPEN page -->
 	<?php if (($sidebar_config == "left-sidebar") || ($sidebar_config == "right-sidebar")) { ?>
 	<div <?php post_class('clearfix col-sm-8'); ?> id="<?php the_ID(); ?>">
