@@ -5,21 +5,36 @@
 *
 **/
 
+wp_enqueue_script( 'jquery' );
+?>
 
+<script>
+	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+	$.ajax({
+		type:'POST',
+		url:ajaxurl,
+		data: { 
+			action: 'enc_ajax_getvars',
+			data:   'foobarid'
+		},
+		success: function(data) {
+			console.log(data);
+		}
+	});
+</script>
+
+<?php
 if (!empty($_POST)){
 	$creds = array();
 	$creds['user_login'] = $_POST['user'];
 	$creds['user_password'] = $_POST['password'];
 	$creds['remember'] = true;
 	$user = wp_signon( $creds, false );
-	var_dump($user);
 }
-
-
-
 ?>
 
 <form action="" method="post">
+	<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
 	<input type="text" name="user" placeholder='username'><br>
 	<input type="text" name="password" placeholder='password'><br>
 	<input type="submit" value="Login">
