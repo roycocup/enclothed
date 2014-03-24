@@ -41,10 +41,9 @@ class EnclothedMain {
 		$this->brands_model = new Brands_model();
 		$this->users_model = new Users_model();
 		$this->profiles_model = new Profiles_model();
-		if ( is_admin() ){
-			add_action("wp_ajax_enc_ajax_getvars", array($this, "enc_ajax_getvars"));
-			add_action("wp_ajax_nopriv_enc_ajax_getvars", array($this, 'enc_ajax_getvars'));
-		}
+		add_action("wp_ajax_enc_ajax_getvars", array($this, "enc_ajax_getvars"));
+		add_action("wp_ajax_nopriv_enc_ajax_getvars", array($this, 'enc_ajax_getvars'));
+		
 	}
 
 
@@ -94,11 +93,9 @@ class EnclothedMain {
 	* Endpoint for all ajax calls
 	*/
 	public function enc_ajax_getvars(){
-		return 'hello';
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			$function_name = @$_REQUEST['function_name'];
 			$parameters = @$_REQUEST['parameters'];
-
 			if (!empty($parameters)) {
 				$result = $this->$function_name($parameters);	
 			} else {
@@ -108,6 +105,29 @@ class EnclothedMain {
 			exit();
 		}
 	}
+
+	/**
+	*
+	* Ajax function for logon
+	*
+	**/
+	private function _ajax_login($parameters){
+		$user = $parameters[0];
+		$pass = $parameters[1];
+		
+		$creds['user_login'] = $user;
+		$creds['user_password'] = $pass;
+		$creds['remember'] = true;
+		$user = wp_signon( $creds, false );
+		if (empty($user) || get_class($user) == 'WP_Error'){
+			return 'no';
+		} else if(get_class($user) == 'WP_User'){
+			return 'yes';
+		}
+	}
+
+
+
 
 
 

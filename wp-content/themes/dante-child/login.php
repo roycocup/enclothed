@@ -12,46 +12,48 @@
 <script>
 
 	$(document).ready(function($){
-		var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-		$.ajax({
-			type:'POST',
-			url:ajaxurl,
-			data: { 
-				action: 'enc_ajax_getvars',
-				data:   'foobarid'
-			},
-			beforeSend:function(data){
-				console.log(data);
-			},
-			error:function(e){
-				console.log(e);
-			},
-			success: function(data) {
-				console.log(data);
-			}
+
+		$('#login-bnt').click(function(){
+			var user = $('#user').val(); 
+			var pass = $('#password').val();
+			ajax_login(user, pass);
 		});
+
+		function ajax_login(user, pass){
+			var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+			$.ajax({
+				type:'POST',
+				url:ajaxurl,
+				data: { 
+					action: 'enc_ajax_getvars',
+					function_name: '_ajax_login',
+					parameters: [user, pass],
+				},
+				error:function(e){
+					console.log(e);
+				},
+				success: function(data) {
+					console.log(data);
+					if(data == "yes"){
+						$('.flashmessages').html('You are logged in');
+					}else{
+						$('.flashmessages').html('Wrong credentials');
+					}
+				}
+			});
+		}
+
 	});
 		
 	
 </script>
 
-<?php
-if (!empty($_POST)){
-	$creds = array();
-	$creds['user_login'] = $_POST['user'];
-	$creds['user_password'] = $_POST['password'];
-	$creds['remember'] = true;
-	$user = wp_signon( $creds, false );
-}
-?>
 
-<form action="" method="post">
-	<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-	<input type="text" name="user" placeholder='username'><br>
-	<input type="text" name="password" placeholder='password'><br>
-	<input type="submit" value="Login">
-</form>
-<!-- <a href="<?php echo wp_lostpassword_url( get_permalink() ); ?>" title="Lost Password">Lost Password</a> -->
+<div class="flashmessages"></div>
+<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
+<input type="text" id="user" placeholder='username'><br>
+<input type="text" id="password" placeholder='password'><br>
+<button id="login-bnt">Logs in you and stuff</button>
 
 <a href="/home/lostpass" title="Lost Password">Lost Password?</a>
 
