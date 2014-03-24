@@ -5,22 +5,34 @@
 *
 **/
 
-wp_enqueue_script( 'jquery' );
+//wp_enqueue_script( 'jquery' );
 ?>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-	$.ajax({
-		type:'POST',
-		url:ajaxurl,
-		data: { 
-			action: 'enc_ajax_getvars',
-			data:   'foobarid'
-		},
-		success: function(data) {
-			console.log(data);
-		}
+
+	$(document).ready(function($){
+		var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+		$.ajax({
+			type:'POST',
+			url:ajaxurl,
+			data: { 
+				action: 'enc_ajax_getvars',
+				data:   'foobarid'
+			},
+			beforeSend:function(data){
+				console.log(data);
+			},
+			error:function(e){
+				console.log(e);
+			},
+			success: function(data) {
+				console.log(data);
+			}
+		});
 	});
+		
+	
 </script>
 
 <?php
