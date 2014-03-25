@@ -32,7 +32,7 @@ class SwiftPageBuilderShortcode_sitemap extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'sitemap', array(
-    "name"		=> __("Sitemap", "swift-page-builder"),
+    "name"		=> __("Sitemap", "swift-framework-admin"),
     "base"		=> "sitemap",
     "class"		=> "",
     "icon"      => "spb-icon-sitemap",
@@ -41,17 +41,17 @@ SPBMap::map( 'sitemap', array(
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

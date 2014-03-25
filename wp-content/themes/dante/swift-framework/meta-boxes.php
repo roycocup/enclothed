@@ -5,7 +5,7 @@
 	*	Meta Box Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -51,7 +51,7 @@
 	$default_product_right_sidebar = $options['default_product_right_sidebar'];
 	}
 	
-	if ($default_product_sidebar_config = "") {
+	if ($default_product_sidebar_config == "") {
 		$default_product_sidebar_config = "no-sidebars";
 	}
 	if ($default_product_left_sidebar == "") {
@@ -192,7 +192,7 @@
 					'image'		=> __('Image', $text_domain),
 					'video'		=> __('Video', $text_domain),
 					'slider'	=> __('Standard Slider', $text_domain),
-					'layer-slider' => __('Layer Slider', $text_domain),
+					'layer-slider' => __('Revolution/Layer Slider', $text_domain),
 					'custom' => __('Custom', $text_domain)
 				),
 				'multiple' => false,
@@ -233,6 +233,16 @@
 				'name' => __('Revolution slider alias', $text_domain),
 				'id' => $prefix . 'detail_rev_slider_alias',
 				'desc' => __("Enter the revolution slider alias for the slider that you want to show.", $text_domain),
+				'clone' => false,
+				'type'  => 'text',
+				'std' => '',
+			),
+			
+			// DETAIL LAYER SLIDER
+			array(
+				'name' => __('Layer Slider alias', $text_domain),
+				'id' => $prefix . 'detail_layer_slider_alias',
+				'desc' => __("Enter the Layer Slider ID for the slider that you want to show.", $text_domain),
 				'clone' => false,
 				'type'  => 'text',
 				'std' => '',
@@ -416,7 +426,7 @@
 			// CUSTOM EXCERPT
 			array(
 				'name' => __('Custom excerpt', $text_domain),
-				'desc' => __("You can optionally write a custom excerpt here to display instead of the excerpt that is automatically generated.", $text_domain),
+				'desc' => __("You can optionally write a custom excerpt here to display instead of the excerpt that is automatically generated. If you use the page builder, then you'll want to add content to this box.", $text_domain),
 				'id'   => "{$prefix}custom_excerpt",
 				'type' => 'textarea',
 				'std'  => "",
@@ -445,6 +455,16 @@
 				'multiple' => false,
 				'std'  => 'standard',
 				'desc' => __('Choose how you would like to display your selected media - full width (edge to edge), split, or standard (media with content below).', $text_domain)
+			),
+			
+			array(
+				'name' => __('Item Sidebar Content', $text_domain),
+				'desc' => __("You can optionally add some content here to display in the details column, including shortcodes etc. Only visible on Standard and Full Width Media display types.", $text_domain),
+				'id'   => "{$prefix}item_sidebar_content",
+				'type' => 'textarea',
+				'std'  => "",
+				'cols' => '40',
+				'rows' => '8',
 			),
 						
 			// HIDE DETAILS BAR
@@ -591,7 +611,7 @@
 			// CUSTOM EXCERPT
 			array(
 				'name' => __('Custom excerpt', $text_domain),
-				'desc' => __("You can optionally write a custom excerpt here to display instead of the excerpt that is automatically generated.", $text_domain),
+				'desc' => __("You can optionally write a custom excerpt here to display instead of the excerpt that is automatically generated. If you use the page builder, then you'll want to add content to this box.", $text_domain),
 				'id'   => "{$prefix}custom_excerpt",
 				'type' => 'textarea',
 				'std'  => "",
@@ -605,15 +625,6 @@
 				'title' => __('Main Detail Options', $text_domain),
 			    'id' 	=> "{$prefix}heading_detail",
 			    'type' 	=> 'section'
-			),
-			
-			// SHOW PAGE TITLE
-			array(
-				'name' => __('Show page title', $text_domain),    // File type: checkbox
-				'id'   => "{$prefix}page_title",
-				'type' => 'checkbox',
-				'desc' => __('Show the page title at the top of the page.', $text_domain),
-				'std' => $default_show_page_heading,
 			),
 						
 			// FULL WIDTH MEDIA
@@ -874,6 +885,25 @@
 		'title' => __('Team Member Meta', $text_domain),
 		'pages' => array( 'team' ),
 		'fields' => array(
+			
+			// CUSTOM EXCERPT SECTION
+			array (
+				'name' 	=> '',
+				'title' => __('Custom Excerpt', $text_domain),
+			    'id' 	=> "{$prefix}heading_custom_excerpt",
+			    'type' 	=> 'section'
+			),
+			
+			// CUSTOM EXCERPT
+			array(
+				'name' => __('Custom excerpt', $text_domain),
+				'desc' => __("You can optionally write a custom excerpt here to display instead of the excerpt that is automatically generated (this is needed if you use the page builder above).", $text_domain),
+				'id'   => "{$prefix}custom_excerpt",
+				'type' => 'textarea',
+				'std'  => "",
+				'cols' => '40',
+				'rows' => '8',
+			),
 		
 			// TEAM MEMBER DETAILS SECTION
 			array (
@@ -1175,6 +1205,23 @@
 			    'id' 	=> "{$prefix}right_sidebar",
 			    'type' 	=> 'sidebars',
 			    'std' 	=> $default_right_sidebar
+			),
+			
+			// MISC OPTIONS SECTION
+			array (
+				'name' 	=> '',
+				'title' => __('One Page Options', $text_domain),
+			    'id' 	=> "{$prefix}heading_onepage",
+			    'type' 	=> 'section'
+			),
+			
+			// REMOVE PROMO BAR
+			array(
+				'name' => __('Enable One Page Navigation', $text_domain),    // File type: checkbox
+				'id'   => "{$prefix}enable_one_page_nav",
+				'type' => 'checkbox',
+				'desc' => __('Enable the one page nav which appears on the right of the page.', $text_domain),
+				'std' => 0,
 			),
 			
 			// MISC OPTIONS SECTION

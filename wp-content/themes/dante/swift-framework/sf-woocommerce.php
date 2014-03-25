@@ -4,7 +4,7 @@
 	*	WooCommerce Functions & Hooks
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -157,7 +157,14 @@
 														
 								<div class="bag-buttons">
 									
-									<?php $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>
+									<?php
+										$shop_page_url = "";
+										if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+											$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+										} else {
+											$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+										}
+									?>
 									
 									<a class="sf-button standard sf-icon-reveal checkout-button" href="<?php echo esc_url( $shop_page_url ); ?>"><i class="ss-cart"></i><span class="text"><?php _e('Go to the shop', 'swiftframework'); ?></span></a>
 																            	                
@@ -336,11 +343,12 @@
 				<ul class="social-icons">
 				    <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="product_share_facebook" onclick="javascript:window.open(this.href,
 				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>
-				    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
+				    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" onclick="javascript:window.open(this.href,
 				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>   
 				    <li class="googleplus"><a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
 				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>
-				    <li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo $src[0]; ?>&description=<?php the_title(); ?>" target="_blank" class="product_share_pinterest"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>
+				    <li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo $src[0]; ?>&description=<?php the_title(); ?>" onclick="javascript:window.open(this.href,
+				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=750');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>
 				    <li class="mail"><a href="mailto:?subject=<?php the_title(); ?>&body=<?php echo strip_tags(apply_filters( 'woocommerce_short_description', $post->post_excerpt )); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i><i class="ss-mail"></i></a></li>
 				</ul>  
 			</div> 
@@ -353,9 +361,15 @@
 	if (!function_exists('sf_woo_help_bar')) {
 		function sf_woo_help_bar() {
 			$options = get_option('sf_dante_options');
+			
+			$help_bar_text = __($options['help_bar_text'], 'swiftframework');
+			$email_modal = __($options['email_modal'], 'swiftframework');
+			$shipping_modal = __($options['shipping_modal'], 'swiftframework');
+			$returns_modal = __($options['returns_modal'], 'swiftframework');
+			$faqs_modal = __($options['faqs_modal'], 'swiftframework');
 		?>
 			<div class="help-bar clearfix">
-				<span><?php echo do_shortcode($options['help_bar_text']); ?></span>
+				<span><?php echo do_shortcode($help_bar_text); ?></span>
 				<ul>
 				    <li><a href="#email-form" class="inline" data-toggle="modal"><?php _e("Email customer care", "swiftframework"); ?></a></li>
 				    <li><a href="#shipping-information" class="inline" data-toggle="modal"><?php _e("Shipping information", "swiftframework"); ?></a></li>
@@ -372,7 +386,7 @@
 							<h3 id="email-form-modal"><?php _e("Email customer care", "swiftframework"); ?></h3>
 						</div>
 						<div class="modal-body">
-							<?php echo do_shortcode($options['email_modal']); ?>
+							<?php echo do_shortcode($email_modal); ?>
 						</div>
 					</div>
 				</div>
@@ -386,7 +400,7 @@
 							<h3 id="shipping-modal"><?php _e("Shipping information", "swiftframework"); ?></h3>
 						</div>
 						<div class="modal-body">	
-							<?php echo do_shortcode($options['shipping_modal']); ?>
+							<?php echo do_shortcode($shipping_modal); ?>
 						</div>
 					</div>
 				</div>
@@ -400,7 +414,7 @@
 							<h3 id="returns-modal"><?php _e("Returns & exchange", "swiftframework"); ?></h3>
 						</div>
 						<div class="modal-body">					
-						<?php echo do_shortcode($options['returns_modal']); ?>
+						<?php echo do_shortcode($returns_modal); ?>
 							</div>
 					</div>
 				</div>
@@ -414,7 +428,7 @@
 							<h3 id="faqs-modal"><?php _e("F.A.Q.'s", "swiftframework"); ?></h3>
 						</div>
 						<div class="modal-body">
-							<?php echo do_shortcode($options['faqs_modal']); ?>
+							<?php echo do_shortcode($faqs_modal); ?>
 						</div>
 					</div>
 				</div>

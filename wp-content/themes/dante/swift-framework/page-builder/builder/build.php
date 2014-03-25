@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Build Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 
@@ -101,7 +101,11 @@
 	        wp_enqueue_style('bootstrap');
 	        wp_enqueue_style('ui-custom-theme');
 	        wp_enqueue_style('page-builder-css');
-	
+			wp_enqueue_style('colorpicker-css');
+			wp_enqueue_style('uislider-css');
+			wp_enqueue_style('ssgizmo');
+			wp_enqueue_style('fontawesome');
+			
 	        wp_enqueue_script('jquery-ui-tabs');
 	        wp_enqueue_script('jquery-ui-droppable');
 	        wp_enqueue_script('jquery-ui-draggable');
@@ -109,22 +113,30 @@
 	
 	        wp_enqueue_script('bootstrap-js');
 	        wp_enqueue_script('page-builder-js');
+	        wp_enqueue_script('colorpicker-js');
+	        wp_enqueue_script('uislider-js');
 	    }
 	
 	    public function registerJavascript() {
 	        wp_register_script('page-builder-js', $this->assetURL( 'js/page-builder.js' ), array('jquery'), SPB_VERSION, true);
 	        wp_register_script('bootstrap-js', $this->assetURL( 'js/bootstrap.min.js' ), false, SPB_VERSION, true);
+	        wp_register_script('colorpicker-js', $this->assetURL( 'js/jquery.minicolors.min.js' ), array('jquery'), SPB_VERSION, true);
+	        wp_register_script('uislider-js', $this->assetURL( 'js/jquery.nouislider.min.js' ), array('jquery'), SPB_VERSION, true);
 	    }
 	
 	    public function registerCss() {
-	        wp_register_style( 'bootstrap', $this->assetURL( 'css/bootstrap.css' ), false, SPB_VERSION, false );
-	        wp_register_style( 'page-builder-css', $this->assetURL( 'css/page-builder.css' ), false, NULL, false );
+	        wp_register_style('bootstrap', $this->assetURL( 'css/bootstrap.css' ), false, SPB_VERSION, false );
+	        wp_register_style('page-builder-css', $this->assetURL( 'css/page-builder.css' ), false, NULL, false );
+	        wp_register_style('colorpicker-css', $this->assetURL( 'css/jquery.minicolors.css' ), false, NULL, false );
+	        wp_register_style('uislider-css', $this->assetURL( 'css/jquery.nouislider.min.css' ), false, NULL, false );
+	        wp_register_style('ssgizmo', get_template_directory_uri() .'/css/ss-gizmo.css', array(), NULL, 'all');
+	        wp_register_style('fontawesome', get_template_directory_uri() .'/css/font-awesome.min.css', array(), NULL, 'all');
 	    }
 	    
 	    public function swiftPageBuilderEditPage() {
 	        $pt_array = $this->swift_page_builder->getPostTypes();
 	        foreach ($pt_array as $pt) {
-	            add_meta_box( 'swift_page_builder', __('Swift Page Builder', "swift-page-builder"), Array($this->swift_page_builder->getLayout(), 'output'), $pt, 'normal', 'high');
+	            add_meta_box( 'swift_page_builder', __('Swift Page Builder', "swift-framework-admin"), Array($this->swift_page_builder->getLayout(), 'output'), $pt, 'normal', 'high');
 	        }
 	    }
 	

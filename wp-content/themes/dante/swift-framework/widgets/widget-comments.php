@@ -5,7 +5,7 @@
 	*	Custom Comments Widget
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	

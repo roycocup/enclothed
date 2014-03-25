@@ -5,7 +5,7 @@
 	*	Swift Shortcodes & Generator Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -143,7 +143,8 @@
 			"image"			=> "",
 			"character"		=> "",
 			"cont" 			=> "",
-			"float" 		=> ""
+			"float" 		=> "",
+			"color"			=> ""
 		), $atts));
 		
 		if (strlen($character) > 1) {
@@ -152,15 +153,15 @@
 		
 		if ($cont == "yes") {
 			if ($character != "") {
-				return '<div class="sf-icon-cont cont-'.$size.' sf-icon-float-'.$float.'"><span class="sf-icon-character sf-icon sf-icon-'.$size.'">'.$character.'</span></div>';
+				return '<div class="sf-icon-cont cont-'.$size.' sf-icon-float-'.$float.' sf-icon-'.$color.'"><span class="sf-icon-character sf-icon sf-icon-'.$size.'">'.$character.'</span></div>';
 			} else {
-				return '<div class="sf-icon-cont cont-'.$size.' sf-icon-float-'.$float.'"><i class="'.$image.' sf-icon sf-icon-'.$size.'"></i></div>';
+				return '<div class="sf-icon-cont cont-'.$size.' sf-icon-float-'.$float.' sf-icon-'.$color.'"><i class="'.$image.' sf-icon sf-icon-'.$size.'"></i></div>';
 			}
 		} else {
 			if ($character != "") {
-				return '<span class="sf-icon-character sf-icon sf-icon-float-'.$float.' sf-icon-'.$size.'">'.$character.'</span>';
+				return '<span class="sf-icon-character sf-icon sf-icon-float-'.$float.' sf-icon-'.$size.' sf-icon-'.$color.'">'.$character.'</span>';
 			} else {
-				return '<i class="'.$image.' sf-icon sf-icon-float-'.$float.' sf-icon-'.$size.'"></i>';	
+				return '<i class="'.$image.' sf-icon sf-icon-float-'.$float.' sf-icon-'.$size.' sf-icon-'.$color.'"></i>';	
 			}
 		}		
 	}
@@ -175,6 +176,7 @@
 			"type"			=> "",
 			"image"			=> "",
 			"character"		=> "",
+			"color"			=> "",
 			"title" 		=> "",
 			"animation" 	=> "",
 			"animation_delay"	=> ""
@@ -183,7 +185,7 @@
 		$icon_box = "";
 		
 		if ($animation != "" && $type != "animated") {
-		$icon_box .= '<div class="sf-icon-box sf-icon-box-'.$type.' sf-animation" data-animation="'.$animation.'" data-delay="'.$animation_delay.'">';		
+		$icon_box .= '<div class="sf-icon-box sf-icon-box-'.$type.' sf-animation sf-icon-'.$color.'" data-animation="'.$animation.'" data-delay="'.$animation_delay.'">';		
 		} else {
 		$icon_box .= '<div class="sf-icon-box sf-icon-box-'.$type.'">';		
 		}
@@ -191,32 +193,32 @@
 		if ($type == "animated") {
 		$icon_box .= '<div class="inner">';
 		$icon_box .= '<div class="front">';
-		$icon_box .= do_shortcode('[icon size="large" image="'.$image.'" character="'.$character.'" float="none" cont="no"]');
+		$icon_box .= do_shortcode('[icon size="large" image="'.$image.'" character="'.$character.'" float="none" cont="no" color="'.$color.'"]');
 		}
 		
 		if ($type == "left-icon-alt") {
-		$icon_box .= do_shortcode('[icon size="medium" image="'.$image.'" character="'.$character.'" float="none" cont="no"]');		
+		$icon_box .= do_shortcode('[icon size="medium" image="'.$image.'" character="'.$character.'" float="none" cont="no" color="'.$color.'"]');		
 		} else if ($type != "boxed-two" && $type != "boxed-four" && $type != "standard-title" && $type != "animated") {
-		$icon_box .= do_shortcode('[icon size="small" image="'.$image.'" character="'.$character.'" float="none" cont="yes"]');
+		$icon_box .= do_shortcode('[icon size="small" image="'.$image.'" character="'.$character.'" float="none" cont="yes" color="'.$color.'"]');
 		}
 		$icon_box .= '<div class="sf-icon-box-content-wrap clearfix">';
 		
 		if ($type == "boxed-two") {
-		$icon_box .= do_shortcode('[icon size="medium" image="'.$image.'" character="'.$character.'" float="none" cont="no"]');
+		$icon_box .= do_shortcode('[icon size="medium" image="'.$image.'" character="'.$character.'" float="none" cont="no" color="'.$color.'"]');
 		}
 		
 		if ($type == "boxed-four" || $type == "standard-title") {
 			if ($character != "") {
-				$icon_box .= '<h3><span class="sf-icon-character">'.$character.'</span> '.$title.'</h3>';	
+				$icon_box .= '<h3><span class="sf-icon-character sf-icon-'.$color.'">'.$character.'</span> '.$title.'</h3>';	
 			} else {
-				$icon_box .= '<h3><i class="'.$image.'"></i> '.$title.'</h3>';	
+				$icon_box .= '<h3><i class="'.$image.' sf-icon-'.$color.'"></i> '.$title.'</h3>';	
 			}
 		} else {
 		$icon_box .= '<h3>'.$title.'</h3>';	
 		}
 		
 		if ($type == "standard") {
-		$icon_box .= '<div class="sf-icon-box-hr"></div>';
+		$icon_box .= '<div class="sf-icon-box-hr sf-icon-'.$color.'"></div>';
 		}
 		if ($type != "animated") {
 		$icon_box .= '<div class="sf-icon-box-content">'.do_shortcode($content).'</div>';
@@ -226,7 +228,7 @@
 		
 		if ($type == "animated") {
 		$icon_box .= '</div>';
-		$icon_box .= '<div class="back"><table>';
+		$icon_box .= '<div class="back sf-icon-'.$color.'"><table>';
 		$icon_box .= '<tbody><tr>';
 		$icon_box .= '<td>';
 		$icon_box .= '<h3>'.$title.'</h3>';	
@@ -633,139 +635,140 @@
 
 	/* SOCIAL SHORTCODE
 	================================================= */
-
-	function sf_social_icons($atts, $content = null) {
-		extract(shortcode_atts(array(
-		   "type" => '',
-		   "size" => 'standard',
-		   "style" => ''
-		), $atts));
-		
-		$options = get_option('sf_dante_options');
-
-		$twitter = $options['twitter_username'];
-		$facebook = $options['facebook_page_url'];
-		$dribbble = $options['dribbble_username'];
-		$vimeo = $options['vimeo_username'];
-		$tumblr = $options['tumblr_username'];
-		$skype = $options['skype_username'];
-		$linkedin = $options['linkedin_page_url'];
-		$googleplus = $options['googleplus_page_url'];
-		$flickr = $options['flickr_page_url'];
-		$youtube = $options['youtube_url'];
-		$pinterest = $options['pinterest_username'];
-		$foursquare = $options['foursquare_url'];
-		$instagram = $options['instagram_username'];
-		$github = $options['github_url'];
-		$xing = $options['xing_url'];
-		
-		$social_icons = '';
-		
-		if ($type == '') {
-			if ($twitter) {
-				$social_icons .= '<li class="twitter"><a href="http://www.twitter.com/'.$twitter.'" target="_blank"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>'."\n";
-			}
-			if ($facebook) {
-				$social_icons .= '<li class="facebook"><a href="'.$facebook.'" target="_blank"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>'."\n";
-			}
-			if ($dribbble) {
-				$social_icons .= '<li class="dribbble"><a href="http://www.dribbble.com/'.$dribbble.'" target="_blank"><i class="fa-dribbble"></i><i class="fa-dribbble"></i></a></li>'."\n";
-			}
-			if ($youtube) {
-				$social_icons .= '<li class="youtube"><a href="'.$youtube.'" target="_blank"><i class="fa-youtube"></i><i class="fa-youtube"></i></a></li>'."\n";
-			}	
-			if ($vimeo) {
-				$social_icons .= '<li class="vimeo"><a href="http://www.vimeo.com/'.$vimeo.'" target="_blank"><i class="fa-vimeo-square"></i><i class="fa-vimeo-square"></i></a></li>'."\n";
-			}
-			if ($tumblr) {
-				$social_icons .= '<li class="tumblr"><a href="http://'.$tumblr.'.tumblr.com/" target="_blank"><i class="fa-tumblr"></i><i class="fa-tumblr"></i></a></li>'."\n";
-			}
-			if ($skype) {
-				$social_icons .= '<li class="skype"><a href="skype:'.$skype.'" target="_blank"><i class="fa-skype"></i><i class="fa-skype"></i></a></li>'."\n";
-			}
-			if ($linkedin) {
-				$social_icons .= '<li class="linkedin"><a href="'.$linkedin.'" target="_blank"><i class="fa-linkedin"></i><i class="fa-linkedin"></i></a></li>'."\n";
-			}
-			if ($googleplus) {
-				$social_icons .= '<li class="googleplus"><a href="'.$googleplus.'" target="_blank"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>'."\n";
-			}
-			if ($flickr) {
-				$social_icons .= '<li class="flickr"><a href="'.$flickr.'" target="_blank"><i class="fa-flickr"></i><i class="fa-flickr"></i></a></li>'."\n";
-			}
-			if ($pinterest) {
-				$social_icons .= '<li class="pinterest"><a href="http://www.pinterest.com/'.$pinterest.'/" target="_blank"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>'."\n";
-			}
-			if ($foursquare) {
-				$social_icons .= '<li class="foursquare"><a href="'.$foursquare.'" target="_blank"><i class="fa-foursquare"></i><i class="fa-foursquare"></i></a></li>'."\n";
-			}
-			if ($instagram) {
-				$social_icons .= '<li class="instagram"><a href="http://instagram.com/'.$instagram.'" target="_blank"><i class="fa-instagram"></i><i class="fa-instagram"></i></a></li>'."\n";
-			}
-			if ($github) {
-				$social_icons .= '<li class="github"><a href="'.$github.'" target="_blank"><i class="fa-github"></i><i class="fa-github"></i></a></li>'."\n";
-			}
-			if ($xing) {
-				$social_icons .= '<li class="xing"><a href="'.$xing.'" target="_blank"><i class="fa-xing"></i><i class="fa-xing"></i></a></li>'."\n";
-			}
-		} else {
-		
-			$social_type = explode(',', $type);
-			foreach ($social_type as $id) {
-				if ($id == "twitter") {
+	if (!function_exists('sf_social_icons')) {
+		function sf_social_icons($atts, $content = null) {
+			extract(shortcode_atts(array(
+			   "type" => '',
+			   "size" => 'standard',
+			   "style" => ''
+			), $atts));
+			
+			$options = get_option('sf_dante_options');
+	
+			$twitter = $options['twitter_username'];
+			$facebook = $options['facebook_page_url'];
+			$dribbble = $options['dribbble_username'];
+			$vimeo = $options['vimeo_username'];
+			$tumblr = $options['tumblr_username'];
+			$skype = $options['skype_username'];
+			$linkedin = $options['linkedin_page_url'];
+			$googleplus = $options['googleplus_page_url'];
+			$flickr = $options['flickr_page_url'];
+			$youtube = $options['youtube_url'];
+			$pinterest = $options['pinterest_username'];
+			$foursquare = $options['foursquare_url'];
+			$instagram = $options['instagram_username'];
+			$github = $options['github_url'];
+			$xing = $options['xing_url'];
+			
+			$social_icons = '';
+			
+			if ($type == '') {
+				if ($twitter) {
 					$social_icons .= '<li class="twitter"><a href="http://www.twitter.com/'.$twitter.'" target="_blank"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>'."\n";
 				}
-				if ($id == "facebook") {
+				if ($facebook) {
 					$social_icons .= '<li class="facebook"><a href="'.$facebook.'" target="_blank"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>'."\n";
 				}
-				if ($id == "dribbble") {
+				if ($dribbble) {
 					$social_icons .= '<li class="dribbble"><a href="http://www.dribbble.com/'.$dribbble.'" target="_blank"><i class="fa-dribbble"></i><i class="fa-dribbble"></i></a></li>'."\n";
 				}
-				if ($id == "youtube") {
+				if ($youtube) {
 					$social_icons .= '<li class="youtube"><a href="'.$youtube.'" target="_blank"><i class="fa-youtube"></i><i class="fa-youtube"></i></a></li>'."\n";
-				}
-				if ($id == "vimeo") {
+				}	
+				if ($vimeo) {
 					$social_icons .= '<li class="vimeo"><a href="http://www.vimeo.com/'.$vimeo.'" target="_blank"><i class="fa-vimeo-square"></i><i class="fa-vimeo-square"></i></a></li>'."\n";
 				}
-				if ($id == "tumblr") {
+				if ($tumblr) {
 					$social_icons .= '<li class="tumblr"><a href="http://'.$tumblr.'.tumblr.com/" target="_blank"><i class="fa-tumblr"></i><i class="fa-tumblr"></i></a></li>'."\n";
 				}
-				if ($id == "skype") {
+				if ($skype) {
 					$social_icons .= '<li class="skype"><a href="skype:'.$skype.'" target="_blank"><i class="fa-skype"></i><i class="fa-skype"></i></a></li>'."\n";
 				}
-				if ($id == "linkedin") {
+				if ($linkedin) {
 					$social_icons .= '<li class="linkedin"><a href="'.$linkedin.'" target="_blank"><i class="fa-linkedin"></i><i class="fa-linkedin"></i></a></li>'."\n";
 				}
-				if ($id == "googleplus" || $id == "google-plus" || $id == "google+") {
+				if ($googleplus) {
 					$social_icons .= '<li class="googleplus"><a href="'.$googleplus.'" target="_blank"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>'."\n";
 				}
-				if ($id == "flickr") {
+				if ($flickr) {
 					$social_icons .= '<li class="flickr"><a href="'.$flickr.'" target="_blank"><i class="fa-flickr"></i><i class="fa-flickr"></i></a></li>'."\n";
 				}
-				if ($id == "pinterest") {
+				if ($pinterest) {
 					$social_icons .= '<li class="pinterest"><a href="http://www.pinterest.com/'.$pinterest.'/" target="_blank"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>'."\n";
 				}
-				if ($id == "foursquare") {
+				if ($foursquare) {
 					$social_icons .= '<li class="foursquare"><a href="'.$foursquare.'" target="_blank"><i class="fa-foursquare"></i><i class="fa-foursquare"></i></a></li>'."\n";
 				}
-				if ($id == "instagram") {
+				if ($instagram) {
 					$social_icons .= '<li class="instagram"><a href="http://instagram.com/'.$instagram.'" target="_blank"><i class="fa-instagram"></i><i class="fa-instagram"></i></a></li>'."\n";
 				}
-				if ($id == "github") {
+				if ($github) {
 					$social_icons .= '<li class="github"><a href="'.$github.'" target="_blank"><i class="fa-github"></i><i class="fa-github"></i></a></li>'."\n";
 				}
-				if ($id == "xing") {
+				if ($xing) {
 					$social_icons .= '<li class="xing"><a href="'.$xing.'" target="_blank"><i class="fa-xing"></i><i class="fa-xing"></i></a></li>'."\n";
 				}
+			} else {
+			
+				$social_type = explode(',', $type);
+				foreach ($social_type as $id) {
+					if ($id == "twitter") {
+						$social_icons .= '<li class="twitter"><a href="http://www.twitter.com/'.$twitter.'" target="_blank"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>'."\n";
+					}
+					if ($id == "facebook") {
+						$social_icons .= '<li class="facebook"><a href="'.$facebook.'" target="_blank"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>'."\n";
+					}
+					if ($id == "dribbble") {
+						$social_icons .= '<li class="dribbble"><a href="http://www.dribbble.com/'.$dribbble.'" target="_blank"><i class="fa-dribbble"></i><i class="fa-dribbble"></i></a></li>'."\n";
+					}
+					if ($id == "youtube") {
+						$social_icons .= '<li class="youtube"><a href="'.$youtube.'" target="_blank"><i class="fa-youtube"></i><i class="fa-youtube"></i></a></li>'."\n";
+					}
+					if ($id == "vimeo") {
+						$social_icons .= '<li class="vimeo"><a href="http://www.vimeo.com/'.$vimeo.'" target="_blank"><i class="fa-vimeo-square"></i><i class="fa-vimeo-square"></i></a></li>'."\n";
+					}
+					if ($id == "tumblr") {
+						$social_icons .= '<li class="tumblr"><a href="http://'.$tumblr.'.tumblr.com/" target="_blank"><i class="fa-tumblr"></i><i class="fa-tumblr"></i></a></li>'."\n";
+					}
+					if ($id == "skype") {
+						$social_icons .= '<li class="skype"><a href="skype:'.$skype.'" target="_blank"><i class="fa-skype"></i><i class="fa-skype"></i></a></li>'."\n";
+					}
+					if ($id == "linkedin") {
+						$social_icons .= '<li class="linkedin"><a href="'.$linkedin.'" target="_blank"><i class="fa-linkedin"></i><i class="fa-linkedin"></i></a></li>'."\n";
+					}
+					if ($id == "googleplus" || $id == "google-plus" || $id == "google+") {
+						$social_icons .= '<li class="googleplus"><a href="'.$googleplus.'" target="_blank"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>'."\n";
+					}
+					if ($id == "flickr") {
+						$social_icons .= '<li class="flickr"><a href="'.$flickr.'" target="_blank"><i class="fa-flickr"></i><i class="fa-flickr"></i></a></li>'."\n";
+					}
+					if ($id == "pinterest") {
+						$social_icons .= '<li class="pinterest"><a href="http://www.pinterest.com/'.$pinterest.'/" target="_blank"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>'."\n";
+					}
+					if ($id == "foursquare") {
+						$social_icons .= '<li class="foursquare"><a href="'.$foursquare.'" target="_blank"><i class="fa-foursquare"></i><i class="fa-foursquare"></i></a></li>'."\n";
+					}
+					if ($id == "instagram") {
+						$social_icons .= '<li class="instagram"><a href="http://instagram.com/'.$instagram.'" target="_blank"><i class="fa-instagram"></i><i class="fa-instagram"></i></a></li>'."\n";
+					}
+					if ($id == "github") {
+						$social_icons .= '<li class="github"><a href="'.$github.'" target="_blank"><i class="fa-github"></i><i class="fa-github"></i></a></li>'."\n";
+					}
+					if ($id == "xing") {
+						$social_icons .= '<li class="xing"><a href="'.$xing.'" target="_blank"><i class="fa-xing"></i><i class="fa-xing"></i></a></li>'."\n";
+					}
+				}
 			}
+			
+			$output = '<ul class="social-icons '.$size.' '.$style.'">'."\n";
+			$output .= $social_icons;
+			$output .= '</ul>'."\n";
+			
+			return $output;
 		}
-		
-		$output = '<ul class="social-icons '.$size.' '.$style.'">'."\n";
-		$output .= $social_icons;
-		$output .= '</ul>'."\n";
-		
-		return $output;
+		add_shortcode("social", "sf_social_icons");
 	}
-	add_shortcode("social", "sf_social_icons");
 	
 	
 	/* SITEMAP SHORTCODE
@@ -1110,13 +1113,15 @@
 			"year" => '',
 			"month" => '',
 			"day" => '',
+			"hour" => '0',
+			"type" => 'countdown',
 			"fontsize" => 'large',
 			"displaytext" => ''
 		), $atts));
 		
 		$countdown_output = '';
 				
-		$countdown_output .= '<div class="sf-countdown text-'.$fontsize.'" data-year="'.$year.'" data-month="'.$month.'" data-day="'.$day.'"></div>';
+		$countdown_output .= '<div class="sf-countdown text-'.$fontsize.'" data-year="'.$year.'" data-month="'.$month.'" data-day="'.$day.'" data-hour="'.$hour.'" data-type="'.$type.'"></div>';
 		if ($displaytext != "") {
 		$countdown_output .= '<h3 class="countdown-subject">'.$displaytext.'</h3>';
 		}
@@ -1153,7 +1158,8 @@
 			      "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600");return false;" class="product_share_twitter"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>  '; 
 		$share_output .= '<li class="googleplus"><a href="https://plus.google.com/share?url='.$permalink.'" onclick="javascript:window.open(this.href,
 			      "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600");return false;"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>';
-		$share_output .= '<li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$image.'&description='.$title.'"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>';
+		$share_output .= '<li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$image.'&description='.$title.'" onclick="javascript:window.open(this.href,
+		  "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600");return false;"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>';
 		$share_output .= '<li class="mail"><a href="mailto:?subject='.$title.'&body='.$excerpt.' '.$permalink.'" class="product_share_email"><i class="ss-mail"></i><i class="ss-mail"></i></a></li>';
 		$share_output .= '</ul>';			
 		$share_output .= '</div>';
@@ -1175,10 +1181,24 @@
 	add_shortcode('sf_supersearch', 'sf_supersearch');
 	
 	
+	/* EMAIL ENCODE SHORTCODE
+	================================================== */
+	function sf_email_encode_function( $atts, $content ){
+	    return '<a href="'.antispambot("mailto:".$content).'">'.antispambot($content).'</a>';
+	}
+	add_shortcode( 'email', 'sf_email_encode_function' );
+	
 	
 	/* SWIFT GALLERY SHORTCODE
 	================================================= */
 	
+	$options = get_option('sf_dante_options');
+	$disable_sfgallery = false;
+	if (isset($options['disable_sfgallery']) && $options['disable_sfgallery'] == 1) {
+	$disable_sfgallery = true;
+	}
+	
+	if (!$disable_sfgallery) {
 	// Remove built in shortcode
 	remove_shortcode('gallery', 'gallery_shortcode');
 	
@@ -1318,8 +1338,6 @@
 			$image_output
 			</{$icontag}>";
 			$output .= "</{$itemtag}>";
-			if ( $columns > 0 && ++$i % $columns == 0 )
-			$output .= '<br style="clear: both" />';
 		}
 		
 		$output .= "
@@ -1329,5 +1347,5 @@
 		return $output;
 	}
 	add_shortcode('gallery', 'sf_gallery');
-	
+	}
 ?>

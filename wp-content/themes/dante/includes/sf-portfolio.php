@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Portfolio Items Function Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_portfolio_items()
 	*	sf_portfolio_filter()
@@ -65,6 +65,8 @@
 			$list_class = '';
 			if ($display_type == "masonry" || $display_type == "masonry-gallery") {
 			$list_class .= 'masonry-items filterable-items col-'.$columns.' row clearfix';
+			} else if ($display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
+			$list_class .= 'masonry-items masonry-fw filterable-items col-'.$columns.' row clearfix';
 			} else if ($display_type == "gallery") {
 			$list_class .= 'gallery-portfolio filterable-items col-'.$columns.' row clearfix';
 			} else {
@@ -74,6 +76,9 @@
 			
 			/* ITEMS OUTPUT
 			================================================== */
+			$options = get_option('sf_dante_options');
+			$enable_portfolio_gallery = $options['enable_portfolio_gallery'];
+			
 			$portfolio_items_output .= '<ul class="portfolio-items '.$list_class.'">'. "\n";
 			
 			while ( $portfolio_items->have_posts() ) : $portfolio_items->the_post();								
@@ -123,13 +128,13 @@
 				} else {
 				$post_excerpt = sf_excerpt($excerpt_length);
 				}
-								
+				
 				$post_terms = get_the_terms( $post->ID, 'portfolio-category' );
 				$term_slug = " ";
 				
 				if(!empty($post_terms)){
 					foreach($post_terms as $post_term){
-						$term_slug = $term_slug . strtolower(str_replace(' ', '-', $post_term->name)) . ' ';
+						$term_slug = $term_slug . $post_term->slug . ' ';
 					}
 				}
 								
@@ -169,15 +174,15 @@
 					$item_class = "col-sm-3 ";
 					}
 				}
-				
-				if ($display_type == "masonry" || $display_type == "masonry-gallery") {
+								
+				if ($display_type == "masonry" || $display_type == "masonry-gallery" || $display_type == "masonry=fw" || $display_type == "masonry-gallery-fw") {
 					$thumb_height = NULL;
 				}
 				
 				
 				/* DISPLAY TYPE CONFIG
 				================================================== */
-				if ($display_type == "masonry" || $display_type == "masonry-gallery") {
+				if ($display_type == "masonry" || $display_type == "masonry-gallery" || $display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
 					$item_class .= "masonry-item masonry-gallery-item";
 				} else if ($display_type == "gallery") {
 					$item_class .= "gallery-item ";
@@ -195,14 +200,22 @@
 					$link_config = 'href="'.$thumb_link_url.'" class="link-to-url" target="_blank"';
 					$item_icon = "ss-link";
 				} else if ($thumb_link_type == "lightbox_thumb") {
+					if ($enable_portfolio_gallery) {
+					$link_config = 'href="'.$thumb_img_url.'" class="view" rel="item-gallery"';
+					} else {
 					$link_config = 'href="'.$thumb_img_url.'" class="view"';
+					}					
 					$item_icon = "ss-view";
 				} else if ($thumb_link_type == "lightbox_image") {
 					$lightbox_image_url = '';
 					foreach ($thumb_lightbox_image as $image) {
 						$lightbox_image_url = $image['full_url'];
 					}
-					$link_config = 'href="'.$lightbox_image_url.'" class="view"';	
+					if ($enable_portfolio_gallery) {
+					$link_config = 'href="'.$lightbox_image_url.'" class="view" rel="item-gallery"';
+					} else {
+					$link_config = 'href="'.$lightbox_image_url.'" class="view"';
+					}			
 					$item_icon = "ss-view";
 				} else if ($thumb_link_type == "lightbox_video") {
 					$link_config = 'data-video="'.$thumb_lightbox_video_url.'" href="#" class="fw-video-link"';
@@ -222,7 +235,7 @@
 				================================================== */
 				if ($thumb_type != "none") {
 					
-					if ($display_type == "gallery" || $display_type == "masonry-gallery") {
+					if ($display_type == "gallery" || $display_type == "masonry-gallery" || $display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
 					$portfolio_items_output .= '<figure class="animated-overlay">'. "\n";
 					} else {
 					$portfolio_items_output .= '<figure class="animated-overlay overlay-alt">'. "\n";				
@@ -250,26 +263,26 @@
 							$thumb_img_url = "default";
 						}
 					
-						$image = aq_resize( $thumb_img_url, $thumb_width, $thumb_height, true, false);
+						$image = sf_aq_resize( $thumb_img_url, $thumb_width, $thumb_height, true, false);
 						
 						if($image) {
 																		
 							$portfolio_items_output .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$item_title.'" />'. "\n";
 							
 							$portfolio_items_output .= '<a '.$link_config.'></a>';
-							if ($item_subtitle != "" && $hover_show_excerpt == "no" && ($display_type == "gallery" || $display_type == "masonry-gallery")) {
+							if ($item_subtitle != "" && $hover_show_excerpt == "no" && ($display_type == "gallery" || $display_type == "masonry-gallery" || $display_type == "masonry-gallery-fw")) {
 							$portfolio_items_output .= '<figcaption><div class="thumb-info thumb-info-extended">';
-							} else if ($display_type == "standard" || $display_type == "masonry") {
+							} else if ($display_type == "standard" || $display_type == "masonry" || $display_type == "masonry-fw") {
 							$portfolio_items_output .= '<figcaption><div class="thumb-info thumb-info-alt">';						
-							} else if ($hover_show_excerpt == "yes" && ($display_type == "gallery" || $display_type == "masonry-gallery")) {
+							} else if ($hover_show_excerpt == "yes" && ($display_type == "gallery" || $display_type == "masonry-gallery" || $display_type == "masonry-gallery-fw")) {
 							$portfolio_items_output .= '<figcaption><div class="thumb-info thumb-info-excerpt">';						
 							} else {
 							$portfolio_items_output .= '<figcaption><div class="thumb-info">';
 							}
-							if ($display_type == "gallery" || $display_type == "masonry-gallery") {
+							if ($display_type == "gallery" || $display_type == "masonry-gallery" || $display_type == "masonry-gallery-fw") {
 								if ($hover_show_excerpt == "yes") {
 								$portfolio_items_output .= '<h4 itemprop="name headline">'.$item_title.'</h4>';
-								$portfolio_items_output .= '<p itemprop="description">'.sf_excerpt(30).'</p>';
+								$portfolio_items_output .= '<div itemprop="description">'.$post_excerpt.'</div>';
 								} else {
 								$portfolio_items_output .= '<h4 itemprop="name headline">'.$item_title.'</h4>';
 								$portfolio_items_output .= '<h5 itemprop="name alternative">'.$item_subtitle.'</h5>';
@@ -283,7 +296,7 @@
 					$portfolio_items_output .= '</figure>'. "\n";
 				}
 				
-				if ($display_type != "gallery" && $display_type != "masonry-gallery") {
+				if ($display_type != "gallery" && $display_type != "masonry-gallery" && $display_type != "masonry-gallery-fw") {
 					
 					$portfolio_items_output .= '<div class="portfolio-item-details">'. "\n";
 					
@@ -295,7 +308,11 @@
 					
 					
 					if ($show_title == "yes") {
-						$portfolio_items_output .= '<h3 class="portfolio-item-title" itemprop="name headline"><a '.$link_config.'>'. $item_title .'</a></h3>'. "\n";
+						if ($enable_portfolio_gallery) {
+							$portfolio_items_output .= '<h3 class="portfolio-item-title" itemprop="name headline"><a href="'.$permalink.'" class="link-to-post">'. $item_title .'</a></h3>'. "\n";
+						} else {
+							$portfolio_items_output .= '<h3 class="portfolio-item-title" itemprop="name headline"><a '.$link_config.'>'. $item_title .'</a></h3>'. "\n";
+						}
 					}
 					if ($show_subtitle == "yes" && $item_subtitle) {
 						$portfolio_items_output .= '<h5 class="portfolio-subtitle" itemprop="alternativeHeadline">'.$item_subtitle.'</h5>'. "\n";
@@ -322,7 +339,7 @@
 			/* PAGINATION OUTPUT
 			================================================== */
 			if ($pagination == "yes") {
-				if ($display_type == "masonry" || $display_type == "masonry-gallery") {
+				if ($display_type == "masonry" || $display_type == "masonry-gallery"  || $display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
 				$portfolio_items_output .= '<div class="pagination-wrap masonry-pagination">';
 				} else {
 				$portfolio_items_output .= '<div class="pagination-wrap">';
@@ -342,12 +359,18 @@
 	/* PORTFOLIO FILTER
 	================================================== */
 	if (!function_exists('sf_portfolio_filter')) { 
-		function sf_portfolio_filter($style = "basic") {
-			
-			$filter_output = "";
+		function sf_portfolio_filter($style = "basic", $parent_category = "") {
+						
+			$filter_output = $tax_terms = "";
 			
 			$options = get_option('sf_dante_options');
 			$filter_wrap_bg = $options['filter_wrap_bg'];
+			
+			if ($parent_category == "" || $parent_category == "all") {
+				$tax_terms = sf_get_category_list('portfolio-category', 1);
+			} else {
+				$tax_terms = sf_get_category_list('portfolio-category', 1, $parent_category);
+			}
 			
 			if ($style == "slide-out") {
 			
@@ -356,24 +379,38 @@
 		    $filter_output .= '<div class="filter-slide-wrap col-sm-12 alt-bg '.$filter_wrap_bg.'">'. "\n";
 		    $filter_output .= '<ul class="portfolio-filter filtering row clearfix">'. "\n";
 		    $filter_output .= '<li class="all selected col-sm-2"><a data-filter="*" href="#"><span class="item-name">'. __("All", "swiftframework").'</span><span class="item-count">0</span></a></li>'. "\n";
-		    			$tax_terms = sf_get_category_list('portfolio-category', 1);
-		    			foreach ($tax_terms as $tax_term) {
-		    				$term_slug = strtolower(str_replace(' ', '-', $tax_term));
-		    				$filter_output .= '<li class="col-sm-2"><a href="#" title="View all ' . $tax_term . ' items" class="' . $term_slug . '" data-filter=".' . $term_slug . '"><span class="item-name">' . $tax_term . '</span><span class="item-count">0</span></a></li>'. "\n";
-		    			}
+			foreach ($tax_terms as $tax_term) {
+				$term = get_term_by('name', $tax_term, 'portfolio-category');
+				if ($term) {
+				$filter_output .= '<li class="col-sm-2"><a href="#" title="View all ' . $term->name . ' items" class="' . $term->slug . '" data-filter=".' . $term->slug . '"><span class="item-name">' . $term->name . '</span><span class="item-count">0</span></a></li>'. "\n";
+				} else {
+				$filter_output .= '<li class="col-sm-2"><a href="#" title="View all ' . $tax_term . ' items" class="' . $tax_term . '" data-filter=".' . $tax_term . '"><span class="item-name">' . $tax_term . '</span><span class="item-count">0</span></a></li>'. "\n";
+				}
+			}
 		    $filter_output .= '</ul></div></div>'. "\n";
 		    
 		    } else {
 		    
-		    $filter_output .= '<div class="filter-wrap row clearfix">'. "\n";
-		    $filter_output .= '<ul class="portfolio-filter-tabs bar-styling filtering col-sm-12 clearfix">'. "\n";
-		    $filter_output .= '<li class="all selected"><a data-filter="*" href="#"><span class="item-name">'. __("All", "swiftframework").'</span><span class="item-count">0</span></a></li>'. "\n";
-		    			$tax_terms = sf_get_category_list('portfolio-category', 1);
-		    			foreach ($tax_terms as $tax_term) {
-		    				$term_slug = strtolower(str_replace(' ', '-', $tax_term));
-		    				$filter_output .= '<li><a href="#" title="View all ' . $tax_term . ' items" class="' . $term_slug . '" data-filter=".' . $term_slug . '"><span class="item-name">' . $tax_term . '</span><span class="item-count">0</span></a></li>'. "\n";
-		    			}
-		    $filter_output .= '</ul></div>'. "\n";
+			    if ($style == "full-width") {
+			    	$filter_output .= '<div class="container">';
+			    }
+			    
+			    $filter_output .= '<div class="filter-wrap row clearfix">'. "\n";
+			    $filter_output .= '<ul class="portfolio-filter-tabs bar-styling filtering col-sm-12 clearfix">'. "\n";
+			    $filter_output .= '<li class="all selected"><a data-filter="*" href="#"><span class="item-name">'. __("All", "swiftframework").'</span><span class="item-count">0</span></a></li>'. "\n";
+    			foreach ($tax_terms as $tax_term) {
+    				$term = get_term_by('name', $tax_term, 'portfolio-category');
+    				if ($term) {
+    				$filter_output .= '<li><a href="#" title="View all ' . $term->name . ' items" class="' . $term->slug . '" data-filter=".' . $term->slug . '"><span class="item-name">' . $term->name . '</span><span class="item-count">0</span></a></li>'. "\n";
+    				} else {
+    				$filter_output .= '<li><a href="#" title="View all ' . $tax_term . ' items" class="' . $tax_term . '" data-filter=".' . $tax_term . '"><span class="item-name">' . $tax_term . '</span><span class="item-count">0</span></a></li>'. "\n";
+    				}
+    			}
+			    $filter_output .= '</ul></div>'. "\n";
+			    
+			    if ($style == "full-width") {
+			    	$filter_output .= '</div>';
+			    }
 		    
 		    }
 			

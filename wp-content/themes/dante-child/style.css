@@ -255,13 +255,15 @@ box-shadow: none;
 }
 
 .spb_parallax_asset {
-padding-bottom: 120px;
 -webkit-box-shadow: none !important;
 box-shadow: none !important;
 }
 
 .big-padding-top{
 padding-top: 200px !important; }
+
+.big-padding-bottom{
+padding-bottom: 160px !important; }
 
 @media only screen and (max-width: 767px){
 .accordian-title {
@@ -290,7 +292,12 @@ opacity: 1;
 display: block;
 width: 30%;
 }
-}
+.alt-bg {
+margin-left: -5px!important;
+margin-right: -5px!important;
+
+}}
+
 
 #logo a.mobile-menu-show {
 float: right;

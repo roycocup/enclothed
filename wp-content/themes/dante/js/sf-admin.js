@@ -3,7 +3,7 @@
 *	Admin jQuery Functions
 *	------------------------------------------------
 *	Swift Framework
-* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 *
 */
 
@@ -35,6 +35,7 @@ jQuery(function(jQuery) {
 		$detail_video = jQuery('#sf_detail_video_url').parent().parent(),
 		$detail_gallery = jQuery('#sf_detail_gallery_description').parent().parent(),
 		$detail_slider = jQuery('#sf_detail_rev_slider_alias').parent().parent(),
+		$detail_layerslider = jQuery('#sf_detail_layer_slider_alias').parent().parent(),
 		$detail_custom = jQuery('#sf_custom_media').parent().parent();
 	var $page_title_style = jQuery('#sf_page_title_style'), 
 		$page_title_text_two = jQuery('#sf_page_title_two').parent().parent(),
@@ -125,6 +126,7 @@ jQuery(function(jQuery) {
 		$detail_video.css('display', 'none');
 		$detail_gallery.css('display', 'none');
 		$detail_slider.css('display', 'none');
+		$detail_layerslider.css('display', 'none');
 		$detail_custom.css('display', 'none');
 	} else {
 		$detail_type.parent().parent().css('display', 'block');
@@ -133,36 +135,42 @@ jQuery(function(jQuery) {
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'none');
 		} else if ($detail_type.val() == "image") {
 			$detail_image.css('display', 'block');
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'none');
 		} else if ($detail_type.val() == "video") {
 			$detail_image.css('display', 'none');
 			$detail_video.css('display', 'block');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'none');
 		} else if ($detail_type.val() == "slider") {
 			$detail_image.css('display', 'none');
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'block');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'none');
 		} else if ($detail_type.val() == "layer-slider") {
 			$detail_image.css('display', 'none');
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'block');
+			$detail_layerslider.css('display', 'block');
 			$detail_custom.css('display', 'none');
 		} else if ($detail_type.val() == "custom") {
 			$detail_image.css('display', 'none');
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'block');
 		}
 	}
@@ -294,6 +302,7 @@ jQuery(function(jQuery) {
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 			$detail_custom.css('display', 'none');
 		} else {
 			$detail_type.parent().parent().css('display', 'block');
@@ -302,36 +311,42 @@ jQuery(function(jQuery) {
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "image") {
 				$detail_image.css('display', 'block');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "video") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'block');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "slider") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'block');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "layer-slider") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'block');
+				$detail_layerslider.css('display', 'block');
 				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "custom") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'block');
 			}
 		}
@@ -344,6 +359,7 @@ jQuery(function(jQuery) {
 			$detail_video.css('display', 'none');
 			$detail_gallery.css('display', 'none');
 			$detail_slider.css('display', 'none');
+			$detail_layerslider.css('display', 'none');
 		} else {
 			$detail_type.parent().parent().css('display', 'block');
 			if (jQuery(this).val() == "none") {
@@ -351,31 +367,42 @@ jQuery(function(jQuery) {
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
+				$detail_custom.css('display', 'none');
 			} else if (jQuery(this).val() == "image") {
 				$detail_image.css('display', 'block');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
+				$detail_custom.css('display', 'none');
 			} else if (jQuery(this).val() == "video") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'block');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
+				$detail_custom.css('display', 'none');
 			} else if (jQuery(this).val() == "slider") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'block');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
+				$detail_custom.css('display', 'none');
 			} else if (jQuery(this).val() == "layer-slider") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'block');
+				$detail_layerslider.css('display', 'block');
+				$detail_custom.css('display', 'none');
 			} else if ($detail_type.val() == "custom") {
 				$detail_image.css('display', 'none');
 				$detail_video.css('display', 'none');
 				$detail_gallery.css('display', 'none');
 				$detail_slider.css('display', 'none');
+				$detail_layerslider.css('display', 'none');
 				$detail_custom.css('display', 'block');
 			}
 		}
@@ -473,5 +500,68 @@ jQuery(function(jQuery) {
 	
 	});
 	
+	
+	// TABBED META BOXES
+	var tabBoxes = jQuery('#page_heading_meta_box,#page_background_meta_box,#portfolio_page_heading_meta_box,#page_header_meta_box,#page_meta_box,#thumbnail_meta_box,#portfolio_meta_box,#detail_media_meta_box,#masonry_thumbnail_meta_box,#post_meta_box,#product_meta_box,#team_meta_box,#client_meta_box,#testimonials_meta_box,#gallery_meta_box,#slider_meta_box');
+		
+	//create the menu with javascript
+	function sf_setup_metatabs() {
+		
+		if(jQuery('#swift_page_builder').length > 0) {
+			jQuery('#swift_page_builder').after('<div class="sf-meta-tabs-wrap postbox"><div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>Meta Options</span></h3><div id="sf-tabbed-meta-boxes"></div></div>');
+		} else {
+			jQuery('#normal-sortables').after('<div class="sf-meta-tabs-wrap postbox"><div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>Meta Options</span></h3><div id="sf-tabbed-meta-boxes"></div></div>');
+		}
+		jQuery(tabBoxes).appendTo('#sf-tabbed-meta-boxes');
+		jQuery(tabBoxes).hide().removeClass('hide-if-no-js'); 
+					
+		for (var a = 0, b = tabBoxes.length; a < b; a++ ) {
+			newClass = 'editor-tab' + a;
+			jQuery(tabBoxes[a]).addClass(newClass);
+		}
+			
+		var menu_html = '<ul id="sf-meta-box-tabs" class="clearfix">\n';		
+		for (var i = 0, n = tabBoxes.length; i < n; i++ ) {
+			var target_id = jQuery(tabBoxes[i]).attr('id');
+			var tab_name = jQuery(tabBoxes[i]).find('.hndle > span').text();
+			menu_html = menu_html + '\n<li id="li-'+ target_id +'"><a href="#" rel="editor-tab' + i + '">' + tab_name + '</a></li>';
+		}
+		menu_html = menu_html + '\n</ul>';
+		
+		jQuery('#sf-tabbed-meta-boxes').before(menu_html);
+		jQuery('#sf-meta-box-tabs a:first').addClass('active');	
+	}
+	if (tabBoxes.length > 0) {
+		sf_setup_metatabs();
+		jQuery('.editor-tab0').addClass('active').show(); 
+	}
+	
+	jQuery('#sf-meta-box-tabs li').on('click', 'a', function() {
+		jQuery(tabBoxes).removeClass('active').hide();
+		jQuery('#sf-meta-box-tabs a').removeClass('active');
+		
+		target = jQuery(this).attr('rel');
+		
+		jQuery(this).addClass('active');
+		jQuery('.' + target).addClass('active').show();
+		
+		return false;
+	});
+	
+	jQuery('.hide-postbox-tog').on('click', function() { 			
+		if (jQuery(this).is(':checked')) { 
+			
+			target = $(this).attr('value');
+			$('#li-' + target).show(); 
+			
+			} else {
+			
+			target = $(this).attr('value');
+			
+			$('#li-' + target).hide();
+			
+		}
+		return true;
+	});
 
 });

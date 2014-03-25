@@ -95,7 +95,7 @@ class SwiftPageBuilderShortcode_jobs_overview extends SwiftPageBuilderShortcode 
 }
 
 SPBMap::map( 'jobs_overview', array(
-    "name"		=> __("Jobs Overview", "swift-page-builder"),
+    "name"		=> __("Jobs Overview", "swift-framework-admin"),
     "base"		=> "jobs_overview",
     "class"		=> "",
     "icon"      => "spb-icon-jobs-overview",
@@ -104,53 +104,53 @@ SPBMap::map( 'jobs_overview', array(
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Intro Text", "swift-page-builder"),
+    	    "heading" => __("Intro Text", "swift-framework-admin"),
     	    "param_name" => "job_text",
-    	    "value" => __("", "swift-page-builder"),
-    	    "description" => __("Enter the intro text for the jobs overview.", "swift-page-builder")
+    	    "value" => __("", "swift-framework-admin"),
+    	    "description" => __("Enter the intro text for the jobs overview.", "swift-framework-admin")
     	),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "3",
-            "description" => __("The number of jobs to show in the overview list. Leave blank to show ALL jobs.", "swift-page-builder")
+            "description" => __("The number of jobs to show in the overview list. Leave blank to show ALL jobs.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Jobs Order", "swift-page-builder"),
+            "heading" => __("Jobs Order", "swift-framework-admin"),
             "param_name" => "order",
-            "value" => array(__('Random', "swift-page-builder") => "rand", __('Latest', "swift-page-builder") => "date"),
-            "description" => __("Choose the order of the jobs.", "swift-page-builder")
+            "value" => array(__('Random', "swift-framework-admin") => "rand", __('Latest', "swift-framework-admin") => "date"),
+            "description" => __("Choose the order of the jobs.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Jobs category", "swift-page-builder"),
+            "heading" => __("Jobs category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('jobs-category'),
-            "description" => __("Choose the category for the jobs.", "swift-page-builder")
+            "description" => __("Choose the category for the jobs.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("View all link", "swift-page-builder"),
+            "heading" => __("View all link", "swift-framework-admin"),
             "param_name" => "view_all_link",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Show the view all jobs link. Make sure you have selected the page within theme options for this to work.", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Show the view all jobs link. Make sure you have selected the page within theme options for this to work.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

@@ -45,6 +45,7 @@ function galleries_register() {
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
+        'menu_icon'=> 'dashicons-format-gallery',
         'hierarchical' => false,
         'rewrite' => false,
         'supports' => array('title', 'thumbnail'),

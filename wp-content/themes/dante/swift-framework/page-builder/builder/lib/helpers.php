@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Helpers Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -41,13 +41,16 @@
 	            $thumb_size = str_replace(array( 'px', ' ', '*', '&times;' ), array( '', '', 'x', 'x' ), $thumb_size);
 	            $thumb_size = explode("x", $thumb_size);
 	        }
+	        $p_img = "";
 	        // Resize image to custom size
+			if (isset($thumb_size[0]) && isset($thumb_size[1])) {
 	        $p_img = spb_resize($attach_id, null, $thumb_size[0], $thumb_size[1], true);
-	
+			}
+			
 	        /*if ( spb_debug() ) {
 	              var_dump($p_img);
 	          }*/
-	        if ( $p_img ) {
+	        if ( $p_img != "") {
 	            $img_class = '';
 	            //if ( $grid_layout == 'thumbnail' ) $img_class = ' no_bottom_margin'; class="'.$img_class.'"
 	            $thumbnail = '<img src="'.$p_img['url'].'" width="'.$p_img['width'].'" height="'.$p_img['height'].'" />';
@@ -60,7 +63,11 @@
 	
 	function spb_getColumnControls($width) {
 	    switch ( $width ) {
-	    
+	    	
+	    	case "span2" :
+	    	    $w = "1/6";
+	    	    break;
+	        
 	        case "span3" :
 	            $w = "1/4";
 	            break;
@@ -94,6 +101,11 @@
 	---------------------------------------------------------- */
 	function spb_translateColumnWidthToFractional($width) {
 	    switch ( $width ) {
+	        
+	        case "span2" :
+	            $w = "1/6";
+	            break;
+	        
 	        case "span3" :
 	            $w = "1/4";
 	            break;
@@ -141,6 +153,9 @@
 	        case '4' :
 	            $teaser_width = 'span3';
 	            break;
+	        case '6' :
+	            $teaser_width = 'span2';
+	            break;
 	    }
 	    return $teaser_width;
 	}
@@ -148,6 +163,13 @@
 	function spb_translateColumnWidthToSpanEditor($width) {
 					
 	    switch ( $width ) {
+	        
+	        case "1/6" :
+	            
+	            $w = "span2";
+	                        
+	            break;
+	        
 	        case "1/4" :
 	            
 	            $w = "span3";
@@ -194,6 +216,13 @@
 	function spb_translateColumnWidthToSpan($width) {
 			
 	    switch ( $width ) {
+	        
+	        case "1/6" :
+	               	
+	        	$w = "col-sm-2";
+	                        
+	            break;
+	        
 	        case "1/4" :
 	               	
 	        	$w = "col-sm-3";
@@ -280,7 +309,7 @@
 	
 	            $output .= '<li'.$class.'>
 							<img rel="'.$image_post->ID.'" src="'. $thumb_src .'" />
-							<span class="img-added">'. __('Added', "swift-page-builder") .'</span>
+							<span class="img-added">'. __('Added', "swift-framework-admin") .'</span>
 						</li>';
 	        }
 	
@@ -300,7 +329,7 @@
 	            $output .= '
 				<li class="added">
 					<img rel="'.$th_id.'" src="'. $thumb_src .'" />
-					<span class="img-added">'. __('Added', "swift-page-builder") .'</span>
+					<span class="img-added">'. __('Added', "swift-framework-admin") .'</span>
 				</li>';
 	        }
 	    }
@@ -366,7 +395,7 @@
 	
 	        // the image path without the extension
 	        $no_ext_path = $file_info['dirname'].'/'.$file_info['filename'];
-	
+			
 	        $cropped_img_path = $no_ext_path.'-'.$width.'x'.$height.$extension;
 	
 	        // checking if the file size is larger than the target size

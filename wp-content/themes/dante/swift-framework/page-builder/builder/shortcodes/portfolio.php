@@ -17,7 +17,6 @@ class SwiftPageBuilderShortcode_portfolio extends SwiftPageBuilderShortcode {
 	        	"excerpt_length" => '20',
 	        	'item_count'	=> '-1',
 	        	'category'		=> '',
-	        	"exclude_categories" => '',
 	        	'portfolio_filter'		=> 'yes',
 	        	'pagination'	=> 'no',
 	        	'el_position' => '',
@@ -43,7 +42,11 @@ class SwiftPageBuilderShortcode_portfolio extends SwiftPageBuilderShortcode {
 	        /* PORTFOLIO FILTER
 	        ================================================== */ 
 	        if ($portfolio_filter == "yes" && $sidebars == "no-sidebars") {
-	        	$filter_output = sf_portfolio_filter();
+	        	if ($display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
+	        	$filter_output = sf_portfolio_filter('full-width', $category);
+	        	} else {
+	        	$filter_output = sf_portfolio_filter('', $category);
+	        	}
 	        }
 	        
 	        
@@ -67,7 +70,11 @@ class SwiftPageBuilderShortcode_portfolio extends SwiftPageBuilderShortcode {
             $output .= "\n\t\t".'</div> '.$this->endBlockComment('.spb_wrapper');
             $output .= "\n\t".'</div> '.$this->endBlockComment($width);
     
-            $output = $this->startRow($el_position) . $output . $this->endRow($el_position);
+    		if ($display_type == "masonry-fw" || $display_type == "masonry-gallery-fw") {
+    			$output = $this->startRow($el_position, '', true) . $output . $this->endRow($el_position, '', true);
+    		} else {
+    		    $output = $this->startRow($el_position) . $output . $this->endRow($el_position);
+    		}
             
             global $sf_include_isotope;
             $sf_include_isotope = true;
@@ -81,102 +88,102 @@ class SwiftPageBuilderShortcode_portfolio extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'portfolio', array(
-    "name"		=> __("Portfolio", "swift-page-builder"),
+    "name"		=> __("Portfolio", "swift-framework-admin"),
     "base"		=> "portfolio",
     "class"		=> "spb_portfolio",
     "icon"      => "spb-icon-portfolio",
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "dropdown",
-            "heading" => __("Display type", "swift-page-builder"),
+            "heading" => __("Display type", "swift-framework-admin"),
             "param_name" => "display_type",
-            "value" => array(__('Standard', "swift-page-builder") => "standard", __('Gallery', "swift-page-builder") => "gallery", __('Masonry', "swift-page-builder") => "masonry", __('Masonry Gallery', "swift-page-builder") => "masonry-gallery"),
-            "description" => __("Select the type of portfolio you'd like to show.", "swift-page-builder")
+            "value" => array(__('Standard', "swift-framework-admin") => "standard", __('Gallery', "swift-framework-admin") => "gallery", __('Masonry', "swift-framework-admin") => "masonry", __('Masonry Gallery', "swift-framework-admin") => "masonry-gallery", __('Masonry (Full Width)', "swift-framework-admin") => "masonry-fw", __('Masonry Gallery (Full Width)', "swift-framework-admin") => "masonry-gallery-fw"),
+            "description" => __("Select the type of portfolio you'd like to show.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Column count", "swift-page-builder"),
+            "heading" => __("Column count", "swift-framework-admin"),
             "param_name" => "columns",
             "value" => array("4", "3", "2"),
-            "description" => __("How many portfolio columns to display.", "swift-page-builder")
+            "description" => __("How many portfolio columns to display.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show title text", "swift-page-builder"),
+            "heading" => __("Show title text", "swift-framework-admin"),
             "param_name" => "show_title",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Show the item title text. (Standard/Masonry only)", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Show the item title text. (Standard/Masonry only)", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show subtitle text", "swift-page-builder"),
+            "heading" => __("Show subtitle text", "swift-framework-admin"),
             "param_name" => "show_subtitle",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Show the item subtitle text. (Standard/Masonry only)", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Show the item subtitle text. (Standard/Masonry only)", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show item excerpt", "swift-page-builder"),
+            "heading" => __("Show item excerpt", "swift-framework-admin"),
             "param_name" => "show_excerpt",
-            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-            "description" => __("Show the item excerpt text. (Standard/Masonry only)", "swift-page-builder")
+            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+            "description" => __("Show the item excerpt text. (Standard/Masonry only)", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Excerpt Hover", "swift-page-builder"),
+            "heading" => __("Excerpt Hover", "swift-framework-admin"),
             "param_name" => "hover_show_excerpt",
-            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-            "description" => __("Show the item excerpt on hover, instead of the arrow button. (Gallery/Masonry Gallery only)", "swift-page-builder")
+            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+            "description" => __("Show the item excerpt on hover, instead of the arrow button. (Gallery/Masonry Gallery only)", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Excerpt Length", "swift-page-builder"),
+            "heading" => __("Excerpt Length", "swift-framework-admin"),
             "param_name" => "excerpt_length",
             "value" => "20",
-            "description" => __("The length of the excerpt for the posts.", "swift-page-builder")
+            "description" => __("The length of the excerpt for the posts.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "12",
-            "description" => __("The number of portfolio items to show per page. Leave blank to show ALL portfolio items.", "swift-page-builder")
+            "description" => __("The number of portfolio items to show per page. Leave blank to show ALL portfolio items.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Portfolio category", "swift-page-builder"),
+            "heading" => __("Portfolio category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('portfolio-category'),
-            "description" => __("Choose the category from which you'd like to show the portfolio items.", "swift-page-builder")
+            "description" => __("Choose the category from which you'd like to show the portfolio items.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Filter", "swift-page-builder"),
+            "heading" => __("Filter", "swift-framework-admin"),
             "param_name" => "portfolio_filter",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Show the portfolio category filter above the items. NOTE: This is only available on a page with the no sidebar setup.", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Show the portfolio category filter above the items. NOTE: This is only available on a page with the no sidebar setup.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Pagination", "swift-page-builder"),
+            "heading" => __("Pagination", "swift-framework-admin"),
             "param_name" => "pagination",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Show portfolio pagination.", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Show portfolio pagination.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

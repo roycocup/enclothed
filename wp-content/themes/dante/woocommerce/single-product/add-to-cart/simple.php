@@ -4,7 +4,7 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     2.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,10 +29,9 @@ if ( ! $product->is_purchasable() ) return;
 
 	<?php do_action('woocommerce_before_add_to_cart_form'); ?>
 
-	<form action="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="cart" method="post" enctype='multipart/form-data'>
-
-	 	<?php do_action('woocommerce_before_add_to_cart_button'); ?>
-
+	<form class="cart" method="post" enctype='multipart/form-data'>
+ 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+ 	
 	 	<?php
 	 		if ( ! $product->is_sold_individually() )
 	 			woocommerce_quantity_input( array(
@@ -40,7 +39,9 @@ if ( ! $product->is_purchasable() ) return;
 	 				'max_value' => apply_filters( 'woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product )
 	 			) );
 	 	?>
-	 	
+
+	 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+ 	
 	 	<?php 
 	 		$button_text = '<i class="ss-cart"></i>' . apply_filters('single_add_to_cart_text', __("Add to shopping bag", "swiftframework"), $product->product_type);
 	 	?>

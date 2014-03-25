@@ -5,7 +5,7 @@
 	*	Swift Framework Functions
 	*	------------------------------------------------
 	*	Swift Framework v2.0
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_content_filter()
 	*	sf_get_tweets()
@@ -49,7 +49,7 @@
 				
 				$options = array('trim_user'=>true, 'exclude_replies'=>false, 'include_rts'=>false);
 							
-				$tweets = getTweets($count, $twitterID, $options);
+				$tweets = getTweets($twitterID, $count, $options);
 								
 				if(is_array($tweets)){
 																
@@ -80,7 +80,7 @@
 						        */
 						
 						        // i. User_mentions must link to the mentioned user's profile.
-						        if(is_array($tweet['entities']['user_mentions'])){
+						        if(isset($tweet['entities']['user_mentions']) && is_array($tweet['entities']['user_mentions'])){
 						            foreach($tweet['entities']['user_mentions'] as $key => $user_mention){
 						                $the_tweet = preg_replace(
 						                    '/@'.$user_mention['screen_name'].'/i',
@@ -90,7 +90,7 @@
 						        }
 						
 						        // ii. Hashtags must link to a twitter.com search with the hashtag as the query.
-						        if(is_array($tweet['entities']['hashtags'])){
+						        if(isset($tweet['entities']['hashtags']) && is_array($tweet['entities']['hashtags'])){
 						            foreach($tweet['entities']['hashtags'] as $key => $hashtag){
 						                $the_tweet = preg_replace(
 						                    '/#'.$hashtag['text'].'/i',
@@ -101,7 +101,7 @@
 						
 						        // iii. Links in Tweet text must be displayed using the display_url
 						        //      field in the URL entities API response, and link to the original t.co url field.
-						        if(is_array($tweet['entities']['urls'])){
+						        if(isset($tweet['entities']['urls']) && is_array($tweet['entities']['urls'])){
 						            foreach($tweet['entities']['urls'] as $key => $link){
 						                $the_tweet = preg_replace(
 						                    '`'.$link['url'].'`',
@@ -187,15 +187,15 @@
 							
 				$options = array('trim_user'=>true, 'exclude_replies'=>false, 'include_rts'=>false);
 							
-				$tweets = getTweets($count, $twitterID, $options);
+				$tweets = getTweets($twitterID, $count, $options);
 			
 				if(is_array($tweets)){
 							
 					foreach($tweets as $tweet){
 											
 						$content .= '<li>';
-					
-					    if($tweet['text']){
+												
+					    if(is_array($tweet) && isset($tweet['text']) && $tweet['text']){
 					    	
 					    	$content .= '<div class="tweet-text">';
 					    	
@@ -212,7 +212,7 @@
 					        */
 					
 					        // i. User_mentions must link to the mentioned user's profile.
-					        if(is_array($tweet['entities']['user_mentions'])){
+					        if(isset($tweet['entities']['user_mentions']) && is_array($tweet['entities']['user_mentions'])){
 					            foreach($tweet['entities']['user_mentions'] as $key => $user_mention){
 					                $the_tweet = preg_replace(
 					                    '/@'.$user_mention['screen_name'].'/i',
@@ -222,7 +222,7 @@
 					        }
 					
 					        // ii. Hashtags must link to a twitter.com search with the hashtag as the query.
-					        if(is_array($tweet['entities']['hashtags'])){
+					        if(isset($tweet['entities']['hashtags']) && is_array($tweet['entities']['hashtags'])){
 					            foreach($tweet['entities']['hashtags'] as $key => $hashtag){
 					                $the_tweet = preg_replace(
 					                    '/#'.$hashtag['text'].'/i',
@@ -233,7 +233,7 @@
 					
 					        // iii. Links in Tweet text must be displayed using the display_url
 					        //      field in the URL entities API response, and link to the original t.co url field.
-					        if(is_array($tweet['entities']['urls'])){
+					        if(isset($tweet['entities']['urls']) && is_array($tweet['entities']['urls'])){
 					            foreach($tweet['entities']['urls'] as $key => $link){
 					                $the_tweet = preg_replace(
 					                    '`'.$link['url'].'`',
@@ -320,7 +320,7 @@
 	================================================== */
 	function sf_list_galleries() {
 		$galleries_list = array();
-		$galleries_query = new WP_Query( array( 'post_type' => 'galleries' ) );
+		$galleries_query = new WP_Query( array( 'post_type' => 'galleries', 'posts_per_page' => -1 ) );
 		while ( $galleries_query->have_posts() ) : $galleries_query->the_post();
 			$galleries_list[get_the_title()] = get_the_ID();
 		endwhile;
@@ -330,31 +330,33 @@
 	
 	
 	/* PORTFOLIO RELATED POSTS
-	================================================== */	
-	function sf_portfolio_related_posts( $post_id ) {	    
-	    $query = new WP_Query();
-	    $terms = wp_get_object_terms( $post_id, 'portfolio-category' );
-	
-	    if ( count( $terms ) ) {
-	        $post_ids = get_objects_in_term( $terms[0]->term_id, 'portfolio-category' );
-			
-			$index = array_search($post_id,$post_ids);
-			if($index !== FALSE){
-			    unset($post_ids[$index]);
-			}
-			
-	        $args = array(
-	                'post_type' => 'portfolio',
-	                'post__in' => $post_ids,
-	                'taxonomy' => 'portfolio-category',
-	                'term' => $terms[0]->slug,
-	                'posts_per_page' => 4
-	            ) ;
-	        $query = new WP_Query( $args );
-	    }
-	
-	    // Return our results in query form
-	    return $query;
+	================================================== */
+	if (!function_exists('sf_portfolio_related_posts')) {	
+		function sf_portfolio_related_posts( $post_id ) {	    
+		    $query = new WP_Query();
+		    $terms = wp_get_object_terms( $post_id, 'portfolio-category' );
+		
+		    if ( count( $terms ) ) {
+		        $post_ids = get_objects_in_term( $terms[0]->term_id, 'portfolio-category' );
+				
+				$index = array_search($post_id,$post_ids);
+				if($index !== FALSE){
+				    unset($post_ids[$index]);
+				}
+				
+		        $args = array(
+		                'post_type' => 'portfolio',
+		                'post__in' => $post_ids,
+		                'taxonomy' => 'portfolio-category',
+		                'term' => $terms[0]->slug,
+		                'posts_per_page' => 4
+		            ) ;
+		        $query = new WP_Query( $args );
+		    }
+		
+		    // Return our results in query form
+		    return $query;
+		}
 	}
 	
 	

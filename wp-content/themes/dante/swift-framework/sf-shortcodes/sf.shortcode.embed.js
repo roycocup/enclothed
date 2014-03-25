@@ -42,11 +42,13 @@ function embedSelectedShortcode() {
 		var icon_character = document.getElementById('icon-character').value;	
 		var icon_cont = document.getElementById('icon-cont').value;	
 		var icon_float = document.getElementById('icon-float').value;	
+		var icon_color = document.getElementById('icon-color').value;	
 		
 		// Icon Box
 		var iconbox_type = document.getElementById('iconbox-type').value;
 		var iconbox_image = document.getElementById('iconbox-image').value;
 		var iconbox_character = document.getElementById('iconbox-character').value;
+		var iconbox_color = document.getElementById('iconbox-color').value;
 		var iconbox_title = document.getElementById('iconbox-title').value;
 		var iconbox_animation = document.getElementById('iconbox-animation').value;
 		var iconbox_animation_delay = document.getElementById('iconbox-animation-delay').value;
@@ -91,6 +93,8 @@ function embedSelectedShortcode() {
 		var countdown_year = document.getElementById('countdown-year').value;
 		var countdown_month = document.getElementById('countdown-month').value;
 		var countdown_day = document.getElementById('countdown-day').value;
+		var countdown_hour = document.getElementById('countdown-hour').value;
+		var countdown_type = document.getElementById('countdown-type').value;
 		var countdown_fontsize = document.getElementById('countdown-fontsize').value;
 		var countdown_displaytext = document.getElementById('countdown-displaytext').value;
 		
@@ -154,7 +158,7 @@ function embedSelectedShortcode() {
 		/////////////////////////////////////////
 
 		if (shortcode_select == 'shortcode-icons') {
-			shortcodeHTML = '[icon image="'+icon_image+'" character="'+icon_character+'" size="'+icon_size+'" cont="'+icon_cont+'" float="'+icon_float+'"]';	
+			shortcodeHTML = '[icon image="'+icon_image+'" character="'+icon_character+'" size="'+icon_size+'" cont="'+icon_cont+'" float="'+icon_float+'" color="'+icon_color+'"]';	
 		}
 		
 		/////////////////////////////////////////
@@ -162,7 +166,7 @@ function embedSelectedShortcode() {
 		/////////////////////////////////////////
 
 		if (shortcode_select == 'shortcode-iconbox') {
-			shortcodeHTML = '[sf_iconbox image="'+iconbox_image+'" character="'+iconbox_character+'" type="'+iconbox_type+'" title="'+iconbox_title+'" animation="'+iconbox_animation+'" animation_delay="'+iconbox_animation_delay+'"]<br/>Enter your Icon Box content here<br/>[/sf_iconbox]';	
+			shortcodeHTML = '[sf_iconbox image="'+iconbox_image+'" character="'+iconbox_character+'" color="'+iconbox_color+'" type="'+iconbox_type+'" title="'+iconbox_title+'" animation="'+iconbox_animation+'" animation_delay="'+iconbox_animation_delay+'"]<br/>Enter your Icon Box content here<br/>[/sf_iconbox]';	
 		}
 		
 		/////////////////////////////////////////
@@ -278,7 +282,7 @@ function embedSelectedShortcode() {
 				
 		if (shortcode_select == 'shortcode-countdown') {
 		
-			shortcodeHTML = '[sf_countdown year="' + countdown_year + '" month="' + countdown_month + '" day="' + countdown_day + '" fontsize="' + countdown_fontsize + '" displaytext="' + countdown_displaytext + '"]<br/>';
+			shortcodeHTML = '[sf_countdown year="' + countdown_year + '" month="' + countdown_month + '" day="' + countdown_day + '" hour="' + countdown_hour + '" type="' + countdown_type + '" fontsize="' + countdown_fontsize + '" displaytext="' + countdown_displaytext + '"]<br/>';
 		
 		}
 		

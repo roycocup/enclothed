@@ -4,17 +4,20 @@
 	$options = get_option('sf_dante_options');
 	$default_show_page_heading = $options['default_show_page_heading'];
 	$default_page_heading_bg_alt = $options['default_page_heading_bg_alt'];
+	$enable_portfolio_stickydetails = $options['enable_portfolio_stickydetails'];
 	
-	$portfolio_data = get_post_meta( $post->ID, 'portfolio', true );
-	$current_item_id = $post->ID;	
+	$portfolio_data = get_post_meta($post->ID, 'portfolio', true);
+	$current_item_id = $post->ID;
+	$pb_active = get_post_meta($post->ID, '_spb_js_status', true);
 	$show_page_title = get_post_meta($post->ID, 'sf_page_title', true);
 	$page_title_style = get_post_meta($post->ID, 'sf_page_title_style', true);
 	$page_title = get_post_meta($post->ID, 'sf_page_title_one', true);
 	$page_subtitle = get_post_meta($post->ID, 'sf_page_subtitle', true);
+	$item_sidebar_content = get_post_meta($post->ID, 'sf_item_sidebar_content', true);
 	$page_title_bg = get_post_meta($post->ID, 'sf_page_title_bg', true);
 	$fancy_title_image = rwmb_meta('sf_page_title_image', 'type=image&size=full');
 	$page_title_text_style = get_post_meta($post->ID, 'sf_page_title_text_style', true);
-	$fancy_title_image_url = "";
+	$fancy_title_image_url = $share_image_url = "";
 	
 	if ($show_page_title == "") {
 		$show_page_title = $default_show_page_heading;
@@ -42,11 +45,12 @@
 
 <?php if (have_posts()) : the_post(); ?>
 	
-	<?php if ($show_page_title) { ?>	
+	<?php if ($show_page_title) { ?>
+	<div class="container">
 		<div class="row">
 			<?php if ($page_title_style == "fancy") { ?>
 			<?php if ($fancy_title_image_url != "") { ?>
-			<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);" data-stellar-background-ratio="0.5">
+			<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);">
 			<?php } else { ?>
 			<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
 			<?php } ?>
@@ -71,6 +75,7 @@
 			</div>
 			<?php } ?>
 		</div>
+	</div>
 	<?php } ?>
 	
 	<?php
@@ -95,19 +100,22 @@
 		$media_video = get_post_meta($post->ID, 'sf_detail_video_url', true);
 		$media_gallery = rwmb_meta( 'sf_detail_gallery', 'type=image&size=thumb-image-onecol' );
 		$media_slider = get_post_meta($post->ID, 'sf_detail_rev_slider_alias', true);
+		$media_layerslider = get_post_meta($post->ID, 'sf_detail_layer_slider_alias', true);
 		$custom_media = get_post_meta($post->ID, 'sf_custom_media', true);
 		}
 		
 		foreach ($media_image as $detail_image) {
 			$media_image_url = $detail_image['url'];
+			$share_image_url = $media_image_url;
 			break;
 		}
 										
 		if (!$media_image) {
 			$media_image = get_post_thumbnail_id();
 			$media_image_url = wp_get_attachment_url( $media_image, 'full' );
+			$share_image_url = $media_image_url;
 		}
-										
+												
 		// META VARIABLES
 		$media_width = 850;
 		$video_height = 638;
@@ -122,40 +130,49 @@
 	
 	<div class="full-width-display-wrap">
 	
-		<div class="portfolio-options-bar">
-			
-			<ul class="pagination-wrap bar-styling portfolio-pagination clearfix">
-				<li class="prev"><?php next_post_link('%link', '<i class="ss-navigateleft"></i>'); ?></li>
-				<?php if ($portfolio_page) { ?>
-				<li class="index"><a href="<?php echo get_permalink($portfolio_page); ?>"><i class="ss-layergroup"></i></a></li>
+		<div class="container">
+			<div class="portfolio-options-bar row">
+				
+				<ul class="pagination-wrap bar-styling portfolio-pagination clearfix">
+					<li class="prev"><?php next_post_link('%link', '<i class="ss-navigateleft"></i>'); ?></li>
+					<?php if ($portfolio_page) { ?>
+					<li class="index"><a href="<?php echo get_permalink($portfolio_page); ?>"><i class="ss-layergroup"></i></a></li>
+					<?php } ?>
+					<li class="next"><?php previous_post_link('%link', '<i class="ss-navigateright"></i>'); ?></li>
+				</ul>
+				
+				<?php if ($show_social) { ?>
+				
+				<div class="share-links clearfix">
+					<ul class="bar-styling">
+						<li class="sf-love">
+							<div class="comments-likes">
+							<?php if (function_exists( 'lip_love_it_link' )) {
+								echo lip_love_it_link(get_the_ID(), '<i class="ss-heart"></i>', '<i class="ss-heart"></i>', false);
+							} ?>
+							</div>
+						</li>
+					    <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="product_share_facebook" onclick="javascript:window.open(this.href,
+					      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"><i class="fa-facebook"></i></a></li>
+					    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" onclick="javascript:window.open(this.href,
+					      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i></a></li>   
+					    <li class="google-plus"><a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
+					      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i></a></li>
+					    <?php if ($share_image_url != "") { ?>
+					    <li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo $share_image_url; ?>&description=<?php echo $page_title; ?>" onclick="javascript:window.open(this.href,
+					      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i></a></li>
+					    <?php } else { ?>
+					    <li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&description=<?php echo $page_title; ?>" onclick="javascript:window.open(this.href,
+					      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i></a></li>
+					    <?php } ?>
+					    <li class="mail"><a href="mailto:?subject=<?php echo $page_title; ?>&body=<?php echo strip_tags(get_the_excerpt()); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i></a></li>
+					</ul>						
+				</div>
+				
 				<?php } ?>
-				<li class="next"><?php previous_post_link('%link', '<i class="ss-navigateright"></i>'); ?></li>
-			</ul>
-			
-			<?php if ($show_social) { ?>
-			
-			<div class="share-links clearfix">
-				<ul class="bar-styling">
-					<li class="sf-love">
-						<div class="comments-likes">
-						<?php if (function_exists( 'lip_love_it_link' )) {
-							echo lip_love_it_link(get_the_ID(), '<i class="ss-heart"></i>', '<i class="ss-heart"></i>', false);
-						} ?>
-						</div>
-					</li>
-				    <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="product_share_facebook" onclick="javascript:window.open(this.href,
-				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"><i class="fa-facebook"></i></a></li>
-				    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
-				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i></a></li>   
-				    <li class="google-plus"><a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
-				      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i></a></li>
-				    <li class="mail"><a href="mailto:?subject=<?php the_title(); ?>&body=<?php echo strip_tags(get_the_excerpt()); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i></a></li>
-				</ul>						
 			</div>
-			
-			<?php } ?>
 		</div>
-							
+									
 		<figure class="media-wrap fw-media-wrap">
 				
 		<?php if ($media_type == "video") { ?>
@@ -169,7 +186,12 @@
 				<ul class="slides">
 						
 				<?php foreach ( $media_gallery as $image ) {
-			    	echo "<li><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' /></li>";
+					echo "<li>";
+					if (!empty($image['caption'])) {
+					echo "<p class='flex-caption'>{$image['caption']}</p>";
+					}
+					echo "<img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' />";
+					echo "</li>";
 				} ?>
 															
 				</ul>
@@ -180,8 +202,16 @@
 			
 			<div class="layerslider">
 				
-				<?php echo do_shortcode('[rev_slider '.$media_slider.']'); ?>
-			
+				<?php if ($media_slider != "") {
+				
+						echo do_shortcode('[rev_slider '.$media_slider.']');
+					
+					} else {
+					
+						echo do_shortcode('[layerslider id="'.$media_layerslider.'"]');
+						
+					} ?>
+				
 			</div>
 				
 		<?php } else if ($media_type == "custom") {
@@ -191,10 +221,10 @@
 		} else { ?>
 			
 			<?php 
-				if ($media_type == "image" && $media_img_url == "") {
-					$media_img_url = "default";
+				if ($media_type == "image" && $media_image_url == "") {
+					$media_image_url = "default";
 				}
-				$detail_image = aq_resize( $media_image_url, $media_width, $media_height, true, false);
+				$detail_image = sf_aq_resize( $media_image_url, $media_width, $media_height, true, false);
 			?>
 			
 			<?php if ($detail_image) { ?>
@@ -210,8 +240,13 @@
 	</div>
 		
 	<?php } ?>
-		
-	<div class="inner-page-wrap row clearfix">
+	
+	
+	<?php if ($pb_active != "true" || ($pb_active == "true" && $fw_media_display == "standard")) { ?>
+		<div class="container">
+	<?php } ?>
+	
+	<div class="inner-page-wrap has-no-sidebar portfolio-type-<?php echo $fw_media_display; ?> row clearfix">
 			
 		<!-- OPEN article -->
 		<article <?php post_class('portfolio-article col-sm-12 clearfix'); ?> id="<?php the_ID(); ?>" itemscope itemtype="http://schema.org/CreativeWork">
@@ -224,33 +259,58 @@
 										
 					<?php if (!$hide_details) { ?>
 					
-					<section class="portfolio-detail-description col-sm-9">
-						<div class="body-text clearfix" itemprop="description">
-							<?php the_content(); ?>
+						<?php if ($pb_active == "true") { ?>
+						<div class="container">
+						<?php } ?>
+						
+						<section class="portfolio-detail-description col-sm-9">
+							<div class="body-text clearfix" itemprop="description">
+								<?php the_content(); ?>
+							</div>
+						</section>
+						
+						<?php if ($pb_active == "true") { ?>
 						</div>
-					</section>
+						<?php } ?>
 					
-					<div class="portfolio-details-wrap col-sm-3">
-						<div class="date updated">
-							<?php echo get_the_date();?>
+						<?php if ($enable_portfolio_stickydetails) { ?>
+						<div class="portfolio-details-wrap sticky-details col-sm-3">
+						<?php } else { ?>
+						<div class="portfolio-details-wrap col-sm-3">
+						<?php } ?>
+							<?php if ($item_sidebar_content != "") { ?>
+							<div class="sidebar-content">
+								<?php echo do_shortcode($item_sidebar_content); ?>
+							</div>
+							<?php } ?>
+							<div class="date updated">
+								<?php echo get_the_date();?>
+							</div>
+							<?php if ($item_link) { ?>
+							<a class="item-link" href="<?php echo $item_link; ?>" target="_blank"><i class="ss-link"></i><?php _e("View Project", "swiftframework"); ?></a>
+							<?php } ?>
+							<?php if ($item_categories != "") { ?>
+							<ul class="portfolio-categories">
+								<?php echo $item_categories; ?>
+							</ul>
+							<?php } ?>
 						</div>
-						<?php if ($item_link) { ?>
-						<a class="item-link" href="<?php echo $item_link; ?>" target="_blank"><i class="ss-link"></i><?php _e("View Project", "swiftframework"); ?></a>
-						<?php } ?>
-						<?php if ($item_categories != "") { ?>
-						<ul class="portfolio-categories">
-							<?php echo $item_categories; ?>
-						</ul>
-						<?php } ?>
-					</div>
 					
 					<?php } else { ?>
 					
-					<section class="portfolio-detail-description col-sm-12">
-						<div class="body-text clearfix" itemprop="description">
-							<?php the_content(); ?>
+						<?php if ($pb_active != "true" || ($pb_active == "true" && $fw_media_display == "standard")) { ?>
+						<div class="container">
+						<?php } ?>
+						
+						<section class="portfolio-detail-description col-sm-12">
+							<div class="body-text clearfix" itemprop="description">
+								<?php the_content(); ?>
+							</div>
+						</section>
+						
+						<?php if ($pb_active != "true" || ($pb_active == "true" && $fw_media_display == "standard")) { ?>
 						</div>
-					</section>
+						<?php } ?>
 					
 					<?php } ?>
 					
@@ -280,12 +340,19 @@
 								</div>
 							</li>
 							<li class="facebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="product_share_facebook" onclick="javascript:window.open(this.href,
-							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"><i class="fa-facebook"></i></a></li>
-							<li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
-							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i></a></li>   
+							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"><i class="fa-facebook"></i></a></li>
+							<li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" onclick="javascript:window.open(this.href,
+							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i></a></li>   
 							<li class="google-plus"><a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
 							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i></a></li>
-							<li class="mail"><a href="mailto:?subject=<?php the_title(); ?>&body=<?php echo strip_tags(get_the_excerpt()); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i></a></li>
+							<?php if ($share_image_url != "") { ?>
+							<li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo $share_image_url; ?>&description=<?php echo $page_title; ?>" onclick="javascript:window.open(this.href,
+							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i></a></li>
+							<?php } else { ?>
+							<li class="pinterest"><a href="//pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&description=<?php echo $page_title; ?>" onclick="javascript:window.open(this.href,
+							  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i></a></li>
+							<?php } ?>
+							<li class="mail"><a href="mailto:?subject=<?php echo $page_title; ?>&body=<?php echo strip_tags(get_the_excerpt()); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i></a></li>
 						</ul>						
 					</div>
 					
@@ -312,7 +379,12 @@
 								<ul class="slides">
 										
 								<?php foreach ( $media_gallery as $image ) {
-							    	echo "<li><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' /></li>";
+							    	echo "<li>";
+							    	if (!empty($image['caption'])) {
+							    	echo "<p class='flex-caption'>{$image['caption']}</p>";
+							    	}
+							    	echo "<img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' />";
+							    	echo "</li>";
 								} ?>
 																			
 								</ul>
@@ -334,11 +406,11 @@
 						} else { ?>
 							
 							<?php 
-								if ($media_type == "image" && $media_img_url == "") {
-									$media_img_url = "default";
+								if ($media_type == "image" && $media_image_url == "") {
+									$media_image_url = "default";
 								}
 								
-								$detail_image = aq_resize( $media_image_url, $media_width, $media_height, true, false); 
+								$detail_image = sf_aq_resize( $media_image_url, $media_width, $media_height, true, false); 
 							?>
 							
 							<?php if ($detail_image) { ?>
@@ -354,7 +426,7 @@
 					<?php } ?>
 					
 					<?php if ($media_type != "none" && $fw_media_display == "split") { ?>
-						
+					
 					<section class="article-body-wrap col-sm-3">
 					
 						<section class="portfolio-detail-description">
@@ -369,6 +441,11 @@
 						<?php if (!$hide_details) { ?>
 						
 						<div class="portfolio-details-wrap">
+							<?php if ($item_sidebar_content != "") { ?>
+							<div class="sidebar-content">
+								<?php echo do_shortcode($item_sidebar_content); ?>
+							</div>
+							<?php } ?>
 							<div class="date updated">
 								<?php echo get_the_date();?>
 							</div>
@@ -398,21 +475,6 @@
 							</div>
 						</section>
 						
-						<?php if (!$hide_details) { ?>
-						
-						<div class="portfolio-details-wrap">
-							<div class="date updated">
-								<?php echo get_the_date();?>
-							</div>
-							<?php if ($item_categories != "") { ?>
-							<ul class="portfolio-categories">
-								<?php echo $item_categories; ?>
-							</ul>
-							<?php } ?>
-						</div>
-						
-						<?php } ?>
-						
 					</section>
 					
 					<?php } else if ($fw_media_display == "standard") { ?>
@@ -427,7 +489,17 @@
 						</section>
 					</section>
 					
+					<?php if ($enable_portfolio_stickydetails) { ?>
+					<div class="portfolio-details-wrap sticky-details col-sm-3">
+					<?php } else { ?>
 					<div class="portfolio-details-wrap col-sm-3">
+					<?php } ?>
+					
+						<?php if ($item_sidebar_content != "") { ?>
+						<div class="sidebar-content">
+							<?php echo do_shortcode($item_sidebar_content); ?>
+						</div>
+						<?php } ?>
 						<div class="date updated">
 							<?php echo get_the_date();?>
 						</div>
@@ -481,6 +553,10 @@
 				if ($related->have_posts()) { 
 			?>
 			
+			<?php if ($pb_active == "true" && !($pb_active == "true" && $fw_media_display == "standard")) { ?>
+				<div class="container">
+			<?php } ?>
+			
 			<div class="related-projects clearfix">
 				
 				<h3 class="spb-heading"><span><?php _e("Related Projects", "swiftframework"); ?></span></h3>
@@ -498,7 +574,7 @@
 				    		if ($thumb_img_url == "") {
 				    			$thumb_img_url = "default";
 				    		}
-				    		$image = aq_resize( $thumb_img_url, 300, 225, true, false);
+				    		$image = sf_aq_resize( $thumb_img_url, 300, 225, true, false);
 				    	?>
 				    	
 				        <li class="col-sm-3">
@@ -518,13 +594,21 @@
 				
 			</div>
 			
+			<?php if ($pb_active == "true" && !($pb_active == "true" && $fw_media_display == "standard")) { ?>
+				</div>
+			<?php } ?>
+			
 			<?php } ?>		
 					
 		<!-- CLOSE article -->
 		</article>
 	
 	</div>
-
+	
+	<?php if ($pb_active != "true" || ($pb_active == "true" && $fw_media_display == "standard")) { ?>
+		</div>
+	<?php } ?>
+	
 <?php endif; ?>
 
 <!--// WordPress Hook //-->

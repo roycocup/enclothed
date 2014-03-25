@@ -5,7 +5,7 @@
 	*	Swift Framework Media Functions
 	*	------------------------------------------------
 	*	Swift Framework v2.0
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_return_slider()
 	*	sf_video_embed()
@@ -179,7 +179,7 @@
 					
 					if (!$caption_position) { $caption_position = "caption-right"; }
 					
-					$image = aq_resize( $media_image_url, 1920, NULL, true, false);
+					$image = sf_aq_resize( $media_image_url, 1920, NULL, true, false);
 							  
 					$output .= '<li>'. "\n";
 					$output .= '<div class="slide-caption-container">'. "\n";

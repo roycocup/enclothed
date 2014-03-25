@@ -23,39 +23,97 @@
 	sf_set_sidebar_global($sidebar_config);
 
 ?>
-
-<div class="row">
-	<div class="page-heading col-sm-12 clearfix alt-bg <?php echo $default_page_heading_bg_alt; ?>">
-		<div class="heading-text">
-		<?php $allsearch = new WP_Query("s=$s&showposts=-1"); $key = esc_html($s, 1); $count = $allsearch->post_count; _e('', "swiftframework"); wp_reset_query(); ?>
-		<?php if ($count == 1) : ?>
-			<?php printf(__('<h1>%1$s result for <span>%2$s</span></h1>', 'swiftframework'), $count, $key ); ?>
-		<?php else : ?>
-			<?php printf(__('<h1>%1$s results for <span>%2$s</span></h1>', 'swiftframework'), $count, $key ); ?>	
-		<?php endif; ?>
+<div class="container">
+	<div class="row">
+		<div class="page-heading col-sm-12 clearfix alt-bg <?php echo $default_page_heading_bg_alt; ?>">
+			<div class="heading-text">
+			<?php $allsearch = new WP_Query("s=$s&showposts=-1"); $key = esc_html($s, 1); $count = $allsearch->post_count; _e('', "swiftframework"); wp_reset_query(); ?>
+			<?php if ($count == 1) : ?>
+				<?php printf(__('<h1>%1$s result for <span>%2$s</span></h1>', 'swiftframework'), $count, $key ); ?>
+			<?php else : ?>
+				<?php printf(__('<h1>%1$s results for <span>%2$s</span></h1>', 'swiftframework'), $count, $key ); ?>	
+			<?php endif; ?>
+			</div>
+			<?php 
+				// BREADCRUMBS
+				echo sf_breadcrumbs();
+			?>
 		</div>
-		<?php 
-			// BREADCRUMBS
-			echo sf_breadcrumbs();
-		?>
 	</div>
 </div>
 
-<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
+<div class="container">
 
-	<!-- OPEN page -->
-	<?php if ($sidebar_config == "left-sidebar" || $sidebar_config == "right-sidebar") { ?>
-	<div class="archive-page col-sm-8 clearfix">
-	<?php } else if ($sidebar_config == "both-sidebars") { ?>
-	<div class="archive-page col-sm-9 clearfix">
-	<?php } else { ?>
-	<div class="archive-page clearfix">
-	<?php } ?>
+	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
 	
-		<?php if ($sidebar_config == "both-sidebars") { ?>
-		<div class="row">
-			<div class="page-content col-sm-8 clearfix">
+		<!-- OPEN page -->
+		<?php if ($sidebar_config == "left-sidebar" || $sidebar_config == "right-sidebar") { ?>
+		<div class="archive-page col-sm-8 clearfix">
+		<?php } else if ($sidebar_config == "both-sidebars") { ?>
+		<div class="archive-page col-sm-9 clearfix">
+		<?php } else { ?>
+		<div class="archive-page clearfix">
+		<?php } ?>
+		
+			<?php if ($sidebar_config == "both-sidebars") { ?>
+			<div class="row">
+				<div class="page-content col-sm-8 clearfix">
+				
+					<?php if(have_posts()) : ?>
+						
+						<div class="blog-wrap">
+						
+							<!-- OPEN .blog-items -->
+							<ul class="blog-items row search-items clearfix">
+					
+							<?php while (have_posts()) : the_post(); ?>
+					
+								<?php 
+									$post_format = get_post_format($post->ID);
+									if ( $post_format == "" ) {
+										$post_format = 'standard';
+									} 
+								?>
+								<li <?php post_class('blog-item col-sm-12 format-'.$post_format); ?>>
+									<?php echo sf_get_search_item($post->ID); ?>
+								</li>
+					
+							<?php endwhile; ?>
+									
+							<!-- CLOSE .blog-items -->
+							</ul>
+						
+						</div>
+						
+					<?php else: ?>
+					
+					<h3><?php _e("Sorry, there are no posts to display.", "swiftframework"); ?></h3>
+					
+					<div class="no-results-text">
+						<p><?php _e("Please use the form below to search again.", "swiftframework"); ?></p>
+						<form method="get" class="search-form" action="<?php echo home_url(); ?>/">
+							<input type="text" placeholder="<?php _e("Search", "swiftframework"); ?>" name="s" />
+						</form>
+						<p><?php _e("Alternatively, you can browse the sitemap below.", "swiftframework"); ?></p>
+						<?php echo do_shortcode('[sf_sitemap]'); ?>
+					</div>
+						
+					<?php endif; ?>
+					
+					<div class="pagination-wrap">
+						<?php echo pagenavi($wp_query); ?>									
+					</div>
+					
+				</div>
+					
+				<aside class="sidebar left-sidebar col-sm-4">
+					<?php dynamic_sidebar($left_sidebar); ?>
+				</aside>
+			</div>
+			<?php } else { ?>
 			
+			<div class="page-content clearfix">
+	
 				<?php if(have_posts()) : ?>
 					
 					<div class="blog-wrap">
@@ -79,9 +137,9 @@
 								
 						<!-- CLOSE .blog-items -->
 						</ul>
-					
+						
 					</div>
-					
+				
 				<?php else: ?>
 				
 				<h3><?php _e("Sorry, there are no posts to display.", "swiftframework"); ?></h3>
@@ -94,7 +152,7 @@
 					<p><?php _e("Alternatively, you can browse the sitemap below.", "swiftframework"); ?></p>
 					<?php echo do_shortcode('[sf_sitemap]'); ?>
 				</div>
-					
+				
 				<?php endif; ?>
 				
 				<div class="pagination-wrap">
@@ -102,88 +160,35 @@
 				</div>
 				
 			</div>
-				
+			
+			<?php } ?>	
+		
+		<!-- CLOSE page -->
+		</div>
+		
+		<?php if ($sidebar_config == "left-sidebar") { ?>
+			
 			<aside class="sidebar left-sidebar col-sm-4">
 				<?php dynamic_sidebar($left_sidebar); ?>
 			</aside>
-		</div>
-		<?php } else { ?>
-		
-		<div class="page-content clearfix">
-
-			<?php if(have_posts()) : ?>
-				
-				<div class="blog-wrap">
-				
-					<!-- OPEN .blog-items -->
-					<ul class="blog-items row search-items clearfix">
-			
-					<?php while (have_posts()) : the_post(); ?>
-			
-						<?php 
-							$post_format = get_post_format($post->ID);
-							if ( $post_format == "" ) {
-								$post_format = 'standard';
-							} 
-						?>
-						<li <?php post_class('blog-item col-sm-12 format-'.$post_format); ?>>
-							<?php echo sf_get_search_item($post->ID); ?>
-						</li>
-			
-					<?php endwhile; ?>
-							
-					<!-- CLOSE .blog-items -->
-					</ul>
-					
-				</div>
-			
-			<?php else: ?>
-			
-			<h3><?php _e("Sorry, there are no posts to display.", "swiftframework"); ?></h3>
-			
-			<div class="no-results-text">
-				<p><?php _e("Please use the form below to search again.", "swiftframework"); ?></p>
-				<form method="get" class="search-form" action="<?php echo home_url(); ?>/">
-					<input type="text" placeholder="<?php _e("Search", "swiftframework"); ?>" name="s" />
-				</form>
-				<p><?php _e("Alternatively, you can browse the sitemap below.", "swiftframework"); ?></p>
-				<?php echo do_shortcode('[sf_sitemap]'); ?>
-			</div>
-			
-			<?php endif; ?>
-			
-			<div class="pagination-wrap">
-				<?php echo pagenavi($wp_query); ?>									
-			</div>
-			
-		</div>
-		
-		<?php } ?>	
 	
-	<!-- CLOSE page -->
+		<?php } else if ($sidebar_config == "right-sidebar") { ?>
+			
+			<aside class="sidebar right-sidebar col-sm-4">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
+			
+		<?php } else if ($sidebar_config == "both-sidebars") { ?>
+	
+			
+			<aside class="sidebar right-sidebar col-sm-3">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
+		
+		<?php } ?>
+			
 	</div>
-	
-	<?php if ($sidebar_config == "left-sidebar") { ?>
-		
-		<aside class="sidebar left-sidebar col-sm-4">
-			<?php dynamic_sidebar($left_sidebar); ?>
-		</aside>
 
-	<?php } else if ($sidebar_config == "right-sidebar") { ?>
-		
-		<aside class="sidebar right-sidebar col-sm-4">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
-		
-	<?php } else if ($sidebar_config == "both-sidebars") { ?>
-
-		
-		<aside class="sidebar right-sidebar col-sm-3">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
-	
-	<?php } ?>
-		
 </div>
 
 <!--// WordPress Hook //-->

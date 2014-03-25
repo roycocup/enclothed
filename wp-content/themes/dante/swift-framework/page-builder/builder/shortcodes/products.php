@@ -32,10 +32,10 @@ class SwiftPageBuilderShortcode_spb_products_mini extends SwiftPageBuilderShortc
     		    		
 			/* PRODUCT ITEMS
 			================================================== */	
-			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			if (sf_woocommerce_activated()) {
 			$items = sf_mini_product_items($asset_type, $category, $item_count, $sidebars, $width);
     		} else {
-    		$items = __("Please install/active WooCommerce.", "swift-page-builder");
+    		$items = __("Please install/activate WooCommerce.", "swift-framework-admin");
     		}
     		
     		$el_class = $this->getExtraClass($el_class);
@@ -59,53 +59,53 @@ class SwiftPageBuilderShortcode_spb_products_mini extends SwiftPageBuilderShortc
 }
 
 SPBMap::map( 'spb_products_mini', array(
-    "name"		=> __("Products (Mini)", "swift-page-builder"),
+    "name"		=> __("Products (Mini)", "swift-framework-admin"),
     "base"		=> "spb_products_mini",
     "class"		=> "spb-products-mini",
     "icon"      => "spb-icon-products-mini",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "dropdown",
-	        "heading" => __("Asset type", "swift-page-builder"),
+	        "heading" => __("Asset type", "swift-framework-admin"),
 	        "param_name" => "asset_type",
 	        "value" => array(
-	        	__('Best Sellers', "swift-page-builder") => "best-sellers",
-	        	__('Latest Products', "swift-page-builder") => "latest-products",
-	        	__('Top Rated', "swift-page-builder") => "top-rated",
-	        	__('Sale Products', "swift-page-builder") => "sale-products",
-	        	__('Recently Viewed', "swift-page-builder") => "recently-viewed",
-	        	__('Featured Products', "swift-page-builder") => "featured-products"
+	        	__('Best Sellers', "swift-framework-admin") => "best-sellers",
+	        	__('Latest Products', "swift-framework-admin") => "latest-products",
+	        	__('Top Rated', "swift-framework-admin") => "top-rated",
+	        	__('Sale Products', "swift-framework-admin") => "sale-products",
+	        	__('Recently Viewed', "swift-framework-admin") => "recently-viewed",
+	        	__('Featured Products', "swift-framework-admin") => "featured-products"
 	        	),
-	        "description" => __("Select the order of the products you'd like to show.", "swift-page-builder")
+	        "description" => __("Select the order of the products you'd like to show.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Product category", "swift-page-builder"),
+	        "heading" => __("Product category", "swift-framework-admin"),
 	        "param_name" => "category",
 	        "value" => "",
-	        "description" => __("Optionally, provide the category slugs for the products you want to show (comma seperated). i.e. trainer,dress,bag.", "swift-page-builder")
+	        "description" => __("Optionally, provide the category slugs for the products you want to show (comma seperated). i.e. trainer,dress,bag.", "swift-framework-admin")
 	    ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "4",
-            "description" => __("The number of products to show.", "swift-page-builder")
+            "description" => __("The number of products to show.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );
@@ -132,10 +132,10 @@ class SwiftPageBuilderShortcode_spb_products extends SwiftPageBuilderShortcode {
 	   	    		
 			/* PRODUCT ITEMS
 			================================================== */	
-    		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    		if (sf_woocommerce_activated()) {
 			$items = sf_product_items($asset_type, $category, $carousel, $product_size, $item_count, $width);
     		} else {
-    		$items = __("Please install/active WooCommerce.", "swift-page-builder");
+    		$items = __("Please install/activate WooCommerce.", "swift-framework-admin");
     		}
     		
     		$el_class = $this->getExtraClass($el_class);
@@ -165,73 +165,73 @@ class SwiftPageBuilderShortcode_spb_products extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'spb_products', array(
-    "name"		=> __("Products", "swift-page-builder"),
+    "name"		=> __("Products", "swift-framework-admin"),
     "base"		=> "spb_products",
     "class"		=> "spb-products",
     "icon"      => "spb-icon-products",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "dropdown",
-	        "heading" => __("Asset type", "swift-page-builder"),
+	        "heading" => __("Asset type", "swift-framework-admin"),
 	        "param_name" => "asset_type",
 	        "value" => array(
-	        	__('Best Sellers', "swift-page-builder") => "best-sellers",
-	        	__('Latest Products', "swift-page-builder") => "latest-products",
-	        	__('Top Rated', "swift-page-builder") => "top-rated",
-	        	__('Sale Products', "swift-page-builder") => "sale-products",
-	        	__('Recently Viewed', "swift-page-builder") => "recently-viewed",
-	        	__('Featured Products', "swift-page-builder") => "featured-products"
+	        	__('Best Sellers', "swift-framework-admin") => "best-sellers",
+	        	__('Latest Products', "swift-framework-admin") => "latest-products",
+	        	__('Top Rated', "swift-framework-admin") => "top-rated",
+	        	__('Sale Products', "swift-framework-admin") => "sale-products",
+	        	__('Recently Viewed', "swift-framework-admin") => "recently-viewed",
+	        	__('Featured Products', "swift-framework-admin") => "featured-products"
 	        	),
-	        "description" => __("Select the order of products you'd like to show.", "swift-page-builder")
+	        "description" => __("Select the order of products you'd like to show.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Product category", "swift-page-builder"),
+	        "heading" => __("Product category", "swift-framework-admin"),
 	        "param_name" => "category",
 	        "value" => "",
-	        "description" => __("Optionally, provide the category slugs for the products you want to show (comma seperated). i.e. trainer,dress,bag.", "swift-page-builder")
+	        "description" => __("Optionally, provide the category slugs for the products you want to show (comma seperated). i.e. trainer,dress,bag.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "dropdown",
-	        "heading" => __("Carousel", "swift-page-builder"),
+	        "heading" => __("Carousel", "swift-framework-admin"),
 	        "param_name" => "carousel",
 	        "value" => array(
-	        	__('Yes', "swift-page-builder") => "yes",
-	        	__('No', "swift-page-builder") => "no",
+	        	__('Yes', "swift-framework-admin") => "yes",
+	        	__('No', "swift-framework-admin") => "no",
 	        	),
-	        "description" => __("Select if you'd like the asset to be a carousel.", "swift-page-builder")
+	        "description" => __("Select if you'd like the asset to be a carousel.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "dropdown",
-	        "heading" => __("Product Size", "swift-page-builder"),
+	        "heading" => __("Product Size", "swift-framework-admin"),
 	        "param_name" => "product_size",
 	        "value" => array(
-	        	__('Standard', "swift-page-builder") => "standard",
-	        	__('Mini', "swift-page-builder") => "mini",
+	        	__('Standard', "swift-framework-admin") => "standard",
+	        	__('Mini', "swift-framework-admin") => "mini",
 	        	),
-	        "description" => __("Select whether you would like the product size to be standard, or mini. Mini shows 6 products in a row on a page with no sidebars.", "swift-page-builder")
+	        "description" => __("Select whether you would like the product size to be standard, or mini. Mini shows 6 products in a row on a page with no sidebars.", "swift-framework-admin")
 	    ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "8",
-            "description" => __("The number of products to show.", "swift-page-builder")
+            "description" => __("The number of products to show.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

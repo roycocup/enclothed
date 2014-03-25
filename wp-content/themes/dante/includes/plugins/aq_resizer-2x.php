@@ -1,5 +1,6 @@
 <?php
-function aq_resize( $url, $width, $height = null, $crop = null, $single = true ) {
+if (!function_exists('sf_aq_resize')) {
+function sf_aq_resize( $url, $width, $height = null, $crop = null, $single = true ) {
 
 	//screen is 2x so double the size of images
 	$width = $width * 2;
@@ -143,5 +144,6 @@ function aq_resize( $url, $width, $height = null, $crop = null, $single = true )
 	}
 	
 	return $image;
+}
 }
 ?>

@@ -4,7 +4,7 @@
 	*	Swift Page Builder - Raw Content Shortcodes Config
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -16,7 +16,7 @@
 	        $old_names = array('yellow_message', 'blue_message', 'green_message', 'button_green', 'button_grey', 'button_yellow', 'button_blue', 'button_red', 'button_orange');
 	        $new_names = array('alert-block', 'alert-info', 'alert-success', 'btn-success', 'btn', 'btn-info', 'btn-primary', 'btn-danger', 'btn-warning');
 	        $value = str_ireplace($old_names, $new_names, $value);
-	        //$value = __($value, "swift-page-builder");
+	        //$value = __($value, "swift-framework-admin");
 	        //
 	        $param_name = isset($param['param_name']) ? $param['param_name'] : '';
 	        $type = isset($param['type']) ? $param['type'] : '';
@@ -27,7 +27,7 @@
 	        }
 	        else {
 	            if($param['type'] == 'textarea_raw_html')
-	                $output .= '<'.$param['holder'].' class="spb_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '">'.htmlentities(base64_decode(strip_tags($value))).'</'.$param['holder'].'><input type="hidden" name="' . $param_name . '_code" class="' . $param_name . '_code" value="' .strip_tags($value) . '" />';
+	                $output .= '<'.$param['holder'].' class="spb_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '">'.htmlentities(rawurldecode(base64_decode(strip_tags($value))), ENT_COMPAT, 'UTF-8' ).'</'.$param['holder'].'><input type="hidden" name="' . $param_name . '_code" class="' . $param_name . '_code" value="' .strip_tags($value) . '" />';
 	            else
 	                $output .= '<'.$param['holder'].' class="spb_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '">'.$value.'</'.$param['holder'].'>';
 	        }
@@ -48,7 +48,7 @@
 	        $el_class = $this->getExtraClass($el_class);
 	        $width = spb_translateColumnWidthToSpan($width);
 	        $el_class .= ' spb_raw_html';
-	        $content =  base64_decode(strip_tags($content));
+	        $content =  rawurldecode(base64_decode(strip_tags($content)));
 	        $output .= "\n\t".'<div class="spb_content_element '.$width.$el_class.'">';
 	        $output .= "\n\t\t".'<div class="spb_wrapper">';
 	        $output .= "\n\t\t\t".$content;
@@ -62,7 +62,7 @@
 	}
 	
 	SPBMap::map( 'spb_raw_html', array(
-		"name"		=> __("Raw HTML", "swift-page-builder"),
+		"name"		=> __("Raw HTML", "swift-framework-admin"),
 		"base"		=> "spb_raw_html",
 		"class"		=> "div",
 		"icon"      => "spb-icon-raw-html",
@@ -73,10 +73,10 @@
 				"type" => "textarea_raw_html",
 				"holder" => "div",
 				"class" => "",
-				"heading" => __("Raw HTML", "swift-page-builder"),
+				"heading" => __("Raw HTML", "swift-framework-admin"),
 				"param_name" => "content",
 				"value" => base64_encode("<p>This is a raw html block.<br/>Click the edit button to change this html.</p>"),
-				"description" => __("Enter your HTML content.", "swift-page-builder")
+				"description" => __("Enter your HTML content.", "swift-framework-admin")
 			),
 		)
 	) );
@@ -113,7 +113,7 @@
 	}
 	
 	SPBMap::map( 'spb_raw_js', array(
-		"name"		=> __("Raw JS", "swift-page-builder"),
+		"name"		=> __("Raw JS", "swift-framework-admin"),
 		"base"		=> "spb_raw_js",
 		"class"		=> "div",
 		"icon"      => "spb-icon-raw-javascript",
@@ -124,10 +124,10 @@
 				"type" => "textarea_raw_html",
 				"holder" => "div",
 				"class" => "",
-				"heading" => __("Raw js", "swift-page-builder"),
+				"heading" => __("Raw js", "swift-framework-admin"),
 				"param_name" => "content",
-				"value" => __(base64_encode("alert('Enter your js here!');"), "swift-page-builder"),
-				"description" => __("Enter your Js.", "swift-page-builder")
+				"value" => __(base64_encode("alert('Enter your js here!');"), "swift-framework-admin"),
+				"description" => __("Enter your JavaScript or jQuery code here.", "swift-framework-admin")
 			),
 		)
 	) );

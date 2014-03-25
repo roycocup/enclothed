@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Blog Items Function Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_blog_items()
 	*	sf_blog_aux()
@@ -15,7 +15,7 @@
 	/* BLOG ITEMS
 	================================================== */ 
 	if (!function_exists('sf_blog_items')) {
-		function sf_blog_items($blog_type, $masonry_effect_type, $show_title, $show_excerpt, $show_details, $excerpt_length, $content_output, $show_read_more, $item_count, $category, $exclude_categories, $pagination, $sidebar_config, $width, $offset) {
+		function sf_blog_items($blog_type, $masonry_effect_type, $show_title, $show_excerpt, $show_details, $excerpt_length, $content_output, $show_read_more, $item_count, $category, $exclude_categories, $pagination, $sidebar_config, $width, $offset, $posts_order) {
 		
 			$blog_items_output = "";
 			
@@ -38,8 +38,10 @@
 			
 			if ( get_query_var('paged') ) {
 			$paged = get_query_var('paged');
+			$offset = $offset + ($item_count * ($paged - 1));
 			} elseif ( get_query_var('page') ) {
 			$paged = get_query_var('page');
+			$offset = $offset + ($item_count * ($page - 1));
 			} else {
 			$paged = 1;
 			}
@@ -51,7 +53,8 @@
 				'category_name' => $category_slug,
 				'posts_per_page' => $item_count,
 				'cat' => '"'.$exclude_categories.'"',
-				'offset' => $offset
+				'offset' => $offset,
+				'order' => $posts_order
 				);
 				    		
 			$blog_items = new WP_Query( $blog_args );
@@ -60,7 +63,7 @@
 			/* LIST CLASS CONFIG
 			================================================== */ 
 			$list_class = $wrap_class = '';
-			if ($blog_type == "masonry") {
+			if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
 			$list_class .= 'masonry-items first-load grid '.$masonry_effect_type;
 			} else if ($blog_type == "mini") {
 			$list_class .= 'mini-items';
@@ -78,7 +81,7 @@
 			if ($blog_type == "standard") {
 				$blog_items_output .= '<div class="timeline"></div>';
 			}
-			if ($blog_type == "masonry") {
+			if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
 			$blog_items_output .= '<ul class="blog-items row '. $list_class .' clearfix" id="blogGrid">';
 			} else {
 			$blog_items_output .= '<ul class="blog-items row '. $list_class .' clearfix">';		
@@ -99,6 +102,8 @@
 					} else {
 					$item_class = "col-sm-4";
 					}
+				} else if ($blog_type == "masonry-fw") { 
+					$item_class = "col-sm-3";
 				} else {
 					$item_class = $width;
 				}
@@ -129,8 +134,19 @@
 				$blog_items_output .= pagenavi($blog_items);									
 				$blog_items_output .= '</div>';
 				
+			} else if ($pagination == "load-more") {
+				
+				global $sf_include_infscroll;
+				$sf_include_infscroll = true;	
+				
+				$blog_items_output .= '<a href="#" class="load-more-btn">'.__('Load More', 'swiftframework').'</a>';
+				
+				$blog_items_output .= '<div class="pagination-wrap load-more hidden">';
+				$blog_items_output .= pagenavi($blog_items);									
+				$blog_items_output .= '</div>';
+				
 			} else if ($pagination == "standard") {
-				if ($blog_type == "masonry") {
+				if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
 				$blog_items_output .= '<div class="pagination-wrap masonry-pagination">';
 				} else {
 				$blog_items_output .= '<div class="pagination-wrap">';
@@ -191,6 +207,7 @@
 			$blog_aux_output .= '</ul>'; // close .blog-aux-options
 			$blog_aux_output .= '</div>'; // close .blog-aux-wrap
 			
+			$blog_aux_output .= '<div class="container">';
 			$blog_aux_output .= '<div class="filter-wrap slideout-filter blog-filter-wrap row clearfix">'; // open .blog-filter-wrap
 			$blog_aux_output .= '<div class="filter-slide-wrap col-sm-12 alt-bg '.$filter_wrap_bg.'">';
 			
@@ -203,6 +220,7 @@
 			if ($archive_list != '') {  
 			    $blog_aux_output .= '<ul class="aux-list aux-archives row clearfix">'.$archive_list.'</ul>';  
 			}
+			$blog_aux_output .= '</div>';
 			
 			$blog_aux_output .='</div></div>'; // close .blog-filter-wrap
 			

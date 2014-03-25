@@ -1,10 +1,29 @@
 <wpml-config>  
+	<custom-types>
+		<custom-type translate="1">portfolio</custom-type>
+		<custom-type translate="1">clients</custom-type>
+		<custom-type translate="1">gallery</custom-type>
+		<custom-type translate="1">jobs</custom-type>
+		<custom-type translate="1">team</custom-type>
+		<custom-type translate="1">testimonials</custom-type>
+		<custom-type translate="1">faqs</custom-type>
+	</custom-types>
+	<taxonomies>
+		<taxonomy translate="1">portfolio-category</taxonomy>
+		<taxonomy translate="1">clients-category</taxonomy>
+		<taxonomy translate="1">gallery-category</taxonomy>
+		<taxonomy translate="1">jobs-category</taxonomy>
+		<taxonomy translate="1">team-category</taxonomy>
+		<taxonomy translate="1">testimonials-category</taxonomy>
+		<taxonomy translate="1">faqs-category</taxonomy>
+	</taxonomies>
     <admin-texts>
     	<key name="sf_dante_options">
 	        <key name="rss_feed_url" />
 	        <key name="tb_left_text" />
 	        <key name="tb_right_text" />
 	        <key name="tb_search_text" />
+	        <key name="header_left_text" />
 	        <key name="sub_code" />
 	        <key name="footer_copyright_text" />
 	        <key name="field1_text" />

@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Blog Shortcode
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 
@@ -16,7 +16,7 @@
 	        $title = '';
 	
 	        extract(shortcode_atts(array(
-	            'title' => __("Section", "swift-page-builder")
+	            'title' => __("Section", "swift-framework-admin")
 	        ), $atts));
 	
 	        $output = '';
@@ -35,7 +35,7 @@
 	
 	    public function contentAdmin( $atts, $content = null ) {
 	        $title = '';
-	        $defaults = array( 'title' => __('Section', 'swift-page-builder') );
+	        $defaults = array( 'title' => __('Section', 'swift-framework-admin') );
 	        extract( shortcode_atts( $defaults, $atts ) );
 	
 	        return '<div class="group">
@@ -90,12 +90,12 @@
 	        foreach ( $this->settings['params'] as $param ) {
 	            if ( $param['param_name'] != 'content' ) {
 	                if ( is_string($param['value']) ) {
-	                    $shortcode_attributes[$param['param_name']] = __($param['value'], "swift-page-builder");
+	                    $shortcode_attributes[$param['param_name']] = __($param['value'], "swift-framework-admin");
 	                } else {
 	                    $shortcode_attributes[$param['param_name']] = $param['value'];
 	                }
 	            } else if ( $param['param_name'] == 'content' && $content == NULL ) {
-	                $content = __($param['value'], "swift-page-builder");
+	                $content = __($param['value'], "swift-framework-admin");
 	            }
 	        }
 	        extract(shortcode_atts(
@@ -137,7 +137,7 @@
 	}
 	
 	SPBMap::map( 'spb_accordion', array(
-	    "name"		=> __("Accordion", "swift-page-builder"),
+	    "name"		=> __("Accordion", "swift-framework-admin"),
 	    "base"		=> "spb_accordion",
 	    "controls"	=> "full",
 	    "class"		=> "spb_accordion",
@@ -145,29 +145,29 @@
 	    "params"	=> array(
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Widget title", "swift-page-builder"),
+	            "heading" => __("Widget title", "swift-framework-admin"),
 	            "param_name" => "widget_title",
 	            "value" => "",
-	            "description" => __("What text use as widget title. Leave blank if no title is needed.", "swift-page-builder")
+	            "description" => __("What text use as widget title. Leave blank if no title is needed.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Active Section", "swift-page-builder"),
+	            "heading" => __("Active Section", "swift-framework-admin"),
 	            "param_name" => "active_section",
 	            "value" => "",
-	            "description" => __("You can set the section that is active here by entering the number of the section here. NOTE: The first section would be 0, second would be 1, and so on. Leave blank for all sections to be closed by default.", "swift-page-builder")
+	            "description" => __("You can set the section that is active here by entering the number of the section here. NOTE: The first section would be 0, second would be 1, and so on. Leave blank for all sections to be closed by default.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "custom_markup" => '
 		<div class="tab_controls">
-			<button class="add_tab">'.__("Add section", "swift-page-builder").'</button>
+			<button class="add_tab">'.__("Add section", "swift-framework-admin").'</button>
 		</div>
 	
 		<div class="spb_accordion_holder clearfix">

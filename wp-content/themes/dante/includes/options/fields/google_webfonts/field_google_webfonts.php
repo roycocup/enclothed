@@ -23,7 +23,7 @@ class Redux_Options_google_webfonts {
     */
     function render() {
     	$google_webfonts_url = "http://www.google.com/webfonts";
-        echo '<p class="description" style="color:red;">' . __('The fonts provided below are free to use custom fonts from the <a href="'.$google_webfonts_url.'" target="_blank">Google Web Fonts directory</a>', Redux_TEXT_DOMAIN) . '</p>';
+        //echo '<p class="description" style="color:red;">' . __('The fonts provided below are free to use custom fonts from the <a href="'.$google_webfonts_url.'" target="_blank">Google Web Fonts directory</a>', Redux_TEXT_DOMAIN) . '</p>';
 
         echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="font"  ' . 'value="' . esc_attr($this->value) . '" />';
 

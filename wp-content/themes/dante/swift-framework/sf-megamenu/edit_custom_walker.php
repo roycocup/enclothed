@@ -186,7 +186,57 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
 	                    <input type="checkbox" id="edit-menu-is-megamenu-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-is-megamenu[<?php echo $item_id; ?>]" name="menu-is-megamenu[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->ismegamenu ), 1, false ); ?> />
 	                </label>
 	            </p>
-	            --><?php
+	            -->
+	            <div class="sf-menu-options">
+		            <h4>Custom Menu Options</h4>
+		            
+		            <?php if ($depth == 0) { ?>
+		            
+		            <p class="field-custom description description-wide">
+		                <label for="edit-menu-is-naturalwidth-<?php echo $item_id; ?>"><?php _e( 'Natural Width Mega Menu', 'swift-framework-admin' ); ?><input type="checkbox" id="edit-menu-is-naturalwidth-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-is-naturalwidth[<?php echo $item_id; ?>]" name="menu-is-naturalwidth[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->isnaturalwidth ), 1, false ); ?> />
+		                </label>
+		            </p>
+		            <p class="field-custom description description-wide">
+		                <label for="edit-menu-is-altstyle-<?php echo $item_id; ?>"><?php _e( 'Alternative Style Mega Menu', 'swift-framework-admin' ); ?><input type="checkbox" id="edit-menu-is-altstyle-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-is-altstyle[<?php echo $item_id; ?>]" name="menu-is-altstyle[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->altstyle ), 1, false ); ?> />
+		                </label>
+		            </p>
+		            <p class="field-custom description description-wide">
+		                <label for="edit-menu-hideheadings-<?php echo $item_id; ?>"><?php _e( 'Hide Mega Menu Headings', 'swift-framework-admin' ); ?><input type="checkbox" id="edit-menu-hideheadings-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-hideheadings[<?php echo $item_id; ?>]" name="menu-hideheadings[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->hideheadings ), 1, false ); ?> />
+		                </label>
+		            </p>
+		            
+		            <?php } ?>
+		            
+		            <p class="field-custom description description-wide">
+		                 <label for="edit-menu-item-icon-<?php echo $item_id; ?>"><?php _e( 'Menu Icon (Gizmo / Font Awesome)', 'swift-framework-admin' ); ?><input type="text" id="edit-menu-item-icon-<?php echo $item_id; ?>" class="widefat edit-menu-item-custom" name="menu-item-icon[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->menuicon ); ?>" />
+		                 </label>
+		             </p>
+		             
+		             <?php if ($depth == 1) { ?>
+		             
+		             <p class="field-custom description description-wide">
+		                 <label for="edit-menu-megatitle-<?php echo $item_id; ?>"><?php _e( 'Mega Menu No Link Title', 'swift-framework-admin' ); ?><input type="checkbox" id="edit-menu-megatitle-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-megatitle[<?php echo $item_id; ?>]" name="menu-megatitle[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->megatitle ), 1, false ); ?> />
+		                 </label>
+		             </p>
+		             
+		             <p class="field-custom description description-wide">
+		                  <label for="edit-menu-item-htmlcontent-<?php echo $item_id; ?>"><?php _e( 'Custom HTML Column (within Mega Menu)', 'swift-framework-admin' ); ?><textarea id="edit-menu-item-htmlcontent-<?php echo $item_id; ?>" name="menu-item-htmlcontent[<?php echo $item_id; ?>]" cols="30" rows="4"><?php echo esc_attr( $item->htmlcontent ); ?></textarea>
+		                  </label>
+		              </p>
+		              <p class="field-custom description description-wide">
+		                  <label for="edit-menu-nocolumnspacing-<?php echo $item_id; ?>"><?php _e( 'No Menu Column Spacing (for custom html column)', 'swift-framework-admin' ); ?><input type="checkbox" id="edit-menu-nocolumnspacing-<?php echo $item_id; ?>" class="edit-menu-item-custom" id="menu-nocolumnspacing[<?php echo $item_id; ?>]" name="menu-nocolumnspacing[<?php echo $item_id; ?>]" value="1" <?php echo checked( !empty( $item->nocolumnspacing ), 1, false ); ?> />
+		                  </label>
+		              </p>
+		              <p class="field-custom description description-wide">
+		                   <label for="edit-menu-item-icon-<?php echo $item_id; ?>"><?php _e( 'Custom HTML Column Width (optional)', 'swift-framework-admin' ); ?><input type="text" id="edit-menu-item-width-<?php echo $item_id; ?>" class="widefat edit-menu-item-custom" name="menu-item-width[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->menuwidth ); ?>" />
+		                   </label>
+		                   <p><?php _e('Optionally set a width here for the menu column, ideal if you want to make it wider. Numeric value (no px).', 'swift-framework-admin'); ?></p>
+		               </p>
+		              
+		              <?php } ?>
+	            </div>
+	            
+	            <?php
 	            /* New fields insertion ends here */
 	            ?>
 	            <div class="menu-item-actions description-wide submitbox">

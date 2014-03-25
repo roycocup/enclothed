@@ -187,4 +187,53 @@ jQuery(document).ready(function () {
 		}
 	}
 	
+	jQuery('#body_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview p').css('font-size', data.value + 'px');
+	});
+	jQuery('#body_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview p').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h1_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h1').css('font-size', data.value + 'px');
+	});
+	jQuery('#h1_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h1').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h2_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h2').css('font-size', data.value + 'px');
+	});
+	jQuery('#h2_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h2').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h3_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h3').css('font-size', data.value + 'px');
+	});
+	jQuery('#h3_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h3').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h4_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h4').css('font-size', data.value + 'px');
+	});
+	jQuery('#h4_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h4').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h5_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h5').css('font-size', data.value + 'px');
+	});
+	jQuery('#h5_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h5').css('line-height', data.value + 'px');
+	});
+	
+	jQuery('#h6_font_size').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h6').css('font-size', data.value + 'px');
+	});
+	jQuery('#h6_font_line_height').bind("slider:changed", function (event, data) {
+		jQuery('#typography-preview h6').css('line-height', data.value + 'px');
+	});
+		
 });

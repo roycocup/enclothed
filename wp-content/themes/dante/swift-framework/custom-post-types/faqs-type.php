@@ -46,6 +46,7 @@
 	        'show_ui' => true,
 	        'show_in_menu' => true,
 	        'show_in_nav_menus' => false,
+	        'menu_icon'=> 'dashicons-editor-help',
 	        'rewrite' => false,
 	        'supports' => array('title', 'editor'),
 	        'has_archive' => true,

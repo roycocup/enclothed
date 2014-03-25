@@ -61,6 +61,10 @@ class SwiftPageBuilderShortcode_team extends SwiftPageBuilderShortcode {
 				$member_name = get_the_title();
 				$member_position = get_post_meta($post->ID, 'sf_team_member_position', true);
 				$member_bio = get_the_content();
+				$custom_excerpt = get_post_meta($post->ID, 'sf_custom_excerpt', true);
+				if ($custom_excerpt != "") {
+					$member_bio = sf_custom_excerpt($custom_excerpt, 1000);
+				}
 				$member_email = get_post_meta($post->ID, 'sf_team_member_email', true);
 				$member_phone = get_post_meta($post->ID, 'sf_team_member_phone_number', true);
 				$member_twitter = get_post_meta($post->ID, 'sf_team_member_twitter', true);
@@ -76,7 +80,7 @@ class SwiftPageBuilderShortcode_team extends SwiftPageBuilderShortcode {
 				$items .= '<li itemscope data-id="id-'. $count .'" class="clearfix team-member '.$item_class.'">';
 				
 				$img_url = wp_get_attachment_url( $member_image,'full' );
-				$image = aq_resize( $img_url, $image_width, $image_height, true, false);
+				$image = sf_aq_resize( $img_url, $image_width, $image_height, true, false);
 				
 				$items .= '<figure class="gallery-style">';
 							if ($image) {
@@ -161,57 +165,57 @@ class SwiftPageBuilderShortcode_team extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'team', array(
-    "name"		=> __("Team Gallery", "swift-page-builder"),
+    "name"		=> __("Team Gallery", "swift-framework-admin"),
     "base"		=> "team",
     "class"		=> "team",
     "icon"      => "spb-icon-team",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
 	    array(
 	        "type" => "dropdown",
-	        "heading" => __("Columns", "swift-page-builder"),
+	        "heading" => __("Columns", "swift-framework-admin"),
 	        "param_name" => "item_columns",
 	        "value" => array(
-	        			__('2', "swift-page-builder") => "2",
-	        			__('3', "swift-page-builder") => "3",
-	        			__('4', "swift-page-builder") => "4"
+	        			__('2', "swift-framework-admin") => "2",
+	        			__('3', "swift-framework-admin") => "3",
+	        			__('4', "swift-framework-admin") => "4"
 	        		),
-	        "description" => __("Choose the amount of columns you would like for the team asset.", "swift-page-builder")
+	        "description" => __("Choose the amount of columns you would like for the team asset.", "swift-framework-admin")
 	    ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "12",
-            "description" => __("The number of team members to show per page.", "swift-page-builder")
+            "description" => __("The number of team members to show per page.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Team category", "swift-page-builder"),
+            "heading" => __("Team category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('team-category'),
-            "description" => __("Choose the category for the portfolio items.", "swift-page-builder")
+            "description" => __("Choose the category for the portfolio items.", "swift-framework-admin")
 		),
 		array(
 		    "type" => "dropdown",
-		    "heading" => __("Pagination", "swift-page-builder"),
+		    "heading" => __("Pagination", "swift-framework-admin"),
 		    "param_name" => "pagination",
-		    "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-		    "description" => __("Show testimonial pagination.", "swift-page-builder")
+		    "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+		    "description" => __("Show testimonial pagination.", "swift-framework-admin")
 		),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

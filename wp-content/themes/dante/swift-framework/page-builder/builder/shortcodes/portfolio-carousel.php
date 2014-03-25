@@ -10,6 +10,8 @@ class SwiftPageBuilderShortcode_portfolio_carousel extends SwiftPageBuilderShort
 		        'title' => '',
 	        	"item_count"	=> '12',
 	        	"category"		=> 'all',
+	        	'show_excerpt'	=> 'no',
+	        	"excerpt_length" => '20',
 	        	'alt_background'	=> 'none',
 	        	'el_position' => '',
 	        	'width' => '1/1',
@@ -70,6 +72,13 @@ class SwiftPageBuilderShortcode_portfolio_carousel extends SwiftPageBuilderShort
 			while ( $portfolio_items->have_posts() ) : $portfolio_items->the_post();
 								
 				$item_title = get_the_title();
+				$post_excerpt = '';
+				$custom_excerpt = get_post_meta($post->ID, 'sf_custom_excerpt', true);
+				if ($custom_excerpt != '') {
+				$post_excerpt = sf_custom_excerpt($custom_excerpt, $excerpt_length);
+				} else {
+				$post_excerpt = sf_excerpt($excerpt_length);
+				}
 				
 				$thumb_type = get_post_meta($post->ID, 'sf_thumbnail_type', true);
 				$thumb_image = rwmb_meta('sf_thumbnail_image', 'type=image&size=full');
@@ -154,7 +163,7 @@ class SwiftPageBuilderShortcode_portfolio_carousel extends SwiftPageBuilderShort
 						$thumb_img_url = "default";
 					}
 					
-					$image = aq_resize( $thumb_img_url, 420, 315, true, false);
+					$image = sf_aq_resize( $thumb_img_url, 420, 315, true, false);
 					    					  					
 					if($image) {						
 						$items .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$item_title.'" />';
@@ -167,6 +176,10 @@ class SwiftPageBuilderShortcode_portfolio_carousel extends SwiftPageBuilderShort
 				}
 				
 				$items .= '</figure>';
+				
+				if ($show_excerpt == "yes" && strlen($post_excerpt) > 7) {
+					$items .= '<div class="portfolio-item-excerpt" itemprop="description">'. $post_excerpt .'</div>'. "\n";
+				}
 
 				$items .= '</li>';
 				$count++;
@@ -220,53 +233,68 @@ class SwiftPageBuilderShortcode_portfolio_carousel extends SwiftPageBuilderShort
 }
 
 SPBMap::map( 'portfolio_carousel', array(
-    "name"		=> __("Portfolio Carousel", "swift-page-builder"),
+    "name"		=> __("Portfolio Carousel", "swift-framework-admin"),
     "base"		=> "portfolio_carousel",
     "class"		=> "spb_portfolio_carousel spb_carousel",
     "icon"      => "spb-icon-portfolio-carousel",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "12",
-            "description" => __("The number of portfolio items to show in the carousel.", "swift-page-builder")
+            "description" => __("The number of portfolio items to show in the carousel.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Portfolio category", "swift-page-builder"),
+            "heading" => __("Portfolio category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('portfolio-category'),
-            "description" => __("Choose the category for the portfolio items.", "swift-page-builder")
+            "description" => __("Choose the category for the portfolio items.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show alt background", "swift-page-builder"),
-            "param_name" => "alt_background",
-            "value" => array(__("None", "swift-page-builder") => "none", __("Alt 1", "swift-page-builder") => "alt-one", __("Alt 2", "swift-page-builder") => "alt-two", __("Alt 3", "swift-page-builder") => "alt-three", __("Alt 4", "swift-page-builder") => "alt-four", __("Alt 5", "swift-page-builder") => "alt-five", __("Alt 6", "swift-page-builder") => "alt-six", __("Alt 7", "swift-page-builder") => "alt-seven", __("Alt 8", "swift-page-builder") => "alt-eight", __("Alt 9", "swift-page-builder") => "alt-nine", __("Alt 10", "swift-page-builder") => "alt-ten"),
-            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-page-builder")
-        ),
-        array(
-            "type" => "altbg_preview",
-            "heading" => __("Alt Background Preview", "swift-page-builder"),
-            "param_name" => "altbg_preview",
-            "value" => "",
-            "description" => __("", "swift-page-builder")
+            "heading" => __("Show item excerpt", "swift-framework-admin"),
+            "param_name" => "show_excerpt",
+            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+            "description" => __("Show the item excerpt text. (Standard/Masonry only)", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Excerpt Length", "swift-framework-admin"),
+            "param_name" => "excerpt_length",
+            "value" => "20",
+            "description" => __("The length of the excerpt for the posts.", "swift-framework-admin")
+        ),
+        
+        array(
+            "type" => "dropdown",
+            "heading" => __("Show alt background", "swift-framework-admin"),
+            "param_name" => "alt_background",
+            "value" => array(__("None", "swift-framework-admin") => "none", __("Alt 1", "swift-framework-admin") => "alt-one", __("Alt 2", "swift-framework-admin") => "alt-two", __("Alt 3", "swift-framework-admin") => "alt-three", __("Alt 4", "swift-framework-admin") => "alt-four", __("Alt 5", "swift-framework-admin") => "alt-five", __("Alt 6", "swift-framework-admin") => "alt-six", __("Alt 7", "swift-framework-admin") => "alt-seven", __("Alt 8", "swift-framework-admin") => "alt-eight", __("Alt 9", "swift-framework-admin") => "alt-nine", __("Alt 10", "swift-framework-admin") => "alt-ten"),
+            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-framework-admin")
+        ),
+        array(
+            "type" => "altbg_preview",
+            "heading" => __("Alt Background Preview", "swift-framework-admin"),
+            "param_name" => "altbg_preview",
+            "value" => "",
+            "description" => __("", "swift-framework-admin")
+        ),
+        array(
+            "type" => "textfield",
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

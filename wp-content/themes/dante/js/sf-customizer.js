@@ -3,7 +3,7 @@
 *	Live Customiser Script
 *	------------------------------------------------
 *	Swift Framework
-* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 *
 */
 ( function( $ ){		
@@ -49,7 +49,7 @@
 	});
 	wp.customize('inner_page_bg_color',function( value ) {
 		value.bind(function(to) {
-			$('#container').css('background-color', to ? to : '' );
+			$('#main-container').css('background-color', to ? to : '' );
 		});
 	});
 	wp.customize('section_divide_color',function( value ) {

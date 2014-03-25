@@ -41,21 +41,22 @@ function my_theme_register_required_plugins() {
 	 * If the source is NOT from the .org repo, then source is also required.
 	 */
 	$plugins = array(
+		
 		array(
 			'name'     				=> 'Revolution Slider', // The plugin name
 			'slug'     				=> 'revslider', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/includes/plugins/revslider.zip', // The plugin source
+			'source'   				=> 'http://dante.swiftideas.net/extras/plugins/revslider.zip', // The plugin source
 			'required' 				=> false, // If false, the plugin is only 'recommended' instead of required
 			'version' 				=> '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-			'force_activation' 		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-			'force_deactivation' 	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
 		),
 		
 		array(
 		    'name' => 'LayerSlider WP',
 		    'slug' => 'LayerSlider',
-		    'source' => get_stylesheet_directory() . '/includes/plugins/layersliderwp.zip',
+		    'source' => 'http://dante.swiftideas.net/extras/plugins/layersliderwp.zip',
 		    'required' => false,
 		    'version' => '4.6.3',
 		    'force_activation' => false,
@@ -66,12 +67,6 @@ function my_theme_register_required_plugins() {
 		array(
 			'name' 		=> 'Contact Form 7',
 			'slug' 		=> 'contact-form-7',
-			'required' 	=> false,
-		),
-		
-		array(
-			'name' 		=> 'Previous and Next Post in Same Taxonomy',
-			'slug' 		=> 'previous-and-next-post-in-same-taxonomy',
 			'required' 	=> false,
 		),
 		
@@ -103,7 +98,18 @@ function my_theme_register_required_plugins() {
 			'name'		=> 'NextGEN Facebook Open Graph+',
 			'slug'		=> 'nextgen-facebook',
 			'required' 	=> false,
-		)	
+		),
+		
+		array(
+			'name' => 'Envato WordPress Toolkit',
+			'slug' => 'envato-wordpress-toolkit',
+			'source' => get_template_directory() . '/includes/plugins/envato-wordpress-toolkit-master.zip',
+			'required' => false,
+			'version' => '1.6.1',
+			'force_activation' => false,
+			'force_deactivation' => false,
+			'external_url' => '',
+		)
 
 	);
 

@@ -1,10 +1,25 @@
 <?php	
+	/**
+	 * The Template for displaying all single products.
+	 *
+	 * Override this template by copying it to yourtheme/woocommerce/single-product.php
+	 *
+	 * @author 		WooThemes
+	 * @package 	WooCommerce/Templates
+	 * @version     2.1.2
+	 */	
+	 
 	$options = get_option('sf_dante_options');
 	$default_show_page_heading = $options['default_show_page_heading'];
 	$default_page_heading_bg_alt = $options['woo_page_heading_bg_alt'];
 	$default_sidebar_config = $options['default_product_sidebar_config'];
 	$default_left_sidebar = $options['default_product_left_sidebar'];
 	$default_right_sidebar = $options['default_product_right_sidebar'];
+	
+	$pb_active = get_post_meta($post->ID, '_spb_js_status', true);
+	if (!$options['enable_pb_product_pages']) {
+	$pb_active = false;
+	}
 	
 	$show_page_title = get_post_meta($post->ID, 'sf_page_title', true);
 	$page_title_style = get_post_meta($post->ID, 'sf_page_title_style', true);
@@ -13,6 +28,7 @@
 	$page_title_bg = get_post_meta($post->ID, 'sf_page_title_bg', true);
 	$fancy_title_image = rwmb_meta('sf_page_title_image', 'type=image&size=full');
 	$page_title_text_style = get_post_meta($post->ID, 'sf_page_title_text_style', true);
+	$remove_breadcrumbs = get_post_meta($post->ID, 'sf_no_breadcrumbs', true);
 	$fancy_title_image_url = "";
 	
 	if ($show_page_title == "") {
@@ -67,10 +83,11 @@
 <?php if (have_posts()) : the_post(); ?>
 
 <?php if ($show_page_title) { ?>	
+<div class="container">
 	<div class="row">
 		<?php if ($page_title_style == "fancy") { ?>
 		<?php if ($fancy_title_image_url != "") { ?>
-		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);" data-stellar-background-ratio="0.5">
+		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);">
 		<?php } else { ?>
 		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
 		<?php } ?>
@@ -95,66 +112,74 @@
 		</div>
 		<?php } ?>
 	</div>
+</div>
 <?php } ?>
 
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+<div class="container">
+<?php } ?>
 	
-<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
-
-	<!-- OPEN article -->
-	<?php if ($sidebar_config == "left-sidebar") { ?>
-	<article class="clearfix col-sm-8">
-	<?php } elseif ($sidebar_config == "right-sidebar") { ?>
-	<article class="clearfix col-sm-8">
-	<?php } else { ?>
-	<article class="clearfix row">
-	<?php } ?>
+	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
 	
-	<?php if ($sidebar_config == "both-sidebars") { ?>
-		<div class="page-content col-sm-6 clearfix">
-	<?php } else if ($sidebar_config == "no-sidebars") { ?>
-		<div class="page-content col-sm-12 clearfix">
-	<?php } else { ?>
-		<div class="page-content clearfix">
-	<?php } ?>
-										
-			<section class="article-body-wrap">
-				
-				<?php woocommerce_get_template_part( 'content', 'single-product' ); ?>
-					
-			</section>
-			
-		</div>
+		<!-- OPEN article -->
+		<?php if ($sidebar_config == "left-sidebar") { ?>
+		<article class="clearfix col-sm-8">
+		<?php } elseif ($sidebar_config == "right-sidebar") { ?>
+		<article class="clearfix col-sm-8">
+		<?php } else { ?>
+		<article class="clearfix row">
+		<?php } ?>
 		
 		<?php if ($sidebar_config == "both-sidebars") { ?>
-		<aside class="sidebar left-sidebar col-sm-3">
-			<?php dynamic_sidebar($left_sidebar); ?>
-		</aside>
+			<div class="page-content col-sm-6 clearfix">
+		<?php } else if ($sidebar_config == "no-sidebars") { ?>
+			<div class="page-content col-sm-12 clearfix">
+		<?php } else { ?>
+			<div class="page-content clearfix">
 		<?php } ?>
-	
-	<!-- CLOSE article -->
-	</article>
-
-	<?php if ($sidebar_config == "left-sidebar") { ?>
+											
+				<section class="article-body-wrap">
+					
+					<?php woocommerce_get_template_part( 'content', 'single-product' ); ?>
+						
+				</section>
+				
+			</div>
 			
-		<aside class="sidebar left-sidebar col-sm-4">
-			<?php dynamic_sidebar($left_sidebar); ?>
-		</aside>
-
-	<?php } else if ($sidebar_config == "right-sidebar") { ?>
+			<?php if ($sidebar_config == "both-sidebars") { ?>
+			<aside class="sidebar left-sidebar col-sm-3">
+				<?php dynamic_sidebar($left_sidebar); ?>
+			</aside>
+			<?php } ?>
 		
-		<aside class="sidebar right-sidebar col-sm-4">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
-		
-	<?php } else if ($sidebar_config == "both-sidebars") { ?>
-
-		<aside class="sidebar right-sidebar col-sm-3">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
+		<!-- CLOSE article -->
+		</article>
 	
-	<?php } ?>
+		<?php if ($sidebar_config == "left-sidebar") { ?>
+				
+			<aside class="sidebar left-sidebar col-sm-4">
+				<?php dynamic_sidebar($left_sidebar); ?>
+			</aside>
+	
+		<?php } else if ($sidebar_config == "right-sidebar") { ?>
 			
+			<aside class="sidebar right-sidebar col-sm-4">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
+			
+		<?php } else if ($sidebar_config == "both-sidebars") { ?>
+	
+			<aside class="sidebar right-sidebar col-sm-3">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
+		
+		<?php } ?>
+				
+	</div>
+
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
 </div>
+<?php } ?>
 
 <?php endif; ?>
 

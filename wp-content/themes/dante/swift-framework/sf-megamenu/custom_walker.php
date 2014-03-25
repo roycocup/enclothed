@@ -19,8 +19,14 @@
 			
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			
+			$natural_width = empty( $item->isnaturalwidth ) ? "" : "sf-mega-menu-natural-width";
+			$alt_style = empty( $item->altstyle ) ? "" : "sf-mega-menu-alt";
+			$hideheadings = empty( $item->hideheadings ) ? "" : "no-headings";
+			$nocolumnspacing = empty( $item->nocolumnspacing ) ? "" : "no-column-spacing";
+			$menu_width = empty( $item->menuwidth ) ? "" : 'style="width: '.$item->menuwidth.'px;"';
+			
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-			$class_names = ' class="menu-item-'. $item->ID . ' '. esc_attr( $class_names ) . '"';
+			$class_names = ' class="menu-item-'. $item->ID . ' '. esc_attr( $class_names ) . ' '.$natural_width.' '.$alt_style.' '.$hideheadings.' '.$nocolumnspacing.'" '.$menu_width;
 			
 			$output .= $indent . '<li ' . $value . $class_names .'>';
 			
@@ -36,24 +42,36 @@
 			
 			if ($depth != 0) {
 			   $description = $append = $prepend = "";
-			}
-			
-			if (strpos($class_names,'sf-mega-menu-title') !== false) {
-			$item_output = $args->before;
-			$item_output .= '<span>';
-			$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
-			$item_output .= $args->link_after;
-			$item_output .= '</span>';
-			$item_output .= $args->after;
+			}	
+				
+			if (!empty( $item->megatitle )) {
+				$item_output = $args->before;
+				$item_output .= '<span class="title">';
+				if (!empty( $item->menuicon )) {
+					$item_output .= '<i class="'.$item->menuicon.'"></i>';
+				}
+				$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+				$item_output .= $args->link_after;
+				$item_output .= '</span>';
+				if (!empty( $item->htmlcontent )) {
+					$item_output .= '<div class="mega-menu-widget">'.do_shortcode($item->htmlcontent).'</div>';
+				}
+				$item_output .= $args->after;
 			} else {
-			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .'>';
-			$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
-			$item_output .= $args->link_after;
-			//$item_output .= $description.$args->link_after;
-			//$item_output .= ' '.$item->subtitle.'</a>';
-			$item_output .= '</a>';
-			$item_output .= $args->after;
+				$item_output = $args->before;
+				$item_output .= '<a'. $attributes .'>';
+				if (!empty( $item->menuicon )) {
+					$item_output .= '<i class="'.$item->menuicon.'"></i>';
+				}
+				$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+				$item_output .= $args->link_after;
+				//$item_output .= $description.$args->link_after;
+				//$item_output .= ' '.$item->subtitle.'</a>';
+				$item_output .= '</a>';
+				if (!empty( $item->htmlcontent )) {
+					$item_output .= '<div class="mega-menu-widget">'.do_shortcode($item->htmlcontent).'</div>';
+				}
+				$item_output .= $args->after;
 			}
 			
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

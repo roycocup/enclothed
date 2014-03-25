@@ -4,7 +4,7 @@
 	*	Swift Page Builder - Imapact Text Shortcode
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 
@@ -20,7 +20,7 @@
 	            'type'	=> '',
 	            'href' => '',
 	            'shadow'		=> 'yes',
-	            'title' => __('Text on the button', "swift-page-builder"),
+	            'title' => __('Text on the button', "swift-framework-admin"),
 	            'position' => 'cta_align_right',
 	            'alt_background'	=> 'none',
 	            'width' => '1/1',
@@ -98,12 +98,12 @@
 	    }
 	}
 	
-	$colors_arr = array(__("Accent", "swift-page-builder") => "accent", __("Blue", "swift-page-builder") => "blue", __("Grey", "swift-page-builder") => "grey", __("Light grey", "swift-page-builder") => "lightgrey", __("Purple", "swift-page-builder") => "purple", __("Light Blue", "swift-page-builder") => "lightblue", __("Green", "swift-page-builder") => "green", __("Lime Green", "swift-page-builder") => "limegreen", __("Turquoise", "swift-page-builder") => "turquoise", __("Pink", "swift-page-builder") => "pink", __("Orange", "swift-page-builder") => "orange");
+	$colors_arr = array(__("Accent", "swift-framework-admin") => "accent", __("Blue", "swift-framework-admin") => "blue", __("Grey", "swift-framework-admin") => "grey", __("Light grey", "swift-framework-admin") => "lightgrey", __("Purple", "swift-framework-admin") => "purple", __("Light Blue", "swift-framework-admin") => "lightblue", __("Green", "swift-framework-admin") => "green", __("Lime Green", "swift-framework-admin") => "limegreen", __("Turquoise", "swift-framework-admin") => "turquoise", __("Pink", "swift-framework-admin") => "pink", __("Orange", "swift-framework-admin") => "orange");
 			
-	$target_arr = array(__("Same window", "swift-page-builder") => "_self", __("New window", "swift-page-builder") => "_blank");
+	$target_arr = array(__("Same window", "swift-framework-admin") => "_self", __("New window", "swift-framework-admin") => "_blank");
 	
 	SPBMap::map( 'impact_text', array(
-	    "name"		=> __("Impact Text + Button", "swift-page-builder"),
+	    "name"		=> __("Impact Text + Button", "swift-framework-admin"),
 	    "base"		=> "impact_text",
 	    "class"		=> "button_grey",
 		"icon"		=> "spb-icon-impact-text",
@@ -111,80 +111,80 @@
 	    "params"	=> array(
 	    	array(
 	    	    "type" => "dropdown",
-	    	    "heading" => __("Include button", "swift-page-builder"),
+	    	    "heading" => __("Include button", "swift-framework-admin"),
 	    	    "param_name" => "include_button",
-	    	    "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-	    	    "description" => __("Include a button in the asset.", "swift-page-builder")
+	    	    "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+	    	    "description" => __("Include a button in the asset.", "swift-framework-admin")
 	    	),
 	    	array(
 	    	    "type" => "dropdown",
-	    	    "heading" => __("Button Style", "swift-page-builder"),
+	    	    "heading" => __("Button Style", "swift-framework-admin"),
 	    	    "param_name" => "button_style",
-	    	    "value" => array(__("Standard", "swift-page-builder") => "standard", __("Arrow", "swift-page-builder") => "arrow"),
+	    	    "value" => array(__("Standard", "swift-framework-admin") => "standard", __("Arrow", "swift-framework-admin") => "arrow"),
 	    	),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Text on the button", "swift-page-builder"),
+	            "heading" => __("Text on the button", "swift-framework-admin"),
 	            "param_name" => "title",
-	            "value" => __("Text on the button", "swift-page-builder"),
-	            "description" => __("Text on the button.", "swift-page-builder")
+	            "value" => __("Text on the button", "swift-framework-admin"),
+	            "description" => __("Text on the button.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("URL (Link)", "swift-page-builder"),
+	            "heading" => __("URL (Link)", "swift-framework-admin"),
 	            "param_name" => "href",
 	            "value" => "",
-	            "description" => __("Button link.", "swift-page-builder")
+	            "description" => __("Button link.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Color", "swift-page-builder"),
+	            "heading" => __("Color", "swift-framework-admin"),
 	            "param_name" => "color",
 	            "value" => $colors_arr,
-	            "description" => __("Button color.", "swift-page-builder")
+	            "description" => __("Button color.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Target", "swift-page-builder"),
+	            "heading" => __("Target", "swift-framework-admin"),
 	            "param_name" => "target",
 	            "value" => $target_arr
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Button position", "swift-page-builder"),
+	            "heading" => __("Button position", "swift-framework-admin"),
 	            "param_name" => "position",
-	            "value" => array(__("Align right", "swift-page-builder") => "cta_align_right", __("Align left", "swift-page-builder") => "cta_align_left", __("Align bottom", "swift-page-builder") => "cta_align_bottom"),
-	            "description" => __("Select button alignment.", "swift-page-builder")
+	            "value" => array(__("Align right", "swift-framework-admin") => "cta_align_right", __("Align left", "swift-framework-admin") => "cta_align_left", __("Align bottom", "swift-framework-admin") => "cta_align_bottom"),
+	            "description" => __("Select button alignment.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textarea_html",
 	            "holder" => "div",
 	            "class" => "",
-	            "heading" => __("Text", "swift-page-builder"),
+	            "heading" => __("Text", "swift-framework-admin"),
 	            "param_name" => "content",
-	            "value" => __("click the edit button to change this text.", "swift-page-builder"),
-	            "description" => __("Enter your content.", "swift-page-builder")
+	            "value" => __("click the edit button to change this text.", "swift-framework-admin"),
+	            "description" => __("Enter your content.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Show alt background", "swift-page-builder"),
+	            "heading" => __("Show alt background", "swift-framework-admin"),
 	            "param_name" => "alt_background",
-	            "value" => array(__("None", "swift-page-builder") => "none", __("Alt 1", "swift-page-builder") => "alt-one", __("Alt 2", "swift-page-builder") => "alt-two", __("Alt 3", "swift-page-builder") => "alt-three", __("Alt 4", "swift-page-builder") => "alt-four", __("Alt 5", "swift-page-builder") => "alt-five", __("Alt 6", "swift-page-builder") => "alt-six", __("Alt 7", "swift-page-builder") => "alt-seven", __("Alt 8", "swift-page-builder") => "alt-eight", __("Alt 9", "swift-page-builder") => "alt-nine", __("Alt 10", "swift-page-builder") => "alt-ten"),
-	            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-page-builder")
+	            "value" => array(__("None", "swift-framework-admin") => "none", __("Alt 1", "swift-framework-admin") => "alt-one", __("Alt 2", "swift-framework-admin") => "alt-two", __("Alt 3", "swift-framework-admin") => "alt-three", __("Alt 4", "swift-framework-admin") => "alt-four", __("Alt 5", "swift-framework-admin") => "alt-five", __("Alt 6", "swift-framework-admin") => "alt-six", __("Alt 7", "swift-framework-admin") => "alt-seven", __("Alt 8", "swift-framework-admin") => "alt-eight", __("Alt 9", "swift-framework-admin") => "alt-nine", __("Alt 10", "swift-framework-admin") => "alt-ten"),
+	            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "altbg_preview",
-	            "heading" => __("Alt Background Preview", "swift-page-builder"),
+	            "heading" => __("Alt Background Preview", "swift-framework-admin"),
 	            "param_name" => "altbg_preview",
 	            "value" => "",
-	            "description" => __("", "swift-page-builder")
+	            "description" => __("", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "js_callback" => array("init" => "spbCallToActionInitCallBack", "save" => "spbCallToActionSaveCallBack")

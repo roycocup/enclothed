@@ -11,6 +11,8 @@ class SwiftPageBuilderShortcode_sf_gallery extends SwiftPageBuilderShortcode {
 	        	'gallery_id' => '',
 	        	'show_thumbs' => '',
 	        	'show_captions' => '',
+	        	'autoplay' => 'no',
+	        	'enable_lightbox' => 'yes',
 	        	'slider_transition' => 'slide',
 	        	'el_position' => '',
 	        	'width' => '1/1',
@@ -46,12 +48,19 @@ class SwiftPageBuilderShortcode_sf_gallery extends SwiftPageBuilderShortcode {
 	        while ( $gallery_query->have_posts() ) : $gallery_query->the_post();
 	        
 		       	$gallery_images = rwmb_meta( 'sf_gallery_images', 'type=image&size=full-width-image-gallery');	
-		       	//$thumb_images = rwmb_meta( 'sf_gallery_images', 'type=image&size=thumb-square');	
+		       	$thumb_images = rwmb_meta( 'sf_gallery_images', 'type=image&size=thumb-square');	
    			       	
-		       	$main_slider .= '<div class="flexslider gallery-slider" data-transition="'.$slider_transition.'"><ul class="slides">'. "\n";
+		       	$main_slider .= '<div class="flexslider gallery-slider" data-transition="'.$slider_transition.'" data-autoplay="'.$autoplay.'"><ul class="slides">'. "\n";
 		       				
-		       	foreach ( $gallery_images as $image ) {       		
+		       	foreach ( $gallery_images as $image ) {
+		       		
+		       		if ($enable_lightbox == "yes") {
 		       	    $main_slider .= "<li><a href='{$image['url']}' class='view' rel='gallery-{$gallery_id}'><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' /></a>";
+
+		       		} else {
+		       	    $main_slider .= "<li><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' />";		       		
+		       		}
+		       				
 		       	    if ($show_captions == "yes" && $image['caption'] != "") {
 		       	    $main_slider .= '<p class="flex-caption">'.$image['caption'].'</p>';
 		       	    }
@@ -60,25 +69,26 @@ class SwiftPageBuilderShortcode_sf_gallery extends SwiftPageBuilderShortcode {
 		       													
 		       	$main_slider .= '</ul></div>'. "\n";
 		        
-//		        if ($show_thumbs == "yes") {
-//		        
-//		        $thumb_slider .= '<div class="flexslider gallery-nav"><ul class="slides">'. "\n";
-//		        
-//		        foreach ( $thumb_images as $image ) {
-//		            $thumb_slider .= "<li><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' /></li>". "\n";
-//		        }
-//		        
-//		        $thumb_slider .= '</ul></div>'. "\n";
-//		        
-//		        }
+		        if ($show_thumbs == "yes") {
+		        
+		        $thumb_slider .= '<div class="flexslider gallery-nav"><ul class="slides">'. "\n";
+		        
+		        foreach ( $thumb_images as $image ) {
+		            $thumb_slider .= "<li><img src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' /></li>". "\n";
+		        }
+		        
+		        $thumb_slider .= '</ul></div>'. "\n";
+		        
+		        }
 		        
 		        $items .= $main_slider;
-	        	//$items .= $thumb_slider;
+	        	$items .= $thumb_slider;
 	        	
 	        endwhile;
+	        wp_reset_postdata();
 	        
 	        
-			/* PAGE BUILDER OUTPUT
+			/* PAGE BUILDER OUTPUT
 			================================================== */ 
     		$width = spb_translateColumnWidthToSpan($width);
     		$el_class = $this->getExtraClass($el_class);
@@ -101,52 +111,66 @@ class SwiftPageBuilderShortcode_sf_gallery extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'sf_gallery', array(
-    "name"		=> __("Gallery", "swift-page-builder"),
+    "name"		=> __("Gallery", "swift-framework-admin"),
     "base"		=> "sf_gallery",
     "class"		=> "spb_gallery",
     "icon"      => "spb-icon-gallery",
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "dropdown",
-            "heading" => __("Gallery", "swift-page-builder"),
+            "heading" => __("Gallery", "swift-framework-admin"),
             "param_name" => "gallery_id",
             "value" => sf_list_galleries(),
-            "description" => __("Choose the gallery which you'd like to display. You can add galleries in the left admin area.", "swift-page-builder")
+            "description" => __("Choose the gallery which you'd like to display. You can add galleries in the left admin area.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Slider transition", "swift-page-builder"),
+            "heading" => __("Slider transition", "swift-framework-admin"),
             "param_name" => "slider_transition",
-            "value" => array(__("Slide", "swift-page-builder") => "slide", __("Fade", "swift-page-builder") => "fade"),
-            "description" => __("Choose the transition type for the slider.", "swift-page-builder")
+            "value" => array(__("Slide", "swift-framework-admin") => "slide", __("Fade", "swift-framework-admin") => "fade"),
+            "description" => __("Choose the transition type for the slider.", "swift-framework-admin")
         ),
-//        array(
-//            "type" => "dropdown",
-//            "heading" => __("Show thumbnail navigation", "swift-page-builder"),
-//            "param_name" => "show_thumbs",
-//            "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-//            "description" => __("Show a thumbnail navigation display below the slider.", "swift-page-builder")
-//        ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show captions", "swift-page-builder"),
+            "heading" => __("Show thumbnail navigation", "swift-framework-admin"),
+            "param_name" => "show_thumbs",
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Show a thumbnail navigation display below the slider.", "swift-framework-admin")
+        ),
+		array(
+		    "type" => "dropdown",
+		    "heading" => __("Enable Autoplay", "swift-framework-admin"),
+		    "param_name" => "autoplay",
+		    "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+		    "description" => __("Choose whether to autoplay the slider or not.", "swift-framework-admin")
+		),
+        array(
+            "type" => "dropdown",
+            "heading" => __("Show captions", "swift-framework-admin"),
             "param_name" => "show_captions",
-            "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-            "description" => __("Choose whether to show captions on the slider or not.", "swift-page-builder")
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Choose whether to show captions on the slider or not.", "swift-framework-admin")
+        ),
+        array(
+            "type" => "dropdown",
+            "heading" => __("Enable gallery lightbox", "swift-framework-admin"),
+            "param_name" => "enable_lightbox",
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Enable lightbox functionality from the gallery.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

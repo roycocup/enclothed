@@ -4,7 +4,7 @@
 	*	Theme Styling Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_custom_styles()
 	*	sf_custom_script()
@@ -18,9 +18,13 @@
 		function sf_custom_styles() {
 			$options = get_option('sf_dante_options');
 			$enable_responsive = $options['enable_responsive'];
+			$site_maxwidth = "1170";
+			if (isset($options['site_maxwidth']) && $options['site_maxwidth'] == "940") {
+			$site_maxwidth = "940";
+			}
 			
 			// Standard Styling
-			$accent_color = get_option('accent_color', '#f7b666');
+			$accent_color = get_option('accent_color', '#1dc6df');
 			$accent_alt_color = get_option('accent_alt_color', '#ffffff');
 			$secondary_accent_color = get_option('secondary_accent_color', '#222222');
 			$secondary_accent_alt_color = get_option('secondary_accent_alt_color', '#ffffff');
@@ -109,6 +113,16 @@
 			$icon_alt_color = get_option('sf_icon_alt_color', '#ffffff');
 			$boxed_content_color = get_option('boxed_content_color', '#07c1b6');
 			
+			// Extra Icon Styling
+			$icon_one_color = get_option('icon_one_color', '#FF9900');
+			$icon_one_alt_color = get_option('icon_one_alt_color', '#ffffff');
+			$icon_two_color = get_option('icon_two_color', '#339933');
+			$icon_two_alt_color = get_option('icon_two_alt_color', '#ffffff');
+			$icon_three_color = get_option('icon_three_color', '#cccccc');
+			$icon_three_alt_color = get_option('icon_three_alt_color', '#222222');
+			$icon_four_color = get_option('icon_four_color', '#6633ff');
+			$icon_four_alt_color = get_option('icon_four_alt_color', '#ffffff');
+			
 			// Footer Styling
 			$footer_bg_color = get_option('footer_bg_color', '#222222');
 			$footer_text_color = get_option('footer_text_color', '#cccccc');
@@ -119,7 +133,7 @@
 			$copyright_link_color = get_option('copyright_link_color', '#ffffff');
 			
 			// Logo/Nav Spacing
-			$logo_width = $logo_height = $logo_resized_height = $nav_top_spacing = "";
+			$logo_width = $logo_height = $logo_resized_height = $logo_resized_width = $nav_top_spacing = "";
 			$logo_width = $options['logo_width'];
 			$logo_spacing_top = $options['logo_top_spacing'];
 			$logo_spacing_bottom = $options['logo_bottom_spacing'];
@@ -128,6 +142,9 @@
 			}
 			if (isset($options['logo_resized_height'])) {
 			$logo_resized_height = $options['logo_resized_height'];
+			}
+			if (isset($options['logo_resized_width'])) {
+			$logo_resized_width = $options['logo_resized_width'];
 			}
 			if (isset($options['nav_top_spacing'])) {
 			$nav_top_spacing = $options['nav_top_spacing'];
@@ -260,13 +277,6 @@
 			}
 			$alt_ten_bg_image_size = $options['alt_ten_bg_image_size'];
 			
-			$one_page_checkout = "";
-			if (isset($options['enable_one_page_checkout'])) {
-				$one_page_checkout = $options['enable_one_page_checkout'];
-			} else {
-				$one_page_checkout = false;
-			}
-			
 			// PAGE BACKGROUND IMAGE //
 			$bg_image_url = $inner_bg_image_url = "";
 			$page_background_image = rwmb_meta('sf_background_image', 'type=image&size=full');
@@ -294,6 +304,112 @@
 			
 			// OPEN STYLE TAG
 			echo '<style type="text/css">'. "\n";
+			
+			// 940PX OPTION
+			if ($site_maxwidth == "940") {
+				echo '@media only screen and (min-width: 1200px) {
+				.header-overlay .header-wrap {
+				margin-left: -485px;
+				max-width: 970px;
+				}
+				#header .is-sticky .sticky-header {
+				max-width: 940px;
+				}
+				.container {
+				width: 970px;
+				}
+				.span12 {
+				  width: 940px;
+				}
+				.span11 {
+				  width: 860px;
+				}
+				.span10 {
+				  width: 779px;
+				}
+				.span9 {
+				  width: 698px;
+				}
+				.span8 {
+				  width: 617px;
+				}
+				.span7 {
+				  width: 536px;
+				}
+				.span6 {
+				  width: 455px;
+				}
+				.span5 {
+				  width: 374px;
+				}
+				.span4 {
+				  width: 293px;
+				}
+				.span3 {
+				  width: 212px;
+				}
+				.span2 {
+				  width: 131px;
+				}
+				.span1 {
+				  width: 50px;
+				}
+				.span-third {
+					width: 193px;
+				}
+				.span-twothirds {
+					width: 407px;
+				}
+				.span-bs-quarter {
+					width: 100px;
+				}
+				.span-bs-threequarter {
+					width: 340px;
+				}
+				.alt-bg {
+						margin-left: -410px!important;
+						padding-left: 410px;
+						padding-right: 410px;
+				}
+				
+				/* PRODUCTS */
+				body .has-no-sidebar ul.products li.product {
+					width: 220px;
+					float: left;
+				}
+				body .has-one-sidebar ul.products li.product {
+					width: 140px;
+				}
+				body.woocommerce .has-one-sidebar .upsells.products ul.products li.product, body.woocommerce .has-one-sidebar .related.products ul.products li.product  {
+					width: 139px;
+				}
+				body .has-one-sidebar .products-standard.span8 ul.products li.product {
+					width: 193px;
+				}
+				body .has-both-sidebars ul.products li.product {
+					width: 220px;
+				}
+				body .has-no-sidebar .products-mini ul.products li.product {
+					width: 140px;
+				}
+				body .has-one-sidebar .products-mini ul.products li.product {
+					width: 140px;
+				}
+				body .has-both-sidebars .products-mini ul.products li.product {
+					width: 140px;
+				}
+				body.woocommerce .has-no-sidebar ul.products li.product {
+					width: 220px;
+				}
+				body.woocommerce .has-one-sidebar ul.products li.product {
+					width: 219px;
+				}
+				body.woocommerce .has-both-sidebars ul.products li.product {
+					width: 217px;
+				}
+				}
+				';
+			}
 			
 			// NON-RESPONSIVE STYLES
 			if (!$enable_responsive) {
@@ -530,8 +646,11 @@
 				.col-sm-offset-1 {
 				  margin-left: 8.333333333333332%;
 				}
-				.boxed-layout {
+				#container.boxed-layout, .boxed-layout #header-section .is-sticky #main-nav.sticky-header, .boxed-layout #header-section.header-6 .is-sticky #header.sticky-header {
 					width: 1230px;
+				}
+				.header-overlay .header-wrap {
+					margin-left: -585px;
 				}
 				#swift-slider {
 					min-width: 1170px;
@@ -620,12 +739,12 @@
 			
 			// CUSTOM COLOUR STYLES
 			echo '::selection, ::-moz-selection {background-color: '.$accent_color.'; color: #fff;}'; 
-			echo '.recent-post figure, span.highlighted, span.dropcap4, .loved-item:hover .loved-count, .flickr-widget li, .portfolio-grid li, .wpcf7 input.wpcf7-submit[type="submit"], .gform_wrapper input[type="submit"], .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li span.current, figcaption .product-added, .woocommerce .wc-new-badge, .yith-wcwl-wishlistexistsbrowse a, .yith-wcwl-wishlistaddedbrowse a, .woocommerce .widget_layered_nav ul li.chosen > *, .woocommerce .widget_layered_nav_filters ul li a, .sticky-post-icon, .fw-video-close:hover {background-color: '.$accent_color.'!important; color: '.$accent_alt_color.';}';
-			echo 'a:hover, #sidebar a:hover, .pagination-wrap a:hover, .carousel-nav a:hover, .portfolio-pagination div:hover > i, #footer a:hover, #copyright a, .beam-me-up a:hover span, .portfolio-item .portfolio-item-permalink, .read-more-link, .blog-item .read-more, .blog-item-details a:hover, .author-link, #reply-title small a, #respond .form-submit input:hover, span.dropcap2, .spb_divider.go_to_top a, love-it-wrapper:hover .love-it, .love-it-wrapper:hover span.love-count, .love-it-wrapper .loved, .comments-likes .loved span.love-count, .comments-likes a:hover i, .comments-likes .love-it-wrapper:hover a i, .comments-likes a:hover span, .love-it-wrapper:hover a i, .item-link:hover, #header-translation p a, #swift-slider .flex-caption-large h1 a:hover, .wooslider .slide-title a:hover, .caption-details-inner .details span > a, .caption-details-inner .chart span, .caption-details-inner .chart i, #swift-slider .flex-caption-large .chart i, #breadcrumbs a:hover, .ui-widget-content a:hover, .woocommerce form.cart button.single_add_to_cart_button:hover, .yith-wcwl-add-button a:hover, #product-img-slider li a.zoom:hover, .woocommerce .star-rating span, .article-body-wrap .share-links a:hover, ul.member-contact li a:hover, .price ins, .bag-product a.remove:hover, .bag-product-title a:hover, #back-to-top:hover,  ul.member-contact li a:hover, .fw-video-link-image:hover i, .ajax-search-results .all-results:hover, .search-result h5 a:hover {color: '.$accent_color.';}';
+			echo '.recent-post figure, span.highlighted, span.dropcap4, .loved-item:hover .loved-count, .flickr-widget li, .portfolio-grid li, input[type="submit"], .wpcf7 input.wpcf7-submit[type="submit"], .gform_wrapper input[type="submit"], .mymail-form input[type="submit"], .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li span.current, figcaption .product-added, .woocommerce .wc-new-badge, .yith-wcwl-wishlistexistsbrowse a, .yith-wcwl-wishlistaddedbrowse a, .woocommerce .widget_layered_nav ul li.chosen > *, .woocommerce .widget_layered_nav_filters ul li a, .sticky-post-icon, .fw-video-close:hover {background-color: '.$accent_color.'!important; color: '.$accent_alt_color.';}';
+			echo 'a:hover, #sidebar a:hover, .pagination-wrap a:hover, .carousel-nav a:hover, .portfolio-pagination div:hover > i, #footer a:hover, #copyright a, .beam-me-up a:hover span, .portfolio-item .portfolio-item-permalink, .read-more-link, .blog-item .read-more, .blog-item-details a:hover, .author-link, #reply-title small a, #respond .form-submit input:hover, span.dropcap2, .spb_divider.go_to_top a, love-it-wrapper:hover .love-it, .love-it-wrapper:hover span.love-count, .love-it-wrapper .loved, .comments-likes .loved span.love-count, .comments-likes a:hover i, .comments-likes .love-it-wrapper:hover a i, .comments-likes a:hover span, .love-it-wrapper:hover a i, .item-link:hover, #header-translation p a, #swift-slider .flex-caption-large h1 a:hover, .wooslider .slide-title a:hover, .caption-details-inner .details span > a, .caption-details-inner .chart span, .caption-details-inner .chart i, #swift-slider .flex-caption-large .chart i, #breadcrumbs a:hover, .ui-widget-content a:hover, .yith-wcwl-add-button a:hover, #product-img-slider li a.zoom:hover, .woocommerce .star-rating span, .article-body-wrap .share-links a:hover, ul.member-contact li a:hover, .price ins, .bag-product a.remove:hover, .bag-product-title a:hover, #back-to-top:hover,  ul.member-contact li a:hover, .fw-video-link-image:hover i, .ajax-search-results .all-results:hover, .search-result h5 a:hover .ui-state-default a:hover {color: '.$accent_color.';}';
 			echo '.carousel-wrap > a:hover, #mobile-menu ul li:hover > a {color: '.$accent_color.'!important;}';
 			echo '.comments-likes a:hover span, .comments-likes a:hover i {color: '.$accent_color.'!important;}';
 			echo '.read-more i:before, .read-more em:before {color: '.$accent_color.';}';
-			echo '.bypostauthor .comment-wrap .comment-avatar,.search-form input:focus, .wpcf7 input:focus, .wpcf7 textarea:focus, .ginput_container input:focus, .ginput_container textarea:focus {border-color: '.$accent_color.'!important;}';
+			echo 'input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus, .bypostauthor .comment-wrap .comment-avatar,.search-form input:focus, .wpcf7 input:focus, .wpcf7 textarea:focus, .ginput_container input:focus, .ginput_container textarea:focus, .mymail-form input:focus, .mymail-form textarea:focus {border-color: '.$accent_color.'!important;}';
 			echo 'nav .menu ul li:first-child:after,.navigation a:hover > .nav-text, .returning-customer a:hover {border-bottom-color: '.$accent_color.';}';
 			echo 'nav .menu ul ul li:first-child:after {border-right-color: '.$accent_color.';}';
 			echo '.spb_impact_text .spb_call_text {border-left-color: '.$accent_color.';}';
@@ -657,13 +776,14 @@
 			echo 'ul.bar-styling li > .comments-likes:hover * {color: '.$accent_alt_color.'!important;}';
 			echo '.pagination-wrap li a, .pagination-wrap li span, .pagination-wrap li span.expand, ul.bar-styling li > a, ul.bar-styling li > div, ul.page-numbers li > a, ul.page-numbers li > span, .curved-bar-styling, ul.bar-styling li > form input {border-color: '.$section_divide_color.';}';
 			echo 'ul.bar-styling li > a, ul.bar-styling li > span, ul.bar-styling li > div, ul.bar-styling li > form input {background-color: '.$inner_page_bg_color.';}';
-			echo 'input[type="text"], input[type="password"], input[type="email"], textarea, select {border-color: '.$section_divide_color.';background: '.$alt_bg_color.';}';
+			echo 'input[type="text"], input[type="password"], input[type="email"], input[type="tel"], textarea, select {border-color: '.$section_divide_color.';background: '.$alt_bg_color.';}';
 			echo 'textarea:focus, input:focus {border-color: #999!important;}';
 			echo '.modal-header {background: '.$alt_bg_color.';}';
 			echo '.recent-post .post-details, .team-member .team-member-position, .portfolio-item h5.portfolio-subtitle, .mini-items .blog-item-details, .standard-post-content .blog-item-details, .masonry-items .blog-item .blog-item-details, .jobs > li .job-date, .search-item-content time, .search-item-content span, .blog-item-details a, .portfolio-details-wrap .date {color: '.$body_alt_text_color.';}';
 			echo 'ul.bar-styling li.facebook > a:hover {color: #fff!important;background: #3b5998;border-color: #3b5998;}';
 			echo 'ul.bar-styling li.twitter > a:hover {color: #fff!important;background: #4099FF;border-color: #4099FF;}';
 			echo 'ul.bar-styling li.google-plus > a:hover {color: #fff!important;background: #d34836;border-color: #d34836;}';
+			echo 'ul.bar-styling li.pinterest > a:hover {color: #fff!important;background: #cb2027;border-color: #cb2027;}';
 					
 			// HEADER STYLES
 			echo '#header-search input, #header-search a, .super-search-close, #header-search i.ss-search {color: '.$header_aux_text_color.';}';
@@ -697,7 +817,10 @@
 			$logo_resized_row_height = $logo_resized_height + 20;
 			echo '.sticky-header-resized #logo {height: '.$logo_resized_height.'px!important;}';
 			echo '.sticky-header-resized #logo img {height: '.$logo_resized_height.'px;}';
-			echo '.header-container.sticky-header-resized > .row, .header-5 header .container.sticky-header-resized > .row, .header-6 header > .container.sticky-header-resized > .row {height: '.$logo_resized_row_height.'px;}';
+			echo '.header-container.sticky-header-resized > .row, .header-5 header .container.sticky-header-resized > .row, .header-6 header > .container.sticky-header-resized > .row, .sticky-header-resized .header-container > .row {height: '.$logo_resized_row_height.'px;}';
+			}
+			if (($logo_resized_width && $logo_resized_width > 0) && ($logo_width && $logo_width > 0)) {
+			echo '.sticky-header-resized #logo img {width: '.$logo_resized_width.'px;}';
 			}
 			if ($header_opacity != "100" && ($header_layout == "header-3" || $header_layout == "header-4" || $header_layout == "header-5")) {
 			echo '#header-section:before {opacity: 0.'.$header_opacity.';}';
@@ -706,12 +829,16 @@
 			echo '#header-section #main-nav {border-top-color: '.$section_divide_color.';}';
 			echo '#top-header {border-bottom-color: '.$header_border_color.';}';
 			echo '#top-header {border-bottom-color: '.$header_border_color.';}';
-			echo '#top-header .th-right > nav .menu li, .ajax-search-wrap:after {border-left-color: '.$header_border_color.';}';
+			echo '#top-header .th-right > nav .menu li, .ajax-search-wrap:after {border-bottom-color: '.$header_border_color.';}';
 			if ($nav_top_spacing && $nav_top_spacing > 0) {
 			echo '.header-3 .header-right, .header-4 .header-right, .header-5 .header-right, .header-6 .header-right,  .header-7 .header-right {margin-top: '.$nav_top_spacing.'px;}';
 			}
 			echo '.ajax-search-wrap, .ajax-search-results, .search-result-pt .search-result {border-color: '.$section_divide_color.';}';
 			echo '.page-content {border-bottom-color: '.$section_divide_color.';}';
+			echo '.ajax-search-wrap input[type="text"], .search-result-pt h6, .no-search-results h6, .search-result h5 a {color: '.$nav_text_color.';}';
+			if ($header_bg_color1 != "#ffffff") {
+			echo '.search-item-content time {color: '.$nav_divider_color.';}';
+			}
 			
 			// NAVIGATION STYLES
 			echo 'nav#main-navigation .menu > li > a span.nav-line {background-color: '.$nav_pointer_color.';}';
@@ -722,10 +849,10 @@
 			echo 'nav .menu ul.sub-menu li {border-bottom-color: '.$nav_divider_color.';border-bottom-style: '.$nav_divider.';}';
 			echo 'nav.mega-menu li .mega .sub .sub-menu, nav.mega-menu li .mega .sub .sub-menu li, nav.mega-menu li .sub-container.non-mega li, nav.mega-menu li .sub li.mega-hdr {border-top-color: '.$nav_divider_color.';border-top-style: '.$nav_divider.';}';
 			echo 'nav.mega-menu li .sub li.mega-hdr {border-right-color: '.$nav_divider_color.';border-right-style: '.$nav_divider.';}';
-			echo 'nav .menu > li a, #menubar-controls a {color: '.$nav_text_color.';}';
-			echo 'nav .menu > li:hover > a {color: '.$nav_text_hover_color.';}';
-			echo 'nav .menu ul.sub-menu li > a, nav .menu ul.sub-menu li > span, #top-bar nav .menu ul li > a {color: '.$nav_sm_text_color.';}';
-			echo 'nav .menu ul.sub-menu li:hover > a {color: '.$nav_sm_text_hover_color.'!important; background: '.$nav_sm_bg_hover_color.';}';
+			echo 'nav .menu > li.menu-item > a, #menubar-controls a, nav.search-nav .menu>li>a {color: '.$nav_text_color.';}';
+			echo 'nav .menu > li.menu-item:hover > a {color: '.$nav_text_hover_color.';}';
+			echo 'nav .menu ul.sub-menu li.menu-item > a, nav .menu ul.sub-menu li > span, #top-bar nav .menu ul li > a {color: '.$nav_sm_text_color.';}';
+			echo 'nav .menu ul.sub-menu li.menu-item:hover > a {color: '.$nav_sm_text_hover_color.'!important; background: '.$nav_sm_bg_hover_color.';}';
 			echo 'nav .menu li.parent > a:after, nav .menu li.parent > a:after:hover {color: #aaa;}';
 			echo 'nav .menu li.current-menu-ancestor > a, nav .menu li.current-menu-item > a, #mobile-menu .menu ul li.current-menu-item > a {color: '.$nav_selected_text_color.';}';
 			echo 'nav .menu ul li.current-menu-ancestor > a, nav .menu ul li.current-menu-item > a {color: '.$nav_sm_selected_text_color.'; background: '.$nav_sm_bg_hover_color.';}';
@@ -752,7 +879,7 @@
 			echo '#breadcrumbs a, #breadcrumb i {color: '.$breadcrumb_link_color.';}';
 			
 			// BODY STYLES
-			echo 'body, input[type="text"], input[type="password"], input[type="email"], textarea, select {color: '.$body_text_color.';}';
+			echo 'body, input[type="text"], input[type="password"], input[type="email"], textarea, select, .ui-state-default a {color: '.$body_text_color.';}';
 			echo 'h1, h1 a {color: '.$h1_text_color.';}';
 			echo 'h2, h2 a {color: '.$h2_text_color.';}';
 			echo 'h3, h3 a {color: '.$h3_text_color.';}';
@@ -854,9 +981,9 @@
 			echo 'a.sf-button.gold, a.sf-button.gold:hover, a.sf-button.lightgrey, a.sf-button.lightgrey:hover, a.sf-button.white, a.sf-button.white:hover {color: #222!important;}';
 			echo 'a.sf-button.transparent-dark {color: '.$body_text_color.'!important;}';
 			echo 'a.sf-button.transparent-light:hover, a.sf-button.transparent-dark:hover {color: '.$accent_color.'!important;}';
-			echo '.wpcf7 input.wpcf7-submit[type="submit"], .gform_wrapper input[type="submit"] {color: #fff;}';
-			echo '.wpcf7 input.wpcf7-submit[type="submit"]:hover, .gform_wrapper input[type="submit"]:hover {background-color: '.$secondary_accent_color.'!important;color: '.$secondary_accent_alt_color.';}';
-			echo '.wpcf7 input[type="text"], .wpcf7 input[type="email"], .wpcf7 textarea, .wpcf7 select, .ginput_container input[type="text"], .ginput_container input[type="email"], .ginput_container textarea, .ginput_container select {background: '.$alt_bg_color.'; border-color: '.$section_divide_color.';}';
+			echo ' input[type="submit"], .wpcf7 input.wpcf7-submit[type="submit"], .gform_wrapper input[type="submit"], .mymail-form input[type="submit"] {color: #fff;}';
+			echo 'input[type="submit"]:hover, .wpcf7 input.wpcf7-submit[type="submit"]:hover, .gform_wrapper input[type="submit"]:hover, .mymail-form input[type="submit"]:hover {background-color: '.$secondary_accent_color.'!important;color: '.$secondary_accent_alt_color.';}';
+			echo 'input[type="text"], input[type="email"], input[type="password"], textarea, select, .wpcf7 input[type="text"], .wpcf7 input[type="email"], .wpcf7 textarea, .wpcf7 select, .ginput_container input[type="text"], .ginput_container input[type="email"], .ginput_container textarea, .ginput_container select, .mymail-form input[type="text"], .mymail-form input[type="email"], .mymail-form textarea, .mymail-form select {background: '.$alt_bg_color.'; border-color: '.$section_divide_color.';}';
 			echo '.sf-icon {color: '.$icon_color.';}';
 			echo '.sf-icon-cont {border-color: rgba('.$icon_container_border_color["red"].','.$icon_container_border_color["green"].','.$icon_container_border_color["blue"].',0.5);}';
 			echo '.sf-icon-cont:hover, .sf-hover .sf-icon-cont, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont, .sf-hover .sf-icon-box-hr {background-color: '.$icon_container_bg_color.';}';
@@ -866,9 +993,49 @@
 			echo '.sf-icon-box-animated .front h3 {color: '.$body_text_color.'!important;}';
 			echo '.sf-icon-box-animated .back {background: '.$accent_color.'; border-color: '.$accent_color.';}';
 			echo '.sf-icon-box-animated .back, .sf-icon-box-animated .back h3 {color: '.$accent_alt_color.'!important;}';
+			echo '.sf-icon-accent.sf-icon-cont, .sf-icon-accent > i {color: '.$accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-accent {border-color: '.$accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-accent:hover, .sf-hover .sf-icon-cont.sf-icon-accent, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-accent, .sf-hover .sf-icon-box-hr.sf-icon-accent {background-color: '.$accent_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-accent:after {border-top-color: '.$accent_color.';border-left-color: '.$accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-accent:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-accent .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-accent .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-accent .sf-icon {color: '.$accent_alt_color.';}';
+			echo '.sf-icon-secondary-accent.sf-icon-cont, .sf-icon-secondary-accent > i {color: '.$secondary_accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-secondary-accent {border-color: '.$secondary_accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-secondary-accent:hover, .sf-hover .sf-icon-cont.sf-icon-secondary-accent, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-secondary-accent, .sf-hover .sf-icon-box-hr.sf-icon-secondary-accent {background-color: '.$secondary_accent_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-secondary-accent:after {border-top-color: '.$secondary_accent_color.';border-left-color: '.$secondary_accent_color.';}';
+			echo '.sf-icon-cont.sf-icon-secondary-accent:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-secondary-accent .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-secondary-accent .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-secondary-accent .sf-icon {color: '.$secondary_accent_alt_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-secondary-accent {background: '.$secondary_accent_color.'; border-color: '.$secondary_accent_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-secondary-accent, .sf-icon-box-animated .back.sf-icon-secondary-accent h3 {color: '.$secondary_accent_alt_color.'!important;}';
+			echo '.sf-icon-icon-one.sf-icon-cont, .sf-icon-icon-one > i, i.sf-icon-icon-one {color: '.$icon_one_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-one {border-color: '.$icon_one_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-one:hover, .sf-hover .sf-icon-cont.sf-icon-icon-one, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-one, .sf-hover .sf-icon-box-hr.sf-icon-icon-one {background-color: '.$icon_one_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-one:after {border-top-color: '.$icon_one_color.';border-left-color: '.$icon_one_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-one:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-icon-one .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-icon-one .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-icon-one .sf-icon {color: '.$icon_one_alt_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-one {background: '.$icon_one_color.'; border-color: '.$icon_one_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-one, .sf-icon-box-animated .back.sf-icon-icon-one h3 {color: '.$icon_one_alt_color.'!important;}';
+			echo '.sf-icon-icon-two.sf-icon-cont, .sf-icon-icon-two > i, i.sf-icon-icon-two {color: '.$icon_two_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-two {border-color: '.$icon_two_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-two:hover, .sf-hover .sf-icon-cont.sf-icon-icon-two, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-two, .sf-hover .sf-icon-box-hr.sf-icon-icon-two {background-color: '.$icon_two_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-two:after {border-top-color: '.$icon_two_color.';border-left-color: '.$icon_two_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-two:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-icon-two .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-icon-two .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-icon-two .sf-icon {color: '.$icon_two_alt_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-two {background: '.$icon_two_color.'; border-color: '.$icon_two_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-two, .sf-icon-box-animated .back.sf-icon-icon-two h3 {color: '.$icon_two_alt_color.'!important;}';
+			echo '.sf-icon-icon-three.sf-icon-cont, .sf-icon-icon-three > i, i.sf-icon-icon-three {color: '.$icon_three_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-three {border-color: '.$icon_three_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-three:hover, .sf-hover .sf-icon-cont.sf-icon-icon-three, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-three, .sf-hover .sf-icon-box-hr.sf-icon-icon-three {background-color: '.$icon_three_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-three:after {border-top-color: '.$icon_three_color.';border-left-color: '.$icon_three_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-three:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-icon-three .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-icon-three .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-icon-three .sf-icon {color: '.$icon_three_alt_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-three {background: '.$icon_three_color.'; border-color: '.$icon_three_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-three, .sf-icon-box-animated .back.sf-icon-icon-three h3 {color: '.$icon_three_alt_color.'!important;}';
+			echo '.sf-icon-icon-four.sf-icon-cont, .sf-icon-icon-four > i, i.sf-icon-icon-four {color: '.$icon_four_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-four {border-color: '.$icon_four_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-four:hover, .sf-hover .sf-icon-cont.sf-icon-icon-four, .sf-icon-box[class*="icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-four, .sf-hover .sf-icon-box-hr.sf-icon-icon-four {background-color: '.$icon_four_color.';}';
+			echo '.sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont.sf-icon-icon-four:after {border-top-color: '.$icon_four_color.';border-left-color: '.$icon_four_color.';}';
+			echo '.sf-icon-cont.sf-icon-icon-four:hover .sf-icon, .sf-hover .sf-icon-cont.sf-icon-icon-four .sf-icon, .sf-icon-box.sf-icon-box-boxed-one.sf-icon-icon-four .sf-icon, .sf-icon-box.sf-icon-box-boxed-three.sf-icon-icon-four .sf-icon {color: '.$icon_four_alt_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-four {background: '.$icon_four_color.'; border-color: '.$icon_four_color.';}';
+			echo '.sf-icon-box-animated .back.sf-icon-icon-four, .sf-icon-box-animated .back.sf-icon-icon-four h3 {color: '.$icon_four_alt_color.'!important;}';			
 			echo 'span.dropcap3 {background: #000;color: #fff;}';
 			echo 'span.dropcap4 {color: #fff;}';
-			echo '.spb_divider, .spb_divider.go_to_top_icon1, .spb_divider.go_to_top_icon2, .testimonials > li, .jobs > li, .spb_impact_text, .tm-toggle-button-wrap, .tm-toggle-button-wrap a, .portfolio-details-wrap, .spb_divider.go_to_top a, .impact-text-wrap, .widget_search form input {border-color: '.$section_divide_color.';}';
+			echo '.spb_divider, .spb_divider.go_to_top_icon1, .spb_divider.go_to_top_icon2, .testimonials > li, .jobs > li, .spb_impact_text, .tm-toggle-button-wrap, .tm-toggle-button-wrap a, .portfolio-details-wrap, .spb_divider.go_to_top a, .impact-text-wrap, .widget_search form input, .alt-bg.spb_divider {border-color: '.$section_divide_color.';}';
 			echo '.spb_divider.go_to_top_icon1 a, .spb_divider.go_to_top_icon2 a {background: '.$inner_page_bg_color.';}';
 			echo '.spb_tabs .ui-tabs .ui-tabs-panel, .spb_content_element .ui-tabs .ui-tabs-nav, .ui-tabs .ui-tabs-nav li {border-color: '.$section_divide_color.';}';
 			echo '.spb_tabs .ui-tabs .ui-tabs-panel, .ui-tabs .ui-tabs-nav li.ui-tabs-active a {background: '.$inner_page_bg_color.'!important;}';
@@ -876,6 +1043,8 @@
 			echo '.spb_tabs .nav-tabs li.active a, .spb_tour .nav-tabs li.active a, .spb_accordion .spb_accordion_section > h3.ui-state-active a {background-color: '.$alt_bg_color.';}';
 			echo '.spb_tour .ui-tabs .ui-tabs-nav li a {border-color: '.$section_divide_color.';}';
 			echo '.spb_tour.span3 .ui-tabs .ui-tabs-nav li {border-color: '.$section_divide_color.'!important;}';
+			echo '.toggle-wrap .spb_toggle, .spb_toggle_content {border-color: '.$section_divide_color.';}';
+			echo '.toggle-wrap .spb_toggle:hover {color: '.$accent_color.';}';
 			echo '.ui-accordion h3.ui-accordion-header .ui-icon {color: '.$body_text_color.';}';
 			echo '.ui-accordion h3.ui-accordion-header.ui-state-active:hover a, .ui-accordion h3.ui-accordion-header:hover .ui-icon {color: '.$accent_color.';}';
 			echo 'blockquote.pullquote {border-color: '.$accent_color.';}';
@@ -926,7 +1095,7 @@
 			echo 'nav.woocommerce-pagination ul li span.current, nav.woocommerce-pagination ul li a:hover {background:'.$accent_color.'!important;border-color:'.$accent_color.';color: '.$accent_alt_color.'!important;}';
 			echo '.woocommerce-account p.myaccount_address, .woocommerce-account .page-content h2, p.no-items, #order_review table.shop_table, #payment_heading, .returning-customer a {border-bottom-color: '.$section_divide_color.';}';
 			echo '.woocommerce .products ul, .woocommerce ul.products, .woocommerce-page .products ul, .woocommerce-page ul.products, p.no-items {border-top-color: '.$section_divide_color.';}';
-			echo '.woocommerce-ordering .woo-select, .variations_form .woo-select, .add_review a, .woocommerce .quantity, .woocommerce-page .quantity, .woocommerce .coupon input.apply-coupon, .woocommerce table.shop_table tr td.product-remove .remove, .woocommerce .button.update-cart-button, .shipping-calculator-form .woo-select, .woocommerce .shipping-calculator-form .update-totals-button button, .woocommerce #billing_country_field .woo-select, .woocommerce #shipping_country_field .woo-select, .woocommerce #review_form #respond .form-submit input, .woocommerce form .form-row input.input-text, .woocommerce table.my_account_orders .order-actions .button, .woocommerce #payment div.payment_box, .woocommerce .widget_price_filter .price_slider_amount .button, .woocommerce.widget .buttons a, .woocommerce input[name="apply_coupon"] {background: '.$alt_bg_color.'; color: '.$secondary_accent_color.'}';
+			echo '.woocommerce-ordering .woo-select, .variations_form .woo-select, .add_review a, .woocommerce .quantity, .woocommerce-page .quantity, .woocommerce .coupon input.apply-coupon, .woocommerce table.shop_table tr td.product-remove .remove, .woocommerce .button.update-cart-button, .shipping-calculator-form .woo-select, .woocommerce .shipping-calculator-form .update-totals-button button, .woocommerce #billing_country_field .woo-select, .woocommerce #shipping_country_field .woo-select, .woocommerce #review_form #respond .form-submit input, .woocommerce form .form-row input.input-text, .woocommerce table.my_account_orders .order-actions .button, .woocommerce #payment div.payment_box, .woocommerce .widget_price_filter .price_slider_amount .button, .woocommerce.widget .buttons a, .load-more-btn {background: '.$alt_bg_color.'; color: '.$secondary_accent_color.'}';
 			echo '.woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li span.current { color: '.$accent_alt_color.';}';
 			echo 'li.product figcaption a.product-added {color: '.$accent_alt_color.';}';
 			echo '.woocommerce ul.products li.product figure figcaption, .yith-wcwl-add-button a, ul.products li.product a.quick-view-button, .yith-wcwl-add-to-wishlist, .woocommerce form.cart button.single_add_to_cart_button, .woocommerce p.cart a.single_add_to_cart_button, .lost_reset_password p.form-row input[type="submit"], .track_order p.form-row input[type="submit"], .change_password_form p input[type="submit"], .woocommerce form.register input[type="submit"], .woocommerce .wishlist_table tr td.product-add-to-cart a, .woocommerce input.button[name="save_address"], .woocommerce .woocommerce-message a.button {background: '.$alt_bg_color.';}';
@@ -934,8 +1103,10 @@
 			echo '.woocommerce ul.products li.product figure figcaption .shop-actions > a.product-added, .woocommerce ul.products li.product figure figcaption .shop-actions > a.product-added:hover {color: '.$accent_alt_color.';}';
 			echo 'ul.products li.product .product-details .posted_in a {color: '.$body_alt_text_color.';}';
 			echo '.woocommerce ul.products li.product figure figcaption .shop-actions > a:hover, ul.products li.product .product-details .posted_in a:hover {color: '.$accent_color.';}';
+			echo '.woocommerce form.cart button.single_add_to_cart_button, .woocommerce p.cart a.single_add_to_cart_button, .woocommerce input[name="save_account_details"] { background: '.$alt_bg_color.'!important; color: '.$body_text_color.' ;}'. "\n";
+			echo '.woocommerce form.cart button.single_add_to_cart_button:hover{ background: '.$accent_color.'!important; color: '.$accent_alt_color.' ;}'. "\n";
 			echo '.woocommerce p.cart a.single_add_to_cart_button:hover {background: '.$secondary_accent_color.'; color: '.$accent_color.' ;}';
-			echo '.woocommerce table.shop_table tr td.product-remove .remove:hover, .woocommerce .coupon input.apply-coupon:hover, .woocommerce .shipping-calculator-form .update-totals-button button:hover, .woocommerce .quantity .plus:hover, .woocommerce .quantity .minus:hover, .add_review a:hover, .woocommerce #review_form #respond .form-submit input:hover, .lost_reset_password p.form-row input[type="submit"]:hover, .track_order p.form-row input[type="submit"]:hover, .change_password_form p input[type="submit"]:hover, .woocommerce table.my_account_orders .order-actions .button:hover, .woocommerce .widget_price_filter .price_slider_amount .button:hover, .woocommerce.widget .buttons a:hover, .woocommerce .wishlist_table tr td.product-add-to-cart a:hover, .woocommerce input.button[name="save_address"]:hover, .woocommerce input[name="apply_coupon"]:hover, .woocommerce form.register input[type="submit"]:hover {background: '.$accent_color.'; color: '.$accent_alt_color.';}';
+			echo '.woocommerce table.shop_table tr td.product-remove .remove:hover, .woocommerce .coupon input.apply-coupon:hover, .woocommerce .shipping-calculator-form .update-totals-button button:hover, .woocommerce .quantity .plus:hover, .woocommerce .quantity .minus:hover, .add_review a:hover, .woocommerce #review_form #respond .form-submit input:hover, .lost_reset_password p.form-row input[type="submit"]:hover, .track_order p.form-row input[type="submit"]:hover, .change_password_form p input[type="submit"]:hover, .woocommerce table.my_account_orders .order-actions .button:hover, .woocommerce .widget_price_filter .price_slider_amount .button:hover, .woocommerce.widget .buttons a:hover, .woocommerce .wishlist_table tr td.product-add-to-cart a:hover, .woocommerce input.button[name="save_address"]:hover, .woocommerce input[name="apply_coupon"]:hover, .woocommerce form.register input[type="submit"]:hover, .woocommerce form.cart button.single_add_to_cart_button:hover, .woocommerce form.cart .yith-wcwl-add-to-wishlist a:hover, .load-more-btn:hover, .woocommerce-account input[name="change_password"]:hover {background: '.$accent_color.'; color: '.$accent_alt_color.';}';
 			echo '.woocommerce #account_details .login, .woocommerce #account_details .login h4.lined-heading span, .my-account-login-wrap .login-wrap, .my-account-login-wrap .login-wrap h4.lined-heading span, .woocommerce div.product form.cart table div.quantity {background: '.$alt_bg_color.';}';
 			echo '.woocommerce .help-bar ul li a:hover, .woocommerce .continue-shopping:hover, .woocommerce .address .edit-address:hover, .my_account_orders td.order-number a:hover, .product_meta a.inline:hover { border-bottom-color: '.$accent_color.';}';
 			echo '.woocommerce .order-info, .woocommerce .order-info mark {background: '.$accent_color.'; color: '.$accent_alt_color.';}';
@@ -944,12 +1115,29 @@
 			echo '.woocommerce .widget_price_filter .ui-slider-horizontal .ui-slider-range {background: '.$alt_bg_color.';}';
 			echo '.yith-wcwl-wishlistexistsbrowse a:hover, .yith-wcwl-wishlistaddedbrowse a:hover {color: '.$accent_alt_color.';}';
 			echo '.woocommerce ul.products li.product .price, .woocommerce div.product p.price {color: '.$body_text_color.';}';
-			if ($one_page_checkout) {
-			echo '.already-logged-in, .checkout-process, #billing .proceed {display: none;}';
-			echo 'ul.checkout-process li p {color: '.$body_alt_text_color.';}';
-			echo '.checkout-pane {display: block!important; margin-top: 40px;}';
-			echo '#billing {margin-top:80px;}';
-			}
+			echo '.woocommerce ul.products li.product-category .product-cat-info {background: '.$section_divide_color.';}';
+			echo '.woocommerce ul.products li.product-category .product-cat-info:before {border-bottom-color:'.$section_divide_color.';}';
+			echo '.woocommerce ul.products li.product-category a:hover .product-cat-info {background: '.$accent_color.'; color: '.$accent_alt_color.';}';
+			echo '.woocommerce ul.products li.product-category a:hover .product-cat-info h3 {color: '.$accent_alt_color.'!important;}';
+			echo '.woocommerce ul.products li.product-category a:hover .product-cat-info:before {border-bottom-color:'.$accent_color.';}';
+			echo '.woocommerce input[name="apply_coupon"], .woocommerce-account input[name="change_password"] {background: '.$alt_bg_color.'!important; color: '.$secondary_accent_color.'!important}';
+			echo '.woocommerce input[name="apply_coupon"]:hover, .woocommerce-account input[name="change_password"]:hover, .woocommerce input[name="save_account_details"]:hover {background: '.$accent_color.'!important; color: '.$accent_alt_color.'!important;}';
+			
+			// BUDDYPRESS STYLES
+			echo '#buddypress .activity-meta a, #buddypress .acomment-options a, #buddypress #member-group-links li a {border-color: '.$section_divide_color.';}';
+			echo '#buddypress .activity-meta a:hover, #buddypress .acomment-options a:hover, #buddypress #member-group-links li a:hover {border-color: '.$accent_color.';}';
+			echo '#buddypress .activity-header a, #buddypress .activity-read-more a {border-color: '.$accent_color.';}';
+			echo '#buddypress #members-list .item-meta .activity, #buddypress .activity-header p {color: '.$body_alt_text_color.';}';
+			echo '#buddypress .pagination-links span, #buddypress .load-more.loading a {background-color: '.$accent_color.';color: '.$accent_alt_color.';border-color: '.$accent_color.';}';
+			
+			// BBPRESS STYLES
+			echo 'span.bbp-admin-links a, li.bbp-forum-info .bbp-forum-content {color: '.$body_alt_text_color.';}';
+			echo 'span.bbp-admin-links a:hover {color: '.$accent_color.';}';
+			echo '.bbp-topic-action #favorite-toggle a, .bbp-topic-action #subscription-toggle a, .bbp-single-topic-meta a, .bbp-topic-tags a, #bbpress-forums li.bbp-body ul.forum, #bbpress-forums li.bbp-body ul.topic, #bbpress-forums li.bbp-header, #bbpress-forums li.bbp-footer, #bbp-user-navigation ul li a, .bbp-pagination-links a, #bbp-your-profile fieldset input, #bbp-your-profile fieldset textarea, #bbp-your-profile, #bbp-your-profile fieldset {border-color: '.$section_divide_color.';}';
+			echo '.bbp-topic-action #favorite-toggle a:hover, .bbp-topic-action #subscription-toggle a:hover, .bbp-single-topic-meta a:hover, .bbp-topic-tags a:hover, #bbp-user-navigation ul li a:hover, .bbp-pagination-links a:hover {border-color: '.$accent_color.';}';
+			echo '#bbp-user-navigation ul li.current a, .bbp-pagination-links span.current {border-color: '.$accent_color.';background: '.$accent_color.'; color: '.$accent_alt_color.';}';
+			echo '#bbpress-forums fieldset.bbp-form button[type="submit"], #bbp_user_edit_submit {background: '.$alt_bg_color.'; color: '.$secondary_accent_color.'}';
+			echo '#bbpress-forums fieldset.bbp-form button[type="submit"]:hover, #bbp_user_edit_submit:hover {background: '.$accent_color.'; color: '.$accent_alt_color.';}';
 			
 			// ASSET BACKGROUND STYLES
 			echo '.alt-bg {border-color: '.$section_divide_color.';}';
@@ -1104,6 +1292,7 @@
 			}
 			if ($body_font_option == "google") {
 			echo 'body, h6, #sidebar .widget-heading h3, #header-search input, .header-items h3.phone-number, .related-wrap h4, #comments-list > h4, .item-heading h1, .sf-button, button, input[type="submit"], input[type="reset"], input[type="button"], input[type="email"], .spb_accordion_section h3, #header-login input, #mobile-navigation > div, .search-form input, input, button, select, textarea {font-family: "'.$google_font_one.'", sans-serif;font-weight: '.$google_font_one_weight.';font-style: '.$google_font_one_style.';}';
+			echo 'strong, .sf-button, h6, .standard-post-date, .sf-count-asset h6.count-subject, .progress-bar-wrap .bar-text > span.progress-value, .portfolio-showcase-wrap ul li .item-info span.item-title, table.sf-table th, .team-member figcaption span, .read-more-button, .pagination-wrap li span.current, #respond .form-submit input#submit, .twitter-link a, .comment-meta .comment-author, .woocommerce span.onsale, .woocommerce .wc-new-badge, .woocommerce .out-of-stock-badge, .woocommerce .free-badge, .woocommerce a.button.alt, .woocommerce .coupon input.apply-coupon, .bag-product-title a, .woocommerce .shipping-calculator-form .update-totals-button button, table.totals_table tr.total, .woocommerce .button.update-cart-button, .woocommerce .button.checkout-button, #product-accordion .accordion-toggle, .woocommerce ul.products li.product-category h3 {font-family: "'.$google_font_one.'", sans-serif;font-style: '.$google_font_one_style.';letter-spacing: normal; font-weight: bold!important;}';
 			}
 			if ($headings_font_option == "google") {
 			echo 'h1, h2, h3, h4, h5, .heading-font, .custom-caption p, span.dropcap1, span.dropcap2, span.dropcap3, span.dropcap4, .spb_call_text, .impact-text, .impact-text-large, .testimonial-text, .header-advert, .spb_call_text, .impact-text, .sf-count-asset .count-number, #base-promo, .sf-countdown, .fancy-heading h1, .sf-icon-character {font-family: "'.$google_font_two.'", sans-serif;font-weight: '.$google_font_two_weight.';font-style: '.$google_font_two_style.';}';
@@ -1115,6 +1304,9 @@
 			$replace_with = 'body, h6, #sidebar .widget-heading h3, #header-search input, .header-items h3.phone-number, .related-wrap h4, #comments-list > h4, .item-heading h1, .sf-button, button, input[type="submit"], input[type="reset"], input[type="button"], input[type="email"], .spb_accordion_section h3, #header-login input, #mobile-navigation > div, .search-form input, input, button, select, textarea {';
 			$fd_standard_output = str_replace("div {", $replace_with, $fontdeck_standard_font);
 			echo $fd_standard_output;
+			$replace_with_bold = 'strong, .sf-button, h6, .standard-post-date, .sf-count-asset h6.count-subject, .progress-bar-wrap .bar-text > span.progress-value, .portfolio-showcase-wrap ul li .item-info span.item-title, table.sf-table th, .team-member figcaption span, .read-more-button, .pagination-wrap li span.current, #respond .form-submit input#submit, .twitter-link a, .comment-meta .comment-author, .woocommerce span.onsale, .woocommerce .wc-new-badge, .woocommerce .out-of-stock-badge, .woocommerce .free-badge, .woocommerce a.button.alt, .woocommerce .coupon input.apply-coupon, .bag-product-title a, .woocommerce .shipping-calculator-form .update-totals-button button, table.totals_table tr.total, .woocommerce .button.update-cart-button, .woocommerce .button.checkout-button, #product-accordion .accordion-toggle, .woocommerce ul.products li.product-category h3 {';
+			$fd_standard_bold_output = str_replace("div {", $replace_with_bold, $fontdeck_standard_font);
+			echo $fd_standard_bold_output;
 			}
 			if ($headings_font_option == "fontdeck") {
 			$replace_with = 'h1, h2, h3, h4, h5, .heading-font, .custom-caption p, span.dropcap1, span.dropcap2, span.dropcap3, span.dropcap4, .spb_call_text, .impact-text, .impact-text-large, .testimonial-text, .header-advert, .spb_call_text, .impact-text, .sf-count-asset .count-number, #base-promo, .sf-countdown, .fancy-heading h1, .sf-icon-character {';

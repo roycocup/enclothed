@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Shortcodes Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -39,12 +39,12 @@
 	                if ( $param['param_name'] != 'content' ) {
 	                    //var_dump($param['value']);
 	                    if ( isset($param['value']) ) {
-	                        $shortcode_attributes[$param['param_name']] = is_string($param['value']) ? __($param['value'], "swift-page-builder") : $param['value'];
+	                        $shortcode_attributes[$param['param_name']] = is_string($param['value']) ? __($param['value'], "swift-framework-admin") : $param['value'];
 	                    } else {
 	                        $shortcode_attributes[$param['param_name']] = '';
 	                    }
 	                } else if ( $param['param_name'] == 'content' && $content == NULL ) {
-	                    $content = __($param['value'], "swift-page-builder");
+	                    $content = __($param['value'], "swift-framework-admin");
 	                }
 	            }
 	            extract(shortcode_atts(
@@ -129,11 +129,22 @@
 	     * @return string
 	     */
 	
-	    public function startRow($position, $row_type = "") {
+	    public function startRow($position, $col_width = "", $fullwidth = false) {
+	    	global $sf_sidebar_config;
+	    	
+	    	if (is_singular('portfolio')) {
+	    		$sf_sidebar_config = "no-sidebars";
+	    	}
+	    	
 	        $output = '';
 	        if ( strpos($position, 'first') !== false ) {
-	            $output = ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" . '<!-- START row -->' ."\n" : '' ) . '<div class="row">';            
-	            //$output = ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" . '<!-- START row -->' ."\n" : '' ) . '<div class="row '.$row_type.'">';
+	        	if ($fullwidth) {
+	            $output = ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" . '<!-- START row -->' ."\n" : '' ) . '<div class="row fw-row">';            
+	        	} else if ($sf_sidebar_config == "no-sidebars") {
+	        	$output = ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" . '<!-- START row -->' ."\n" : '' ) . '<div class="container"><div class="row">';
+	        	} else {
+	        		$output = ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" . '<!-- START row -->' ."\n" : '' ) . '<div class="row">';
+	        	}
 	        }
 	        return $output;
 	    }
@@ -145,11 +156,19 @@
 	     * @return string
 	     */
 	
-	    public function endRow($position) {
+	    public function endRow($position, $column = "", $fullwidth = false) {
+	        
+	        global $sf_sidebar_config;
+	        
 	        $output = '';
 	        if ( strpos($position, 'last') !== false ) {
-	            $output = '</div>'. ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" .  '<!-- END row --> ' . "\n" : ''. "\n" );
+	        	if ($fullwidth || $sf_sidebar_config != "no-sidebars") {
+	        	$output = '</div>'. ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" .  '<!-- END row --> ' . "\n" : ''. "\n" );           
+	        	} else {
+	            $output = '</div></div>'. ( !empty($_GET['spb_debug']) &&  $_GET['spb_debug']=='true' ? "\n" .  '<!-- END row --> ' . "\n" : ''. "\n" );
+	        	}
 	        }
+	        
 	        return $output;
 	    }
 	
@@ -189,7 +208,7 @@
 	        $controls_edit = ' <a class="column_edit" href="#" title="'.__('Edit', 'swift-framework-admin').'"></a>';
 	        $controls_popup = ' <a class="column_popup" href="#" title="'.__('Pop up', 'swift-framework-admin').'"></a>';
 	        $controls_delete = ' <a class="column_clone" href="#" title="'.__('Clone', 'swift-framework-admin').'"></a> <a class="column_delete" href="#" title="'.__('Delete', 'swift-framework-admin').'"></a>';
-	        // $delete_edit_row = '<a class="row_delete" title="'.__('Delete %element%', "swift-page-builder").'">'.__('Delete %element%', "swift-page-builder").'</a>';
+	        // $delete_edit_row = '<a class="row_delete" title="'.__('Delete %element%', "swift-framework-admin").'">'.__('Delete %element%', "swift-framework-admin").'</a>';
 	
 	        $column_controls_full = $controls_start . $controls_column_size . $right_part_start . $controls_popup . $controls_edit . $controls_delete . $right_part_end . $controls_end;
 	        $column_controls_size_delete = $controls_start . $controls_column_size . $right_part_start . $controls_delete . $right_part_end . $controls_end;
@@ -238,7 +257,7 @@
 	        $old_names = array('yellow_message', 'blue_message', 'green_message', 'button_green', 'button_grey', 'button_yellow', 'button_blue', 'button_red', 'button_orange');
 	        $new_names = array('alert-block', 'alert-info', 'alert-success', 'btn-success', 'btn', 'btn-info', 'btn-primary', 'btn-danger', 'btn-warning');
 	        $value = str_ireplace($old_names, $new_names, $value);
-	            //$value = __($value, "swift-page-builder");
+	            //$value = __($value, "swift-framework-admin");
 	            //
 	        $param_name = isset($param['param_name']) ? $param['param_name'] : '';
 	        $type = isset($param['type']) ? $param['type'] : '';
@@ -282,12 +301,12 @@
 	                $shortcode_attributes
 	                , $atts));
 	
-	            //$output .= '<div class="span12 spb_edit_form_elements"><h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-page-builder").'</h2>';
+	            //$output .= '<div class="span12 spb_edit_form_elements"><h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-framework-admin").'</h2>';
 				$output .= '<div class="spb_edit_form_elements">';
 				
 				$output .= '<div id="edit-modal-header">';
-				$output .= '<h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-page-builder").'</h2>';
-				$output .= '<div class="edit_form_actions"><a href="#" class="spb_save_edit_form button-primary">'. __('Save', "swift-page-builder") .'</a></div>';
+				$output .= '<h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-framework-admin").'</h2>';
+				$output .= '<div class="edit_form_actions"><a href="#" class="spb_save_edit_form button-primary">'. __('Save', "swift-framework-admin") .'</a></div>';
 				$output .= '</div>';
 				
 	            foreach ($this->settings['params'] as $param) {
@@ -311,11 +330,11 @@
 	        $output = '';
 	
 	        $output .= '<div class="row-fluid">';
-	        $output .= '<div class="span3 spb_element_label">'.__($param['heading'], "swift-page-builder").'</div>';
+	        $output .= '<div class="span3 spb_element_label">'.__($param['heading'], "swift-framework-admin").'</div>';
 	
 	        $output .= '<div class="span9 edit_form_line">';
 	        $output .= $this->singleParamEditForm($param, $param_value);
-	        $output .= (isset($param['description'])) ? '<span class="description">'.__($param['description'], "swift-page-builder").'</span>' : '';
+	        $output .= (isset($param['description'])) ? '<span class="description">'.__($param['description'], "swift-framework-admin").'</span>' : '';
 	        $output .= '</div>';
 	
 	        $output .= '</div>';
@@ -328,9 +347,24 @@
 	
 	        // Textfield - input
 	        if ( $param['type'] == 'textfield' ) {
-	            $value = __($param_value, "swift-page-builder");
+	            $value = __($param_value, "swift-framework-admin");
 	            $value = $param_value;
 	            $param_line .= '<input name="'.$param['param_name'].'" class="spb_param_value spb-textinput '.$param['param_name'].' '.$param['type'].'" type="text" value="'.$value.'" />';
+	        }
+	        // Textfield - color
+	        else if ( $param['type'] == 'colorpicker' ) {
+	            $value = __($param_value, "swift-framework-admin");
+	            $value = $param_value;
+	            $param_line .= '<input name="'.$param['param_name'].'" class="spb_param_value spb-colorpicker '.$param['param_name'].' '.$param['type'].'" type="text" value="'.$value.'" maxlength="6" size"6" />';
+	        }
+	        // Slider - uislider
+	        else if ( $param['type'] == 'uislider' ) {
+	            $value = __($param_value, "swift-framework-admin");
+	            $value = $param_value;
+	            $min = isset($param['min']) ? $param['min'] : 0;
+	            $max = isset($param['max']) ? $param['max'] : 800;
+	            $step = isset($param['step']) ? $param['step'] : 5;
+	            $param_line .= '<div class="noUiSlider"></div><input name="'.$param['param_name'].'" class="spb_param_value spb-uislider '.$param['param_name'].' '.$param['type'].'" type="text" value="'.$value.'" maxlength="6" size"6" data-min="'.$min.'" data-max="'.$max.'" data-step="'.$step.'" />';
 	        }
 	        // Dropdown - select
 	        else if ( $param['type'] == 'dropdown' ) {
@@ -340,7 +374,7 @@
 	                if ( is_numeric($text_val) && is_string($val) || is_numeric($text_val) && is_numeric($val) ) {
 	                    $text_val = $val;
 	                }
-	                $text_val = __($text_val, "swift-page-builder");
+	                $text_val = __($text_val, "swift-framework-admin");
 	                $val = strtolower(str_replace(array(" "), array("_"), $val));
 	                $selected = '';
 	                if ( $val == $param_value ) $selected = ' selected="selected"';
@@ -358,7 +392,7 @@
                     if ( is_numeric($text_val) && is_string($val) || is_numeric($text_val) && is_numeric($val) ) {
                         $text_val = $val;
                     }
-                    $text_val = __($text_val, "swift-page-builder");
+                    $text_val = __($text_val, "swift-framework-admin");
                     $selected = '';
                     if ( in_array($val, $selected_values) ) $selected = ' selected="selected"';                    
                     $param_line .= '<option id="'. $text_val . '" value="' . $val . '"'.$selected.'>'.$text_val.'</option>';
@@ -391,12 +425,12 @@
 	        }
 	        // Big Regular textarea
 	        else if ( $param['type'] == 'textarea_raw_html' ) {
-	            // $param_value = __($param_value, "swift-page-builder");
-	            $param_line .= '<textarea name="'.$param['param_name'].'" class="spb_param_value spb-textarea_raw_html '.$param['param_name'].' '.$param['type'].'" rows="16">' . base64_decode($param_value) . '</textarea>';
+	            // $param_value = __($param_value, "swift-framework-admin");
+	            $param_line .= '<textarea name="'.$param['param_name'].'" class="spb_param_value spb-textarea_raw_html '.$param['param_name'].' '.$param['type'].'" rows="16">' . htmlentities(rawurldecode(base64_decode($param_value)), ENT_COMPAT, 'UTF-8' ) . '</textarea>';
 	        }
 	        // Regular textarea
 	        else if ( $param['type'] == 'textarea' ) {
-	            $param_value = __($param_value, "swift-page-builder");
+	            $param_value = __($param_value, "swift-framework-admin");
 	            $param_line .= '<textarea name="'.$param['param_name'].'" class="spb_param_value spb-textarea '.$param['param_name'].' '.$param['type'].'">'.$param_value.'</textarea>';
 	        }
 	        // Attach images
@@ -404,7 +438,7 @@
 	            // TODO: More native way
 	            $param_value = spb_removeNotExistingImgIDs($param_value);
 	            $param_line .= '<input type="hidden" class="spb_param_value gallery_widget_attached_images_ids '.$param['param_name'].' '.$param['type'].'" name="'.$param['param_name'].'" value="'.$param_value.'" />';
-	            $param_line .= '<a class="button gallery_widget_add_images" href="#" title="'.__('Add images', "swift-page-builder").'">'.__('Add images', "swift-page-builder").'</a>';
+	            $param_line .= '<a class="button gallery_widget_add_images" href="#" title="'.__('Add images', "swift-framework-admin").'">'.__('Add images', "swift-framework-admin").'</a>';
 	            $param_line .= '<div class="gallery_widget_attached_images">';
 	            $param_line .= '<ul class="gallery_widget_attached_images_list">';
 	            $param_line .= ($param_value != '') ? spb_fieldAttachedImages(explode(",", $param_value)) : '';
@@ -416,7 +450,7 @@
 				// TODO: More native way
 				$param_value = spb_removeNotExistingImgIDs(preg_replace('/[^\d]/', '', $param_value));
 				$param_line .= '<input type="hidden" class="spb_param_value gallery_widget_attached_images_ids '.$param['param_name'].' '.$param['type'].'" name="'.$param['param_name'].'" value="'.$param_value.'" />';
-				$param_line .= '<a class="button gallery_widget_add_images" href="#" use-single="true" title="'.__('Add image', "swift-page-builder").'" data-uploader_title="'.__('Add image', "swift-page-builder").'">'.__('Add image', "swift-page-builder").'</a>';
+				$param_line .= '<a class="button gallery_widget_add_images" href="#" use-single="true" title="'.__('Add image', "swift-framework-admin").'" data-uploader_title="'.__('Add image', "swift-framework-admin").'">'.__('Add image', "swift-framework-admin").'</a>';
 				$param_line .= '<div class="gallery_widget_attached_images">';
 				$param_line .= '<ul class="gallery_widget_attached_images_list">';
 				$param_line .= ($param_value != '') ? spb_fieldAttachedImages(explode(",", $param_value)) : '';
@@ -432,14 +466,19 @@
 	            foreach ( $sidebars as $sidebar ) {
 	                $selected = '';
 	                if ( $sidebar["id"] == $param_value ) $selected = ' selected="selected"';
-	                $sidebar_name = __($sidebar["name"], "swift-page-builder");
+	                $sidebar_name = __($sidebar["name"], "swift-framework-admin");
 	                $param_line .= '<option value="'.$sidebar["id"].'"'.$selected.'>'.$sidebar_name.'</option>';
 	            }
 	            $param_line .= '</select>';
 	        }
 	        else if ( $param['type'] == 'altbg_preview' ) {
 	            $param_line .= '<div class="altbg-preview"><p>Alt Background Preview</p></div>';
-	        }
+	        } else if ( $param['type'] == 'icon-picker' ) {
+            	$value = __($param_value, "swift-framework-admin");
+            	$value = $param_value;
+            	$param_line .= '<input name="'.$param['param_name'].'" class="spb_param_value icon-picker '.$param['param_name'].' '.$param['type'].'" type="text" value="'.$value.'" style="visibility: hidden;height: 0;" /><ul class="font-icon-grid">'.sf_icon_list().'</ul>';
+            }
+	        
 	
 	
 	        return $param_line;
@@ -448,10 +487,10 @@
 	    protected function getTinyHtmlTextArea($param = array(), $param_value) {
 	        $param_line = '';
 	
-	        //$upload_media_btns = '<div class="spb_media-buttons hide-if-no-js"> '.__('Upload/Insert').' <a title="'.__('Add an Image', 'swift-page-builder').'" class="spb_insert-image" href="#"><img alt="'.__('Add an Image').'" src="'.home_url().'/wp-admin/images/media-button-image.gif"></a> <a class="spb_switch-editors" title="'.__('Switch Editors').'" href="#">HTML mode</a></div>';
+	        //$upload_media_btns = '<div class="spb_media-buttons hide-if-no-js"> '.__('Upload/Insert').' <a title="'.__('Add an Image', 'swift-framework-admin').'" class="spb_insert-image" href="#"><img alt="'.__('Add an Image').'" src="'.home_url().'/wp-admin/images/media-button-image.gif"></a> <a class="spb_switch-editors" title="'.__('Switch Editors').'" href="#">HTML mode</a></div>';
 	
 	        if ( function_exists('wp_editor') ) {
-	            $default_content = __($param_value, "swift-page-builder");
+	            $default_content = __($param_value, "swift-framework-admin");
 	            $output_value = '';
 	            // WP 3.3+
 	            ob_start();
@@ -489,11 +528,11 @@
 	                $shortcode_attributes
 	                , $atts));
 	
-	            //$output .= '<div class="span12 spb_edit_form_elements"><h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-page-builder").'</h2>';
+	            //$output .= '<div class="span12 spb_edit_form_elements"><h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-framework-admin").'</h2>';
 				$output .= '<div class="spb_edit_form_elements">';
 				$output .= '<div id="edit-modal-header">';
-				$output .= '<h2>'.__('Edit', 'swift-page-builder').' ' .__($this->settings['name'], "swift-page-builder").'</h2>';
-				$output .= '<div class="edit_form_actions"><a href="#" id="cancel-background-options">' . __('Cancel', 'swift-page-builder') . '</a><a href="#" class="spb_save_edit_form button-primary">'. __('Save', "swift-page-builder") .'</a></div>';
+				$output .= '<h2>'.__('Edit', 'swift-framework-admin').' ' .__($this->settings['name'], "swift-framework-admin").'</h2>';
+				$output .= '<div class="edit_form_actions"><a href="#" id="cancel-background-options">' . __('Cancel', 'swift-framework-admin') . '</a><a href="#" class="spb_save_edit_form button-primary">'. __('Save', "swift-framework-admin") .'</a></div>';
 				$output .= '</div>';
 				
 				$output .= '<div class="spb_edit_wrap">';

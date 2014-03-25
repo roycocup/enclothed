@@ -1,38 +1,31 @@
 <?php
-							$options = get_option('sf_dante_options');
-							$enable_backtotop = $options['enable_backtotop'];
-							$enable_footer = $options['enable_footer'];
-							$enable_footer_divider = $options['enable_footer_divider'];
-							$enable_copyright = $options['enable_copyright'];
-							$enable_copyright_divider = $options['enable_copyright_divider'];
-							$show_backlink = $options['show_backlink'];
-							$page_layout = $options['page_layout'];
-							$footer_config = $options['footer_layout'];
-							$copyright_text = __($options['footer_copyright_text'], 'swiftframework');
-							$enable_footer_promo_bar = $options['enable_footer_promo_bar'];
-							$footer_promo_bar_type = $options['footer_promo_bar_type'];
-							$footer_promo_bar_text = $options['footer_promo_bar_text'];
-							$footer_promo_bar_button_color = $options['footer_promo_bar_button_color'];
-							$footer_promo_bar_button_text = $options['footer_promo_bar_button_text'];
-							$footer_promo_bar_button_link = $options['footer_promo_bar_button_link'];
-							$footer_promo_bar_button_target = $options['footer_promo_bar_button_target'];
-							
-							global $post, $sf_include_infscroll;
-							$remove_promo_bar = false;
-							if ($post) {
-							$remove_promo_bar = get_post_meta($post->ID, 'sf_remove_promo_bar', true);
-							}
-							
-							$footer_class = $copyright_class = "";
-							
-							if ($enable_footer_divider) { $footer_class = "footer-divider"; }
-							if ($enable_copyright_divider) { $copyright_class = "copyright-divider"; }
-						?>
-					
-					<!--// CLOSE #page-wrap //-->			
-					</div>
+						$options = get_option('sf_dante_options');
+						$enable_backtotop = $options['enable_backtotop'];
+						$enable_footer = $options['enable_footer'];
+						$enable_footer_divider = $options['enable_footer_divider'];
+						$enable_copyright = $options['enable_copyright'];
+						$enable_copyright_divider = $options['enable_copyright_divider'];
+						$show_backlink = $options['show_backlink'];
+						$page_layout = $options['page_layout'];
+						$footer_config = $options['footer_layout'];
+						$copyright_text = __($options['footer_copyright_text'], 'swiftframework');
+						$enable_footer_promo_bar = $options['enable_footer_promo_bar'];
+						$footer_promo_bar_type = $options['footer_promo_bar_type'];
+						$footer_promo_bar_text = $options['footer_promo_bar_text'];
+						$footer_promo_bar_button_color = $options['footer_promo_bar_button_color'];
+						$footer_promo_bar_button_text = $options['footer_promo_bar_button_text'];
+						$footer_promo_bar_button_link = $options['footer_promo_bar_button_link'];
+						$footer_promo_bar_button_target = $options['footer_promo_bar_button_target'];
+						
+						global $sf_include_infscroll, $remove_promo_bar, $enable_one_page_nav;
+													
+						$footer_class = $copyright_class = "";
+						
+						if ($enable_footer_divider) { $footer_class = "footer-divider"; }
+						if ($enable_copyright_divider) { $copyright_class = "copyright-divider"; }
+					?>
 				
-				<!--// CLOSE .container //-->
+				<!--// CLOSE #page-wrap //-->			
 				</div>
 				
 				<?php if ($enable_footer_promo_bar && !$remove_promo_bar) { ?>
@@ -243,6 +236,14 @@
 		
 		<!--// CLOSE #container //-->
 		</div>
+		
+		<?php if ($enable_one_page_nav) { ?>
+		<!--// ONE PAGE NAV //-->
+		<div id="one-page-nav">
+			<ul>
+			</ul>
+		</div>
+		<?php } ?>
 		
 		<?php if ($enable_backtotop) { ?>
 		<!--// BACK TO TOP //-->

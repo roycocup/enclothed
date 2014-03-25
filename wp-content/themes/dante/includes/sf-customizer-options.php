@@ -5,7 +5,7 @@
 	*	Theme Customizer Options
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_customize_register()
 	*	sf_customize_preview()
@@ -25,6 +25,7 @@
 			$wp_customize->add_section( 'color_scheme', array(
 			    'title'          => __( 'Color - Accent', 'swift-framework-admin' ),
 			    'priority'       => 202,
+			    'description'	 => __( 'These colours are used throughout the theme to give your site consistent styling, these would likely be colours from your identity colour scheme.', 'swift-framework-admin' ),
 			) );
 			
 			$wp_customize->add_setting( 'accent_color', array(
@@ -233,39 +234,46 @@
 				'priority'       => 3,
 			) ) );
 			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'topbar_link_color', array(
+				'label'   => __( 'Top Bar Link Color', 'swift-framework-admin' ),
+				'section' => 'header_styling',
+				'settings'   => 'topbar_link_color',
+				'priority'       => 4,
+			) ) );
+			
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'topbar_link_hover_color', array(
 				'label'   => __( 'Top Bar Link Hover Color', 'swift-framework-admin' ),
 				'section' => 'header_styling',
 				'settings'   => 'topbar_link_hover_color',
-				'priority'       => 4,
+				'priority'       => 5,
 			) ) );
 			
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'topbar_divider_color', array(
 				'label'   => __( 'Top Bar Divider Color', 'swift-framework-admin' ),
 				'section' => 'header_styling',
 				'settings'   => 'topbar_divider_color',
-				'priority'       => 5,
+				'priority'       => 6,
 			) ) );
 			
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_bg_color1', array(
 				'label'   => __( 'Header Background Color Gradient Top', 'swift-framework-admin' ),
 				'section' => 'header_styling',
 				'settings'   => 'header_bg_color1',
-				'priority'       => 6,
+				'priority'       => 7,
 			) ) );
 			
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_bg_color2', array(
 				'label'   => __( 'Header Background Color Gradient Bottom', 'swift-framework-admin' ),
 				'section' => 'header_styling',
 				'settings'   => 'header_bg_color2',
-				'priority'       => 7,
+				'priority'       => 8,
 			) ) );
 			
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_border_color', array(
 				'label'   => __( 'Header Border Color', 'swift-framework-admin' ),
 				'section' => 'header_styling',
 				'settings'   => 'header_border_color',
-				'priority'       => 8,
+				'priority'       => 9,
 			) ) );
 			
 			
@@ -857,6 +865,128 @@
 				'priority'       => 12,
 			) ) );
 			
+			
+			/* EXTRA ICON STYLING
+			================================================== */
+			
+			$wp_customize->add_section( 'extra_icon_styling', array(
+			    'title'          => __( 'Color - Icons (Extra options)', 'swift-framework-admin' ),
+			    'priority'       => 210,
+			    'description'	 => __( 'These colours can be used in any of the icon/icon box shortcodes. The Icon colour is the standard colour of the icon, and the hover background colour. The Alt colour is the colour of the icon when hovered.', 'swift-framework-admin' ),
+			) );
+			
+			$wp_customize->add_setting( 'icon_one_color', array(
+				'default'        => '#FF9900',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_one_alt_color', array(
+				'default'        => '#FFFFFF',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_two_color', array(
+				'default'        => '#339933',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_two_alt_color', array(
+				'default'        => '#FFFFFF',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_three_color', array(
+				'default'        => '#CCCCCC',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_three_alt_color', array(
+				'default'        => '#222222',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_four_color', array(
+				'default'        => '#6633ff',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+			
+			$wp_customize->add_setting( 'icon_four_alt_color', array(
+				'default'        => '#FFFFFF',
+				'type'           => 'option',
+				'transport'      => 'postMessage',
+				'capability'     => 'edit_theme_options',
+			) );
+					
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_one_color', array(
+				'label'   => __( 'Icon One Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_one_color',
+				'priority'       => 1,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_one_alt_color', array(
+				'label'   => __( 'Icon One Alt Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_one_alt_color',
+				'priority'       => 2,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_two_color', array(
+				'label'   => __( 'Icon Two Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_two_color',
+				'priority'       => 3,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_two_alt_color', array(
+				'label'   => __( 'Icon Two Alt Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_two_alt_color',
+				'priority'       => 4,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_three_color', array(
+				'label'   => __( 'Icon Three Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_three_color',
+				'priority'       => 5,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_three_alt_color', array(
+				'label'   => __( 'Icon Three Alt Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_three_alt_color',
+				'priority'       => 6,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_four_color', array(
+				'label'   => __( 'Icon Four Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_four_color',
+				'priority'       => 7,
+			) ) );
+			
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'icon_four_alt_color', array(
+				'label'   => __( 'Icon Four Alt Color', 'swift-framework-admin' ),
+				'section' => 'extra_icon_styling',
+				'settings'   => 'icon_four_alt_color',
+				'priority'       => 8,
+			) ) );
+						
 			
 			/* FOOTER STYLING
 			================================================== */

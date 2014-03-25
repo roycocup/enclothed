@@ -84,7 +84,7 @@
 	$sf_has_products = true;
 		
 	get_header('shop');	?>
-		
+
 	<?php
 		/**
 		 * woocommerce_before_main_content hook
@@ -96,183 +96,200 @@
 	?>
 
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true )  && $show_page_title) : ?>
-			
-	<div class="row">
-	
-		<?php if ($page_title_style == "fancy") { ?>
-			<?php if ($fancy_title_image != "") { ?>
-			<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image; ?>);" data-stellar-background-ratio="0.5">
+
+	<div class="container">	
+		<div class="row">
+			<?php if ($page_title_style == "fancy") { ?>
+				<?php if ($fancy_title_image != "") { ?>
+				<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image; ?>);">
+				<?php } else { ?>
+				<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
+				<?php } ?>
 			<?php } else { ?>
-			<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
+				<div class="page-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
 			<?php } ?>
-		<?php } else { ?>
-			<div class="page-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
-		<?php } ?>
 		
-			<div class="heading-text">
+				<div class="heading-text">
 				
 				<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) { ?>
-					
 					<h1><?php woocommerce_page_title(); ?></h1>
-						
 				<?php } else {
-				
+					echo '<h1>';
 					if ( is_search() ) {
-							
-						echo '<h1>';
-								
 						printf( __( 'Search Results: &ldquo;%s&rdquo;', 'woocommerce' ), get_search_query() );
-						
 						if ( get_query_var( 'paged' ) ) {
 							printf( __( '&nbsp;&ndash; Page %s', 'woocommerce' ), get_query_var( 'paged' ) );
 						}
-						
-						echo '</h1>';
-							
 					} elseif ( is_tax() ) {
-						
-						echo '<h1>' . single_term_title( "", false ) . '</h1>';
-					
+						echo single_term_title( "", false );
 					} else {
-						
-						$shop_page = get_post( woocommerce_get_page_id( 'shop' ) );
-						
-						echo '<h1>';
+						$shop_page = "";
+						if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+							$shop_page = get_post( wc_get_page_id( 'shop' ) );
+						} else {
+							$shop_page = get_post( woocommerce_get_page_id( 'shop' ) );
+						}
 						
 						echo apply_filters( 'the_title', ( $shop_page_title = get_option( 'woocommerce_shop_page_title' ) ) ? $shop_page_title : $shop_page->post_title );
-						
-						echo '</h1>';
 					}
-													
+					echo '</h1>';								
 				} ?>
-			</div>
+				</div>
 			<?php if ($page_title_style != "fancy") {
 				// BREADCRUMBS
 				echo sf_breadcrumbs();
 			} ?>
+			</div>
 		</div>
 	</div>
-
+	
 	<?php endif; ?>
 	
+	<div class="container">
 	
-	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
-		
-		<!-- OPEN section -->
-		<section class="<?php echo $page_class; ?>">
-		
-			<div class="page-content <?php echo $content_class; ?>">
-						
-			<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) {
-				
-				woocommerce_get_template( 'loop/result-count.php' );
-				
-				global $woocommerce;
-	
-				$orderby = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
-		
-				woocommerce_get_template( 'loop/orderby.php', array( 'orderby' => $orderby ) );
-	        
-	        } else { ?>
-	
-                <form class="woocommerce-ordering" method="POST">
-                    <select name="sort" class="orderby">
-                        <?php
-                            $catalog_orderby = apply_filters('woocommerce_catalog_orderby', array(
-                                'menu_order' 	=> __('Default sorting', 'woocommerce'),
-                                'title' 		=> __('Sort alphabetically', 'woocommerce'),
-                                'date' 			=> __('Sort by most recent', 'woocommerce'),
-                                'price' 		=> __('Sort by price', 'woocommerce')
-                            ));
-                
-                            foreach ( $catalog_orderby as $id => $name )
-                                echo '<option value="' . $id . '" ' . selected( $_SESSION['orderby'], $id, false ) . '>' . $name . '</option>';
-                        ?>
-                    </select>
-                </form>
-	            
-	        <?php } ?>
+		<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
 			
-			<?php do_action( 'woocommerce_archive_description' ); ?>
-	
-			<?php if ( have_posts() ) : ?>
+			<!-- OPEN section -->
+			<section class="<?php echo $page_class; ?>">
+			
+				<div class="page-content <?php echo $content_class; ?>">
 				
-				<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) { ?>
-	
-					<?php woocommerce_product_loop_start(); ?>
+				<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+				
+					wc_get_template( 'loop/result-count.php' );
+					
+					global $woocommerce;
 		
+					$orderby = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+			
+					wc_get_template( 'loop/orderby.php', array( 'orderby' => $orderby ) );
+							
+				} else if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) {
+					
+					woocommerce_get_template( 'loop/result-count.php' );
+					
+					global $woocommerce;
+		
+					$orderby = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+			
+					woocommerce_get_template( 'loop/orderby.php', array( 'orderby' => $orderby ) );
+		        
+		        } else { ?>
+		
+	                <form class="woocommerce-ordering" method="POST">
+	                    <select name="sort" class="orderby">
+	                        <?php
+	                            $catalog_orderby = apply_filters('woocommerce_catalog_orderby', array(
+	                                'menu_order' 	=> __('Default sorting', 'woocommerce'),
+	                                'title' 		=> __('Sort alphabetically', 'woocommerce'),
+	                                'date' 			=> __('Sort by most recent', 'woocommerce'),
+	                                'price' 		=> __('Sort by price', 'woocommerce')
+	                            ));
+	                
+	                            foreach ( $catalog_orderby as $id => $name )
+	                                echo '<option value="' . $id . '" ' . selected( $_SESSION['orderby'], $id, false ) . '>' . $name . '</option>';
+	                        ?>
+	                    </select>
+	                </form>
+		            
+		        <?php } ?>
+				
+				<?php do_action( 'woocommerce_archive_description' ); ?>
+		
+				<?php if ( have_posts() ) : ?>
+					
+					<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) { ?>
+						
+						<?php woocommerce_product_loop_start(); ?>
+			
+							<?php woocommerce_product_subcategories(); ?>
+			
+							<?php while ( have_posts() ) : the_post(); ?>
+			
+								<?php wc_get_template_part( 'content', 'product' ); ?>
+			
+							<?php endwhile; // end of the loop. ?>
+			
+						<?php woocommerce_product_loop_end(); ?>
+					
+					<?php } else if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) { ?>
+		
+						<?php woocommerce_product_loop_start(); ?>
+			
+							<?php woocommerce_product_subcategories(); ?>
+			
+							<?php while ( have_posts() ) : the_post(); ?>
+			
+								<?php woocommerce_get_template_part( 'content', 'product' ); ?>
+			
+							<?php endwhile; // end of the loop. ?>
+			
+						<?php woocommerce_product_loop_end(); ?>
+					
+					<?php } else { ?>
+					
+						<ul class="products">
+					
 						<?php woocommerce_product_subcategories(); ?>
-		
+						
 						<?php while ( have_posts() ) : the_post(); ?>
-		
+						
 							<?php woocommerce_get_template_part( 'content', 'product' ); ?>
 		
 						<?php endwhile; // end of the loop. ?>
+						
+						</ul>
+					
+					<?php } ?>
 		
-					<?php woocommerce_product_loop_end(); ?>
+					<?php
+						/**
+						 * woocommerce_after_shop_loop hook
+						 *
+						 * @hooked woocommerce_pagination - 10
+						 */
+						do_action( 'woocommerce_after_shop_loop' );
+					?>
+		
+				<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
+		
+					<?php woocommerce_get_template( 'loop/no-products-found.php' ); ?>
+		
+				<?php endif; ?>
 				
-				<?php } else { ?>
-				
-					<ul class="products">
-				
-					<?php woocommerce_product_subcategories(); ?>
-					
-					<?php while ( have_posts() ) : the_post(); ?>
-					
-						<?php woocommerce_get_template_part( 'content', 'product' ); ?>
-	
-					<?php endwhile; // end of the loop. ?>
-					
-					</ul>
-				
+				</div>
+		
+				<?php if ($sidebar_config == "both-sidebars") { ?>
+				<aside class="sidebar left-sidebar col-sm-4">
+					<?php dynamic_sidebar($left_sidebar); ?>
+				</aside>
 				<?php } ?>
-	
-				<?php
-					/**
-					 * woocommerce_after_shop_loop hook
-					 *
-					 * @hooked woocommerce_pagination - 10
-					 */
-					do_action( 'woocommerce_after_shop_loop' );
-				?>
-	
-			<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
-	
-				<?php woocommerce_get_template( 'loop/no-products-found.php' ); ?>
-	
-			<?php endif; ?>
 			
-			</div>
-	
-			<?php if ($sidebar_config == "both-sidebars") { ?>
-			<aside class="sidebar left-sidebar col-sm-4">
+			<!-- CLOSE section -->
+			</section>
+		
+			<?php if ($sidebar_config == "left-sidebar") { ?>
+					
+			<aside class="sidebar left-sidebar col-sm-3 col-sm-pull-9">
 				<?php dynamic_sidebar($left_sidebar); ?>
 			</aside>
-			<?php } ?>
 		
-		<!-- CLOSE section -->
-		</section>
-	
-		<?php if ($sidebar_config == "left-sidebar") { ?>
+			<?php } else if ($sidebar_config == "right-sidebar") { ?>
 				
-		<aside class="sidebar left-sidebar col-sm-3 col-sm-pull-9">
-			<?php dynamic_sidebar($left_sidebar); ?>
-		</aside>
-	
-		<?php } else if ($sidebar_config == "right-sidebar") { ?>
+			<aside class="sidebar right-sidebar col-sm-3">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
 			
-		<aside class="sidebar right-sidebar col-sm-3">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
+			<?php } else if ($sidebar_config == "both-sidebars") { ?>
 		
-		<?php } else if ($sidebar_config == "both-sidebars") { ?>
-	
-		<aside class="sidebar right-sidebar col-sm-3">
-			<?php dynamic_sidebar($right_sidebar); ?>
-		</aside>
-		
-		<?php } ?>
+			<aside class="sidebar right-sidebar col-sm-3">
+				<?php dynamic_sidebar($right_sidebar); ?>
+			</aside>
 			
-	</div>
+			<?php } ?>
+				
+		</div>
 
+	</div>
+	
 <?php get_footer('shop'); ?>

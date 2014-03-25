@@ -1,7 +1,10 @@
 jQuery(document).ready(function ($) {
     var googlefont = jQuery('.font').fontselect();
-    
+	
 	jQuery(".font").change(function() {
+		console.log(googlefont);
+		googlefont = jQuery(this);
+		console.log(googlefont);
 		fontset(googlefont);
 	});
 

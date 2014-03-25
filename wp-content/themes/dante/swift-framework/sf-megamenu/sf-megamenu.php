@@ -5,7 +5,7 @@
 	*	SF MEGA MENU FRAMEWORK
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 
@@ -42,7 +42,15 @@
 		function sf_mega_menu_add_custom_nav_fields( $menu_item ) {
 		
 		    $menu_item->subtitle = get_post_meta( $menu_item->ID, '_menu_item_subtitle', true );
+		    $menu_item->htmlcontent = get_post_meta( $menu_item->ID, '_menu_item_htmlcontent', true );
+		    $menu_item->nocolumnspacing = get_post_meta( $menu_item->ID, '_menu_nocolumnspacing', true );
 		    $menu_item->ismegamenu = get_post_meta( $menu_item->ID, '_menu_is_megamenu', true );
+		    $menu_item->isnaturalwidth = get_post_meta( $menu_item->ID, '_menu_is_naturalwidth', true );
+		    $menu_item->altstyle = get_post_meta( $menu_item->ID, '_menu_is_altstyle', true );
+		    $menu_item->hideheadings = get_post_meta( $menu_item->ID, '_menu_hideheadings', true );
+		    $menu_item->megatitle = get_post_meta( $menu_item->ID, '_menu_megatitle', true );
+		    $menu_item->menuicon = get_post_meta( $menu_item->ID, '_menu_item_icon', true );
+		    $menu_item->menuwidth = get_post_meta( $menu_item->ID, '_menu_item_width', true );
 		    return $menu_item;
 		    
 		}
@@ -62,10 +70,49 @@
 		        update_post_meta( $menu_item_db_id, '_menu_item_subtitle', $subtitle_value );
 		    }
 		    
-		    if ( isset( $_REQUEST['menu-is-megamenu']) ) {
-		        update_post_meta( $menu_item_db_id, '_menu_is_megamenu', 1 );
+		    if ( isset( $_REQUEST['menu-item-icon']) ) {
+		        $menu_icon_value = $_REQUEST['menu-item-icon'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_icon', $menu_icon_value );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-item-htmlcontent'][$menu_item_db_id]) ) {
+		        $menu_htmlcontent_value = $_REQUEST['menu-item-htmlcontent'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_htmlcontent', $menu_htmlcontent_value );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-is-naturalwidth'][$menu_item_db_id]) ) {
+		    	update_post_meta( $menu_item_db_id, '_menu_is_naturalwidth', 1 );
+	    	} else {
+	    		update_post_meta( $menu_item_db_id, '_menu_is_naturalwidth', 0 );
+	    	}
+		    
+		    if ( isset( $_REQUEST['menu-is-altstyle'][$menu_item_db_id]) ) {
+		        update_post_meta( $menu_item_db_id, '_menu_is_altstyle', 1 );
 		    } else {
-		    	update_post_meta( $menu_item_db_id, '_menu_is_megamenu', 0 );
+		    	update_post_meta( $menu_item_db_id, '_menu_is_altstyle', 0 );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-hideheadings'][$menu_item_db_id]) ) {
+		        update_post_meta( $menu_item_db_id, '_menu_hideheadings', 1 );
+		    } else {
+		    	update_post_meta( $menu_item_db_id, '_menu_hideheadings', 0 );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-megatitle'][$menu_item_db_id]) ) {
+		        update_post_meta( $menu_item_db_id, '_menu_megatitle', 1 );
+		    } else {
+		    	update_post_meta( $menu_item_db_id, '_menu_megatitle', 0 );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-nocolumnspacing'][$menu_item_db_id]) ) {
+		        update_post_meta( $menu_item_db_id, '_menu_nocolumnspacing', 1 );
+		    } else {
+		    	update_post_meta( $menu_item_db_id, '_menu_nocolumnspacing', 0 );
+		    }
+		    
+		    if ( isset( $_REQUEST['menu-item-width'][$menu_item_db_id]) ) {
+		        $menu_width_value = $_REQUEST['menu-item-width'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_width', $menu_width_value );
 		    }
 		    
 		}

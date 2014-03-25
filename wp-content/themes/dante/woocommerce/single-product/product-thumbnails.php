@@ -57,10 +57,11 @@ if ( $attachment_ids ) {
 			
 			$image_class = esc_attr( implode( ' ', $classes ) );
 			$image_title = esc_attr( get_the_title( $attachment_id ) );
+			$image_alt = esc_attr( get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) );
 			
 			if ($image) {
 								
-				$image_html = '<img src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" />';
+				$image_html = '<img src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$image_alt.'" title="'.$image_title.'" />';
 
 				echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', sprintf( '<li>%s</li>', $image_html ), $attachment_id, $post->ID, $image_class );
 				

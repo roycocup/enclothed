@@ -5,7 +5,7 @@
 	*	Swift Framework Formatting Functions
 	*	------------------------------------------------
 	*	Swift Framework v2.0
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_content_filter()
 	*	sf_get_the_content_with_formatting()

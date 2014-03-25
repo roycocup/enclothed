@@ -57,7 +57,7 @@ class SwiftPageBuilderShortcode_tweets_slider extends SwiftPageBuilderShortcode 
 }
 
 SPBMap::map( 'tweets_slider', array(
-    "name"		=> __("Tweets Slider", "swift-page-builder"),
+    "name"		=> __("Tweets Slider", "swift-framework-admin"),
     "base"		=> "tweets_slider",
     "class"		=> "spb-tweets-slider",
     "icon"      => "spb-icon-tweets-slider",
@@ -65,60 +65,60 @@ SPBMap::map( 'tweets_slider', array(
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "textfield",
-            "heading" => __("Twitter username", "swift-page-builder"),
+            "heading" => __("Twitter username", "swift-framework-admin"),
             "param_name" => "twitter_username",
             "value" => "",
-            "description" => __("The twitter username you'd like to show the latest tweet for. Make sure to not include the @.", "swift-page-builder")
+            "description" => __("The twitter username you'd like to show the latest tweet for. Make sure to not include the @.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Text size", "swift-page-builder"),
+            "heading" => __("Text size", "swift-framework-admin"),
             "param_name" => "text_size",
-            "value" => array(__('Normal', "swift-page-builder") => "normal", __('Large', "swift-page-builder") => "large"),
-            "description" => __("Choose the size of the text.", "swift-page-builder")
+            "value" => array(__('Normal', "swift-framework-admin") => "normal", __('Large', "swift-framework-admin") => "large"),
+            "description" => __("Choose the size of the text.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of tweets", "swift-page-builder"),
+            "heading" => __("Number of tweets", "swift-framework-admin"),
             "param_name" => "tweets_count",
             "value" => "6",
-            "description" => __("The number of tweets to show.", "swift-page-builder")
+            "description" => __("The number of tweets to show.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Slider autoplay", "swift-page-builder"),
+            "heading" => __("Slider autoplay", "swift-framework-admin"),
             "param_name" => "autoplay",
-            "value" => array(__('Yes', "swift-page-builder") => "yes", __('No', "swift-page-builder") => "no"),
-            "description" => __("Select if you want the slider to autoplay or not.", "swift-page-builder")
+            "value" => array(__('Yes', "swift-framework-admin") => "yes", __('No', "swift-framework-admin") => "no"),
+            "description" => __("Select if you want the slider to autoplay or not.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show alt background", "swift-page-builder"),
+            "heading" => __("Show alt background", "swift-framework-admin"),
             "param_name" => "alt_background",
-            "value" => array(__("None", "swift-page-builder") => "none", __("Alt 1", "swift-page-builder") => "alt-one", __("Alt 2", "swift-page-builder") => "alt-two", __("Alt 3", "swift-page-builder") => "alt-three", __("Alt 4", "swift-page-builder") => "alt-four", __("Alt 5", "swift-page-builder") => "alt-five", __("Alt 6", "swift-page-builder") => "alt-six", __("Alt 7", "swift-page-builder") => "alt-seven", __("Alt 8", "swift-page-builder") => "alt-eight", __("Alt 9", "swift-page-builder") => "alt-nine", __("Alt 10", "swift-page-builder") => "alt-ten"),
-            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options.", "swift-page-builder")
+            "value" => array(__("None", "swift-framework-admin") => "none", __("Alt 1", "swift-framework-admin") => "alt-one", __("Alt 2", "swift-framework-admin") => "alt-two", __("Alt 3", "swift-framework-admin") => "alt-three", __("Alt 4", "swift-framework-admin") => "alt-four", __("Alt 5", "swift-framework-admin") => "alt-five", __("Alt 6", "swift-framework-admin") => "alt-six", __("Alt 7", "swift-framework-admin") => "alt-seven", __("Alt 8", "swift-framework-admin") => "alt-eight", __("Alt 9", "swift-framework-admin") => "alt-nine", __("Alt 10", "swift-framework-admin") => "alt-ten"),
+            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options.", "swift-framework-admin")
         ),
         array(
             "type" => "altbg_preview",
-            "heading" => __("Alt Background Preview", "swift-page-builder"),
+            "heading" => __("Alt Background Preview", "swift-framework-admin"),
             "param_name" => "altbg_preview",
             "value" => "",
-            "description" => __("", "swift-page-builder")
+            "description" => __("", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

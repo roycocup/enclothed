@@ -9,6 +9,7 @@
 	$default_left_sidebar = $options['default_left_sidebar'];
 	$default_right_sidebar = $options['default_right_sidebar'];
 	
+	$pb_active = get_post_meta($post->ID, '_spb_js_status', true);
 	$show_page_title = get_post_meta($post->ID, 'sf_page_title', true);
 	$page_title_style = get_post_meta($post->ID, 'sf_page_title_style', true);
 	$page_title = get_post_meta($post->ID, 'sf_page_title_one', true);
@@ -51,6 +52,12 @@
 		$show_social = true;
 	}
 	
+	$single_author = $options['single_author'];
+	$remove_dates = false;
+	if (isset($options['remove_dates']) && $options['remove_dates'] == 1) {
+	$remove_dates = true;
+	}
+	
 	$sidebar_config = get_post_meta($post->ID, 'sf_sidebar_config', true);
 	$left_sidebar = get_post_meta($post->ID, 'sf_left_sidebar', true);
 	$right_sidebar = get_post_meta($post->ID, 'sf_right_sidebar', true);
@@ -80,10 +87,11 @@
 ?>
 
 <?php if ($show_page_title) { ?>	
+<div class="container">
 	<div class="row">
 		<?php if ($page_title_style == "fancy") { ?>
 		<?php if ($fancy_title_image_url != "") { ?>
-		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);" data-stellar-background-ratio="0.5">
+		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);">
 		<?php } else { ?>
 		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
 		<?php } ?>
@@ -108,11 +116,16 @@
 		</div>
 		<?php } ?>
 	</div>
+</div>
 <?php } ?>
 
 
 <?php if (have_posts()) : the_post(); ?>
 	
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+<div class="container">
+<?php } ?>
+		
 	<?php		
 		$post_author = get_the_author_link();
 		$post_date = get_the_date();
@@ -130,6 +143,8 @@
 		} else {
 		$media_type = get_post_meta($post->ID, 'sf_detail_type', true);
 		}
+		$media_slider = get_post_meta($post->ID, 'sf_detail_rev_slider_alias', true);
+		$media_layerslider = get_post_meta($post->ID, 'sf_detail_layer_slider_alias', true);
 		
 		if ((($sidebar_config == "left-sidebar") || ($sidebar_config == "right-sidebar") || ($sidebar_config == "both-sidebars")) && !$full_width_display) {
 		$media_width = 770;
@@ -161,8 +176,15 @@
 			} else if ($media_type == "layer-slider") {
 						
 				$figure_output .= '<div class="layerslider">'."\n";
-							
-				$figure_output .= do_shortcode('[rev_slider '.$media_slider.']')."\n";
+				
+				if ($media_slider != "") {
+				
+					$figure_output .= do_shortcode('[rev_slider '.$media_slider.']')."\n";
+				
+				} else {
+					$figure_output .= do_shortcode('[layerslider id="'.$media_layerslider.'"]')."\n";
+					
+				}
 						
 				$figure_output .= '</div>'."\n";
 						
@@ -170,7 +192,7 @@
 												
 				$figure_output .= $custom_media."\n";				
 						
-			} else {
+			} else if ($media_type == "image") {
 							
 				$figure_output .= sf_image_post($post->ID, $media_width, $media_height, $use_thumb_content)."\n";
 						
@@ -201,8 +223,6 @@
 		<?php } else { ?>
 		<article <?php post_class('clearfix row'); ?> id="<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
 		<?php } ?>
-			
-		<div class="entry-title"><?php echo $page_title; ?></div>
 		
 		<?php if ($sidebar_config == "both-sidebars") { ?>
 		<div class="row">
@@ -213,31 +233,54 @@
 			<div class="page-content clearfix">
 		<?php } ?>
 				
+				<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+				<div class="container">
+				<?php } ?>
+			
+				<div class="entry-title"><?php echo $page_title; ?></div>
+				
 				<ul class="post-pagination-wrap curved-bar-styling clearfix">
 					<li class="prev"><?php next_post_link('%link', __('<i class="ss-navigateleft"></i> <span class="nav-text">%title</span>', 'swiftframework'), FALSE); ?></li>
 					<li class="next"><?php previous_post_link('%link', __('<span class="nav-text">%title</span><i class="ss-navigateright"></i>', 'swiftframework'), FALSE); ?></li>
 				</ul>
 				
-				<?php if (!$full_width_display && $media_type != "none") {
-					echo $figure_output;
-				} ?>
-				
 				<div class="post-info clearfix">
-					<span class="vcard author"><?php echo sprintf(__('Posted by <a href="%2$s" itemprop="author" class="fn">%1$s</a> on <span class="date updated">%3$s</span> in %4$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date, $post_categories); ?></span>
+					<?php if ($single_author && !$remove_dates) { ?>
+						<span class="vcard author"><?php echo sprintf(__('Posted on <span class="date updated">%1$s</span> in %2$s', 'swiftframework'), $post_date, $post_categories); ?></span>
+					<?php } else if ($single_author && $remove_dates) { ?>
+						<span class="vcard author"><?php echo sprintf(__('Posted in %1$s', 'swiftframework'), $post_categories); ?></span>
+					<?php } else if ($remove_dates) { ?>
+						<span class="vcard author"><?php echo sprintf(__('Posted by <a href="%2$s" rel="author" itemprop="author" class="fn">%1$s</a> in %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_categories); ?></span>
+					
+					<?php } else { ?>
+						<span class="vcard author"><?php echo sprintf(__('Posted by <a href="%2$s" rel="author" itemprop="author" class="fn">%1$s</a> on <span class="date updated">%3$s</span> in %4$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date, $post_categories); ?></span>
+					<?php } ?>
 					<?php if ( comments_open() ) { ?>
 					<div class="comments-likes">
 						<div class="comments-wrapper"><a href="#comments"><i class="ss-chat"></i><span><?php comments_number(__('0 Comments', 'swiftframework'), __('1 Comment', 'swiftframework'), __('% Comments', 'swiftframework')); ?></span></a></div>
 					</div>
 					<?php } ?>
 				</div>
+				
+				<?php if (!$full_width_display && $media_type != "none") {
+					echo $figure_output;
+				} ?>
+				
+				<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+				</div>
+				<?php } ?>
 															
 				<section class="article-body-wrap">
 					<div class="body-text clearfix" itemprop="articleBody">
 						<?php the_content(); ?>
 					</div>
+					
+					<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+					<div class="container">
+					<?php } ?>
 	
 					<div class="link-pages"><?php wp_link_pages(); ?></div>
-													
+											
 					<div class="tags-link-wrap clearfix">
 						<?php if (has_tag()) { ?>
 						<div class="tags-wrap"><?php _e("Tags:", "swiftframework"); ?><span class="tags"><?php the_tags(''); ?></span></div>
@@ -255,13 +298,14 @@
 							} ?>				
 							</div>
 							</li>
-						    <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="post_share_facebook" onclick="javascript:window.open(this.href,
+						    <li class="facebook"><a href="https://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="post_share_facebook" onclick="javascript:window.open(this.href,
 						      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>
-						    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
+						    <li class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" onclick="javascript:window.open(this.href,
 						      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>   
 						    <li class="googleplus"><a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
 						      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>
-						    <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php if(function_exists('the_post_thumbnail')) echo wp_get_attachment_url(get_post_thumbnail_id()); ?>&description=<?php echo get_the_title(); ?>"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>
+						    <li class="pinterest"><a href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php if(function_exists('the_post_thumbnail')) echo wp_get_attachment_url(get_post_thumbnail_id()); ?>&description=<?php echo get_the_title(); ?>" onclick="javascript:window.open(this.href,
+						      '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=600');return false;"><i class="fa-pinterest"></i><i class="fa-pinterest"></i></a></li>
 							<li class="mail"><a href="mailto:?subject=<?php the_title(); ?>&body=<?php echo strip_tags(get_the_excerpt()); ?> <?php the_permalink(); ?>" class="product_share_email"><i class="ss-mail"></i><i class="ss-mail"></i></a></li>
 						</ul>						
 					</div>					
@@ -281,15 +325,38 @@
 					</div>
 					
 					<?php } ?>
+					
+					<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+					</div>
+					<?php } ?>
 										
 				</section>
+				
+				<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+				<div class="container">
+				<?php } ?>
 				
 				<?php if ($show_related) { ?>
 				
 				<div class="related-wrap">
 				<?php
-					$categories = get_the_category($post->ID);
-					if ($categories) {
+				
+					$args = array();	
+				    $tags = wp_get_post_tags($post->ID);  
+				    $categories = get_the_category($post->ID);
+				    
+				    if ($tags) {  
+					    $tag_ids = array();  
+					    foreach ($tags as $individual_tag) {
+					    	$tag_ids[] = $individual_tag->term_id;  
+					    }
+					    $args = array(  
+					    'tag__in' => $tag_ids,  
+					    'post__not_in' => array($post->ID),  
+					    'posts_per_page'=> 4, // Number of related posts to display.  
+					    'caller_get_posts'=> 1  
+					    );
+				    } else if ($categories) {
 						$category_ids = array();
 						foreach($categories as $individual_category) $category_ids[] = $individual_category->term_id;
 	
@@ -300,9 +367,12 @@
 							'orderby' => 'rand'
 						);
 					}
+					
 					$related_posts_query = new wp_query($args);
 					if( $related_posts_query->have_posts() ) {	
-						_e('<h3 class="spb-heading"><span>'.__("Related Articles", "swiftframework").'</span></h3>');
+						echo '<h3 class="spb-heading"><span>';
+						_e("Related Articles", "swiftframework");
+						echo '</span></h3>';
 						echo '<ul class="related-items row clearfix">';
 						while ($related_posts_query->have_posts()) {
 							$related_posts_query->the_post();
@@ -313,7 +383,7 @@
 								$thumb_image = get_post_thumbnail_id();
 							}
 							$thumb_img_url = wp_get_attachment_url( $thumb_image, 'full' );
-							$image = aq_resize( $thumb_img_url, 300, 225, true, false);
+							$image = sf_aq_resize( $thumb_img_url, 300, 225, true, false);
 							?>
 							<li class="related-item col-sm-3 clearfix">
 								<figure class="animated-overlay overlay-alt">
@@ -344,6 +414,10 @@
 				<?php if ( comments_open() ) { ?>
 				<div id="comment-area">
 					<?php comments_template('', true); ?>
+				</div>
+				<?php } ?>
+				
+				<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
 				</div>
 				<?php } ?>
 			
@@ -380,6 +454,10 @@
 		<?php } ?>
 				
 	</div>
+
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+</div>
+<?php } ?>
 
 <?php endif; ?>
 

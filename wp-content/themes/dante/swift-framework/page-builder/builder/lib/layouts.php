@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Shortcode Mapper Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -21,7 +21,12 @@
 	
 	    public function output($post = null) {
 	        if(empty($this->params)) return '';
-	        $output = '<li><a id="'.$this->params['id'].'" data-element="spb_column" data-width="'.$this->params['id'].'" class="'.$this->params['id'].' clickable_layout_action dropable_column" href="#"><span>'.__($this->params['title'], "swift-page-builder").'</span></a></li>';
+	        $output = "";
+	        if ($this->params['id'] == "row") {
+	        	$output = '<li class="row-option"><a id="'.$this->params['id'].'" data-element="spb_row" data-width="'.$this->params['id'].'" class="'.$this->params['id'].' clickable_layout_action dropable_column" href="#"><span>'.__($this->params['title'], "swift-framework-admin").'</span></a></li>';
+	        } else {
+	        		$output = '<li><a id="'.$this->params['id'].'" data-element="spb_column" data-width="'.$this->params['id'].'" class="'.$this->params['id'].' clickable_layout_action dropable_column" href="#"><span>'.__($this->params['title'], "swift-framework-admin").'</span></a></li>';
+	        }
 	        return $output;
 	    }
 	}
@@ -42,7 +47,7 @@
 	
 	    public function output($post = null) {
 	        if(empty($this->params)) return '';
-	        $output = '<li class="spb_template_li"><a data-template_id="'.$this->id.'" href="#">'.__($this->params['name'], "swift-page-builder").'</a> <span class="spb_remove_template"><i class="icon-trash spb_template_delete_icon"> </i> </span></li>';
+	        $output = '<li class="spb_template_li"><a data-template_id="'.$this->id.'" href="#">'.__($this->params['name'], "swift-framework-admin").'</a> <span class="spb_remove_template"><i class="icon-trash spb_template_delete_icon"> </i> </span></li>';
 	        return $output;
 	    }
 	}
@@ -65,14 +70,14 @@
 	    public function output($post = null) {
 	        if(empty($this->params)) return '';
 	        $output = $class = '';
-	        if ( $this->params["class"] != '' ) {
+	        if ( isset($this->params["class"]) && $this->params["class"] != '' ) {
 	            $class_ar = explode(" ", $this->params["class"]);
 	            for ($n=0; $n<count($class_ar); $n++) {
 	                $class_ar[$n] .= "_nav";
 	            }
 	            $class = ' ' . implode(" ", $class_ar);
 	        }
-	        $output .= '<li><a data-element="' . $this->base . '" id="' . $this->base . '" class="dropable_el clickable_action'.$class.'" href="#">' . $this->getIcon() . __($this->params["name"], "swift-page-builder") .'</a></li>';
+	        $output .= '<li class="menu-item-'. $this->base .'"><a data-element="' . $this->base . '" id="' . $this->base . '" class="dropable_el clickable_action'.$class.'" href="#">' . $this->getIcon() . __($this->params["name"], "swift-framework-admin") .'</a></li>';
 	        
 	        if ($this->base != "spb_column") {
 	        return $output;
@@ -90,10 +95,10 @@
 	
 	    public function output( $post = null ) {
 	        if(empty($this->params)) return '';
-	        $output =  '<li class="nav-header">'.__('Save Template', 'swift-page-builder').'</li>
-		                <li id="spb_save_template"><a href="#">'.__('Save current page as a Template', 'swift-page-builder').'</a></li>
+	        $output =  '<li class="nav-header">'.__('Save Template', 'swift-framework-admin').'</li>
+		                <li id="spb_save_template"><a href="#">'.__('Save current page as a Template', 'swift-framework-admin').'</a></li>
 		                <li class="divider"></li>
-		                <li class="nav-header">'.__('Load Template', 'swift-page-builder').'</li>';
+		                <li class="nav-header">'.__('Load Template', 'swift-framework-admin').'</li>';
 	        $is_empty = true;
 	        foreach($this->params as $id => $template) {
 	            if( is_array( $template) ) {
@@ -102,7 +107,7 @@
 	               $is_empty = false;
 	            }
 	        }
-	        if($is_empty) $output .= '<li class="spb_no_templates"><span>'.__('No custom templates yet.', 'swift-page-builder').'</span></li>';
+	        if($is_empty) $output .= '<li class="spb_no_templates"><span>'.__('No custom templates yet.', 'swift-framework-admin').'</span></li>';
 	        return $output;
 	    }
 	}
@@ -156,12 +161,6 @@
 		    
 	    public function output($post = null) {
 	    	
-	    	$options = get_option('sf_dante_options');
-	    	$advanced_pb = false;
-	    	if (isset($options['advanced_pb']) && $options['advanced_pb'] == 1) {
-	    	$advanced_pb = true;
-	    	}
-	    	
 	        $output = '
 	            <div id="spb-elements" class="navbar">
 	                <div class="navbar-inner">
@@ -169,24 +168,22 @@
 	                        <div class="nav-collapse">
 	        					<ul class="nav">
 	                                <li class="dropdown content-dropdown">
-	                                    <a class="dropdown-toggle spb_content_elements" data-slideout="spb-content-elements" href="#">'.__("Choose Elements", "swift-page-builder").' <b class="caret"></b></a>
+	                                    <a class="dropdown-toggle spb_content_elements" data-slideout="spb-content-elements" href="#">'.__("Elements", "swift-framework-admin").' <b class="caret"></b></a>
 	                                    <ul class="dropdown-menu spb_elements_ul">
 	                                        '.$this->getContentLayouts().'
 	                                    </ul>
 	                                </li>
 	                            </ul>';
-	                        
-	        if ($advanced_pb) {
+	                      
 	        
 	        	 $output .= '<ul class="nav pull-left columns-dropdown">
 	                            	<li class="dropdown">
-        								<a class="dropdown-toggle spb_columns" href="#">'.__("Add Columns", "swift-page-builder").' <b class="caret"></b></a>
+        								<a class="dropdown-toggle spb_columns" href="#">'.__("Layout", "swift-framework-admin").' <b class="caret"></b></a>
         								<ul class="dropdown-menu">
         									'.$this->getColumnLayouts().'
         								</ul>
         							</li>
 	                            </ul>';
-	        }
 	                   
 	                $output .= '<ul class="nav pull-left pre-built-pages-nav">
 	                                <li class="dropdown">
@@ -219,13 +216,16 @@
 	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-portfolio-example">Portfolio Item Example</a></li>
 	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-blog">Blog</a></li>
 	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-blog-example">Blog Post Example</a></li>
+	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-parallax-demo">Parallax Demo</a></li>
+	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-coming-soon">Coming Soon</a></li>
+	                            			<li class="sf_prebuilt_template"><a href="#" data-template_id="sf-maintenance-mode">Maintenance</a></li>
 	                                    </ul>
 	                                </li>
 	                            </ul>
 	                            
 	                            <ul class="nav pull-left custom-templates-nav">
 	                                <li class="dropdown">
-	                                    <a class="dropdown-toggle spb_templates" data-slideout="spb-custom-templates" href="#">'.__('Custom Templates', 'swift-page-builder').' <b class="caret"></b></a>
+	                                    <a class="dropdown-toggle spb_templates" data-slideout="spb-custom-templates" href="#">'.__('Custom Templates', 'swift-framework-admin').' <b class="caret"></b></a>
 	                                    <ul class="dropdown-menu spb_templates_ul">
 	                                        '.$this->getTemplateMenu().'
 	                                    </ul>
@@ -275,6 +275,9 @@
 	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-portfolio-example">Portfolio Item Example</a></li>
 	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-blog">Blog</a></li>
 	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-blog-example">Blog Post Example</a></li>
+	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-parallax-demo">Parallax Demo</a></li>
+	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-coming-soon">Coming Soon</a></li>
+	            	    <li class="sf_prebuilt_template"><a href="#" data-template_id="sf-maintenance-mode">Maintenance</a></li>
 	            	</ul>
 	            </div>
 	            <style type="text/css">#swift_page_builder {display: none;}</style>';
@@ -298,7 +301,7 @@
 			
 			$cont_help .= '<div class="container-helper">';
 			$cont_help .= '<a href="#" class="add-element-to-column"><i class="icon"></i> Add Content Element</a>
-			<span>' . __("- or -", "swift-page-builder") .'</span>
+			<span>' . __("- or -", "swift-framework-admin") .'</span>
 			<a href="#" class="add-text-block-to-content" parent-container="#spb_content"><i class="icon"></i> Add Text block</a>';
 			$cont_help .= '</div>';
 			
@@ -314,18 +317,18 @@
 	        $output .= '<div class="metabox-builder-content">
 						<div id="spb_edit_form"></div>
 						<div id="spb_content" class="spb_main_sortable main_wrapper row-fluid spb_sortable_container">
-							'.__("Loading, please wait...", "swift-page-builder").'
+							'.__("Loading, please wait...", "swift-framework-admin").'
 						</div>
 						<div id="spb-empty">
-							<h2>' . __("Welcome to your visual preview area...<br> You don't have any content at the moment.", "swift-page-builder") .'</h2>
+							<h2>' . __("Welcome to your visual preview area...<br> You don't have any content at the moment.", "swift-framework-admin") .'</h2>
 							<div class="unhappy-face"></div>
 							<ul class="helper-steps">
 								<li>
-									<strong>' . __("Step 1:", "swift-page-builder") .'</strong>
+									<strong>' . __("Step 1:", "swift-framework-admin") .'</strong>
 									<a href="javascript:open_elements_dropdown();" class="open-dropdown-content-element step-one"><i class="icon"></i>Click the Choose Elements button above.</a>
 								</li>	
 								<li>
-									<strong>' . __("Step 2:", "swift-page-builder") .'</strong>
+									<strong>' . __("Step 2:", "swift-framework-admin") .'</strong>
 									<p class="step-two"><i class="icon"></i>Edit the element by clicking the pencil icon.</p>
 								</li>	
 							</ul>
@@ -337,7 +340,7 @@
 	            $spb_status = 'false';
 	        }
 	        $output .= '<input type="hidden" id="spb_js_status" name="spb_js_status" value="'. $spb_status .'" />';
-	        $output .= '<input type="hidden" id="spb_loading" name="spb_loading" value="'. __("Loading, please wait...", "swift-page-builder") .'" />';
+	        $output .= '<input type="hidden" id="spb_loading" name="spb_loading" value="'. __("Loading, please wait...", "swift-framework-admin") .'" />';
 	
 	        echo $output;
 	    }

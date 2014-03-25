@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Tour Shortcode
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -23,13 +23,13 @@
 	            if ( $param['param_name'] != 'content' ) {
 	                //$shortcode_attributes[$param['param_name']] = $param['value'];
 	                if ( is_string($param['value']) ) {
-	                    $shortcode_attributes[$param['param_name']] = __($param['value'], "swift-page-builder");
+	                    $shortcode_attributes[$param['param_name']] = __($param['value'], "swift-framework-admin");
 	                } else {
 	                    $shortcode_attributes[$param['param_name']] = $param['value'];
 	                }
 	            } else if ( $param['param_name'] == 'content' && $content == NULL ) {
 	                //$content = $param['value'];
-	                $content = __($param['value'], "swift-page-builder");
+	                $content = __($param['value'], "swift-framework-admin");
 	            }
 	        }
 	        extract(shortcode_atts(
@@ -116,9 +116,9 @@
 	        $tabs_nav .= '<ul class="nav nav-tabs">';
 	        foreach ( $tab_titles as $tab ) {
 	        	if ($tab_count == 0) {
-	            $tabs_nav .= '<li class="active"><a href="#'. sanitize_title( $tab[0] ) .'" data-toggle="tab">' . $tab[0] . '</a></li>';
+	            $tabs_nav .= '<li class="active"><a href="#'. preg_replace("#[[:punct:]]#", "", (strtolower(str_replace(' ', '-', $tab[0])))) .'" data-toggle="tab">' . $tab[0] . '</a></li>';
 	        	} else {
-	            $tabs_nav .= '<li><a href="#'. sanitize_title( $tab[0] ) .'" data-toggle="tab">' . $tab[0] . '</a></li>';        	
+	            $tabs_nav .= '<li><a href="#'. preg_replace("#[[:punct:]]#", "", (strtolower(str_replace(' ', '-', $tab[0])))) .'" data-toggle="tab">' . $tab[0] . '</a></li>';        	
 	        	}
 	        	$tab_count++;
 	        }
@@ -143,7 +143,7 @@
 	}
 	
 	SPBMap::map( 'spb_tour', array(
-	    "name"		=> __("Tour Section", "swift-page-builder"),
+	    "name"		=> __("Tour Section", "swift-framework-admin"),
 	    "base"		=> "spb_tour",
 	    "controls"	=> "full",
 	    "class"		=> "spb_tour",
@@ -152,29 +152,29 @@
 	    "params"	=> array(
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Widget title", "swift-page-builder"),
+	            "heading" => __("Widget title", "swift-framework-admin"),
 	            "param_name" => "title",
 	            "value" => "",
-	            "description" => __("What text use as widget title. Leave blank if no title is needed.", "swift-page-builder")
+	            "description" => __("What text use as widget title. Leave blank if no title is needed.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Auto rotate slides", "swift-page-builder"),
+	            "heading" => __("Auto rotate slides", "swift-framework-admin"),
 	            "param_name" => "interval",
 	            "value" => array(0, 3, 5, 10, 15),
-	            "description" => __("Auto rotate slides each X seconds. Select 0 to disable.", "swift-page-builder")
+	            "description" => __("Auto rotate slides each X seconds. Select 0 to disable.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "custom_markup" => '
 		<div class="tab_controls">
-			<button class="add_tab">'.__("Add slide", "swift-page-builder").'</button>
+			<button class="add_tab">'.__("Add slide", "swift-framework-admin").'</button>
 		</div>
 	
 		<div class="spb_tabs_holder clearfix">

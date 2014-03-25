@@ -9,6 +9,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+if (version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0) {
+wc_print_notices();
+}
+
 ?>
 
 <h4><?php _e( 'Your Shopping Bag is empty', 'swiftframework' ) ?></h4>
@@ -17,4 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <?php do_action('woocommerce_cart_is_empty'); ?>
 
+<?php if (version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0) { ?>
+<a class="continue-shopping" href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?php _e( 'Continue shopping', 'swiftframework' ) ?></a>
+<?php } else { ?>
 <a class="continue-shopping" href="<?php echo get_permalink(woocommerce_get_page_id('shop')); ?>"><?php _e( 'Continue shopping', 'swiftframework' ) ?></a>
+<?php } ?>

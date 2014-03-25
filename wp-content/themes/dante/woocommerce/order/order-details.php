@@ -4,10 +4,14 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.0.3
+ * @version     2.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+?>
+
+<?php
 
 global $woocommerce;
 
@@ -71,21 +75,38 @@ $order = new WC_Order( $order_id );
 	
 					if ( $_product && $_product->exists() && $_product->is_downloadable() && $order->is_download_permitted() ) {
 	
-						$download_file_urls = $order->get_downloadable_file_urls( $item['product_id'], $item['variation_id'], $item );
-	
-						$i     = 0;
-						$links = array();
-	
-						foreach ( $download_file_urls as $file_url => $download_file_url ) {
-	
-							$filename = woocommerce_get_filename_from_url( $file_url );
-	
-							$links[] = '<small><a href="' . $download_file_url . '">' . sprintf( __( 'Download file%s', 'woocommerce' ), ( count( $download_file_urls ) > 1 ? ' ' . ( $i + 1 ) . ': ' : ': ' ) ) . $filename . '</a></small>';
-	
-							$i++;
+						if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+													
+							$download_files = $order->get_item_downloads( $item );
+							$i              = 0;
+							$links          = array();
+
+							foreach ( $download_files as $download_id => $file ) {
+								$i++;
+
+								$links[] = '<small><a href="' . esc_url( $file['download_url'] ) . '">' . sprintf( __( 'Download file%s', 'woocommerce' ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file['name'] ) . '</a></small>';
+							}
+
+							echo '<br/>' . implode( '<br/>', $links );
+						
+						} else {
+							
+							$download_file_urls = $order->get_downloadable_file_urls( $item['product_id'], $item['variation_id'], $item );
+		
+							$i     = 0;
+							$links = array();
+							
+							foreach ( $download_file_urls as $file_url => $download_file_url ) {
+						
+								$filename = woocommerce_get_filename_from_url( $file_url );
+		
+								$links[] = '<small><a href="' . $download_file_url . '">' . sprintf( __( 'Download file%s', 'woocommerce' ), ( count( $download_file_urls ) > 1 ? ' ' . ( $i + 1 ) . ': ' : ': ' ) ) . $filename . '</a></small>';
+		
+								$i++;
+								
+							}
+							echo implode( '<br/>', $links );
 						}
-	
-						echo implode( '<br/>', $links );
 					}
 	
 					echo '</td>';

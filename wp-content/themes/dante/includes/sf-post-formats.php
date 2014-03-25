@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Post Format Output Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_get_post_media()
 	*	sf_get_post_format_image_src()
@@ -65,7 +65,7 @@
 	if (!function_exists('sf_image_post')) {
 		function sf_image_post($postID, $media_width, $media_height, $use_thumb_content) {
 		
-			$image = $media_image_url = "";
+			$image = $media_image_url = $image_id = "";
 			
 			if ($use_thumb_content) {
 			$media_image = rwmb_meta('sf_thumbnail_image', 'type=image&size=full', $postID);
@@ -74,12 +74,14 @@
 			}
 					
 			foreach ($media_image as $detail_image) {
+				$image_id = $detail_image['ID'];
 				$media_image_url = $detail_image['url'];
 				break;
 			}
 											
 			if (!$media_image) {
 				$media_image = get_post_thumbnail_id();
+				$image_id = $media_image;
 				$media_image_url = wp_get_attachment_url( $media_image, 'full' );
 			}
 			
@@ -87,13 +89,11 @@
 				$media_image_url = "default";
 			}
 			
-			$detail_image = aq_resize( $media_image_url, $media_width, $media_height, true, false);
-			
-			
-			$image_title = sf_featured_img_title();
-			
+			$detail_image = sf_aq_resize( $media_image_url, $media_width, $media_height, true, false);
+			$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+						
 			if ($detail_image) {
-				$image = '<img itemprop="image" src="'.$detail_image[0].'" width="'.$detail_image[1].'" height="'.$detail_image[2].'" alt="'.$image_title.'" />';
+				$image = '<img itemprop="image" src="'.$detail_image[0].'" width="'.$detail_image[1].'" height="'.$detail_image[2].'" alt="'.$image_alt.'" />';
 			}
 			
 			return $image;
@@ -220,9 +220,16 @@
 	if (!function_exists('sf_get_post_item')) {
 		function sf_get_post_item($postID, $blog_type, $show_title = "yes", $show_excerpt = "yes", $show_details = "yes", $excerpt_length = "20", $content_output = "excerpt", $show_read_more = "no") {
 		
-			$post_item = "";
-								
-			global $sf_sidebar_config;
+			$post_item = $image_id = "";
+			
+			$options = get_option('sf_dante_options');
+			$single_author = $options['single_author'];
+			$remove_dates = false;
+			if (isset($options['remove_dates']) && $options['remove_dates'] == 1) {
+			$remove_dates = true;
+			}
+							
+			global $post, $sf_sidebar_config;
 			$post_format = get_post_format($postID);
 			if ( $post_format == "" ) {
 				$post_format = 'standard';
@@ -276,8 +283,8 @@
 				$video_height = 260;
 				}
 				$gallery_size = 'thumb-image';
-			} else if ($blog_type == "masonry") {
-				if ($sf_sidebar_config == "both-sidebars") {
+			} else if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
+				if ($sf_sidebar_config == "both-sidebars" || $blog_type == "masonry-fw") {
 				$item_class = "col-sm-3";
 				} else {
 				$item_class = "col-sm-4";
@@ -304,14 +311,17 @@
 			$thumb_lightbox_image = rwmb_meta( 'sf_thumbnail_link_image', 'type=image&size=large' );
 			$thumb_lightbox_video_url = get_post_meta($postID, 'sf_thumbnail_link_video_url', true);
 			$thumb_lightbox_video_url = sf_get_embed_src($thumb_lightbox_video_url);
+			$image_id = 0;
 			
 			foreach ($thumb_image as $detail_image) {
+				$image_id = $detail_image['ID'];
 				$thumb_img_url = $detail_image['url'];
 				break;
 			}
 											
 			if (!$thumb_image) {
 				$thumb_image = get_post_thumbnail_id();
+				$image_id = $thumb_image;
 				$thumb_img_url = wp_get_attachment_url( $thumb_image, 'full' );
 			}
 			
@@ -373,11 +383,12 @@
 					$thumb_img_url = "default";
 				}
 				
-				$image = aq_resize( $thumb_img_url, $thumb_width, $thumb_height, true, false);
-				$image_title = sf_featured_img_title();
+				$image = sf_aq_resize( $thumb_img_url, $thumb_width, $thumb_height, true, false);
+				$thumbnail_id = get_post_thumbnail_id( $post->ID );
+				$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
 				
 				if ($image) {
-					$item_figure .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$image_title.'" />';
+					$item_figure .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$image_alt.'" />';
 					$item_figure .= '<a '.$link_config.'></a>';
 					$item_figure .= '<figcaption><div class="thumb-info thumb-info-alt">';
 					$item_figure .= '<i class="'.$item_icon.'"></i>';
@@ -390,7 +401,7 @@
 			}
 				
 			// MASONRY STYLING				
-			if ($blog_type == "masonry") {
+			if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
 				
 				$post_item .= '<div class="masonry-item-wrap">';
 				
@@ -405,11 +416,22 @@
 				$post_item .= '<div class="details-wrap clearfix">';
 				
 				if ($show_title == "yes" && $post_format != "quote" && $post_format != "link") {
-					$post_item .= '<h4 itemprop="name headline"><a href="'.$post_permalink.'">'.$post_title.'</a></h4>'; 				
+					if ($single_author && $remove_dates) {
+ 						$post_item .= '<h4 itemprop="name headline" class="no-details"><a href="'.$post_permalink.'">'.$post_title.'</a></h4>';
+					} else {
+ 						$post_item .= '<h4 itemprop="name headline"><a href="'.$post_permalink.'">'.$post_title.'</a></h4>';
+ 					}	
 				}
 				
 				if ($show_details == "yes" && $post_format != "quote" && $post_format != "link") {
-					$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+				
+					if ($single_author && !$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('%1$s', 'swiftframework'), $post_date) .'</div>';
+					} else if (!$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+					} else if (!$single_author) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+					}
 				}
 				
 				// POST EXCERPT
@@ -470,7 +492,14 @@
 				}
 				
 				if ($show_details == "yes" && $post_format != "quote" && $post_format != "link") {
-				$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+					
+					if ($single_author && !$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('%1$s', 'swiftframework'), $post_date) .'</div>';
+					} else if (!$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+					} else if (!$single_author) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+					}
 				
 				}
 				if ($show_excerpt == "yes") {
@@ -496,7 +525,13 @@
 					$post_item .= '<div class="comments-likes">';
 					
 					if ($post_format == "quote" || $post_format == "link") {
-					$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+						if ($single_author && !$remove_dates) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('%1$s', 'swiftframework'), $post_date) .'</div>';
+						} else if (!$remove_dates) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+						} else if (!$single_author) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+						}
 					}
 					
 					if ( comments_open() ) {
@@ -541,7 +576,13 @@
 				}
 				
 				if ($show_details == "yes" && $post_format != "quote" && $post_format != "link") {
-				$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+					if ($single_author && !$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('%1$s', 'swiftframework'), $post_date) .'</div>';
+					} else if (!$remove_dates) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+					} else if (!$single_author) {
+						$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+					}
 				}
 				
 				if ($show_excerpt == "yes") {					
@@ -567,7 +608,13 @@
 					$post_item .= '<div class="comments-likes">';
 					
 					if ($post_format == "quote" || $post_format == "link") {
-					$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+						if ($single_author && !$remove_dates) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('%1$s', 'swiftframework'), $post_date) .'</div>';
+						} else if (!$remove_dates) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a> on %3$s', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' )), $post_date) .'</div>';
+						} else if (!$single_author) {
+							$post_item .= '<div class="blog-item-details">'. sprintf(__('By <a href="%2$s" rel="author" itemprop="author">%1$s</a>', 'swiftframework'), $post_author, get_author_posts_url(get_the_author_meta( 'ID' ))) .'</div>';
+						}
 					}
 					
 					if ( comments_open() ) {
@@ -649,7 +696,7 @@
 				$thumb_img_url = wp_get_attachment_url( $thumb_image, 'thumbnail' );
 			}
 			
-			$image = aq_resize( $thumb_img_url, 70, 70, true, false);
+			$image = sf_aq_resize( $thumb_img_url, 70, 70, true, false);
 			$image_title = sf_featured_img_title();
 			
 			if ($image) {

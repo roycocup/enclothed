@@ -5,7 +5,7 @@
 	*	Swift Framework Main Class
 	*	------------------------------------------------
 	*	Swift Framework v2.0
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -33,7 +33,8 @@
 	
 	
 	/* META BOX FRAMEWORK
-	================================================== */  
+	================================================== */
+	define( 'RWMB_URL', get_template_directory_uri() . '/swift-framework/meta-box/' );
 	include_once(SF_FRAMEWORK_PATH . '/meta-box/meta-box.php');
 	include_once(SF_FRAMEWORK_PATH . '/meta-boxes.php');
 		
@@ -55,7 +56,7 @@
 	
 	/* SUPER SEARCH
 	================================================== */  
-	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	if (sf_woocommerce_activated()) {
 	include_once(SF_FRAMEWORK_PATH . '/sf-supersearch.php');
 	}
 	

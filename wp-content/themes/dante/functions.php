@@ -5,7 +5,7 @@
 	*	Dante Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	VARIABLE DEFINITIONS
 	*	PLUGIN INCLUDES
@@ -48,13 +48,9 @@
 	include_once(SF_INCLUDES_PATH . '/plugins/love-it-pro/love-it-pro.php');
 	}
 	
-	
-
-	/* THEME UPDATER FRAMEWORK
-	================================================== */  
 	require_once(SF_INCLUDES_PATH . '/wp-updates-theme.php');
-	new WPUpdatesThemeUpdater_445( 'http://wp-updates.com/api/2/theme', basename(get_template_directory()));	
-	
+	new WPUpdatesThemeUpdater_445( 'http://wp-updates.com/api/2/theme', basename(get_template_directory()));
+		
 
 	/* THEME SUPPORT
 	================================================== */  			
@@ -200,7 +196,7 @@
 	   	    wp_enqueue_script('sf-carouFredSel');
 		    wp_enqueue_script('sf-theme-scripts');
 		    
-		    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		    if (sf_woocommerce_activated()) {
 		    	if (!is_account_page()) {
 		    		wp_enqueue_script('sf-viewjs');
 		    	}
@@ -250,4 +246,62 @@
 		$GLOBALS['lsAutoUpdateBox'] = false;
 	}
 	add_action('layerslider_ready', 'sf_layerslider_overrides');
+	
+	
+	/* THEME UPDATES
+	================================================== */
+	function sf_envato_toolkit_admin_init() {
+	 	
+	    // Include the Toolkit Library
+	    include_once( SF_INCLUDES_PATH .'/envato-wordpress-toolkit-library/class-envato-wordpress-theme-upgrader.php' );
+	    
+	    // Display a notice in the admin to remind the user to enter their credentials
+	    function sf_envato_toolkit_credentials_admin_notices() {
+	        $message = sprintf( __( "To enable Dante update notifications, please enter your Envato Marketplace credentials in the %s", "swift-framework-admin" ),
+	            "<a href='" . admin_url() . "admin.php?page=envato-wordpress-toolkit'>Envato WordPress Toolkit Plugin</a>" );
+	        echo "<div id='message' class='updated below-h2'><p>{$message}</p></div>";
+	    }
+	    
+	    // Use credentials used in toolkit plugin so that we don't have to show our own forms anymore
+	    $credentials = get_option( 'envato-wordpress-toolkit' );
+	    if ( empty( $credentials['user_name'] ) || empty( $credentials['api_key'] ) ) {
+	        add_action( 'admin_notices', 'sf_envato_toolkit_credentials_admin_notices' );
+	        return;
+	    }
+	    
+	    // Check updates only after a while
+	    $lastCheck = get_option( 'toolkit-last-toolkit-check' );
+	    if ( false === $lastCheck ) {
+	        update_option( 'toolkit-last-toolkit-check', time() );
+	        return;
+	    }
+	     
+	    // Check for an update every 3 hours
+	    if ( (time() - $lastCheck) < 10800 ) {
+	        return;
+	    }
+	     
+	    // Update the time we last checked
+	    update_option( 'toolkit-last-toolkit-check', time() );
+	    
+	    // Check for updates
+	    $upgrader = new Envato_WordPress_Theme_Upgrader( $credentials['user_name'], $credentials['api_key'] );
+	    $updates = $upgrader->check_for_theme_update();
+	    
+	    // Add update alert, to update the theme
+	    if ( $updates->updated_themes_count ) {
+	        add_action( 'admin_notices', 'sf_envato_toolkit_admin_notices' );
+	    }
+	    
+	    // Display a notice in the admin that an update is available	    
+	    function sf_envato_toolkit_admin_notices() {
+	        $message = sprintf( __( "An update to Dante is available! Head over to %s to update it now.", "swift-framework-admin" ),
+	            "<a href='" . admin_url() . "admin.php?page=envato-wordpress-toolkit'>Envato WordPress Toolkit Plugin</a>" );
+	        echo "<div id='message' class='updated below-h2'><p>{$message}</p></div>";
+	    }
+
+	}
+	if (class_exists('Envato_WP_Toolkit')) {
+		add_action( 'admin_init', 'sf_envato_toolkit_admin_init' );
+	}
 ?>

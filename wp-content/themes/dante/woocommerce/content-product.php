@@ -6,12 +6,12 @@
 	 *
 	 * @author 		WooThemes
 	 * @package 	WooCommerce/Templates
-	 * @version     1.6.4
+	 * @version     2.1.0
 	 */
 	
 	if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	
-	global $product, $woocommerce_loop, $sf_catalog_mode;
+	global $woocommerce, $product, $woocommerce_loop, $sf_catalog_mode, $sf_sidebar_config;
 	
 	// Store loop count we're currently on
 	if ( empty( $woocommerce_loop['loop'] ) )
@@ -20,9 +20,17 @@
 	// Store column count for displaying the grid
 	if ( empty( $woocommerce_loop['columns'] ) )
 		$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
+			
+	if ($sf_sidebar_config == "no-sidebars") {
+		$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
+	} else if ($sf_sidebar_config == "both-sidebars") {
+		$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 2 );
+	} else {
+		$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 3 );
+	}
 	
 	// Ensure visibility
-	if ( ! $product->is_visible() )
+	if ( ! $product || ! $product->is_visible() )
 		return;
 	
 	// Increase loop count
@@ -37,16 +45,33 @@
 	
 	$options = get_option('sf_dante_options');
 	$product_overlay_transition = $options['product_overlay_transition'];
+	$overlay_transition_type = "";
+	
+	if (isset($options['overlay_transition_type'])) {
+		$overlay_transition_type = $options['overlay_transition_type'];
+	}
+	
+	if (is_singular('portfolio')) {
+	$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
+	}
 ?>
 <li <?php post_class( $classes ); ?>>
 
 	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
-
-	<?php if ($product_overlay_transition) { ?>
-	<figure class="product-transition">			
+		
+	<?php if ($product_overlay_transition) {
+		if ($overlay_transition_type == "slideleft") { ?>
+		<figure class="product-transition-alt">	
+	<?php } else if ($overlay_transition_type == "fade") { ?>
+		<figure class="product-transition-fade">	
+	<?php } else { ?>
+		<figure class="product-transition">					
+	<?php }
+	?>
 	<?php } else { ?>
 	<figure>
 	<?php } ?>
+	
 		<?php
 			
 			$image_html = "";
@@ -78,7 +103,7 @@
 				$image_html = wp_get_attachment_image( get_post_thumbnail_id(), 'shop_catalog' );					
 			}
 		?>
-		
+				
 		<a href="<?php the_permalink(); ?>">
 			
 			<?php
@@ -172,7 +197,7 @@
 			echo $product->get_categories( ', ', '<span class="posted_in">' . _n( '', '', $size, 'woocommerce' ) . ' ', '</span>' );
 		?>
 	</div>
-
+	
 	<?php
 		/**
 		 * woocommerce_after_shop_loop_item_title hook
@@ -181,5 +206,5 @@
 		 */
 		do_action( 'woocommerce_after_shop_loop_item_title' );
 	?>
-
+	
 </li>

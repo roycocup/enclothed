@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Products Function Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*	
 	*	sf_mini_product_items()
 	*	sf_product_items()
@@ -95,20 +95,25 @@
 					'post_type'     => 'product',
 					'orderby'       => 'date',
 					'order'         => 'ASC',
+					'product_cat' => $category,
 					'posts_per_page' => $item_count, 
 					'meta_query'    => $meta_query,
 					'post__in'      => $product_ids_on_sale
 				);
 			} else {
 				$args = array(
-						'post_type' => 'product',
-						'post_status' => 'publish',
-						'product_cat' => $category,
-						'ignore_sticky_posts'   => 1,
-						'posts_per_page' => $item_count,
-						'meta_key' 		=> 'total_sales',
-						'orderby' 		=> 'meta_value'
-					);	    
+					'posts_per_page' => $item_count,
+					'post_status'    => 'publish',
+					'post_type'      => 'product',
+					'meta_key'       => 'total_sales',
+					'orderby'        => 'meta_value_num',
+					'no_found_rows'  => 1,
+					'product_cat' => $category
+				);
+				
+				$args['meta_query'] = array();
+				$args['meta_query'][] = $woocommerce->query->stock_status_meta_query();
+				$args['meta_query'][] = $woocommerce->query->visibility_meta_query();			
 			}
 			
 			// OUTPUT PRODUCTS    
@@ -122,7 +127,7 @@
 		    
 		            $product_output = $rating_output = "";
 		            
-		            global $product, $post, $wpdb, $woocommerce_loop;
+		            global $product, $post, $wpdb, $woocommerce_loop; 
 		    
 		            // Ensure visibility
 		            if ( ! $product->is_visible() )
@@ -136,7 +141,7 @@
 		    				$image_link = "default";
 		    			}
 		    			
-		    			$image = aq_resize( $image_link, 70, 70, true, false);
+		    			$image = sf_aq_resize( $image_link, 70, 70, true, false);
 		    			
 		    			if ($image) {
 		    				$image_html = '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$image_title.'" />';   			
@@ -297,20 +302,25 @@
 					'post_type'     => 'product',
 					'orderby'       => 'date',
 					'order'         => 'ASC',
+					'product_cat' => $category,
 					'posts_per_page' => $item_count, 
 					'meta_query'    => $meta_query,
 					'post__in'      => $product_ids_on_sale
 				);
-			} else {
+			} else {				
 				$args = array(
-						'post_type' => 'product',
-						'post_status' => 'publish',
-						'product_cat' => $category,
-						'ignore_sticky_posts'   => 1,
-						'posts_per_page' => $item_count,
-						'meta_key' 		=> 'total_sales',
-						'orderby' 		=> 'meta_value'
-					);	    
+					'posts_per_page' => $item_count,
+					'post_status'    => 'publish',
+					'post_type'      => 'product',
+					'meta_key'       => 'total_sales',
+					'orderby'        => 'meta_value_num',
+					'no_found_rows'  => 1,
+					'product_cat' => $category
+				);
+				
+				$args['meta_query'] = array();
+				$args['meta_query'][] = $woocommerce->query->stock_status_meta_query();
+				$args['meta_query'][] = $woocommerce->query->visibility_meta_query();	
 			}
 			
 			ob_start();
@@ -318,7 +328,18 @@
 			// OUTPUT PRODUCTS    
 		    $products = new WP_Query( $args );
 		    
-		    global $sf_sidebar_config;
+		    global $sf_sidebar_config, $sf_carouselID;
+		    
+		    if ($sf_carouselID == "") {
+		    $sf_carouselID = 1;
+		    } else {
+		    $sf_carouselID++;
+		    }
+		    
+		    if (is_singular('portfolio')) {
+		    	$sf_sidebar_config = "no-sidebars";
+		    }
+		    
 		    $columns = 4;
 		    if ($sf_sidebar_config == "no-sidebars") {
 		   	    if ($width == "3/4") {
@@ -385,7 +406,7 @@
 						
 						<div class="carousel-overflow">
 										
-							<ul class="products list-<?php echo $asset_type; ?>">
+							<ul class="products list-<?php echo $asset_type; ?>" id="carousel-<?php echo $sf_carouselID; ?>">
 							
 								<?php while ( $products->have_posts() ) : $products->the_post(); ?>
 							

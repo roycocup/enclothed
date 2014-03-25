@@ -43,7 +43,7 @@ if ( $products->have_posts() ) : ?>
 
 			<?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
-				<?php woocommerce_get_template_part( 'content', 'product' ); ?>
+				<?php woocommerce_get_template_part( 'content', 'product-4col' ); ?>
 
 			<?php endwhile; // end of the loop. ?>
 

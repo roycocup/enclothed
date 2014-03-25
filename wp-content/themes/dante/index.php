@@ -3,6 +3,7 @@
 <?php 
 
 	$options = get_option('sf_dante_options');
+	$page_layout = $options['page_layout'];
 	$default_page_heading_bg_alt = $options['default_page_heading_bg_alt'];
 	$sidebar_config = $options['archive_sidebar_config'];
 	$left_sidebar = $options['archive_sidebar_left'];
@@ -20,21 +21,26 @@
 	$page_wrap_class = 'has-no-sidebar';
 	}
 	
-	$list_class = $item_class = '';
+	$list_class = $item_class = $wrap_class = '';
 	
 	if ($blog_type == "mini") {
-		$item_class = $width;
+		$item_class = "col-sm-12";
 	} else if ($blog_type == "masonry") {
 		if ($sidebar_config == "both-sidebars") {
 		$item_class = "col-sm-3";
 		} else {
 		$item_class = "col-sm-4";
 		}
+	} else if ($blog_type == "masonry-fw") { 
+		$item_class = "col-sm-3";
 	} else {
-		$item_class = $width;
+		$item_class = "col-sm-12";
 	}
 	
 	if ($blog_type == "masonry") {
+	$list_class .= 'masonry-items first-load grid effect-1';
+	} else if ($blog_type == "masonry-fw") {
+	$wrap_class .= "masonry-fw ";
 	$list_class .= 'masonry-items first-load grid effect-1';
 	} else if ($blog_type == "mini") {
 	$list_class .= 'mini-items';
@@ -42,7 +48,7 @@
 	$list_class .= 'standard-items';
 	}
 	
-	if ($blog_type == "masonry") {
+	if ($blog_type == "masonry" || $blog_type == "masonry-fw") {
 	global $sf_include_imagesLoaded;
 	$sf_include_imagesLoaded = true;
 	}
@@ -55,6 +61,10 @@
 ?>
 
 <?php if ( is_front_page() || is_home() ) : ?>
+	
+	<?php if ($blog_type != "masonry-fw" || $page_layout == "boxed") { ?>
+	<div class="container">
+	<?php } ?>
 
 	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
 	
@@ -64,7 +74,7 @@
 		<?php } else if ($sidebar_config == "both-sidebars") { ?>
 		<div class="archive-page col-sm-9 clearfix">
 		<?php } else { ?>
-		<div class="archive-page clearfix">
+		<div class="archive-page <?php echo $wrap_class; ?> clearfix">
 		<?php } ?>
 		
 			<?php if ($sidebar_config == "both-sidebars") { ?>
@@ -182,6 +192,11 @@
 		<?php } ?>
 			
 	</div>
+	
+	<?php if ($blog_type != "masonry-fw" || $page_layout == "boxed") { ?>
+	</div>
+	<?php } ?>
+	
 
 <?php endif; ?>
 

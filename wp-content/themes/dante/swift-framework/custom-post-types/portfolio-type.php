@@ -55,6 +55,7 @@
 	        'show_ui' => true,
 	        'show_in_menu' => true,
 	        'show_in_nav_menus' => false,
+	        'menu_icon' => 'dashicons-format-image',
 	        'hierarchical' => false,
 	        'rewrite' => $portfolio_permalink != "portfolio" ? array(
 	        				'slug' => untrailingslashit( $portfolio_permalink ),

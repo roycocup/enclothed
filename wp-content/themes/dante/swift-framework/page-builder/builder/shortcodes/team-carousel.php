@@ -78,6 +78,10 @@ class SwiftPageBuilderShortcode_team_carousel extends SwiftPageBuilderShortcode 
     				$member_name = get_the_title();
     				$member_position = get_post_meta($post->ID, 'sf_team_member_position', true);
     				$member_bio = sf_excerpt($excerpt_length);
+    				$custom_excerpt = get_post_meta($post->ID, 'sf_custom_excerpt', true);
+    				if ($custom_excerpt != "") {
+    					$member_bio = sf_custom_excerpt($custom_excerpt, 1000);
+    				}
     				$member_twitter = get_post_meta($post->ID, 'sf_team_member_twitter', true);
     				$member_facebook = get_post_meta($post->ID, 'sf_team_member_facebook', true);
     				$member_linkedin = get_post_meta($post->ID, 'sf_team_member_linkedin', true);
@@ -90,36 +94,36 @@ class SwiftPageBuilderShortcode_team_carousel extends SwiftPageBuilderShortcode 
     				$items .= '<li itemscope data-id="id-'. $count .'" class="clearfix carousel-item team-member '.$item_class.'">';
     				
 					$img_url = wp_get_attachment_url( $member_image,'full' );
-					$image = aq_resize( $img_url, 270, 270, true, false);
+					$image = sf_aq_resize( $img_url, 270, 270, true, false);
 					
 					$items .= '<figure class="standard-style">';
 								if ($image) {
 									$items .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" />';
 								}
-					if (($member_twitter) || ($member_facebook) || ($member_linkedin) || ($member_google_plus) || ($member_skype) || ($member_instagram) || ($member_dribbble)) {
-					$items .= '<figcaption><span>'.__("Follow:", "swiftframework").'</span><ul class="social-icons">';
-					if ($member_twitter) {
-						$items .= '<li class="twitter"><a href="http://www.twitter.com/'.$member_twitter.'" target="_blank"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>';
-					}
-					if ($member_facebook) {
-						$items .= '<li class="facebook"><a href="'.$member_facebook.'" target="_blank"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>';
-					}
-					if ($member_linkedin) {
-						$items .= '<li class="linkedin"><a href="'.$member_linkedin.'" target="_blank"><i class="fa-linkedin"></i><i class="fa-linkedin"></i></a></li>';
-					}
-					if ($member_google_plus) {
-						$items .= '<li class="googleplus"><a href="'.$member_google_plus.'" target="_blank"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>';
-					}
-					if ($member_skype) {
-						$items .= '<li class="skype"><a href="skype:'.$member_skype.'" target="_blank"><i class="fa-skype"></i><i class="fa-skype"></i></a></li>';
-					}
-					if ($member_instagram) {
-						$items .= '<li class="instagram"><a href="'.$member_instagram.'" target="_blank"><i class="fa-instagram"></i><i class="fa-instagram"></i></a></li>';
-					}
-					if ($member_dribbble) {
-						$items .= '<li class="dribbble"><a href="http://www.dribbble.com/'.$member_dribbble.'" target="_blank"><i class="fa-dribbble"></i><i class="fa-dribbble"></i></a></li>';
-					}
-					$items .= '</ul></figcaption>';
+					if (($member_twitter != "") || ($member_facebook != "") || ($member_linkedin != "") || ($member_google_plus != "") || ($member_skype != "") || ($member_instagram != "") || ($member_dribbble != "")) {
+						$items .= '<figcaption><span>'.__("Follow:", "swiftframework").'</span><ul class="social-icons">';
+						if ($member_twitter != "") {
+							$items .= '<li class="twitter"><a href="http://www.twitter.com/'.$member_twitter.'" target="_blank"><i class="fa-twitter"></i><i class="fa-twitter"></i></a></li>';
+						}
+						if ($member_facebook != "") {
+							$items .= '<li class="facebook"><a href="'.$member_facebook.'" target="_blank"><i class="fa-facebook"></i><i class="fa-facebook"></i></a></li>';
+						}
+						if ($member_linkedin != "") {
+							$items .= '<li class="linkedin"><a href="'.$member_linkedin.'" target="_blank"><i class="fa-linkedin"></i><i class="fa-linkedin"></i></a></li>';
+						}
+						if ($member_google_plus != "") {
+							$items .= '<li class="googleplus"><a href="'.$member_google_plus.'" target="_blank"><i class="fa-google-plus"></i><i class="fa-google-plus"></i></a></li>';
+						}
+						if ($member_skype != "") {
+							$items .= '<li class="skype"><a href="skype:'.$member_skype.'" target="_blank"><i class="fa-skype"></i><i class="fa-skype"></i></a></li>';
+						}
+						if ($member_instagram != "") {
+							$items .= '<li class="instagram"><a href="'.$member_instagram.'" target="_blank"><i class="fa-instagram"></i><i class="fa-instagram"></i></a></li>';
+						}
+						if ($member_dribbble != "") {
+							$items .= '<li class="dribbble"><a href="http://www.dribbble.com/'.$member_dribbble.'" target="_blank"><i class="fa-dribbble"></i><i class="fa-dribbble"></i></a></li>';
+						}
+						$items .= '</ul></figcaption>';
 					}
 					$items .= '</figure>';
     				
@@ -172,38 +176,38 @@ class SwiftPageBuilderShortcode_team_carousel extends SwiftPageBuilderShortcode 
 }
 
 SPBMap::map( 'team_carousel', array(
-    "name"		=> __("Team Carousel", "swift-page-builder"),
+    "name"		=> __("Team Carousel", "swift-framework-admin"),
     "base"		=> "team_carousel",
     "class"		=> "team_carousel spb_carousel",
     "icon"      => "spb-icon-team-carousel",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Team category", "swift-page-builder"),
+            "heading" => __("Team category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('team-category'),
-            "description" => __("Choose the category for the portfolio items.", "swift-page-builder")
+            "description" => __("Choose the category for the portfolio items.", "swift-framework-admin")
 		),
 		array(
 		    "type" => "textfield",
-		    "heading" => __("Excerpt Length", "swift-page-builder"),
+		    "heading" => __("Excerpt Length", "swift-framework-admin"),
 		    "param_name" => "excerpt_length",
 		    "value" => "",
-		    "description" => __("The length of the excerpt for each of the team members. Default 60.", "swift-page-builder")
+		    "description" => __("The length of the excerpt for each of the team members. Default 60.", "swift-framework-admin")
 		),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

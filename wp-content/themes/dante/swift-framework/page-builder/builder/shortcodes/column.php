@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Column Shortcode Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -24,6 +24,7 @@
 	        $output = '';
 	
 	        $el_class = $this->getExtraClass($el_class);
+	        $orig_width = $width;
 	        $width = spb_translateColumnWidthToSpan($width);
 	
 	        if ( $this->shortcode == 'spb_column' ) {
@@ -32,14 +33,22 @@
 	        else if ( $this->shortcode == 'spb_text_block' ) {
 	            $el_class .= ' spb_text_column';
 	        }
-	
+			
+			global $column_width;
+			
+			if ($orig_width != "") {
+				$column_width = $orig_width;
+			}
+			
 	        $output .= "\n\t".'<div class="spb_content_element '.$width.$el_class.'">';
 	        $output .= "\n\t\t".'<div class="spb_wrapper">';
 	        $output .= "\n\t\t\t". spb_format_content($content);
 	        $output .= "\n\t\t".'</div> '.$this->endBlockComment('.spb_wrapper');
 	        $output .= "\n\t".'</div> '.$this->endBlockComment($width);
-	
-	        $output = $this->startRow($el_position) . $output . $this->endRow($el_position);
+				        
+	        $column_width = "";
+			
+	        $output = $this->startRow($el_position, $orig_width) . $output . $this->endRow($el_position, 'column');
 	        return $output;
 	    }
 	
@@ -94,6 +103,9 @@
 	        else if ( $width == 'column_34' || $width == '3/4' ) {
 	            $width = array('span9');
 	        }
+	        else if ( $width == 'column_16' || $width == '1/6' ) {
+	            $width = array('span2');
+	        }
 	        else {
 	            $width = array('span12');
 	        }
@@ -117,17 +129,17 @@
 	}
 	
 	SPBMap::map( 'spb_column', array(
-	    "name"		=> __("Column", "swift-page-builder"),
+	    "name"		=> __("Column", "swift-framework-admin"),
 	    "base"		=> "spb_column",
 	    "controls"	=> "full",
 	    "content_element" => false,
 	    "params"	=> array(
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    )
 	) );

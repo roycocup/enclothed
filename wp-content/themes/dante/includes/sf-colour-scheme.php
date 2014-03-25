@@ -5,7 +5,7 @@
 	*	Theme Colour Scheme Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -211,7 +211,7 @@
 								
 				if (strtolower($schema['Setting Name']) == "color scheme name") {
 					
-					echo $schema['Setting Value'] .'-sssssss';
+					//echo $schema['Setting Value'] .'-sssssss';
 				
 					if ( isset($schema['Setting Value'])) { 
 						

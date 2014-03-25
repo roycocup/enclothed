@@ -1,0 +1,1229 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bulgarian Translation Dante\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Swift Ideas <ed@swiftideas.net>\n"
+"Language-Team: Identity Studio <ddinev@identity.bg>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg_BG\n"
+"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid " Comments"
+msgstr "Коментари"
+
+#. Text in function
+#: dante-lang/single-jobs.php:42
+#: dante-lang/single-galleries.php:135
+#: dante-lang/single.php:251
+#: dante-lang/comments.php:27
+msgid "% Comments"
+msgstr "% Коментари"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:1
+msgid "% items"
+msgstr "% записи"
+
+#. Text in function
+#: dante-lang/includes/sf-post-formats.php:1
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/posts-carousel.php:1
+msgid "%1$s - %2$s"
+msgstr "%1$s - %2$s"
+
+#. Text in function
+#: dante-lang/single-jobs.php:42
+#: dante-lang/single-galleries.php:135
+#: dante-lang/single.php:251
+#: dante-lang/includes/sf-theme-functions.php:1
+#: dante-lang/comments.php:27
+msgid "0 Comments"
+msgstr "0 Коментара"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:1
+msgid "0 items"
+msgstr "0 записа"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:154
+msgid "0 items in the shopping bag"
+msgstr "0 продукта в количката"
+
+#. Text in function
+#: dante-lang/single-jobs.php:42
+#: dante-lang/single-galleries.php:135
+#: dante-lang/single.php:251
+#: dante-lang/includes/sf-theme-functions.php:1
+#: dante-lang/comments.php:27
+msgid "1 Comment"
+msgstr "1 Коментар"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:1
+msgid "1 item"
+msgstr "1 запис"
+
+#. Text in echo
+#: dante-lang/404.php:12
+msgid "404"
+msgstr "404"
+
+#. Text in function
+#: dante-lang/search.php:32
+msgid "<h1>%1$s result for <span>%2$s</span></h1>"
+msgstr "<h1>%1$ резултат за <span>%2$s</span></h1>"
+
+#. Text in function
+#: dante-lang/search.php:34
+msgid "<h1>%1$s results for <span>%2$s</span></h1>"
+msgstr "<h1>%1$s резултата за <span>%2$s</span></h1>"
+
+#. Text in function
+#: dante-lang/single-jobs.php:34
+#: dante-lang/single-galleries.php:127
+#: dante-lang/single-team.php:118
+#: dante-lang/single.php:234
+msgid "<i class=\"ss-navigateleft\"></i> <span class=\"nav-text\">%title</span>"
+msgstr "<i class=\"ss-navigateleft\"></i> <span class=\"nav-text\">%title</span>"
+
+#. Text in function
+#: dante-lang/comments.php:37
+#: dante-lang/comments.php:46
+msgid "<i class=\"ss-navigateleft\"></i> Previous"
+msgstr "<i class=\"ss-navigateleft\"></i> Назад"
+
+#. Text in function
+#: dante-lang/includes/sf-pagination.php:1
+msgid "<i class='ss-navigateleft'></i> Previous"
+msgstr "<i class='ss-navigateleft'></i> Назад"
+
+#. Text in function
+#: dante-lang/single-jobs.php:35
+#: dante-lang/single-galleries.php:128
+#: dante-lang/single-team.php:119
+#: dante-lang/single.php:235
+msgid "<span class=\"nav-text\">%title</span><i class=\"ss-navigateright\"></i>"
+msgstr "<span class=\"nav-text\">%title</span><i class=\"ss-navigateright\"></i>"
+
+#. Text in echo
+#: dante-lang/single.php:302
+msgid "About"
+msgstr "За"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:108
+msgid "Actions"
+msgstr "Действия"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/add-to-cart.php:22
+#: dante-lang/woocommerce/single-product/add-to-cart/simple.php:44
+#: dante-lang/woocommerce/single-product/add-to-cart/variable.php:83
+msgid "Add to shopping bag"
+msgstr "Добави в количката"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:298
+msgid "Additional Information"
+msgstr "Повече информация"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-account.php:29
+#: dante-lang/woocommerce/myaccount/my-address.php:1
+msgid "Address Book"
+msgstr "Контакти"
+
+#. Text in function
+#: dante-lang/includes/sf-portfolio.php:1
+#: dante-lang/woocommerce/loop/result-count.php:52
+msgid "All"
+msgstr "Всички"
+
+#. Text in echo
+#: dante-lang/footer.php:258
+#: dante-lang/footer-alt.php:55
+msgid "All posts loaded"
+msgstr "Всички статии са заредени"
+
+#. Text in echo
+#: dante-lang/search.php:95
+#: dante-lang/search.php:150
+msgid "Alternatively, you can browse the sitemap below."
+msgstr "Вместо това можеш да разгледаш картата на сайта отдолу."
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-orders.php:51
+msgid "Amount"
+msgstr "Количество"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-supersearch.php:1
+msgid "Any"
+msgstr "Всяко"
+
+#. Text in echo
+#: dante-lang/archive.php:68
+#: dante-lang/archive.php:70
+#: dante-lang/archive.php:72
+msgid "Archive for"
+msgstr "Архив за"
+
+#. Text in function
+#: dante-lang/swift-framework/shortcodes.php:1
+#: dante-lang/includes/sf-blog.php:1
+msgid "Archives"
+msgstr "Архиви"
+
+#. Text in echo
+#: dante-lang/includes/sf-comments.php:27
+msgid "Author"
+msgstr "Автор"
+
+#. Text in echo
+#: dante-lang/archive.php:75
+msgid "Author archive for"
+msgstr "Архив на автор за"
+
+#. Text in echo
+#: dante-lang/bbpress/loop-replies.php:21
+msgid "Back to forum"
+msgstr "Обратно към форума"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:79
+#: dante-lang/woocommerce/order/order-details.php:30
+#: dante-lang/woocommerce/myaccount/form-edit-address.php:31
+msgid "Back to my account"
+msgstr "Обратно към твоя профил"
+
+#. Text in echo
+#: dante-lang/archive.php:77
+msgid "Blog Archives"
+msgstr "Архив на блога"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/faqs.php:1
+msgid "Browse F.A.Q. Topics"
+msgstr "Разгледай темите във ВиО"
+
+#. Text in function
+#: dante-lang/includes/plugins/love-it-pro/includes/widgets.php:35
+msgid "By %1$s"
+msgstr "С %1$s"
+
+#. Text in function
+#: dante-lang/swift-framework/widgets/widget-posts.php:66
+msgid "By %1$s on %2$s"
+msgstr "С %1$s за %2$s"
+
+#. Text in function
+#: dante-lang/includes/sf-comments.php:67
+msgid "By %1$s on %2$s at %3$s"
+msgstr "С %1$s за %2$s в %3$s"
+
+#. Text in function
+#: dante-lang/includes/sf-post-formats.php:1
+msgid "By <a href=\"%2$s\">%1$s</a>"
+msgstr "С <a href=\"%2$s\">%1$s</a>"
+
+#. Text in function
+#: dante-lang/includes/sf-post-formats.php:1
+msgid "By <a href=\"%2$s\">%1$s</a> on %3$s"
+msgstr "С <a href=\"%2$s\">%1$s</a> в %3$s"
+
+#. Text in function
+#: dante-lang/swift-framework/shortcodes.php:1
+#: dante-lang/includes/sf-blog.php:1
+msgid "Categories"
+msgstr "Категории"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-account.php:30
+msgid "Change Password"
+msgstr "Смени Парола"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-change-password.php:18
+msgid "Change password"
+msgstr "Смени парола"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Click here to cancel the reply"
+msgstr "Кликни тук за отмяна и нов опит"
+
+#. Text in function
+#: dante-lang/includes/sf-media.php:1
+msgid "Client: "
+msgstr "Клиент:"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:495
+msgid "Color Customizer"
+msgstr "Настройка на цветовете"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Comment"
+msgstr "Коментирай"
+
+#. Text in echo
+#: dante-lang/woocommerce/single-product/meta.php:24
+#: dante-lang/woocommerce/single-product/meta.php:46
+msgid "Contact Us"
+msgstr "Контакти"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/thankyou.php:79
+#: dante-lang/woocommerce/cart/cart-empty.php:
+#: dante-lang/woocommerce/cart/cart.php:208
+msgid "Continue shopping"
+msgstr "Продължи с пазаруването"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:82
+msgid "Create Account / Login"
+msgstr "Създай Профил / Вход"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-login.php:68
+msgid "Create an account"
+msgstr "Създай профил"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Day"
+msgstr "Ден"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Days"
+msgstr "Дни"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:39
+#: dante-lang/swift-framework/sf-woocommerce.php:279
+msgid "Description"
+msgstr "Обяснение"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-orders.php:53
+msgid "Details"
+msgstr "Детайли"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:80
+msgid "Discount:"
+msgstr "Отстъпка:"
+
+#. Text in function
+#: dante-lang/includes/sf-comments.php:39
+#: dante-lang/includes/sf-comments.php:67
+msgid "Edit"
+msgstr "Редактирай"
+
+#. Text in function
+#: dante-lang/woocommerce/myaccount/my-address.php:68
+msgid "Edit address"
+msgstr "Редактирай адрес"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Email"
+msgstr "Е-поща"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:367
+#: dante-lang/swift-framework/sf-woocommerce.php:379
+msgid "Email customer care"
+msgstr "Е-поща грижа за клиента"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:188
+msgid "Enter promotion code"
+msgstr "Въведи промо код"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:370
+#: dante-lang/swift-framework/sf-woocommerce.php:421
+msgid "F.A.Q.'s"
+msgstr "ВиО"
+
+#. Text in function
+#: dante-lang/includes/sf-portfolio.php:1
+msgid "Filter our work"
+msgstr "Филтър"
+
+#. Text in function
+#: dante-lang/includes/sf-pagination.php:1
+msgid "First Page"
+msgstr "Първа страница"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/team-carousel.php:1
+msgid "Follow:"
+msgstr "Следвай ни:"
+
+#. Text in function
+#: dante-lang/includes/sf-menus.php:1
+msgid "Footer Menu"
+msgstr "Футър Меню"
+
+#. Text in function
+#: dante-lang/woocommerce/wishlist.php:155
+#: dante-lang/woocommerce/content-product.php:183
+#: dante-lang/woocommerce/single-product/product-image.php:19
+msgid "Free"
+msgstr "Безплатно"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:162
+msgid "Go to the shop"
+msgstr "Към магазина"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Go to your wishlist"
+msgstr "Към списъка с желания"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Hour"
+msgstr "Час"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Hours"
+msgstr "Часа"
+
+#. Text in function
+#: dante-lang/woocommerce/wishlist.php:155
+msgid "In Stock"
+msgstr "В наличност"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-change-password.php:27
+msgid "It is not possible to change the password for the demo account."
+msgstr "Няма възможност за промяна на парола в демо профил"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:103
+#: dante-lang/woocommerce/cart/cart.php:38
+#: dante-lang/woocommerce/order/order-details.php:41
+msgid "Item"
+msgstr "Запис"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/add-to-cart.php:22
+msgid "Item added to bag"
+msgstr "Продукта добавени в количка"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Language"
+msgstr "Език"
+
+#. Text in function
+#: dante-lang/includes/sf-pagination.php:1
+msgid "Last Page"
+msgstr "Последна Страница"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/jobs.php:1
+msgid "Learn more"
+msgstr "Виж повече"
+
+#. Text in echo
+#: dante-lang/woocommerce/single-product/meta.php:25
+#: dante-lang/woocommerce/single-product/meta.php:60
+msgid "Leave Feedback"
+msgstr "Сподели твоето мнение"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Leave a reply"
+msgstr "Напиши отговор"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Leave a reply to %s"
+msgstr "Напиши отговор до %s"
+
+#. Text in function
+#: dante-lang/includes/sf-blog.php:1
+msgid "Load More"
+msgstr "Зареди още"
+
+#. Text in echo
+#: dante-lang/footer.php:257
+#: dante-lang/footer-alt.php:54
+msgid "Loading"
+msgstr "Зареждане"
+
+#. Text in function
+#: dante-lang/includes/sf-comments.php:42
+msgid "Log in to reply."
+msgstr "Влез в профила си за да отговориш"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "Профил на <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Изход от профила\">Log out?</a>"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/woocommerce/checkout/form-checkout.php:47
+msgid "Login"
+msgstr "Вход"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/form-checkout.php:40
+msgid "Login here"
+msgstr "Към профила"
+
+#. Text in function
+#: dante-lang/includes/sf-menus.php:1
+msgid "Main Menu"
+msgstr "Основно Меню"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Min"
+msgstr "Минута"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Mins"
+msgstr "Минути"
+
+#. Text in function
+#: dante-lang/includes/sf-menus.php:1
+msgid "Mobile Menu"
+msgstr "Мобилно Меню"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Month"
+msgstr "Месец"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Months"
+msgstr "Месеци"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/testimonial-carousel.php:1
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/testimonial.php:1
+msgid "More"
+msgstr "Повече"
+
+#. Text in function
+#: dante-lang/includes/plugins/love-it-pro/includes/widgets.php:1
+msgid "Most Loved Items"
+msgstr "Най-харесвани"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:76
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/woocommerce/myaccount/my-account.php:20
+#: dante-lang/woocommerce/order/order-details.php:28
+#: dante-lang/woocommerce/myaccount/form-edit-address.php:29
+msgid "My Account"
+msgstr "Твоя Профил"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-account.php:24
+msgid "My Downloads"
+msgstr "Твоите Свалени файлове"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-account.php:22
+msgid "My Orders"
+msgstr "Твоите Поръчки"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-account.php:27
+msgid "My Wishlist"
+msgstr "Твоя списък с желания"
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Name"
+msgstr "Име"
+
+#. Text in echo
+#: dante-lang/woocommerce/single-product/meta.php:24
+msgid "Need Help?"
+msgstr "Имаш ли нужда от помощ?"
+
+#. Text in function
+#: dante-lang/woocommerce/content-product.php:183
+#: dante-lang/woocommerce/single-product/product-image.php:19
+msgid "New"
+msgstr "Нов"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/pagination.php:18
+msgid "Next"
+msgstr "Напред"
+
+#. Text in function
+#: dante-lang/comments.php:37
+#: dante-lang/comments.php:46
+msgid "Next <i class=\"ss-navigateright\"></i>"
+msgstr "Напред <i class=\"ss-navigateright\"></i>"
+
+#. Text in function
+#: dante-lang/includes/sf-pagination.php:1
+msgid "Next <i class='ss-navigateright'></i>"
+msgstr "Напред <i class='ss-navigateright'></i>"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/tabs.php:1
+msgid "Next slide"
+msgstr "Следващ слайд"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "No results"
+msgstr "Няма съвпадения"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "No search results could be found, please try another query."
+msgstr "Не са намерени съвпадения, моля опитай с други ключови думи."
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-login.php:64
+msgid "Not registered? No problem"
+msgstr "Нямаш профил? Няма проблем"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-megamenu/edit_custom_walker.php:233
+msgid "Optionally set a width here for the menu column, ideal if you want to make it wider. Numeric value (no px)."
+msgstr "Опция - Можеш да напишеш ширина за колона на менюто ако искаш да го направиш по-широко. Само цифри (без px)."
+
+#. Text in function
+#: dante-lang/woocommerce/wishlist.php:155
+#: dante-lang/woocommerce/content-product.php:183
+#: dante-lang/woocommerce/single-product/product-image.php:19
+msgid "Out of Stock"
+msgstr "Разпродадено"
+
+#. Text in function
+#: dante-lang/woocommerce/single-product-reviews.php:181
+msgid "Overall Rating"
+msgstr "Общ рейтинг"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid "Page %s"
+msgstr "Страница %s"
+
+#. Text in function
+#: dante-lang/swift-framework/shortcodes.php:1
+msgid "Pages"
+msgstr "Страници"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:262
+msgid "Payment Method"
+msgstr "Начин на плащане"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Please assign a menu to the Main Menu in Appearance > Menus"
+msgstr "Моля те да избереш меню за Основна Навигация от Изглед > Менюта"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-functions.php:1
+msgid "Please provide your Twitter username"
+msgstr "Моля те да въведеш твоето потребителско име в Twitter "
+
+#. Text in echo
+#: dante-lang/search.php:91
+#: dante-lang/search.php:146
+msgid "Please use the form below to search again."
+msgstr "Моля те ползвай формата отдолу за ново търсене."
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Post comment"
+msgstr "Коментирай"
+
+#. Text in function
+#: dante-lang/includes/sf-media.php:1
+msgid "Posted by "
+msgstr "Публикувано от"
+
+#. Text in function
+#: dante-lang/single.php:244
+msgid "Posted by <a href=\"%2$s\" itemprop=\"author\" class=\"fn\">%1$s</a> in %3$s"
+msgstr "Публикувано от <a href=\"%2$s\" itemprop=\"author\" class=\"fn\">%1$s</a> в %3$s"
+
+#. Text in function
+#: dante-lang/single-jobs.php:39
+#: dante-lang/single.php:247
+msgid "Posted by <a href=\"%2$s\" itemprop=\"author\" class=\"fn\">%1$s</a> on <span class=\"date updated\">%3$s</span> in %4$s"
+msgstr "Публикувано от <a href=\"%2$s\" itemprop=\"author\" class=\"fn\">%1$s</a> на <span class=\"date updated\">%3$s</span> в %4$s"
+
+#. Text in function
+#: dante-lang/single-galleries.php:132
+msgid "Posted by <a href=\"%2$s\">%1$s</a> on %3$s in %4$s"
+msgstr "Публикувано от <a href=\"%2$s\">%1$s</a> на %3$s в %4$s"
+
+#. Text in function
+#: dante-lang/single.php:242
+msgid "Posted in %1$s"
+msgstr "Публикувано в %1$s"
+
+#. Text in echo
+#: dante-lang/bbpress/loop-replies.php:24
+msgid "Posted in:"
+msgstr "Публикувано в:"
+
+#. Text in function
+#: dante-lang/single.php:240
+msgid "Posted on <span class=\"date updated\">%1$s</span> in %2$s"
+msgstr "Публикувано на <span class=\"date updated\">%1$s</span> в %2$s"
+
+#. Text in function
+#: dante-lang/swift-framework/shortcodes.php:1
+msgid "Posts"
+msgstr "Публикации"
+
+#. Text in echo
+#: dante-lang/archive.php:66
+msgid "Posts tagged with"
+msgstr "Публикации със следнте тагове"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/pagination.php:18
+msgid "Prev"
+msgstr "Назад"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/tabs.php:1
+msgid "Previous slide"
+msgstr "Предишен слайд"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid "Price"
+msgstr "Цена"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:202
+msgid "Proceed to Checkout"
+msgstr "Към Плащане"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:148
+msgid "Proceed to checkout"
+msgstr "Към плащане"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid "Product Category"
+msgstr "Категория продукти"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:104
+msgid "Product Name"
+msgstr "Име на продукт"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:173
+msgid "Product added to wishlist."
+msgstr "Продукта е добавен в списъка с желания"
+
+#. Text in echo
+#: dante-lang/woocommerce/single-product/meta.php:22
+msgid "Product code:"
+msgstr "Код на продукт:"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Products"
+msgstr "Продукти"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:209
+msgid "Promo Codes:"
+msgstr "Промо Кодове:"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:186
+msgid "Promotional Code"
+msgstr "Промо код"
+
+#. Text in echo
+#: dante-lang/woocommerce/order/order-details.php:43
+msgid "Quantity"
+msgstr "Количество"
+
+#. Text in function
+#: dante-lang/woocommerce/checkout/review-order.php:314
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:131
+msgid "Quantity:"
+msgstr "Количество:"
+
+#. Text in function
+#: dante-lang/includes/sf-blog.php:1
+msgid "RSS"
+msgstr "RSS"
+
+#. Text in function
+#: dante-lang/includes/sf-post-formats.php:1
+msgid "Read more"
+msgstr "Виж повече"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-login.php:75
+msgid "Register"
+msgstr "Регистрация"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-login.php:29
+msgid "Registered customers"
+msgstr "Регистрирани клиенти"
+
+#. Text in echo
+#: dante-lang/single.php:316
+msgid "Related Articles"
+msgstr "Подобни Статии"
+
+#. Text in echo
+#: dante-lang/single-portfolio.php:531
+msgid "Related Projects"
+msgstr "Подобни Проекти"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:174
+msgid "Remove this product"
+msgstr "Изтрий продукта"
+
+#. Text in function
+#: dante-lang/includes/sf-comments.php:42
+msgid "Reply"
+msgstr "Отговор"
+
+#. Text in echo
+#: dante-lang/404.php:26
+msgid "Return to the previous page"
+msgstr "Към предишната страница"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/form-checkout.php:40
+msgid "Returning customer?"
+msgstr "Лоялен клиент?"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:369
+#: dante-lang/swift-framework/sf-woocommerce.php:407
+msgid "Returns & exchange"
+msgstr "Връщане и замяна"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:311
+msgid "Reviews"
+msgstr "Мнения"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/404.php:24
+#: dante-lang/includes/sf-blog.php:1
+#: dante-lang/search.php:93
+#: dante-lang/search.php:148
+msgid "Search"
+msgstr "Търси"
+
+#. Text in echo
+#: dante-lang/header.php:185
+msgid "Search for something..."
+msgstr "Търсиш нещо..."
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Sec"
+msgstr "Секунда"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Secs"
+msgstr "Секунди"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:335
+msgid "Share"
+msgstr "Сподели"
+
+#. Text in echo
+#: dante-lang/single-jobs.php:61
+#: dante-lang/single.php:275
+msgid "Share this article:"
+msgstr "Сподели статията:"
+
+#. Text in echo
+#: dante-lang/single-galleries.php:153
+msgid "Share this gallery:"
+msgstr "Сподели галерията:"
+
+#. Text in function
+#: dante-lang/swift-framework/shortcodes.php:1
+msgid "Share this:"
+msgstr "Сподели:"
+
+#. Text in echo
+#: dante-lang/swift-framework/sf-woocommerce.php:368
+#: dante-lang/swift-framework/sf-woocommerce.php:393
+msgid "Shipping information"
+msgstr "Информация за доставка"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:91
+msgid "Shipping:"
+msgstr "Доставка:"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:81
+msgid "Shop"
+msgstr "Магазин"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/totals.php:22
+msgid "Shopping bag summary"
+msgstr "Отчет за количката"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/result-count.php:33
+msgid "Showing %1$d-%2$d of %3$d products"
+msgstr "Покажи %1$d-%2$d от %3$d продукта"
+
+#. Text in function
+#: dante-lang/woocommerce/loop/result-count.php:33
+msgid "Showing all %d products"
+msgstr "Покажи всички %d продукта"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Sign Out"
+msgstr "Изход"
+
+#. Text in echo
+#: dante-lang/404.php:22
+msgid "Sorry but we couldn't find the page you are looking for. Please check to make sure you've typed the URL correctly. You may also want to search for what you are looking for."
+msgstr "Много се извиняваме, но неможем да открием търсената страница. Моля те провери дали си написла адреса правилно или използвай търсене за провериш дали търсената страница я има."
+
+#. Text in echo
+#: dante-lang/category.php:129
+#: dante-lang/category.php:179
+#: dante-lang/index.php:102
+#: dante-lang/index.php:148
+#: dante-lang/archive.php:141
+#: dante-lang/archive.php:191
+#: dante-lang/search.php:88
+#: dante-lang/search.php:143
+#: dante-lang/taxonomy-portfolio-category.php:55
+msgid "Sorry, there are no posts to display."
+msgstr "За съжаление няма какво да покажем."
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:106
+msgid "Stock Status"
+msgstr "Статус наличности"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Subscribe"
+msgstr "Запиши се"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:42
+msgid "Subtotal"
+msgstr "Основа"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:73
+msgid "Subtotal:"
+msgstr "Основа:"
+
+#. Text in function
+#: dante-lang/includes/sf-blog.php:1
+msgid "Tags"
+msgstr "Тагове"
+
+#. Text in echo
+#: dante-lang/single-jobs.php:56
+#: dante-lang/single-galleries.php:148
+#: dante-lang/single.php:269
+msgid "Tags:"
+msgstr "Тагове:"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:495
+msgid "Theme Options"
+msgstr "Настройки на Темата"
+
+#. Text in echo
+#: dante-lang/comments.php:14
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Тази публикация е защитена с парола. Моля те въведи парола за да видиш съдържанието."
+
+#. Text in function
+#: dante-lang/includes/sf-menus.php:1
+msgid "Top Bar Menu"
+msgstr "Горна лента Меню"
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/review-order.php:223
+msgid "Total"
+msgstr "Общо"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:156
+msgid "Unfortunately, your shopping bag is empty."
+msgstr "За жалост, твоята количка е празна."
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:105
+#: dante-lang/woocommerce/cart/cart.php:40
+msgid "Unit Price"
+msgstr "Ед. Цена"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:130
+msgid "Unit Price:"
+msgstr "Ед. Цена:"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:202
+msgid "Update Shopping Bag"
+msgstr "Обнови количката"
+
+#. Text in echo
+#: dante-lang/woocommerce/loop/result-count.php:51
+msgid "View"
+msgstr "Виж"
+
+#. Text in echo
+#: dante-lang/single-portfolio.php:480
+#: dante-lang/single-portfolio.php:496
+msgid "View Project"
+msgstr "Виж Проекта"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "View all %d results"
+msgstr "Виж всички %d резултата"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/jobs-overview.php:1
+msgid "View all vacancies"
+msgstr "Прегледай всички свободни позиции"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/team-carousel.php:1
+msgid "View profile"
+msgstr "Прегледай твоя профил"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:146
+msgid "View shopping bag"
+msgstr "Прегледай количката"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:100
+msgid "View your shopping cart"
+msgstr "Прегледай твоята количка"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "View your wishlist"
+msgstr "Прегледай твоя списък с желания"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid "We are currently in maintenance mode, please check back shortly."
+msgstr "В момента работим по уебсайта. Моля те ела пак по-късно."
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "Website"
+msgstr "Уебсайт"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Week"
+msgstr "Седмица"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Weeks"
+msgstr "Седмици"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+msgid "Welcome"
+msgstr "Здравей"
+
+#. Text in function
+#: dante-lang/woocommerce/single-product-reviews.php:181
+msgid "Write a review"
+msgstr "Напиши мнение"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Year"
+msgstr "Година"
+
+#. Text in echo
+#: dante-lang/includes/sf-theme-functions.php:494
+msgid "Years"
+msgstr "Години"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart-empty.php:16
+msgid "You currently have no items in your Shopping Bag."
+msgstr "В момента количката е празна."
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/my-orders.php:115
+msgid "You haven't placed any orders yet."
+msgstr "Все още не си направил поръчка."
+
+#. Text in function
+#: dante-lang/includes/sf-products.php:1
+msgid "You haven't viewed any products yet."
+msgstr "Все още не си разглеждал продукти."
+
+#. Text in function
+#: dante-lang/comments.php:65
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Трябва да си <a href=\"%s\">регистриран</a> за да публикуваш коментари."
+
+#. Text in echo
+#: dante-lang/woocommerce/checkout/form-checkout.php:95
+msgid "Your Order"
+msgstr "Твоята Поръчка"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart-empty.php:14
+msgid "Your Shopping Bag is empty"
+msgstr "Твоята количка е празна"
+
+#. Text in echo
+#: dante-lang/woocommerce/cart/cart.php:31
+msgid "Your selection"
+msgstr "Твоята селекция"
+
+#. Text in echo
+#: dante-lang/woocommerce/wishlist.php:181
+#: dante-lang/includes/sf-header.php:1
+msgid "Your wishlist is currently empty."
+msgstr "Твоя списък с желания е празен."
+
+#. Text in echo
+#: dante-lang/includes/sf-comments.php:72
+msgid "\\t\\t\\t\\t\\t<span class=\"unapproved\">Your trackback is awaiting moderation.</span>\\n"
+msgstr "\\t\\t\\t\\t\\t<span class=\"unapproved\">Твоята връзка към публикация очаква одобрение.</span>\\n"
+
+#. Text in echo
+#: dante-lang/includes/sf-comments.php:53
+msgid "\\t\\t\\t\\t\\t<span class='unapproved'>Your comment is awaiting moderation.</span>\\n"
+msgstr "\\t\\t\\t\\t\\t<span class='unapproved'>Твоя коментар очаква одобрение.</span>\\n"
+
+#. Text in function
+#: dante-lang/swift-framework/widgets/widget-comments.php:66
+#: dante-lang/swift-framework/sf-functions.php:1
+#: dante-lang/includes/sf-comments.php:32
+msgid "ago"
+msgstr "преди"
+
+#. Text in echo
+#: dante-lang/woocommerce/myaccount/form-login.php:66
+msgid "checkout_new_account_text"
+msgstr "текст_нов_профил_плащане"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:430
+msgid "email_modal"
+msgstr "е-поща_модален_прозорец"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:430
+msgid "faqs_modal"
+msgstr "въпроси_отговори_модален_прозорец"
+
+#. Text in function
+#: dante-lang/footer.php:1
+#: dante-lang/footer-alt.php:1
+msgid "footer_copyright_text"
+msgstr "текст_авторско_право_футър"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:430
+msgid "help_bar_text"
+msgstr "текст_помощна_лента"
+
+#. Text in function
+#: dante-lang/includes/sf-header.php:1
+#: dante-lang/swift-framework/sf-woocommerce.php:108
+msgid "in the shopping bag"
+msgstr "в количката"
+
+#. Text in function
+#: dante-lang/woocommerce/content-product_cat.php:51
+msgid "items"
+msgstr "продукти"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/jobs-overview.php:1
+msgid "jobs_page"
+msgstr "страница_обяви_работа"
+
+#. Text in function
+#: dante-lang/includes/sf-theme-functions.php:1
+msgid "maintenance_mode_page"
+msgstr "страница_поддръжка"
+
+#. Text in function
+#: dante-lang/swift-framework/custom-post-types/sf-post-type-permalinks.php:115
+#: dante-lang/single-portfolio.php:3
+msgid "portfolio_page"
+msgstr "страница_проекти"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:430
+msgid "returns_modal"
+msgstr "връщане_модален_прозорец"
+
+#. Text in function
+#: dante-lang/swift-framework/sf-woocommerce.php:430
+msgid "shipping_modal"
+msgstr "доставка_модален_прозорец"
+
+#. Text in function
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/testimonial-carousel.php:1
+#: dante-lang/swift-framework/page-builder/builder/shortcodes/testimonial.php:1
+msgid "testimonial_page"
+msgstr "страница_препоръки"
+

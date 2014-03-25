@@ -88,7 +88,7 @@ class SwiftPageBuilderShortcode_faqs extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'faqs', array(
-    "name"		=> __("FAQs", "swift-page-builder"),
+    "name"		=> __("FAQs", "swift-framework-admin"),
     "base"		=> "faqs",
     "class"		=> "",
     "icon"      => "spb-icon-faqs",
@@ -97,10 +97,10 @@ SPBMap::map( 'faqs', array(
     "params"	=> array(
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

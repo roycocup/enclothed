@@ -16,6 +16,7 @@ class SwiftPageBuilderShortcode_posts_carousel extends SwiftPageBuilderShortcode
 	        	"item_count"	=> '12',
 	        	"show_details"	    => 'yes',
 	        	"offset"		=> '0',
+	        	"posts_order"	=> 'ASC',
 	        	"category"		=> 'all',
 	        	'el_position' => '',
 	        	'width' => '1/1',
@@ -41,7 +42,8 @@ class SwiftPageBuilderShortcode_posts_carousel extends SwiftPageBuilderShortcode
     			'no_found_rows' => 1,
     			'category_name' => $category_slug,
     			'posts_per_page' => $item_count,
-    			'offset' => $offset
+    			'offset' => $offset,
+    			'order' => $posts_order
     			);
     			    		
     		$blog_items = new WP_Query( $blog_args );
@@ -172,7 +174,7 @@ class SwiftPageBuilderShortcode_posts_carousel extends SwiftPageBuilderShortcode
 						$thumb_img_url = "default";
 					}
 				
-					$image = aq_resize( $thumb_img_url, 420, 315, true, false);
+					$image = sf_aq_resize( $thumb_img_url, 420, 315, true, false);
 						
 					if ($image) {
 						$items .= '<img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" alt="'.$item_title.'" />';
@@ -260,74 +262,81 @@ class SwiftPageBuilderShortcode_posts_carousel extends SwiftPageBuilderShortcode
 }
 
 SPBMap::map( 'posts_carousel', array(
-    "name"		=> __("Posts Carousel", "swift-page-builder"),
+    "name"		=> __("Posts Carousel", "swift-framework-admin"),
     "base"		=> "posts_carousel",
     "class"		=> "spb_posts_carousel spb_carousel",
     "icon"      => "spb-icon-posts-carousel",
     "params"	=> array(
 	    array(
 	        "type" => "textfield",
-	        "heading" => __("Widget title", "swift-page-builder"),
+	        "heading" => __("Widget title", "swift-framework-admin"),
 	        "param_name" => "title",
 	        "value" => "",
-	        "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	        "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    ),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "12",
-            "description" => __("The number of blog items to show in the carousel.", "swift-page-builder")
+            "description" => __("The number of blog items to show in the carousel.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Posts category", "swift-page-builder"),
+            "heading" => __("Posts category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('category'),
-            "description" => __("Choose the category for the blog items.", "swift-page-builder")
+            "description" => __("Choose the category for the blog items.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Posts offset", "swift-page-builder"),
+            "heading" => __("Posts offset", "swift-framework-admin"),
             "param_name" => "offset",
             "value" => "0",
-            "description" => __("The offset for the start of the posts that are displayed, e.g. enter 5 here to start from the 5th post.", "swift-page-builder")
+            "description" => __("The offset for the start of the posts that are displayed, e.g. enter 5 here to start from the 5th post.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show title text", "swift-page-builder"),
+            "heading" => __("Posts order", "swift-framework-admin"),
+            "param_name" => "posts_order",
+            "value" => array(__("Ascending", "swift-framework-admin") => "ASC", __("Descending", "swift-framework-admin") => "DESC"),
+            "description" => __("The order of the posts.", "swift-framework-admin")
+        ),
+        array(
+            "type" => "dropdown",
+            "heading" => __("Show title text", "swift-framework-admin"),
             "param_name" => "show_title",
-            "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-            "description" => __("Show the item title text.", "swift-page-builder")
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Show the item title text.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show item excerpt", "swift-page-builder"),
+            "heading" => __("Show item excerpt", "swift-framework-admin"),
             "param_name" => "show_excerpt",
-            "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-            "description" => __("Show the item excerpt text.", "swift-page-builder")
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Show the item excerpt text.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show item details", "swift-page-builder"),
+            "heading" => __("Show item details", "swift-framework-admin"),
             "param_name" => "show_details",
-            "value" => array(__("Yes", "swift-page-builder") => "yes", __("No", "swift-page-builder") => "no"),
-            "description" => __("Show the item details.", "swift-page-builder")
+            "value" => array(__("Yes", "swift-framework-admin") => "yes", __("No", "swift-framework-admin") => "no"),
+            "description" => __("Show the item details.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Excerpt Length", "swift-page-builder"),
+            "heading" => __("Excerpt Length", "swift-framework-admin"),
             "param_name" => "excerpt_length",
             "value" => "20",
-            "description" => __("The length of the excerpt for the posts.", "swift-page-builder")
+            "description" => __("The length of the excerpt for the posts.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

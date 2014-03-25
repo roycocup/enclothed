@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+	
 <?php
 	$options = get_option('sf_dante_options');
 	
@@ -8,7 +8,8 @@
 	$default_sidebar_config = $options['default_sidebar_config'];
 	$default_left_sidebar = $options['default_left_sidebar'];
 	$default_right_sidebar = $options['default_right_sidebar'];
-
+	
+	$pb_active = get_post_meta($post->ID, '_spb_js_status', true);
 	$show_page_title = get_post_meta($post->ID, 'sf_page_title', true);
 	$page_title_style = get_post_meta($post->ID, 'sf_page_title_style', true);
 	$page_title = get_post_meta($post->ID, 'sf_page_title_one', true);
@@ -54,13 +55,16 @@
 	
 	sf_set_sidebar_global($sidebar_config);
 	
-	$page_wrap_class = '';
+	$page_wrap_class = $post_class_extra = '';
 	if ($sidebar_config == "left-sidebar") {
 	$page_wrap_class = 'has-left-sidebar has-one-sidebar row';
+	$post_class_extra = 'col-sm-8';
 	} else if ($sidebar_config == "right-sidebar") {
 	$page_wrap_class = 'has-right-sidebar has-one-sidebar row';
+	$post_class_extra = 'col-sm-8';
 	} else if ($sidebar_config == "both-sidebars") {
 	$page_wrap_class = 'has-both-sidebars row';
+	$post_class_extra = 'col-sm-9';
 	} else {
 	$page_wrap_class = 'has-no-sidebar';
 	}
@@ -75,14 +79,20 @@
 	if ($remove_top_spacing) {
 	$page_wrap_class .= ' no-top-spacing';
 	}
-		
+	
+	$options = get_option('sf_dante_options');
+	$disable_pagecomments = false;
+	if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] == 1) {
+	$disable_pagecomments = true;
+	}
 ?>
 
-<?php if ($show_page_title) { ?>	
+<?php if ($show_page_title) { ?>
+<div class="container">
 	<div class="row">
 		<?php if ($page_title_style == "fancy") { ?>
 		<?php if ($fancy_title_image_url != "") { ?>
-		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);" data-stellar-background-ratio="0.5">
+		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_text_style; ?>-style fancy-image" style="background-image: url(<?php echo $fancy_title_image_url; ?>);">
 		<?php } else { ?>
 		<div class="page-heading fancy-heading col-sm-12 clearfix alt-bg <?php echo $page_title_bg; ?>">
 		<?php } ?>
@@ -107,6 +117,11 @@
 		</div>
 		<?php } ?>
 	</div>
+</div>
+<?php } ?>
+
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+<div class="container">
 <?php } ?>
 
 <div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
@@ -114,47 +129,42 @@
 	<?php if (have_posts()) : the_post(); ?>
 
 	<!-- OPEN page -->
-	<?php if (($sidebar_config == "left-sidebar") || ($sidebar_config == "right-sidebar")) { ?>
-	<div <?php post_class('clearfix col-sm-8'); ?> id="<?php the_ID(); ?>">
-	<?php } else if ($sidebar_config == "both-sidebars") { ?>
-	<div <?php post_class('clearfix col-sm-9'); ?> id="<?php the_ID(); ?>">
-	<?php } else { ?>
-	<div <?php post_class('clearfix'); ?> id="<?php the_ID(); ?>">
-	<?php } ?>
+	<div <?php post_class('clearfix ' . $post_class_extra); ?> id="<?php the_ID(); ?>">
 	
 		<?php if ($sidebar_config == "both-sidebars") { ?>
-		<div class="row">	
-			<div class="page-content col-sm-8">
+			<div class="row">	
+				<div class="page-content col-sm-8">
+					<?php the_content(); ?>
+					<div class="link-pages"><?php wp_link_pages(); ?></div>
+					
+					<?php if ( comments_open() && !$disable_pagecomments ) { ?>
+					<div id="comment-area">
+						<?php comments_template('', true); ?>
+					</div>
+					<?php } ?>
+				</div>
+					
+				<aside class="sidebar left-sidebar col-sm-4">
+					<?php dynamic_sidebar($left_sidebar); ?>
+				</aside>
+			</div>
+		<?php } else { ?>
+			<div class="page-content clearfix">
+	
 				<?php the_content(); ?>
+				
 				<div class="link-pages"><?php wp_link_pages(); ?></div>
 				
-				<?php if ( comments_open() ) { ?>
-				<div id="comment-area">
-					<?php comments_template('', true); ?>
-				</div>
-				<?php } ?>
+				<?php if ( comments_open() && !$disable_pagecomments ) { ?>
+					<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
+					<div id="comment-area" class="container">
+					<?php } else { ?>
+					<div id="comment-area">
+					<?php } ?>
+						<?php comments_template('', true); ?>
+					</div>
+				<?php } ?>				
 			</div>
-				
-			<aside class="sidebar left-sidebar col-sm-4">
-				<?php dynamic_sidebar($left_sidebar); ?>
-			</aside>
-		</div>
-		<?php } else { ?>
-		
-		<div class="page-content clearfix">
-
-			<?php the_content(); ?>
-			
-			<div class="link-pages"><?php wp_link_pages(); ?></div>
-			
-			<?php if ( comments_open() ) { ?>
-			<div id="comment-area">
-				<?php comments_template('', true); ?>
-			</div>
-			<?php } ?>
-			
-		</div>
-		
 		<?php } ?>	
 	
 	<!-- CLOSE page -->
@@ -163,26 +173,24 @@
 	<?php endif; ?>
 	
 	<?php if ($sidebar_config == "left-sidebar") { ?>
-		
 		<aside class="sidebar left-sidebar col-sm-4">
 			<?php dynamic_sidebar($left_sidebar); ?>
 		</aside>
-
 	<?php } else if ($sidebar_config == "right-sidebar") { ?>
-		
 		<aside class="sidebar right-sidebar col-sm-4">
 			<?php dynamic_sidebar($right_sidebar); ?>
 		</aside>
-		
 	<?php } else if ($sidebar_config == "both-sidebars") { ?>
-		
 		<aside class="sidebar right-sidebar col-sm-3">
 			<?php dynamic_sidebar($right_sidebar); ?>
 		</aside>
-	
 	<?php } ?>
 
 </div>
+
+<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+</div>
+<?php } ?>
 
 <!--// WordPress Hook //-->
 <?php get_footer(); ?>

@@ -15,6 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Each tab is an array containing title, callback and priority.
  * @see woocommerce_default_product_tabs()
  */
+function sf_add_desc_tab($tabs = array()) {
+	global $post;
+	$product_description = get_post_meta($post->ID, 'sf_product_description', true);
+	if ($product_description != "") {
+		$tabs['description'] = array(
+			'title'    => __( 'Description', 'woocommerce' ),
+			'priority' => 10,
+			'callback' => 'woocommerce_product_description_tab'
+		);
+	}
+	return $tabs;
+}
+add_filter('woocommerce_product_tabs', 'sf_add_desc_tab', 0);
+ 
 $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $tabs ) ) : ?>

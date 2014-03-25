@@ -4,7 +4,7 @@
 	*	Swift Super Search
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_super_search()
 	*/
@@ -40,8 +40,12 @@
 							
 			$super_search = $search_text = $shop_url = "";
 			
-			$shop_url = get_permalink( woocommerce_get_page_id( 'shop' ) );		
-			
+			if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+				$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+			} else {
+				$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+			}
+						
 			$search_btn_text = $ss_button_text;
 			
 			if ($field1_text != "") {
@@ -187,7 +191,7 @@
 		$transient_name = 'wc_attribute_taxonomies';
 		$attribute_taxonomies = "";
 		
-		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		if (sf_woocommerce_activated()) {
         
 	        if ( false === ( $attribute_taxonomies = get_transient( $transient_name ) ) ) {
 	
@@ -210,56 +214,5 @@
 		$taxonomy = str_replace( array( '.', '\'', '"' ), '', $taxonomy ); // Kill quotes and full stops.
 		$taxonomy = str_replace( array( ' ', '_' ), '-', $taxonomy ); // Replace spaces and underscores.
 		return 'pa_' . $taxonomy;
-	}
-	
-	function sf_supersearch_query() {
-	
-	    global $woocommerce, $_chosen_attributes;
-	
-	    if ( ! is_admin() ) {
-	
-	        unset( $_SESSION['min_price'] );
-	        unset( $_SESSION['max_price'] );
-	
-	        if ( isset( $_GET['min_price'] ) )
-	            $_SESSION['min_price'] = $_GET['min_price'];
-	
-	        if ( isset( $_GET['max_price'] ) )
-	            $_SESSION['max_price'] = $_GET['max_price'];
-	
-	        add_filter( 'loop_shop_post_in', 'woocommerce_price_filter' );
-	        	        
-            $_chosen_attributes = array();
-
-            $attribute_taxonomies = sf_custom_get_attribute_taxonomies();
-            if ( $attribute_taxonomies ) {
-                foreach ( $attribute_taxonomies as $tax ) {
-
-                    $attribute = sanitize_title( $tax->attribute_name );
-                    $taxonomy = sf_custom_get_attribute_taxonomy_name( $attribute );
-                    $name = 'filter_' . $attribute;
-                    $query_type_name = 'query_type_' . $attribute;
-
-                    if ( ! empty( $_GET[ $name ] ) && taxonomy_exists( $taxonomy ) ) {
-
-                        $_chosen_attributes[ $taxonomy ]['terms'] = explode( ',', $_GET[ $name ] );
-
-                        if ( empty( $_GET[ $query_type_name ] ) || ! in_array( strtolower( $_GET[ $query_type_name ] ), array( 'and', 'or' ) ) ) {
-                        	$_chosen_attributes[ $taxonomy ]['query_type'] = apply_filters( 'woocommerce_layered_nav_default_query_type', 'and' );
-                        } else {
-                        	$_chosen_attributes[ $taxonomy ]['query_type'] = strtolower( $_GET[ $query_type_name ] );
-						}
-                    }
-                }
-        	}
-
-        	add_filter('loop_shop_post_in', 'woocommerce_layered_nav_query' );
-	    
-	    }
-	    
-	}
-	
-	remove_action( 'init', 'woocommerce_layered_nav_init' );
-	add_action( 'init', 'sf_supersearch_query' );
-	
+	}	
 ?>

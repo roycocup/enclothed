@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Builder Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -39,9 +39,9 @@
             	$enable_pb_product_pages = false;
             }
             if ($enable_pb_product_pages) {
-            $this->postTypes = $pt_array ? $pt_array : array('page', 'post', 'portfolio', 'product');
+            $this->postTypes = $pt_array ? $pt_array : array('page', 'post', 'portfolio', 'product', 'team', 'jobs', 'ajde_events',);
             } else {
-            $this->postTypes = $pt_array ? $pt_array : array('page', 'post', 'portfolio');	            
+            $this->postTypes = $pt_array ? $pt_array : array('page', 'post', 'portfolio', 'team', 'jobs', 'ajde_events');	            
             }
 	        return $this->postTypes;
 	    }

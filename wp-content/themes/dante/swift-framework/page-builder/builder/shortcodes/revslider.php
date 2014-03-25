@@ -35,31 +35,31 @@ class SwiftPageBuilderShortcode_spb_slider extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'spb_slider', array(
-    "name"		=> __("Revolution / Layer Slider", "swift-page-builder"),
+    "name"		=> __("Revolution / Layer Slider", "swift-framework-admin"),
     "base"		=> "spb_slider",
     "class"		=> "spb_revslider",
     "icon"      => "spb-icon-revslider",
     "params"	=> array(
         array(
             "type" => "textfield",
-            "heading" => __("Revolution Slider Alias", "swift-page-builder"),
+            "heading" => __("Revolution Slider Alias", "swift-framework-admin"),
             "param_name" => "revslider_shortcode",
             "value" => "",
-            "description" => __("Enter the Revolution Slider alias here for the one that you wish to show. This can be found within the Revolution Slider Admin Panel. NOTE: IF YOU ARE TRYING TO ADD A FULL WIDTH SLIDER, THEN PLEASE PROVIDE THE ALIAS IN THE PAGE META OPTIONS INSTEAD OF USING THIS ASSET.", "swift-page-builder")
+            "description" => __("Enter the Revolution Slider alias here for the one that you wish to show. This can be found within the Revolution Slider Admin Panel. NOTE: IF YOU ARE TRYING TO ADD A FULL WIDTH SLIDER, THEN PLEASE PROVIDE THE ALIAS IN THE PAGE META OPTIONS INSTEAD OF USING THIS ASSET.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("LayerSlider ID", "swift-page-builder"),
+            "heading" => __("LayerSlider ID", "swift-framework-admin"),
             "param_name" => "layerslider_shortcode",
             "value" => "",
-            "description" => __("Enter the LayerSlider ID here for the one that you wish to show. This can be found within the LayerSlider Admin Panel.", "swift-page-builder")
+            "description" => __("Enter the LayerSlider ID here for the one that you wish to show. This can be found within the LayerSlider Admin Panel.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

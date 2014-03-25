@@ -61,7 +61,43 @@ class SwiftPageBuilderShortcode_testimonial_carousel extends SwiftPageBuilderSho
         $sidebars = 'no-sidebars';
         }
         
-        if ($width == "1/1") {
+        global $column_width;
+                
+        if ($column_width != "") {
+        	if ($column_width == "1/1") {
+        		if ($sidebars == "both-sidebars") {
+        		$item_class = "span6";
+        		} else if ($sidebars == "one-sidebar") {
+        		$item_class = "span8";
+        		} else {
+        		$item_class = "span12";
+        		}
+        	} else if ($column_width == "1/2") {
+        		if ($sidebars == "both-sidebars") {
+        		$item_class = "span3";
+        		} else if ($sidebars == "one-sidebar") {
+        		$item_class = "span4";
+        		} else {
+        		$item_class = "span6";
+        		}
+        	} else if ($column_width == "3/4") {
+        		if ($sidebars == "both-sidebars") {
+        		$item_class = "span-bs-threequarter";
+        		} else if ($sidebars == "one-sidebar") {
+        		$item_class = "span6";
+        		} else {
+        		$item_class = "span9";
+        		}
+        	} else if ($column_width == "1/4") {
+        		if ($sidebars == "both-sidebars") {
+        		$item_class = "span-bs-quarter";
+        		} else if ($sidebars == "one-sidebar") {
+        		$item_class = "span2";
+        		} else {
+        		$item_class = "span3";
+        		}
+        	}
+        } else if ($width == "1/1") {
         	if ($sidebars == "both-sidebars") {
         	$item_class = "span6";
         	} else if ($sidebars == "one-sidebar") {
@@ -116,7 +152,7 @@ class SwiftPageBuilderShortcode_testimonial_carousel extends SwiftPageBuilderSho
         		$testimonial_image_url = wp_get_attachment_url( $testimonial_image, 'full' );
         	}
         	
-        	$testimonial_image = aq_resize( $testimonial_image_url, 70, 70, true, false);
+        	$testimonial_image = sf_aq_resize( $testimonial_image_url, 70, 70, true, false);
         	
         	$items .= '<li class="testimonial carousel-item '.$item_class.' clearfix">';
         	$items .= '<div class="testimonial-text">'.do_shortcode($testimonial_text).'</div>'; 
@@ -179,7 +215,7 @@ class SwiftPageBuilderShortcode_testimonial_carousel extends SwiftPageBuilderSho
 }
 
 SPBMap::map( 'testimonial_carousel', array(
-    "name"		=> __("Testimonials Carousel", "swift-page-builder"),
+    "name"		=> __("Testimonials Carousel", "swift-framework-admin"),
     "base"		=> "testimonial_carousel",
     "class"		=> "spb_testimonial_carousel spb_carousel",
     "icon"      => "spb-icon-testimonial_carousel",
@@ -187,46 +223,46 @@ SPBMap::map( 'testimonial_carousel', array(
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "6",
-            "description" => __("The number of testimonials to show per page. Leave blank to show ALL testimonials.", "swift-page-builder")
+            "description" => __("The number of testimonials to show per page. Leave blank to show ALL testimonials.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Testimonials Order", "swift-page-builder"),
+            "heading" => __("Testimonials Order", "swift-framework-admin"),
             "param_name" => "order",
-            "value" => array(__('Random', "swift-page-builder") => "rand", __('Latest', "swift-page-builder") => "date"),
-            "description" => __("Choose the order of the testimonials.", "swift-page-builder")
+            "value" => array(__('Random', "swift-framework-admin") => "rand", __('Latest', "swift-framework-admin") => "date"),
+            "description" => __("Choose the order of the testimonials.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Testimonials category", "swift-page-builder"),
+            "heading" => __("Testimonials category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('testimonials-category'),
-            "description" => __("Choose the category for the testimonials.", "swift-page-builder")
+            "description" => __("Choose the category for the testimonials.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Testimonials page link", "swift-page-builder"),
+            "heading" => __("Testimonials page link", "swift-framework-admin"),
             "param_name" => "page_link",
-            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-            "description" => __("Include a link to the testimonials page (which you must choose in the theme options).", "swift-page-builder")
+            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+            "description" => __("Include a link to the testimonials page (which you must choose in the theme options).", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

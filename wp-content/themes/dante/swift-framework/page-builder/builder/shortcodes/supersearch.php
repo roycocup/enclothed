@@ -38,17 +38,17 @@ class SwiftPageBuilderShortcode_supersearch extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'supersearch', array(
-    "name"		=> __("Super Search", "swift-page-builder"),
+    "name"		=> __("Super Search", "swift-framework-admin"),
     "base"		=> "supersearch",
     "class"		=> "spb_supersearch",
     "icon"      => "spb-icon-supersearch",
     "params"	=> array(
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

@@ -25,7 +25,6 @@ if ( get_option('woocommerce_ship_to_billing_address_only') == 'no' ) {
 		'billing' =>  __( 'Billing Address', 'woocommerce' )
 	);
 }
-
 $col = 1;
 ?>
 
@@ -56,16 +55,28 @@ $col = 1;
 					'postcode'		=> get_user_meta( $customer_id, $name . '_postcode', true ),
 					'country'		=> get_user_meta( $customer_id, $name . '_country', true )
 				), $customer_id, $name );
-
+				
 				$formatted_address = $woocommerce->countries->get_formatted_address( $address );
+			
+				if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+				$formatted_address = WC()->countries->get_formatted_address( $address );		
+				}
 
 				if ( ! $formatted_address )
 					_e( 'You have not set up this type of address yet.', 'woocommerce' );
 				else
 					echo $formatted_address;
+					
+				$edit_address_url = "";
+				
+				if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+				$edit_address_url = wc_get_endpoint_url( 'edit-address', $name );
+				} else {
+				$edit_address_url = esc_url( add_query_arg('address', $name, get_permalink( woocommerce_get_page_id( 'edit_address' ) ) ) );
+				}
 			?>
 		</address>
-		<a href="<?php echo esc_url( add_query_arg('address', $name, get_permalink(woocommerce_get_page_id( 'edit_address' ) ) ) ); ?>" class="edit-address"><?php echo sprintf( __('Edit address', 'swiftframework' ), $name); ?></a>
+		<a href="<?php echo $edit_address_url; ?>" class="edit-address"><?php echo sprintf( __('Edit address', 'swiftframework' ), $name); ?></a>
 		
 	</div>
 

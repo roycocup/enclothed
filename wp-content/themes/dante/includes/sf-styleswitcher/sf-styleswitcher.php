@@ -4,7 +4,7 @@
 	*	Styleswitcher
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -79,10 +79,10 @@
 				    	jQuery('.fullwidth-layout').addClass('selected');
 				    }
 				    
-				    
-				    var currentHeader = jQuery('#header-section').attr('class').split(' ')[0];
-				    jQuery(".header-select option[value="+currentHeader+"]").prop("selected", "selected")
-				    
+				    if (jQuery('#header-section').length > 0) {
+				    	var currentHeader = jQuery('#header-section').attr('class').split(' ')[0];
+				    	jQuery(".header-select option[value="+currentHeader+"]").prop("selected", "selected")
+				    }
 							
 					jQuery('.style-switcher').on('click', 'a.switch-button', function(e) {
 						e.preventDefault();

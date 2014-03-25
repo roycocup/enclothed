@@ -4,7 +4,7 @@
 	*	Header Functions
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*	sf_top_bar()
 	*	sf_header()
@@ -141,7 +141,7 @@
 			$options = get_option('sf_dante_options');
 			$show_cart = $options['show_cart'];
 			$show_wishlist = $options['show_wishlist'];
-			$header_left_text = $options['header_left_text'];
+			$header_left_text = __($options['header_left_text'], 'swiftframework');
 			$header_output = $main_menu = '';
 					
 			if ($header_layout == "header-1") {
@@ -149,7 +149,7 @@
 			$header_output .= '<header id="header" class="clearfix">'. "\n";
 			$header_output .= '<div class="container">'. "\n";
 			$header_output .= '<div class="row">'. "\n";
-			$header_output .= '<div class="header-left col-sm-4">'.$header_left_text.'</div>'. "\n";
+			$header_output .= '<div class="header-left col-sm-4">'.do_shortcode($header_left_text).'</div>'. "\n";
 			$header_output .= sf_logo('col-sm-4 logo-center');
 			$header_output .= '<div class="header-right col-sm-4">'.sf_aux_links('header-menu', TRUE, "header-1").'</div>'. "\n";
 			$header_output .= '</div> <!-- CLOSE .row -->'. "\n";
@@ -259,7 +259,7 @@
 			$top_header_output .= '<div id="top-header">';
 			$top_header_output .= '<div class="container">'. "\n";
 			$top_header_output .= '<div class="th-left col-sm-6 clearfix">'. "\n";
-			$top_header_output .= $header_left_text;
+			$top_header_output .= do_shortcode($header_left_text);
 			$top_header_output .= '</div> <!-- CLOSE .tb-left -->'. "\n";		
 			$top_header_output .= '<div class="th-right col-sm-6 clearfix">'. "\n";
 			$top_header_output .= sf_aux_links('top-header-menu');
@@ -333,8 +333,12 @@
 			$show_cart = $options['show_cart'];
 			$show_wishlist = $options['show_wishlist'];
 			$header_search_type = "search-1";
+			$disable_megamenu = false;
 			if (isset($options['header_search_type'])) {
 				$header_search_type = $options['header_search_type'];
+			}
+			if (isset($options['disable_megamenu'])) {
+				$disable_megamenu = $options['disable_megamenu'];
 			}
 			$menu_output = $menu_full_output = $menu_with_search_output = "";
 			$main_menu_args = array(
@@ -346,7 +350,11 @@
 			
 			
 			// MENU OUTPUT
+			if ($disable_megamenu) {
+			$menu_output .= '<nav id="'.$id.'" class="std-menu clearfix">'. "\n";					
+			} else {
 			$menu_output .= '<nav id="'.$id.'" class="mega-menu clearfix">'. "\n";		
+			}
 			
 			if(function_exists('wp_nav_menu')) {
 				if (has_nav_menu('main_navigation')) {
@@ -589,7 +597,7 @@
 			$cart_output = "";
 			
 			// Check if WooCommerce is active
-			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			if (sf_woocommerce_activated()) {
 			
 				global $woocommerce;
 				
@@ -633,9 +641,20 @@
 	                
 	                $cart_output .= '<div class="bag-buttons">';
 	                
-	                $cart_output .= '<a class="sf-button standard sf-icon-reveal bag-button" href="'.esc_url( $woocommerce->cart->get_cart_url() ).'"><i class="ss-view"></i><span class="text">'. __('View shopping bag', 'swiftframework').'</span></a>';
+	                if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
 	                
-	               	$cart_output .= '<a class="sf-button standard sf-icon-reveal checkout-button" href="'. esc_url( $woocommerce->cart->get_checkout_url() ).'"><i class="ss-creditcard"></i><span class="text">'.__('Proceed to checkout', 'swiftframework').'</span></a>';
+	                $cart_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_cart_url() );
+	                $checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() );
+	                
+	                $cart_output .= '<a class="sf-button standard sf-icon-reveal bag-button" href="'.esc_url( $cart_url ).'"><i class="ss-view"></i><span class="text">'. __('View shopping bag', 'swiftframework').'</span></a>';
+	               	$cart_output .= '<a class="sf-button standard sf-icon-reveal checkout-button" href="'.esc_url( $checkout_url ).'"><i class="ss-creditcard"></i><span class="text">'.__('Proceed to checkout', 'swiftframework').'</span></a>';
+	               	
+	               	} else {
+	               	
+	               	$cart_output .= '<a class="sf-button standard sf-icon-reveal bag-button" href="'.esc_url( $woocommerce->cart->get_cart_url() ).'"><i class="ss-view"></i><span class="text">'. __('View shopping bag', 'swiftframework').'</span></a>';
+	               		$cart_output .= '<a class="sf-button standard sf-icon-reveal checkout-button" href="'. esc_url( $woocommerce->cart->get_checkout_url() ).'"><i class="ss-creditcard"></i><span class="text">'.__('Proceed to checkout', 'swiftframework').'</span></a>';
+	               	
+	               	}
 	                                
 	               	$cart_output .= '</div>';
 	                                                        
@@ -645,7 +664,12 @@
 	           		
 	           		$cart_output .= '<div class="bag-empty">'.__('Unfortunately, your shopping bag is empty.','swiftframework').'</div>';                                    
 	            	
-	            	$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+	            	$shop_page_url = "";
+	            	if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+	            		$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+	            	} else {
+	            		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+	            	}
 	            	
 	            	$cart_output .= '<div class="bag-buttons">';
 	            	
@@ -747,7 +771,7 @@
 		                
 		                if ( has_post_thumbnail($product_obj->id) ) {
 		                	$image_link  		= wp_get_attachment_url( get_post_thumbnail_id($product_obj->id) );                        	
-		                	$image = aq_resize( $image_link, 70, 70, true, false);
+		                	$image = sf_aq_resize( $image_link, 70, 70, true, false);
 		                	
 		                	if ($image) {
 		                		$wishlist_output .= '<figure><a class="bag-product-img" href="'.esc_url( get_permalink( apply_filters( 'woocommerce_in_cart_product', $values['prod_id'] ) ) ).'"><img itemprop="image" src="'.$image[0].'" width="'.$image[1].'" height="'.$image[2].'" /></a></figure>';                      
@@ -813,11 +837,12 @@
 			$search_results = get_posts( $search_query_args );
 			$count = count($search_results);
 			$shown_results = 5;
+
+			$search_results_ouput = "";
 			
 			if (!empty($search_results)) {
 				
 				$sorted_posts = $post_type = array();
-				$search_results_ouput = "";
 				
 				foreach ($search_results as $search_result) {
 					$sorted_posts[$search_result->post_type][] = $search_result;
@@ -833,8 +858,10 @@
 					$search_results_ouput .= '<div class="search-result-pt">';
 			        if(isset($post_type[$key]->labels->name)) {
 			            $search_results_ouput .= "<h6>".$post_type[$key]->labels->name."</h6>";
+			        } else if(isset($key)) {
+			            $search_results_ouput .= "<h6>".$key."</h6>";
 			        } else {
-			            $search_results_ouput .= "<h6>".__("Products", "swiftframework")."</h6>";			        
+			            $search_results_ouput .= "<h6>".__("Other", "swiftframework")."</h6>";			        
 			        }
 		
 			        foreach ($type as $post) {
@@ -875,9 +902,9 @@
 			        		$img_icon = "ss-file";
 			        	}
 			        	
-			        	$post_title = get_the_title();
+			        	$post_title = get_the_title($post->ID);
 			        	$post_date = get_the_date();
-			        	$post_permalink = get_permalink();
+			        	$post_permalink = get_permalink($post->ID);
 			        	
 			        	$image = get_the_post_thumbnail( $post->ID, 'thumbnail' );
 			        	
@@ -890,14 +917,16 @@
 			        	}
 			        	            				
 			            $search_results_ouput .= '<div class="search-item-content">';
-			            $search_results_ouput .= '<h5><a href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'</a></h5>';
+			            $search_results_ouput .= '<h5><a href="'.$post_permalink.'">'.$post_title.'</a></h5>';
 			            if ($post_type == "product") {
 			            $price = get_post_meta( $post->ID, '_regular_price', true);	            
 			            $sale = get_post_meta( $post->ID, '_sale_price', true);
 			            if ($sale != "") {
-			            $price = $sale;
+			           		$price = $sale;
 			            }
+			            if ($price != "") {
 			            $search_results_ouput .= '<span>'.get_woocommerce_currency_symbol().$price.'</span>';
+			            	}
 			            } else {
 			            $search_results_ouput .= '<time>'.$post_date.'</time>';
 			            }
@@ -914,7 +943,7 @@
 			    }
 			    
 			    if ($count > 1) {
-			    	$search_results_ouput .= '<a href="#" class="all-results">'.sprintf(__("View all %d results", "swiftframework"), $count).'</a>';	
+			    	$search_results_ouput .= '<a href="'.get_search_link($search_term).'" class="all-results">'.sprintf(__("View all %d results", "swiftframework"), $count).'</a>';	
 			    }
 				
 			} else {

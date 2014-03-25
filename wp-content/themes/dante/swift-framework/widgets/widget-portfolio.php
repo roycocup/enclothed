@@ -5,7 +5,7 @@
 	*	Custom Portfolio Widget
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -25,6 +25,11 @@
 			// Widget Options
 			$title 	 = apply_filters('widget_title', $instance['title'] ); // Title		
 			$number	 = $instance['number']; // Number of posts to show
+			$category	 = $instance['category']; // Category to show
+			
+			if ($category == "All") {$category = "all";}
+			if ($category == "all") {$category = '';}
+			$category_slug = str_replace('_', '-', $category);
 			
 			echo $before_widget;
 			
@@ -33,7 +38,8 @@
 			$recent_portfolio = new WP_Query(
 				array(
 					'post_type' => 'portfolio',
-					'posts_per_page' => $number
+					'posts_per_page' => $number,
+					'portfolio-category' => $category_slug,
 					)
 			);
 			
@@ -49,7 +55,7 @@
 				$post_permalink = get_permalink();
 				$thumb_image = get_post_thumbnail_id();
 				$thumb_img_url = wp_get_attachment_url( $thumb_image, 'widget-image' );
-				$image = aq_resize( $thumb_img_url, 94, 75, true, false);
+				$image = sf_aq_resize( $thumb_img_url, 94, 75, true, false);
 				?>
 				<li>
 					<a href="<?php echo $post_permalink; ?>" class="recent-post-image">
@@ -78,6 +84,7 @@
 				
 			$instance['title']  = strip_tags( $new_instance['title'] );
 			$instance['number'] = strip_tags( $new_instance['number'] );
+			$instance['category'] = strip_tags( $new_instance['category'] );
 			return $instance;
 		}
 		
@@ -88,10 +95,12 @@
 			    if ( $instance ) {
 					$title  = $instance['title'];
 			        $number = $instance['number'];
+			        $category = $instance['category'];
 			    } else {
 				    // Defaults
 					$title  = '';
 			        $number = '5';
+			        $category = '';
 			    }
 				
 				// The widget form
@@ -103,6 +112,18 @@
 				<p>
 					<label for="<?php echo $this->get_field_id('number'); ?>"><?php echo __( 'Number of items to show:', 'swift-framework-admin' ); ?></label>
 					<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" />
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e('Category', 'wp_widget_plugin'); ?></label>
+					<select name="<?php echo $this->get_field_name('category'); ?>" id="<?php echo $this->get_field_id('category'); ?>" class="">
+					<?php
+					$options = sf_get_category_list('portfolio-category');
+					foreach ($options as $option) {
+						echo '<option value="' . $option . '" id="' . $option . '"', $category == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+					}
+					?>
+					</select>
+					</p>
 				</p>
 		<?php 
 		}

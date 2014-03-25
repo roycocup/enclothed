@@ -9,7 +9,21 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+?>
+
+<?php
+
 global $woocommerce;
+
+$my_account = $shop_page = "";
+
+if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) {
+$my_account = get_permalink( wc_get_page_id( 'myaccount' ) );
+$shop_page = get_permalink( wc_get_page_id( 'shop' ) );
+} else {
+$my_account = get_permalink( woocommerce_get_page_id( 'myaccount' ) );
+$shop_page = get_permalink( woocommerce_get_page_id( 'shop' ) );
+}
 
 if ( $order ) : ?>
 
@@ -29,21 +43,12 @@ if ( $order ) : ?>
 		<p>
 			<a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay"><?php _e( 'Pay', 'woocommerce' ) ?></a>
 			<?php if ( is_user_logged_in() ) : ?>
-			<a href="<?php echo esc_url( get_permalink( woocommerce_get_page_id( 'myaccount' ) ) ); ?>" class="button pay"><?php _e( 'My Account', 'woocommerce' ); ?></a>
+			<a href="<?php echo esc_url( $my_account ); ?>" class="button pay"><?php _e( 'My Account', 'woocommerce' ); ?></a>
 			<?php endif; ?>
 		</p>
 
 	<?php else : ?>
 		
-		<?php sf_woo_help_bar(); ?>
-		
-		<ul class="checkout-process clearfix">
-			<li><p><?php _e("1. Sign In", "swiftframework"); ?></p></li>
-			<li><p><?php _e("2. Billing & Shipping", "swiftframework"); ?></p></li>
-			<li><p><?php _e("3. Review & Payment", "swiftframework"); ?></p></li>
-			<li><p class="active"><?php _e("4. Confirmation", "swiftframework"); ?></p></li>
-		</ul>
-
 		<p class="thank-you"><?php _e( 'Thank you. Your order has been received.', 'woocommerce' ); ?></p>
 
 		<ul class="order_details">
@@ -73,7 +78,7 @@ if ( $order ) : ?>
 	<?php do_action( 'woocommerce_thankyou_' . $order->payment_method, $order->id ); ?>
 	<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
 	
-	<a class="continue-shopping" href="<?php echo get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>"><?php _e('Continue shopping', 'swiftframework'); ?></a>
+	<a class="continue-shopping" href="<?php echo esc_url( $shop_page ); ?>"><?php _e('Continue shopping', 'swiftframework'); ?></a>
 	
 </div>
 
@@ -82,17 +87,10 @@ if ( $order ) : ?>
 <div class="checkout-confirmation">
 	
 	<?php sf_woo_help_bar(); ?>
-	
-	<ul class="checkout-process clearfix">
-		<li><p><?php _e("1. Sign In", "swiftframework"); ?></p></li>
-		<li><p><?php _e("2. Billing & Shipping", "swiftframework"); ?></p></li>
-		<li><p><?php _e("3. Review & Payment", "swiftframework"); ?></p></li>
-		<li><p class="active"><?php _e("4. Confirmation", "swiftframework"); ?></p></li>
-	</ul>
 
 	<p class="thank-you"><?php _e( 'Thank you. Your order has been received.', 'woocommerce' ); ?></p>
 
-	<a class="continue-shopping" href="<?php echo get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>"><?php _e('Continue shopping', 'swiftframework'); ?></a>
+	<a class="continue-shopping" href="<?php echo esc_url( $shop_page ); ?>"><?php _e('Continue shopping', 'swiftframework'); ?></a>
 	
 </div>
 

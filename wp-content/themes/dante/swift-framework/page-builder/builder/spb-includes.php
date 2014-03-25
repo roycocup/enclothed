@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Includes Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -32,10 +32,12 @@
 		function spb_register_assets() {
 			require_once( SPB_SHORTCODES_DIR . 'default.php' );
 			require_once( SPB_SHORTCODES_DIR . 'column.php' );
+			require_once( SPB_SHORTCODES_DIR . 'row.php' );
 			require_once( SPB_SHORTCODES_DIR . 'accordion.php' );
 			require_once( SPB_SHORTCODES_DIR . 'tabs.php' );
 			require_once( SPB_SHORTCODES_DIR . 'tour.php' );
 			require_once( SPB_SHORTCODES_DIR . 'impact-text.php' );
+			require_once( SPB_SHORTCODES_DIR . 'icon-boxes.php' );
 			require_once( SPB_SHORTCODES_DIR . 'media.php' );
 			require_once( SPB_SHORTCODES_DIR . 'raw_content.php' );
 			require_once( SPB_SHORTCODES_DIR . 'portfolio.php' );
@@ -65,6 +67,7 @@
 			require_once( SPB_SHORTCODES_DIR . 'supersearch.php' );
 			require_once( SPB_SHORTCODES_DIR . 'latest-tweets.php' );	
 			require_once( SPB_SHORTCODES_DIR . 'tweets-slider.php' );	
+			require_once( SPB_SHORTCODES_DIR . 'sidebar-widget.php' );
 		}
 		if (is_admin()) {
 		add_action('admin_init', 'spb_register_assets', 2);

@@ -11,10 +11,24 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
 
-<?php $woocommerce->show_messages(); ?>
+<?php if ( version_compare( WOOCOMMERCE_VERSION, "2.1.0" ) >= 0 ) { ?>
+	
+	<?php wc_print_notices(); ?>
+	
+	<p><?php _e( 'There are some issues with the items in your cart (shown above). Please go back to the cart page and resolve these issues before checking out.', 'woocommerce' ) ?></p>
+	
+	<?php do_action( 'woocommerce_cart_has_errors' ); ?>
+	
+	<p><a class="button" href="<?php echo get_permalink(wc_get_page_id('cart')); ?>"><?php _e( 'Return To Cart', 'woocommerce' ) ?></a></p>
 
-<p><?php _e( 'There are some issues with the items in your cart (shown above). Please go back to the cart page and resolve these issues before checking out.', 'woocommerce' ) ?></p>
-
-<?php do_action('woocommerce_cart_has_errors'); ?>
-
-<p><a class="button" href="<?php echo get_permalink(woocommerce_get_page_id('cart')); ?>"><?php _e( '&larr; Return To Cart', 'woocommerce' ) ?></a></p>
+<?php } else { ?>
+	
+	<?php $woocommerce->show_messages(); ?>
+	
+	<p><?php _e( 'There are some issues with the items in your cart (shown above). Please go back to the cart page and resolve these issues before checking out.', 'woocommerce' ) ?></p>
+	
+	<?php do_action('woocommerce_cart_has_errors'); ?>
+	
+	<p><a class="button" href="<?php echo get_permalink(woocommerce_get_page_id('cart')); ?>"><?php _e( '&larr; Return To Cart', 'woocommerce' ) ?></a></p>
+	
+<?php } ?>

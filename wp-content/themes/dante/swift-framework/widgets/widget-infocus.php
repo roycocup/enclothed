@@ -5,7 +5,7 @@
 	*	Custom In Focus Widget
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -53,7 +53,7 @@
 						$thumb_img_url = wp_get_attachment_url( $thumb_image, 'full' );
 					}
 					
-					$image = aq_resize( $thumb_img_url, 300, 225, true, false);
+					$image = sf_aq_resize( $thumb_img_url, 300, 225, true, false);
 				?>
 				<figure class="animated-overlay overlay-alt">
 					<?php if ($thumb_video != "") { ?>

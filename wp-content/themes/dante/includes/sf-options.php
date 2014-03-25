@@ -147,7 +147,7 @@ function setup_framework_options(){
     // Set a custom page location. This allows you to place your menu where you want in the menu order.
     // Must be unique or it will override other items!
     // Default: null
-    $args['page_position'] = 58;
+    $args['page_position'] = 61;
 
     // Set a custom page icon class (used to override the page icon next to heading)
     //$args['page_icon'] = 'icon-themes';
@@ -202,8 +202,17 @@ function setup_framework_options(){
     						'title' => __('Enable Maintenance', Redux_TEXT_DOMAIN), 
     						'sub_desc' => __('Enable the themes maintenance mode.', Redux_TEXT_DOMAIN),
     						'desc' => '',
-    						'options' => array('1' => 'On','0' => 'Off'),
+    						'options' => array('2' => 'On (Custom Page)', '1' => 'On (Standard)','0' => 'Off',),
     						'std' => '0'
+    						),
+    					array(
+    						'id' => 'maintenance_mode_page',
+    						'type' => 'pages_select',
+    						'title' => __('Custom Maintenace Mode Page', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the page that is your maintenace page, if you would like to show a custom page instead of the standard WordPress message. You should use the Holding Page template for this page.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'std' => '',
+    						'args' => array()
     						),
     					array(
     						'id' => 'enable_responsive',
@@ -213,6 +222,15 @@ function setup_framework_options(){
     						'desc' => '',
     						'options' => array('1' => 'On','0' => 'Off'),
     						'std' => '1'
+    						),
+    					array(
+    						'id' => 'site_maxwidth',
+    						'type' => 'button_set',
+    						'title' => __('Site Max-Width', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __("Set the maximum width for the site, at it's largest. By default this is 1170px.", Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1170' => '1170px', '940' => '940px'),
+    						'std' => '1170'
     						),
     					array(
     						'id' => 'page_layout',
@@ -245,10 +263,46 @@ function setup_framework_options(){
     						'std' => '1'
     						),
     					array(
+    						'id' => 'enable_stickysidebars',
+    						'type' => 'button_set',
+    						'title' => __('Enable Sticky Sidebars', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Enable the sidebars to be sticky on desktop when the sidebar is small enough to display completely while scrolling.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1' => 'On','0' => 'Off'),
+    						'std' => '0'
+    						),
+    					array(
     						'id' => 'disable_loveit',
     						'type' => 'button_set',
     						'title' => __('Disable Love It', Redux_TEXT_DOMAIN), 
     						'sub_desc' => __('Enable this option to disable the love it functionality within the theme.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1' => 'On','0' => 'Off'),
+    						'std' => '0'
+    						),
+    					array(
+    						'id' => 'disable_sfgallery',
+    						'type' => 'button_set',
+    						'title' => __('Disable Gallery Shortcode Override', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('If you enable this option, then our WordPress gallery shortcode override will be disabled.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1' => 'On','0' => 'Off'),
+    						'std' => '0'
+    						),
+    					array(
+    						'id' => 'disable_megamenu',
+    						'type' => 'button_set',
+    						'title' => __('Disable Mega Menu Functionality', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __("If you enable this option, then the theme's Mega Menu functionality will be disabled.", Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1' => 'On','0' => 'Off'),
+    						'std' => '0'
+    						),
+    					array(
+    						'id' => 'disable_pagecomments',
+    						'type' => 'button_set',
+    						'title' => __('Disable Page Comments', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('If you enable this option, then page comments will be disabled globally.', Redux_TEXT_DOMAIN),
     						'desc' => '',
     						'options' => array('1' => 'On','0' => 'Off'),
     						'std' => '0'
@@ -677,6 +731,15 @@ function setup_framework_options(){
     						'class' => 'mini'
     						),
     					array(
+    						'id' => 'logo_resized_width',
+    						'type' => 'text',
+    						'title' => __('Logo Resized Width', Redux_TEXT_DOMAIN),
+    						'sub_desc' => __('Please enter the width you would like your logo to be when the sticky header resizes. Only works when logo width is set above. Numerical value (no px).', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'std' => '',
+    						'class' => 'mini'
+    						),
+    					array(
     						'id' => 'logo_resized_height',
     						'type' => 'text',
     						'title' => __('Logo Resized Height', Redux_TEXT_DOMAIN),
@@ -723,6 +786,15 @@ function setup_framework_options(){
     						'desc' => '',
     						'std' => '0',
     						'class' => 'mini'
+    						),
+    					array(
+    						'id' => 'enable_fw_header',
+    						'type' => 'button_set',
+    						'title' => __('Full Width Header', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Enable the header to be full width (edge to edge).', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('1' => 'On','0' => 'Off'),
+    						'std' => '0'
     						),
     					array(
     						'id' => 'enable_mini_header',
@@ -851,24 +923,6 @@ function setup_framework_options(){
     						)
     					)
     				);
-	
-	$sections[] = array(
-					'icon' => 'star',
-					'icon_class' => 'fa-lg',
-					'title' => __('Page Builder Options', Redux_TEXT_DOMAIN),
-					'desc' => __('<p class="description">These are the general options for the Swift Page Builder</p>', Redux_TEXT_DOMAIN),
-					'fields' => array(	
-						array(
-							'id' => 'advanced_pb',
-							'type' => 'button_set',
-							'title' => __('Enable Advanced Functionality', Redux_TEXT_DOMAIN), 
-							'sub_desc' => __('Enable advanced functionality within the page builder, this includes the ability to add columns. This mode is expermiental as of yet, so you may see issues using columns.', Redux_TEXT_DOMAIN),
-							'desc' => '',
-							'options' => array('1' => 'On','0' => 'Off'),
-							'std' => '0'
-							)
-						)
-					);
 	
 	$sections[] = array(
 					'icon' => 'search-plus',
@@ -1753,11 +1807,12 @@ function setup_framework_options(){
    							'id' => 'archive_display_type',
    							'type' => 'select',
    							'title' => __('Display Type', Redux_TEXT_DOMAIN),
-   							'sub_desc' => "Select the display type.",
+   							'sub_desc' => "Select the display type. Note: Masonry (Full Width) is only available when the sidebar config is set to no sidebars.",
    							'options' => array(
    								'standard'		=> 'Standard',
    								'mini'			=> 'Mini',
-   								'masonry'		=> 'Masonry'
+   								'masonry'		=> 'Masonry',
+   								'masonry-fw'	=> 'Masonry (Full Width)'
    								),
    							'desc' => '',
    							'std' => 'masonry'
@@ -1798,8 +1853,17 @@ function setup_framework_options(){
     				'icon' => 'font',
     				'icon_class' => 'fa-lg',
     				'title' => __('Font Options', Redux_TEXT_DOMAIN),
-    				'desc' => __('<p class="description">These are the options for fonts used within the theme.</p>', Redux_TEXT_DOMAIN),
+    				'desc' => __('<p class="description">These are the options for fonts used within the theme. At the bottom of the panel you will find the Typography preview.</p>', Redux_TEXT_DOMAIN),
     				'fields' => array(
+    					array(
+    						'id' => 'google_font_subset',
+    						'type' => 'multi_select',
+    						'title' => __('Google Font Subset', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('If you are using Google Fonts, and need to use a subset, then please choose it here. Ensure that your chosen font(s) support this subset. NOTE: Hold CMD/CTRL and click to select multiple subsets.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'options' => array('none' => 'None', 'latin' => 'Latin', 'latin-ext' => 'Latin Extended', 'greek' => 'Greek', 'greek-ext' => 'Greek Extended', 'cyrillic' => 'Cyrillic Extended'),
+    						'std' => 'none'
+    						),
     					array(
     						'id' => 'body_font_option',
     						'type' => 'button_set',
@@ -1846,6 +1910,30 @@ function setup_framework_options(){
     						'sub_desc' => __('Paste the css here that can be found from step 2 of the FontDeck instructions (<a href="http://dante.swiftideas.net/img/fontdeck_step2.png" class="view" target="_blank">view</a>). NOTE: Make sure you provide the JS code in the box at the bottom for this/all FontDeck fonts you want to use.', Redux_TEXT_DOMAIN),
     						'desc' => '',
     						'std' => ''
+    						),
+    					array(
+    						'id' => 'body_font_size',
+    						'type' => 'slider',
+    						'title' => __('Body Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the body font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '14'
+    						),
+    					array(
+    						'id' => 'body_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('Body Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the body font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '80',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '22'
     						),
     					array(
     						'id' => 'font_divide_a',
@@ -1898,6 +1986,154 @@ function setup_framework_options(){
     						'std' => ''
     						),
     					array(
+    						'id' => 'h1_font_size',
+    						'type' => 'slider',
+    						'title' => __('H1 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h1 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '24'
+    						),
+    					array(
+    						'id' => 'h1_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H1 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h1 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '34'
+    						),
+    					array(
+    						'id' => 'h2_font_size',
+    						'type' => 'slider',
+    						'title' => __('H2 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h2 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '20'
+    						),
+    					array(
+    						'id' => 'h2_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H2 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h2 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '30'
+    						),
+    					array(
+    						'id' => 'h3_font_size',
+    						'type' => 'slider',
+    						'title' => __('H3 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h3 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '18'
+    						),
+    					array(
+    						'id' => 'h3_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H3 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h3 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '24'
+    						),
+    					array(
+    						'id' => 'h4_font_size',
+    						'type' => 'slider',
+    						'title' => __('H4 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h4 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '16'
+    						),
+    					array(
+    						'id' => 'h4_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H4 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h4 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '20'
+    						),
+    					array(
+    						'id' => 'h5_font_size',
+    						'type' => 'slider',
+    						'title' => __('H5 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h5 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '14'
+    						),
+    					array(
+    						'id' => 'h5_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H5 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h5 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '18'
+    						),
+    					array(
+    						'id' => 'h6_font_size',
+    						'type' => 'slider',
+    						'title' => __('H6 Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the h6 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '60',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '12'
+    						),
+    					array(
+    						'id' => 'h6_font_line_height',
+    						'type' => 'slider',
+    						'title' => __('H6 Font Line Height', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the line height of the h6 font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '100',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '16'
+    						),
+    					array(
+    						'id' => 'font_preview',
+    						'type' => 'font_preview',
+    						),
+    					array(
     						'id' => 'font_divide_b',
     						'type' => 'divide'
     						),
@@ -1948,8 +2184,16 @@ function setup_framework_options(){
     						'std' => ''
     						),
     					array(
-    						'id' => 'font_divide_c',
-    						'type' => 'divide'
+    						'id' => 'menu_font_size',
+    						'type' => 'slider',
+    						'title' => __('Menu Font Size', Redux_TEXT_DOMAIN), 
+    						'sub_desc' => __('Select the size of the menu font.', Redux_TEXT_DOMAIN),
+    						'desc' => '',
+    						'from' => '10',
+    						'to' => '28',
+    						'step' => '1',
+    						'unit' => 'px',
+    						'std' => '14'
     						),
     					array(
     						'id' => 'fontdeck_js',
@@ -1958,226 +2202,36 @@ function setup_framework_options(){
     						'sub_desc' => __('Paste the js code here that can be found from step 1 of the FontDeck instructions (<a href="http://dante.swiftideas.net/img/fontdeck_step1.png" class="view" target="_blank">view</a>).', Redux_TEXT_DOMAIN),
     						'desc' => '',
     						'std' => ''
-    						),
+    						)
     					)
     				);
-    				
+
    	$sections[] = array(
-   					'icon' => 'text-height',
-   					'icon_class' => 'fa-lg',
-   					'title' => __('Font Size Options', Redux_TEXT_DOMAIN),
-   					'desc' => __('<p class="description">These are the options for fonts used within the theme.</p>', Redux_TEXT_DOMAIN),
+   					'icon' => 'th',
+   					'icon_class' => 'fa-bold',
+   					'title' => __('Blog Options', Redux_TEXT_DOMAIN),
+   					'desc' => __('<p class="description">These are the options for the Blog pages/assets.</p>', Redux_TEXT_DOMAIN),
    					'fields' => array(
-   						array(
-   							'id' => 'body_font_size',
-   							'type' => 'slider',
-   							'title' => __('Body Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the body font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '14'
-   							),
-   						array(
-   							'id' => 'body_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('Body Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the body font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '80',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '22'
-   							),
-   						array(
-   							'id' => 'font_divide_0',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'menu_font_size',
-   							'type' => 'slider',
-   							'title' => __('Menu Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the menu font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '28',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '14'
-   							),
-   						array(
-   							'id' => 'font_divide_1',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h1_font_size',
-   							'type' => 'slider',
-   							'title' => __('H1 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h1 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '24'
-   							),
-   						array(
-   							'id' => 'h1_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H1 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h1 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '34'
-   							),
-   						array(
-   							'id' => 'font_divide_2',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h2_font_size',
-   							'type' => 'slider',
-   							'title' => __('H2 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h2 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '20'
-   							),
-   						array(
-   							'id' => 'h2_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H2 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h2 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '30'
-   							),
-   						array(
-   							'id' => 'font_divide_3',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h3_font_size',
-   							'type' => 'slider',
-   							'title' => __('H3 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h3 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '18'
-   							),
-   						array(
-   							'id' => 'h3_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H3 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h3 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '24'
-   							),
-   						array(
-   							'id' => 'font_divide_4',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h4_font_size',
-   							'type' => 'slider',
-   							'title' => __('H4 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h4 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '16'
-   							),
-   						array(
-   							'id' => 'h4_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H4 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h4 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '20'
-   							),
-   						array(
-   							'id' => 'font_divide_5',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h5_font_size',
-   							'type' => 'slider',
-   							'title' => __('H5 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h5 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '14'
-   							),
-   						array(
-   							'id' => 'h5_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H5 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h5 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '18'
-   							),
-   						array(
-   							'id' => 'font_divide_5',
-   							'type' => 'divide'
-   							),
-   						array(
-   							'id' => 'h6_font_size',
-   							'type' => 'slider',
-   							'title' => __('H6 Font Size', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the size of the h6 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '60',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '12'
-   							),
-   						array(
-   							'id' => 'h6_font_line_height',
-   							'type' => 'slider',
-   							'title' => __('H6 Font Line Height', Redux_TEXT_DOMAIN), 
-   							'sub_desc' => __('Select the line height of the h6 font.', Redux_TEXT_DOMAIN),
-   							'desc' => '',
-   							'from' => '10',
-   							'to' => '100',
-   							'step' => '1',
-   							'unit' => 'px',
-   							'std' => '16'
-   							)
-   					)
-   				);
+   							array(
+   								'id' => 'single_author',
+   								'type' => 'button_set',
+   								'title' => __('Single Author Blog', Redux_TEXT_DOMAIN), 
+   								'sub_desc' => __('If enabled, the author name will be hidden from the blog/post details in the page builder assets and single details line.', Redux_TEXT_DOMAIN),
+   								'desc' => '',
+   								'options' => array('1' => 'On','0' => 'Off'),
+   								'std' => '0'
+   								),
+   							array(
+   								'id' => 'remove_dates',
+   								'type' => 'button_set',
+   								'title' => __('Remove Dates', Redux_TEXT_DOMAIN), 
+   								'sub_desc' => __('If enabled, the date will not be included with the post details.', Redux_TEXT_DOMAIN),
+   								'desc' => '',
+   								'options' => array('1' => 'On','0' => 'Off'),
+   								'std' => '0'
+   								)
+   						)
+   					);
    	$sections[] = array(
    					'icon' => 'th',
    					'icon_class' => 'fa-lg',
@@ -2192,6 +2246,24 @@ function setup_framework_options(){
    								'desc' => '',
    								'std' => '',
    								'args' => array()
+   								),
+   							array(
+								'id' => 'enable_portfolio_gallery',
+								'type' => 'button_set',
+								'title' => __('Enable Portfolio Gallery Navigation', Redux_TEXT_DOMAIN), 
+								'sub_desc' => __('Enable this if you use multiple thumbnail link to lightbox options on your portfolio thumbnails, and would like to browse between the items with left/right navigation.', Redux_TEXT_DOMAIN),
+								'desc' => '',
+								'options' => array('1' => 'On','0' => 'Off'),
+								'std' => '0'
+								),
+   							array(
+   								'id' => 'enable_portfolio_stickydetails',
+   								'type' => 'button_set',
+   								'title' => __('Enable Sticky Item Details', Redux_TEXT_DOMAIN), 
+   								'sub_desc' => __('Enable the item details to be sticky on desktop when the sidebar is small enough to display completely while scrolling. Only enabled on Full Width Media / Standard portfolio display types.', Redux_TEXT_DOMAIN),
+   								'desc' => '',
+   								'options' => array('1' => 'On','0' => 'Off'),
+   								'std' => '0'
    								),
    						)
    					);
@@ -2245,6 +2317,15 @@ function setup_framework_options(){
     							'std' => '1'
     							),
     						array(
+    							'id' => 'overlay_transition_type',
+    							'type' => 'button_set',
+    							'title' => __('Product Overlay Transition Type', Redux_TEXT_DOMAIN), 
+    							'sub_desc' => __('Choose what type of transition between product images on hover you would like.', Redux_TEXT_DOMAIN),
+    							'desc' => '',
+    							'options' => array('slideup' => 'Slide Up', 'slideleft' => 'Slide Left', 'fade' => 'Fade'),
+    							'std' => 'slideup'
+    							),
+    						array(
     							'id' => 'enable_pb_product_pages',
     							'type' => 'button_set',
     							'title' => __('Page Builder on Product Pages', Redux_TEXT_DOMAIN), 
@@ -2257,7 +2338,7 @@ function setup_framework_options(){
     							'id' => 'enable_catalog_mode',
     							'type' => 'button_set',
     							'title' => __('Catalog Mode', Redux_TEXT_DOMAIN), 
-    							'sub_desc' => __('Enable this setting to set the products into catalog mode, with no price or checkout process.', Redux_TEXT_DOMAIN),
+    							'sub_desc' => __('Enable this setting to set the products into catalog mode, with no cart or checkout process.', Redux_TEXT_DOMAIN),
     							'desc' => '',
     							'options' => array('1' => 'On','0' => 'Off'),
     							'std' => '0'
@@ -2444,7 +2525,7 @@ function setup_framework_options(){
     						array(
     							'id' => 'shipping_modal',
     							'type' => 'textarea',
-    							'title' => __('Email customer care modal', Redux_TEXT_DOMAIN), 
+    							'title' => __('Shipping information modal', Redux_TEXT_DOMAIN), 
     							'sub_desc' => __('The content that appears in the modal box for the shipping information help link.', Redux_TEXT_DOMAIN),
     							'desc' => '',
     							'std' => 'Enter your shipping information here. (Text/HTML/Shortcodes accepted).'
@@ -2475,6 +2556,45 @@ function setup_framework_options(){
     							),
     					)
     				);			
+    $sections[] = array(
+    				'icon' => 'bolt',
+    				'icon_class' => 'fa-lg',
+    				'title' => __('Slider Options', Redux_TEXT_DOMAIN),
+    				'desc' => __('<p class="description">These are the options for the slider assets.</p>', Redux_TEXT_DOMAIN),
+    				'fields' => array(
+    						array(
+    							'id' => 'slider_slideshowSpeed',
+    							'type' => 'slider',
+    							'title' => __('Slideshow Speed (ms)', Redux_TEXT_DOMAIN),
+    							'sub_desc' => "The speed at which the slider rotates. Default value: 7000",
+    							'from' => '0',
+    							'to' => '12000',
+    							'step' => '50',
+    							'unit' => '',
+    							'std' => '6000'
+    							),
+    						array(
+    						    'id' => 'slider_animationSpeed',
+    						    'type' => 'slider',
+    						    'title' => __('Slider Animation Speed (ms)', 'redux-framework-demo'),
+    						    'sub_desc' => __('The speed in which the transition animation takes. Default value: 600', 'redux-framework-demo'),
+    						    'from' => '0',
+    						    'to' => '2000',
+    						    'step' => '50',
+    						    'unit' => '',
+    						    'std' => '500'
+    						),
+    						array(
+    							'id' => 'slider_autoplay',
+    							'type' => 'button_set',
+    							'title' => __('Auto play', 'swift-framework-admin'), 
+    							'sub_desc' => __("If you enable this option, then the sliders will auto rotate.", 'swift-framework-admin'),
+    							'desc' => '',
+    							'options' => array('1' => 'On','0' => 'Off'),
+    							'default' => '0'
+    						),
+    					)
+    				);	
     $sections[] = array(
     				'icon' => 'twitter',
     				'icon_class' => 'fa-lg',
@@ -2618,7 +2738,6 @@ function setup_framework_options(){
 
     global $Redux_Options;
     $Redux_Options = new Redux_Options($sections, $args, $tabs);
-
 }
 add_action('init', 'setup_framework_options', 5);
 

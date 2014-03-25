@@ -25,7 +25,8 @@ if ( !class_exists( 'RWMB_Sidebars_Field' ) )
 		 * @return string
 		 */
 		static function html( $meta, $field )
-		{			
+		{		
+			$html = "";	
 			$html .= '<select name="'.$field['id'].'" id="'.$field['id'].'">';
 			foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
 				if (!empty($meta) && !strcmp($meta[0], ucwords( $sidebar['id'] ))) {

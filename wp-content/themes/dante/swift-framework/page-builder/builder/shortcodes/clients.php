@@ -10,6 +10,8 @@ class SwiftPageBuilderShortcode_clients extends SwiftPageBuilderShortcode {
 	        	'title' => '',
 	        	'item_count'	=> '-1',
 	        	'category'		=> '',
+	        	'carousel' => '',
+	        	'carousel_columns'		=> '',
 	        	'carousel_auto' => 'no',
 	        	'pagination'	=> 'no',
 	        	'el_position' => '',
@@ -45,22 +47,37 @@ class SwiftPageBuilderShortcode_clients extends SwiftPageBuilderShortcode {
        		    		
     		$clients_items = new WP_Query( $client_args );
     		
+    		global $column_width;
+    		
     		if ($width == "1/4") {
     		$columns = 2;
     		} else if ($width == "1/2") {
     		$columns = 3;
     		} else if ($width == "3/4") {
     		$columns = 4;
+    		} else if ($column_width != "") {
+    			if ($column_width == "1/3") {
+    			$columns = 2;
+    			} else if ($column_width == "1/2") {
+    			$columns = 3;
+    			} else if ($column_width == "3/4") {
+    			$columns = 4;
+    			} else {
+    			$columns = 6;
+    			}	
     		} else {
     		$columns = 6;
     		}	
     		
-    		if ($carousel_auto == "yes") {
-    		$items .= '<div class="carousel-overflow"><ul id="carousel-'.$sf_carouselID.'" class="clients-items carousel-items clearfix" data-columns="'.$columns.'" data-auto="true">';    		
+    		if ($carousel == "yes" || $carousel == "") {
+	    		if ($carousel_auto == "yes") {
+	    		$items .= '<div class="carousel-overflow"><ul id="carousel-'.$sf_carouselID.'" class="clients-items carousel-items clearfix" data-columns="'.$columns.'" data-auto="true">';    		
+	    		} else {
+	       		$items .= '<div class="carousel-overflow"><ul id="carousel-'.$sf_carouselID.'" class="clients-items carousel-items clearfix" data-columns="'.$columns.'" data-auto="false">';
+	    		}
     		} else {
-       		$items .= '<div class="carousel-overflow"><ul id="carousel-'.$sf_carouselID.'" class="clients-items carousel-items clearfix" data-columns="'.$columns.'" data-auto="false">';
-    		}
-    				
+    			$items .= '<ul class="carousel-grid row">';
+    		}	
     								
 			$client_width = 200;
 			$client_height = 200;
@@ -77,7 +94,7 @@ class SwiftPageBuilderShortcode_clients extends SwiftPageBuilderShortcode {
 				    				
 				$items .= '<figure>';
 					
-				$image = aq_resize( $client_img_url, $client_width, $client_height, true, false);
+				$image = sf_aq_resize( $client_img_url, $client_width, $client_height, true, false);
 				
 				if ($image) {
 				
@@ -94,28 +111,35 @@ class SwiftPageBuilderShortcode_clients extends SwiftPageBuilderShortcode {
 			endwhile;
 			
 			wp_reset_postdata();
-					
-			$items .= '</ul>';
 			
-			$items .= '<a href="#" class="prev"><i class="ss-navigateleft"></i></a><a href="#" class="next"><i class="ss-navigateright"></i></a>';
-			
-			$options = get_option('sf_dante_options');
-			if ($options['enable_swipe_indicators']) {
-			$items .= '<div class="sf-swipe-indicator"></div>';
-			}
-			
-			$items .= '</div>';
-			
-			// PAGINATION
-			
-			if ($pagination == "yes") {
-			
-				$items .= '<div class="pagination-wrap">';
+			if ($carousel == "yes" || $carousel == "") {
 				
-				$items .= pagenavi($clients_items);
-									
+				$items .= '</ul>';
+				
+				$items .= '<a href="#" class="prev"><i class="ss-navigateleft"></i></a><a href="#" class="next"><i class="ss-navigateright"></i></a>';
+				
+				$options = get_option('sf_dante_options');
+				if ($options['enable_swipe_indicators']) {
+				$items .= '<div class="sf-swipe-indicator"></div>';
+				}
+				
 				$items .= '</div>';
 			
+			} else {
+				
+				$items .= '</ul>';
+								
+				// PAGINATION
+				if ($pagination == "yes") {
+				
+					$items .= '<div class="pagination-wrap">';
+					
+					$items .= pagenavi($clients_items);
+										
+					$items .= '</div>';
+				
+				}	
+				
 			}
 			
 			// PAGE BUILDER OUPUT
@@ -141,55 +165,64 @@ class SwiftPageBuilderShortcode_clients extends SwiftPageBuilderShortcode {
 }
 
 SPBMap::map( 'clients', array(
-    "name"		=> __("Clients", "swift-page-builder"),
+    "name"		=> __("Clients", "swift-framework-admin"),
     "base"		=> "clients",
     "class"		=> "clients",
     "icon"      => "spb-icon-clients",
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "textfield",
             "class" => "",
-            "heading" => __("Number of items", "swift-page-builder"),
+            "heading" => __("Number of items", "swift-framework-admin"),
             "param_name" => "item_count",
             "value" => "12",
-            "description" => __("The number of clients to show per page. Leave blank to show ALL clients.", "swift-page-builder")
+            "description" => __("The number of clients to show per page. Leave blank to show ALL clients.", "swift-framework-admin")
         ),
         array(
             "type" => "select-multiple",
-            "heading" => __("Clients category", "swift-page-builder"),
+            "heading" => __("Clients category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('clients-category'),
-            "description" => __("Choose the category for the client items.", "swift-page-builder")
+            "description" => __("Choose the category for the client items.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Carousel Auto-Rotate", "swift-page-builder"),
-            "param_name" => "carousel_auto",
-            "value" => array(__("Yes", "swift-page-builder") => "yes",
-            				__("No", "swift-page-builder") => "no"
+            "heading" => __("Carousel", "swift-framework-admin"),
+            "param_name" => "carousel",
+            "value" => array(__("Yes", "swift-framework-admin") => "yes",
+            				__("No", "swift-framework-admin") => "no"
             			),
-            "description" => __("Makes the carousel auto-rotate.", "swift-page-builder")
+            "description" => __("Enable the client asset to be a carousel, rather than a grid.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Pagination", "swift-page-builder"),
+            "heading" => __("Carousel Auto-Rotate", "swift-framework-admin"),
+            "param_name" => "carousel_auto",
+            "value" => array(__("Yes", "swift-framework-admin") => "yes",
+            				__("No", "swift-framework-admin") => "no"
+            			),
+            "description" => __("Makes the carousel auto-rotate.", "swift-framework-admin")
+        ),
+        array(
+            "type" => "dropdown",
+            "heading" => __("Pagination", "swift-framework-admin"),
             "param_name" => "pagination",
-            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-            "description" => __("Show clients pagination.", "swift-page-builder")
+            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+            "description" => __("Show clients pagination.", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );
@@ -262,7 +295,7 @@ class SwiftPageBuilderShortcode_clients_featured extends SwiftPageBuilderShortco
 				    				
 				$items .= '<figure>';
 					
-				$image = aq_resize( $client_img_url, $client_width, $client_height, true, false);
+				$image = sf_aq_resize( $client_img_url, $client_width, $client_height, true, false);
 				
 				if ($image) {
 				
@@ -305,45 +338,45 @@ class SwiftPageBuilderShortcode_clients_featured extends SwiftPageBuilderShortco
 }
 
 SPBMap::map( 'clients_featured', array(
-    "name"		=> __("Clients (Featured)", "swift-page-builder"),
+    "name"		=> __("Clients (Featured)", "swift-framework-admin"),
     "base"		=> "clients_featured",
     "class"		=> "clients_featured",
     "icon"      => "spb-icon-clients-featured",
     "params"	=> array(
     	array(
     	    "type" => "textfield",
-    	    "heading" => __("Widget title", "swift-page-builder"),
+    	    "heading" => __("Widget title", "swift-framework-admin"),
     	    "param_name" => "title",
     	    "value" => "",
-    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
     	),
         array(
             "type" => "select-multiple",
-            "heading" => __("Clients category", "swift-page-builder"),
+            "heading" => __("Clients category", "swift-framework-admin"),
             "param_name" => "category",
             "value" => sf_get_category_list('clients-category'),
-            "description" => __("Choose the category for the client items.", "swift-page-builder")
+            "description" => __("Choose the category for the client items.", "swift-framework-admin")
         ),
         array(
             "type" => "dropdown",
-            "heading" => __("Show alt background", "swift-page-builder"),
+            "heading" => __("Show alt background", "swift-framework-admin"),
             "param_name" => "alt_background",
-            "value" => array(__("None", "swift-page-builder") => "none", __("Alt 1", "swift-page-builder") => "alt-one", __("Alt 2", "swift-page-builder") => "alt-two", __("Alt 3", "swift-page-builder") => "alt-three", __("Alt 4", "swift-page-builder") => "alt-four", __("Alt 5", "swift-page-builder") => "alt-five", __("Alt 6", "swift-page-builder") => "alt-six", __("Alt 7", "swift-page-builder") => "alt-seven", __("Alt 8", "swift-page-builder") => "alt-eight", __("Alt 9", "swift-page-builder") => "alt-nine", __("Alt 10", "swift-page-builder") => "alt-ten"),
-            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-page-builder")
+            "value" => array(__("None", "swift-framework-admin") => "none", __("Alt 1", "swift-framework-admin") => "alt-one", __("Alt 2", "swift-framework-admin") => "alt-two", __("Alt 3", "swift-framework-admin") => "alt-three", __("Alt 4", "swift-framework-admin") => "alt-four", __("Alt 5", "swift-framework-admin") => "alt-five", __("Alt 6", "swift-framework-admin") => "alt-six", __("Alt 7", "swift-framework-admin") => "alt-seven", __("Alt 8", "swift-framework-admin") => "alt-eight", __("Alt 9", "swift-framework-admin") => "alt-nine", __("Alt 10", "swift-framework-admin") => "alt-ten"),
+            "description" => __("Show an alternative background around the asset. These can all be set in Theme Options > Asset Background Options. NOTE: This is only available on a page with the no sidebar setup.", "swift-framework-admin")
         ),
         array(
             "type" => "altbg_preview",
-            "heading" => __("Alt Background Preview", "swift-page-builder"),
+            "heading" => __("Alt Background Preview", "swift-framework-admin"),
             "param_name" => "altbg_preview",
             "value" => "",
-            "description" => __("", "swift-page-builder")
+            "description" => __("", "swift-framework-admin")
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Extra class name", "swift-page-builder"),
+            "heading" => __("Extra class name", "swift-framework-admin"),
             "param_name" => "el_class",
             "value" => "",
-            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
         )
     )
 ) );

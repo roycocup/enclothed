@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Default Shortcodes Config
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -65,7 +65,7 @@
 	}
 	
 	SPBMap::map( 'spb_text_block', array(
-	    "name"		=> __("Text Block", "swift-page-builder"),
+	    "name"		=> __("Text Block", "swift-framework-admin"),
 	    "base"		=> "spb_text_block",
 	    "class"		=> "",
 	    "icon"      => "spb-icon-text-block",
@@ -74,47 +74,47 @@
 	    "params"	=> array(
 	    	array(
 	    	    "type" => "textfield",
-	    	    "heading" => __("Widget title", "swift-page-builder"),
+	    	    "heading" => __("Widget title", "swift-framework-admin"),
 	    	    "param_name" => "title",
 	    	    "value" => "",
-	    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    	),
 	    	array(
 	    	    "type" => "textfield",
-	    	    "heading" => __("Title icon", "swift-page-builder"),
+	    	    "heading" => __("Title icon", "swift-framework-admin"),
 	    	    "param_name" => "icon",
 	    	    "value" => "",
-	    	    "description" => __("Icon to the left of the title text. You can get the code from <a href='http://fortawesome.github.com/Font-Awesome/' target='_blank'>here</a>. E.g. icon-cloud", "swift-page-builder")
+	    	    "description" => __("Icon to the left of the title text. You can get the code from <a href='http://fortawesome.github.com/Font-Awesome/' target='_blank'>here</a>. E.g. icon-cloud", "swift-framework-admin")
 	    	),
 	        array(
 	            "type" => "textarea_html",
 	            "holder" => "div",
 	            "class" => "",
-	            "heading" => __("Text", "swift-page-builder"),
+	            "heading" => __("Text", "swift-framework-admin"),
 	            "param_name" => "content",
-	            "value" => __("<p>This is a text block. Click the edit button to change this text.</p>", "swift-page-builder"),
-	            "description" => __("Enter your content.", "swift-page-builder")
+	            "value" => __("<p>This is a text block. Click the edit button to change this text.</p>", "swift-framework-admin"),
+	            "description" => __("Enter your content.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Margin below widget", "swift-page-builder"),
+	            "heading" => __("Margin below widget", "swift-framework-admin"),
 	            "param_name" => "pb_margin_bottom",
-	            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-	            "description" => __("Add a bottom margin to the widget.", "swift-page-builder")
+	            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+	            "description" => __("Add a bottom margin to the widget.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Border below widget", "swift-page-builder"),
+	            "heading" => __("Border below widget", "swift-framework-admin"),
 	            "param_name" => "pb_border_bottom",
-	            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-	            "description" => __("Add a bottom border to the widget.", "swift-page-builder")
+	            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+	            "description" => __("Add a bottom border to the widget.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    )
 	) );
@@ -178,7 +178,7 @@
 	}
 	
 	SPBMap::map( 'boxed_content', array(
-	    "name"		=> __("Boxed Content", "swift-page-builder"),
+	    "name"		=> __("Boxed Content", "swift-framework-admin"),
 	    "base"		=> "boxed_content",
 	    "class"		=> "",
 	    "icon"      => "spb-icon-boxed-content",
@@ -187,54 +187,54 @@
 	    "params"	=> array(
 	    	array(
 	    	    "type" => "textfield",
-	    	    "heading" => __("Widget title", "swift-page-builder"),
+	    	    "heading" => __("Widget title", "swift-framework-admin"),
 	    	    "param_name" => "title",
 	    	    "value" => "",
-	    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-page-builder")
+	    	    "description" => __("Heading text. Leave it empty if not needed.", "swift-framework-admin")
 	    	),
 	        array(
 	            "type" => "textarea_html",
 	            "holder" => "div",
 	            "class" => "",
-	            "heading" => __("Text", "swift-page-builder"),
+	            "heading" => __("Text", "swift-framework-admin"),
 	            "param_name" => "content",
-	            "value" => __("<p>This is a boxed content block. Click the edit button to edit this text.</p>", "swift-page-builder"),
-	            "description" => __("Enter your content.", "swift-page-builder")
+	            "value" => __("<p>This is a boxed content block. Click the edit button to edit this text.</p>", "swift-framework-admin"),
+	            "description" => __("Enter your content.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Box type", "swift-page-builder"),
+	            "heading" => __("Box type", "swift-framework-admin"),
 	            "param_name" => "type",
-	            "value" => array(__('Coloured', "swift-page-builder") => "coloured", __('White with stroke', "swift-page-builder") => "whitestroke"),
-	            "description" => __("Choose the surrounding box type for this content", "swift-page-builder")
+	            "value" => array(__('Coloured', "swift-framework-admin") => "coloured", __('White with stroke', "swift-framework-admin") => "whitestroke"),
+	            "description" => __("Choose the surrounding box type for this content", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Custom background colour", "swift-page-builder"),
+	            "heading" => __("Custom background colour", "swift-framework-admin"),
 	            "param_name" => "custom_bg_colour",
 	            "value" => "",
-	            "description" => __("Provide a hex colour code here (include #). If blank, your chosen accent colour will be used.", "swift-page-builder")
+	            "description" => __("Provide a hex colour code here (include #). If blank, your chosen accent colour will be used.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Custom text colour", "swift-page-builder"),
+	            "heading" => __("Custom text colour", "swift-framework-admin"),
 	            "param_name" => "custom_text_colour",
 	            "value" => "",
-	            "description" => __("Provide a hex colour code here (include #) if you want to override the default (#ffffff).", "swift-page-builder")
+	            "description" => __("Provide a hex colour code here (include #) if you want to override the default (#ffffff).", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Margin below widget", "swift-page-builder"),
+	            "heading" => __("Margin below widget", "swift-framework-admin"),
 	            "param_name" => "pb_margin_bottom",
-	            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-	            "description" => __("Add a bottom margin to the widget.", "swift-page-builder")
+	            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+	            "description" => __("Add a bottom margin to the widget.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    )
 	) );
@@ -279,7 +279,7 @@
 	    }
 	}
 	SPBMap::map( 'divider',  array(
-	    "name"		=> __("Divider", "swift-page-builder"),
+	    "name"		=> __("Divider", "swift-framework-admin"),
 	    "base"		=> "divider",
 	    "class"		=> "spb_divider spb_controls_top_right",
 		'icon'		=> 'spb-icon-divider',
@@ -287,31 +287,31 @@
 	    "params"	=> array(
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Divider type", "swift-page-builder"),
+	            "heading" => __("Divider type", "swift-framework-admin"),
 	            "param_name" => "type",
-	            "value" => array(__('Standard', "swift-page-builder") => "standard", __('Thin', "swift-page-builder") => "thin", __('Dotted', "swift-page-builder") => "dotted", __('Go to top (text)', "swift-page-builder") => "go_to_top", __('Go to top (Icon 1)', "swift-page-builder") => "go_to_top_icon1", __('Go to top (Icon 2)', "swift-page-builder") => "go_to_top_icon2"),
-	            "description" => __("Select divider type.", "swift-page-builder")
+	            "value" => array(__('Standard', "swift-framework-admin") => "standard", __('Thin', "swift-framework-admin") => "thin", __('Dotted', "swift-framework-admin") => "dotted", __('Go to top (text)', "swift-framework-admin") => "go_to_top", __('Go to top (Icon 1)', "swift-framework-admin") => "go_to_top_icon1", __('Go to top (Icon 2)', "swift-framework-admin") => "go_to_top_icon2"),
+	            "description" => __("Select divider type.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Go to top text", "swift-page-builder"),
+	            "heading" => __("Go to top text", "swift-framework-admin"),
 	            "param_name" => "text",
-	            "value" => __("Go to top", "swift-page-builder"),
-	            "description" => __("The text for the 'Go to top (text)' divider type.", "swift-page-builder")
+	            "value" => __("Go to top", "swift-framework-admin"),
+	            "description" => __("The text for the 'Go to top (text)' divider type.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Full width", "swift-page-builder"),
+	            "heading" => __("Full width", "swift-framework-admin"),
 	            "param_name" => "full_width",
-	            "value" => array(__('No', "swift-page-builder") => "no", __('Yes', "swift-page-builder") => "yes"),
-	            "description" => __("Select yes if you'd like the divider to be full width (only to be used with no sidebars, and with Standard/Thin/Dotted divider types).", "swift-page-builder")
+	            "value" => array(__('No', "swift-framework-admin") => "no", __('Yes', "swift-framework-admin") => "yes"),
+	            "description" => __("Select yes if you'd like the divider to be full width (only to be used with no sidebars, and with Standard/Thin/Dotted divider types).", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "js_callback" => array("init" => "spbTextSeparatorInitCallBack")
@@ -327,6 +327,7 @@
 	        extract(shortcode_atts(array(
 	            'height' => '',
 	            'spacer_id' => '',
+	            'spacer_name' => '',
 	            'el_class' => '',
 	        ), $atts));
 	        
@@ -334,7 +335,7 @@
 	        
 	        $output = '';
 	        if ($spacer_id != "") {
-	        $output .= '<div id="'.$spacer_id.'" class="blank_spacer '.$width.' '.$el_class.'" style="height:'.$height.';">';
+	        $output .= '<div id="'.$spacer_id.'" data-spacername="'.$spacer_name.'" class="blank_spacer '.$width.' '.$el_class.'" style="height:'.$height.';">';
 	        } else {
 	        $output .= '<div class="blank_spacer '.$width.' '.$el_class.'" style="height:'.$height.';">';
 	        }
@@ -344,7 +345,7 @@
 	}
 	
 	SPBMap::map( 'blank_spacer',  array(
-	    "name"		=> __("Blank Spacer", "swift-page-builder"),
+	    "name"		=> __("Blank Spacer", "swift-framework-admin"),
 	    "base"		=> "blank_spacer",
 	    "class"		=> "spb_blank_spacer spb_controls_top_right",
 		'icon'		=> 'spb-icon-spacer',
@@ -352,24 +353,31 @@
 	    "params"	=> array(
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Height", "swift-page-builder"),
+	            "heading" => __("Height", "swift-framework-admin"),
 	            "param_name" => "height",
-	            "value" => __("30px", "swift-page-builder"),
-	            "description" => __("The height of the spacer, in px (required).", "swift-page-builder")
+	            "value" => __("30px", "swift-framework-admin"),
+	            "description" => __("The height of the spacer, in px (required).", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Spacer ID", "swift-page-builder"),
+	            "heading" => __("Spacer ID", "swift-framework-admin"),
 	            "param_name" => "spacer_id",
 	            "value" => "",
-	            "description" => __("If you wish to add an ID to the spacer, then add it here. You can then use the id to deep link to this section of the page. NOTE: Make sure this is unique to the page!!", "swift-page-builder")
+	            "description" => __("If you wish to add an ID to the spacer, then add it here. You can then use the id to deep link to this section of the page. This is also used for one page navigation. NOTE: Make sure this is unique to the page!!", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Spacer Section Name", "swift-framework-admin"),
+	            "param_name" => "spacer_name",
+	            "value" => "",
+	            "description" => __("This is used for the one page navigation, to identify the section below. If this is left blank, then the section will be left off of the one page navigation.", "swift-framework-admin")
+	        ),
+	        array(
+	            "type" => "textfield",
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "js_callback" => array("init" => "spbBlankSpacerInitCallBack")
@@ -399,7 +407,7 @@
 	}
 	
 	SPBMap::map( 'spb_message', array(
-	    "name"		=> __("Message Box", "swift-page-builder"),
+	    "name"		=> __("Message Box", "swift-framework-admin"),
 	    "base"		=> "spb_message",
 	    "class"		=> "spb_messagebox spb_controls_top_right",
 		"icon"		=> "spb-icon-message-box",
@@ -408,26 +416,26 @@
 	    "params"	=> array(
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Message box type", "swift-page-builder"),
+	            "heading" => __("Message box type", "swift-framework-admin"),
 	            "param_name" => "color",
-	            "value" => array(__('Informational', "swift-page-builder") => "alert-info", __('Warning', "swift-page-builder") => "alert-block", __('Success', "swift-page-builder") => "alert-success", __('Error', "swift-page-builder") => "alert-error"),
-	            "description" => __("Select message type.", "swift-page-builder")
+	            "value" => array(__('Informational', "swift-framework-admin") => "alert-info", __('Warning', "swift-framework-admin") => "alert-block", __('Success', "swift-framework-admin") => "alert-success", __('Error', "swift-framework-admin") => "alert-error"),
+	            "description" => __("Select message type.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textarea_html",
 	            "holder" => "div",
 	            "class" => "messagebox_text",
-	            "heading" => __("Message text", "swift-page-builder"),
+	            "heading" => __("Message text", "swift-framework-admin"),
 	            "param_name" => "content",
-	            "value" => __("<p>This is a message box. Click the edit button to edit this text.</p>", "swift-page-builder"),
-	            "description" => __("Message text.", "swift-page-builder")
+	            "value" => __("<p>This is a message box. Click the edit button to edit this text.</p>", "swift-framework-admin"),
+	            "description" => __("Message text.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    ),
 	    "js_callback" => array("init" => "spbMessageInitCallBack")
@@ -441,7 +449,7 @@
 	    protected function content( $atts, $content = null ) {
 	        $title = $el_class = $open = null;
 	        extract(shortcode_atts(array(
-	            'title' => __("Click to toggle", "swift-page-builder"),
+	            'title' => __("Click to toggle", "swift-framework-admin"),
 	            'el_class' => '',
 	            'open' => 'false',
 	            'el_position' => '',
@@ -463,7 +471,7 @@
 	}
 	
 	SPBMap::map( 'spb_toggle', array(
-	    "name"		=> __("Toggle", "swift-page-builder"),
+	    "name"		=> __("Toggle", "swift-framework-admin"),
 	    "base"		=> "spb_toggle",
 	    "class"		=> "spb_faq",
 		"icon"		=> "spb-icon-toggle",
@@ -472,33 +480,33 @@
 	            "type" => "textfield",
 	            "holder" => "h4",
 	            "class" => "toggle_title",
-	            "heading" => __("Toggle title", "swift-page-builder"),
+	            "heading" => __("Toggle title", "swift-framework-admin"),
 	            "param_name" => "title",
-	            "value" => __("Toggle title", "swift-page-builder"),
-	            "description" => __("Toggle block title.", "swift-page-builder")
+	            "value" => __("Toggle title", "swift-framework-admin"),
+	            "description" => __("Toggle block title.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textarea_html",
 	            "holder" => "div",
 	            "class" => "toggle_content",
-	            "heading" => __("Toggle content", "swift-page-builder"),
+	            "heading" => __("Toggle content", "swift-framework-admin"),
 	            "param_name" => "content",
-	            "value" => __("<p>The toggle content goes here, click the edit button to change this text.</p>", "swift-page-builder"),
-	            "description" => __("Toggle block content.", "swift-page-builder")
+	            "value" => __("<p>The toggle content goes here, click the edit button to change this text.</p>", "swift-framework-admin"),
+	            "description" => __("Toggle block content.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "dropdown",
-	            "heading" => __("Default state", "swift-page-builder"),
+	            "heading" => __("Default state", "swift-framework-admin"),
 	            "param_name" => "open",
-	            "value" => array(__("Closed", "swift-page-builder") => "false", __("Open", "swift-page-builder") => "true"),
-	            "description" => __("Select this if you want toggle to be open by default.", "swift-page-builder")
+	            "value" => array(__("Closed", "swift-framework-admin") => "false", __("Open", "swift-framework-admin") => "true"),
+	            "description" => __("Select this if you want toggle to be open by default.", "swift-framework-admin")
 	        ),
 	        array(
 	            "type" => "textfield",
-	            "heading" => __("Extra class name", "swift-page-builder"),
+	            "heading" => __("Extra class name", "swift-framework-admin"),
 	            "param_name" => "el_class",
 	            "value" => "",
-	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-page-builder")
+	            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "swift-framework-admin")
 	        )
 	    )
 	) );

@@ -543,3 +543,26 @@
 textarea#custom_css, textarea#custom_js {
 	min-height: 500px;
 }
+
+.toplevel_page_sf_theme_options #toplevel_page_sf_theme_options ul.wp-submenu {
+	display: none;
+}
+
+
+/*
+** Typography Preview
+*/
+
+#typography-preview h1, #typography-preview h2, #typography-preview h3, #typography-preview h4, #typography-preview h5, #typography-preview h6 {
+	margin: 10px 0;
+	border: 0;
+	padding: 0;
+}
+#typography-preview h6.typog-title {
+	margin: 20px 0 10px;
+	color: #999;
+	border-top: 1px solid #e3e3e3;
+	padding-top: 10px;
+	font-size: 9px!important;
+	line-height: 18px!important;
+}

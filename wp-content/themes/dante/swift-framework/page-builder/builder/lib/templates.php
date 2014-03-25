@@ -5,7 +5,7 @@
 	*	Swift Page Builder - Templates Return Class
 	*	------------------------------------------------
 	*	Swift Framework
-	* 	Copyright Swift Ideas 2013 - http://www.swiftideas.net
+	* 	Copyright Swift Ideas 2014 - http://www.swiftideas.net
 	*
 	*/
 	
@@ -2005,6 +2005,103 @@
 			
 			[/spb_text_block] [blank_spacer height='30px' width='1/1' el_position='first last'] [spb_video link='https://vimeo.com/1084537' full_width='no' width='1/1' el_position='first last']";
 			
+		} else if ($template_id == "sf-maintenance-mode") {
+			
+			$template_code = '[blank_spacer height="120px" width="1/1" el_position="first last"] [fullwidth_text alt_background="none" el_class="pb0" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #222222; line-height: 1.5em;">Maintenance Mode.</span></p>
+			<p style="text-align: center;">Sorry for the inconvenience. Our site is currently undergoing scheduled maintenance.</p>
+			[hr]
+			
+			[/fullwidth_text] [fullwidth_text alt_background="alt-five" el_class="mt0" width="1/1" el_position="first last"]
+			
+			[one_third]
+			
+			[sf_iconbox image="ss-clock" character="" type="boxed-one" title="How long will it take?" animation="pop-up" animation_delay="200"]
+			Vestibulum ante ipsum primis in fauc ibus orci luctus et ultrices posuere cubilia Curae; Integer in enim dui. Suspendisse potenti. Sed placerat pellentesque nibh ut varius. Morbi aliquet.
+			[/sf_iconbox]
+			
+			[/one_third]
+			[one_third]
+			
+			[sf_iconbox image="ss-phone" character="" type="boxed-one" title="Give us a call" animation="pop-up" animation_delay="600"]
+			Vestibulum ante ipsum primis in fauc ibus orci luctus et ultrices posuere cubilia Curae; Integer in enim dui. Suspendisse potenti. Sed placerat pellentesque nibh ut varius. Morbi aliquet.
+			[/sf_iconbox]
+			
+			[/one_third]
+			[one_third_last]
+			
+			[sf_iconbox image="ss-chat" character="" type="boxed-one" title="Access support forum" animation="pop-up" animation_delay="1000"]
+			Vestibulum ante ipsum primis in fauc ibus orci luctus et ultrices posuere cubilia Curae; Integer in enim dui. Suspendisse potenti. Sed placerat pellentesque nibh ut varius. Morbi aliquet.
+			[/sf_iconbox]
+			
+			[/one_third_last]
+			
+			[/fullwidth_text] [fullwidth_text alt_background="none" el_class="pb0" width="1/1" el_position="first last"]
+			<p style="text-align: center;">Please try back again later, <span style="line-height: 1.5em;">thanks for your understanding.</span></p>
+			[/fullwidth_text] [blank_spacer height="120px" width="1/1" el_position="first last"]';
+		
+		} else if ($template_id == "sf-coming-soon") {
+		
+			$template_code = '[blank_spacer height="120px" width="1/1" el_position="first last"] [fullwidth_text alt_background="none" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #1dc6df; line-height: 1.5em;">Coming soon.</span></p>
+			[/fullwidth_text] [fullwidth_text alt_background="alt-four" el_class="mt0 no-shadow no-arrow" width="1/1" el_position="first last"]
+			
+			[sf_countdown year="2014" month="10" day="24" fontsize="large" displaytext="Until our new site launches."]
+			
+			[/fullwidth_text] [fullwidth_text title="We are nearly there" alt_background="none" width="1/3" el_position="first"]
+			
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam massa quis mauris sollicitudin commodo venenatis ligula commodo. Sed blandit convallis dignissim. Pellentesque pharetra velit eu velit elementum et convallis erat vulputate. Sed in nulla ut elit mollis posuere. Praesent a felis accumsan neque interdum molestie ut id massa. In hac habitasse platea dictumst. Nulla ut lorem ante. In convallis, felis eget consequat faucibus, mi diam consequat augue, quis porta nibh leo a massa. Sed quam nunc, vulputate vel.
+			
+			[/fullwidth_text] [fullwidth_text title="New Site Progress" alt_background="none" width="1/3"]
+			
+			[progress_bar percentage="100" name="Design" value="100%" type="" colour="#1dc6df"]
+			
+			[progress_bar percentage="100" name="Development" value="100%" type="" colour="#1dc6df"]
+			
+			[progress_bar percentage="80" name="Test" value="80%" type="" colour="#1dc6df"]
+			
+			[progress_bar percentage="50" name="Iterations" value="50%" type="" colour="#1dc6df"]
+			
+			[/fullwidth_text] [fullwidth_text title="Keep me informed" alt_background="none" width="1/3" el_position="last"]
+			
+			[contact-form-7 id="11876" title="Subscribe"]
+			
+			[/fullwidth_text] [blank_spacer height="120px" width="1/1" el_position="first last"]';
+		
+		} else if ($template_id == "sf-parallax-demo") {
+		
+			$template_code = '[blank_spacer height="0px" spacer_id="intro" spacer_name="Intro" width="1/1" el_position="first last"] [spb_parallax parallax_type="image" bg_image="11423" bg_type="cover" parallax_video_height="video-height" parallax_video_overlay="none" parallax_image_height="window-height" parallax_image_movement="stellar" parallax_image_speed="0.5" alt_background="none" el_class="mt0 mb0 bt0 bb0 no-shadow" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #ffffff;">Introduction.</span></p>
+			
+			<h3 style="text-align: center;"><span style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></h3>
+			&nbsp;
+			<p style="text-align: center;">[sf_button colour="transparent-light" type="standard" size="large" link="http://" target="_self" icon="" dropshadow="no" extraclass=""]PARALLAX BUTTON ONE[/sf_button]</p>
+			[/spb_parallax] [blank_spacer height="0px" spacer_id="step1" spacer_name="Step 1" width="1/1" el_position="first last"] [spb_parallax parallax_type="image" bg_image="11431" bg_type="cover" parallax_video_height="video-height" parallax_video_overlay="none" parallax_image_height="window-height" parallax_image_movement="stellar" parallax_image_speed="0.5" alt_background="none" el_class="mt0 mb0 bt0 bb0 no-shadow" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #ffffff;">Step One.</span></p>
+			
+			<h3 style="text-align: center;"><span style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></h3>
+			&nbsp;
+			<p style="text-align: center;">[sf_button colour="transparent-light" type="standard" size="large" link="http://" target="_self" icon="" dropshadow="no" extraclass=""]PARALLAX BUTTON TWO[/sf_button]</p>
+			[/spb_parallax] [blank_spacer height="0px" spacer_id="step2" spacer_name="Step 2" width="1/1" el_position="first last"] [spb_parallax parallax_type="image" bg_image="11429" bg_type="cover" parallax_video_height="video-height" parallax_video_overlay="none" parallax_image_height="window-height" parallax_image_movement="stellar" parallax_image_speed="0.5" alt_background="none" el_class="mt0 mb0 bt0 bb0 no-shadow" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #ffffff;">Step Two.</span></p>
+			
+			<h3 style="text-align: center;"><span style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></h3>
+			&nbsp;
+			<p style="text-align: center;">[sf_button colour="transparent-light" type="standard" size="large" link="http://" target="_self" icon="" dropshadow="no" extraclass=""]PARALLAX BUTTON THREE[/sf_button]</p>
+			[/spb_parallax] [blank_spacer height="0px" spacer_id="step3" spacer_name="Step 3" width="1/1" el_position="first last"] [spb_parallax parallax_type="image" bg_image="11430" bg_type="cover" parallax_video_height="content-height" parallax_video_overlay="none" parallax_image_height="window-height" parallax_image_movement="stellar" parallax_image_speed="0.5" alt_background="none" el_class="mt0 mb0 bt0 bb0 no-shadow" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #ffffff;">Step Three.</span></p>
+			
+			<h3 style="text-align: center;"><span style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></h3>
+			&nbsp;
+			<p style="text-align: center;">[sf_button colour="transparent-light" type="standard" size="large" link="http://" target="_self" icon="" dropshadow="no" extraclass=""]PARALLAX BUTTON FOUR[/sf_button]</p>
+			[/spb_parallax] [blank_spacer height="0px" spacer_id="end" spacer_name="The End" width="1/1" el_position="first last"] [spb_parallax parallax_type="image" bg_image="11428" bg_type="cover" parallax_video_height="content-height" parallax_video_overlay="none" parallax_image_height="window-height" parallax_image_movement="stellar" parallax_image_speed="0.5" alt_background="none" el_class="mt0 mb0 bt0 bb0 no-shadow" width="1/1" el_position="first last"]
+			<p class="impact-text-large" style="text-align: center;"><span style="color: #ffffff;">The End.</span></p>
+			
+			<h3 style="text-align: center;"><span style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></h3>
+			&nbsp;
+			<p style="text-align: center;">[sf_button colour="transparent-light" type="standard" size="large" link="http://" target="_self" icon="" dropshadow="no" extraclass=""]PARALLAX BUTTON FIVE[/sf_button]</p>
+			[/spb_parallax]';
+		
 		}
 		
 		return $template_code;
