@@ -434,19 +434,6 @@ background-color: transparent !important;
 color:#fff !important;
 }
 
-.page-id-85 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #fff;
-}
-.page-id-85 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #fff;
-}
-.page-id-85 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #fff;
-}
-.page-id-85 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #fff;
-}
-
 .login_button {
 width: 90%;
 max-width: 260px;
@@ -462,4 +449,95 @@ text-transform: uppercase;
 letter-spacing: 3px;
 line-height: 50px;
 font-size: 18px;
+}
+
+label {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+input[type=checkbox].css-checkbox {
+      position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
+label.css-label {
+    height: auto; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+    cursor:pointer;
+	font:14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+ 	color:#000;
+	letter-spacing:1px;
+	line-height:25px;
+	float:left;
+	margin:0 5% 5px 5%;
+	width:90%;
+	text-align:	center;
+	text-transform:uppercase;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:32px;
+    height:25px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+    cursor:pointer;
+	font:14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+ 	color:#000;
+	letter-spacing:1px;
+	line-height:25px;
+	float:left;
+	text-align:left;
+	margin:0;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+
+    background-position: 0 -25px;
+}
+
+
+.tickbox{background-image:url(images/check.gif);}
+
+.customer-info3 {
+width: 90%;
+max-width: 637px;
+height: 120px;
+border: 1px solid #cccdcc;
+font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+ sans-serif;
+text-align: left;
+display: block;
+padding: 10px 10px 10px 20px;
+text-transform: uppercase;
+margin: 8px auto 50px auto;
+color: #525252;
+border-radius: 0px;
+-webkit-appearance: none;
+letter-spacing: 1px;
+}
+
+.line_separator {
+position: relative;
+width: 100%;
+height: 1px;
+background-color:#cccdcc;
+margin-bottom: 60px;
 }

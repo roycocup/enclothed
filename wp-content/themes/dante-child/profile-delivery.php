@@ -73,9 +73,15 @@ if (isset($_SESSION['section_2'])){
 		 	  	<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
 		 	  	<input type="town" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
 		 	  	<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-		 	  	<input type="text" class="customer-info2" tabindex="2" placeholder="Name this Address" name="" value="">
-		 	  	
+		 	  	<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+				<div style="width: 90%;max-width: 637px;height: 55px; margin:30px auto 50px auto;">
+                	<input type="checkbox" class="css-checkbox" id="checkbox1">
+                	<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS MY DEFAULT ADDRESS</label>
+				</div>
 		 	  	</div><!--mini-wrapper-forms-->
+
+
+
 
 	<div class="title-header">
 	<div class="numbering2">03</div>
@@ -92,7 +98,15 @@ if (isset($_SESSION['section_2'])){
 	 	  	<input type="text" class="customer-info2" tabindex="2" placeholder="Name this Address" name="" value="">
             
 	 	  	</div><!--mini-wrapper-forms-->
-		 	  	
+	        
+            <div class="line_separator">
+            <div class="shadow_inverse"><img src="http://enclothed.dev/wp-content/themes/dante-child/images/shadow_inverse.png" alt=""></div>
+            </div>
+            <label for="checkbox1"class="css-label">Is there anything extra you'd like to add about delivery?</label>
+            <textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+            <label for="checkbox1"class="css-label">Is there anything extra you'd like to add about collection?</label>
+	 	  	<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+	 	  	
 		  <div class="mini-wrapper5">
             		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
                 <button class="button4" onclick="submit()">Save and Continue</button>
