@@ -191,6 +191,11 @@
 	<?php } ?>
 
 </div>
-
+<script>
+jQuery(document).ready(function() {
+    jQuery('.login_link').click(function() { jQuery("#account_buttons").fadeOut("normal", function() { jQuery("#login_box").fadeIn("normal") });})
+});
+</script>
 <!--// WordPress Hook //-->
 <?php get_footer(); ?>
+

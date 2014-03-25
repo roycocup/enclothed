@@ -336,7 +336,7 @@ color: #f7b666 !important;
 }
 #mobile-menu-wrap{ background-color:#111 !important;}
 
-a.sf-button{ border-radius: 0 !important; padding:18px 40px 16px 40px; border:1px solid #fff !important; min-width:280px; margin-top:50px;}
+a.sf-button{ border-radius: 0 !important; padding:18px 40px 16px 40px; border:1px solid #fff !important; min-width:250px; margin-top:50px;}
 a.sf-button:hover{ background-color: #fff !important;}
 a.sf-button:hover span{ color: #f7b666 !important;transition: all 0.2s ease-in-out;
 -moz-transition: all 0.2s ease-in-out;
@@ -420,4 +420,46 @@ select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
+}
+
+#login_box{ text-align:center; display:none;}
+
+#login_box a{ color:#f7b666; text-transform:uppercase;font-size: 11px;letter-spacing: 1px; line-height: 40px; }
+#login_box a:hover{ color:#fff; text-decoration: none;}
+
+.page-id-85 .key-info {
+width: 90%;
+max-width: 450px;
+background-color: transparent !important;
+color:#fff !important;
+}
+
+.page-id-85 ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+.page-id-85 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+.page-id-85 ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+.page-id-85 :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+
+.login_button {
+width: 90%;
+max-width: 260px;
+height: 55px;
+position: relative;
+display: inline-block;
+border: 3px solid #000000;
+margin: 10px 0 10px 0;
+background-color: #000000;
+font: 18px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 3px;
+line-height: 50px;
+font-size: 18px;
 }

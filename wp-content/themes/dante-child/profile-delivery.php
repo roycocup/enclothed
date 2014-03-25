@@ -97,8 +97,6 @@ if (isset($_SESSION['section_2'])){
             		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
                 <button class="button4" onclick="submit()">Save and Continue</button>
 		 </div><!--mini-wrapper4-->
-		 
-                 </div>
                 </form>
                  <!--styles-block-->
             </div>            
