@@ -7,6 +7,19 @@
 
 get_header(); ?>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+$(document).ready(function(){
+	$( "#datepicker" ).datepicker( $.datepicker.regional[ "uk" ] );
+	$( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+	$( "#datepicker" ).datepicker();
+});
+
+</script>
+
 <?php 
 if (isset($_SESSION['section_1'])){
 	$section = $_SESSION['section_1'];	
@@ -63,12 +76,9 @@ if (isset($_SESSION['section_1'])){
 		 	  	<input type="text" class="key-info" tabindex="7" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
 		 	  	<input type="password" class="key-info"  name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
 
-			<select class="selectmenu" tabindex="9" name='section_1[dob]' placeholder='Date of Birth' value="<?php @echo_if_exists($section['dob']); ?>">
-				<option value="0">Date of Birth</option>
-  				<option value="Select date">Select date</option>
-  				<option value="Select date">Select date</option>
-  				<option value="Select date">Select date</option>
-			</select>
+				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth' value="<?php @echo_if_exists($section['dob']); ?>">
+				
+			
 			
 			<span class="date">
 			(Click in the box for date picker, or click again just to type it.)
