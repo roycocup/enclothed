@@ -122,8 +122,24 @@ class EnclothedMain {
 		if (empty($user) || get_class($user) == 'WP_Error'){
 			return 'no';
 		} else if(get_class($user) == 'WP_User'){
+			var_dump($creds);
 			return 'yes';
 		}
+	}
+
+	/**
+	*
+	* Login service 
+	*
+	**/
+	function custom_login($parameters) {
+		$creds = array();
+		$creds['user_login'] = $parameters['user'];
+		$creds['user_password'] = $parameters['pass'];
+		$creds['remember'] = true;
+		$user = wp_signon( $creds, false );
+		if ( is_wp_error($user) )
+			echo $user->get_error_message();
 	}
 
 

@@ -16,6 +16,7 @@
 		$('#login-bnt').click(function(){
 			var user = $('#user').val(); 
 			var pass = $('#password').val();
+			console.log('user:' + user, 'pass:' + pass);
 			ajax_login(user, pass);
 		});
 
@@ -36,7 +37,7 @@
 					console.log(data);
 					if(data == "yes"){
 						$('.flashmessages').html('You are logged in');
-					}else{
+					}else {
 						$('.flashmessages').html('Wrong credentials');
 					}
 				}
@@ -48,14 +49,17 @@
 	
 </script>
 
-
-<div class="flashmessages"></div>
-<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-<input type="text" id="user" placeholder='username'><br>
-<input type="text" id="password" placeholder='password'><br>
-<button id="login-bnt">Logs in you and stuff</button>
-
-<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+<?php $user = wp_get_current_user(); ?>
+<?php if(empty($user->data)): ?>
+	<div class="flashmessages"></div>
+	<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
+	<input type="text" id="user" placeholder='username'><br>
+	<input type="text" id="password" placeholder='password'><br>
+	<button id="login-bnt">Logs in you and stuff</button>
+	<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+<?php else: ?>
+	<div>You are already logged in</div>
+<?php endif; ?>
 
 
 
