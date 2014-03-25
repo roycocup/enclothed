@@ -296,7 +296,8 @@ width: 30%;
 margin-left: -5px!important;
 margin-right: -5px!important;
 
-}}
+}
+}
 
 
 #logo a.mobile-menu-show {
@@ -548,3 +549,5 @@ margin-bottom: 60px;
 .grey_bg{background-color: #f6f7f6;
 border-top: 1px solid #d1d1d1;
 border-bottom: 1px solid #d1d1d1;}
+
+.checkbox_wrap{width: 90%;max-width: 637px;height: 25px; margin:30px auto 50px auto;}

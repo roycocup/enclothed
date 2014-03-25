@@ -3075,6 +3075,7 @@ details-menu li span:last-child{
 	text-align: center;
 	padding: 0px;
 	padding-top: 0px;
+	padding-bottom:30px;
 	color: #525252;
 }
 
@@ -3185,15 +3186,15 @@ select{
 }
 	
 .key-info{
-	width: 90%;
-	max-width: 310px;
+	width: 90% !important;
+	max-width: 310px !important;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
 	sans-serif;
 	text-align: left;
 	display: inline;
-	padding: 10px 10px 10px 20px;
+	padding: 10px 10px 10px 20px !important;
 	text-transform: uppercase;
 	margin: 8px 8px 8px 4px;
 	color: #525252;
@@ -3294,8 +3295,8 @@ input.other:-moz-placeholder , value {
 }
 
 .customer-info{
-	width: 90%;
-	max-width: 637px;
+	width: 90% !important;
+	max-width: 637px !important;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
@@ -3313,8 +3314,8 @@ input.other:-moz-placeholder , value {
 }
 
 .customer-info2{
-	width: 90%;
-	max-width: 637px;
+	width: 90% !important;
+	max-width: 637px !important;
 	height: 55px;
 	border: 1px solid #cccdcc;
 	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
