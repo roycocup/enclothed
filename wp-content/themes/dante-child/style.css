@@ -73,7 +73,7 @@ h1{
 }
 
 
-p{ font-size:16px; letter-spacing:1px;}
+p{ font-size:16px; letter-spacing:1px; margin-bottom:16px;}
 
 
 .no-margin-top { margin-top: 0 !important;}
@@ -373,7 +373,8 @@ nav.std-menu .menu li > a { font-weight:bold; margin:0 20px;}
 
 #back-to-top{ border-radius:0;}
 
-#main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+#main-container{ background: #fff;}
 
 .inner-page-wrap {
 margin-top: 30px;
@@ -383,11 +384,6 @@ min-height: 500px;
 
 input,input[type="password"], textarea, select{ border:1px solid #cccdcc !important; background-color:#fff !important; color:#000 !important; }
 div#placeholder{ color:#000 !important;}
-
-
-
-
-
 
 
 .page-id-85 .page_bottom_bg{position:absolute; bottom:0; background: url(images/mainpage_bottom_bg_gradient.gif) repeat-x; background-position:bottom; height: 806px; width:100%;}
@@ -541,3 +537,7 @@ height: 1px;
 background-color:#cccdcc;
 margin-bottom: 60px;
 }
+
+.grey_bg{background-color: #f6f7f6;
+border-top: 1px solid #d1d1d1;
+border-bottom: 1px solid #d1d1d1;}
