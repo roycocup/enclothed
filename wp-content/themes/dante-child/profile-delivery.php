@@ -124,7 +124,7 @@ if (isset($_SESSION['section_1'])){
                     <div class="spb_wrapper clearfix">
                         <h1 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>
                         ENCLOTHED PROFILE</span></h1>
-                        <p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="/wp-content/uploads/2014/03/line.png"></p>
+                        <p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 					</div> 
                 </div>
             </div>
