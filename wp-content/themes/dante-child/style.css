@@ -76,12 +76,17 @@ h1{
 p{ font-size:16px; letter-spacing:1px; margin-bottom:16px;}
 
 
+.no-borders { border: none !important;}
+.no-padding { padding: 0 !important;}
+.no-margin { margin: 0 !important;}
+
 .no-margin-top { margin-top: 0 !important;}
 .no-border-top { border-top: none !important;}
 .no-margin-bottom { margin-bottom: 0 !important;}
 .no-border-bottom { border-bottom: none !important;}
 .no-padding-top{ padding-top:0 !important;}
 .no-padding-bottom{ padding-bottom:0 !important;}
+
 @media only screen and (min-width: 1200px) {
 	.container {width: 980px;}
 }
@@ -551,3 +556,9 @@ border-top: 1px solid #d1d1d1;
 border-bottom: 1px solid #d1d1d1;}
 
 .checkbox_wrap{width: 90%;max-width: 637px;height: 25px; margin:30px auto 50px auto;}
+
+.profile_page .inner-page-wrap{ margin-bottom:0;}
+
+.gold_bg{ background-color:rgba(242, 133, 0, 0.60); padding-top:25px; padding-bottom:25px; border-top:1px solid #e1a35a !important;}
+.gold_bg a.sf-button{ border-color: #222 !important; margin:10px 30px 10px 30px; color:#fff;}
+.gold_bg a.sf-button:hover{ border-color: #222 !important; background-color:#222 !important; }

@@ -12,10 +12,10 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
-$(document).ready(function(){
-	$( "#datepicker" ).datepicker( $.datepicker.regional[ "uk" ] );
-	$( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
-	$( "#datepicker" ).datepicker();
+jQuery(document).ready(function(){
+	jQuery( "#datepicker" ).datepicker( jQuery.datepicker.regional[ "uk" ] );
+	jQuery( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+	jQuery( "#datepicker" ).datepicker();
 });
 
 </script>

@@ -155,15 +155,6 @@
 				
 				<div class="link-pages"><?php wp_link_pages(); ?></div>
 				
-				<?php if ( comments_open() && !$disable_pagecomments ) { ?>
-					<?php if ($sidebar_config == "no-sidebars" && $pb_active == "true") { ?>
-					<div id="comment-area" class="container">
-					<?php } else { ?>
-					<div id="comment-area">
-					<?php } ?>
-						<?php comments_template('', true); ?>
-					</div>
-				<?php } ?>				
 			</div>
 		<?php } ?>	
 	
