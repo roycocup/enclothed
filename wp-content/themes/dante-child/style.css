@@ -607,7 +607,7 @@ text-transform:uppercase;
 .how_it_works_page p img.line{ margin-top:0px; }
 
 @media only screen and (min-width: 1500px) {
-	.alt-bg{ margin-left: -550px !important; padding-right: 550px !important; padding-left: 550px !important;}
+	.row .alt-bg{ margin-left: -550px !important; padding-right: 550px !important; padding-left: 550px !important;}
 }
 @media only screen and (max-width: 767px) {
 
