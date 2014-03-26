@@ -1,0 +1,49 @@
+/*img {
+  display: block;
+  width: 100%;
+}*/
+
+.scene {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  align-content: center;
+  position: absolute;
+
+}
+
+.scene img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+ }
+
+.layer:nth-child(1) {
+  opacity: 1;
+}
+.layer:nth-child(2) {
+  opacity: 1;
+}
+.layer:nth-child(3) {
+  opacity: 1;
+}
+.layer:nth-child(4) {
+  opacity: 1;
+}
+.layer:nth-child(5) {
+  opacity: 1;
+}
+.layer:nth-child(6) {
+  opacity: 1;
+}
+.layer:nth-child(7) {
+  opacity: 1;
+}
+.layer:nth-child(8) {
+  opacity: 1;
+}
+.layer:nth-child(9) {
+  opacity: 1;
+}
