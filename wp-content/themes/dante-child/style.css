@@ -173,9 +173,6 @@ margin: 0 5%;
 	border-right:none;
 }
 }
-@media only screen and (max-width: 767px) {
-
-}
 
 #logo h1 { visibility: hidden; } 
 
@@ -566,3 +563,56 @@ border-bottom: 1px solid #d1d1d1;}
 .home_content{ margin-top: -130px;}
 .home_content .box-content-wrap p{ overflow:hidden;}
 .home_content img{ min-width:888px !important;}
+
+
+
+
+.area_grey{background-color: #f6f7f6;border-top: 1px solid #d1d1d1;border-bottom: 1px solid #d1d1d1;}
+.area_gold{ background-color:rgba(242, 133, 0, 0.60); padding-top:25px; padding-bottom:25px; border-top:1px solid #e1a35a !important; margin-bottom:0 !important; margin-top:0 !important; border-bottom:none;}
+.area_gold a.sf-button{ border-color: #222 !important; margin:10px 30px 10px 30px; color:#fff;}
+.area_gold a.sf-button:hover{ border-color: #222 !important; background-color:#222 !important; }
+img.line{ margin-top:20px;}
+
+h2 {
+font-family: proxbold;
+letter-spacing: 2px;
+font-size: 28px !important;
+text-transform:uppercase;
+}
+
+
+
+
+/* --------------------------------------------
+	HOW IT WORKS
+-------------------------------------------- */
+
+.how_it_works_page .area1 {
+	margin-top: 0 !important;
+	padding-top: 120px;
+	padding-bottom: 120px;}
+
+.how_it_works_page  .area2_right p img.line{ margin-top:30px ; }
+.how_it_works_page  .area4_right p img.line{ margin-top:30px ; }
+.how_it_works_page .area5{ padding-top:100px !important; padding-bottom:100px !important; }
+.how_it_works_page .area6{ padding-top:50px !important; padding-bottom:50px !important; }
+	
+.how_it_works_page .inner-page-wrap{
+	margin-top: 0 !important; margin-bottom:0 !important;}
+
+
+.how_it_works_page .area_gold{ margin-top:40px !important; }
+
+
+.how_it_works_page p img.line{ margin-top:0px; }
+
+@media only screen and (max-width: 767px) {
+
+.how_it_works_page img.line{ margin-top:0 !important;text-align:center;}
+
+
+h2 {
+text-align:center;
+}
+p{text-align:center;}
+}
