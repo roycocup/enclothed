@@ -12,7 +12,7 @@
 <script src="<?php echo bloginfo('stylesheet_directory'); ?>/js/responsivemobilemenu.js"></script>
 <script src="<?php echo bloginfo('stylesheet_directory'); ?>/js/parallax.js"></script>
 <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_directory'); ?>/css/paralax.css" type="text/css">
-<link rel="stylesheet" href="<?php echo bloginfo('stylesheet_directory'); ?>/css/normalize.css" type="text/css">
+<?php if('louis_removed_this'==1){?> <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_directory'); ?>/css/normalize.css" type="text/css"> <?php } ?>
 <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_directory'); ?>/css/responsivemobilemenu-edt2.css" type="text/css"/>
 
 <script type="text/javascript">

@@ -580,6 +580,12 @@ font-size: 28px !important;
 text-transform:uppercase;
 }
 
+/* --------------------------------------------
+	PRICING 
+-------------------------------------------- */
+
+.pricing_page .inner-page-wrap {
+margin-top: 0px;}
 
 
 
@@ -605,6 +611,8 @@ text-transform:uppercase;
 
 
 .how_it_works_page p img.line{ margin-top:0px; }
+
+#mobile-menu ul{ margin:0; padding-left:0;}
 
 @media only screen and (min-width: 1200px) {
 	.row .alt-bg{ margin-left: -270px !important; padding-right: 270px !important; padding-left: 270px !important;}
