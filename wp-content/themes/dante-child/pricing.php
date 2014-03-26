@@ -9,7 +9,6 @@
 
 <?php get_header(); ?>
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="<?php echo bloginfo('stylesheet_directory'); ?>/js/responsivemobilemenu.js"></script>
 <script src="<?php echo bloginfo('stylesheet_directory'); ?>/js/parallax.js"></script>
 <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_directory'); ?>/css/paralax.css" type="text/css">
