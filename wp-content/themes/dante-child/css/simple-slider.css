@@ -1,0 +1,151 @@
+.slider {
+  position: relative;
+  width: 562px;
+  margin: 0 auto;
+  top: -5px;
+}
+
+.slider > .dragger {
+	background: url(../img/Slider-Control.png) no-repeat;
+	width: 20px;
+  	height: 27px;
+  	z-index: 600;
+  	top: -20px;
+}
+
+.slider > .dragger:hover {
+	background: url(../img/Slider-Control.png) no-repeat;
+}
+
+
+.slider > .track, .slider > .highlight-track {
+  width: 572px;
+  height: 4px;
+  margin: 0 auto;
+  display: inline-block;
+  border-radius: 16px;
+  background-color: #af8535;
+  }
+
+.slider > .highlight-track {
+	background: -webkit-linear-gradient
+	(top, #f1c97c 0%, #ae8535 100%) #af8535;
+	background: -moz-linear-gradient
+	(top, #f1c97c 0%, #ae8535 100%) #af8535;
+	background: -ms-linear-gradient
+	(top, #f1c97c 0%, #ae8535 100%) #af8535;
+	background: linear-gradient
+	(to bottom, #f1c97c 0%, #ae8535 100%) #af8535;
+	border-color: #8c6928;
+}
+
+.slider-title{
+	width: auto;
+	height: auto;
+	position: relative;
+	top: 74px;
+	left: -130px;
+	display: inline-block;
+	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-transform: uppercase;
+	text-align: left;
+	letter-spacing: 2px;
+	color: #000;
+}
+
+.slider-title2{
+	width: auto;
+	height: auto;
+	position: relative;
+	top: 74px;
+	left: -151px;
+	display: inline-block;
+	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-transform: uppercase;
+	text-align: left;
+	letter-spacing: 2px;
+	color: #000;
+}
+
+.slider-title3{
+	width: auto;
+	height: auto;
+	position: relative;
+	top: 60px;
+	left: 22px;
+	display: inline;
+	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-transform: uppercase;
+	text-align: left;
+	letter-spacing: 1px;
+	color: #000;
+}
+
+
+.valuebar{
+	width: 100%;
+	max-width: 582px;
+	height: 14px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+	top: 61px;
+	border: 0px solid #000000;
+	border-radius: 16px;
+	box-shadow: inset 0 0 5px #a4a4a4;
+}
+
+.value-nos1{
+	width: 587px;
+	height: 11px;
+	margin: 0 auto;
+	display: inline-block;
+	position: absolute;
+	top: 50px;
+	left: 10px;
+}
+
+.value-scale{
+	width: 543px;
+	height: 31px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+	top: 40px;
+/*	background: url(../img/dividers.png) no-repeat;*/
+}
+
+.output  { 
+	width: auto;
+	height: auto;
+	position: relative;
+	top: -42px;
+	left: 625px;
+	display: inline-block;
+	font: 32px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0px;
+	color: #af8535;
+}
+
+.pound{
+	width: auto;
+	height: auto;
+	position: absolute;
+	left: 610px;
+	margin-top: 64px;
+	display: inline-block;
+	font: 32px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0px;
+	color: #af8535;
+}
+
+	

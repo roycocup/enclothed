@@ -1,0 +1,172 @@
+#main li {
+height: 300px;
+background-color: #ffffff;
+padding-bottom: -15px;
+}
+
+#main li a {
+font-weight: 200;
+text-align: left;
+box-shadow: none;
+color: #000000;
+font-size: 12px;
+line-height: 16px;
+height: auto;
+background-color: transparent;
+border: 0px;
+display: block;
+width: 236px;
+position: relative;
+height: 100%;
+display: block;
+text-transform: uppercase;
+}
+
+#main li a:hover {
+color: #4281f5;
+}
+
+#main li a span {
+position: absolute;
+bottom: 20px;
+left: 0px;
+right: 0px;
+display: block;
+color: #666666;
+}
+
+#main li a b {
+font-size: 20px;
+line-height: 30px;
+color: #000000;
+}
+
+/**
+ * Grid items animation
+ */
+#tiles li {
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.wookmark-placeholder {
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+#main {
+  position: relative;
+  width: 100%;
+  padding: 0px!important;
+  margin: 0px!important;  
+  display: block;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  align-content: center;
+}
+
+#main img{
+  padding: 0px!important;
+  margin: 0px!important;
+  display: inline-block;
+  width: 236px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/**
+ * Grid container
+ */
+#tiles {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+/**
+ * Grid items
+ */
+#tiles li {
+  width: 236px;
+  height: auto;
+  background:transparent ;
+  display: block; /** Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+  margin: -5px;
+  float: left;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+#tiles li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#tiles li img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/**
+ * Grid item text
+ */
+#tiles li p {
+  color: #666;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 200;
+  margin: 0px 0px 0px 0px;
+}
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder {
+  background-color: #eee;
+  z-index: -1;
+}
+
+.example-tiles {
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+}
+
+.example-tiles li {
+  display: block;
+  list-style-type: none;
+  float: left;
+  margin: 0px;
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.example-tiles a,
+.example-tiles a:hover {
+  color: #555;
+  background-color: #eee;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 236px;
+  height: 250px;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.example-tiles a:hover {
+  background-color: #ddd;
+}
