@@ -609,6 +609,9 @@ text-transform:uppercase;
 @media only screen and (min-width: 1500px) {
 	.row .alt-bg{ margin-left: -550px !important; padding-right: 550px !important; padding-left: 550px !important;}
 }
+@media only screen and (min-width: 1200px) {
+	.row .alt-bg{ margin-left: -270px !important; padding-right: 270px !important; padding-left: 270px !important;}
+}
 @media only screen and (max-width: 767px) {
 
 .how_it_works_page img.line{ margin-top:0 !important;text-align:center;}
