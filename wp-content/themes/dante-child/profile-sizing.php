@@ -6,7 +6,7 @@
 **/
 ?>
 <?php get_header(); ?>
-<link rel='stylesheet' href='<?php echo get_bloginfo('stylesheet_directory') ?>/css/simple-slider.css' type='text/css' media='all' />
+
 
 
 <?php 
@@ -159,23 +159,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
 										</style>
                                         
-         <div class="value-slider1">
-
-		 	<div class="slider-wrap">
-
-		 	<div class="slider-title2">Neck Size</div>
-		 	<div class="pound">£</div>
-		 	<div class="valuebar">
-			<!--input for Trousers prices-->
-		 	<input type="text" data-slider="true" data-slider-range="14,20" data-slider-step="5" data-slider-snap="true" class="value-pointer">
-		 	</div><!--valuebar-->
-			<div class="value-scale"><img src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/neck-divs.png" alt="" /></div>
-			<div class="value-nos1">	<img src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/neck-sizes.png" alt="" /></div>	
-
-			</div><!--slider-wrap-->
-
-		</div><!--value-slider-->
-
+                                        
                                             <select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
                                                     <option value="Date of Birth">How did you hear about enclothed?</option>
                                                     <option value="The Internet">The Internet</option>
@@ -218,24 +202,5 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 <!--// WordPress Hook //-->
 <?php get_footer(); ?>
-
-
-  <script src="<?php echo get_bloginfo('stylesheet_directory') ?>/js/simple-slider.js"></script>
-
-<!-- this script if for value sliders -->
-<script>
-$("[data-slider]")
-  .each(function () {
-    var input = $(this);
-    $("<span>")
-      .addClass("output")
-      .insertAfter($(this));
-  })
-  .bind("slider:ready slider:changed", function (event, data) {
-    $(this)
-      .nextAll(".output:first")
-        .html(data.value.toFixed(2));
-  });
-</script>
 
 
