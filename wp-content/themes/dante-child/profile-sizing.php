@@ -6,7 +6,21 @@
 **/
 ?>
 <?php get_header(); ?>
-<link rel='stylesheet' href='<?php echo get_bloginfo('stylesheet_directory') ?>/css/simple-slider.css' type='text/css' media='all' />
+
+<script>
+	jQuery(function($) {
+		$( "#slider" ).slider({
+			value:100,
+			min: 0,
+			max: 500,
+			step: 50,
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.value );
+			}
+		});
+		$( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
+	});
+</script>
 
 
 <?php 
@@ -146,96 +160,91 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
-                                    <form action="" method="POST" name='section_3'>
-                                        <?php $nonce = wp_create_nonce( get_uri() ); ?>
-                                            <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-                                            <div class="title-forms">
-                                                <div class="mini-wrapper-forms">
-                                                <div class="numbering">01</div>
-                                                <p>Your size and measurements. What fits you well.</p>
-                                                <p class="title_sub_heading">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
-                                        <style>
-										.title_sub_heading{
-										font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
-										</style>
-                                        
-         <div class="value-slider1">
+								<form action="" method="POST" name='section_3'>
+									<?php $nonce = wp_create_nonce( get_uri() ); ?>
+									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+									<div class="title-forms">
+										<div class="mini-wrapper-forms">
+											<div class="numbering">01</div>
+											<p>Your size and measurements. What fits you well.</p>
+											<p class="title_sub_heading">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
+											<style>
+												.title_sub_heading{
+													font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
+												</style>
+		
 
-		 	<div class="slider-wrap">
+												<!-- sliders -->
+												<p>
+													<label for="amount">Donation amount ($50 increments):</label>
+													<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+												</p>
 
-		 	<div class="slider-title2">Neck Size</div>
-		 	<div class="pound">£</div>
-		 	<div class="valuebar">
-			<!--input for Trousers prices-->
-		 	<input type="text" data-slider="true" data-slider-range="14,20" data-slider-step="5" data-slider-snap="true" class="value-pointer">
-		 	</div><!--valuebar-->
-			<div class="value-scale"><img src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/neck-divs.png" alt="" /></div>
-			<div class="value-nos1">	<img src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/neck-sizes.png" alt="" /></div>	
+												<div id="slider"></div>
 
-			</div><!--slider-wrap-->
 
-		</div><!--value-slider-->
 
-                                            <select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
-                                                    <option value="Date of Birth">How did you hear about enclothed?</option>
-                                                    <option value="The Internet">The Internet</option>
-                                                    <option value="Word of Mouth">Word of Mouth</option>
-                                                    <option value="A Friend ">A Friend </option>
-                                                    <option value="Magazine Advert">Magazine Advert</option>
-                                                    <option value="Email Marketing">Email Marketing</option>
-                                                    <option value="Magazine Article">Magazine Article</option>
-                                                    <option value="Promotional Material">Promotional Material</option>
-                                                    <option value="Other">Other</option>
-                                            </select>
-                                            
-                                                </div><!--mini-wrapper-forms-->
-                                                
-                                          <div class="mini-wrapper5">
-                                                    <input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-                                                <button class="button4" onclick="submit()">Save and Continue</button>
-                                         </div><!--mini-wrapper4-->
-                                         
-                                                 </div>
-                                                </form>
-							<!--styles-block-->
-						</div>            
+
+												<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
+													<option value="Date of Birth">How did you hear about enclothed?</option>
+													<option value="The Internet">The Internet</option>
+													<option value="Word of Mouth">Word of Mouth</option>
+													<option value="A Friend ">A Friend </option>
+													<option value="Magazine Advert">Magazine Advert</option>
+													<option value="Email Marketing">Email Marketing</option>
+													<option value="Magazine Article">Magazine Article</option>
+													<option value="Promotional Material">Promotional Material</option>
+													<option value="Other">Other</option>
+												</select>
+
+											</div><!--mini-wrapper-forms-->
+
+											<div class="mini-wrapper5">
+												<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+												<button class="button4" onclick="submit()">Save and Continue</button>
+											</div><!--mini-wrapper4-->
+
+										</div>
+									</form>
+									<!--styles-block-->
+								</div>            
+							</div>
+						</div>
+
+
+
+						<!-- CLOSE page -->
 					</div>
-				</div>
+
+				<?php endif; ?>
 
 
-
-				<!-- CLOSE page -->
 			</div>
 
-		<?php endif; ?>
+			<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
+		</div>
+		<?php } ?>
+
+		<!--// WordPress Hook //-->
+		<?php get_footer(); ?>
 
 
-	</div>
+		<script src="<?php echo get_bloginfo('stylesheet_directory') ?>/js/simple-slider.js"></script>
 
-	<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
-</div>
-<?php } ?>
-
-<!--// WordPress Hook //-->
-<?php get_footer(); ?>
-
-
-  <script src="<?php echo get_bloginfo('stylesheet_directory') ?>/js/simple-slider.js"></script>
-
-<!-- this script if for value sliders -->
-<script>
-$("[data-slider]")
-  .each(function () {
-    var input = $(this);
-    $("<span>")
-      .addClass("output")
-      .insertAfter($(this));
-  })
-  .bind("slider:ready slider:changed", function (event, data) {
-    $(this)
-      .nextAll(".output:first")
-        .html(data.value.toFixed(2));
-  });
-</script>
+		<!-- this script if for value sliders -->
+		<script>
+			$("[data-slider]")
+			.each(function () {
+				var input = $(this);
+				$("<span>")
+				.addClass("output")
+				.insertAfter($(this));
+			})
+			.bind("slider:ready slider:changed", function (event, data) {
+				$(this)
+				.nextAll(".output:first")
+				.html(data.value.toFixed(2));
+			});
+		</script>
 
 

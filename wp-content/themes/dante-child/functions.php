@@ -57,9 +57,16 @@ function my_add_frontend_scripts() {
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-core');
         wp_enqueue_script('jquery-ui-datepicker');
+        wp_enqueue_script('jquery-ui-slider');
 }
 add_action('wp_enqueue_scripts', 'my_add_frontend_scripts');
-	
+
+
+function add_jquery_stylesheets(){
+	wp_enqueue_style('jquery-css', '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css');
+}
+add_action('wp_enqueue_scripts', 'add_jquery_stylesheets');
+
 			
 
 ?>
