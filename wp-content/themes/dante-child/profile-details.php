@@ -135,8 +135,8 @@ if (isset($_SESSION['section_1'])){
 			<div class="row">
                 <div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
                     <div class="spb_wrapper clearfix">
-                        <h1 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>
-                        ENCLOTHED PROFILE</span></h1>
+                        <h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>
+                        ENCLOTHED PROFILE</span></h2>
                         <p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 					</div> 
                 </div>

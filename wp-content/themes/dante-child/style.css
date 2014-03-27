@@ -26,7 +26,7 @@
          url('fonts/proximanova-bold-webfont.woff') format('woff'),
          url('fonts/proximanova-bold-webfont.ttf') format('truetype'),
          url('fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -37,7 +37,7 @@
          url('fonts/proximanova-light-webfont.woff') format('woff'),
          url('fonts/proximanova-light-webfont.ttf') format('truetype'),
          url('fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
-    font-weight: normal;
+    font-weight: lighter;
     font-style: normal;
 }
 
@@ -91,26 +91,26 @@ p{ font-size:16px; letter-spacing:1px; margin-bottom:16px;}
 	.container {width: 980px;}
 }
 
-.page-id-85 #top-bar, .page-id-85 #top-header {
+.home_page #top-bar, .home_page #top-header {
 display: none;
 }
-.page-id-85 #header-section:before {
+.home_page #header-section:before {
 background: transparent;
 }
-.page-id-85 .header-wrap {
+.home_page .header-wrap {
 width: 100%;
 position: absolute;
 top: 40px;
 left: 0;
 z-index: 7;
 }
-.page-id-85 #header-section, .page-id-85 #header-section:before, .page-id-85 #header .is-sticky .sticky-header, .page-id-85 .is-sticky #header.sticky-header {
+.home_page #header-section, .home_page #header-section:before, .home_page #header .is-sticky .sticky-header, .home_page .is-sticky #header.sticky-header {
 -moz-box-shadow: none!important;
 -webkit-box-shadow: none!important;
 box-shadow: none!important;
 background: transparent!important;
 }
-.page-id-85 #header .is-sticky .sticky-header, .page-id-85 .is-sticky #header.sticky-header {
+.home_page #header .is-sticky .sticky-header, .home_page .is-sticky #header.sticky-header {
 background: transparent;
 transition: background 0.5s ease-in-out;
 -moz-transition: background 0.5s ease-in-out;
@@ -121,44 +121,64 @@ transition: background 0.5s ease-in-out;
 -o-animation-fill-mode: both;
 animation-fill-mode: both;
 }
-.page-id-85 #logo img {
+.home_page #logo img {
 display: none!important;
 }
-.page-id-85 #logo {
+.home_page #logo {
 background: transparent url('images/logo-header.png') no-repeat;
 }
 
-.page-id-85 #logo a {
+.home_page #logo a {
 	display:block;
 color: #fff;
 }
-.page-id-85 nav .menu > li a {
+.home_page nav .menu > li a {
 color: #fff;
 }
-.page-id-85 #header .is-sticky .sticky-header.sticky-header-resized, .page-id-85 .is-sticky #header.sticky-header.sticky-header-resized {
+.home_page #header .is-sticky .sticky-header.sticky-header-resized, .home_page .is-sticky #header.sticky-header.sticky-header-resized {
 background: #fff!important;
 -moz-box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
 -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
 box-shadow: 0 3px 5px rgba(0,0,0,.05)!important;
 }
-.page-id-85 .sticky-header-resized #logo img.retina {
+.home_page .sticky-header-resized #logo img.retina {
 display: block!important;
 }
-.page-id-85 .sticky-header-resized #logo h1 {
+.home_page .sticky-header-resized #logo h1 {
 color: #222!important;
 }
-.page-id-85 .sticky-header-resized #logo a {
+.home_page .sticky-header-resized #logo a {
 color: #333;
 }
-.page-id-85 .sticky-header-resized #logo {
+.home_page .sticky-header-resized #logo {
 background-image: none;
 }
-.page-id-85 .sticky-header-resized nav .menu > li a {
+.home_page .sticky-header-resized nav .menu > li a {
 color: #252525;
 }
-.page-id-85 .inner-page-wrap {
+.home_page .inner-page-wrap {
 padding-top: 0!important;
 margin-top: 0;
+}
+.home_page #header-section.header-6 #header {
+padding: 20px 0 30px 0;
+}
+.home_page nav#main-navigation .menu > li > a{ color:#fff; letter-spacing: 3px;  padding:15px 0 12px;}
+.home_page #main-navigation{ margin-top:0px;}
+.home_page #logo a.mobile-menu-show {
+background:url(images/mobile_nav_icon.png) no-repeat 0 0;
+}
+
+.home_page #logo a.mobile-menu-show:hover {
+background:url(images/mobile_nav_icon.png) no-repeat -42px 0;
+}
+.home_page #copyright{  border-top: none !important;}
+.home_page .page_bottom_bg{position:absolute; bottom:0; background: url(images/mainpage_bottom_bg_gradient.gif) repeat-x; background-position:bottom; height: 806px; width:100%;}
+.home_page .key-info {
+width: 90%;
+max-width: 450px;
+background-color: transparent !important;
+color:#fff !important;
 }
 @media only screen and (max-width: 991px) {
 #logo {
@@ -196,9 +216,6 @@ padding: 40px 0 30px 0;
 min-height: 132px !important;
 	}
 
-.page-id-85 #header-section.header-6 #header {
-padding: 20px 0 30px 0;
-}
 
 #header {
 }
@@ -217,7 +234,6 @@ max-width: none !important;
 
 .mobile-search-form{ display:none !important;}
 
-.page-id-85 nav#main-navigation .menu > li > a{ color:#fff; letter-spacing: 3px;  padding:15px 0 12px;}
 
 nav#main-navigation .menu > li > a{ color: #000000;
 text-decoration: none;
@@ -233,8 +249,6 @@ bottom: 3px !important;
 }
 
 #main-navigation{ margin-top:5px;}
-.page-id-85 #main-navigation{ margin-top:0px;}
-
 #mobile-menu ul li a, #mobile-menu ul li:hover a {
 text-decoration: none;
 font: 13px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -319,13 +333,7 @@ background:url(images/mobile_nav_icon.png) no-repeat 0px 0;
 transition:none !important;
 }
 
-.page-id-85 #logo a.mobile-menu-show {
-background:url(images/mobile_nav_icon.png) no-repeat 0 0;
-}
 
-.page-id-85 #logo a.mobile-menu-show:hover {
-background:url(images/mobile_nav_icon.png) no-repeat -42px 0;
-}
 
 #logo a.mobile-menu-show:before {
 	content:"";
@@ -378,12 +386,10 @@ border-color: transparent !important;
 
 #footer{ display:none;}
 #copyright{ padding:60px 0 60px 0; border-top: 6px solid #f7b666 !important; background: url(images/footer_pt.gif) #1a1a1a repeat-x !important;}
-.page-id-85 #copyright{  border-top: none !important;}
 nav.std-menu .menu li > a { font-weight:bold; margin:0 20px;}
 
 #back-to-top{ border-radius:0;}
 
-.profile_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
 #main-container{ background: #fff;}
 
 .inner-page-wrap {
@@ -396,7 +402,6 @@ input,input[type="password"], textarea, select{ border:1px solid #cccdcc !import
 div#placeholder{ color:#000 !important;}
 
 
-.page-id-85 .page_bottom_bg{position:absolute; bottom:0; background: url(images/mainpage_bottom_bg_gradient.gif) repeat-x; background-position:bottom; height: 806px; width:100%;}
 .page_bottom_bg{position:absolute; bottom:0; background: url(images/page_bottom_bg_pattern.gif) repeat-x; background-position:bottom; height: 204px; width:100%;}
 .relative{ position:relative;}
 
@@ -433,12 +438,6 @@ select {
 #login_box a{ color:#f7b666; text-transform:uppercase;font-size: 11px;letter-spacing: 1px; line-height: 40px; }
 #login_box a:hover{ color:#fff; text-decoration: none;}
 
-.page-id-85 .key-info {
-width: 90%;
-max-width: 450px;
-background-color: transparent !important;
-color:#fff !important;
-}
 
 .login_button {
 width: 90%;
@@ -612,6 +611,62 @@ margin-top: 0px;}
 
 .how_it_works_page p img.line{ margin-top:0px; }
 
+
+
+/* --------------------------------------------
+	PROFILE DETAILS
+-------------------------------------------- */
+
+.profile_details_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_details_page h2{ margin-top: 20px !important;}
+
+
+
+/* --------------------------------------------
+	PROFILE STYLE
+-------------------------------------------- */
+
+.profile_style_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_style_page h2{ margin-top: 20px !important;}
+
+@media only screen and (max-width: 767px) {
+
+}
+
+
+
+/* --------------------------------------------
+	PROFILE SIZING
+-------------------------------------------- */
+
+.profile_sizing_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_sizing_page h2{ margin-top: 20px !important;}
+
+
+
+/* --------------------------------------------
+	PROFILE PRICE
+-------------------------------------------- */
+
+.profile_price_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_price_page h2{ margin-top: 20px !important;}
+
+
+
+/* --------------------------------------------
+	PROFILE DELIVERY
+-------------------------------------------- */
+
+.profile_delivery_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_delivery_page h2{ margin-top: 20px !important;}
+
+
+
+
+
+
+
+
 #mobile-menu ul{ margin:0; padding-left:0;}
 
 @media only screen and (min-width: 1200px) {
@@ -624,6 +679,10 @@ margin-top: 0px;}
 
 .how_it_works_page img.line{ margin-top:0 !important;text-align:center;}
 
+
+.title-forms{
+	padding:0;
+}
 
 h2 {
 text-align:center;
