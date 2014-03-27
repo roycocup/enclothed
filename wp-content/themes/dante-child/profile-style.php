@@ -145,65 +145,83 @@ if (isset($_SESSION['section_2'])){
 			<div class="title-forms area1">
 				<div class="mini-wrapper-forms">
 		 	  	<div class="numbering">01</div>
-		 	  	<p>Some Key Pieces of information we need about you.</p>
+		 	  	<p>Choose pictures representing styles you like</p>
 		 	  	</div><!--mini-wrapper-forms-->
-		 	  			 
-                 	<div class="left row">
+                 	<div class="row">
                     	<div class="col-sm-6">
                             <div class="col-sm-6 col-xs-6 grid_box left">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
                                 <div id="area1_1" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative right">
+                            <div class="col-sm-6 col-xs-6 grid_box right">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
                                 <div id="area1_2" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative right">
+                            <div class="col-sm-6 col-xs-6 grid_box right">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
                                 <div id="area1_3" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative left">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
                                 <div id="area1_4" class="grid_box_overlay click"></div>
                             </div>
                         </div>
                     	<div class="col-sm-6">
-                            <div class="col-sm-6 col-xs-6 relative left">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
                                 <div id="area1_5" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative right">
+                            <div class="col-sm-6 col-xs-6 grid_box right">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
                                 <div id="area1_6" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative right">
+                            <div class="col-sm-6 col-xs-6 grid_box right">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
                                 <div id="area1_7" class="grid_box_overlay click"></div>
                             </div>
-                            <div class="col-sm-6 col-xs-6 relative left">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
                                 <img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
                                 <div id="area1_8" class="grid_box_overlay click"></div>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
+                                <div id="area1_9" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
+                                <div id="area1_10" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
+                                <div id="area1_11" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
+                                <div id="area1_12" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
+                    	<div class="col-sm-6">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
+                                <div id="area1_13" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
+                                <div id="area1_14" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+                                <div id="area1_15" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
+                                <div id="area1_16" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
                     </div>
-                 
                  </div>
-    <form action="" method="POST" name='section_2'>
-		 	  	<input type="text" class="key-info" tabindex="1" name="section_2[array]" value="" id="array" >
-     </form>
-                 <!--styles-block-->
-            </div>            
-		</div>
-</div>
-<script>
-jQuery( ".click" ).click(function() {
- 	if(jQuery(this).hasClass( "selected" )){
-		} else {
-		jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
-		}
-	jQuery( this ).toggleClass( "selected" );
-});
-</script>
 <style>
 	.area1 .row{ 
 		margin-left:-30px;
@@ -220,7 +238,6 @@ jQuery( ".click" ).click(function() {
 	.area1 .row .grid_box_overlay{
 		height:100%;
 		width:100%;
-		background-color:#000;
 		position:absolute;
 		top:0;
 		background-color:
@@ -233,16 +250,15 @@ jQuery( ".click" ).click(function() {
 		transition:background-color 0.3s ease-out;
 		background:none;}
 	.area1 .row .grid_box_overlay:hover{ 
-		background-color: rgba(247, 182, 102, 0.95);
-		z-index:10;
-		 -webkit-transition:background-color 0.3s ease-out;
+		background: rgba(247, 182, 102, 0.95);
+		-webkit-transition:background-color 0.3s ease-out;
 		-moz-transition:background-color 0.3s ease-out;
 		-o-transition:background-color 0.3s ease-out;
 		-ms-transition:background-color 0.3s ease-out;
 		transition:background-color 0.3s ease-out;
 		cursor:pointer;}
 	.area1 .row .grid_box_overlay.selected{ 
-		 -webkit-transition:background-color 0.3s ease-out;
+		-webkit-transition:background-color 0.3s ease-out;
 		-moz-transition:background-color 0.3s ease-out;
 		-o-transition:background-color 0.3s ease-out;
 		-ms-transition:background-color 0.3s ease-out;
@@ -250,10 +266,174 @@ jQuery( ".click" ).click(function() {
 		background:url(<?php bloginfo('template_url') ?>-child/images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
 	
 
-@media only screen and (max-width: 767px) {
-	.area1 .row{ margin-left:0px; margin-right:0px;}
-}
+	@media only screen and (max-width: 767px) {
+		.area1 .row{ margin-left:0px; margin-right:0px;}
+	}
 </style>
+
+
+			<div class="title-forms area2">
+				<div class="mini-wrapper-forms">
+		 	  	<div class="numbering">02</div>
+		 	  	<p>Favourite brands - not to recieve them but to tell us about your style</p>
+		 	  	</div><!--mini-wrapper-forms-->
+                 	<div class="row" style="border-top: 1px solid #c1c1c1;">
+                    	<div class="col-sm-6 grid_left">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+                                <div id="area2_1" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+                                <div id="area2_2" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+                                <div id="area2_3" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+                                <div id="area2_4" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
+                    	<div class="col-sm-6 grid_right">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+                                <div id="area2_5" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+                                <div id="area2_6" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+                                <div id="area2_7" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+                                <div id="area2_8" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
+                    	<div class="col-sm-6 grid_left">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+                                <div id="area2_9" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+                                <div id="area2_10" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+                                <div id="area2_11" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+                                <div id="area2_12" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
+                    	<div class="col-sm-6 grid_right">
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+                                <div id="area2_13" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+                                <div id="area2_14" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box right">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+                                <div id="area2_15" class="grid_box_overlay click"></div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 grid_box left">
+                                <img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+                                <div id="area2_16" class="grid_box_overlay click"></div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+
+
+
+
+    <form action="" method="POST" name='section_2'>
+		 	  	<input type="text" class="key-info" tabindex="1" name="section_2[array]" value="" id="array" >
+     </form>
+                 <!--styles-block-->
+            </div>            
+		</div>
+</div>
+
+<style>
+	.area2 .row{ 
+		margin-left:-30px;
+		margin-right:-31px;}
+	.area2 .row .col-sm-6{ 
+		padding:0 ;
+		margin-bottom:0 ;}
+	.area2 .row .col-sm-6 .left{ 
+		float:left;}
+	.area2 .row .col-sm-6 .right{ 
+		float:right !important;}
+	.area2 .row .grid_box{ 
+		position:relative;
+		border-right:1px solid #c1c1c1;
+		border-bottom:1px solid #c1c1c1;
+		}
+	.area2 .row .grid_box_overlay{
+		height:100%;
+		width:100%;
+		position:absolute;
+		top:0;
+		background-color:
+		transparent;
+		z-index:10;
+		-webkit-transition:background-color 0.3s ease-out;
+		-moz-transition:background-color 0.3s ease-out;
+		-o-transition:background-color 0.3s ease-out;
+		-ms-transition:background-color 0.3s ease-out;
+		transition:background-color 0.3s ease-out;
+		background:none;}
+	.area2 .row .grid_box_overlay:hover{ 
+		background: rgba(247, 182, 102, 0.95);
+		-webkit-transition:background-color 0.3s ease-out;
+		-moz-transition:background-color 0.3s ease-out;
+		-o-transition:background-color 0.3s ease-out;
+		-ms-transition:background-color 0.3s ease-out;
+		transition:background-color 0.3s ease-out;
+		cursor:pointer;}
+	.area2 .row .grid_box_overlay.selected{ 
+		-webkit-transition:background-color 0.3s ease-out;
+		-moz-transition:background-color 0.3s ease-out;
+		-o-transition:background-color 0.3s ease-out;
+		-ms-transition:background-color 0.3s ease-out;
+		transition:background-color 0.3s ease-out;
+		background:url(<?php bloginfo('template_url') ?>-child/images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
+	
+
+	@media only screen and (max-width: 767px) {
+		.area2 .row{ margin-left:0px; margin-right:0px;}
+		.area2 .row .grid_box{ 
+		position:relative;
+		border:none;
+		}
+
+	} 
+		
+</style>
+
+
+<script>
+jQuery( ".click" ).click(function() {
+ 	if(jQuery(this).hasClass( "selected" )){
+		
+		} else {
+		jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
+		}
+	jQuery( this ).toggleClass( "selected" );
+});
+</script>
 
 
 	
