@@ -7,15 +7,15 @@
 ?>
 <?php get_header(); ?>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
 <script>
 jQuery(document).ready(function(){
-	jQuery( "#datepicker" ).datepicker( jQuery.datepicker.regional[ "uk" ] );
-	jQuery( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
-	jQuery( "#datepicker" ).datepicker();
+	// jQuery( "#datepicker" ).datepicker( jQuery.datepicker.regional[ "uk" ] );
+	// jQuery( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+	// jQuery( "#datepicker" ).datepicker();
 });
 
 </script>
