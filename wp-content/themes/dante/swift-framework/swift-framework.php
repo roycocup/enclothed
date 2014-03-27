@@ -17,14 +17,14 @@
 	
 	/* CUSTOM POST TYPES
 	================================================== */  
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/portfolio-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/gallery-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/team-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/clients-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/testimonials-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/jobs-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/faqs-type.php');
-	require_once(SF_FRAMEWORK_PATH . '/custom-post-types/sf-post-type-permalinks.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/portfolio-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/gallery-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/team-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/clients-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/testimonials-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/jobs-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/faqs-type.php');
+	// require_once(SF_FRAMEWORK_PATH . '/custom-post-types/sf-post-type-permalinks.php');
 	
 	
 	/* SWIFT PAGE BUILDER
