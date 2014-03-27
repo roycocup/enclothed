@@ -146,26 +146,37 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
-								<form action="" method="POST" name='section_1'>
-									<?php $nonce = wp_create_nonce( get_uri() ); ?>
-									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+    <form action="" method="POST" name='section_4'>
+        <?php $nonce = wp_create_nonce( get_uri() ); ?>
+            <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+			<div class="title-forms">
+				<div class="mini-wrapper-forms">
+		 	  	<div class="numbering">01</div>
+		 	  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		
+			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
+					<option value="Date of Birth">How did you hear about enclothed?</option>
+					<option value="The Internet">The Internet</option>
+					<option value="Word of Mouth">Word of Mouth</option>
+					<option value="A Friend ">A Friend </option>
+					<option value="Magazine Advert">Magazine Advert</option>
+					<option value="Email Marketing">Email Marketing</option>
+					<option value="Magazine Article">Magazine Article</option>
+					<option value="Promotional Material">Promotional Material</option>
+					<option value="Other">Other</option>
+			</select>
+			
+		 	  	</div><!--mini-wrapper-forms-->
+		 	  	
+		  <div class="mini-wrapper5">
+            		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+                <button class="button4" onclick="submit()">Save and Continue</button>
+		 </div><!--mini-wrapper4-->
+		 
+                 </div>
+                </form>
+                 <!--styles-block-->
 
-
-
-								<!-- Louis... please do it here -->
-
-
-
-
-
-									<div class="mini-wrapper5">
-										<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-										<button class="button4" onclick="submit()">Save and Continue</button>
-									</div><!--mini-wrapper4-->
-
-								</div>
-							</form>
-							<!--styles-block-->
 						</div>            
 					</div>
 				</div>

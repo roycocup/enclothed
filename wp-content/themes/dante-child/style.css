@@ -648,8 +648,8 @@ margin-top: 0px;}
 	PROFILE PRICE
 -------------------------------------------- */
 
-.profile_price_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
-.profile_price_page h2{ margin-top: 20px !important;}
+.profile_pricing_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.profile_pricing_page h2{ margin-top: 20px !important;}
 
 
 
@@ -689,3 +689,25 @@ text-align:center;
 }
 p{text-align:center;}
 }
+
+/*Value Sliders Styling---------------------------------------------------*/
+
+.value-slider1{
+	width: 100%;
+	height: 140px;
+	border-left: 1px solid #cccdcc;	
+	border-right: 1px solid #cccdcc;	
+	border-bottom: 1px solid #cccdcc;	
+	vertical-align: middle;
+}
+
+.slider-wrap{
+	width: auto;
+	max-width: 600px;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	top: -10px;
+}
+
