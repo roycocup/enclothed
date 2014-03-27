@@ -7,22 +7,6 @@
 ?>
 <?php get_header(); ?>
 
-<script>
-	jQuery(document).ready(function($){
-		$(function() {
-			$( "#slider" ).slider({
-				value:100,
-				min: 0,
-				max: 500,
-				step: 50,
-				slide: function( event, ui ) {
-					$( "#amount" ).val( "$" + ui.value );
-				}
-			});
-			$( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
-		});
-	});
-</script>
 
 
 
@@ -180,15 +164,94 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 												<!-- sliders -->
-												<p>
-													<label for="amount">Donation amount ($50 increments):</label>
-													<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
-												</p>
+												<script>
+                                                    jQuery(document).ready(function($){
+														$(function() {
+                                                            $( "#tshirt_slider" ).slider({
+                                                                value:40,
+                                                                min: 0,
+                                                                max: 80,
+                                                                step: 20,
+                                                                slide: function( event, ui ) {
+                                                                    $( "#tshirt_selection" ).val(increments[ui.value]);
+                                                                }
+                                                            });
+															var increments = {
+																	  0: "XS", 
+																	  20: "S",
+																	  40: "M",
+																	  60: "L",
+																	  80: "XL"
+																};
+																
+															$( "#tshirt_selection" ).val(increments[40]);
+                                                      });
+													});
+														
+														
+													
+                                                </script>
 
-												<div id="slider"></div>
+												<div class="col-sm-2"></div>
+												<div  class="col-sm-8">
+                                                    <div id="tshirt_slider">
+                                                        <div class="notch_big" style="left:0%;"><div class="notch_label">XS</div></div>
+                                                        <div class="notch_big" style="left:25%;"><div class="notch_label">S</div></div>
+                                                        <div class="notch_big" style="left:50%;"><div class="notch_label">M</div></div>
+                                                        <div class="notch_big" style="left:75%;"><div class="notch_label">L</div></div>
+                                                        <div class="notch_big" style="left:100%;"><div class="notch_label">XL</div></div>
+                                                        <div class="slider_left"></div>
+                                                        <div class="slider_right"></div>
+                                                    </div>
+                                                </div>
+												<div class="col-sm-2">
+													<input type="text" id="tshirt_selection" class="slider_selection" disabled="disabled">
+												</div>
 
-
-
+												<style>
+												input .slider_selection{ font-family:proxbold; color:#f7b666; font-size:40px;}
+												.notch_big{
+													position:absolute; 
+													bottom:-9px; 
+													background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/notch_big.png) no-repeat ; 
+													width:2px; 
+													height:52px; 
+													margin-left:-1px; 
+													background-position:bottom;
+													overflow:visible; }
+												.slider_left{ 
+													float:left; 
+													background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/slider_left.jpg) no-repeat ;
+													width:19px;
+													height:14px;
+													margin-left:-19px;}
+												.slider_right{ 
+													float:right;
+													background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/slider_right.jpg) no-repeat;
+													width:19px;
+													height:14px;
+													margin-right:-19px;}
+												.notch_label {
+													width:70px;
+													margin-left:-35px;
+													float:left;
+													text-align:center;
+													font-family:proxbold;
+													font-size:13px;	}
+												 .ui-slider{ 
+													 border-radius:0; 
+													 background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/slider.jpg) repeat-x ; 
+													 height:14px; border:none; 
+													 cursor:pointer !important;}
+												 .ui-slider-handle{
+													 background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/slider_arrow.png) !important;
+													 height:27px !important;
+													 width:20px !important;
+													 border:none !important;
+													 cursor:pointer !important;
+													 margin-top:5px !important; 
+													 border-radius:0 !important;}
+												</style>
 
 												<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
 													<option value="Date of Birth">How did you hear about enclothed?</option>
