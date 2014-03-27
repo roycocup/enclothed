@@ -23,6 +23,7 @@
 </script>
 
 
+
 <?php 
 if (isset($_SESSION['section_3'])){
 	$section = $_SESSION['section_3'];	
@@ -160,6 +161,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
+<<<<<<< HEAD
 								<form action="" method="POST" name='section_3'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
@@ -173,6 +175,47 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
 												</style>
 		
+=======
+                                    <form action="" method="POST" name='section_3'>
+                                        <?php $nonce = wp_create_nonce( get_uri() ); ?>
+                                            <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+                                            <div class="title-forms">
+                                                <div class="mini-wrapper-forms">
+                                                <div class="numbering">01</div>
+                                                <p>Your size and measurements. What fits you well.</p>
+                                                <p class="title_sub_heading">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
+                                        <style>
+										.title_sub_heading{
+										font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
+										</style>
+                                        
+                                        
+                                            <select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
+                                                    <option value="Date of Birth">How did you hear about enclothed?</option>
+                                                    <option value="The Internet">The Internet</option>
+                                                    <option value="Word of Mouth">Word of Mouth</option>
+                                                    <option value="A Friend ">A Friend </option>
+                                                    <option value="Magazine Advert">Magazine Advert</option>
+                                                    <option value="Email Marketing">Email Marketing</option>
+                                                    <option value="Magazine Article">Magazine Article</option>
+                                                    <option value="Promotional Material">Promotional Material</option>
+                                                    <option value="Other">Other</option>
+                                            </select>
+                                            
+                                                </div><!--mini-wrapper-forms-->
+                                                
+                                          <div class="mini-wrapper5">
+                                                    <input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+                                                <button class="button4" onclick="submit()">Save and Continue</button>
+                                         </div><!--mini-wrapper4-->
+                                         
+                                                 </div>
+                                                </form>
+							<!--styles-block-->
+						</div>            
+					</div>
+				</div>
+>>>>>>> FETCH_HEAD
 
 												<!-- sliders -->
 												<p>
@@ -211,6 +254,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div>
 						</div>
 
+<<<<<<< HEAD
 
 
 						<!-- CLOSE page -->
@@ -248,3 +292,5 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 		</script>
 
 
+=======
+>>>>>>> FETCH_HEAD
