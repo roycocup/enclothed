@@ -220,8 +220,9 @@ class EnclothedProfile {
 		
 	}
 
-
+	
 	public function process_style_form(){
+		// dump($_POST); die;
 		$data = 'this is the data';
 		wp_redirect( home_url().'/profile/sizing' ); 
 		exit;
