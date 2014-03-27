@@ -51,6 +51,14 @@ if ( !function_exists( 'debug_log' ) ) {
 		file_put_contents( $file , $msg, FILE_APPEND);
 	}
 }
+
+
+function my_add_frontend_scripts() {
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-datepicker');
+}
+add_action('wp_enqueue_scripts', 'my_add_frontend_scripts');
 	
 			
 
