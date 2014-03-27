@@ -1,25 +1,21 @@
 <?php
 /**
 *
-* template name: Profile Sizing
+* template name: Profile Authorize
 *
 **/
+
+get_header();
 ?>
-<?php get_header(); ?>
-
-
 
 <?php 
-if (isset($_SESSION['section_3'])){
-	$section = $_SESSION['section_3'];	
-}else if(isset($_POST['section_3'])){
-	$section = $_POST['section_3'];
-} else {
-	$section = array();
-}
-
-
+$ldm_sagepay = new ldm_sagepay();
+$config = $ldm_sagepay->getConfig();
+$config['total'] = '500';
+$sagepay = $ldm_sagepay->getInstance($config);
+$form = $sagepay->renderForm();
 ?>
+
 
 <?php
 $options = get_option('sf_dante_options');
@@ -124,67 +120,51 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<div class="row">
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
 							<div class="spb_wrapper clearfix">
-								<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>
-									ENCLOTHED PROFILE</span></h2>
+								<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>ENCLOTHED PROFILE</span></h2>
 									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
-								</div> 
-							</div>
+							</div> 
 						</div>
-						<div class="row">
-							<!-- Main Menu -->
-							<div class="details-menu">
-								<ul>
-									<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
-									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
-									<li><span class='active'>Size and Color</span></li>
-									<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
-									<li class="hidden-sm hidden-xs"><span>Delivery</span></li>
-								</ul>
-								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-							</div><!--details-menu-->
+					</div>
+					<div class="row">
+						<!-- Main Menu -->
+						<div class="details-menu">
+							<ul>
+								<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
+								<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
+								<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+								<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
+								<li><span class='active'>Delivery</span></li>
+							</ul>
+							<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
+						</div><!--details-menu-->
 
-							<div class="styles-block">
-								<div class="fade-border-left"></div>
-								<div class="fade-border-right"></div>
-								<form action="" method="POST" name='section_1'>
-									<?php $nonce = wp_create_nonce( get_uri() ); ?>
-									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-
-
-
-								<!-- Louis... please do it here -->
+						<div class="styles-block">
+							<div class="fade-border-left"></div>
+							<div class="fade-border-right"></div>
+							<?php echo $form; ?>
+							<?php $nonce = wp_create_nonce( get_uri() ); ?>
+							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
 
+							<!-- Your stuff here please louis -->
 
 
 
-									<div class="mini-wrapper5">
-										<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-										<button class="button4" onclick="submit()">Save and Continue</button>
-									</div><!--mini-wrapper4-->
+							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+							<div class="mini-wrapper5">
+								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+								<button class="button4" onclick="submit()">Save and Continue</button>
+							</div><!--mini-wrapper4-->
+						</form>
 
-								</div>
-							</form>
-							<!--styles-block-->
+						<!--styles-block-->
 						</div>            
 					</div>
 				</div>
-
-
-
 				<!-- CLOSE page -->
 			</div>
-
 		<?php endif; ?>
-
-
 	</div>
-
-	<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
 </div>
-<?php } ?>
 
-<!--// WordPress Hook //-->
-<?php get_footer(); ?>
-
-
+	<?php get_footer(); ?>

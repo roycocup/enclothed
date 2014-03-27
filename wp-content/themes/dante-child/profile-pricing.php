@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* template name: Profile Sizing
+* template name: Profile Pricing
 *
 **/
 ?>
@@ -10,10 +10,10 @@
 
 
 <?php 
-if (isset($_SESSION['section_3'])){
-	$section = $_SESSION['section_3'];	
-}else if(isset($_POST['section_3'])){
-	$section = $_POST['section_3'];
+if (isset($_SESSION['section_4'])){
+	$section = $_SESSION['section_4'];	
+}else if(isset($_POST['section_4'])){
+	$section = $_POST['section_4'];
 } else {
 	$section = array();
 }
@@ -136,8 +136,8 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<ul>
 									<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
 									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
-									<li><span class='active'>Size and Color</span></li>
-									<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
+									<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+									<li><span class='active'>Price and Summary</span></li>
 									<li class="hidden-sm hidden-xs"><span>Delivery</span></li>
 								</ul>
 								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
