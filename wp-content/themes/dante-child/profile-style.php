@@ -249,38 +249,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 									</div>
 								</div>
-								<style>
-									.area1 .row{ margin-left:-30px; margin-right:-30px;}
-									.area1 .row .col-sm-6{ padding:0 ;margin-bottom:0 ;}
-									.area1 .row .col-sm-6 .left{ float:left;}
-									.area1 .row .col-sm-6 .right{ float:right !important;}
-									.area1 .row .grid_box{ position:relative;}
-									.area1 .row .grid_box_overlay{height:100%;width:100%;position:absolute;top:0;background-color:transparent;z-index:10;
-										-webkit-transition:background-color 0.3s ease-out;
-										-moz-transition:background-color 0.3s ease-out;
-										-o-transition:background-color 0.3s ease-out;
-										-ms-transition:background-color 0.3s ease-out;
-										transition:background-color 0.3s ease-out;
-										background:none;}
-									.area1 .row .grid_box_overlay:hover{ background: rgba(247, 182, 102, 0.95);
-										-webkit-transition:background-color 0.3s ease-out;
-										-moz-transition:background-color 0.3s ease-out;
-										-o-transition:background-color 0.3s ease-out;
-										-ms-transition:background-color 0.3s ease-out;
-										transition:background-color 0.3s ease-out;
-										cursor:pointer;}
-									.area1 .row .grid_box_overlay.selected{ 
-										-webkit-transition:background-color 0.3s ease-out;
-										-moz-transition:background-color 0.3s ease-out;
-										-o-transition:background-color 0.3s ease-out;
-										-ms-transition:background-color 0.3s ease-out;
-										transition:background-color 0.3s ease-out;
-										background:url(<?php bloginfo('template_url') ?>-child/images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
-
-									@media only screen and (max-width: 767px) {
-										.area1 .row{ margin-left:0px; margin-right:0px;}
-									}
-								</style>
 
 
 								<div class="title-forms area2">
@@ -379,41 +347,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						</div>
 					</div>
 
-					<style>
-						.area2 .row{ 
-							margin-left:-30px;
-							margin-right:-31px;}
-						.area2 .row .col-sm-6{ padding:0 ;margin-bottom:0 ;}
-						.area2 .row .col-sm-6 .left{ float:left;}
-						.area2 .row .col-sm-6 .right{ float:right !important;}
-						.area2 .row .grid_box{ position:relative;border-right:1px solid #c1c1c1;border-bottom:1px solid #c1c1c1;}
-						.area2 .row .grid_box_overlay{height:100%;width:100%;position:absolute;top:0;background-color:transparent;z-index:10;
-							-webkit-transition:background-color 0.3s ease-out;
-							-moz-transition:background-color 0.3s ease-out;
-							-o-transition:background-color 0.3s ease-out;
-							-ms-transition:background-color 0.3s ease-out;
-							transition:background-color 0.3s ease-out;
-							background:none;}
-						.area2 .row .grid_box_overlay:hover{ background: rgba(247, 182, 102, 0.95);
-							-webkit-transition:background-color 0.3s ease-out;
-							-moz-transition:background-color 0.3s ease-out;
-							-o-transition:background-color 0.3s ease-out;
-							-ms-transition:background-color 0.3s ease-out;
-							transition:background-color 0.3s ease-out;
-							cursor:pointer;}
-						.area2 .row .grid_box_overlay.selected{ 
-							-webkit-transition:background-color 0.3s ease-out;
-							-moz-transition:background-color 0.3s ease-out;
-							-o-transition:background-color 0.3s ease-out;
-							-ms-transition:background-color 0.3s ease-out;
-							transition:background-color 0.3s ease-out;
-							background:url(<?php bloginfo('template_url') ?>-child/images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
-						@media only screen and (max-width: 767px) {
-							.area2 .row{ margin-left:0px; margin-right:0px;}
-							.area2 .row .grid_box{ position:relative;border:none;}
-						} 
-
-					</style>
 
 
 					<!-- CLOSE page -->

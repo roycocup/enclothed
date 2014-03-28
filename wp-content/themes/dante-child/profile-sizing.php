@@ -21,6 +21,33 @@ if (isset($_SESSION['section_3'])){
 
 
 ?>
+<script>
+	jQuery(document).ready(function($){
+		// This is what enables the images to be added to the form 
+		// when they are clicked and removed when clicked again
+		$('.click').toggle(function(){
+			var image = $(this).attr('id');
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_3['+image+']',
+				value: 'checked',
+			}).appendTo('form[name="section_3"]');
+		}, function(){
+			var image = $(this).attr('id'); 
+			$('form input[name="section_3['+image+']"').remove();
+		});
+
+		jQuery( ".click" ).click(function() {
+			if(jQuery(this).hasClass( "selected" )){
+				
+			} else {
+				jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
+			}
+			jQuery(this).toggleClass( "selected" );
+		});
+
+	});
+</script>
 
 <?php
 $options = get_option('sf_dante_options');
@@ -258,6 +285,18 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
                                                 </div>
 
                                                 <div class="slider_wrapper">
+												<div class="col-sm-2 slider_label">Sleeve Length</div>
+												<div class="col-sm-10">
+													<div class="options_wrapper">
+                                                    <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
+                                                    <div class="col-sm-4 option click">Short</div>
+                                                    <div class="col-sm-4 option click selected">Regular</div>
+                                                    <div class="col-sm-4 option click" style="border-bottom: none !important; border-right: none !important;">Long</div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                                <div class="slider_wrapper">
 												<div class="col-sm-2 slider_label">Shoes</div>
 												<div class="col-sm-8 slider">
                                                     <div id="shoes_slider" style="margin-top:20px;">
@@ -328,10 +367,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												.slider_label {
 													text-align:right;
 													font-family:proxbold;
-													font-size:15px;
+													font-size:14px;
 													color:#000;
 													text-transform:uppercase;
-													padding-right:30px;
+													padding-right:25px;
 													padding-top:15px;}
 												.notch_label {
 													color:#000;
@@ -354,26 +393,56 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													 cursor:pointer !important;
 													 margin-top:5px !important; 
 													 border-radius:0 !important;}
+												.options_wrapper{
+													border:1px solid #c1c1c1;
+													float:left;
+													width:100%;
+													margin-top:-6px;
+													position:relative;}
+												.option{
+													margin-bottom:0;
+													text-align:center;
+													text-transform:uppercase;
+													color:#000;
+													font-family:proxbold;
+													padding:20px;
+													min-height:60px;
+													font-size:13px;}
+												.option:hover{
+													margin-bottom:0;
+													text-align:center;
+													text-transform:uppercase;
+													color:#000;
+													font-family:proxbold;
+													padding:20px;}
+												.option:hover{ background: rgba(247, 182, 102, 0.95);
+													-webkit-transition:background-color 0.3s ease-out;
+													-moz-transition:background-color 0.3s ease-out;
+													-o-transition:background-color 0.3s ease-out;
+													-ms-transition:background-color 0.3s ease-out;
+													transition:background-color 0.3s ease-out;
+													cursor:pointer;}
+												.option.selected{ 
+													-webkit-transition:background-color 0.3s ease-out;
+													-moz-transition:background-color 0.3s ease-out;
+													-o-transition:background-color 0.3s ease-out;
+													-ms-transition:background-color 0.3s ease-out;
+													transition:background-color 0.3s ease-out;
+													background:url(images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
+
 												@media only screen and (max-width: 767px) {
 													.slider{ padding-left:50px; padding-right:50px; margin-top:50px;}
 													input[type="text"].slider_selection{ text-align:center; font-size:40px !important;}
 													.slider_label{ text-align:center; font-size:30px;}
 													.slider_wrapper{ margin:0; padding: 40px 0 0 0;}
-													.notch_label { font-size:10px;
+													.notch_label { font-size:10px;}
+													.options_wrapper{
+														max-width:300px;
+														margin:auto;
+														float:none;	
+														margin-bottom:60px;												}
 												}
 												</style>
-
-												<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
-													<option value="Date of Birth">How did you hear about enclothed?</option>
-													<option value="The Internet">The Internet</option>
-													<option value="Word of Mouth">Word of Mouth</option>
-													<option value="A Friend ">A Friend </option>
-													<option value="Magazine Advert">Magazine Advert</option>
-													<option value="Email Marketing">Email Marketing</option>
-													<option value="Magazine Article">Magazine Article</option>
-													<option value="Promotional Material">Promotional Material</option>
-													<option value="Other">Other</option>
-												</select>
 
 											</div><!--mini-wrapper-forms-->
 
