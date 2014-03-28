@@ -96,5 +96,5 @@ if (!function_exists('sf_custom_content_extend')) {
 	add_action('init', 'sf_custom_content_extend', 0);
 }
 			
-
+add_filter('show_admin_bar', '__return_false');
 ?>

@@ -204,7 +204,6 @@ margin: 0 5%;
 #logo {
 background: transparent url('images/logo-black.png') no-repeat;
 width: 90% !important;
-max-width: 232px !important;
 height:48px !important;
 max-height:48px !important;
 }
@@ -287,6 +286,7 @@ padding-top: 200px !important; }
 padding-bottom: 160px !important; }
 
 @media only screen and (max-width: 767px){
+.sticky-header{margin-top:40px;}
 .accordian-title {
 width: 90%;
 position: relative;
