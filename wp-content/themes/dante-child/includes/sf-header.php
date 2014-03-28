@@ -543,9 +543,9 @@
 				if (is_user_logged_in()) {
 					$aux_links_output .= '<li><a href="'.wp_logout_url(home_url()).'">'. __("Logout", "swiftframework") .'</a></li>'. "\n";
 					if ( $myaccount_page_id ) {
-					$aux_links_output .= '<li><a href="'.get_permalink( $myaccount_page_id ).'" class="admin-link">'. __("My Account", "swiftframework") .'</a></li>'. "\n";
+						// $aux_links_output .= '<li><a href="'.get_permalink( $myaccount_page_id ).'" class="admin-link">'. __("My Account", "swiftframework") .'</a></li>'. "\n";
 					} else {
-					$aux_links_output .= '<li><a href="'.get_admin_url().'" class="admin-link">'. __("My Account", "swiftframework") .'</a></li>'. "\n";
+						// $aux_links_output .= '<li><a href="'.get_admin_url().'" class="admin-link">'. __("My Account", "swiftframework") .'</a></li>'. "\n";
 					}
 				} else {
 					// $aux_links_output .= '<li><a href="'.$login_url.'">'. __("Login", "swiftframework") .'</a></li>'. "\n";
