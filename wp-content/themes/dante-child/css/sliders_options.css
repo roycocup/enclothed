@@ -7,7 +7,7 @@
 input[type="text"].slider_selection{
 	font-family:proxbold !important;
 	color:#f7b666 !important;
-	font-size:34px !important;
+	font-size:30px !important;
 	border:none !important;
 	padding-top:0 !important;
 	background:none !important; 
@@ -124,12 +124,13 @@ input[type="text"].slider_selection{
 @media only screen and (max-width: 767px) {
 	.slider{ padding-left:50px; padding-right:50px; margin-top:50px;}
 	input[type="text"].slider_selection{ text-align:center; font-size:40px !important;}
-	.slider_label{ text-align:center; font-size:30px;}
+	.slider_label{ text-align:center !important; font-size:30px !important;}
 	.slider_wrapper{ margin:0; padding: 40px 0 0 0;}
 	.notch_label { font-size:10px;}
 	.options_wrapper{
-		max-width:300px;
-		margin:auto;
-		float:none;	
-		margin-bottom:60px;												}
+		max-width:300px !important;
+		margin:auto !important;
+		float:none !important;	
+		margin-bottom:60px !important;
 	}
+}

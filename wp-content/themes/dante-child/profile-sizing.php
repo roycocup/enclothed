@@ -111,6 +111,44 @@ if (isset($_SESSION['section_3'])){
 			$( "#jacket_selection" ).val($( "#jacket_slider" ).slider( "value" ) );
 		});
 
+		$(function() {
+			$( "#trouser_slider" ).slider({
+				value:30,
+				min: 26,
+				max: 40,
+				step: 2,
+				slide: function( event, ui ) {
+					$( "#trouser_selection" ).val(ui.value );
+				}
+			});
+			$( "#trouser_selection" ).val($( "#trouser_slider" ).slider( "value" ) );
+		});
+
+		$(function() {
+			$( "#inside_leg_slider" ).slider({
+				value:42,
+				min: 28,
+				max: 46,
+				step: 2,
+				slide: function( event, ui ) {
+					$( "#inside_leg_selection" ).val(increments[ui.value]);
+				}
+			});
+			var increments = {
+				28: "28", 
+				30: "30",
+				32: "32",
+				34: "34",
+				36: "36",
+				38: "38", 
+				40: "40",
+				42: "SHORT",
+				44: "REG",
+				46: "LONG"
+			};
+			$( "#inside_leg_selection" ).val(increments[42]);
+		});
+
 	});
 </script>
 
@@ -248,10 +286,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
 											<p>Your size and measurements. What fits you well.</p>
-											<p class="title_sub_heading">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
+											<p class="georgia_text">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
 											<style>
-												.title_sub_heading{
-													font-family:Georgia, 'Times New Roman', Times, serif !important; font-style:italic !important; text-transform: none !important; letter-spacing:0 !important; font-size:14px !important; margin-top:-30px !important;}
+											.georgia_text{
+											font-family:Georgia, 'Times New Roman', Times, serif !important;
+											 font-style:italic !important;
+											 text-transform: none !important; 
+											 letter-spacing:0 !important; 
+											 font-size:14px !important; 
+											 margin-top:-30px !important;
+											 }
 												</style>
 
 
@@ -376,6 +420,72 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
+												<div class="slider_wrapper">
+													<div class="col-sm-2 slider_label">Trouser</div>
+													<div class="col-sm-8 slider">
+														<div id="trouser_slider" style="margin-top:20px;">
+															<div class="notch_big" style="left:0%;"><div class="notch_label">26</div></div>
+															<div class="notch_big" style="left:14.28%;"><div class="notch_label">28</div></div>
+															<div class="notch_big" style="left:28.56%;"><div class="notch_label">30</div></div>
+															<div class="notch_big" style="left:42.84%;"><div class="notch_label">32</div></div>
+															<div class="notch_big" style="left:57.12%;"><div class="notch_label">34</div></div>
+															<div class="notch_big" style="left:71.4%;"><div class="notch_label">36</div></div>
+															<div class="notch_big" style="left:85.68%;"><div class="notch_label">38</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">40</div></div>
+															<div class="slider_left"></div>
+															<div class="slider_right"></div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<input type="text" id="trouser_selection" class="slider_selection" disabled="disabled">
+													</div>
+												</div>
+
+
+
+												<div class="slider_wrapper">
+													<div class="col-sm-2 slider_label">Inside leg</div>
+													<div class="col-sm-8 slider">
+														<div id="inside_leg_slider" style="margin-top:20px;">
+															<div class="notch_big" style="left:0%;"><div class="notch_label">28</div></div>
+															<div class="notch_small" style="left:11.11%;"><div class="notch_label">30</div></div>
+															<div class="notch_big" style="left:22.22%;"><div class="notch_label">32</div></div>
+															<div class="notch_small" style="left:33.33%;"><div class="notch_label">34</div></div>
+															<div class="notch_big" style="left:44.44%;"><div class="notch_label">36</div></div>
+															<div class="notch_small" style="left:55.55%;"><div class="notch_label">38</div></div>
+															<div class="notch_big" style="left:66.66%;"><div class="notch_label">40</div></div>
+															<div class="notch_small" style="left:77.77%;"><div class="notch_label">SHORT</div></div>
+															<div class="notch_big" style="left:88.88%;"><div class="notch_label">REG</div></div>
+															<div class="notch_small" style="left:100%;"><div class="notch_label">LONG</div></div>
+															<div class="slider_left"></div>
+															<div class="slider_right"></div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<input type="text" id="inside_leg_selection" class="slider_selection" disabled="disabled">
+													</div>
+												</div>
+
+
+
+											</div><!--mini-wrapper-forms-->
+
+											
+										</div>
+
+
+									<div class="title-forms" style="border-top: 1px solid #c1c1c1; position: relative;">
+										<div class="line_thick" style="position: absolute; height:8px; top:0; width:120px; left:50%; margin-left:-60px;"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt="" style="float:left;" /></div>
+										<div class="mini-wrapper-forms">
+											<div class="numbering">02</div>
+											<p>The more you can tell us the better the fit will be.</p>
+
+									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about your size?</label>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+									<label for="checkbox1"class="css-label">Is there any particular brands that fit you well?</label>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+											<p class="georgia_text no-margin-bottom">(This won't affect what brands we send you, it's just about fit)</p>
+					
 											</div><!--mini-wrapper-forms-->
 
 											<div class="mini-wrapper5">

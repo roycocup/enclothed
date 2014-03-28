@@ -747,6 +747,7 @@ details-menu li span:last-child{
 	padding: 0 30px 0 30px;
 /*	border-bottom: 1px solid #cccdcc; */
 	background: url(images/texture.png) 2px -5px repeat-x;
+	position:relative;
 }
 
 .title p, .title2 p, .title3 p{
