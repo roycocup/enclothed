@@ -52,7 +52,11 @@ if ( !function_exists( 'debug_log' ) ) {
 	}
 }
 
-
+/**
+*
+* This will add all the custom JS files
+*
+**/
 function my_add_frontend_scripts() {
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-core');
@@ -61,11 +65,26 @@ function my_add_frontend_scripts() {
 }
 add_action('wp_enqueue_scripts', 'my_add_frontend_scripts');
 
-
+/**
+*
+* This will add all the custom stylesheets for the JS above 
+*
+**/
 function add_jquery_stylesheets(){
 	wp_enqueue_style('jquery-css', '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css');
 }
 add_action('wp_enqueue_scripts', 'add_jquery_stylesheets');
+
+
+/**
+*
+* Changing logo on the admin page 
+*
+**/
+function admin_logo() { ?>
+    <style type="text/css">#login h1 a {background-image: url( '<?php echo bloginfo( "stylesheet_directory" )."/images/logo-black.png"; ?>' )!important;}</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'admin_logo' );
 
 			
 
