@@ -100,10 +100,10 @@ if (isset($_SESSION['section_3'])){
 
 		$(function() {
 			$( "#jacket_slider" ).slider({
-				value:18.5,
-				min: 14,
-				max: 20,
-				step: .5,
+				value:48,
+				min: 32,
+				max: 56,
+				step: 2,
 				slide: function( event, ui ) {
 					$( "#jacket_selection" ).val(ui.value );
 				}
@@ -315,7 +315,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 												</div>
-
+					
 
 
 
