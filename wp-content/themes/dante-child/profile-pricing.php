@@ -7,7 +7,24 @@
 ?>
 <?php get_header(); ?>
 
+<script>
+	jQuery(document).ready(function($){
+		$(function() {
+			$( "#shirt_price" ).slider({
+				value:50,
+				min: 0,
+				max: 80,
+				step: 20,
+				slide: function( event, ui ) {
+					$( "#shirt_selection" ).val(increments[ui.value]);
+				}
+			});
 
+			$( "#shirt_selection" ).val($( "#shirt_slider" ).slider( "value" ) );
+		});
+
+	});
+</script>
 
 <?php 
 if (isset($_SESSION['section_4'])){
@@ -20,6 +37,9 @@ if (isset($_SESSION['section_4'])){
 
 
 ?>
+
+
+
 
 <?php
 $options = get_option('sf_dante_options');
@@ -146,56 +166,73 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
-    <form action="" method="POST" name='section_4'>
-        <?php $nonce = wp_create_nonce( get_uri() ); ?>
-            <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-			<div class="title-forms">
-				<div class="mini-wrapper-forms">
-		 	  	<div class="numbering">01</div>
-		 	  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-		
-			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
-					<option value="Date of Birth">How did you hear about enclothed?</option>
-					<option value="The Internet">The Internet</option>
-					<option value="Word of Mouth">Word of Mouth</option>
-					<option value="A Friend ">A Friend </option>
-					<option value="Magazine Advert">Magazine Advert</option>
-					<option value="Email Marketing">Email Marketing</option>
-					<option value="Magazine Article">Magazine Article</option>
-					<option value="Promotional Material">Promotional Material</option>
-					<option value="Other">Other</option>
-			</select>
-			
-		 	  	</div><!--mini-wrapper-forms-->
-		 	  	
-		  <div class="mini-wrapper5">
-            		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-                <button class="button4" onclick="submit()">Save and Continue</button>
-		 </div><!--mini-wrapper4-->
-		 
-                 </div>
-                </form>
-                 <!--styles-block-->
 
-						</div>            
+
+								<!-- form -->
+								<form action="" method="POST" name='section_4'>
+									<?php $nonce = wp_create_nonce( get_uri() ); ?>
+									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+									<div class="title-forms">
+										
+										<div class="mini-wrapper-forms">
+											<div class="numbering">01</div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+
+											<select class="selectmenu" tabindex="10" name="section_4[box_preset]">
+												<option value="0">Choose your box</option>
+												<option value="small">Small</option>
+												<option value="medium">Medium</option>
+												<option value="big">Big</option>
+											</select>
+										</div><!--mini-wrapper-forms-->
+
+										<div class="slider_wrapper">
+													<div class="col-sm-2 slider_label">Shirt Price</div>
+													<div class="col-sm-8 slider">
+														<div id="shirt_price" style="margin-top:20px;">
+															<div class="notch_big" style="left:0%;"><div class="notch_label">£0-£50</div></div>
+															<div class="notch_big" style="left:33.3%;"><div class="notch_label">£50-£100</div></div>
+															<div class="notch_big" style="left:66.6%;"><div class="notch_label">£100-£150</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">£150+</div></div>
+															<div class="slider_left"></div>
+															<div class="slider_right"></div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<input type="text" id="shirt_selection" class="slider_selection" disabled="disabled">
+													</div>
+												</div>
+
+
+
+										<div class="mini-wrapper5">
+											<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+											<button class="button4" onclick="submit()">Save and Continue</button>
+										</div><!--mini-wrapper4-->
+
+									</div>
+								</form>
+								<!--styles-block-->
+
+							</div>            
+						</div>
 					</div>
+
+
+
+					<!-- CLOSE page -->
 				</div>
 
+			<?php endif; ?>
 
 
-				<!-- CLOSE page -->
-			</div>
+		</div>
 
-		<?php endif; ?>
-
-
+		<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
 	</div>
+	<?php } ?>
 
-	<?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
-</div>
-<?php } ?>
-
-<!--// WordPress Hook //-->
-<?php get_footer(); ?>
+	<!--// WordPress Hook //-->
+	<?php get_footer(); ?>
 
 
