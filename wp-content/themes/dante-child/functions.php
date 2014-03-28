@@ -86,6 +86,15 @@ function admin_logo() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'admin_logo' );
 
+
+/* CONTENT FUNCTIONS
+================================================== */
+if (!function_exists('sf_custom_content_extend')) {
+	function sf_custom_content_extend() {
+		include_once( bloginfo('stylesheet_directory') . 'includes/sf-header.php' );
+	}
+	add_action('init', 'sf_custom_content_extend', 0);
+}
 			
 
 ?>
