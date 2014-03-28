@@ -331,7 +331,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													font-size:15px;
 													color:#000;
 													text-transform:uppercase;
-													padding-right:20px;
+													padding-right:30px;
 													padding-top:15px;}
 												.notch_label {
 													color:#000;

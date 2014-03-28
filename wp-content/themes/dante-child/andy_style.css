@@ -3154,7 +3154,7 @@ select{
 	sans-serif;
 	text-align: left;
 	display: block;
-	padding: 10px 10px 10px 20px;
+	padding: 10px 10px 10px 20px !important;
 	margin: 50px auto 8px auto;
 	color: #525252;
 	border-radius: 0px;
@@ -3302,7 +3302,7 @@ input.other:-moz-placeholder , value {
 	sans-serif;
 	text-align: left;
 	display: block;
-	padding: 10px 10px 10px 20px;
+	padding: 10px 10px 10px 20px !important;
 	text-transform: uppercase;
 	margin:20px auto 8px auto;
 	color: #525252;
@@ -3321,7 +3321,7 @@ input.other:-moz-placeholder , value {
 	sans-serif;
 	text-align: left;
 	display: block;
-	padding: 10px 10px 10px 20px;
+	padding: 10px 10px 10px 20px !important;
 	text-transform: uppercase;
 	margin: 8px auto 50px auto;
 	color: #525252;
