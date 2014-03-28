@@ -97,6 +97,20 @@ if (isset($_SESSION['section_3'])){
 			});
 			$( "#shoes_selection" ).val($( "#shoes_slider" ).slider( "value" ) );
 		});
+
+		$(function() {
+			$( "#jacket_slider" ).slider({
+				value:18.5,
+				min: 14,
+				max: 20,
+				step: .5,
+				slide: function( event, ui ) {
+					$( "#jacket_selection" ).val(ui.value );
+				}
+			});
+			$( "#jacket_selection" ).val($( "#jacket_slider" ).slider( "value" ) );
+		});
+
 	});
 </script>
 
@@ -331,6 +345,35 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														<input type="text" id="shoes_selection" class="slider_selection" disabled="disabled">
 													</div>
 												</div>
+
+
+
+												<div class="slider_wrapper">
+													<div class="col-sm-2 slider_label">Jacket</div>
+													<div class="col-sm-8 slider">
+														<div id="jacket_slider" style="margin-top:20px;">
+															<div class="notch_big" style="left:0%;"><div class="notch_label">32</div></div>
+															<div class="notch_small" style="left:8.35%;"><div class="notch_label">34</div></div>
+															<div class="notch_big" style="left:16.7%;"><div class="notch_label">36</div></div>
+															<div class="notch_small" style="left:25.05%;"><div class="notch_label">38</div></div>
+															<div class="notch_big" style="left:33.4%;"><div class="notch_label">40</div></div>
+															<div class="notch_small" style="left:41.75%;"><div class="notch_label">42</div></div>
+															<div class="notch_big" style="left:50.1%;"><div class="notch_label">44</div></div>
+															<div class="notch_small" style="left:58.45%;"><div class="notch_label">46</div></div>
+															<div class="notch_big" style="left:66.8%;"><div class="notch_label">48</div></div>
+															<div class="notch_small" style="left:75.15%;"><div class="notch_label">50</div></div>
+															<div class="notch_big" style="left:83.5%;"><div class="notch_label">52</div></div>
+															<div class="notch_small" style="left:91.85%;"><div class="notch_label">54</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">56</div></div>
+															<div class="slider_left"></div>
+															<div class="slider_right"></div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<input type="text" id="jacket_selection" class="slider_selection" disabled="disabled">
+													</div>
+												</div>
+
 
 
 											</div><!--mini-wrapper-forms-->
