@@ -24,10 +24,25 @@
 
 .ui-datepicker-header {  
     color: white;  
+    text-transform: uppercase;
     font-weight: bold;  
+    font-family: 'proxbold';
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
     filter: dropshadow(color=#000, offx=1, offy=-1);  
     line-height: 30px;  
     border-width: 1px 0 0 0;  
     border-style: solid;  
     border-color: #111;  
 }  
+
+
+.ui-widget-header .ui-icon {
+    background: none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none;
+    border: none;
+}
+
