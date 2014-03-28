@@ -19,11 +19,11 @@
 
 .ui-widget-header {
 	background: none;
-	background-color: rgba(13,35,52);
+	background-color: rgba(13,35,52, 1);
 }
 
 .ui-datepicker-header {  
-    color: black;  
+    color: white;  
     font-weight: bold;  
     filter: dropshadow(color=#000, offx=1, offy=-1);  
     line-height: 30px;  
