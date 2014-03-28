@@ -186,15 +186,37 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 																
 															$( "#tshirt_selection" ).val(increments[40]);
                                                       });
-													});
-														
-														
-													
-                                                </script>
+  														$(function() {
+                                                            $( "#neck_size_slider" ).slider({
+                                                                value:18.5,
+                                                                min: 14,
+                                                                max: 20,
+                                                                step: .5,
+                                                                slide: function( event, ui ) {
+                                                                    $( "#neck_size_selection" ).val(ui.value );
+                                                                }
+                                                            });
+															$( "#neck_size_selection" ).val($( "#neck_size_slider" ).slider( "value" ) );
+                                                      });
 
-												<div class="col-sm-2"></div>
-												<div  class="col-sm-8">
-                                                    <div id="tshirt_slider">
+  														$(function() {
+                                                            $( "#shoes_slider" ).slider({
+                                                                value:9.5,
+                                                                min: 7,
+                                                                max: 13.5,
+                                                                step: .5,
+                                                                slide: function( event, ui ) {
+                                                                    $( "#shoes_selection" ).val(ui.value );
+                                                                }
+                                                            });
+															$( "#shoes_selection" ).val($( "#shoes_slider" ).slider( "value" ) );
+                                                      });
+													});
+                                                </script>
+                                                <div class="slider_wrapper">
+												<div class="col-sm-2 slider_label">T-shirt</div>
+												<div class="col-sm-8 slider">
+                                                    <div id="tshirt_slider" style="margin-top:20px;">
                                                         <div class="notch_big" style="left:0%;"><div class="notch_label">XS</div></div>
                                                         <div class="notch_big" style="left:25%;"><div class="notch_label">S</div></div>
                                                         <div class="notch_big" style="left:50%;"><div class="notch_label">M</div></div>
@@ -207,13 +229,85 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												<div class="col-sm-2">
 													<input type="text" id="tshirt_selection" class="slider_selection" disabled="disabled">
 												</div>
+                                                </div>
 
+                                                <div class="slider_wrapper">
+												<div class="col-sm-2 slider_label">Neck Size</div>
+												<div class="col-sm-8 slider">
+                                                    <div id="neck_size_slider" style="margin-top:20px;">
+                                                        <div class="notch_big" style="left:0%;"><div class="notch_label">14</div></div>
+                                                        <div class="notch_small" style="left:8.35%;"><div class="notch_label">14.5</div></div>
+                                                        <div class="notch_big" style="left:16.7%;"><div class="notch_label">15</div></div>
+                                                        <div class="notch_small" style="left:25.05%;"><div class="notch_label">15.5</div></div>
+                                                        <div class="notch_big" style="left:33.4%;"><div class="notch_label">16</div></div>
+                                                        <div class="notch_small" style="left:41.75%;"><div class="notch_label">16.5</div></div>
+                                                        <div class="notch_big" style="left:50.1%;"><div class="notch_label">17</div></div>
+                                                        <div class="notch_small" style="left:58.45%;"><div class="notch_label">17.5</div></div>
+                                                        <div class="notch_big" style="left:66.8%;"><div class="notch_label">18</div></div>
+                                                        <div class="notch_small" style="left:75.15%;"><div class="notch_label">18.5</div></div>
+                                                        <div class="notch_big" style="left:83.5%;"><div class="notch_label">19</div></div>
+                                                        <div class="notch_small" style="left:91.85%;"><div class="notch_label">19.5</div></div>
+                                                        <div class="notch_big" style="left:100%;"><div class="notch_label">20</div></div>
+                                                        <div class="slider_left"></div>
+                                                        <div class="slider_right"></div>
+                                                    </div>
+                                                </div>
+												<div class="col-sm-2">
+													<input type="text" id="neck_size_selection" class="slider_selection" disabled="disabled">
+												</div>
+                                                </div>
+
+                                                <div class="slider_wrapper">
+												<div class="col-sm-2 slider_label">Shoes</div>
+												<div class="col-sm-8 slider">
+                                                    <div id="shoes_slider" style="margin-top:20px;">
+                                                        <div class="notch_big" style="left:0%;"><div class="notch_label">7</div></div>
+                                                        <div class="notch_small" style="left:7.7%;"><div class="notch_label">7.5</div></div>
+                                                        <div class="notch_big" style="left:15.4%;"><div class="notch_label">8</div></div>
+                                                        <div class="notch_small" style="left:23.1%;"><div class="notch_label">8.5</div></div>
+                                                        <div class="notch_big" style="left:30.8%;"><div class="notch_label">9</div></div>
+                                                        <div class="notch_small" style="left:38.5%;"><div class="notch_label">9.5</div></div>
+                                                        <div class="notch_big" style="left:46.2%;"><div class="notch_label">10</div></div>
+                                                        <div class="notch_small" style="left:53.9%;"><div class="notch_label">10.5</div></div>
+                                                        <div class="notch_big" style="left:61.6%;"><div class="notch_label">11</div></div>
+                                                        <div class="notch_small" style="left:69.3%;"><div class="notch_label">11.5</div></div>
+                                                        <div class="notch_big" style="left:77%;"><div class="notch_label">12</div></div>
+                                                        <div class="notch_small" style="left:84.7%;"><div class="notch_label">12.5</div></div>
+                                                        <div class="notch_big" style="left:92.4%;"><div class="notch_label">13</div></div>
+                                                        <div class="notch_small" style="left:100%;"><div class="notch_label">13.5</div></div>
+                                                        <div class="slider_left"></div>
+                                                        <div class="slider_right"></div>
+                                                    </div>
+                                                </div>
+												<div class="col-sm-2">
+													<input type="text" id="shoes_selection" class="slider_selection" disabled="disabled">
+												</div>
+                                                </div>
 												<style>
-												input .slider_selection{ font-family:proxbold; color:#f7b666; font-size:40px;}
+												.slider_wrapper{
+													border-top:1px solid #c1c1c1; 
+													padding: 40px 20px 90px 20px;
+													margin: -30px -30px 30px -30px;}
+												input[type="text"].slider_selection{
+													font-family:proxbold !important;
+													color:#f7b666 !important;
+													font-size:34px !important;
+													border:none !important;
+													padding-top:0 !important;
+													background:none !important; }
 												.notch_big{
 													position:absolute; 
 													bottom:-9px; 
 													background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/notch_big.png) no-repeat ; 
+													width:2px; 
+													height:52px; 
+													margin-left:-1px; 
+													background-position:bottom;
+													overflow:visible; }
+												.notch_small{
+													position:absolute; 
+													bottom:-9px; 
+													background: url(<?php echo get_bloginfo('stylesheet_directory') ?>/images/notch_small.png) no-repeat ; 
 													width:2px; 
 													height:52px; 
 													margin-left:-1px; 
@@ -231,7 +325,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													width:19px;
 													height:14px;
 													margin-right:-19px;}
+												.slider_label {
+													text-align:right;
+													font-family:proxbold;
+													font-size:15px;
+													color:#000;
+													text-transform:uppercase;
+													padding-right:20px;
+													padding-top:15px;}
 												.notch_label {
+													color:#000;
 													width:70px;
 													margin-left:-35px;
 													float:left;
@@ -251,6 +354,13 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													 cursor:pointer !important;
 													 margin-top:5px !important; 
 													 border-radius:0 !important;}
+												@media only screen and (max-width: 767px) {
+													.slider{ padding-left:50px; padding-right:50px; margin-top:50px;}
+													input[type="text"].slider_selection{ text-align:center; font-size:40px !important;}
+													.slider_label{ text-align:center; font-size:30px;}
+													.slider_wrapper{ margin:0; padding: 40px 0 0 0;}
+													.notch_label { font-size:10px;
+												}
 												</style>
 
 												<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
