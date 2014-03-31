@@ -641,7 +641,8 @@ text-transform:uppercase;
 	-o-transition:background-color 0.3s ease-out;
 	-ms-transition:background-color 0.3s ease-out;
 	transition:background-color 0.3s ease-out;
-	background:url(images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;
+	background:url(images/tick_small.png) rgba(247, 182, 102, 0.95) no-repeat;
+	background-position: 25%;
 }
 
 .profile_style_page .box_options_label {
@@ -653,6 +654,7 @@ text-transform:uppercase;
 	padding-top:15px;
 	padding-bottom:20px;
 }
+
 
 .profile_sizing_page .box_options_label {
 	text-align:right;
@@ -834,6 +836,15 @@ margin-top: 0px;}
 	text-transform:uppercase;
 	z-index: 11;
 }
+.profile_style_page .area7 .option_image_overlay.selected{ 
+	background:url(images/tick_medium.png) rgba(247, 182, 102, 0.95) center no-repeat;}
+.profile_style_page .area7 .option_image_label{ 
+	font-size:12px;
+}
+.profile_style_page .area9 .option_image_label,.profile_style_page .area10 .option_image_label{ 
+	color:#000;
+}
+
 .profile_style_page .option_image_overlay{
 	height:100%;
 	position:absolute;
@@ -856,7 +867,7 @@ margin-top: 0px;}
 	transition:background-color 0.3s ease-out;
 	cursor:pointer;}
 .profile_style_page .option_image_overlay:hover>.option_image_label{
-	bottom: 25%;
+	bottom: 20%;
 	color: #000;
 	-webkit-transition: 0.3s ease-out;
 	-moz-transition: 0.3s ease-out;
@@ -865,7 +876,7 @@ margin-top: 0px;}
 	transition: 0.3s ease-out;
 	cursor:pointer;}
 .profile_style_page .option_image_overlay.selected>.option_image_label{
-	bottom: 25%;
+	bottom: 20%;
 	color: #000;
 	cursor:pointer;}
 .profile_style_page .option_image_overlay.selected{ 
@@ -877,11 +888,18 @@ margin-top: 0px;}
 	background:url(images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;}
 
 @media only screen and (max-width: 767px) {
-
-.profile_style_page .area3 .row{ 
+.profile_style_page .option_image_label{ 
+	font-size:14px !important;
+}
+.profile_style_page .option_image_overlay.selected>.option_image_label{ 
+	font-size:14px !important;
+	display:none !important;
+}
+.profile_style_page .option_image_overlay.selected{ 
+	background:url(images/tick_medium.png) rgba(247, 182, 102, 0.95) center no-repeat;}
+.profile_style_page .title-forms .row{ 
 	margin-left:0;
 	margin-right:0;}
-
 
 } 
 

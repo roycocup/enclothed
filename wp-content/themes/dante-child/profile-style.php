@@ -346,19 +346,19 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-slim.png" class="img-responsive" />
 											<div id="area3_1" class="option_image_overlay click">
 												<div class="option_image_label">Slim</div>
 											</div>
 										</div>
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-regular.png" class="img-responsive" />
 											<div id="area3_2" class="option_image_overlay click">
 												<div class="option_image_label">Regular</div>
 											</div>
 										</div>
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-short-sleeve.png" class="img-responsive" />
 											<div id="area3_3" class="option_image_overlay click">
 												<div class="option_image_label">Short Sleeve</div>
@@ -393,19 +393,19 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-slim.png" class="img-responsive" />
 											<div id="area4_1" class="option_image_overlay click">
 												<div class="option_image_label">Slim</div>
 											</div>
 										</div>
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-regular.png" class="img-responsive" />
 											<div id="area4_2" class="option_image_overlay click">
 												<div class="option_image_label">Regular</div>
 											</div>
 										</div>
-										<div class="col-sm-4 option_image" >
+										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-short-sleeve.png" class="img-responsive" />
 											<div id="area4_3" class="option_image_overlay click">
 												<div class="option_image_label">Short Sleeve</div>
@@ -414,7 +414,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 									<div class="col-sm-11" >
 										<div class="box_options_wrapper">
-											<div class="box_options_label">Where do you wear your jackets?</div>											
+											<div class="box_options_label">Where do you wear your shirts?</div>											
 											<div class="box_options">
 												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 													<div class="col-sm-3 box_option click">Work</div>
@@ -428,7 +428,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 									</div>
 								</div>
-							
+						
 
 
 
@@ -485,7 +485,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area6" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area6" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">06</div>
@@ -496,25 +496,25 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jeans-skinny.jpg" class="img-responsive" />
 											<div id="area6_1" class="option_image_overlay click">
-												<div class="option_image_label">Slim</div>
+												<div class="option_image_label">Skinny</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jeans-chinos.jpg" class="img-responsive" />
 											<div id="area6_2" class="option_image_overlay click">
-												<div class="option_image_label">Regular</div>
+												<div class="option_image_label">Chinos</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jeans-bootcut.jpg" class="img-responsive" />
 											<div id="area6_3" class="option_image_overlay click">
-												<div class="option_image_label">Short Sleeve</div>
+												<div class="option_image_label">Bootcut</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jeans-baggy.jpg" class="img-responsive" />
 											<div id="area6_4" class="option_image_overlay click">
-												<div class="option_image_label">Short Sleeve</div>
+												<div class="option_image_label">Baggy</div>
 											</div>
 										</div>
 									</div>
@@ -527,48 +527,138 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area5" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area7" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
-									<p>What trouser do you wear most?</p>
+									<div class="numbering">07</div>
+									<p>What colour denim do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-jeans.png" class="img-responsive" />
-											<div id="area5_1" class="option_image_overlay click">
-												<div class="option_image_label">Jeans</div>
+										<div class="col-sm-1 hidden-xs"> </div>
+										<div class="col-sm-2 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/material-light.png" class="img-responsive" />
+											<div id="area7_1" class="option_image_overlay click">
+												<div class="option_image_label">Light</div>
 											</div>
 										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-chinos.png" class="img-responsive" />
-											<div id="area5_2" class="option_image_overlay click">
-												<div class="option_image_label">Chinos</div>
+										<div class="col-sm-2 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/material-medium.png" class="img-responsive" />
+											<div id="area7_2" class="option_image_overlay click">
+												<div class="option_image_label">Medium</div>
 											</div>
 										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-formal.png" class="img-responsive" />
-											<div id="area5_3" class="option_image_overlay click">
+										<div class="col-sm-2 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/material-dark.png" class="img-responsive" />
+											<div id="area7_3" class="option_image_overlay click">
+												<div class="option_image_label">Dark</div>
+											</div>
+										</div>
+										<div class="col-sm-2 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/material-black.png" class="img-responsive" />
+											<div id="area7_4" class="option_image_overlay click">
+												<div class="option_image_label">Black</div>
+											</div>
+										</div>
+										<div class="col-sm-2 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/material-colored.png" class="img-responsive" />
+											<div id="area7_5" class="option_image_overlay click">
+												<div class="option_image_label">Colored</div>
+											</div>
+										</div>
+										<div class="col-sm-1 hidden-xs"> </div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="title-forms area8" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
+								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
+								<div class="mini-wrapper-forms">
+									<div class="numbering">08</div>
+									<p>How do you wear your shorts?</p>
+								</div><!--mini-wrapper-forms-->
+								<div class="row">
+									<div class="col-sm-11">
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shorts-below-knee.png" class="img-responsive" />
+											<div id="area8_1" class="option_image_overlay click">
+												<div class="option_image_label">Below knee</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shorts-above-knee.png" class="img-responsive" />
+											<div id="area8_2" class="option_image_overlay click">
+												<div class="option_image_label">Above knee</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6  option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shorts-short.png" class="img-responsive" />
+											<div id="area8_3" class="option_image_overlay click">
+												<div class="option_image_label">Short</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="title-forms area9" style="border-bottom:1px solid #c1c1c1">
+								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
+								<div class="mini-wrapper-forms">
+									<div class="numbering">09</div>
+									<p>Which style of shoes do you wear?</p>
+								</div><!--mini-wrapper-forms-->
+								<div class="row">
+									<div class="col-sm-11">
+										<div class="col-sm-4 col-xs-6 option_image" style="margin-bottom:30px;" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-boots.png" class="img-responsive" />
+											<div id="area9_1" class="option_image_overlay click">
+												<div class="option_image_label">Boots</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" style="margin-bottom:30px;" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-brogues.png" class="img-responsive" />
+											<div id="area9_2" class="option_image_overlay click">
+												<div class="option_image_label">Brogues</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" style="margin-bottom:30px;" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-trainers.png" class="img-responsive" />
+											<div id="area9_3" class="option_image_overlay click">
+												<div class="option_image_label">Trainers</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-boat.png" class="img-responsive" />
+											<div id="area9_4" class="option_image_overlay click">
+												<div class="option_image_label">Boat Shoes</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-loafers.png" class="img-responsive" />
+											<div id="area9_5" class="option_image_overlay click">
+												<div class="option_image_label">Loafers</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-formal.png" class="img-responsive" />
+											<div id="area9_6" class="option_image_overlay click">
 												<div class="option_image_label">Formal</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-cords.png" class="img-responsive" />
-											<div id="area5_4" class="option_image_overlay click">
-												<div class="option_image_label">Cords</div>
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-11" >
 										<div class="box_options_wrapper">
-											<div class="box_options_label">What coloured trousers do you wear?</div>											
+											<div class="box_options_label">What coloured shoes do you wear?</div>											
 											<div class="box_options">
 												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-													<div class="col-sm-3 box_option click">Bright</div>
-													<div class="col-sm-3 box_option click selected">Neutral</div>
-													<div class="col-sm-3 box_option click">Dark</div>
-													<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Patterned</div>
+													<div class="col-sm-4 box_option click">Bright</div>
+													<div class="col-sm-4 box_option click selected">Neutral</div>
+													<div class="col-sm-4 box_option click" style="border-bottom: none !important; border-right: none !important;">Dark</div>
 												</div>
 												<div style="clear:both;"></div>
 											</div>
@@ -580,162 +670,36 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area5" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area10">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
-									<p>What trouser do you wear most?</p>
+									<div class="numbering">10</div>
+									<p>Which style of underwear do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-jeans.png" class="img-responsive" />
-											<div id="area5_1" class="option_image_overlay click">
-												<div class="option_image_label">Jeans</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/under-boxers.png" class="img-responsive" />
+											<div id="area10_1" class="option_image_overlay click">
+												<div class="option_image_label">Boxers</div>
 											</div>
 										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-chinos.png" class="img-responsive" />
-											<div id="area5_2" class="option_image_overlay click">
-												<div class="option_image_label">Chinos</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/under-trunks.png" class="img-responsive" />
+											<div id="area10_2" class="option_image_overlay click">
+												<div class="option_image_label">Trunks</div>
 											</div>
 										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-formal.png" class="img-responsive" />
-											<div id="area5_3" class="option_image_overlay click">
-												<div class="option_image_label">Formal</div>
+										<div class="col-sm-4 col-xs-6 option_image" >
+	<img src="<?php bloginfo('template_url') ?>-child/images/under-briefs.png" class="img-responsive" />
+											<div id="area10_4" class="option_image_overlay click">
+												<div class="option_image_label">Briefs</div>
 											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-cords.png" class="img-responsive" />
-											<div id="area5_4" class="option_image_overlay click">
-												<div class="option_image_label">Cords</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-11" >
-										<div class="box_options_wrapper">
-											<div class="box_options_label">What coloured trousers do you wear?</div>											
-											<div class="box_options">
-												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-													<div class="col-sm-3 box_option click">Bright</div>
-													<div class="col-sm-3 box_option click selected">Neutral</div>
-													<div class="col-sm-3 box_option click">Dark</div>
-													<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Patterned</div>
-												</div>
-												<div style="clear:both;"></div>
-											</div>
-											<div style="clear:both;"></div>
 										</div>
 									</div>
 								</div>
+							</div>
 
-
-
-
-							<div class="title-forms area5" style="border-bottom:1px solid #c1c1c1">
-								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
-								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
-									<p>What trouser do you wear most?</p>
-								</div><!--mini-wrapper-forms-->
-								<div class="row">
-									<div class="col-sm-11">
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-jeans.png" class="img-responsive" />
-											<div id="area5_1" class="option_image_overlay click">
-												<div class="option_image_label">Jeans</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-chinos.png" class="img-responsive" />
-											<div id="area5_2" class="option_image_overlay click">
-												<div class="option_image_label">Chinos</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-formal.png" class="img-responsive" />
-											<div id="area5_3" class="option_image_overlay click">
-												<div class="option_image_label">Formal</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-cords.png" class="img-responsive" />
-											<div id="area5_4" class="option_image_overlay click">
-												<div class="option_image_label">Cords</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-11" >
-										<div class="box_options_wrapper">
-											<div class="box_options_label">What coloured trousers do you wear?</div>											
-											<div class="box_options">
-												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-													<div class="col-sm-3 box_option click">Bright</div>
-													<div class="col-sm-3 box_option click selected">Neutral</div>
-													<div class="col-sm-3 box_option click">Dark</div>
-													<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Patterned</div>
-												</div>
-												<div style="clear:both;"></div>
-											</div>
-											<div style="clear:both;"></div>
-										</div>
-									</div>
-								</div>
-
-
-
-
-							<div class="title-forms area5" style="border-bottom:1px solid #c1c1c1">
-								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
-								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
-									<p>What trouser do you wear most?</p>
-								</div><!--mini-wrapper-forms-->
-								<div class="row">
-									<div class="col-sm-11">
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-jeans.png" class="img-responsive" />
-											<div id="area5_1" class="option_image_overlay click">
-												<div class="option_image_label">Jeans</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-chinos.png" class="img-responsive" />
-											<div id="area5_2" class="option_image_overlay click">
-												<div class="option_image_label">Chinos</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-formal.png" class="img-responsive" />
-											<div id="area5_3" class="option_image_overlay click">
-												<div class="option_image_label">Formal</div>
-											</div>
-										</div>
-										<div class="col-sm-3 col-xs-6 option_image" >
-	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-cords.png" class="img-responsive" />
-											<div id="area5_4" class="option_image_overlay click">
-												<div class="option_image_label">Cords</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-11" >
-										<div class="box_options_wrapper">
-											<div class="box_options_label">What coloured trousers do you wear?</div>											
-											<div class="box_options">
-												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-													<div class="col-sm-3 box_option click">Bright</div>
-													<div class="col-sm-3 box_option click selected">Neutral</div>
-													<div class="col-sm-3 box_option click">Dark</div>
-													<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Patterned</div>
-												</div>
-												<div style="clear:both;"></div>
-											</div>
-											<div style="clear:both;"></div>
-										</div>
-									</div>
-								</div>
-							
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 								<button class="button4" onclick="submit()">Save and Continue</button>
