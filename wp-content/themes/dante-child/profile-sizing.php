@@ -358,6 +358,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 															<div class="col-sm-4 box_option click" style="border-bottom: none !important; border-right: none !important;">Long</div>
 														</div>
 													</div>
+													<div style="clear:both;"></div>
 												</div>
 					
 
