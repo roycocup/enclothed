@@ -185,9 +185,15 @@ max-width: 450px;
 background-color: transparent !important;
 color:#fff !important;
 }
+#logo {
+background: transparent url('images/logo-black.png') no-repeat;
+height:48px !important;
+max-height:48px !important;
+
+}
 @media only screen and (max-width: 991px) {
 #logo {
-width: 90%;
+width: 90% !important;
 margin: 0 5%;
 }
 #copyright nav .menu {
@@ -201,12 +207,6 @@ margin: 0 5%;
 
 #logo h1 { visibility: hidden; } 
 
-#logo {
-background: transparent url('images/logo-black.png') no-repeat;
-width: 90% !important;
-height:48px !important;
-max-height:48px !important;
-}
 
 #logo a h1{
 width: 232px !important;
@@ -552,6 +552,12 @@ background-color:#cccdcc;
 margin-bottom: 60px;
 }
 
+.line_separator_thick {
+position: absolute; height:8px; top:0; width:120px; left:50%; margin-left:-60px;
+}
+
+.line_separator_thick img{ float:left;}
+
 .grey_bg{background-color: #f6f7f6;
 border-top: 1px solid #d1d1d1;
 border-bottom: 1px solid #d1d1d1;}
@@ -582,6 +588,90 @@ font-family: proxbold;
 letter-spacing: 2px;
 font-size: 28px !important;
 text-transform:uppercase;
+}
+
+.profile_style_page .box_options_wrapper{
+	padding: 40px 20px 90px 20px;
+	margin: -30px -30px 30px -30px;
+}
+
+.profile_sizing_page .box_options_wrapper{
+	border-top:1px solid #c1c1c1; 
+	padding: 40px 20px 90px 20px;
+	margin: -30px -30px 30px -30px;
+}
+
+.box_options{
+	border:1px solid #c1c1c1;
+	float:left;
+	width:100%;
+	margin-top:-6px;
+	position:relative;
+}
+.box_option{
+	margin-bottom:0;
+	text-align:center;
+	text-transform:uppercase;
+	color:#000;
+	font-family:proxbold;
+	padding:20px;
+	min-height:60px;
+	font-size:13px;
+}
+.box_option:hover{
+	margin-bottom:0;
+	text-align:center;
+	text-transform:uppercase;
+	color:#000;
+	font-family:proxbold;
+	padding:20px;
+}
+.box_option:hover{ background: rgba(247, 182, 102, 0.95);
+	-webkit-transition:background-color 0.3s ease-out;
+	-moz-transition:background-color 0.3s ease-out;
+	-o-transition:background-color 0.3s ease-out;
+	-ms-transition:background-color 0.3s ease-out;
+	transition:background-color 0.3s ease-out;
+	cursor:pointer;
+}
+.box_option.selected{ 
+	-webkit-transition:background-color 0.3s ease-out;
+	-moz-transition:background-color 0.3s ease-out;
+	-o-transition:background-color 0.3s ease-out;
+	-ms-transition:background-color 0.3s ease-out;
+	transition:background-color 0.3s ease-out;
+	background:url(images/tick.png) rgba(247, 182, 102, 0.95) center no-repeat;
+}
+
+.profile_style_page .box_options_label {
+	text-align:center;
+	font-family:proxbold;
+	font-size:14px;
+	color:#000;
+	text-transform:uppercase;
+	padding-right:25px;
+	padding-top:15px;
+	padding-bottom:20px;
+}
+
+.profile_sizing_page .box_options_label {
+	text-align:right;
+	font-family:proxbold;
+	font-size:14px;
+	color:#000;
+	text-transform:uppercase;
+	padding-right:25px;
+}
+
+@media only screen and (max-width: 767px) {
+	.box_options{
+		max-width:300px !important;
+		margin:auto !important;
+		float:none !important;	
+		margin-bottom:60px !important;
+	}
+	.profile_sizing_page .box_options_wrapper{ margin:0; padding: 40px 0 0 0;}
+	.profile_sizing_page .box_options_label{ text-align:center !important; font-size:30px !important; }
 }
 
 /* --------------------------------------------
@@ -729,7 +819,30 @@ margin-top: 0px;}
 
 .profile_pricing_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
 .profile_pricing_page h2{ margin-top: 20px !important;}
-
+.promo_code_wrapper{
+	float:none;
+	margin:auto; 
+	background: url(images/promo_code_bg.png) repeat-x; 
+	min-height:166px;
+}
+.promo_code{	
+	width: 90%;
+	max-width: 445px;
+	height: 55px;
+	border: 1px solid #cccdcc;
+	font: 14px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
+	sans-serif;
+	text-align: left;
+	display: block;
+	padding: 10px 10px 10px 20px !important;
+	margin: 50px auto 8px auto;
+	color: #525252;
+	border-radius: 0px;
+	-webkit-appearance: none;	
+	background: url(images/arrow-down.png) 95% center no-repeat;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
 
 
 /* --------------------------------------------

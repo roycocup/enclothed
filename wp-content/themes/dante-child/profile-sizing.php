@@ -348,14 +348,14 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-												<div class="slider_wrapper">
-													<div class="col-sm-2 slider_label">Sleeve Length</div>
+												<div class="box_options_wrapper">
+													<div class="col-sm-2 box_options_label">Sleeve Length</div>
 													<div class="col-sm-10">
-														<div class="options_wrapper">
+														<div class="box_options">
 															<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-															<div class="col-sm-4 option click">Short</div>
-															<div class="col-sm-4 option click selected">Regular</div>
-															<div class="col-sm-4 option click" style="border-bottom: none !important; border-right: none !important;">Long</div>
+															<div class="col-sm-4 box_option click">Short</div>
+															<div class="col-sm-4 box_option click selected">Regular</div>
+															<div class="col-sm-4 box_option click" style="border-bottom: none !important; border-right: none !important;">Long</div>
 														</div>
 													</div>
 												</div>

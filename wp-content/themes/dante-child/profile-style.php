@@ -139,204 +139,238 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 		
 		<?php if (have_posts()) : the_post(); ?>
 
-			<!-- OPEN page -->
-			<div <?php post_class('clearfix ' . $post_class_extra); ?> id="<?php the_ID(); ?>">
+		<!-- OPEN page -->
+		<div <?php post_class('clearfix ' . $post_class_extra); ?> id="<?php the_ID(); ?>">
 
-				<div class="page-content clearfix">
-					<div class="row">
-						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
-							<div class="spb_wrapper clearfix">
-								<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>
-									ENCLOTHED PROFILE</span></h2>
-									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
-								</div> 
-							</div>
+			<div class="page-content clearfix">
+				<div class="row">
+					<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
+						<div class="spb_wrapper clearfix">
+							<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br> ENCLOTHED PROFILE</span></h2>
+							<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
+						</div> 
+					</div>
+				</div>
+				<div class="row">
+					<div class="details-menu">
+						<ul>
+							<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
+							<li><span class="active">Pick your Style</span></li>
+							<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+							<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
+							<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
+						</ul>
+						<div class="shadow">
+							<img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" />
 						</div>
-						<div class="row">
-							<!-- Main Menu -->
-							<div class="details-menu">
-								<ul>
-									<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
-									<li><span class="active">Pick your Style</span></li>
-									<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
-									<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
-									<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
-								</ul>
-								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-							</div><!--details-menu-->
+					</div><!--details-menu-->
+				<div class="styles-block">
+					<div class="fade-border-left"></div>
+					<div class="fade-border-right"></div>
+					<!-- the form -->
+					<?php $nonce = wp_create_nonce( get_uri() ); ?>
+					<form action="" method="POST" name='section_2'>								
+						<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+						<div class="title-forms area1">
+							<div class="mini-wrapper-forms">
+								<div class="numbering">01</div>
+								<p>Choose pictures representing styles you like</p>
+							</div><!--mini-wrapper-forms-->
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
+										<div id="area1_1" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
+										<div id="area1_2" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
+										<div id="area1_3" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
+										<div id="area1_4" class="grid_box_overlay click"></div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
+										<div id="area1_5" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
+										<div id="area1_6" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+										<div id="area1_7" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
+										<div id="area1_8" class="grid_box_overlay click"></div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
+										<div id="area1_9" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
+										<div id="area1_10" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
+										<div id="area1_11" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
+										<div id="area1_12" class="grid_box_overlay click"></div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
+										<div id="area1_13" class="grid_box_overlay click"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
+										<div id="area1_14" class="grid_box_overlay click"></div>
+									</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+											<div id="area1_15" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
+											<div id="area1_16" class="grid_box_overlay click"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 
-							<div class="styles-block">
-								<div class="fade-border-left"></div>
-								<div class="fade-border-right"></div>
-								<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-								<div class="title-forms area1">
-									<div class="mini-wrapper-forms">
-										<div class="numbering">01</div>
-										<p>Choose pictures representing styles you like</p>
-									</div><!--mini-wrapper-forms-->
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
-												<div id="area1_1" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
-												<div id="area1_2" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
-												<div id="area1_3" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
-												<div id="area1_4" class="grid_box_overlay click"></div>
-											</div>
+							<div class="title-forms area2" style="border-bottom:1px solid #c1c1c1">
+								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
+								<div class="mini-wrapper-forms">
+									<div class="numbering">02</div>
+									<p>Favourite brands - not to recieve them but to tell us about your style</p>
+								</div><!--mini-wrapper-forms-->
+								<div class="row" style="border-top: 1px solid #c1c1c1;">
+									<div class="col-sm-6 grid_left">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+											<div id="area2_1" class="grid_box_overlay click"></div>
 										</div>
-										<div class="col-sm-6">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
-												<div id="area1_5" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
-												<div id="area1_6" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
-												<div id="area1_7" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
-												<div id="area1_8" class="grid_box_overlay click"></div>
-											</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+											<div id="area2_2" class="grid_box_overlay click"></div>
 										</div>
-										<div class="col-sm-6">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
-												<div id="area1_9" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
-												<div id="area1_10" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
-												<div id="area1_11" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
-												<div id="area1_12" class="grid_box_overlay click"></div>
-											</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+											<div id="area2_3" class="grid_box_overlay click"></div>
 										</div>
-										<div class="col-sm-6">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
-												<div id="area1_13" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
-												<div id="area1_14" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
-												<div id="area1_15" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
-												<div id="area1_16" class="grid_box_overlay click"></div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+											<div id="area2_4" class="grid_box_overlay click"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_right">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+											<div id="area2_5" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+											<div id="area2_6" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+											<div id="area2_7" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+											<div id="area2_8" class="grid_box_overlay click"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_left">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+											<div id="area2_9" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+											<div id="area2_10" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+											<div id="area2_11" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+											<div id="area2_12" class="grid_box_overlay click"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_right">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+											<div id="area2_13" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+											<div id="area2_14" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+											<div id="area2_15" class="grid_box_overlay click"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+											<div id="area2_16" class="grid_box_overlay click"></div>
+										</div>
+									</div>
+
+									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>                                    
+								</div>
+							</div>
+
+
+							<div class="title-forms area3">
+								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
+								<div class="mini-wrapper-forms">
+									<div class="numbering">03</div>
+									<p>How do you wear your jackets?</p>
+								</div><!--mini-wrapper-forms-->
+								<div class="col-sm-11 center-align">
+									<div class="col-sm-4" >
+<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+									</div>
+									<div class="col-sm-4" >
+<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+									</div>
+									<div class="col-sm-4" >
+<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
+									</div>
+								</div>
+								<div class="col-sm-11" >
+									<div class="box_options_wrapper">
+										<div class="box_options_label">Where do you wear your jackets?</div>											
+										<div class="box_options">
+											<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
+												<div class="col-sm-3 box_option click">Work</div>
+												<div class="col-sm-3 box_option click selected">Casual</div>
+												<div class="col-sm-3 box_option click">Friday</div>
+												<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Short</div>
 											</div>
 										</div>
 									</div>
 								</div>
 
 
-								<div class="title-forms area2">
-									<div class="mini-wrapper-forms">
-										<div class="numbering">02</div>
-										<p>Favourite brands - not to recieve them but to tell us about your style</p>
-									</div><!--mini-wrapper-forms-->
-									<div class="row" style="border-top: 1px solid #c1c1c1;">
-										<div class="col-sm-6 grid_left">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
-												<div id="area2_1" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
-												<div id="area2_2" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
-												<div id="area2_3" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
-												<div id="area2_4" class="grid_box_overlay click"></div>
-											</div>
-										</div>
-										<div class="col-sm-6 grid_right">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
-												<div id="area2_5" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
-												<div id="area2_6" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
-												<div id="area2_7" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
-												<div id="area2_8" class="grid_box_overlay click"></div>
-											</div>
-										</div>
-										<div class="col-sm-6 grid_left">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
-												<div id="area2_9" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
-												<div id="area2_10" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
-												<div id="area2_11" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
-												<div id="area2_12" class="grid_box_overlay click"></div>
-											</div>
-										</div>
-										<div class="col-sm-6 grid_right">
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
-												<div id="area2_13" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
-												<div id="area2_14" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box right">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
-												<div id="area2_15" class="grid_box_overlay click"></div>
-											</div>
-											<div class="col-sm-6 col-xs-6 grid_box left">
-												<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
-												<div id="area2_16" class="grid_box_overlay click"></div>
-											</div>
-										</div>
-									</div>
-								</div>
 
-
-
-								<!-- the form -->
-								<?php $nonce = wp_create_nonce( get_uri() ); ?>
-								<form action="" method="POST" name='section_2'>
 									<div class="mini-wrapper5">
 										<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 										<button class="button4" onclick="submit()">Save and Continue</button>

@@ -3506,6 +3506,9 @@ generic-menu2 li a:last-child{
 	bottom: -8px;
 	z-index: 600;
 	height:8px;
+	display:inline-block;
+	width:100%;
+	left:0;
 }
 
 .shadow_inverse{
@@ -3513,11 +3516,13 @@ generic-menu2 li a:last-child{
 	top: -8px;
 	z-index: 600;
 	height:8px;
+	display:inline-block;
 }
 
 .shadow img, .shadow_inverse img{
 	height:8px;
 	float:left;
+	width:auto !important;
 }
  
 .generic-menu2 li a:hover{
