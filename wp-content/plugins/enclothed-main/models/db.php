@@ -8,6 +8,7 @@ class db {
 	public $templates_table 	= 'wp_enc_email_templates'; 
 	public $emails_table 		= 'wp_enc_emails';
 	public $brands_table 		= 'wp_enc_brands';
+	public $gifts_table 		= 'wp_enc_gifts';
 
 
 

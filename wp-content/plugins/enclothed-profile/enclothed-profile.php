@@ -28,6 +28,7 @@ function enc_profile_init(){
 class EnclothedProfile {
 
 	public $main; //main class
+	const BYPASS_VALIDATION = true; //turn this off when going to production
 
 	public function __construct(){
 		$this->main = new EnclothedMain(); 
@@ -101,6 +102,11 @@ class EnclothedProfile {
 		if (isset($_POST['section_1'])){
 			//a more convenient variable
 			$section = $_POST['section_1']; 
+		}
+
+		if (self::BYPASS_VALIDATION){
+			wp_redirect( home_url().'/profile/style' ); 
+			exit;
 		}
 
 		//validation
@@ -235,6 +241,7 @@ class EnclothedProfile {
 	}
 
 	public function process_pricing_form(){
+		$this->redeemGiftCode($_POST['section_4']['giftcode']); 
 		$data = 'this is the data';
 		wp_redirect( home_url().'/profile/delivery' ); 
 		exit;
@@ -257,6 +264,20 @@ class EnclothedProfile {
 
 	public function process_collections_form(){
 
+	}
+
+
+	//redeeming a code for an amount
+	//the code must match the amount in the database
+	public function redeemGiftCode($code = ''){
+		if (empty($code)) return false;	
+		$code = $this->main->gifts_model->saveGiftCode('rodrigo@rodderscode.co.uk', 'rodrigo@likedigitalmedia.com', '500');
+		$decrypted = $this->main->gifts_model->redeemCode($code);
+		// dump($code); 
+		// dump($decrypted);
+		// die;
+		//code exists and is correct?
+		// $this->main->gifts_model->validate_code($code);
 	}
 
 	

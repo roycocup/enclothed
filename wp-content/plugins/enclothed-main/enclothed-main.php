@@ -18,7 +18,7 @@ require_once(dirname(__FILE__)."/models/emails.php");
 require_once(dirname(__FILE__)."/models/brands.php");
 require_once(dirname(__FILE__)."/models/users.php");
 require_once(dirname(__FILE__)."/models/profiles.php");
-
+require_once(dirname(__FILE__)."/models/gifts.php");
 
 
 add_action('init', 'enc_main_init');
@@ -34,6 +34,7 @@ class EnclothedMain {
 	public $brands_model; 
 	public $users_model; 
 	public $profiles_model; 
+	public $gifts_model; 
 
 	
 	public function __construct(){
@@ -41,6 +42,7 @@ class EnclothedMain {
 		$this->brands_model = new Brands_model();
 		$this->users_model = new Users_model();
 		$this->profiles_model = new Profiles_model();
+		$this->gifts_model = new Gifts_model();
 		add_action("wp_ajax_enc_ajax_getvars", array($this, "enc_ajax_getvars"));
 		add_action("wp_ajax_nopriv_enc_ajax_getvars", array($this, 'enc_ajax_getvars'));
 		
