@@ -125,10 +125,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div> 
 						</div>
 					</div>
-					<div class="row" style="margin-top: 50px; border-top:1px solid #c1c1c1;">
+					<div class="row">
 						<!-- Main Menu -->
 
-						<div class="styles-block">
+						<div class="styles-block" style="margin-top: 50px; border-top:1px solid #e3e3e3;">
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
 							<?php echo $form; ?>
