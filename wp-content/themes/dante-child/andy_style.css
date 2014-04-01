@@ -426,9 +426,9 @@ sans-serif;
 	height: 55px;
 	position: relative;
 	display: inline-block;
-	border: 3px solid #000000;
+	border: 3px solid #0e2334 ;
 	margin: 25px;
-	background-color: #000000;
+	background-color: #0e2334 ;
 	font: 18px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-transform: uppercase;
@@ -442,9 +442,9 @@ sans-serif;
 	height: 55px;
 	position: relative;
 	display: inline-block;
-	border: 3px solid #000000;
+	border: 3px solid #0e2334;
 	margin: 10px 0 10px 0;
-	background-color: #000000;
+	background-color: #0e2334 ;
 	font: 18px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-transform: uppercase;
@@ -454,7 +454,7 @@ sans-serif;
 }
 
 .button1:hover, .button2:hover, .button3:hover, .button4:hover{
-	color:#f7b666;
+	color:#b08536;
 
 }
 
@@ -538,7 +538,7 @@ sans-serif;
 .product-info h3{
 	font: 16px/22px proxbold, "Helvetica Neue", Arial, Helvetica, 
 	Geneva, sans-serif;
-	color: #f7b666;
+	color: #b08536;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	margin-bottom: 10px;
@@ -598,7 +598,7 @@ sans-serif;
   height: 125px;
   font: 26px/46px Georgia, "Times New Roman", Times, serif;
   font-style: italic;
-  background-color: #f7b666;
+  background-color: #b08536;
   text-align: center;
   position: relative;
   margin: -50px auto -60px auto;
@@ -681,7 +681,7 @@ details-menu li span:last-child{
 }
 
 .details-menu li span.active {
-	border-bottom: 6px solid #f7b666;
+	border-bottom: 6px solid #b08536;
 }
  
 .styles-block{
@@ -723,7 +723,7 @@ details-menu li span:last-child{
 	font: 80px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
 	sans-serif;
 	text-align: center;
-	color:#f7b666;
+	color:#b08536;
 	top:55px ;
 	width: 30%;
 	z-index: 0;
@@ -1053,7 +1053,7 @@ details-menu li span:last-child{
 	height: 8px;
 	margin: 0 auto;
 	display: block;
-	background-color: #f7b666;
+	background-color: #b08536;
 	position: relative;
 	top: 8px;
 	margin-top: -8px;
@@ -3264,7 +3264,7 @@ input.other:-moz-placeholder , value {
 	font: 80px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, 
 	sans-serif;
 	text-align: left;
-	color:#f7b666;
+	color:#b08536;
 	top:20px ;
 	left: 60px;
 	opacity: 1;
@@ -3443,7 +3443,7 @@ generic-menu li a:last-child{
 }
  
 .generic-menu li a:hover{
-	border-bottom: 6px solid #f7b666;
+	border-bottom: 6px solid #b08536;
 } 
 
 .generic-menu li a:active{
@@ -3527,7 +3527,7 @@ generic-menu2 li a:last-child{
 }
  
 .generic-menu2 li a:hover{
-	border-bottom: 6px solid #f7b666;
+	border-bottom: 6px solid #b08536;
 } 
 
 .generic-menu2 li a:active{
