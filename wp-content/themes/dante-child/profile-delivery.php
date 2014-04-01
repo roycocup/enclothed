@@ -162,10 +162,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div><!--mini-wrapper-forms-->
 
 									<div class="title-header">
+										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 										<div class="numbering2">02</div>
 										<div class="accordian-title">Alternative Address</div>
 										<div class="arrow-click"></div>
-										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 									</div>
 
 									<div class="mini-wrapper-forms">
@@ -184,10 +184,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 									<div class="title-header">
+										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 										<div class="numbering2">03</div>
 										<div class="accordian-title">Billing Address</div>
 										<div class="arrow-click"></div>
-										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 									</div>
 
 									<div class="mini-wrapper-forms">

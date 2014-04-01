@@ -270,7 +270,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
 									<li><span class='active'>Size and Color</span></li>
 									<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
-									<li class="hidden-sm hidden-xs"><span>Delivery</span></li>
+									<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
 								</ul>
 								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 							</div><!--details-menu-->
@@ -286,20 +286,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
 											<p>Your size and measurements. What fits you well.</p>
-											<p class="georgia_text">(All UK sizes - <span style="color:#f7b666;">click for conversion chart</span>)</p>
-											<style>
-											.georgia_text{
-											font-family:Georgia, 'Times New Roman', Times, serif !important;
-											 font-style:italic !important;
-											 text-transform: none !important; 
-											 letter-spacing:0 !important; 
-											 font-size:14px !important; 
-											 margin-top:-30px !important;
-											 }
-												</style>
-
-
-
+											<p class="georgia_text">(All UK sizes - <a href="#" style="color:#b08536;">click for conversion chart</a>)</p>
 
 												<div class="slider_wrapper">
 													<div class="col-sm-2 slider_label">T-shirt</div>

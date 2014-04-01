@@ -133,7 +133,8 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
 								<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
 								<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
-								<li><span class='active'>Delivery</span></li>
+								<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
+								<li class="hidden-lg hidden-md"><span style="border-right:none;">Authorisation</span></li>
 							</ul>
 							<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 						</div><!--details-menu-->
@@ -145,9 +146,20 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-
-							<!-- Your stuff here please louis -->
-
+							<div class="col-sm-12 payment_info_wrapper">								
+								<div class="col-sm-4 payment_info">
+									<img src="<?php bloginfo('template_url') ?>-child/images/icon_wallet.png" alt="" class="image-responsive" />
+									<h3>We aren’t taking any money now</h3>
+								</div>
+								<div class="col-sm-4 payment_info">
+									<img src="<?php bloginfo('template_url') ?>-child/images/icon_creditcard.png" alt="" class="image-responsive" />
+									<h3>Pre authorisation card (like a hotels) for £500</h3>
+								</div>
+								<div class="col-sm-4 payment_info" style="background:none !important; padding-bottom:0 !important;">
+									<img style="background:none !important;" src="<?php bloginfo('template_url') ?>-child/images/icon_clothes.png" alt="" class="image-responsive" />
+									<h3>We only charge you for what you keep when you return the box</h3>
+								</div>
+							</div>
 
 
 							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>

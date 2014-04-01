@@ -207,7 +207,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
 									<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
 									<li><span class='active'>Price and Summary</span></li>
-									<li class="hidden-sm hidden-xs"><span>Delivery</span></li>
+									<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
 								</ul>
 								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 							</div><!--details-menu-->

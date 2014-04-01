@@ -478,6 +478,16 @@ position: absolute; height:8px; top:0; width:120px; left:50%; margin-left:-60px;
 
 .line_separator_thick img{ float:left;}
 
+.georgia_text{
+font-family:Georgia, 'Times New Roman', Times, serif !important;
+font-style:italic !important;
+text-transform: none !important; 
+letter-spacing:0 !important; 
+font-size:14px !important; 
+margin-top:-30px !important;
+}
+
+
 .grey_bg{background-color: #f6f7f6;
 border-top: 1px solid #d1d1d1;
 border-bottom: 1px solid #d1d1d1;}
@@ -737,10 +747,10 @@ color:#fff !important;
 .pricing_page .inner-page-wrap {
 margin-top: 0px;}
 
-.pricing_page  .area3 p{max-width: 550px; margin: auto; }
-.pricing_page  .area5 p{max-width: 550px; margin: auto; }
+.pricing_page  .area3 p{max-width: 550px; margin: auto; margin-bottom: 10px; }
+.pricing_page  .area5 p{max-width: 550px; margin: auto; margin-bottom: 10px; }
 .pricing_page  .area7 { margin-bottom: 0 !important;}
-.pricing_page  .area7 p{max-width: 550px; margin: auto;}
+.pricing_page  .area7 p{max-width: 550px; margin: auto; margin-bottom: 10px;}
 
 
 /* --------------------------------------------
@@ -1026,8 +1036,15 @@ margin-top: 0px;}
 
 .profile_authorize_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
 .profile_authorize_page h2{ margin-top: 20px !important;}
+.profile_authorize_page .payment_info_wrapper{ float: left !important; padding-top: 80px; padding-bottom: 50px; margin: auto;}
+.profile_authorize_page .payment_info img{background: url(images/payment_dot.png) no-repeat;
+	background-position:right;}
+.profile_authorize_page .payment_info h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;}
 
-
+@media only screen and (max-width: 767px) {
+.profile_authorize_page .payment_info img{background:none !important; }
+.profile_authorize_page .payment_info {padding-bottom:40px;text-align:center;background: url(images/payment_dot.png) no-repeat; background-position: center bottom; }
+}
 
 
 
