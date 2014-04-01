@@ -49,18 +49,23 @@ get_header();
 		
 	
 </script>
-
-<?php $user = wp_get_current_user(); ?>
-<?php if(empty($user->data)): ?>
-	<div class="flashmessages"></div>
-	<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-	<input type="text" id="user" placeholder='username'><br>
-	<input type="text" id="password" placeholder='password'><br>
-	<button id="login-bnt">Logs in you and stuff</button>
-	<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
-<?php else: ?>
-	<div>You are already logged in</div>
-<?php endif; ?>
+<div class="container">
+	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
+		<div class="row">
+			<?php $user = wp_get_current_user(); ?>
+			<?php if(empty($user->data)): ?>
+				<div class="flashmessages"></div>
+				<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
+				<input type="text" id="user" placeholder='username'><br>
+				<input type="text" id="password" placeholder='password'><br>
+				<button id="login-bnt">Log in</button><br>
+				<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+			<?php else: ?>
+				<div>You are already logged in</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
 
 
 
