@@ -86,6 +86,10 @@ input[type="text"].slider_selection{
 	border-radius:0 !important;
 }
 
+.slider_wrapper .ui-widget-header{
+	background: none;
+}
+
 @media only screen and (max-width: 767px) {
 	.slider{ padding-left:50px; padding-right:50px; margin-top:50px;}
 	input[type="text"].slider_selection{ text-align:center; font-size:40px !important;}

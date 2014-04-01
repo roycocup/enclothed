@@ -11,62 +11,66 @@
 	jQuery(document).ready(function($){
 		$(function() {
 			$( "#shirt_price" ).slider({
-				value:1,
-				min: 0,
-				max: 3,
+				range:true,
+				values:[2, 3],
+				min: 1,
+				max: 4,
 				step: 1,
 				slide: function( event, ui ) {
-					$( "#shirt_price_selection" ).val(increments[ui.value]);
+					$( "#shirt_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);
 				}
 			});
 			var increments = {
-				0: "$0-$50", 
-				1: "$50-$100",
-				2: "$100-$150",
-				3: "$150+",
+				1: "£50", 
+				2: "£100",
+				3: "£150",
+				4: "£150+",
 			};
 
-			$( "#shirt_price_selection" ).val(increments[1]);
+			// $( "#shirt_price_selection" ).val(increments[1]);
+			$( "#shirt_price_selection" ).val('£100-£150');
 		});
 
 		$(function() {
 			$( "#trousers_price" ).slider({
-				value:1,
-				min: 0,
-				max: 3,
+				range:true,
+				values:[2,3],
+				min: 1,
+				max: 4,
 				step: 1,
 				slide: function( event, ui ) {
-					$( "#trousers_price_selection" ).val(increments[ui.value]);
+					$( "#trousers_price_selection" ).val( increments[ui.values[0]] +'-'+ increments[ui.values[1]] );
 				}
 			});
 			var increments = {
-				0: "$50-$100", 
-				1: "$100-$150",
-				2: "$150-$200",
-				3: "$200+",
+				1: "£50", 
+				2: "£100",
+				3: "£150",
+				4: "£200+",
 			};
 
-			$( "#trousers_price_selection" ).val(increments[1]);
+			$( "#trousers_price_selection" ).val('£100-£150');
 		});
 
 		$(function() {
 			$( "#coat_price" ).slider({
-				value:2,
-				min: 0,
-				max: 3,
+				range: true,
+				values:[2,4],
+				min: 1,
+				max: 4,
 				step: 1,
 				slide: function( event, ui ) {
-					$( "#coat_price_selection" ).val(increments[ui.value]);
+					$( "#coat_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);
 				}
 			});
 			var increments = {
-				0: "$150-$200", 
-				1: "$200-$250",
-				2: "$250-$300",
-				3: "$300+",
+				1: "£150", 
+				2: "£200",
+				3: "£250",
+				4: "£300+",
 			};
 
-			$( "#coat_price_selection" ).val(increments[1]);
+			$( "#coat_price_selection" ).val('£200-£300+');
 		});
 	});
 </script>
@@ -235,10 +239,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2 slider_label">Shirt Price</div>
 													<div class="col-sm-7 slider">
 														<div id="shirt_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£0<span style="font-size:15px; letter-spacing:1px;">-</span>£50</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£50<span style="font-size:15px; letter-spacing:1px;">-</span>£100</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£100<span style="font-size:15px; letter-spacing:1px;">-</span>£150</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£150<span style="font-size:15px; letter-spacing:1px;">+</span></div></div>
+															<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
+															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
+															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">£150+</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
 														</div>
@@ -253,10 +257,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2 slider_label">Trousers Price</div>
 													<div class="col-sm-7 slider">
 														<div id="trousers_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£50<span style="font-size:15px; letter-spacing:1px;">-</span>£100</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100<span style="font-size:15px; letter-spacing:1px;">-</span>£150</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150<span style="font-size:15px; letter-spacing:1px;">-</span>£200</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£200<span style="font-size:15px; letter-spacing:1px;">+</span></div></div>
+															<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
+															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
+															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">£200+</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
 														</div>
@@ -271,10 +275,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2 slider_label">Coat Price</div>
 													<div class="col-sm-7 slider">
 														<div id="coat_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£150<span style="font-size:15px; letter-spacing:1px;">-</span>£200</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£200<span style="font-size:15px; letter-spacing:1px;">-</span>£250</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£250<span style="font-size:15px; letter-spacing:1px;">-</span>£300</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£300<span style="font-size:15px; letter-spacing:1px;">+</span></div></div>
+															<div class="notch_big" style="left:0%;"><div class="notch_label">£150</div></div>
+															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£200</div></div>
+															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£250</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">£300+</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
 														</div>
