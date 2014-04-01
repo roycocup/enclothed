@@ -14,6 +14,8 @@ get_header();
 
 	$(document).ready(function($){
 
+		$('.flashmessages').hide();
+
 		$('#login-bnt').click(function(){
 			var user = $('#user').val(); 
 			var pass = $('#password').val();
@@ -35,11 +37,17 @@ get_header();
 					console.log(e);
 				},
 				success: function(data) {
-					console.log(data);
-					if(data == "yes"){
-						$('.flashmessages').html('You are logged in');
+					if(data == "true"){
+						$('.flashmessages').html("Welcome!").fadeIn('slow');
+						setTimeout(function(){
+							$('.flashmessages').fadeOut('slow');
+							window.location.replace("<?php echo home_url();?>");
+						}, 3000);
 					}else {
-						$('.flashmessages').html('Wrong credentials');
+						$('.flashmessages').html("Wrong credentials. Please try again.").fadeIn('slow');
+						setTimeout(function(){
+							$('.flashmessages').fadeOut('slow');
+						}, 3000);
 					}
 				}
 			});
@@ -57,7 +65,7 @@ get_header();
 				<div class="flashmessages"></div>
 				<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
 				<input type="text" id="user" placeholder='username'><br>
-				<input type="text" id="password" placeholder='password'><br>
+				<input type="password" id="password" placeholder='password'><br>
 				<button id="login-bnt">Log in</button><br>
 				<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
 			<?php else: ?>

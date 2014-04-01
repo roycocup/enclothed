@@ -120,10 +120,9 @@ class EnclothedMain {
 		$creds['remember'] = true;
 		$user = wp_signon( $creds, false );
 		if (empty($user) || get_class($user) == 'WP_Error'){
-			return 'no';
+			return false;
 		} else if(get_class($user) == 'WP_User'){
-			var_dump($creds);
-			return 'yes';
+			return true;
 		}
 	}
 
