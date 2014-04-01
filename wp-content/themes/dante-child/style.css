@@ -1036,7 +1036,7 @@ margin-top: 0px;}
 
 .profile_authorize_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
 .profile_authorize_page h2{ margin-top: 20px !important;}
-.profile_authorize_page .payment_info_wrapper{ float: left !important; padding-top: 80px; padding-bottom: 50px; margin: auto;}
+.profile_authorize_page .payment_info_wrapper{ float: left !important; padding-top: 80px; padding-bottom: 50px; margin: auto; margin-bottom:80px;}
 .profile_authorize_page .payment_info img{background: url(images/payment_dot.png) no-repeat;
 	background-position:right;}
 .profile_authorize_page .payment_info h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;}
