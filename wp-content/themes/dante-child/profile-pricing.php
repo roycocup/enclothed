@@ -292,7 +292,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
 									
                                     <div class="col-md-9 col-sm-10 col-xs-11 promo_code_wrapper">
-									<label class="css-label" style="padding-top:30px;">Promotional code</label>
+									<label class="css-label" style="padding-top:30px; color:#fff;">Promotional code</label>
                                     <input type='text' class="promo_code" id='' tabindex="9" name='' placeholder='' value="">
 									</div>
 
