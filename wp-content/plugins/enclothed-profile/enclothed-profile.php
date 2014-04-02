@@ -251,7 +251,7 @@ class EnclothedProfile {
 	}
 
 	public function process_pricing_form(){
-		$this->redeemGiftCode($_POST['section_4']['giftcode']); 
+		//$this->redeemGiftCode($_POST['section_4']['giftcode']); 
 		$data = 'this is the data';
 		wp_redirect( home_url().'/profile/delivery' ); 
 		exit;
