@@ -228,12 +228,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 										</div><!--mini-wrapper-forms-->
 
-											<select class="selectmenu" tabindex="10" name="section_4[box_preset]" style="margin-top:0;" >
+											<!-- <select class="selectmenu" tabindex="10" name="section_4[box_preset]" style="margin-top:0;" >
 												<option value="0">Choose your box</option>
 												<option value="small">Small</option>
 												<option value="medium">Medium</option>
 												<option value="big">Big</option>
-											</select>
+											</select> -->
 
 										<div class="slider_wrapper" style=" margin-top:70px;">
 													<div class="col-sm-2 slider_label">Shirt Price</div>
@@ -289,12 +289,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												</div>
 
 									<label class="css-label">Is there anything extra you'd like to add?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[extra]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_4[extra]" value=""></textarea>
 									
-                                    <div class="col-md-9 col-sm-10 col-xs-11 promo_code_wrapper">
+                                    <!-- <div class="col-md-9 col-sm-10 col-xs-11 promo_code_wrapper">
 									<label class="css-label" style="padding-top:30px; color:#fff;">Gift Card Code</label>
                                     <input type='text' class="promo_code" id='' tabindex="9" name='section_4[giftcode]' placeholder='' value="">
-									</div>
+									</div> -->
 
 										<div class="mini-wrapper5">
 											<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
