@@ -44,6 +44,9 @@ class EnclothedProfile {
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/details/' ) ) {
 				$this->process_details_form();
 			}	
+			if ( wp_verify_nonce( $_POST['nonce'], '/profile/preferences/' ) ) {
+				$this->process_preferences_form();
+			}
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/sizing/' ) ) {
 				$this->process_sizing_form();
 			}
@@ -226,13 +229,20 @@ class EnclothedProfile {
 		
 	}
 
-	
 	public function process_style_form(){
+		// dump($_POST); die;
+		$data = 'this is the data';
+		wp_redirect( home_url().'/profile/preferences' ); 
+		exit;
+	}
+
+	public function process_preferences_form(){
 		// dump($_POST); die;
 		$data = 'this is the data';
 		wp_redirect( home_url().'/profile/sizing' ); 
 		exit;
 	}
+
 
 	public function process_sizing_form(){
 		$data = 'this is the data';
