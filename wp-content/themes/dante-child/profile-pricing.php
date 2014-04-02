@@ -203,11 +203,11 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<!-- Main Menu -->
 							<div class="details-menu">
 								<ul>
-									<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
-									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
-									<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
-									<li><span class='active'>Price and Summary</span></li>
-									<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
+							<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
+							<li class="hidden-sm hidden-xs"><span>Pick Your Style</span></li>
+							<li class="hidden-sm hidden-xs"><span>Preferences</span></li>
+							<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+							<li class="hidden-sm hidden-xs"><span style="border-right:none;" class="active">Price and Summary</span></li>
 								</ul>
 								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 							</div><!--details-menu-->
@@ -228,14 +228,14 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 										</div><!--mini-wrapper-forms-->
 
-											<!-- <select class="selectmenu" tabindex="10" name="section_4[box_preset]" style="margin-top:0;" >
+											 <select style="display:none;" class="selectmenu" tabindex="10" name="section_4[box_preset]" style="margin-top:0;" >
 												<option value="0">Choose your box</option>
 												<option value="small">Small</option>
 												<option value="medium">Medium</option>
 												<option value="big">Big</option>
-											</select> -->
+											</select> 
 
-										<div class="slider_wrapper" style=" margin-top:70px;">
+										<div class="slider_wrapper">
 													<div class="col-sm-2 slider_label">Shirt Price</div>
 													<div class="col-sm-7 slider">
 														<div id="shirt_price" style="margin-top:20px;">

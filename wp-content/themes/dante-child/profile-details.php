@@ -138,10 +138,10 @@ if (isset($_SESSION['section_1'])){
  		<div class="details-menu">
  		<ul>
  			<li><span class="active">Your Details</span></li>
- 			<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
- 			<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
- 			<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
- 			<li class="hidden-sm hidden-xs"><span style="border-right:none;">Delivery</span></li>
+			<li class="hidden-sm hidden-xs"><span>Pick Your Style</span></li>
+			<li class="hidden-sm hidden-xs"><span>Preferences</span></li>
+			<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
+			<li class="hidden-sm hidden-xs"><span style="border-right:none;">Price and Summary</span></li>
  		</ul>
  <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
  </div><!--details-menu-->
