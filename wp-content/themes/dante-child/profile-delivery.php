@@ -198,7 +198,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
 											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
 											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-											<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+											<!-- <input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value=""> -->
 										</div>
 									</div>	
 
