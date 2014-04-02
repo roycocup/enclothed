@@ -160,7 +160,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<input type='text' class="promo_code" id='' tabindex="9" placeholder='Do you have a Promotional Code?' name='promocode'  value="">
 							</div>
 							
-							<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
+							<!-- <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div> -->
 
 							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 							<div class="mini-wrapper5">
