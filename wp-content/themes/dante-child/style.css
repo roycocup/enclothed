@@ -679,7 +679,7 @@ color: #252525;
 }
 .home_page .inner-page-wrap {
 padding-top: 0!important;
-margin-top: 0;
+margin-top: 10px;
 }
 .home_page #header-section#header {
 padding: 20px 0 30px 0;
@@ -775,6 +775,7 @@ margin-top: 0px;}
 	.how_it_works_page p{ text-align: center !important;  }
 	.how_it_works_page h2{ text-align: center !important;  }
 	.how_it_works_page .area5 .spb_content_wrapper{ margin: auto !important;}
+	.how_it_works_page img.line{ margin-top:0 !important;text-align:center;}
 
 } 
 
@@ -1048,7 +1049,17 @@ margin-top: 0px;}
 .gift_card_page .styles-block{ margin-top: 50px; border-top:1px solid #e3e3e3;}
 .gift_card_page h2{ margin-top: 50px !important;}
 .gift_card_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ; font-size: 18px !important;}
-
+.gift_card_page .gift_card_wrapper{ 
+	float: left !important;
+	padding-top: 80px; 
+	padding-bottom: 0px; 
+	margin: auto;
+	margin-bottom:80px;
+	position: relative;
+	border-top: 1px solid #e3e3e3;
+}
+.gift_card_page .gift_card_wrapper h2{ margin-top: 0px !important;}
+.gift_card_page .georgia_text{ font-size: 18px !important; padding-top: 50px; padding-bottom: 30px; text-align: center;}
 
 
 
@@ -1064,14 +1075,8 @@ margin-top: 0px;}
 }
 @media only screen and (max-width: 767px) {
 
-.how_it_works_page img.line{ margin-top:0 !important;text-align:center;}
-
-
 .title-forms{
 	padding:0;
 }
-
-
-
 
 }

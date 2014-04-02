@@ -3203,6 +3203,18 @@ select{
 	letter-spacing: 1px;
 }
 
+.key-info.invisible-field{ 
+	visibility: hidden;
+}
+
+@media only screen and (max-width: 704px) {
+	
+	.key-info.invisible-field{
+		display: none;
+	}
+
+} 
+
 .date{
 	font: italic 15px Georgia, "Times New Roman", Times, serif;
 	margin-bottom: -40px;

@@ -136,38 +136,39 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-							<div class="col-sm-12 payment_info_wrapper relative" style="float:left;">
+							<div class="col-sm-10 gift_card_wrapper no-borders" style=" float:none !important; margin:auto;">
 								<h2>Choose gift card</h2>								
-								<div class="col-sm-4 payment_info">
-									<img src="<?php bloginfo('template_url') ?>-child/images/icon_wallet.png" alt="" class="image-responsive" />
+								<div class="col-sm-4 gift_card_info" >
+									<div style=" height:300px; background: url(<?php bloginfo('template_url') ?>-child/images/icon_e-card.png) no-repeat background-position ;"></div>
 									<h3>E-card</h3>
 								</div>
-								<div class="col-sm-4 payment_info">
-									<img src="<?php bloginfo('template_url') ?>-child/images/icon_creditcard.png" alt="" class="image-responsive" />
+								<div class="col-sm-4 gift_card_info" style=" height:300px; background-color:#ff77ee;">
 									<h3>Physical</h3>
 								</div>
-								<div class="col-sm-4 payment_info" style="background:none !important; padding-bottom:0 !important;">
-									<img style="background:none !important;" src="<?php bloginfo('template_url') ?>-child/images/icon_clothes.png" alt="" class="image-responsive" />
+								<div class="col-sm-4 gift_card_info" style=" height:300px; background-color: #ff9900;">
 									<h3>Buy a box</h3>
 								</div>
 							</div>
 
-							<div class="col-sm-12 payment_info_wrapper relative">
+							<div class="col-sm-12 gift_card_wrapper no-margin-bottom">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
-
+								<h2>E-card</h2>								
+								<p class="georgia_text">Please enter your details in the form below</p>
 								<div class="mini-wrapper-forms">
-									<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
-									<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
-									<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
-									<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-									<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
-									<div class="checkbox_wrap" >
-										<input type="checkbox" class="css-checkbox" id="checkbox1">
-										<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS MY DEFAULT ADDRESS</label>
-									</div>
+									<input type="text" class="key-info" tabindex="1" placeholder="Your Name" name="" value="">
+									<input type="text" class="key-info" tabindex="2" placeholder="Your Email" name="" value="">
+									<input type="text" class="key-info" tabindex="3" placeholder="Recipients Name" name="" value="">
+									<input type="text" class="key-info" tabindex="4" placeholder="Recipients Email" name="" value="">
+									<input type="text" class="customer-info" tabindex="5" placeholder="Billing Address Line 1" name="" value="">		 	  	
+									<input type="text" class="customer-info" tabindex="6" placeholder="Billing Address Line 2" name="" value="">	  	
+									<input type="text" class="customer-info" tabindex="7" placeholder="Billing Address Line 3" name="" value="">
+									<input type="text" class="key-info" tabindex="8" placeholder="Post Code" name="" value="">
+									<input type="text" class="key-info" tabindex="9" placeholder="Phone Number" name="" value="">
+									<input type="text" class="key-info" tabindex="10" placeholder="Gift Card Amount" name="" value="">
+									<input type="text" class="key-info invisible-field" >
+									<textarea type="text" class="customer-info3" tabindex="11"  placeholder="Personal Message" name="" value=""></textarea>
 								</div><!--mini-wrapper-forms-->
 							</div>
-
 
 							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 							<div class="mini-wrapper5">
