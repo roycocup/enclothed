@@ -97,6 +97,7 @@ p{ font-size:16px; letter-spacing:1px; margin-bottom:16px;}
 .no-border-bottom { border-bottom: none !important;}
 .no-padding-top{ padding-top:0 !important;}
 .no-padding-bottom{ padding-bottom:0 !important;}
+.center{ margin: auto !important;}
 
 @media only screen and (min-width: 1200px) {
 	.container {width: 980px;}
@@ -679,7 +680,7 @@ color: #252525;
 }
 .home_page .inner-page-wrap {
 padding-top: 0!important;
-margin-top: 10px;
+margin-top: 0px;
 }
 .home_page #header-section#header {
 padding: 20px 0 30px 0;
@@ -728,6 +729,15 @@ color:#fff !important;
 .home_page .area3{
 	margin-top: -160px;
 }
+
+.home_page .fullscreen-container{ 
+	height:550px !important;}
+
+.home_page .slider-wrap{ 
+	margin-bottom: 0 !important;}
+
+.home_page .spb_slider_widget{ 
+	margin-bottom: 0 !important;}
 
 
 /* --------------------------------------------
@@ -1080,3 +1090,4 @@ margin-top: 0px;}
 }
 
 }
+
