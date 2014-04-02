@@ -8,6 +8,23 @@
 <?php get_header(); ?>
 
 
+<script>
+	jQuery(document).ready(function($){
+
+		// start with the alternate address hidden
+		$('.billing-address-wrapper').hide();
+
+		$('#checkbox1').click(function(){
+			if (this.checked){
+				// if the box is checked we dont need another address because its the same one as main
+				$('.billing-address-wrapper').slideUp('slow');
+			}else{
+				$('.billing-address-wrapper').slideDown('slow');
+			}
+		});
+	});	
+</script>
+
 <?php 
 if (isset($_SESSION['section_5'])){
 	$section = $_SESSION['section_5'];	
@@ -146,44 +163,51 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<form action="" method="POST" name='section_2'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+
+
+									<!-- Main Address  -->
 									<div class="title-header no-border-top">
 										<div class="numbering2">01</div>
-										<div class="accordian-title">Customer information</div>
-										<div class="arrow-click"></div>
+										<div class="accordian-title">Main Address</div>
+										<!-- <div class="arrow-click" id='arrow1'></div> -->
 									</div>
 
 									<div class="mini-wrapper-forms">
 										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="" value="">		 	  	
 										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="" value="">
 										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">		 	  	
-										<input type="text" class="customer-info2" tabindex="1" placeholder="Name this Address" name="" value="">
-
-									</div><!--mini-wrapper-forms-->
-
-									<div class="title-header">
-										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
-										<div class="numbering2">02</div>
-										<div class="accordian-title">Alternative Address</div>
-										<div class="arrow-click"></div>
-									</div>
-
-									<div class="mini-wrapper-forms">
-										<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
-										<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
-										<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">		 	  
 										<div class="checkbox_wrap" >
-											<input type="checkbox" class="css-checkbox" id="checkbox1">
-											<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS MY DEFAULT ADDRESS</label>
+											<input type="checkbox" class="css-checkbox" id="checkbox1" checked>
+											<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS THIS ADDRESS</label>
+										</div>	
+									</div>
+									
+
+									<!-- Billing Address -->
+									<div class="billing-address-wrapper">
+										<div class="title-header">
+											<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
+											<div class="numbering2">02</div>
+											<div class="accordian-title">Billing Address</div>
+											<!-- <div class="arrow-click" id='arrow2'></div> -->
 										</div>
-									</div><!--mini-wrapper-forms-->
+
+										<div class="mini-wrapper-forms ">
+											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
+											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
+											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
+											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
+											<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+										</div>
+									</div>	
 
 
 
 
-									<div class="title-header">
+
+
+									<!-- <div class="title-header">
 										<div class="shadow_inverse"><img src="<?php bloginfo('template_url') ?>-child/images/shadow_inverse.png" alt="" /></div>
 										<div class="numbering2">03</div>
 										<div class="accordian-title">Billing Address</div>
@@ -197,11 +221,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<input type="text" class="key-info" tabindex="1" placeholder="Billing Post Code" name="" value="">
 										<input type="text" class="customer-info2" tabindex="2" placeholder="Name this Address" name="" value="">
 
-									</div><!--mini-wrapper-forms-->
+									</div> --> 
 
 									<div class="line_separator">
 										<div class="shadow_inverse"><img src="http://enclothed.dev/wp-content/themes/dante-child/images/shadow_inverse.png" alt=""></div>
 									</div>
+
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about delivery?</label>
 									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about collection?</label>
