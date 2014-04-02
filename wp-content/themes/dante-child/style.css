@@ -74,7 +74,12 @@ h1{
 }
 
 h2 {
-	text-align: center; font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ; letter-spacing: 3px !important; font-size: 30px !important; line-height: 30px !important; text-transform: uppercase;
+	text-align: center;
+	font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+	line-height: 30px !important;
+	text-transform: uppercase;
+	letter-spacing: 2px !important;
+	font-size: 28px !important;
 }
 
 h3 {
@@ -83,14 +88,12 @@ h3 {
 
 p{ font-size:16px; letter-spacing:1px; margin-bottom:16px;}
 
-
 .no-borders { border: none !important;}
 .no-padding { padding: 0 !important;}
 .no-margin { margin: 0 !important;}
-
 .no-margin-top { margin-top: 0 !important;}
-.no-border-top { border-top: none !important;}
 .no-margin-bottom { margin-bottom: 0 !important;}
+.no-border-top { border-top: none !important;}
 .no-border-bottom { border-bottom: none !important;}
 .no-padding-top{ padding-top:0 !important;}
 .no-padding-bottom{ padding-bottom:0 !important;}
@@ -132,7 +135,7 @@ margin: 0 5%;
 width: 232px !important;
 }
 
-#header-section.header-6 #header {
+#header-section#header {
 padding: 40px 0 30px 0;
 }
 
@@ -146,7 +149,7 @@ min-height: 132px !important;
 
 
 @media only screen and (max-width: 991px){
-.header-6 #logo {
+#logo {
 padding: 0 15px;
 left: 0;
 height: auto;
@@ -198,12 +201,6 @@ box-shadow: none;
 -webkit-box-shadow: none !important;
 box-shadow: none !important;
 }
-
-.big-padding-top{
-padding-top: 200px !important; }
-
-.big-padding-bottom{
-padding-bottom: 160px !important; }
 
 @media only screen and (max-width: 767px){
 .sticky-header{margin-top:40px;}
@@ -519,13 +516,6 @@ background-color: #fff !important;
 
 img.line{ margin-top:20px;}
 
-h2 {
-font-family: proxbold;
-letter-spacing: 2px;
-font-size: 28px !important;
-text-transform:uppercase;
-}
-
 .profile_style_page .box_options_wrapper{
 	padding: 40px 20px 50px 20px;
 	margin: -30px -20px 30px -20px;
@@ -691,7 +681,7 @@ color: #252525;
 padding-top: 0!important;
 margin-top: 0;
 }
-.home_page #header-section.header-6 #header {
+.home_page #header-section#header {
 padding: 20px 0 30px 0;
 }
 .home_page nav#main-navigation .menu > li > a{ color:#fff;  padding:15px 0 12px;}
@@ -768,7 +758,7 @@ margin-top: 0px;}
 .how_it_works_page  .area2_right p img.line{ margin-top:30px ; }
 .how_it_works_page  .area4_right p img.line{ margin-top:30px ; }
 .how_it_works_page .area5{ padding-top:100px !important; padding-bottom:100px !important; }
-.how_it_works_page .area5 .spb_content_wrapper{ max-width: 500px;}
+.how_it_works_page .area5 .spb_content_wrapper{ max-width: 500px; }
 .how_it_works_page .area6{ padding-top:50px !important; padding-bottom:50px !important; }
 .how_it_works_page .area6 p{max-width: 550px; margin: auto; }
 	
@@ -784,6 +774,7 @@ margin-top: 0px;}
 @media only screen and (max-width: 767px) {
 	.how_it_works_page p{ text-align: center !important;  }
 	.how_it_works_page h2{ text-align: center !important;  }
+	.how_it_works_page .area5 .spb_content_wrapper{ margin: auto !important;}
 
 } 
 
@@ -1036,6 +1027,7 @@ margin-top: 0px;}
 
 .profile_authorize_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
 .profile_authorize_page h2{ margin-top: 20px !important;}
+.profile_authorize_page .styles-block{ margin-top: 50px; border-top:1px solid #e3e3e3;}
 .profile_authorize_page .payment_info_wrapper{ float: left !important; padding-top: 80px; padding-bottom: 50px; margin: auto; margin-bottom:80px;}
 .profile_authorize_page .payment_info img{background: url(images/payment_dot.png) no-repeat;
 	background-position:right;}
@@ -1045,6 +1037,17 @@ margin-top: 0px;}
 .profile_authorize_page .payment_info img{background:none !important; }
 .profile_authorize_page .payment_info {padding-bottom:40px;text-align:center;background: url(images/payment_dot.png) no-repeat; background-position: center bottom; }
 }
+
+
+
+/* --------------------------------------------
+	GIFT CARD
+-------------------------------------------- */
+
+.gift_card_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;}
+.gift_card_page .styles-block{ margin-top: 50px; border-top:1px solid #e3e3e3;}
+.gift_card_page h2{ margin-top: 50px !important;}
+.gift_card_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ; font-size: 18px !important;}
 
 
 
@@ -1070,24 +1073,5 @@ margin-top: 0px;}
 
 
 
-/*Value Sliders Styling---------------------------------------------------*/
 
-.value-slider1{
-	width: 100%;
-	height: 140px;
-	border-left: 1px solid #cccdcc;	
-	border-right: 1px solid #cccdcc;	
-	border-bottom: 1px solid #cccdcc;	
-	vertical-align: middle;
 }
-
-.slider-wrap{
-	width: auto;
-	max-width: 600px;
-	height: auto;
-	margin: 0 auto;
-	position: relative;
-	display: block;
-	top: -10px;
-}
-

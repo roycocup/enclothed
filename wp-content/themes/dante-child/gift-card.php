@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* template name: Profile Authorize
+* template name: Gift Card
 *
 **/
 
@@ -120,7 +120,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<div class="row">
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
 							<div class="spb_wrapper clearfix">
-								<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>ENCLOTHED PROFILE</span></h2>
+								<h2 style="text-align: center;"><span style="color: #ffffff;">GIFT CARD</span></h2>
 									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 							</div> 
 						</div>
@@ -133,22 +133,39 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="fade-border-right"></div>
 							<?php echo $form; ?>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
+							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-							<div class="col-sm-12 payment_info_wrapper relative">								
+							<div class="col-sm-12 payment_info_wrapper relative" style="float:left;">
+								<h2>Choose gift card</h2>								
 								<div class="col-sm-4 payment_info">
 									<img src="<?php bloginfo('template_url') ?>-child/images/icon_wallet.png" alt="" class="image-responsive" />
-									<h3>We aren’t taking any money now</h3>
+									<h3>E-card</h3>
 								</div>
 								<div class="col-sm-4 payment_info">
 									<img src="<?php bloginfo('template_url') ?>-child/images/icon_creditcard.png" alt="" class="image-responsive" />
-									<h3>Pre authorisation card (like a hotels) for £500</h3>
+									<h3>Physical</h3>
 								</div>
 								<div class="col-sm-4 payment_info" style="background:none !important; padding-bottom:0 !important;">
 									<img style="background:none !important;" src="<?php bloginfo('template_url') ?>-child/images/icon_clothes.png" alt="" class="image-responsive" />
-									<h3>We only charge you for what you keep when you return the box</h3>
+									<h3>Buy a box</h3>
 								</div>
-								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
+							</div>
+
+							<div class="col-sm-12 payment_info_wrapper relative">
+								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
+
+								<div class="mini-wrapper-forms">
+									<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
+									<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
+									<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
+									<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
+									<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+									<div class="checkbox_wrap" >
+										<input type="checkbox" class="css-checkbox" id="checkbox1">
+										<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS MY DEFAULT ADDRESS</label>
+									</div>
+								</div><!--mini-wrapper-forms-->
 							</div>
 
 
