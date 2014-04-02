@@ -27,9 +27,11 @@ class ldmStreams {
 
 }
 
+// Facebook posts already styled from functions.php
+// $posts = get_fb_posts();
 
-$streams = new ldmStreams();
-// $posts = $streams->getFacebookPosts();
-// var_dump($posts); 
+	
+
+
 
 

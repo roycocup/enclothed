@@ -11,7 +11,7 @@
 	*/
 	
 	
-	// OVERWRITE PAGE BUILDER ASSETS
+// OVERWRITE PAGE BUILDER ASSETS
 //	function spb_regsiter_assets() {
 //		require_once( get_stylesheet_directory_uri() . '/default.php' );
 //	}
@@ -22,6 +22,13 @@
 //	add_action('wp', 'spb_regsiter_assets', 2);
 //	}
 
+
+/**
+*
+* This function is highly coupled with a plugin that must not be updated
+* or the function will be lost 
+*
+**/
 if (!function_exists('get_fb_posts')){
 	function get_fb_posts($num, $truncate_words = false){
 		$posts = get_facebook_posts();
@@ -87,8 +94,12 @@ function admin_logo() { ?>
 add_action( 'login_enqueue_scripts', 'admin_logo' );
 
 
-/* CONTENT FUNCTIONS
-================================================== */
+/**
+*
+* This is an extension of the swift dante header functionality 
+* this particular bit will enable us to work with the include on the child-theme
+*
+**/
 if (!function_exists('sf_custom_content_extend')) {
 	function sf_custom_content_extend() {
 		include_once( 'includes/sf-header.php' );
@@ -97,4 +108,9 @@ if (!function_exists('sf_custom_content_extend')) {
 }
 			
 add_filter('show_admin_bar', '__return_false');
+
+
+
+
+
 ?>
