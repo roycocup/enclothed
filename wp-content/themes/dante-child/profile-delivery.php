@@ -147,16 +147,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						</div>
 						<div class="row">
 							<!-- Main Menu -->
-							<div class="details-menu">
-								<ul>
-									<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
-									<li class="hidden-sm hidden-xs"><span>Pick your Style</span></li>
-									<li class="hidden-sm hidden-xs"><span>Size and Color</span></li>
-									<li class="hidden-sm hidden-xs"><span>Price and Summary</span></li>
-									<li><span  class="active" style="border-right:none;">Delivery</span></li>
-								</ul>
-							</div><!--details-menu-->
-
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
