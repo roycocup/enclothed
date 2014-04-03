@@ -192,14 +192,15 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="fade-border-right"></div>
 			<?php $user = wp_get_current_user(); ?>
 			<?php if(empty($user->data)): ?>
-				<div class="flashmessages georgia_text">Lorem ipsum dolor sit amet</div>
 				
-				<div class="col-sm-6 login_wrapper" >
+				<div class="col-sm-12 login_wrapper" >
+				<div class="flashmessages georgia_text" style="display:block;height:40px; width:100%; 
+				margin:0 auto; padding:0; float:none; text-align:center;">Lorem ipsum dolor sit amet</div>
 					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
 					<input type="text" class="key-info" id='user' tabindex="1" placeholder="Username">
 					<input type="password" class="key-info" id='password' tabindex="1" placeholder="password">
 					<button class="button4" id='login-bnt'>log in</button>
-					<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+					<a href="/home/lostpass" title="Lost Password" class="lost_password">Lost Password?</a>
 				</div>
 			<?php else: ?>
 				<div>You are already logged in</div>

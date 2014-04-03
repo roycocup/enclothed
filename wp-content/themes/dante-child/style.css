@@ -1477,8 +1477,7 @@ border:none;
  border-top:1px solid #e3e3e3;
  float: left;
 }
-.login_page .login_wrapper{ margin: 0 auto;
-	float: none;
+.login_page .login_wrapper{ float: left;
 }
 .login_page .key-info{ clear:both;
 	display: block;
@@ -1491,8 +1490,14 @@ border:none;
 	margin:0 auto;
 	float: none;
 	margin-bottom: 20px;
+	margin-top: 100px;
+	max-width: 250px;
 }
-.login_page .georgia_text{ font-size: 20px;
+.login_page .lost_password{ clear:both;
+	display: block;
+	text-align: center;
+}
+.login_page .georgia_text{ font-size: 22px !important;
 }
 @media only screen and (max-width: 767px) {
 
