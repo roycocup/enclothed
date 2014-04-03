@@ -1477,7 +1477,7 @@ border:none;
  border-top:1px solid #e3e3e3;
  float: left;
 }
-.login_page .login_wrapper{ float: left;
+.login_page .login_wrapper{ 
 }
 .login_page .key-info{ clear:both;
 	display: block;
@@ -1489,7 +1489,7 @@ border:none;
 	display: block;
 	margin:0 auto;
 	float: none;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 	margin-top: 100px;
 	max-width: 250px;
 }
@@ -1498,6 +1498,13 @@ border:none;
 	text-align: center;
 }
 .login_page .georgia_text{ font-size: 22px !important;
+	display:block;
+	height:40px; 
+	width:100%;  
+	padding:0; 
+	float:left !important; 
+	text-align:center; 
+	margin: 90px 0 20px 0 !important;
 }
 @media only screen and (max-width: 767px) {
 
