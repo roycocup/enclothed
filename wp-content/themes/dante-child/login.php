@@ -39,15 +39,10 @@ get_header();
 				success: function(data) {
 					if(data == "true"){
 						$('.flashmessages').html("Welcome!").fadeIn('slow');
-						setTimeout(function(){
-							$('.flashmessages').fadeOut('slow');
-							window.location.replace("<?php echo home_url();?>");
-						}, 3000);
+						setTimeout(function(){window.location.replace("<?php echo home_url();?>");}, 3000);
 					}else {
 						$('.flashmessages').html("Wrong credentials. Please try again.").fadeIn('slow');
-						setTimeout(function(){
-							$('.flashmessages').fadeOut('slow');
-						}, 3000);
+						setTimeout(function(){}, 3000);
 					}
 				}
 			});
