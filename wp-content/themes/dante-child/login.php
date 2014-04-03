@@ -59,14 +59,15 @@ get_header();
 </script>
 <div class="container">
 	<div class="inner-page-wrap <?php echo $page_wrap_class; ?> clearfix">
-		<div class="row">
+		<div class="col-xs-3">
 			<?php $user = wp_get_current_user(); ?>
 			<?php if(empty($user->data)): ?>
 				<div class="flashmessages"></div>
 				<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-				<input type="text" id="user" placeholder='username'><br>
-				<input type="password" id="password" placeholder='password'><br>
-				<button id="login-bnt">Log in</button><br>
+				<input type="text" class="customer-info" id='user' tabindex="1" placeholder="Username">
+				<input type="password" class="customer-info" id='password' tabindex="1" placeholder="password">
+				<button class="button4" id='login-bnt'>login</button>
+				
 				<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
 			<?php else: ?>
 				<div>You are already logged in</div>
