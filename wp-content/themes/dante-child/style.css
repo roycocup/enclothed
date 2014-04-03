@@ -639,6 +639,8 @@ img.line{ margin-top:20px;
  }
 }
 
+.fw-video-link-image { display: block;}
+
 
 
 
@@ -878,6 +880,15 @@ text-align: left;
  }
 .how_it_works_page p img.line{ margin-top:0px;
  }
+.how_it_works_page .fullscreen-container{ 
+	height:470px !important;
+}
+.how_it_works_page .slider-wrap{ 
+	margin-bottom: 20px !important;
+}
+.how_it_works_page .spb_slider_widget{ 
+	margin-bottom: 0 !important;
+}
 @media only screen and (max-width: 991px) {
   .how_it_works_page  .area3_right { height: 364px; 
  }
