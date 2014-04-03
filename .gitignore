@@ -3,3 +3,4 @@ wp-config.php
 *.log
 .DS_Store
 *log.txt
+*.mp4
