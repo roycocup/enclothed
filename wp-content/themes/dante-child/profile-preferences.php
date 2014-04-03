@@ -4,7 +4,14 @@
 * template name: Profile Preferences
 *
 **/
+?>
+<?php
+wp_enqueue_script('jquery-ui-autocomplete');
 get_header();
+?>
+<!-- <link href="<?php echo bloginfo('stylesheet_directory').'/css/select2.css'; ?>" rel="stylesheet" /> -->
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.2/select2.min.js"></script> -->
+<?php
 if (isset($_SESSION['section_2'])){
 	$section = $_SESSION['section_2'];	
 }else if(isset($_POST['section_2'])){
@@ -32,12 +39,62 @@ if (isset($_SESSION['section_2'])){
 
 		jQuery( ".click" ).click(function() {
 			if(jQuery(this).hasClass( "selected" )){
-				
+				// do nothing		
 			} else {
 				jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
 			}
 			jQuery(this).toggleClass( "selected" );
 		});
+
+		// Autocomplete for brands box
+		// var availableTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
+		var availableTags = ["Abercrombie & Fitch", "All Saints", "A.P.C", "Armani", "Balenciaga", "Banana Republic", "Barbour", "Brooks Brothers",
+                "Calvin Klein", "Diesel", "Dockers", "Duck and Cover", "Emmett", "Fat Face", "Fred Perry", "Gant", "Gap", "G Star",
+                "Gucci", "Hackett", "Hartford", "Hentsch Man", "Henri Lloyd", "Hugo Boss", "H&M", "Jack Wills", "Lacoste", "Lanvin",
+                "Levis", "Lyle & Scott", "Musto", "Northface", "Paul Smith", "Penguin", "Prada", "Rag & Bone", "Ralph Lauren", "Reiss",
+                "Sunspel", "Superdry", "Ted Baker", "TM Lewin", "Tods", "Tommy Hilfiger", "Thomas Pink", "Versace", "White Stuff", "Zegna"];
+		
+		// $("#brands-autocomplete-box").select2({
+			// tags: availableTags,
+		// });
+
+		// Autocomplete for the brands box
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+		$('#brands-autocomplete-box')// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB && $( this ).data( "ui-autocomplete" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				minLength: 0,
+				source: function( request, response ) {
+				// delegate back to autocomplete, but extract the last term
+				response( $.ui.autocomplete.filter(
+					availableTags, extractLast( request.term ) ) );
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function( event, ui ) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push( "" );
+				this.value = terms.join( ", " );
+				return false;
+			}
+		});
+
 
 	});
 </script>
@@ -252,7 +309,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>                                    
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value="" id='brands-autocomplete-box'></textarea>                                    
 								</div>
 							</div>
 
@@ -421,7 +478,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jeans-chinos.jpg" class="img-responsive" />
 											<div id="area6_2" class="option_image_overlay click">
-												<div class="option_image_label">Chinos</div>
+												<div class="option_image_label">Straight</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
