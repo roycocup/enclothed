@@ -271,7 +271,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												</div>
                                                 
  
- 										<div class="slider_wrapper" style="border-bottom:1px solid #c1c1c1; margin-bottom:40px;">
+ 										<div class="slider_wrapper" style="border-bottom:1px solid #e3e3e3; margin-bottom:40px;">
 													<div class="col-sm-2 slider_label">Coat Price</div>
 													<div class="col-sm-7 slider">
 														<div id="coat_price" style="margin-top:20px;">

@@ -462,7 +462,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 
 
-									<div class="title-forms" style="border-top: 1px solid #c1c1c1; position: relative;">
+									<div class="title-forms" style="border-top: 1px solid #e3e3e3; position: relative;">
 										<div class="line_thick" style="position: absolute; height:8px; top:0; width:120px; left:50%; margin-left:-60px;"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt="" style="float:left;" /></div>
 										<div class="mini-wrapper-forms">
 											<div class="numbering">02</div>

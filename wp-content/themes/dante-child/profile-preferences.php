@@ -172,12 +172,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<form action="" method="POST" name='section_2'>								
 						<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>				
 
-							<div class="title-forms area2" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="mini-wrapper-forms">
 									<div class="numbering">01</div>
 									<p>Favourite brands - not to recieve them but to tell us about your style</p>
 								</div><!--mini-wrapper-forms-->
-								<div class="row" style="border-top: 1px solid #c1c1c1;">
+								<div class="row" style="border-top: 1px solid #e3e3e3;">
 									<div class="col-sm-6 grid_left">
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
@@ -257,7 +257,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div>
 
 
-							<div class="title-forms area3" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">02</div>
@@ -304,7 +304,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area4" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area4" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">03</div>
@@ -352,7 +352,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area5" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area5" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">04</div>
@@ -404,7 +404,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area6" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
+							<div class="title-forms area6" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">05</div>
@@ -446,7 +446,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area7" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
+							<div class="title-forms area7" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">06</div>
@@ -492,7 +492,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area8" style="border-bottom:1px solid #c1c1c1; padding-bottom:40px;">
+							<div class="title-forms area8" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">07</div>
@@ -525,7 +525,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area9" style="border-bottom:1px solid #c1c1c1">
+							<div class="title-forms area9" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">08</div>
