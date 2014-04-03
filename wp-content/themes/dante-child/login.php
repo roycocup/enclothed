@@ -14,7 +14,7 @@ get_header();
 
 	$(document).ready(function($){
 
-		$('.flashmessages').hide();
+		// $('.flashmessages').hide();
 
 		$('#login-bnt').click(function(){
 			var user = $('#user').val(); 
@@ -178,7 +178,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<div class="row">
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
 							<div class="spb_wrapper clearfix">
-								<h2 style="text-align: center;"><span style="color: #ffffff;">BUILD YOUR<br>ENCLOTHED PROFILE</span></h2>
+								<h2 style="text-align: center;"><span style="color: #ffffff;">LOG IN</span></h2>
 								<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 							</div> 
 						</div>
@@ -187,17 +187,20 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<!-- Main Menu -->
 
 						<div class="styles-block">
+							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
 			<?php $user = wp_get_current_user(); ?>
 			<?php if(empty($user->data)): ?>
-				<div class="flashmessages">jhgjhgjhgjhg</div>
-				<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-				<input type="text" class="customer-info" id='user' tabindex="1" placeholder="Username">
-				<input type="password" class="customer-info" id='password' tabindex="1" placeholder="password">
-				<button class="button4" id='login-bnt'>login</button>
+				<div class="flashmessages georgia_text">Lorem ipsum dolor sit amet</div>
 				
-				<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+				<div class="col-sm-6 login_wrapper" >
+					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
+					<input type="text" class="key-info" id='user' tabindex="1" placeholder="Username">
+					<input type="password" class="key-info" id='password' tabindex="1" placeholder="password">
+					<button class="button4" id='login-bnt'>log in</button>
+					<a href="/home/lostpass" title="Lost Password">Lost Password?</a>
+				</div>
 			<?php else: ?>
 				<div>You are already logged in</div>
 			<?php endif; ?>
