@@ -72,6 +72,29 @@
 
 			$( "#coat_price_selection" ).val('£200-£300+');
 		});
+
+
+		$(function() {
+			$( "#shoe_price" ).slider({
+				range: true,
+				values:[2,4],
+				min: 1,
+				max: 5,
+				step: 1,
+				slide: function( event, ui ) {
+					$( "#shoe_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);
+				}
+			});
+			var increments = {
+				1: "£50", 
+				2: "£100",
+				3: "£150",
+				4: "£200",
+				5: "£200+",
+			};
+
+			$( "#shoe_price_selection" ).val('£100-£200');
+		});
 	});
 </script>
 
@@ -236,57 +259,76 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											</select> 
 
 										<div class="slider_wrapper">
-													<div class="col-sm-2 slider_label">Shirt Price</div>
-													<div class="col-sm-7 slider">
-														<div id="shirt_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£150+</div></div>
-															<div class="slider_left"></div>
-															<div class="slider_right"></div>
-														</div>
-													</div>
-													<div class="col-sm-3">
-														<input type="text" id="shirt_price_selection" class="slider_selection" disabled="disabled">
-													</div>
+											<div class="col-sm-2 slider_label">Shirt Price</div>
+											<div class="col-sm-7 slider">
+												<div id="shirt_price" style="margin-top:20px;">
+													<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
+													<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
+													<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
+													<div class="notch_big" style="left:100%;"><div class="notch_label">£150+</div></div>
+													<div class="slider_left"></div>
+													<div class="slider_right"></div>
 												</div>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" id="shirt_price_selection" class="slider_selection" disabled="disabled">
+											</div>
+										</div>
                                                 
  
  										<div class="slider_wrapper">
-													<div class="col-sm-2 slider_label">Trousers Price</div>
-													<div class="col-sm-7 slider">
-														<div id="trousers_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£200+</div></div>
-															<div class="slider_left"></div>
-															<div class="slider_right"></div>
-														</div>
-													</div>
-													<div class="col-sm-3">
-														<input type="text" id="trousers_price_selection" class="slider_selection" disabled="disabled">
-													</div>
+											<div class="col-sm-2 slider_label">Trousers Price</div>
+											<div class="col-sm-7 slider">
+												<div id="trousers_price" style="margin-top:20px;">
+													<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
+													<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£100</div></div>
+													<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£150</div></div>
+													<div class="notch_big" style="left:100%;"><div class="notch_label">£200+</div></div>
+													<div class="slider_left"></div>
+													<div class="slider_right"></div>
 												</div>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" id="trousers_price_selection" class="slider_selection" disabled="disabled">
+											</div>
+										</div>
                                                 
  
- 										<div class="slider_wrapper" style="border-bottom:1px solid #e3e3e3; margin-bottom:40px;">
-													<div class="col-sm-2 slider_label">Coat Price</div>
-													<div class="col-sm-7 slider">
-														<div id="coat_price" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">£150</div></div>
-															<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£200</div></div>
-															<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£250</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">£300+</div></div>
-															<div class="slider_left"></div>
-															<div class="slider_right"></div>
-														</div>
-													</div>
-													<div class="col-sm-3">
-														<input type="text" id="coat_price_selection" class="slider_selection" disabled="disabled">
-													</div>
+ 										<div class="slider_wrapper">
+											<div class="col-sm-2 slider_label">Coat Price</div>
+											<div class="col-sm-7 slider">
+												<div id="coat_price" style="margin-top:20px;">
+													<div class="notch_big" style="left:0%;"><div class="notch_label">£150</div></div>
+													<div class="notch_big" style="left:33.3333333333%;"><div class="notch_label">£200</div></div>
+													<div class="notch_big" style="left:66.6666666666%;"><div class="notch_label">£250</div></div>
+													<div class="notch_big" style="left:100%;"><div class="notch_label">£300+</div></div>
+													<div class="slider_left"></div>
+													<div class="slider_right"></div>
 												</div>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" id="coat_price_selection" class="slider_selection" disabled="disabled">
+											</div>
+										</div>
+
+
+										<div class="slider_wrapper" style="border-bottom:1px solid #e3e3e3; margin-bottom:40px;">
+											<div class="col-sm-2 slider_label">Shoe Price</div>
+											<div class="col-sm-7 slider">
+												<div id="shoe_price" style="margin-top:20px;">
+													<div class="notch_big" style="left:0%;"><div class="notch_label">£50</div></div>
+													<div class="notch_big" style="left:25%;"><div class="notch_label">£100</div></div>
+													<div class="notch_big" style="left:50%;"><div class="notch_label">£150</div></div>
+													<div class="notch_big" style="left:75%;"><div class="notch_label">£200</div></div>
+													<div class="notch_big" style="left:100%;"><div class="notch_label">£200+</div></div>
+													<div class="slider_left"></div>
+													<div class="slider_right"></div>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" id="shoe_price_selection" class="slider_selection" disabled="disabled">
+											</div>
+										</div>
 
 									<label class="css-label">Is there anything extra you'd like to add?</label>
 									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_4[extra]" value=""></textarea>
