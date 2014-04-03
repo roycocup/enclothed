@@ -593,21 +593,28 @@ img.line{ margin-top:20px;
 	padding:20px;
 }
 .box_option:hover{ background: rgba(176, 133, 54, 0.75);
-	-webkit-transition:background-color 0.3s ease-out;
-	-moz-transition:background-color 0.3s ease-out;
-	-o-transition:background-color 0.3s ease-out;
-	-ms-transition:background-color 0.3s ease-out;
-	transition:background-color 0.3s ease-out;
+	-webkit-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-moz-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-o-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-ms-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	color:#fff;
 	cursor:pointer;
 }
 .box_option.selected{ 
-	-webkit-transition:background-color 0.3s ease-out;
-	-moz-transition:background-color 0.3s ease-out;
-	-o-transition:background-color 0.3s ease-out;
-	-ms-transition:background-color 0.3s ease-out;
-	transition:background-color 0.3s ease-out;
+	-webkit-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-moz-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-o-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	-ms-transition:background-color 0.3s ease-out, color 0.3s ease-out;
+	transition:background-color color 0.3s ease-out, 0.3s ease-out;
 	background:url(images/tick_small.png) rgba(176, 133, 54, 0.75) no-repeat;
-	background-position: 25%;
+	background-position: 16%;
+	color:#fff;
+}
+@media only screen and (max-width: 991px) {
+.box_option.selected{ 
+	background: rgba(176, 133, 54, 0.75);
+}
 }
 @media only screen and (max-width: 767px) {
 	.box_options{
@@ -620,6 +627,10 @@ img.line{ margin-top:20px;
 		border-bottom:1px solid #e3e3e3;
 		border-right: none;
 	}
+.box_option.selected{ 
+	background:url(images/tick_small.png) rgba(176, 133, 54, 0.75) no-repeat;
+	background-position: 16%;
+}		
 	.profile_sizing_page .box_options_wrapper{ margin:0;
  padding: 40px 0 0 0;
 }
@@ -812,7 +823,7 @@ margin-top: 0px;
  }
 .how_it_works_page  .area2_right p img.line{ margin-top:30px ;
  }
- .how_it_works_page  .area3 { padding:50px 0 30px 0;
+ .how_it_works_page  .area3 { padding:50px 0 20px 0;
  }
  .how_it_works_page  .area3_right { height: 460px; 
  position: relative; 
@@ -827,8 +838,8 @@ margin-top: 0px;
  .how_it_works_page  .area3_right .georgia_text1{ position: absolute;
  height: auto; 
 width: 190px;
-left: 390px;
-top: 68px;
+left: 380px;
+top: 60px;
 text-align: right;
  }
 .how_it_works_page  .area3_right .georgia_text2{ position: absolute;
@@ -847,8 +858,8 @@ text-align: left;
  }
  .how_it_works_page  .area4_right p img.line{ margin-top:30px ;
  }
-.how_it_works_page .area5{ padding-top:100px !important;
- padding-bottom:100px !important;
+.how_it_works_page .area5{ padding-top:50px !important;
+ padding-bottom:20px !important;
  }
 .how_it_works_page .area5 .spb_content_wrapper{ max-width: 500px;
  }
@@ -1104,7 +1115,7 @@ border:none;
 }
 .profile_style_page .option_image_overlay.selected>.option_image_label{
 	bottom: 20%;
-	color: #000;
+	color: #fff;
 	cursor:pointer;
 }
 .profile_style_page .option_image_overlay.selected{ 
@@ -1326,7 +1337,7 @@ border:none;
 }
 .profile_preferences_page .option_image_overlay:hover>.option_image_label{
 	bottom: 20%;
-	color: #000;
+	color: #fff;
 	-webkit-transition: 0.3s ease-out;
 	-moz-transition: 0.3s ease-out;
 	-o-transition: 0.3s ease-out;
@@ -1336,7 +1347,7 @@ border:none;
 }
 .profile_preferences_page .option_image_overlay.selected>.option_image_label{
 	bottom: 20%;
-	color: #000;
+	color: #fff;
 	cursor:pointer;
 }
 .profile_preferences_page .option_image_overlay.selected{ 
@@ -1442,6 +1453,38 @@ border:none;
  border-top:1px solid #e3e3e3;
 }
 
+
+
+/* --------------------------------------------
+	LOGIN 
+-------------------------------------------- */
+.login_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.logi_page h2{ margin-top: 20px !important;
+}
+.logi_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+}
+.profile_authorize_page .payment_info_wrapper{ float: left !important;
+ padding-top: 80px;
+ padding-bottom: 50px;
+ margin: auto;
+ margin-bottom:80px;
+}
+.profile_authorize_page .payment_info img{background: url(images/payment_dot.png) no-repeat;
+	background-position:right;
+}
+.profile_authorize_page .payment_info h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
+@media only screen and (max-width: 767px) {
+.profile_authorize_page .payment_info img{background:none !important;
+ }
+.profile_authorize_page .payment_info {padding-bottom:40px;
+text-align:center;
+background: url(images/payment_dot.png) no-repeat;
+ background-position: center bottom;
+ }
+}
 
 
 
