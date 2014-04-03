@@ -51,7 +51,6 @@ function tg_validate_url() {
 
 
 <div class="container">
-	<h1><?php the_title(); ?></h1>
 	<div id="result"></div> <!-- To hold validation results -->
 	<form id="wp_pass_reset" action="" method="post">
 
