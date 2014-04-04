@@ -643,7 +643,6 @@ img.line{ margin-top:20px;
 
 
 
-
 /* --------------------------------------------
 	HOME PAGE
 -------------------------------------------- */
@@ -890,6 +889,9 @@ text-align: left;
 .how_it_works_page .spb_slider_widget{ 
 	margin-bottom: 0 !important;
 }
+.how_it_works_page .slider-wrap .fw-video-link-image img {
+	visibility: hidden !important; }
+
 @media only screen and (max-width: 991px) {
   .how_it_works_page  .area3_right { height: 364px; 
  }
