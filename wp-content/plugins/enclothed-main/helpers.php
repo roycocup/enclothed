@@ -123,7 +123,10 @@ if (!function_exists('time_elapsed')){
 		$now = new DateTime;
 		$datetime = date('d-m-Y H:m:i', $datetime); 
 		$ago = new DateTime($datetime);
-		$diff = $now->diff($ago);
+		// $diff = $now->diff($ago);
+		$diff = date_diff_52($now->format('Y-m-d H:i:s'), $ago->format('Y-m-d H:i:s'));
+		
+		$diff = new DateTime($diff);
 
 		$diff->w = floor($diff->d / 7);
 		$diff->d -= $diff->w * 7;
@@ -148,6 +151,18 @@ if (!function_exists('time_elapsed')){
 		if (!$full) $string = array_slice($string, 0, 1);
 		return $string ? implode(', ', $string) . ' ago' : 'just now';
 	}
+}
+
+
+function date_diff_52($date1, $date2) { 
+    $current = $date1; 
+    $datetime2 = date_create($date2); 
+    $count = 0; 
+    while(date_create($current) < $datetime2){ 
+        $current = gmdate("Y-m-d", strtotime("+1 day", strtotime($current))); 
+        $count++; 
+    } 
+    return $count; 
 }
 
 

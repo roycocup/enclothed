@@ -44,13 +44,10 @@ if (!function_exists('get_fb_posts')){
 				$post_content = 'Enclothed - Men\'s bespoke outfitters';
 			}
 
-			
-			$time = time_elapsed($post['timestamp']);
-
 			if ($divs){
 				echo "<div class='fb_post' style='padding-bottom:20px'>";
 				echo "<div class='fb_post_content'>$post_content</div>";
-				echo "<div class='fb_time'>$time</div>";	
+				
 				echo "</div>";
 			} else {
 				echo $post_content;
