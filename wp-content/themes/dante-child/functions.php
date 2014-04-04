@@ -51,6 +51,36 @@ if (!function_exists('get_fb_posts')){
 }
 
 
+if ( !function_exists( 'get_fb_post_image' ) ) {
+	function get_fb_post_image($num){
+		$posts = get_facebook_posts();
+		$i = 1;
+		foreach ($posts as $post) {
+			if ($i > $num) break;
+			// if (empty($post['link_image'])) continue;
+			// $post_link_image = $post['link_image'];
+			if (empty($post['image'])) {
+				//default the image
+				$post_image = 'default';
+			} else {
+				$post_image = $post['image'];
+			}
+			
+			echo "<div class='fb_post_image' style='padding-bottom:20px'>";
+				// echo "<div class='fb_post_image'><img src='$post_link_image'/></div>";
+				if ($post_image == 'default'){
+					$default_image = get_stylesheet_directory_uri().'/images/box2.png';
+					echo '<img src="'.$default_image.'" alt="">';
+				} else {
+					echo '<img src="http://'.$post_image.'?type=normal" alt="">';	
+				}
+			echo "</div>";
+			$i++;
+		}
+	}
+}
+
+
 if ( !function_exists( 'debug_log' ) ) {
 	function debug_log( $msg, $status = 'DEBUG', $file = 'debug_log.txt' ) {
 		$location = 
