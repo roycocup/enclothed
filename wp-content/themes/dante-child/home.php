@@ -161,6 +161,130 @@
 	
 				<?php the_content(); ?>
 				
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="spb_content_element col-sm-12 dynamic_content">
+			<div class="spb_wrapper">
+				<div class="col-sm-12 brands_boxes_wrapper">
+					<div class="col-sm-6 brands_box_left">
+						<h2>OUR BRANDS</h2>
+						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
+					</div>
+					<div class="col-sm-6 brands_box_right">
+						<img src="<?php bloginfo('template_url') ?>-child/images/homepage_brands_logos.jpg" alt="" class="image-responsive" />
+					</div>
+				</div>
+				<div class="col-sm-6 facebook_wrapper">
+					<div class="col-sm-6 brands_box_left">
+						<h2>OUR BRANDS</h2>
+						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
+					</div>
+					<div class="col-sm-6 brands_box_right">
+						<img src="<?php bloginfo('template_url') ?>-child/images/homepage_brands_logos.jpg" alt="" class="image-responsive" />
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div> 
+</div>
+
+
+<style type="text/css">
+.brands_boxes_wrapper{
+	background-color:red; 
+	margin:0; 
+	padding: 0; 
+	height: auto; 
+	float: left; 
+	display: flex;
+}
+.brands_box_left{background-color:#000; 
+	margin:0; 
+	float:left; 
+	background: url(<?php bloginfo('template_url') ?>-child/images/homepage_brands_text_bg.jpg) no-repeat;
+	background-size: cover;
+	padding: 20px;
+	max-width: 475px;
+}
+.brands_box_left h2{font-size:34px !important;
+	color:#625f5e;
+	margin-top: 20%;
+}
+.brands_box_left p{font-size:14px;
+	color: #625f5e;
+	text-transform: uppercase;
+	padding-top: 20px;
+	padding-bottom: 20%;
+	letter-spacing: 0;
+	text-align: center;
+}
+.brands_box_right{background-color:#ff9900; 
+	margin:0; 
+	float: left; 
+	padding:0; 
+	max-width: 475px;
+ }
+.brands_box_right img{ float:left; }
+
+@media only screen and (max-width: 767px) {
+
+.brands_boxes_wrapper{	max-width: 475px;
+	display: block;
+	margin: 0 auto;
+	float: none;
+}
+.brands_box_left{	width: 100%;
+}
+.brands_box_right{
+	clear: left;
+ }
+}
+
+@media only screen and (max-width: 991px) {
+
+	.brands_box_left h2{
+	margin-top: 10%;
+}
+.brands_box_left p{
+	padding-bottom: 10%;
+}
+
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<div class="link-pages"><?php wp_link_pages(); ?></div>
 				
 				<?php if ( comments_open() && !$disable_pagecomments ) { ?>
