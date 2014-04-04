@@ -19,6 +19,7 @@ class ldmStreams {
 	public $config_filename = 'ldm-streams.ini';
 	public $config; 
 	public $facebook; 
+	public $instagram; 
 
 	public function __construct(){
 		$this->config = parse_ini_file(dirname(__FILE__)."/".$this->config_filename, true); 
