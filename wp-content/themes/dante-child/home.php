@@ -203,7 +203,8 @@
 						$bck_size = 'cover';
 					}
 				?>
-					<div class="col-sm-6 social_box_left" style="background: url(<?php echo $fb_image_url; ?>) no-repeat; background-size: <?php echo $bck_size; ?>">
+					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $fb_image_url; ?>) ;
+					 background-size: <?php echo $bck_size; ?>">
 
 					</div>
 					<div class="col-sm-6 social_box_right">
@@ -234,7 +235,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
-					<div class="col-sm-6 social_box_left" style="background: url(<?php echo get_stylesheet_directory_uri().'/images/logo_default_icon.png' ?>) no-repeat; background-size: contain">
+					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo get_stylesheet_directory_uri().'/images/logo_default_icon.png' ?>); background-size: contain">
 					</div>
 					<div class="col-sm-6 social_box_right">
 						<div class="instagram_icon"></div>
@@ -252,6 +253,9 @@
 					</div>
 				</div>
 
+				<div class="col-sm-12 no-margin no-padding" style=" float:left;">
+				<img class="image-responsive" alt="line" src="/wp-content/themes/dante-child/images/enclothed_in_the_media.jpg">
+				</div>
 	
 
 
@@ -288,12 +292,11 @@
 .social_box_left{background-color:#000; 
 	margin:0; 
 	float:left; 
-	/*background: url(<?php bloginfo('template_url') ?>-child/images/logo_default_icon.png) no-repeat;
-	background-size: contain;*/
 	background-position: center;
 	padding: 20px;
 	max-width: 475px;
 	min-height: 270px;
+	background-repeat: no-repeat;
 }
 .social_box_right{background-color:#fff; 
 	margin:0; 
@@ -379,6 +382,7 @@
 	text-align: center;
 	line-height: 18px;
 	height: 127px;
+	word-wrap:break-word;
 }
 .social_box_right .social_heading{
 	font-size: 14px;
