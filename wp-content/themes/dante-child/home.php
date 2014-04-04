@@ -186,31 +186,394 @@
 						<img src="<?php bloginfo('template_url') ?>-child/images/homepage_brands_logos.jpg" alt="" class="image-responsive" />
 					</div>
 				</div>
-				<div class="col-sm-6 facebook_wrapper">
-					<div class="col-sm-6 brands_box_left">
+				<div class="col-sm-6 brands_boxes_wrapper" style="float:right">
+					<div class="col-sm-12 brands_box_left">
 						<h2>OUR BRANDS</h2>
 						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
 					</div>
-					<div class="col-sm-6 brands_box_right">
-						<img src="<?php bloginfo('template_url') ?>-child/images/homepage_brands_logos.jpg" alt="" class="image-responsive" />
+				</div>
+				<div class="col-sm-6 facebook_boxes_wrapper">
+					<div class="col-sm-6 facebook_box_left">
+					</div>
+					<div class="col-sm-6 facebook_box_right">
+						<div class="facebook_icon"></div>
+						<div class="arrow_icon"></div>
+						<div class="facebook_heading">FACEBOOK</div>
+						<p>The winner of our valentine's box the comedian @mattwhistler will be wearing @enclothed tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p>
+						<div class="facebook_footer">
+							<div class="e_icon"></div>
+							<div class="facebook_details">
+								<span class="facebook_author">Enclothed</span>
+								<span class="facebook_date">1 day ago</span>
+							</div>
+							<div class="share_icon"></div>
+						</div>
 					</div>
 				</div>
+
+
+
+
+								<div class="col-sm-6 brands_boxes_wrapper" style="float:left">
+					<div class="col-sm-12 brands_box_left">
+						<h2>OUR BRANDS</h2>
+						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
+					</div>
+				</div>
+				<div class="col-sm-6 instagram_boxes_wrapper">
+					<div class="col-sm-6 instagram_box_left">
+					</div>
+					<div class="col-sm-6 instagram_box_right">
+						<div class="instagram_icon"></div>
+						<div class="arrow_icon"></div>
+						<div class="instagram_heading">INSTAGRAM</div>
+						<p>The winner of our valentine's box the comedian @mattwhistler will be wearing @enclothed tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p>
+						<div class="instagram_footer">
+							<div class="e_icon"></div>
+							<div class="instagram_details">
+								<span class="instagram_author">Enclothed</span>
+								<span class="instagram_date">1 day ago</span>
+							</div>
+							<div class="share_icon"></div>
+						</div>
+					</div>
+				</div>
+
+	
+
+
+
 			</div>
 		</div> 
 	</div> 
 </div>
 
 
+
+
+
+
 <style type="text/css">
-.brands_boxes_wrapper{
-	background-color:red; 
+.instagram_boxes_wrapper{
+	background-color: #000; 
 	margin:0; 
 	padding: 0; 
 	height: auto; 
 	float: left; 
 	display: flex;
 }
-.brands_box_left{background-color:#000; 
+.instagram_box_left{background-color:#000; 
+	margin:0; 
+	float:left; 
+	background: url(<?php bloginfo('template_url') ?>-child/images/logo_default_icon.png) no-repeat;
+	background-size: contain;
+	background-position: center;
+	padding: 20px;
+	max-width: 475px;
+	min-height: 270px;
+}
+.instagram_box_right{background-color:#fff; 
+	margin:0; 
+	float: left; 
+	padding:0; 
+	max-width: 475px;
+	min-height: 270px;
+	position: relative;
+ }
+
+.instagram_box_right .arrow_icon{
+	position: absolute; 
+	width: 8px;
+	height: 16px;
+	background-image: url(<?php bloginfo('template_url') ?>-child/images/arrow_left.png) ;
+	background-position: top -8px;
+	top: 15%;
+	left: -8px;
+ }
+.instagram_box_right .instagram_icon{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: 29px;
+	height: 29px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/instagram-mini.png) no-repeat;
+	margin: auto;
+	float: none;
+ }
+ .instagram_box_right .e_icon{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: 30px;
+	height: 30px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/E-icon.png) no-repeat;
+ }
+  .instagram_box_right .share_icon{
+	margin:0; 
+	float: right; 
+	padding:0; 
+	width: 32px;
+	height: 32px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/iconshare.png) no-repeat;
+ }
+ .instagram_box_right .instagram_icon{
+	color: #000;
+	padding-bottom: 20px;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 14px;
+ }
+.instagram_box_right .instagram_details{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: auto;
+	height: auto;
+	padding-left: 10px;
+ }
+ .instagram_box_right .instagram_author{
+	font-size:12px;
+	color: #000;
+	font-family: proxbold;
+	float: left;
+	line-height: 15px;
+ }
+ .instagram_box_right .instagram_date{
+	font-size:12px;
+	color: #999;
+	float: left;
+	line-height: 15px;
+	clear: left;
+ }
+ .instagram_box_right p{font-size:14px;
+	color: #000;
+	padding: 0 20px 20px 20px;
+	margin:0;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 18px;
+	min-height: 150px;
+}
+.instagram_box_right .instagram_heading{
+	font-size: 14px;
+	font-family: proxbold;
+	color: #000;
+	text-transform: uppercase;
+	padding: 20px;
+	letter-spacing: 0;
+	text-align: center;
+ }
+ .instagram_box_right .instagram_footer{
+ 	border-top: 1px solid #e5e5e5;
+ 	width: 100%;
+ 	height: 52px;
+ 	padding:10px;
+ }
+ @media only screen and (max-width: 767px) {
+ .dynamic_content {	max-width: 475px;
+ 	margin:auto;}
+
+
+.instagram_boxes_wrapper{	max-width: 475px;
+	display: block;
+/*	margin: 0 auto;
+	float: none;*/
+}
+.instagram_box_left{	width: 100%;
+}
+.instagram_box_right{
+	clear: left;
+ }
+.instagram_box_right .arrow_icon{
+	position: absolute; 
+	width: 16px;
+	height: 8px;
+	background-image: url(<?php bloginfo('template_url') ?>-child/images/arrow_up.png) ;
+	background-position: top -8px;
+	left: 15%;
+	top: -8px;
+ }
+}
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+.facebook_boxes_wrapper{
+	background-color: #000; 
+	margin:0; 
+	padding: 0; 
+	height: auto; 
+	float: left; 
+	display: flex;
+}
+.facebook_box_left{background-color:#000; 
+	margin:0; 
+	float:left; 
+	background: url(<?php bloginfo('template_url') ?>-child/images/logo_default_icon.png) no-repeat;
+	background-size: contain;
+	background-position: center;
+	padding: 20px;
+	max-width: 475px;
+	min-height: 270px;
+}
+.facebook_box_right{background-color:#fff; 
+	margin:0; 
+	float: left; 
+	padding:0; 
+	max-width: 475px;
+	min-height: 270px;
+	position: relative;
+ }
+
+.facebook_box_right .arrow_icon{
+	position: absolute; 
+	width: 8px;
+	height: 16px;
+	background-image: url(<?php bloginfo('template_url') ?>-child/images/arrow_left.png) ;
+	background-position: top -8px;
+	top: 15%;
+	left: -8px;
+ }
+.facebook_box_right .facebook_icon{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: 29px;
+	height: 29px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/facebook-mini.png) no-repeat;
+	margin: auto;
+	float: none;
+ }
+ .facebook_box_right .e_icon{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: 30px;
+	height: 30px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/E-icon.png) no-repeat;
+ }
+  .facebook_box_right .share_icon{
+	margin:0; 
+	float: right; 
+	padding:0; 
+	width: 32px;
+	height: 32px;
+	background: url(<?php bloginfo('template_url') ?>-child/images/iconshare.png) no-repeat;
+ }
+ .facebook_box_right .facebook_icon{
+	color: #000;
+	padding-bottom: 20px;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 14px;
+ }
+.facebook_box_right .facebook_details{
+	margin:0; 
+	float: left; 
+	padding:0; 
+	width: auto;
+	height: auto;
+	padding-left: 10px;
+ }
+ .facebook_box_right .facebook_author{
+	font-size:12px;
+	color: #000;
+	font-family: proxbold;
+	float: left;
+	line-height: 15px;
+ }
+ .facebook_box_right .facebook_date{
+	font-size:12px;
+	color: #999;
+	float: left;
+	line-height: 15px;
+	clear: left;
+ }
+ .facebook_box_right p{font-size:14px;
+	color: #000;
+	padding: 0 20px 20px 20px;
+	margin:0;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 18px;
+	min-height: 150px
+}
+.facebook_box_right .facebook_heading{
+	font-size: 14px;
+	font-family: proxbold;
+	color: #000;
+	text-transform: uppercase;
+	padding: 20px;
+	letter-spacing: 0;
+	text-align: center;
+ }
+ .facebook_box_right .facebook_footer{
+ 	border-top: 1px solid #e5e5e5;
+ 	width: 100%;
+ 	height: 52px;
+ 	padding:10px;
+ }
+ @media only screen and (max-width: 767px) {
+
+.facebook_boxes_wrapper{	max-width: 475px;
+	display: block;
+/*	margin: 0 auto;
+	float: none;*/
+}
+.facebook_box_left{	width: 100%;
+}
+.facebook_box_right{
+	clear: left;
+ }
+.facebook_box_right .arrow_icon{
+	position: absolute; 
+	width: 16px;
+	height: 8px;
+	background-image: url(<?php bloginfo('template_url') ?>-child/images/arrow_up.png) ;
+	background-position: top -8px;
+	left: 15%;
+	top: -8px;
+ }
+}
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+.brands_boxes_wrapper{
+	margin:0; 
+	padding: 0; 
+	height: auto; 
+	float: left; 
+	display: flex;
+}
+.brands_box_left{
 	margin:0; 
 	float:left; 
 	background: url(<?php bloginfo('template_url') ?>-child/images/homepage_brands_text_bg.jpg) no-repeat;
@@ -230,7 +593,7 @@
 	letter-spacing: 0;
 	text-align: center;
 }
-.brands_box_right{background-color:#ff9900; 
+.brands_box_right{
 	margin:0; 
 	float: left; 
 	padding:0; 
@@ -242,8 +605,8 @@
 
 .brands_boxes_wrapper{	max-width: 475px;
 	display: block;
-	margin: 0 auto;
-	float: none;
+/*	margin: 0 auto;
+	float: none;*/
 }
 .brands_box_left{	width: 100%;
 }

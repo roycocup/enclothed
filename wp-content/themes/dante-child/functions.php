@@ -74,7 +74,7 @@ if ( !function_exists( 'get_fb_post_image' ) ) {
 			echo "<div class='fb_post_image' style='padding-bottom:20px'>";
 				// echo "<div class='fb_post_image'><img src='$post_link_image'/></div>";
 				if ($post_image == 'default'){
-					$default_image = get_stylesheet_directory_uri().'/images/box2.png';
+					$default_image = get_stylesheet_directory_uri().'/images/logo_default_icon.png';
 					echo '<img src="'.$default_image.'" alt="">';
 				} else {
 					echo '<img src="http://'.$post_image.'?type=normal" alt="">';	
