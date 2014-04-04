@@ -24,6 +24,7 @@ require_once(dirname(__FILE__)."/models/gifts.php");
 add_action('init', 'enc_main_init');
 function enc_main_init(){
 	$enclothed = new EnclothedMain();
+	$enclothed->process_inits();
 	//$enclothed->updateBrands();
 	add_shortcode('brands', array($enclothed, 'displayBrands')); 
 }
@@ -46,6 +47,15 @@ class EnclothedMain {
 		add_action("wp_ajax_enc_ajax_getvars", array($this, "enc_ajax_getvars"));
 		add_action("wp_ajax_nopriv_enc_ajax_getvars", array($this, 'enc_ajax_getvars'));
 		
+	}
+
+
+	public function process_inits(){
+		if (!empty($_POST['nonce'])){
+			if ( wp_verify_nonce( $_POST['nonce'], 'home_login' ) ) {
+				$this->do_login($_POST);
+			}	
+		}
 	}
 
 
@@ -133,14 +143,19 @@ class EnclothedMain {
 	* Login service 
 	*
 	**/
-	function custom_login($parameters) {
+	function do_login($parameters) {
 		$creds = array();
 		$creds['user_login'] = $parameters['user'];
-		$creds['user_password'] = $parameters['pass'];
+		$creds['user_password'] = $parameters['password'];
 		$creds['remember'] = true;
 		$user = wp_signon( $creds, false );
-		if ( is_wp_error($user) )
-			echo $user->get_error_message();
+		if ( is_wp_error($user) ){
+			setFlashMessage('error', $user->get_error_message());
+			wp_redirect(home_url().'/home/login');
+		} else {
+			wp_redirect(home_url());
+			exit;
+		}
 	}
 
 

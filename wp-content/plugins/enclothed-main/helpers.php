@@ -79,11 +79,16 @@ if (!function_exists('sessionHasMessages')){
 *
 **/
 if (!function_exists('flashMessagesDisplay')){
-	function flashMessagesDisplay(){
+	function flashMessagesDisplay($in_div = false){
 		if (!sessionHasMessages()) return false; 
 		foreach($_SESSION['messages'] as $typename => $type){
 			foreach ($type as $key => $message) {
-				echo "<div class='flashmessage {$typename}'>$message</div>";	
+				if ($in_div){
+					echo "<div class='flashmessage {$typename}'>$message</div>";		
+				} else {
+					echo $message;
+				}
+				
 			}
 		}
 		unset($_SESSION['messages']);	

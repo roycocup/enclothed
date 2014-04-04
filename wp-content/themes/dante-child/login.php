@@ -9,57 +9,50 @@
 get_header();
 ?>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
 <script>
 
 	$(document).ready(function($){
 
 		// $('.flashmessages').hide();
 
-		$('#login-bnt').click(function(){
-			var user = $('#user').val(); 
-			var pass = $('#password').val();
-			console.log('user:' + user, 'pass:' + pass);
-			ajax_login(user, pass);
-		});
+		//Old ajax login
+		// $('#login-bnt').click(function(){
+		// 	var user = $('#user').val(); 
+		// 	var pass = $('#password').val();
+		// 	console.log('user:' + user, 'pass:' + pass);
+		// 	ajax_login(user, pass);
+		// });
 
-		function ajax_login(user, pass){
-			var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-			$.ajax({
-				type:'POST',
-				url:ajaxurl,
-				data: { 
-					action: 'enc_ajax_getvars',
-					function_name: '_ajax_login',
-					parameters: [user, pass],
-				},
-				error:function(e){
-					console.log(e);
-				},
-				success: function(data) {
-					if(data == "true"){
-						$('.flashmessages').html("Welcome!").fadeIn('slow');
-						setTimeout(function(){window.location.replace("<?php echo home_url();?>");}, 1000);
-					}else {
-						$('.flashmessages').html("Wrong credentials. Please try again.").fadeIn('slow');
-						setTimeout(function(){}, 3000);
-					}
-				}
-			});
-		}
+		// function ajax_login(user, pass){
+		// 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+		// 	$.ajax({
+		// 		type:'POST',
+		// 		url:ajaxurl,
+		// 		data: { 
+		// 			action: 'enc_ajax_getvars',
+		// 			function_name: '_ajax_login',
+		// 			parameters: [user, pass],
+		// 		},
+		// 		error:function(e){
+		// 			console.log(e);
+		// 		},
+		// 		success: function(data) {
+		// 			if(data == "true"){
+		// 				$('.flashmessages').html("Welcome!").fadeIn('slow');
+		// 				setTimeout(function(){window.location.replace("<?php echo home_url();?>");}, 1000);
+		// 			}else {
+		// 				$('.flashmessages').html("Wrong credentials. Please try again.").fadeIn('slow');
+		// 				setTimeout(function(){}, 3000);
+		// 			}
+		// 		}
+		// 	});
+		// }
 
 	});
 		
 	
 </script>
-
-
-
-
-
-
-
-
 
 <?php 
 $ldm_sagepay = new ldm_sagepay();
@@ -189,12 +182,21 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 			<?php if(empty($user->data)): ?>
 				
 				<div class="col-sm-12 login_wrapper" >
-				<div class="flashmessages georgia_text">Lorem ipsum dolor sit amet</div>
-					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-					<input type="text" class="key-info" id='user' tabindex="1" placeholder="Username">
-					<input type="password" class="key-info" id='password' tabindex="1" placeholder="password">
-					<a href="/home/lostpass" title="Lost Password" class="lost_password">Lost Password?</a>
-					<button class="button4" id='login-bnt'>log in</button>
+					<?php 
+						if (sessionHasMessages()): ?>
+							<div class="flashmessages georgia_text">Wrong credentials!</div>
+							<?php unset($_SESSION['messages']); ?>
+						<?php else :?>
+							<div class="flashmessages georgia_text">Lorem ipsum dolor sit amet</div>
+						<?php endif; ?>
+					
+					<form action="" method="post">
+						<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
+						<input type="text" class="key-info" name='user' id='user' tabindex="1" placeholder="Username">
+						<input type="password" class="key-info" name='password' id='password' tabindex="1" placeholder="password">
+						<a href="/home/lostpass" title="Lost Password" class="lost_password">Lost Password?</a>
+						<button class="button4" id='login-bnt'>log in</button>
+					</form>
 				</div>
 			<?php else: ?>
 				<div>You are already logged in</div>
