@@ -192,15 +192,28 @@
 						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
 					</div>
 				</div>
+
 				<div class="col-sm-6 social_boxes_wrapper">
-					<div class="col-sm-6 social_box_left">
+				<?php 
+					$fb_image_url = get_fb_post_image(2);
+					if ($fb_image_url == 'default') {
+						$fb_image_url = get_stylesheet_directory_uri().'/images/logo_default_icon.png';
+						$bck_size = 'contain';
+					} else {
+						$bck_size = 'cover';
+					}
+				?>
+					<div class="col-sm-6 social_box_left" style="background: url(<?php echo $fb_image_url; ?>) no-repeat; background-size: <?php echo $bck_size; ?>">
+
 					</div>
 					<div class="col-sm-6 social_box_right">
 						<div class="facebook_icon"></div>
 						<div class="arrow_icon"></div>
+
 						<div class="social_heading">FACEBOOK</div>
-						<p>The winner of our valentine's box the comedian @mattwhistler will be wearing @enclothed tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p>
+						<p><?php echo get_fb_posts(1, 30, false); ?></p>
 						<div class="social_footer">
+
 							<div class="e_icon"></div>
 							<div class="social_details">
 								<span class="social_author">Enclothed</span>
@@ -221,7 +234,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
-					<div class="col-sm-6 social_box_left">
+					<div class="col-sm-6 social_box_left" style="background: url(<?php echo get_stylesheet_directory_uri().'/images/logo_default_icon.png' ?>) no-repeat; background-size: contain">
 					</div>
 					<div class="col-sm-6 social_box_right">
 						<div class="instagram_icon"></div>
@@ -275,8 +288,8 @@
 .social_box_left{background-color:#000; 
 	margin:0; 
 	float:left; 
-	background: url(<?php bloginfo('template_url') ?>-child/images/logo_default_icon.png) no-repeat;
-	background-size: contain;
+	/*background: url(<?php bloginfo('template_url') ?>-child/images/logo_default_icon.png) no-repeat;
+	background-size: contain;*/
 	background-position: center;
 	padding: 20px;
 	max-width: 475px;
