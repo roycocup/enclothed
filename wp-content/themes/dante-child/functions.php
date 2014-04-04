@@ -35,6 +35,7 @@ if (!function_exists('get_fb_posts')){
 		$i = 1;
 		foreach ($posts as $post) {
 			if ($i > $num) break;
+			if ($i < $num) {$i++; continue;}
 			if (empty($post['content'])) {
 				$post_content = $post['link_description']; 
 			} elseif(!empty($post['content'])) {
@@ -53,6 +54,44 @@ if (!function_exists('get_fb_posts')){
 				echo "</div>";
 			} else {
 				echo $post_content;
+			}
+			 
+			$i++;
+		}		
+	}
+}
+
+/**
+*
+* This function is highly coupled with a plugin that must not be updated
+* or the function will be lost 
+*
+**/
+if (!function_exists('get_fb_posts_time')){
+	function get_fb_posts_time($num, $truncate_words = false, $divs = true){
+		$posts = get_facebook_posts();
+		$i = 1;
+		foreach ($posts as $post) {
+			if ($i > $num) break;
+			if ($i < $num) {$i++; continue;}
+			if (empty($post['content'])) {
+				$post_content = $post['link_description']; 
+			} elseif(!empty($post['content'])) {
+				$post_content = $post['content']; 
+			} else {
+				$post_content = 'Enclothed - Men\'s bespoke outfitters';
+			}
+
+			
+			$time = time_elapsed($post['timestamp']);
+
+			if ($divs){
+				echo "<div class='fb_post' style='padding-bottom:20px'>";
+				echo "<div class='fb_post_content'>$post_content</div>";
+				echo "<div class='fb_time'>$time</div>";	
+				echo "</div>";
+			} else {
+				echo $time;
 			}
 			 
 			$i++;
