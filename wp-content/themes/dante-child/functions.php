@@ -35,10 +35,15 @@ if (!function_exists('get_fb_posts')){
 		$i = 1;
 		foreach ($posts as $post) {
 			if ($i > $num) break;
-			$post_content = $post['content']; 
-			if (!empty($truncate_words)){
-				$post_content = wp_trim_words( $post_content, $truncate_words); 
+			if (empty($post['content'])) {
+				$post_content = $post['link_description']; 
+			} elseif(!empty($post['content'])) {
+				$post_content = $post['content']; 
+			} else {
+				$post_content = 'Enclothed - Men\'s bespoke outfitters';
 			}
+
+			
 			$time = time_elapsed($post['timestamp']);
 
 			echo "<div class='fb_post' style='padding-bottom:20px'>";
