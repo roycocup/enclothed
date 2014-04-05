@@ -218,8 +218,8 @@
 							<div class="e_icon"></div>
 							<div class="social_details">
 								<span class="social_author">Enclothed</span>
-								<!-- <span class="social_date"><?php //echo get_fb_posts_time(1,30,false); ?></span> -->
-								<span class="social_date"><?php echo '1 day ago' ?></span>
+								<span class="social_date"><?php echo get_fb_posts_time(1,30,false); ?></span>
+								<!-- <span class="social_date"><?php echo '1 day ago' ?></span> -->
 							</div>
 							<div class="share_icon"></div>
 						</div>

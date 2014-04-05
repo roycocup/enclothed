@@ -80,7 +80,8 @@ if (!function_exists('get_fb_posts_time')){
 			}
 
 			
-			$time = time_elapsed($post['timestamp']);
+			//$time = time_elapsed($post['timestamp']);
+			$time = time_elapsed_52($post['timestamp']);
 
 			if ($divs){
 				echo "<div class='fb_post' style='padding-bottom:20px'>";

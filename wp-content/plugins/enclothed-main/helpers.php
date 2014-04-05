@@ -123,10 +123,8 @@ if (!function_exists('time_elapsed')){
 		$now = new DateTime;
 		$datetime = date('d-m-Y H:m:i', $datetime); 
 		$ago = new DateTime($datetime);
-		// $diff = $now->diff($ago);
-		$diff = date_diff_52($now->format('Y-m-d H:i:s'), $ago->format('Y-m-d H:i:s'));
-		
-		$diff = new DateTime($diff);
+		$diff = $now->diff($ago);
+		$diff = time_elapsed_52($datetime);
 
 		$diff->w = floor($diff->d / 7);
 		$diff->d -= $diff->w * 7;
@@ -153,16 +151,80 @@ if (!function_exists('time_elapsed')){
 	}
 }
 
+/**
+*
+* This is a function for very lame servers that run php5.2
+* and have no idea about datetime.diff.... LAME
+*
+**/
+if (!function_exists('time_elapsed_52')){
+	function time_elapsed_52($date2) { 
+		$now = time();
+		$date2 = date('d-m-Y H:m:i', $date2);
+		$date2 = strtotime($date2);
 
-function date_diff_52($date1, $date2) { 
-    $current = $date1; 
-    $datetime2 = date_create($date2); 
-    $count = 0; 
-    while(date_create($current) < $datetime2){ 
-        $current = gmdate("Y-m-d", strtotime("+1 day", strtotime($current))); 
-        $count++; 
-    } 
-    return $count; 
+		$diff = $now - $date2; 
+
+		$unit = '';
+
+		if ($diff > 60 ){$unit = 'minute';} // at least a minute
+		if ($diff > 60 * 60){$unit = 'hour';} // at least an hour
+		if ($diff > 60 * 60 * 24){$unit = 'day';} // at least a day
+		if ($diff > 60 * 60 * 24 * 30){$unit = 'month';} // at least a month
+		if ($diff > 60 * 60 * 24 * 30 * 365){$unit = 'year';} // at least a year
+
+		// how many units
+		$how_long = '';
+		switch ($unit) {
+			case 'minute':
+				$units = $diff / 60;
+				$unit = round($units);
+				if ($unit > 1){
+					$how_long = $unit.' minutes ago';
+				}else{
+					$how_long = $unit.' minute ago';
+				}
+				break;
+			case 'hour':
+				$units = $diff / 60 / 60;
+				$unit = round($units);
+				if ($unit > 1){
+					$how_long = $unit.' hours ago';
+				}else {
+					$how_long = $unit.' hour ago';
+				}
+				break;
+			case 'day':
+				$units = $diff / 60 / 60 / 24;
+				$unit = round($units);
+				if ($unit > 1){
+					$how_long = $unit.' days ago';
+				}else {
+					$how_long = $unit.' day ago';
+				}
+				break;
+			case 'month':
+				$units = $diff / 60 / 60 / 24 / 30;
+				$unit = round($units);
+				if ($unit > 1){
+					$how_long = $unit.' months ago';
+				}else {
+					$how_long = $unit.' month ago';
+				}
+				break;
+			case 'year':
+				$units = $diff / 60 / 60 / 24 / 30 / 365;
+				$unit = round($units);
+				if ($unit > 1){
+					$how_long = $unit.' years ago';
+				}else {
+					$how_long = $unit.' year ago';
+				}
+				break;
+		}
+		
+		return $how_long;
+	}
 }
 
 
