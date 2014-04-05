@@ -252,6 +252,24 @@ class EnclothedProfile {
 
 	public function process_pricing_form(){
 		//$this->redeemGiftCode($_POST['section_4']['giftcode']); 
+		if (!empty($_POST['section_5'])){
+			if (!empty($_POST['section_5']['shirt_price'])){
+				$shirt_price = utf8_decode($_POST['section_5']['shirt_price']);
+			}
+			if (!empty($_POST['section_5']['trousers_price'])){
+				$trousers_price = utf8_decode($_POST['section_5']['trousers_price']);
+			}
+			if (!empty($_POST['section_5']['coat_price'])){
+				$coat_price = utf8_decode($_POST['section_5']['coat_price']);
+			}
+			if (!empty($_POST['section_5']['shoe_price'])){
+				$shoe_price = utf8_decode($_POST['section_5']['shoe_price']);
+			}
+		}
+
+		// var_dump($shirt_price, $trousers_price, $coat_price, $shoe_price); 
+		// die;
+		
 		$data = 'this is the data';
 		wp_redirect( home_url().'/profile/delivery' ); 
 		exit;

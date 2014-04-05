@@ -9,6 +9,11 @@
 
 <script>
 	jQuery(document).ready(function($){
+		
+
+		/*===============================
+		=            sliders            =
+		===============================*/
 		$(function() {
 			$( "#shirt_price" ).slider({
 				range:true,
@@ -27,7 +32,6 @@
 				4: "£150+",
 			};
 
-			// $( "#shirt_price_selection" ).val(increments[1]);
 			$( "#shirt_price_selection" ).val('£100-£150');
 		});
 
@@ -95,14 +99,55 @@
 
 			$( "#shoe_price_selection" ).val('£100-£200');
 		});
+		
+		
+		/*-----  End of sliders  ------*/
+		
+		
+		// 
+		$('.submit-button').click(function(e){
+			
+			var shirt_price = $( "#shirt_price_selection" ).val();
+			var trousers_price = $( "#trousers_price_selection" ).val();
+			var coat_price = $( "#coat_price_selection" ).val();
+			var shoe_price = $( "#shoe_price_selection" ).val();
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_5[shirt_price]',
+				value: shirt_price,
+			}).appendTo('form[name="section_5"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_5[trousers_price]',
+				value: trousers_price,
+			}).appendTo('form[name="section_5"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_5[coat_price]',
+				value: coat_price,
+			}).appendTo('form[name="section_5"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_5[shoe_price]',
+				value: shoe_price,
+			}).appendTo('form[name="section_5"]');
+
+			$('form').submit();
+		});
+		
+
 	});
 </script>
 
 <?php 
-if (isset($_SESSION['section_4'])){
-	$section = $_SESSION['section_4'];	
-}else if(isset($_POST['section_4'])){
-	$section = $_POST['section_4'];
+if (isset($_SESSION['section_5'])){
+	$section = $_SESSION['section_5'];	
+}else if(isset($_POST['section_5'])){
+	$section = $_POST['section_5'];
 } else {
 	$section = array();
 }
@@ -241,7 +286,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 								<!-- form -->
-								<form action="" method="POST" name='section_4'>
+								<form action="" method="POST" name='section_5'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 									<div class="title-forms">
@@ -251,7 +296,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 										</div><!--mini-wrapper-forms-->
 
-											 <select style="display:none;" class="selectmenu" tabindex="10" name="section_4[box_preset]" style="margin-top:0;" >
+											 <select style="display:none;" class="selectmenu" tabindex="10" name="section_5[box_preset]" style="margin-top:0;" >
 												<option value="0">Choose your box</option>
 												<option value="small">Small</option>
 												<option value="medium">Medium</option>
@@ -331,16 +376,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 
 									<label class="css-label">Is there anything extra you'd like to add?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_4[extra]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_5[extra]" value=""></textarea>
 									
                                     <!-- <div class="col-md-9 col-sm-10 col-xs-11 promo_code_wrapper">
 									<label class="css-label" style="padding-top:30px; color:#fff;">Gift Card Code</label>
-                                    <input type='text' class="promo_code" id='' tabindex="9" name='section_4[giftcode]' placeholder='' value="">
+                                    <input type='text' class="promo_code" id='' tabindex="9" name='section_5[giftcode]' placeholder='' value="">
 									</div> -->
 
 										<div class="mini-wrapper5">
 											<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-											<button class="button4" onclick="submit()">Save and Continue</button>
+											<button class="button4 submit-button">Save and Continue</button>
 										</div><!--mini-wrapper4-->
 
 									</div>
