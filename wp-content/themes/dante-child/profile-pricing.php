@@ -293,7 +293,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+											<p>HOW MUCH WOULD YOU TYPICALLY SPEND ON EACH ITEM?</p>
 										</div><!--mini-wrapper-forms-->
 
 											 <select style="display:none;" class="selectmenu" tabindex="10" name="section_5[box_preset]" style="margin-top:0;" >

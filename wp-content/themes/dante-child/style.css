@@ -67,9 +67,9 @@ font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 h1{
 	text-align: center;
  font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
- letter-spacing: 6px !important;
+ letter-spacing: 2px !important;
  font-size: 40px !important;
- line-height: 40px !important;
+ line-height: 42px !important;
  text-transform: uppercase;
 }
 h2 {
