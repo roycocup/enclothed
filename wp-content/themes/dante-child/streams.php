@@ -7,7 +7,9 @@
 
 $streams = new ldmStreams();
 
-dump($streams->getInstagramPosts()); 
+dump($streams->getInstagramLastPostCaption());  
+dump($streams->getInstagramLastPostTime());  
+dump($streams->getInstagramLastPostImage());  
 
 
 

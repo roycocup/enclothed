@@ -34,9 +34,25 @@ class ldmStreams {
 	}
 
 	public function getInstagramPosts(){
+		$id = $this->config['instagram']['enclothed_id'];
 		$instagram = $this->getInstagram();
-		$posts = $instagram->getUserMedia($this->config['instagram']['enclothed_id']);
+		$posts = $instagram->getUserMedia($id);
 		return $posts; 
+	}
+
+	public function getInstagramLastPostCaption($num = 0){
+		$posts = $this->getInstagramPosts();
+		return $posts->data[$num]->caption->text;
+	}
+
+	public function getInstagramLastPostTime($num = 0){
+		$posts = $this->getInstagramPosts();
+		return time_elapsed_52($posts->data[$num]->caption->created_time);
+	}
+
+	public function getInstagramLastPostImage($num = 0, $resolution = 'standard_resolution'){
+		$posts = $this->getInstagramPosts();
+		return $posts->data[$num]->images->$resolution->url;
 	}
 
 

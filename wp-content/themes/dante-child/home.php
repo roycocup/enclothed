@@ -226,7 +226,7 @@
 				</div>
 
 
-
+				<?php $streams = new ldmStreams(); ?>
 
 				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
 					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(https://31.media.tumblr.com/3c5301c9601ff228b299225d189e5586/tumblr_inline_n1cpibQwXD1rd6zrs.jpg);">
@@ -235,19 +235,19 @@
 					</div>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
-					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo get_stylesheet_directory_uri().'/images/logo_default_icon.png' ?>); background-size: contain">
+					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(1); ?>); background-size: cover">
 					</div>
 					<div class="col-sm-6 social_box_right">
 						<div class="instagram_icon"></div>
 						<div class="arrow_icon"></div>
 						<div class="social_heading">INSTAGRAM</div>
 						<!-- <p>The winner tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p> -->
-						<p><?php echo get_instagram_posts(); ?></p>
+						<p><?php echo $streams->getInstagramLastPostCaption(); ?></p>
 						<div class="social_footer">
 							<div class="e_icon"></div>
 							<div class="social_details">
 								<span class="social_author">Enclothed</span>
-								<span class="social_date">1 day ago</span>
+								<span class="social_date"><?php echo $streams->getInstagramLastPostTime(); ?></span>
 							</div>
 							<div class="share_icon"></div>
 						</div>
