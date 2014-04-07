@@ -23,6 +23,22 @@
 //	}
 
 
+
+/**
+*
+* This function gets the instagram caption 
+*
+**/
+if (!function_exists('get_instagram_posts')){
+	function get_instagram_posts(){
+		$post_content = 'The winner tonight whilst co-hosting the... with @CharmaineDavies #dontmissit';
+
+		$post_content = make_clickable($post_content);
+
+		return $post_content;
+	}
+}
+
 /**
 *
 * This function is highly coupled with a plugin that must not be updated
@@ -43,6 +59,8 @@ if (!function_exists('get_fb_posts')){
 			} else {
 				$post_content = 'Enclothed - Men\'s bespoke outfitters';
 			}
+
+			$post_content = make_clickable($post_content);
 
 			if ($divs){
 				echo "<div class='fb_post' style='padding-bottom:20px'>";
@@ -187,7 +205,18 @@ if (!function_exists('sf_custom_content_extend')) {
 			
 add_filter('show_admin_bar', '__return_false');
 
+if (!function_exists('enc_make_clickable')) {
+	function enc_make_clickable($text, $target)
+	{
+		$clickable_text = make_clickable($text);
 
+		if(!empty($target)) {
+			return str_replace('<a href="', '<a target="'.$target.'" href="', $clickable_text);
+		}
+
+		return $clickable_text;
+	}
+}
 
 
 

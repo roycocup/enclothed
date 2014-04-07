@@ -158,7 +158,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<!-- Main Address  -->
 									<div class="title-header no-border-top">
 										<div class="numbering2">01</div>
-										<div class="accordian-title">Main Address</div>
+										<div class="accordian-title">Delivery Address</div>
 										<!-- <div class="arrow-click" id='arrow1'></div> -->
 									</div>
 
@@ -166,7 +166,8 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="" value="">		 	  	
 										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="" value="">
 										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">		 	  
+										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">
+										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">		 	  
 										<div class="checkbox_wrap" >
 											<input type="checkbox" class="css-checkbox" id="checkbox1" checked>
 											<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS THIS ADDRESS</label>
@@ -188,7 +189,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
 											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
 											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-											<!-- <input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value=""> -->
+											<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
 										</div>
 									</div>	
 
