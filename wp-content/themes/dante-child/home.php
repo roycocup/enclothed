@@ -219,7 +219,6 @@
 							<div class="social_details">
 								<span class="social_author">Enclothed</span>
 								<span class="social_date"><?php echo get_fb_posts_time(1,30,false); ?></span>
-								<!-- <span class="social_date"><?php echo '1 day ago' ?></span> -->
 							</div>
 							<div class="share_icon"></div>
 						</div>
@@ -242,7 +241,8 @@
 						<div class="instagram_icon"></div>
 						<div class="arrow_icon"></div>
 						<div class="social_heading">INSTAGRAM</div>
-						<p>The winner tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p>
+						<!-- <p>The winner tonight whilst co-hosting the... with @CharmaineDavies #dontmissit</p> -->
+						<p><?php echo get_instagram_posts(); ?></p>
 						<div class="social_footer">
 							<div class="e_icon"></div>
 							<div class="social_details">
