@@ -303,10 +303,22 @@ border-color: transparent !important;
 }
 #footer{ display:none;
 }
-#copyright{ padding:60px 0 60px 0;
+#copyright{ padding:50px 0 50px 0;
  border-top: 6px solid #b08536 !important;
  background: url(images/footer_pt.gif) #0e2334 repeat-x !important;
 }
+#copyright .container p{ 
+	width: 100%;
+	text-align: center;
+	padding-top: 20px;
+	color:#b08536;
+}
+#copyright .container p a{ 
+	color:#b08536;	
+}
+#copyright .container p a:hover{ 
+	text-decoration: underline;
+} 
 nav.std-menu .menu li > a { font-weight:bold;
  margin:0 20px;
 }
@@ -641,7 +653,7 @@ img.line{ margin-top:20px;
 
 .fw-video-link-image { display: block;}
 
-
+.tp-bullets.simplebullets.round .bullet { border-radius: 0;}
 
 /* --------------------------------------------
 	HOME PAGE

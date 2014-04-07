@@ -187,9 +187,9 @@
 					</div>
 				</div>
 				<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
-					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(<?php bloginfo('template_url') ?>-child/images/featured1_bg.jpg);">
-						<h2>THE NEW CASHMERE SCARF</h2>
-						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
+					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(https://31.media.tumblr.com/7141be8ef0e59faad08096bb23d9fd65/tumblr_inline_n2dlc9KRCR1rd6zrs.jpg);">
+						<h2>Timeless – tweed jackets</h2>
+						<p>Originally favoured for country sports and now a fashion staple tweed jackets are resistant and durable, a timeless classic, which we think everyone should own!</p>
 					</div>
 				</div>
 
@@ -230,9 +230,9 @@
 
 
 				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
-					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(<?php bloginfo('template_url') ?>-child/images/featured2_bg.jpg);">>
-						<h2>OUR BRANDS</h2>
-						<p>Enclothed works with over 30 premium brands. Prices are the same as in the shops</p>
+					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(https://31.media.tumblr.com/3c5301c9601ff228b299225d189e5586/tumblr_inline_n1cpibQwXD1rd6zrs.jpg);">
+						<h2>Smart trainers – what to look for</h2>
+						<p>You want something good quality, smart that you can wear to the office on a Friday, that goes with chinos or dark jeans and that will last you well.</p>
 					</div>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
@@ -474,12 +474,12 @@
 	background-size: cover;
 	padding: 20px;
 	max-width: 475px;
-	height: 400px;
+	height: 350px;
 }
 .featured_blog_box_left h2{
 	font-size:34px !important;
 	color:#fff;
-	margin-top: 25%;
+	margin-top: 18%;
 	line-height: 40px !important;
 }
 .featured_blog_box_left p{font-size:14px;
@@ -506,6 +506,7 @@
 	float: none;*/
 }
 .featured_blog_box_left{	width: 100%;
+	height: auto;
 }
 .featured_blog_box_right{
 	clear: left;
@@ -515,7 +516,7 @@
 @media only screen and (max-width: 991px) {
 
 	.featured_blog_box_left h2{
-	margin-top: 25%;
+	margin-top: 18%;
 }
 .featured_blog_box_left p{
 	padding-bottom: 10%;
