@@ -649,7 +649,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area10" style=" display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">10</div>
+									<div class="numbering">09</div>
 									<p>Which style of underwear do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
