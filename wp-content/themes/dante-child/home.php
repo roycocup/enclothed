@@ -187,10 +187,20 @@
 					</div>
 				</div>
 				<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
-					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(https://31.media.tumblr.com/7141be8ef0e59faad08096bb23d9fd65/tumblr_inline_n2dlc9KRCR1rd6zrs.jpg);">
-						<h2>Timeless – tweed jackets</h2>
-						<p>Originally favoured for country sports and now a fashion staple tweed jackets are resistant and durable, a timeless classic, which we think everyone should own!</p>
-					</div>
+					<?php
+					$args = array( 'posts_per_page' => 1, 'category' => 103 );
+
+					$myposts = get_posts( $args );
+					foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+					<?php $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'home-featured' ); ?>
+						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(<?php echo $img[0]; ?>);">
+							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php the_excerpt(); ?>
+
+						</div>
+					<?php endforeach; 
+					wp_reset_postdata();
+					?>
 				</div>
 
 				<div class="col-sm-6 social_boxes_wrapper">
@@ -220,7 +230,7 @@
 								<span class="social_author">Enclothed</span>
 								<span class="social_date"><?php echo get_fb_posts_time(1,30,false); ?></span>
 							</div>
-							<div class="share_icon"></div>
+							<a href="https://www.facebook.com/Enclothed" target="_blank"><div class="share_icon"></div></a>
 						</div>
 					</div>
 				</div>
@@ -229,10 +239,20 @@
 				<?php $streams = new ldmStreams(); ?>
 
 				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
-					<div class="col-sm-12 featured_blog_box_left" style="background-image: url(https://31.media.tumblr.com/3c5301c9601ff228b299225d189e5586/tumblr_inline_n1cpibQwXD1rd6zrs.jpg);">
-						<h2>Smart trainers – what to look for</h2>
-						<p>You want something good quality, smart that you can wear to the office on a Friday, that goes with chinos or dark jeans and that will last you well.</p>
-					</div>
+					<?php
+					$args = array( 'posts_per_page' => 1, 'offset' => 1, 'category' => 103 );
+
+					$myposts = get_posts( $args );
+					foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+					<?php $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'home-featured' ); ?>
+						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(<?php echo $img[0]; ?>);">
+							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php the_excerpt(); ?>
+
+						</div>
+					<?php endforeach; 
+					wp_reset_postdata();
+					?>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
 					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(1); ?>); background-size: cover">
@@ -249,7 +269,7 @@
 								<span class="social_author">Enclothed</span>
 								<span class="social_date"><?php echo $streams->getInstagramLastPostTime(); ?></span>
 							</div>
-							<div class="share_icon"></div>
+							<a href="http://instagram.com/enclothed" target="_blank"><div class="share_icon"></div></a>
 						</div>
 					</div>
 				</div>
@@ -486,6 +506,13 @@
 	color:#fff;
 	margin-top: 18%;
 	line-height: 40px !important;
+}
+.featured_blog_box_left h2 a{
+	font-size:34px !important;
+	color:#fff;
+}
+.featured_blog_box_left h2 a:hover{
+	color:#b08536;
 }
 .featured_blog_box_left p{font-size:14px;
 	color: #fff;

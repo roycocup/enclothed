@@ -22,7 +22,7 @@
 //	add_action('wp', 'spb_regsiter_assets', 2);
 //	}
 
-
+	add_image_size( 'home-featured', 400, 400, true);
 
 /**
 *
