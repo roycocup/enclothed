@@ -77,17 +77,17 @@ class Instagram {
    * @return void
    */
   public function __construct($config) {
-    if (true === is_array($config)) {
-      // if you want to access user data
-      $this->setApiKey($config['apiKey']);
-      $this->setApiSecret($config['apiSecret']);
-      $this->setApiCallback($config['apiCallback']);
-    } else if (true === is_string($config)) {
-      // if you only want to access public data
-      $this->setApiKey($config);
-    } else {
-      throw new Exception("Error: __construct() - Configuration data is missing.");
-    }
+  	if (true === is_array($config)) {
+	  // if you want to access user data
+  		$this->setApiKey($config['apiKey']);
+  		$this->setApiSecret($config['apiSecret']);
+  		$this->setApiCallback($config['apiCallback']);
+  	} else if (true === is_string($config)) {
+	  // if you only want to access public data
+  		$this->setApiKey($config);
+  	} else {
+  		throw new Exception("Error: __construct() - Configuration data is missing.");
+  	}
   }
 
   /**
@@ -97,11 +97,11 @@ class Instagram {
    * @return string                       Instagram OAuth login URL
    */
   public function getLoginUrl($scope = array('basic')) {
-    if (is_array($scope) && count(array_intersect($scope, $this->_scopes)) === count($scope)) {
-      return self::API_OAUTH_URL . '?client_id=' . $this->getApiKey() . '&redirect_uri=' . urlencode($this->getApiCallback()) . '&scope=' . implode('+', $scope) . '&response_type=code';
-    } else {
-      throw new Exception("Error: getLoginUrl() - The parameter isn't an array or invalid scope permissions used.");
-    }
+  	if (is_array($scope) && count(array_intersect($scope, $this->_scopes)) === count($scope)) {
+  		return self::API_OAUTH_URL . '?client_id=' . $this->getApiKey() . '&redirect_uri=' . urlencode($this->getApiCallback()) . '&scope=' . implode('+', $scope) . '&response_type=code';
+  	} else {
+  		throw new Exception("Error: getLoginUrl() - The parameter isn't an array or invalid scope permissions used.");
+  	}
   }
 
   /**
@@ -112,7 +112,7 @@ class Instagram {
    * @return mixed
    */
   public function searchUser($name, $limit = 0) {
-    return $this->_makeCall('users/search', false, array('q' => $name, 'count' => $limit));
+  	return $this->_makeCall('users/search', false, array('q' => $name, 'count' => $limit));
   }
 
   /**
@@ -122,9 +122,9 @@ class Instagram {
    * @return mixed
    */
   public function getUser($id = 0) {
-    $auth = false;
-    if ($id === 0 && isset($this->_accesstoken)) { $id = 'self'; $auth = true; }
-    return $this->_makeCall('users/' . $id, $auth);
+  	$auth = false;
+  	if ($id === 0 && isset($this->_accesstoken)) { $id = 'self'; $auth = true; }
+  	return $this->_makeCall('users/' . $id, $auth);
   }
 
   /**
@@ -134,7 +134,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserFeed($limit = 0) {
-    return $this->_makeCall('users/self/feed', true, array('count' => $limit));
+  	return $this->_makeCall('users/self/feed', true, array('count' => $limit));
   }
 
   /**
@@ -145,7 +145,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserMedia($id = 'self', $limit = 0) {
-    return $this->_makeCall('users/' . $id . '/media/recent', ($id === 'self'), array('count' => $limit));
+  	return $this->_makeCall('users/' . $id . '/media/recent', ($id === 'self'), array('count' => $limit));
   }
 
   /**
@@ -155,7 +155,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserLikes($limit = 0) {
-    return $this->_makeCall('users/self/media/liked', true, array('count' => $limit));
+  	return $this->_makeCall('users/self/media/liked', true, array('count' => $limit));
   }
 
   /**
@@ -166,7 +166,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserFollows($id = 'self', $limit = 0) {
-    return $this->_makeCall('users/' . $id . '/follows', true, array('count' => $limit));
+  	return $this->_makeCall('users/' . $id . '/follows', true, array('count' => $limit));
   }
 
   /**
@@ -177,7 +177,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserFollower($id = 'self', $limit = 0) {
-    return $this->_makeCall('users/' . $id . '/followed-by', true, array('count' => $limit));
+  	return $this->_makeCall('users/' . $id . '/followed-by', true, array('count' => $limit));
   }
 
   /**
@@ -187,7 +187,7 @@ class Instagram {
    * @return mixed
    */
   public function getUserRelationship($id) {
-    return $this->_makeCall('users/' . $id . '/relationship', true);
+  	return $this->_makeCall('users/' . $id . '/relationship', true);
   }
 
   /**
@@ -198,10 +198,10 @@ class Instagram {
    * @return mixed
    */
   public function modifyRelationship($action, $user) {
-    if (true === in_array($action, $this->_actions) && isset($user)) {
-      return $this->_makeCall('users/' . $user . '/relationship', true, array('action' => $action), 'POST');
-    }
-    throw new Exception("Error: modifyRelationship() | This method requires an action command and the target user id.");
+  	if (true === in_array($action, $this->_actions) && isset($user)) {
+  		return $this->_makeCall('users/' . $user . '/relationship', true, array('action' => $action), 'POST');
+  	}
+  	throw new Exception("Error: modifyRelationship() | This method requires an action command and the target user id.");
   }
 
   /**
@@ -215,7 +215,7 @@ class Instagram {
    * @return mixed
    */
   public function searchMedia($lat, $lng, $distance = 1000, $minTimestamp = NULL, $maxTimestamp = NULL) {
-    return $this->_makeCall('media/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance, 'min_timestamp' => $minTimestamp, 'max_timestamp' => $maxTimestamp));
+  	return $this->_makeCall('media/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance, 'min_timestamp' => $minTimestamp, 'max_timestamp' => $maxTimestamp));
   }
 
   /**
@@ -225,7 +225,7 @@ class Instagram {
    * @return mixed
    */
   public function getMedia($id) {
-    return $this->_makeCall('media/' . $id);
+  	return $this->_makeCall('media/' . $id);
   }
 
   /**
@@ -234,7 +234,7 @@ class Instagram {
    * @return mixed
    */
   public function getPopularMedia() {
-    return $this->_makeCall('media/popular');
+  	return $this->_makeCall('media/popular');
   }
 
   /**
@@ -244,7 +244,7 @@ class Instagram {
    * @return mixed
    */
   public function searchTags($name) {
-    return $this->_makeCall('tags/search', false, array('q' => $name));
+  	return $this->_makeCall('tags/search', false, array('q' => $name));
   }
 
   /**
@@ -254,7 +254,7 @@ class Instagram {
    * @return mixed
    */
   public function getTag($name) {
-    return $this->_makeCall('tags/' . $name);
+  	return $this->_makeCall('tags/' . $name);
   }
 
   /**
@@ -265,7 +265,7 @@ class Instagram {
    * @return mixed
    */
   public function getTagMedia($name, $limit = 0) {
-    return $this->_makeCall('tags/' . $name . '/media/recent', false, array('count' => $limit));
+  	return $this->_makeCall('tags/' . $name . '/media/recent', false, array('count' => $limit));
   }
 
   /**
@@ -275,7 +275,7 @@ class Instagram {
    * @return mixed
    */
   public function getMediaLikes($id) {
-    return $this->_makeCall('media/' . $id . '/likes', true);
+  	return $this->_makeCall('media/' . $id . '/likes', true);
   }
 
   /**
@@ -285,7 +285,7 @@ class Instagram {
    * @return mixed
    */
   public function getMediaComments($id) {
-    return $this->_makeCall('media/' . $id . '/comments', false);
+  	return $this->_makeCall('media/' . $id . '/comments', false);
   }
 
   /**
@@ -296,7 +296,7 @@ class Instagram {
    * @return mixed
    */
   public function addMediaComment($id, $text) {
-    return $this->_makeCall('media/' . $id . '/comments', true, array('text' => $text), 'POST');
+  	return $this->_makeCall('media/' . $id . '/comments', true, array('text' => $text), 'POST');
   }
 
   /**
@@ -307,7 +307,7 @@ class Instagram {
    * @return mixed
    */
   public function deleteMediaComment($id, $commentID) {
-    return $this->_makeCall('media/' . $id . '/comments/' . $commentID, true, null, 'DELETE');
+  	return $this->_makeCall('media/' . $id . '/comments/' . $commentID, true, null, 'DELETE');
   }
 
   /**
@@ -317,7 +317,7 @@ class Instagram {
    * @return mixed
    */
   public function likeMedia($id) {
-    return $this->_makeCall('media/' . $id . '/likes', true, null, 'POST');
+  	return $this->_makeCall('media/' . $id . '/likes', true, null, 'POST');
   }
 
   /**
@@ -327,7 +327,7 @@ class Instagram {
    * @return mixed
    */
   public function deleteLikedMedia($id) {
-    return $this->_makeCall('media/' . $id . '/likes', true, null, 'DELETE');
+  	return $this->_makeCall('media/' . $id . '/likes', true, null, 'DELETE');
   }
 
   /**
@@ -337,7 +337,7 @@ class Instagram {
    * @return mixed
    */
   public function getLocation($id) {
-    return $this->_makeCall('locations/' . $id, false);
+  	return $this->_makeCall('locations/' . $id, false);
   }
 
   /**
@@ -347,7 +347,7 @@ class Instagram {
    * @return mixed
    */
   public function getLocationMedia($id) {
-    return $this->_makeCall('locations/' . $id . '/media/recent', false);
+  	return $this->_makeCall('locations/' . $id . '/media/recent', false);
   }
 
   /**
@@ -359,7 +359,7 @@ class Instagram {
    * @return mixed
    */
   public function searchLocation($lat, $lng, $distance = 1000) {
-    return $this->_makeCall('locations/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance));
+  	return $this->_makeCall('locations/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance));
   }
 
   /**
@@ -370,24 +370,24 @@ class Instagram {
    * @return mixed
    */
   public function pagination($obj, $limit = 0) {
-    if (true === is_object($obj) && !is_null($obj->pagination)) {
-      if (!isset($obj->pagination->next_url)) {
-        return;
-      }
-      $apiCall = explode('?', $obj->pagination->next_url);
-      if (count($apiCall) < 2) {
-        return;
-      }
-      $function = str_replace(self::API_URL, '', $apiCall[0]);
-      $auth = (strpos($apiCall[1], 'access_token') !== false);
-      if (isset($obj->pagination->next_max_id)) {
-        return $this->_makeCall($function, $auth, array('max_id' => $obj->pagination->next_max_id, 'count' => $limit));
-      } else {
-        return $this->_makeCall($function, $auth, array('cursor' => $obj->pagination->next_cursor, 'count' => $limit));
-      }
-    } else {
-      throw new Exception("Error: pagination() | This method doesn't support pagination.");
-    }
+  	if (true === is_object($obj) && !is_null($obj->pagination)) {
+  		if (!isset($obj->pagination->next_url)) {
+  			return;
+  		}
+  		$apiCall = explode('?', $obj->pagination->next_url);
+  		if (count($apiCall) < 2) {
+  			return;
+  		}
+  		$function = str_replace(self::API_URL, '', $apiCall[0]);
+  		$auth = (strpos($apiCall[1], 'access_token') !== false);
+  		if (isset($obj->pagination->next_max_id)) {
+  			return $this->_makeCall($function, $auth, array('max_id' => $obj->pagination->next_max_id, 'count' => $limit));
+  		} else {
+  			return $this->_makeCall($function, $auth, array('cursor' => $obj->pagination->next_cursor, 'count' => $limit));
+  		}
+  	} else {
+  		throw new Exception("Error: pagination() | This method doesn't support pagination.");
+  	}
   }
 
   /**
@@ -398,16 +398,16 @@ class Instagram {
    * @return mixed
    */
   public function getOAuthToken($code, $token = false) {
-    $apiData = array(
-      'grant_type'      => 'authorization_code',
-      'client_id'       => $this->getApiKey(),
-      'client_secret'   => $this->getApiSecret(),
-      'redirect_uri'    => $this->getApiCallback(),
-      'code'            => $code
-    );
-    
-    $result = $this->_makeOAuthCall($apiData);
-    return (false === $token) ? $result : $result->access_token;
+  	$apiData = array(
+  		'grant_type'      => 'authorization_code',
+  		'client_id'       => $this->getApiKey(),
+  		'client_secret'   => $this->getApiSecret(),
+  		'redirect_uri'    => $this->getApiCallback(),
+  		'code'            => $code
+  		);
+
+  	$result = $this->_makeOAuthCall($apiData);
+  	return (false === $token) ? $result : $result->access_token;
   }
 
   /**
@@ -420,47 +420,53 @@ class Instagram {
    * @return mixed
    */
   protected function _makeCall($function, $auth = false, $params = null, $method = 'GET') {
-    if (false === $auth) {
-      // if the call doesn't requires authentication
-      $authMethod = '?client_id=' . $this->getApiKey();
-    } else {
-      // if the call needs an authenticated user
-      if (true === isset($this->_accesstoken)) {
-        $authMethod = '?access_token=' . $this->getAccessToken();
-      } else {
-        throw new Exception("Error: _makeCall() | $function - This method requires an authenticated users access token.");
-      }
-    }
-    
-    if (isset($params) && is_array($params)) {
-      $paramString = '&' . http_build_query($params);
-    } else {
-      $paramString = null;
-    }
-    
-    $apiCall = self::API_URL . $function . $authMethod . (('GET' === $method) ? $paramString : null);
-    
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $apiCall);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
-    if ('POST' === $method) {
-      curl_setopt($ch, CURLOPT_POST, count($params));
-      curl_setopt($ch, CURLOPT_POSTFIELDS, ltrim($paramString, '&'));
-    } else if ('DELETE' === $method) {
-      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-    }
-    
-    $jsonData = curl_exec($ch);
-    if (false === $jsonData) {
-      throw new Exception("Error: _makeCall() - cURL error: " . curl_error($ch));
-    }
-    curl_close($ch);
-    
-    return json_decode($jsonData);
+  	if (false === $auth) {
+	  // if the call doesn't requires authentication
+  		$authMethod = '?client_id=' . $this->getApiKey();
+  	} else {
+	  // if the call needs an authenticated user
+  		if (true === isset($this->_accesstoken)) {
+  			$authMethod = '?access_token=' . $this->getAccessToken();
+  		} else {
+  			throw new Exception("Error: _makeCall() | $function - This method requires an authenticated users access token.");
+  		}
+  	}
+
+  	if (isset($params) && is_array($params)) {
+  		$paramString = '&' . http_build_query($params);
+  	} else {
+  		$paramString = null;
+  	}
+  	
+  	$apiCall = self::API_URL . $function . $authMethod . (('GET' === $method) ? $paramString : null);
+
+
+  	if(function_exists('curl_version') ){
+
+  		$ch = curl_init();
+  		curl_setopt($ch, CURLOPT_URL, $apiCall);
+  		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
+  		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+  		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+  		if ('POST' === $method) {
+  			curl_setopt($ch, CURLOPT_POST, count($params));
+  			curl_setopt($ch, CURLOPT_POSTFIELDS, ltrim($paramString, '&'));
+  		} else if ('DELETE' === $method) {
+  			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+  		}
+
+  		$jsonData = curl_exec($ch);
+  		if (false === $jsonData) {
+  			throw new Exception("Error: _makeCall() - cURL error: " . curl_error($ch));
+  		}
+  		curl_close($ch);
+  	} else{
+  		$jsonData = file_get_contents($apiCall); 
+  	}
+
+  	return json_decode($jsonData);
   }
 
   /**
@@ -470,23 +476,23 @@ class Instagram {
    * @return mixed
    */
   private function _makeOAuthCall($apiData) {
-    $apiHost = self::API_OAUTH_TOKEN_URL;
-    
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $apiHost);
-    curl_setopt($ch, CURLOPT_POST, count($apiData));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($apiData));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
-    $jsonData = curl_exec($ch);
-    if (false === $jsonData) {
-      throw new Exception("Error: _makeOAuthCall() - cURL error: " . curl_error($ch));
-    }
-    curl_close($ch);
-    
-    return json_decode($jsonData);
+  	$apiHost = self::API_OAUTH_TOKEN_URL;
+
+  	$ch = curl_init();
+  	curl_setopt($ch, CURLOPT_URL, $apiHost);
+  	curl_setopt($ch, CURLOPT_POST, count($apiData));
+  	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($apiData));
+  	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
+  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+  	$jsonData = curl_exec($ch);
+  	if (false === $jsonData) {
+  		throw new Exception("Error: _makeOAuthCall() - cURL error: " . curl_error($ch));
+  	}
+  	curl_close($ch);
+
+  	return json_decode($jsonData);
   }
 
   /**
@@ -496,8 +502,8 @@ class Instagram {
    * @return void
    */
   public function setAccessToken($data) {
-    (true === is_object($data)) ? $token = $data->access_token : $token = $data;
-    $this->_accesstoken = $token;
+  	(true === is_object($data)) ? $token = $data->access_token : $token = $data;
+  	$this->_accesstoken = $token;
   }
 
   /**
@@ -506,7 +512,7 @@ class Instagram {
    * @return string
    */
   public function getAccessToken() {
-    return $this->_accesstoken;
+  	return $this->_accesstoken;
   }
 
   /**
@@ -516,7 +522,7 @@ class Instagram {
    * @return void
    */
   public function setApiKey($apiKey) {
-    $this->_apikey = $apiKey;
+  	$this->_apikey = $apiKey;
   }
 
   /**
@@ -525,7 +531,7 @@ class Instagram {
    * @return string
    */
   public function getApiKey() {
-    return $this->_apikey;
+  	return $this->_apikey;
   }
 
   /**
@@ -535,7 +541,7 @@ class Instagram {
    * @return void
    */
   public function setApiSecret($apiSecret) {
-    $this->_apisecret = $apiSecret;
+  	$this->_apisecret = $apiSecret;
   }
 
   /**
@@ -544,7 +550,7 @@ class Instagram {
    * @return string
    */
   public function getApiSecret() {
-    return $this->_apisecret;
+  	return $this->_apisecret;
   }
   
   /**
@@ -554,7 +560,7 @@ class Instagram {
    * @return void
    */
   public function setApiCallback($apiCallback) {
-    $this->_callbackurl = $apiCallback;
+  	$this->_callbackurl = $apiCallback;
   }
 
   /**
@@ -563,7 +569,7 @@ class Instagram {
    * @return string
    */
   public function getApiCallback() {
-    return $this->_callbackurl;
+  	return $this->_callbackurl;
   }
 
 }
