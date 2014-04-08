@@ -8,6 +8,20 @@
 get_header();
 ?>
 
+<script>
+	jQuery(document).ready(function($){
+
+		jQuery( ".click" ).click(function() {
+			if(jQuery(this).hasClass( "selected" )){
+				// do nothing		
+			} else {
+				jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
+			}
+			jQuery(this).toggleClass( "selected" );
+		});
+	});
+</script>
+
 <?php 
 $ldm_sagepay = new ldm_sagepay();
 $config = $ldm_sagepay->getConfig();
@@ -138,16 +152,19 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 							<div class="col-sm-10 gift_card_wrapper no-borders" style=" float:none !important; margin:auto;">
 								<h2>Choose gift card</h2>								
-								<div class="col-sm-4 gift_card_info" >
-									<div style=" height:300px; background: url(<?php bloginfo('template_url') ?>-child/images/icon_e-card.png) no-repeat background-position ;"></div>
+								<div class="col-sm-4 gift_card_info e-card click" >
+									<div class="gift_icon"></div>
 									<h3>E-card</h3>
 								</div>
-								<div class="col-sm-4 gift_card_info" style=" height:300px; background-color:#ff77ee;">
+								<div class="col-sm-4 gift_card_info physical click">
+									<div class="gift_icon"></div>
 									<h3>Physical</h3>
 								</div>
-								<div class="col-sm-4 gift_card_info" style=" height:300px; background-color: #ff9900;">
+								<div class="col-sm-4 gift_card_info buy_a_box click" >
+									<div class="gift_icon"></div>
 									<h3>Buy a box</h3>
 								</div>
+								<div style="clear:both;"></div>
 							</div>
 
 							<div class="col-sm-12 gift_card_wrapper no-margin-bottom">

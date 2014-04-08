@@ -1553,6 +1553,8 @@ border:none;
 }
 .profile_authorize_page .payment_info h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
+
+
 @media only screen and (max-width: 767px) {
 .profile_authorize_page .payment_info img{background:none !important;
  }
@@ -1582,21 +1584,86 @@ background: url(images/payment_dot.png) no-repeat;
 .gift_card_page .gift_card_wrapper{ 
 	float: left !important;
 	padding-top: 80px;
- 
-	padding-bottom: 0px;
- 
 	margin: auto;
-	margin-bottom:80px;
 	position: relative;
 	border-top: 1px solid #e3e3e3;
+	margin-bottom:50px;
+	padding-bottom: 50px;
 }
 .gift_card_page .gift_card_wrapper h2{ margin-top: 0px !important;
+	margin-bottom: 30px;
 }
 .gift_card_page .georgia_text{ font-size: 18px !important;
  padding-top: 50px;
  padding-bottom: 30px;
  text-align: center;
 }
+
+ .gift_card_page .gift_card_info { border:1px solid #e3e3e3; 
+	cursor: pointer;}
+
+.gift_card_page .gift_card_info:hover>.gift_icon { 
+	background-position: 0 -96px !important;}
+
+.gift_card_page .gift_card_info:hover>h3  { 
+	color: #b08536 !important;
+}
+
+.gift_card_page .gift_card_info.selected>.gift_icon { 
+	background-position: 0 -96px !important;
+}
+.gift_card_page .gift_card_info.selected>h3  { 
+	color: #b08536 !important;
+}
+.gift_card_page .gift_card_info h3{ margin-bottom: 30px;}
+
+.gift_card_page .gift_card_info .gift_icon{ margin: 0 auto; 
+	margin-top:50px; 
+	height:96px; 
+	width:118px; }
+									
+.gift_card_page .gift_card_info.e-card .gift_icon{ 
+	background: url(images/icon_e-card.png) no-repeat;
+}							
+
+.gift_card_page .gift_card_info.physical .gift_icon{ 
+	background: url(images/icon_physical.png) no-repeat;
+}	
+
+.gift_card_page .gift_card_info.buy_a_box .gift_icon{ 
+	background: url(images/icon_buy_a_box.png) no-repeat;
+}
+.gift_card_page .gift_card_info.physical { 
+ 	border:1px solid #e3e3e3 !important;
+ 	border-right: none !important;
+ 	border-left: none !important;
+ }	
+
+@media only screen and (max-width: 767px) {
+
+.gift_card_page .gift_card_info{ 
+	margin-bottom: 0 !important;
+	width: 100%;
+	float: left;
+}		
+
+.gift_card_page .gift_card_info.physical { 
+ 	border:1px solid #e3e3e3 !important;
+ 	border-bottom: none !important;
+ 	border-top: none !important;
+ }	
+	
+}
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1200px) {
 	.row .alt-bg{ margin-left: -270px !important;
  padding-right: 270px !important;
