@@ -60,12 +60,13 @@ if (!function_exists('get_fb_posts')){
 				$post_content = 'Enclothed - Men\'s bespoke outfitters';
 			}
 
+			$post_content = wp_trim_words($post_content, $truncate_words); 
+
 			$post_content = make_clickable($post_content);
 
 			if ($divs){
 				echo "<div class='fb_post' style='padding-bottom:20px'>";
 				echo "<div class='fb_post_content'>$post_content</div>";
-				
 				echo "</div>";
 			} else {
 				echo $post_content;
