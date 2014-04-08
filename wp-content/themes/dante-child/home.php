@@ -270,12 +270,17 @@
 	<div class="spb_content_element col-sm-12 social_buttons spb_box_text whitestroke">
 		<div class="spb_wrapper">
 			<div class="box-content-wrap">
-<h2><span style="color: #0e2334;">STAY CONNECTED</span></h2>
-<p><img class="size-full aligncenter" alt="line" src="/wp-content/themes/dante-child/images/line.png"></p>
-<p><a href="#" target="_blank"></a></p><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><a href="#" target="_blank"><i class="fa-twitter sf-icon sf-icon-medium"></i></a></div><a href="#" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-facebook sf-icon sf-icon-medium"></i></div></a><a href="#" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-instagram sf-icon sf-icon-medium"></i></div></a><a href="#" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-pinterest sf-icon sf-icon-medium"></i></div></a><p></p>
+				<h2><span style="color: #0e2334;">STAY CONNECTED</span></h2>
+				<p><img class="size-full aligncenter" alt="line" src="/wp-content/themes/dante-child/images/line.png"></p>
+				<a href="https://twitter.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-twitter sf-icon sf-icon-medium"></i></a></div>
+				<a href="https://www.facebook.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-facebook sf-icon sf-icon-medium"></i></a></div>
+				<a href="http://instagram.com/enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-instagram sf-icon sf-icon-medium"></i></a></div>
+				<a href="http://enclothedblog.tumblr.com/" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-tumblr sf-icon sf-icon-medium"></i></a></div>
+				<a href="http://enclothedblog.tumblr.com/rss" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-rss sf-icon sf-icon-medium"></i></a></div>
+			</div>
+		</div>
+	</div>
 </div>
-		</div> 
-	</div> </div></div>
 
 
 

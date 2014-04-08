@@ -314,7 +314,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div>
 
 
-							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;">
+							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">02</div>
@@ -646,7 +646,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area10">
+							<div class="title-forms area10" style=" display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">10</div>
@@ -703,5 +703,3 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 	<!--// WordPress Hook //-->
 	<?php get_footer(); ?>
-
-

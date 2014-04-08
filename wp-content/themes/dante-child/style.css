@@ -264,6 +264,11 @@ a.sf-button.transparent:hover{ background-color: transparent !important;
 height: auto;
  color:#0e2334;
  }
+.fa-rss.sf-icon.sf-icon-medium { font-size:34px !important;
+ width: auto;
+height: auto;
+  color:#0e2334;
+}
 .fa-twitter.sf-icon.sf-icon-medium { font-size:34px !important;
  width: auto;
 height: auto;
@@ -274,7 +279,7 @@ height: auto;
 height: auto;
  color:#0e2334;
  }
-.fa-pinterest.sf-icon.sf-icon-medium { font-size:34px !important;
+.fa-tumblr.sf-icon.sf-icon-medium { font-size:34px !important;
  width: auto;
 height: auto;
   color:#0e2334;
