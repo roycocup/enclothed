@@ -660,6 +660,35 @@ img.line{ margin-top:20px;
 
 .tp-bullets.simplebullets.round .bullet { border-radius: 0;}
 
+
+/*Styling for the placeholders*/
+::-webkit-input-placeholder {
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
+:-ms-input-placeholder {  
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
 /* --------------------------------------------
 	HOME PAGE
 -------------------------------------------- */

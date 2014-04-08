@@ -7,22 +7,6 @@
 ?>
 <?php get_header(); ?>
 
-<style>
-	::-webkit-input-placeholder {
-		font-style: italic;
-		font-size: 10px;
-	}
-
-	::-moz-placeholder {  /* Firefox 19+ */
-		font-style: italic;
-		font-size: 10px;
-	}
-
-	:-ms-input-placeholder {  
-		font-style: italic;
-		font-size: 10px;
-	}
-</style>
 
 <script>
 	jQuery(document).ready(function($){
