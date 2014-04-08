@@ -832,6 +832,80 @@ color:#fff !important;
 
 
 /* --------------------------------------------
+	ABOUT US
+-------------------------------------------- */
+
+.about_us_page .inner-page-wrap {margin-top: 0;}
+
+.about_us_page .line{ border-top: 1px solid #e3e3e3;}
+
+.about_us_page h1{letter-spacing: 3px !important;
+line-height: 38px !important;
+font-size: 30px !important;}
+
+.about_us_page h2{}
+
+.about_us_page h3{letter-spacing: 1px !important;
+line-height: 30px !important;
+font-size: 22px !important;
+font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
+
+.about_us_page .area1 {
+	margin-top: 0 !important;
+	padding-top: 120px;
+	padding-bottom: 120px;
+}
+.about_us_page .area1 .spb_content_wrapper{
+	margin: auto;
+}
+
+.about_us_page .area5_left {
+	padding-top: 0;
+}
+
+.about_us_page .area5_right {
+	padding-top: 0;
+}
+
+.about_us_page .area6 .spb_wrapper{ 
+padding-top: 40px;
+padding-bottom: 0px;
+max-width: 600px;
+margin: auto;}
+
+.about_us_page .area6 .author_name{
+	font-family: font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
+.about_us_page .area6 .georgia_text{color: #ffffff;
+font-size: 18px !important;
+line-height: 34px;}
+
+@media only screen and (max-width: 991px) {
+  .about_us_page  .area3_right { height: 364px; 
+ }
+ .about_us_page  .area3_right .order_a_box_wrapper{ position: absolute;
+ height: auto; 
+ width: 750px; 
+ left:-248px;
+ }
+} 
+@media only screen and (max-width: 767px) {
+	.about_us_page p{ text-align: center !important;
+  }
+	.about_us_page h2{ text-align: center !important;
+  }
+	.about_us_page .area5 .spb_content_wrapper{ margin: auto !important;
+}
+	.about_us_page img.line{ margin-top:0 !important;
+text-align:center;
+}
+
+} 
+
+
+
+/* --------------------------------------------
 	PRICING 
 -------------------------------------------- */
 .pricing_page .inner-page-wrap {
