@@ -9,35 +9,36 @@
 	*
 	*
 	*/
-	
-	
-// OVERWRITE PAGE BUILDER ASSETS
-//	function spb_regsiter_assets() {
-//		require_once( get_stylesheet_directory_uri() . '/default.php' );
-//	}
-//	if (is_admin()) {
-//	add_action('admin_init', 'spb_regsiter_assets', 2);
-//	}
-//	if (!is_admin()) {
-//	add_action('wp', 'spb_regsiter_assets', 2);
-//	}
 
-	add_image_size( 'home-featured', 400, 400, true);
+add_image_size( 'home-featured', 400, 400, true);
 
-/**
-*
-* This function gets the instagram caption 
-*
-**/
-if (!function_exists('get_instagram_posts')){
-	function get_instagram_posts(){
-		$post_content = 'The winner tonight whilst co-hosting the... with @CharmaineDavies #dontmissit';
+if (!function_exists('pc_lookup')){
+	function pc_lookup($postcode) {
 
-		$post_content = make_clickable($post_content);
+		// Sanitize their postcode:
+		$search_code = urlencode($postcode);
+		$url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . $search_code . '&sensor=false';
+		$json = json_decode(file_get_contents($url));
 
-		return $post_content;
+		$lat = $json->results[0]->geometry->location->lat;
+		$lng = $json->results[0]->geometry->location->lng;
+
+		// Now build the lookup:
+		$address_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
+		$address_json = json_decode(file_get_contents($address_url));
+		$address_data = $address_json->results[0]->address_components;
+
+		return $address_data;
+
+		$street = str_replace('Dr', 'Drive', $address_data[1]->long_name);
+		$town = $address_data[2]->long_name;
+		$county = $address_data[3]->long_name;
+
+		$array = array('street' => $street, 'town' => $town, 'county' => $county);
+		return json_encode($array);
 	}
 }
+
 
 /**
 *
