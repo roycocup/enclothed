@@ -122,13 +122,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<div class="styles-block">
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
-							<?php echo $form; ?>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
 							<div class="col-sm-10 dashboard_wrapper no-borders">
-								<h1>We are building you a box. Feel free to E-mail us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></h1>
+								<h1>We are building you a box. <br>Please contact us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></h1>
 
 							</div>
 
