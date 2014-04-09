@@ -6,30 +6,63 @@
 **/
 get_header();
 
-global $wpdb, $user_ID;
-wp_enqueue_script( 'jquery' );
+global $wpdb;
 
-//block logged in users and send them home
-if ($user_ID) { 
-	wp_redirect( home_url() ); exit;
-} else {
-	//Validation stuff, Form stuff, etc
-}
+$error = '';
+$success = '';
 
-function tg_validate_url() {
-	global $post;
-	$page_url = esc_url(get_permalink( $post->ID ));
-	$urlget = strpos($page_url, "?");
+// check if we're in reset form
+if( isset( $_POST['action'] ) && 'pass_reset' == $_POST['action'] ) 
+{
+	// $nonce = $_POST['tg_pwd_nonce'];
+	// wp_verify_nonce($_POST['tg_pwd_nonce'], 'lost_pass_nonce'); 
 
-	if ($urlget === false) {
-		$concate = "?";
+	$email = trim($_POST['user_login']);
+
+	if( empty( $email ) ) {
+		$error = 'Enter a username or e-mail address..';
+	} else if( ! is_email( $email )) {
+		$error = 'Invalid username or e-mail address.';
+	} else if( ! email_exists($email) ) {
+		$error = 'There is no user registered with that email address.';
 	} else {
-		$concate = "&";
-	}
-	
-	return $page_url.$concate;
-}
+		
+			// lets generate our new password
+		$random_password = wp_generate_password( 12, false );
+		
+			// Get user data by field and data, other field are ID, slug, slug and login
+		$user = get_user_by( 'email', $email );
+		
+		$update_user = wp_update_user( array (
+			'ID' => $user->ID, 
+			'user_pass' => $random_password
+			)
+		);
+		
+			// if  update user return true then lets send user an email containing the new password
+		if( $update_user ) {
+			$to = $email;
+			$subject = 'Your new password';
+			$sender = get_option('name');
 
+			$message = 'Your new password is: '.$random_password;
+
+			$headers[] = 'MIME-Version: 1.0' . "\r\n";
+			$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			$headers[] = "X-Mailer: PHP \r\n";
+			$headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
+
+			$mail = wp_mail( $to, $subject, $message, $headers );
+			if( $mail )
+				$success = 'Check your email address for you new password.';
+
+		} else {
+			$error = 'Oops something went wrong updaing your account.';
+		}
+
+	}
+
+}
 ?>
 
 
@@ -172,15 +205,22 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 				
 				<div class="col-sm-12 lost_password_wrapper" >
 		
-							<div class="georgia_text">Reset your password</div>
+							<?php 
+								if( ! empty( $error ) ):
+									echo '<div class="georgia_text"><strong>ERROR:</strong> '. $error .'</div>';
+								elseif( ! empty( $success ) ):
+									echo '<div class="georgia_text"> '. $success .'</div>';
+								else:
+									echo '<div class="georgia_text">Reset your password</div>';
+								endif;
+							?>
 
 					<div id="result"></div> <!-- To hold validation results -->
 					<form id="wp_pass_reset" action="" method="post">
-						<input type="text" class="key-info" name="user_input" value="" placeholder="Username or E-mail">
-						<input type="hidden" name="action" value="tg_pwd_reset" />
-						<input type="hidden" name="tg_pwd_nonce" value="<?php echo wp_create_nonce("tg_pwd_nonce"); ?>" />
-						<button type="submit" class="button4" id="submitbtn" name="submit">Reset</button>
-
+						<input type="text" class="key-info" name="user_login" value="" placeholder="Username or E-mail">
+						<input type="hidden" name="action" value="pass_reset" />
+						<input type="hidden" name="tg_pwd_nonce" value="<?php echo wp_create_nonce("lost_pass_nonce"); ?>" />
+						<button type="submit" class="button4" id="submitbtn" name="submit" onclick="submit();">Reset</button>
 					</form>
 				</div>
 			<?php else: ?>
