@@ -150,7 +150,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-							<div class="col-sm-10 gift_card_wrapper no-borders" style=" float:none !important; margin:auto;">
+							<div class="col-sm-10 gift_card_wrapper no-borders">
 								<h2>Choose gift card</h2>								
 								<div class="col-sm-4 gift_card_info e-card click" >
 									<div class="gift_icon"></div>
@@ -165,6 +165,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<h3>Buy a box</h3>
 								</div>
 								<div style="clear:both;"></div>
+								<div class="shadow"><img src="http://enclothed.dev/wp-content/themes/dante-child/images/shadow.png" alt=""></div>
 							</div>
 
 							<div class="col-sm-12 gift_card_wrapper no-margin-bottom">

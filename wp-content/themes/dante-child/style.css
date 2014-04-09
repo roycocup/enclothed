@@ -1684,6 +1684,132 @@ background: url(images/payment_dot.png) no-repeat;
 
 
 /* --------------------------------------------
+	DASHBOARD
+-------------------------------------------- */
+.dashboard_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.dashboard_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ min-height: 500px;
+}
+.dashboard_page h2{ margin-top: 50px !important;
+}
+.dashboard_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 13px !important; letter-spacing: 0 !important;
+}
+.dashboard_page .dashboard_wrapper{ 
+	float: left !important;
+	padding-top: 80px;
+	margin: auto;
+	position: relative;
+	border-top: 1px solid #e3e3e3;
+	margin-bottom:50px;
+	padding-bottom: 0px;
+	float: none !important;
+	position: relative;
+}
+.dashboard_page .dashboard_wrapper h2{ margin-top: 0px !important;
+	margin-bottom: 30px;
+}
+.dashboard_page .georgia_text{ font-size: 18px !important;
+ padding-top: 50px;
+ padding-bottom: 30px;
+ text-align: center;
+}
+
+ .dashboard_page .dashboard_info { border:1px solid #e3e3e3; 
+	cursor: pointer;}
+
+.dashboard_page .dashboard_info:hover>.dashboard_icon { 
+	background-position: 0 -96px !important;}
+
+.dashboard_page .dashboard_info:hover>h3  { 
+	color: #b08536 !important;
+}
+
+.dashboard_page .dashboard_info h3{ margin-bottom: 30px;}
+
+.dashboard_page .dashboard_info .dashboard_icon{ margin: 0 auto; 
+	margin-top:50px; 
+	height:96px; 
+	width:118px; }
+									
+.dashboard_page .dashboard_info.edit_profile { 
+
+}							
+.dashboard_page .dashboard_info.edit_style { 
+
+}	
+.dashboard_page .dashboard_info.edit_sizes { 
+
+}
+.dashboard_page .dashboard_info.edit_prices { 
+
+}							
+.dashboard_page .dashboard_info.edit_delivery { 
+
+}	
+.dashboard_page .dashboard_info.edit_collection { 
+
+}
+
+.dashboard_page .dashboard_info.edit_profile .dashboard_icon{ 
+	background: url(images/icon_profile.png) no-repeat;
+}							
+.dashboard_page .dashboard_info.edit_style .dashboard_icon{ 
+	background: url(images/icon_style.png) no-repeat;
+}	
+.dashboard_page .dashboard_info.edit_sizes .dashboard_icon{ 
+	background: url(images/icon_sizes.png) no-repeat;
+}
+.dashboard_page .dashboard_info.edit_prices .dashboard_icon{ 
+	background: url(images/icon_prices.png) no-repeat;
+}							
+.dashboard_page .dashboard_info.edit_delivery .dashboard_icon{ 
+	background: url(images/icon_delivery.png) no-repeat;
+}	
+.dashboard_page .dashboard_info.edit_collection .dashboard_icon{ 
+	background: url(images/icon_collection.png) no-repeat;
+}
+.dashboard_page .dashboard_info.physical { 
+ 	border:1px solid #e3e3e3 !important;
+ 	border-right: none !important;
+ 	border-left: none !important;
+ }	
+
+@media only screen and (max-width: 991px) {
+
+ .dashboard_page .dashboard_info { 
+ 	max-height: 220px;}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.dashboard_page .dashboard_info{ 
+	margin-bottom: 0 !important;
+	width: 100%;
+	float: left;
+	max-height: none;
+	border:1px solid #e3e3e3 ;
+	border-bottom: none;
+}		
+
+.dashboard_page .dashboard_info.edit_collection { 
+ 	border-bottom:1px solid #e3e3e3 !important;
+ }	
+	
+}
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------
 	GIFT CARD
 -------------------------------------------- */
 .gift_card_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
@@ -1703,7 +1829,9 @@ background: url(images/payment_dot.png) no-repeat;
 	position: relative;
 	border-top: 1px solid #e3e3e3;
 	margin-bottom:50px;
-	padding-bottom: 50px;
+	padding-bottom: 0px;
+	float: none !important;
+	position: relative;
 }
 .gift_card_page .gift_card_wrapper h2{ margin-top: 0px !important;
 	margin-bottom: 30px;

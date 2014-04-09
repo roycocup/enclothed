@@ -186,7 +186,9 @@
 						<img src="<?php bloginfo('template_url') ?>-child/images/homepage_brands_logos.jpg" alt="" class="image-responsive" />
 					</div>
 				</div>
-				<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
+
+				<!-- HIDDEN BLOG FEED 1 -->				
+<!-- 				<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
 					<?php
 					$args = array( 'posts_per_page' => 1, 'category' => 103 );
 
@@ -201,6 +203,15 @@
 					<?php endforeach; 
 					wp_reset_postdata();
 					?>
+				</div> -->
+
+
+								<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
+						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(wp-content/themes/dante-child/images/featured3_bg.jpg);">
+							<h2>Hand Picked Outfits Shipped to your Door</h2>
+							<p>Delivery and collections are free of charge Only pay for what you keep.</p>
+						</div>
+
 				</div>
 
 				<div class="col-sm-6 social_boxes_wrapper">
@@ -238,7 +249,9 @@
 
 				<?php $streams = new ldmStreams(); ?>
 
-				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
+
+				<!-- HIDDEN BLOG FEED 2 -->
+<!-- 				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
 					<?php
 					$args = array( 'posts_per_page' => 1, 'offset' => 1, 'category' => 103 );
 
@@ -253,7 +266,27 @@
 					<?php endforeach; 
 					wp_reset_postdata();
 					?>
+				</div> -->
+
+
+ 				<div class="col-sm-6 featured_blog_boxes_wrapper featured2">
+					<?php
+					$args = array( 'posts_per_page' => 1, 'offset' => 1, 'category' => 103 );
+
+					$myposts = get_posts( $args );
+					foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+					<?php $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'home-featured' ); ?>
+						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(wp-content/themes/dante-child/images/featured4_bg.jpg);">
+							<h2>Enclothed<br/>gives you time</h2>
+							<p>Time is the one thing we can never get back - we want you to spend it on the things you want to</p>
+
+						</div>
+					<?php endforeach; 
+					wp_reset_postdata();
+					?>
 				</div>
+
+
 				<div class="col-sm-6 social_boxes_wrapper">
 					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(); ?>); background-size: cover">
 					</div>
@@ -497,14 +530,15 @@
 	margin:0; 
 	float:left; 
 	background-size: cover;
-	padding: 20px;
+	padding: 20px 40px 20px 40px;
 	max-width: 475px;
 	height: 350px;
 }
 .featured_blog_box_left h2{
 	font-size:34px !important;
+	letter-spacing: 3px;
 	color:#fff;
-	margin-top: 18%;
+	margin-top: 15%;
 	line-height: 40px !important;
 }
 .featured_blog_box_left h2 a{
