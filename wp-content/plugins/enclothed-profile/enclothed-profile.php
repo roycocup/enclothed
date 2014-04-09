@@ -43,15 +43,15 @@ class EnclothedProfile {
 			//we will call each method based on 
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/details/' ) ) {
 				$this->process_details_form();
+			}
+			if ( wp_verify_nonce( $_POST['nonce'], '/profile/style/' ) ) {
+				$this->process_style_form();
 			}	
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/preferences/' ) ) {
 				$this->process_preferences_form();
 			}
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/sizing/' ) ) {
 				$this->process_sizing_form();
-			}
-			if ( wp_verify_nonce( $_POST['nonce'], '/profile/style/' ) ) {
-				$this->process_style_form();
 			}
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/pricing/' ) ) {
 				$this->process_pricing_form();
