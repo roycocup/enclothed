@@ -3,7 +3,7 @@
 *
 * Plugin Name: LDM WP Streams Plugin
 * Description: Like Digital Media all streams plugin 
-* Author: Like Digital Media
+* Author: Rodrigo Dias
 * Author URI: http://likedigitalmedia.com
 * Version: 0.1
 * Provides: ldm-streams

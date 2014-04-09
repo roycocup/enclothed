@@ -3,7 +3,7 @@
 *
 * Plugin Name: LDM WP Sagepay 
 * Description: A custom built plugin to provide sagepay payment functionality
-* Author: Like Digital Media
+* Author: Rodrigo Dias
 * Author URI: http://likedigitalmedia.com
 * Version: 0.1
 * Provides: ldm_sagepay
