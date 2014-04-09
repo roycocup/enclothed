@@ -11,10 +11,10 @@
 
 
 <?php 
-if (isset($_SESSION['section_3'])){
-	$section = $_SESSION['section_3'];	
-}else if(isset($_POST['section_3'])){
-	$section = $_POST['section_3'];
+if (isset($_SESSION['section_4'])){
+	$section = $_SESSION['section_4'];	
+}else if(isset($_POST['section_4'])){
+	$section = $_POST['section_4'];
 } else {
 	$section = array();
 }
@@ -29,14 +29,15 @@ if (isset($_SESSION['section_3'])){
 			var image = $(this).attr('id');
 			$('<input>').attr({
 				type: 'hidden',
-				name: 'section_3['+image+']',
+				name: 'section_4['+image+']',
 				value: 'checked',
-			}).appendTo('form[name="section_3"]');
+			}).appendTo('form[name="section_4"]');
 		}, function(){
 			var image = $(this).attr('id'); 
-			$('form input[name="section_3['+image+']"').remove();
+			$('form input[name="section_4['+image+']"').remove();
 		});
 
+		//This I dont know what its for... I didnt wrote it... 
 		jQuery( ".click" ).click(function() {
 			if(jQuery(this).hasClass( "selected" )){
 				
@@ -278,7 +279,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
 
-								<form action="" method="POST" name='section_3'>
+								<form action="" method="POST" name='section_4'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 									<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 				            			<?php flashMessagesDisplay(); ?>

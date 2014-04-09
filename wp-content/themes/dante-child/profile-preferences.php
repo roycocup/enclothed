@@ -12,10 +12,10 @@ get_header();
 <!-- <link href="<?php echo bloginfo('stylesheet_directory').'/css/select2.css'; ?>" rel="stylesheet" /> -->
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.2/select2.min.js"></script> -->
 <?php
-if (isset($_SESSION['section_2'])){
-	$section = $_SESSION['section_2'];	
-}else if(isset($_POST['section_2'])){
-	$section = $_POST['section_2'];
+if (isset($_SESSION['section_3'])){
+	$section = $_SESSION['section_3'];	
+}else if(isset($_POST['section_3'])){
+	$section = $_POST['section_3'];
 } else {
 	$section = array();
 }
@@ -29,12 +29,12 @@ if (isset($_SESSION['section_2'])){
 			var image = $(this).attr('id');
 			$('<input>').attr({
 				type: 'hidden',
-				name: 'section_2['+image+']',
+				name: 'section_3['+image+']',
 				value: 'checked',
-			}).appendTo('form[name="section_2"]');
+			}).appendTo('form[name="section_3"]');
 		}, function(){
 			var image = $(this).attr('id'); 
-			$('form input[name="section_2['+image+']"').remove();
+			$('form input[name="section_3['+image+']"').remove();
 		});
 
 		jQuery( ".click" ).click(function() {
@@ -226,7 +226,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<div class="fade-border-right"></div>
 					<!-- the form -->
 					<?php $nonce = wp_create_nonce( get_uri() ); ?>
-					<form action="" method="POST" name='section_2'>								
+					<form action="" method="POST" name='section_3'>								
 					<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
             			<?php flashMessagesDisplay(); ?>
            			</div>				
