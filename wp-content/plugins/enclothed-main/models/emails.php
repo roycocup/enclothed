@@ -8,7 +8,7 @@ class Emails_model extends db{
 
 
 	const TEMPLATE_THANK_YOU 				= 'thank_you'; //right after creation - to user
-	const TEMPLATE_ORDER_IN 				= 'order_in'; //an order made but not confirmed yet - to agency
+	const TEMPLATE_ORDER_IN 				= 'order_in'; //an order made - to agency
 
 
 	public $table = 'wp_enc_emails';

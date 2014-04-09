@@ -13,7 +13,7 @@
 
 
 include_once(ABSPATH . 'wp-content/plugins/enclothed-main/enclothed-main.php'); 
-// include_once(ABSPATH . 'wp-content/plugins/enclothed-main/models/emails.php'); 
+include_once(ABSPATH . 'wp-content/plugins/enclothed-main/models/emails.php'); 
 
 
 /**
@@ -73,8 +73,8 @@ $orders_buy_on = get_option('enc_orders_buy_on');
 
 //emails
 $emails = new Emails_model();
-// $ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
-// $oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
+$ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
+$oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
 // $ref_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND);
 // $conf_template = $emails->getMailTemplate(Emails_model::TEMPLATE_CONFIRM);
 // $ref_cli_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT);
@@ -89,8 +89,8 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 	update_option( 'enc_orders_buy_on', @$_POST[ 'enc_orders_buy_on' ] );
 
 	//emails
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_YOU, stripslashes_deep($_POST['enc_email_ty']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_ORDER_IN, stripslashes_deep($_POST['enc_email_oi']));
+	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_YOU, stripslashes_deep($_POST['enc_email_ty']));
+	$emails->saveMailTemplate(Emails_model::TEMPLATE_ORDER_IN, stripslashes_deep($_POST['enc_email_oi']));
 	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REFUND, stripslashes_deep($_POST['enc_email_ref']));
 	// $emails->saveMailTemplate(Emails_model::TEMPLATE_CONFIRM, stripslashes_deep($_POST['enc_email_conf']));
 	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT, stripslashes_deep($_POST['enc_email_ref_cli']));
@@ -110,13 +110,12 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<?php do_settings_sections( 'enc_options' ); ?>
 			Sandbox emails On <input type="checkbox" name="enc_sandbox_email_on" value="1" <?php checked( get_option('enc_sandbox_email_on'), 1 ); ?> >
 			<br>Sandbox email <input type="text" name="enc_sandbox_email" value="<?php echo get_option('enc_sandbox_email'); ?>">
-			<!-- <h3>This is a panic button. <small>Turning it on will disable all buying</small></h3>
-			<br>Panic Button On <input type="checkbox" name="enc_orders_buy_on" value="1" <?php checked( get_option('enc_orders_buy_on'), 1 ); ?> > -->
+			
 
 			<!-- emails -->
 			<?php 
-				// $ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
-				// $oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
+				$ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
+				$oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
 				// $ref_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND);
 				// $conf_template = $emails->getMailTemplate(Emails_model::TEMPLATE_CONFIRM);
 				// $ref_cli_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT);
@@ -128,17 +127,22 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<h4>Example Placeholders</h4>
 			<ul>
 				<li>%name%</li>
-				<li>%route_name%</li>
-				<li>%price%</li>
+				<li>%order_code%</li>
+				<li>%register_date%</li>
 				<li>%transaction_code%</li>
 				<li>%order_code%</li>
 			</ul>
-			<!-- <label for="enc_email_ty">Thank you email</label><br>
+			
+
+			<label for="enc_email_ty">Thank you - Send to the user</label><br>
 			<textarea cols='100' rows='10' name="enc_email_ty"><?php echo $ty_template->body; ?></textarea>
 			<br>
-			<label for="enc_email_ty">Order in email</label><br>
+			
+			<label for="enc_email_ty">Order in - Sent to Enclothed</label><br>
 			<textarea cols='100' rows='10' name="enc_email_oi"><?php echo $oi_template->body; ?></textarea>
 			<br>
+
+			<!--
 			<label for="enc_email_ty">Confirm Email</label><br>
 			<textarea cols='100' rows='10' name="enc_email_conf"><?php echo $conf_template->body; ?></textarea>
 			<br>
