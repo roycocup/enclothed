@@ -227,7 +227,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<!-- the form -->
 					<?php $nonce = wp_create_nonce( get_uri() ); ?>
 					<form action="" method="POST" name='section_2'>								
-						<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>				
+					<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            			<?php flashMessagesDisplay(); ?>
+           			</div>				
 
 							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="mini-wrapper-forms">

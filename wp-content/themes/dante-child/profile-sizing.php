@@ -56,7 +56,7 @@ if (isset($_SESSION['section_3'])){
 			$( "#tshirt_slider" ).slider({
 				value:40,
 				min: 0,
-				max: 80,
+				max: 100,
 				step: 20,
 				slide: function( event, ui ) {
 					$( "#tshirt_selection" ).val(increments[ui.value]);
@@ -67,7 +67,8 @@ if (isset($_SESSION['section_3'])){
 				20: "S",
 				40: "M",
 				60: "L",
-				80: "XL"
+				80: "XL",
+				100: "XXL"
 			};
 
 			$( "#tshirt_selection" ).val(increments[40]);
@@ -76,7 +77,7 @@ if (isset($_SESSION['section_3'])){
 			$( "#neck_size_slider" ).slider({
 				value:18.5,
 				min: 14,
-				max: 20,
+				max: 19,
 				step: .5,
 				slide: function( event, ui ) {
 					$( "#neck_size_selection" ).val(ui.value );
@@ -114,9 +115,9 @@ if (isset($_SESSION['section_3'])){
 		$(function() {
 			$( "#trouser_slider" ).slider({
 				value:30,
-				min: 26,
+				min: 28,
 				max: 40,
-				step: 2,
+				step: 1,
 				slide: function( event, ui ) {
 					$( "#trouser_selection" ).val(ui.value );
 				}
@@ -126,9 +127,9 @@ if (isset($_SESSION['section_3'])){
 
 		$(function() {
 			$( "#inside_leg_slider" ).slider({
-				value:42,
+				value:40,
 				min: 28,
-				max: 46,
+				max: 42,
 				step: 2,
 				slide: function( event, ui ) {
 					$( "#inside_leg_selection" ).val(increments[ui.value]);
@@ -140,13 +141,11 @@ if (isset($_SESSION['section_3'])){
 				32: "32",
 				34: "34",
 				36: "36",
-				38: "38", 
-				40: "40",
-				42: "SHORT",
-				44: "REG",
-				46: "LONG"
+				38: "SHORT",
+				40: "REG",
+				42: "LONG"
 			};
-			$( "#inside_leg_selection" ).val(increments[42]);
+			$( "#inside_leg_selection" ).val(increments[40]);
 		});
 
 	});
@@ -281,7 +280,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 								<form action="" method="POST" name='section_3'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
-									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+									<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+				            			<?php flashMessagesDisplay(); ?>
+				           			</div>	
 									<div class="title-forms">
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
@@ -293,10 +294,11 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-8 slider">
 														<div id="tshirt_slider" style="margin-top:20px;">
 															<div class="notch_big" style="left:0%;"><div class="notch_label">XS</div></div>
-															<div class="notch_big" style="left:25%;"><div class="notch_label">S</div></div>
-															<div class="notch_big" style="left:50%;"><div class="notch_label">M</div></div>
-															<div class="notch_big" style="left:75%;"><div class="notch_label">L</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">XL</div></div>
+															<div class="notch_big" style="left:20%;"><div class="notch_label">S</div></div>
+															<div class="notch_big" style="left:40%;"><div class="notch_label">M</div></div>
+															<div class="notch_big" style="left:60%;"><div class="notch_label">L</div></div>
+															<div class="notch_big" style="left:80%;"><div class="notch_label">XL</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">XXL</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
 														</div>
@@ -312,18 +314,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-8 slider">
 														<div id="neck_size_slider" style="margin-top:20px;">
 															<div class="notch_big" style="left:0%;"><div class="notch_label">14</div></div>
-															<div class="notch_small" style="left:8.35%;"><div class="notch_label">14.5</div></div>
-															<div class="notch_big" style="left:16.7%;"><div class="notch_label">15</div></div>
-															<div class="notch_small" style="left:25.05%;"><div class="notch_label">15.5</div></div>
-															<div class="notch_big" style="left:33.4%;"><div class="notch_label">16</div></div>
-															<div class="notch_small" style="left:41.75%;"><div class="notch_label">16.5</div></div>
-															<div class="notch_big" style="left:50.1%;"><div class="notch_label">17</div></div>
-															<div class="notch_small" style="left:58.45%;"><div class="notch_label">17.5</div></div>
-															<div class="notch_big" style="left:66.8%;"><div class="notch_label">18</div></div>
-															<div class="notch_small" style="left:75.15%;"><div class="notch_label">18.5</div></div>
-															<div class="notch_big" style="left:83.5%;"><div class="notch_label">19</div></div>
-															<div class="notch_small" style="left:91.85%;"><div class="notch_label">19.5</div></div>
-															<div class="notch_big" style="left:100%;"><div class="notch_label">20</div></div>
+															<div class="notch_small" style="left:10%;"><div class="notch_label">14.5</div></div>
+															<div class="notch_big" style="left:20%;"><div class="notch_label">15</div></div>
+															<div class="notch_small" style="left:30%;"><div class="notch_label">15.5</div></div>
+															<div class="notch_big" style="left:40%;"><div class="notch_label">16</div></div>
+															<div class="notch_small" style="left:50%;"><div class="notch_label">16.5</div></div>
+															<div class="notch_big" style="left:60%;"><div class="notch_label">17</div></div>
+															<div class="notch_small" style="left:70%;"><div class="notch_label">17.5</div></div>
+															<div class="notch_big" style="left:80%;"><div class="notch_label">18</div></div>
+															<div class="notch_small" style="left:90%;"><div class="notch_label">18.5</div></div>
+															<div class="notch_big" style="left:100%;"><div class="notch_label">19</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
 														</div>
@@ -412,13 +412,18 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2 slider_label">Trouser</div>
 													<div class="col-sm-8 slider">
 														<div id="trouser_slider" style="margin-top:20px;">
-															<div class="notch_big" style="left:0%;"><div class="notch_label">26</div></div>
-															<div class="notch_big" style="left:14.28%;"><div class="notch_label">28</div></div>
-															<div class="notch_big" style="left:28.56%;"><div class="notch_label">30</div></div>
-															<div class="notch_big" style="left:42.84%;"><div class="notch_label">32</div></div>
-															<div class="notch_big" style="left:57.12%;"><div class="notch_label">34</div></div>
-															<div class="notch_big" style="left:71.4%;"><div class="notch_label">36</div></div>
-															<div class="notch_big" style="left:85.68%;"><div class="notch_label">38</div></div>
+															<div class="notch_big" style="left:0%;"><div class="notch_label">28</div></div>
+															<div class="notch_small" style="left:8.33%;"><div class="notch_label">29</div></div>
+															<div class="notch_big" style="left:16.66%;"><div class="notch_label">30</div></div>
+															<div class="notch_small" style="left:24.99%;"><div class="notch_label">31</div></div>
+															<div class="notch_big" style="left:33.32%;"><div class="notch_label">32</div></div>
+															<div class="notch_small" style="left:41.65%;"><div class="notch_label">33</div></div>
+															<div class="notch_big" style="left:49.98%;"><div class="notch_label">34</div></div>
+															<div class="notch_small" style="left:58.31%;"><div class="notch_label">35</div></div>
+															<div class="notch_big" style="left:66.64%;"><div class="notch_label">36</div></div>
+															<div class="notch_small" style="left:74.97%;"><div class="notch_label">37</div></div>
+															<div class="notch_big" style="left:83.3%;"><div class="notch_label">38</div></div>
+															<div class="notch_small" style="left:91.63%;"><div class="notch_label">39</div></div>
 															<div class="notch_big" style="left:100%;"><div class="notch_label">40</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
@@ -436,14 +441,12 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-8 slider">
 														<div id="inside_leg_slider" style="margin-top:20px;">
 															<div class="notch_big" style="left:0%;"><div class="notch_label">28</div></div>
-															<div class="notch_small" style="left:11.11%;"><div class="notch_label">30</div></div>
-															<div class="notch_big" style="left:22.22%;"><div class="notch_label">32</div></div>
-															<div class="notch_small" style="left:33.33%;"><div class="notch_label">34</div></div>
-															<div class="notch_big" style="left:44.44%;"><div class="notch_label">36</div></div>
-															<div class="notch_small" style="left:55.55%;"><div class="notch_label">38</div></div>
-															<div class="notch_big" style="left:66.66%;"><div class="notch_label">40</div></div>
-															<div class="notch_small" style="left:77.77%;"><div class="notch_label">SHORT</div></div>
-															<div class="notch_big" style="left:88.88%;"><div class="notch_label">REG</div></div>
+															<div class="notch_small" style="left:14.3%;"><div class="notch_label">30</div></div>
+															<div class="notch_big" style="left:28.6%;"><div class="notch_label">32</div></div>
+															<div class="notch_small" style="left:42.9%;"><div class="notch_label">34</div></div>
+															<div class="notch_big" style="left:57.2%;"><div class="notch_label">36</div></div>
+															<div class="notch_small" style="left:71.5%;"><div class="notch_label">SHORT</div></div>
+															<div class="notch_big" style="left:85.8%;"><div class="notch_label">REG</div></div>
 															<div class="notch_small" style="left:100%;"><div class="notch_label">LONG</div></div>
 															<div class="slider_left"></div>
 															<div class="slider_right"></div>
@@ -502,6 +505,3 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 		<!--// WordPress Hook //-->
 		<?php get_footer(); ?>
-
-
-

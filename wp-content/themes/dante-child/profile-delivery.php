@@ -144,7 +144,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 								</div> 
 							</div>
-						</div>
+								<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+				            		<?php flashMessagesDisplay(); ?>
+				           		</div>	
+				 		</div>
 						<div class="row">
 							<!-- Main Menu -->
 							<div class="styles-block">
@@ -152,7 +155,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="fade-border-right"></div>
 								<form action="" method="POST" name='section_2'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
-									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
 
 									<!-- Main Address  -->

@@ -289,9 +289,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<!-- form -->
 								<form action="" method="POST" name='section_5'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
-									<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-									<div class="title-forms">
-										
+									<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+				            			<?php flashMessagesDisplay(); ?>
+				           			</div>	
+           							<div class="title-forms">					
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
 											<p>HOW MUCH WOULD YOU TYPICALLY SPEND ON EACH ITEM?</p>
