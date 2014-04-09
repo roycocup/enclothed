@@ -176,7 +176,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<div class="title-forms area1">
 							<div class="mini-wrapper-forms">
 								<div class="numbering">01</div>
-								<p>Choose pictures representing styles you like</p>
+								<p>Click on the pictures that best represent your style</p>
 							</div><!--mini-wrapper-forms-->
 							<div class="row">
 								<div class="col-sm-6">

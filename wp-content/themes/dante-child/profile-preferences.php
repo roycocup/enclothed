@@ -234,7 +234,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="mini-wrapper-forms">
 									<div class="numbering">01</div>
-									<p>Favourite brands - not to recieve them but to tell us about your style</p>
+									<p>Which brands do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row" style="border-top: 1px solid #e3e3e3;">
 									<div class="col-sm-6 grid_left">
@@ -415,7 +415,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">03</div>
-									<p>What trouser do you wear most?</p>
+									<p>What trousers do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
@@ -446,7 +446,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 									<div class="col-sm-11" >
 										<div class="box_options_wrapper">
-											<div class="box_options_label">What coloured trousers do you wear?</div>											
+											<div class="box_options_label">What colour trousers do you wear?</div>											
 											<div class="box_options">
 												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 													<div class="col-sm-3 box_option click">Bright</div>
@@ -509,7 +509,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">05</div>
-									<p>What colour denim do you prefer?</p>
+									<p>Which colours of denim do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
@@ -588,7 +588,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">07</div>
-									<p>Which style of shoes do you wear?</p>
+									<p>Which styles of shoes do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
 									<div class="col-sm-11">
