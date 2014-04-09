@@ -17,18 +17,17 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('WP_HOME','http://enclothed.dev');
+define('WP_SITEURL','http://enclothed.dev');
 define( 'FS_METHOD', 'direct' );
+//define( 'FS_CHMOD_DIR', 0777 );
+//define( 'FS_CHMOD_FILE', 0777 );
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
 
-define('DB_NAME', 'database_name_here');
-
-/** MySQL database username */
-define('DB_USER', 'username_here');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
-
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_NAME', 'encprod1_enclothed');
+define('DB_USER', 'encprod1_enc');
+define('DB_PASSWORD', 'Pandabear01');
+define('DB_HOST', 'enclothedstaging.likedigitalmedia.com');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
