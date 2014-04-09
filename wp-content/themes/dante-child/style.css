@@ -67,9 +67,9 @@ font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 h1{
 	text-align: center;
  font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
- letter-spacing: 6px !important;
+ letter-spacing: 2px !important;
  font-size: 40px !important;
- line-height: 40px !important;
+ line-height: 42px !important;
  text-transform: uppercase;
 }
 h2 {
@@ -264,6 +264,11 @@ a.sf-button.transparent:hover{ background-color: transparent !important;
 height: auto;
  color:#0e2334;
  }
+.fa-rss.sf-icon.sf-icon-medium { font-size:34px !important;
+ width: auto;
+height: auto;
+  color:#0e2334;
+}
 .fa-twitter.sf-icon.sf-icon-medium { font-size:34px !important;
  width: auto;
 height: auto;
@@ -274,7 +279,7 @@ height: auto;
 height: auto;
  color:#0e2334;
  }
-.fa-pinterest.sf-icon.sf-icon-medium { font-size:34px !important;
+.fa-tumblr.sf-icon.sf-icon-medium { font-size:34px !important;
  width: auto;
 height: auto;
   color:#0e2334;
@@ -655,6 +660,35 @@ img.line{ margin-top:20px;
 
 .tp-bullets.simplebullets.round .bullet { border-radius: 0;}
 
+
+/*Styling for the placeholders*/
+::-webkit-input-placeholder {
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
+:-ms-input-placeholder {  
+	font-style: italic;
+	font-size: 12px;
+	font-family: georgia;
+	color: #999;
+	text-transform: none;
+	text-align: center;
+}
+
 /* --------------------------------------------
 	HOME PAGE
 -------------------------------------------- */
@@ -794,6 +828,80 @@ color:#fff !important;
 .home_page .menu_get_started{ display: none !important;
 }
 
+
+
+
+/* --------------------------------------------
+	ABOUT US
+-------------------------------------------- */
+
+.about_us_page .inner-page-wrap {margin-top: 0;}
+
+.about_us_page .line{ border-top: 1px solid #e3e3e3;}
+
+.about_us_page h1{letter-spacing: 3px !important;
+line-height: 38px !important;
+font-size: 30px !important;}
+
+.about_us_page h2{}
+
+.about_us_page h3{letter-spacing: 1px !important;
+line-height: 30px !important;
+font-size: 22px !important;
+font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
+
+.about_us_page .area1 {
+	margin-top: 0 !important;
+	padding-top: 120px;
+	padding-bottom: 120px;
+}
+.about_us_page .area1 .spb_content_wrapper{
+	margin: auto;
+}
+
+.about_us_page .area5_left {
+	padding-top: 0;
+}
+
+.about_us_page .area5_right {
+	padding-top: 0;
+}
+
+.about_us_page .area6 .spb_wrapper{ 
+padding-top: 40px;
+padding-bottom: 0px;
+max-width: 600px;
+margin: auto;}
+
+.about_us_page .area6 .author_name{
+	font-family: font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
+.about_us_page .area6 .georgia_text{color: #ffffff;
+font-size: 18px !important;
+line-height: 34px;}
+
+@media only screen and (max-width: 991px) {
+  .about_us_page  .area3_right { height: 364px; 
+ }
+ .about_us_page  .area3_right .order_a_box_wrapper{ position: absolute;
+ height: auto; 
+ width: 750px; 
+ left:-248px;
+ }
+} 
+@media only screen and (max-width: 767px) {
+	.about_us_page p{ text-align: center !important;
+  }
+	.about_us_page h2{ text-align: center !important;
+  }
+	.about_us_page .area5 .spb_content_wrapper{ margin: auto !important;
+}
+	.about_us_page img.line{ margin-top:0 !important;
+text-align:center;
+}
+
+} 
 
 
 
@@ -1548,6 +1656,8 @@ border:none;
 }
 .profile_authorize_page .payment_info h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
+
+
 @media only screen and (max-width: 767px) {
 .profile_authorize_page .payment_info img{background:none !important;
  }
@@ -1577,21 +1687,86 @@ background: url(images/payment_dot.png) no-repeat;
 .gift_card_page .gift_card_wrapper{ 
 	float: left !important;
 	padding-top: 80px;
- 
-	padding-bottom: 0px;
- 
 	margin: auto;
-	margin-bottom:80px;
 	position: relative;
 	border-top: 1px solid #e3e3e3;
+	margin-bottom:50px;
+	padding-bottom: 50px;
 }
 .gift_card_page .gift_card_wrapper h2{ margin-top: 0px !important;
+	margin-bottom: 30px;
 }
 .gift_card_page .georgia_text{ font-size: 18px !important;
  padding-top: 50px;
  padding-bottom: 30px;
  text-align: center;
 }
+
+ .gift_card_page .gift_card_info { border:1px solid #e3e3e3; 
+	cursor: pointer;}
+
+.gift_card_page .gift_card_info:hover>.gift_icon { 
+	background-position: 0 -96px !important;}
+
+.gift_card_page .gift_card_info:hover>h3  { 
+	color: #b08536 !important;
+}
+
+.gift_card_page .gift_card_info.selected>.gift_icon { 
+	background-position: 0 -96px !important;
+}
+.gift_card_page .gift_card_info.selected>h3  { 
+	color: #b08536 !important;
+}
+.gift_card_page .gift_card_info h3{ margin-bottom: 30px;}
+
+.gift_card_page .gift_card_info .gift_icon{ margin: 0 auto; 
+	margin-top:50px; 
+	height:96px; 
+	width:118px; }
+									
+.gift_card_page .gift_card_info.e-card .gift_icon{ 
+	background: url(images/icon_e-card.png) no-repeat;
+}							
+
+.gift_card_page .gift_card_info.physical .gift_icon{ 
+	background: url(images/icon_physical.png) no-repeat;
+}	
+
+.gift_card_page .gift_card_info.buy_a_box .gift_icon{ 
+	background: url(images/icon_buy_a_box.png) no-repeat;
+}
+.gift_card_page .gift_card_info.physical { 
+ 	border:1px solid #e3e3e3 !important;
+ 	border-right: none !important;
+ 	border-left: none !important;
+ }	
+
+@media only screen and (max-width: 767px) {
+
+.gift_card_page .gift_card_info{ 
+	margin-bottom: 0 !important;
+	width: 100%;
+	float: left;
+}		
+
+.gift_card_page .gift_card_info.physical { 
+ 	border:1px solid #e3e3e3 !important;
+ 	border-bottom: none !important;
+ 	border-top: none !important;
+ }	
+	
+}
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1200px) {
 	.row .alt-bg{ margin-left: -270px !important;
  padding-right: 270px !important;

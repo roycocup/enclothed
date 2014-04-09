@@ -237,73 +237,73 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="row" style="border-top: 1px solid #e3e3e3;">
 									<div class="col-sm-6 grid_left">
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_abercrombie_fitch.jpg" class="img-responsive" />
 											<div id="area2_1" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_barbour.jpg" class="img-responsive" />
 											<div id="area2_2" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_allsaints.jpg" class="img-responsive" />
 											<div id="area2_3" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hugo_boss.jpg" class="img-responsive" />
 											<div id="area2_4" class="grid_box_overlay click"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_right">
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_apc.jpg" class="img-responsive" />
 											<div id="area2_5" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_jack_wills.jpg" class="img-responsive" />
 											<div id="area2_6" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_armani.jpg" class="img-responsive" />
 											<div id="area2_7" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_oliver_spencer.jpg" class="img-responsive" />
 											<div id="area2_8" class="grid_box_overlay click"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_left">
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_1.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_diesel.jpg" class="img-responsive" />
 											<div id="area2_9" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_2.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_paul_smith.jpg" class="img-responsive" />
 											<div id="area2_10" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_6.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_gant.jpg" class="img-responsive" />
 											<div id="area2_11" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_5.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_ralph_lauren.jpg" class="img-responsive" />
 											<div id="area2_12" class="grid_box_overlay click"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_right">
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_3.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_g-star.jpg" class="img-responsive" />
 											<div id="area2_13" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_4.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_reiss.jpg" class="img-responsive" />
 											<div id="area2_14" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_8.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hackett.jpg" class="img-responsive" />
 											<div id="area2_15" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/grid_logo_7.jpg" class="img-responsive" />
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_tommy_hilfiger.jpg" class="img-responsive" />
 											<div id="area2_16" class="grid_box_overlay click"></div>
 										</div>
 									</div>
@@ -314,7 +314,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div>
 
 
-							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;">
+							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">02</div>
@@ -646,10 +646,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area10">
+							<div class="title-forms area10" style=" display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">10</div>
+									<div class="numbering">09</div>
 									<p>Which style of underwear do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -703,5 +703,3 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 	<!--// WordPress Hook //-->
 	<?php get_footer(); ?>
-
-

@@ -63,14 +63,14 @@
 	
 	/* THUMBNAIL SIZES
 	================================================== */  	
-	set_post_thumbnail_size( 220, 150, true);
-	add_image_size( 'widget-image', 94, 70, true);
-	add_image_size( 'thumb-square', 250, 250, true);
-	add_image_size( 'thumb-image', 600, 450, true);
-	add_image_size( 'thumb-image-twocol', 900, 675, true);
-	add_image_size( 'thumb-image-onecol', 1800, 1200, true);
-	add_image_size( 'blog-image', 1280, 9999);
-	add_image_size( 'full-width-image-gallery', 1280, 720, true);
+	// set_post_thumbnail_size( 220, 150, true);
+	// add_image_size( 'widget-image', 94, 70, true);
+	// add_image_size( 'thumb-square', 250, 250, true);
+	// add_image_size( 'thumb-image', 600, 450, true);
+	// add_image_size( 'thumb-image-twocol', 900, 675, true);
+	// add_image_size( 'thumb-image-onecol', 1800, 1200, true);
+	// add_image_size( 'blog-image', 1280, 9999);
+	// add_image_size( 'full-width-image-gallery', 1280, 720, true);
 	
 	
 	/* CONTENT WIDTH

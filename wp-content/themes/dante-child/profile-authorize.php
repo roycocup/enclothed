@@ -138,15 +138,15 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="col-sm-12 payment_info_wrapper relative">								
 								<div class="col-sm-4 payment_info">
 									<img src="<?php bloginfo('template_url') ?>-child/images/icon_wallet.png" alt="" class="image-responsive" />
-									<h3>We aren’t taking any money now</h3>
+									<h3>We aren’t taking any money now.</h3>
 								</div>
 								<div class="col-sm-4 payment_info">
 									<img src="<?php bloginfo('template_url') ?>-child/images/icon_creditcard.png" alt="" class="image-responsive" />
-									<h3>Pre authorisation card (like a hotels) for £500</h3>
+									<h3>We pre-authorise your card like a hotel. This verifies who you are, where you live and that you are a fine, upstanding citizen.</h3>
 								</div>
 								<div class="col-sm-4 payment_info" style="background:none !important; padding-bottom:0 !important;">
 									<img style="background:none !important;" src="<?php bloginfo('template_url') ?>-child/images/icon_clothes.png" alt="" class="image-responsive" />
-									<h3>We only charge you for what you keep when you return the box</h3>
+									<h3>We only charge you for what you keep when you return the box. We never charge your card without your say-so.</h3>
 								</div>
 							</div>
 
