@@ -4,3 +4,4 @@ wp-config.php
 .DS_Store
 *log.txt
 *.mp4
+configCache.php
