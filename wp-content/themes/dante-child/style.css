@@ -1711,6 +1711,20 @@ background: url(images/payment_dot.png) no-repeat;
 .dashboard_page .dashboard_wrapper h2{ margin-top: 0px !important;
 	margin-bottom: 30px;
 }
+.dashboard_page .dashboard_wrapper h1 {
+letter-spacing: 3px !important;
+line-height: 38px !important;
+font-size: 30px !important;
+}
+.dashboard_page .dashboard_wrapper p {
+font-size: 14px;
+color: #000;
+text-transform: uppercase;
+padding-top: 20px;
+padding-bottom: 20%;
+letter-spacing: 0;
+text-align: center;
+}
 .dashboard_page .georgia_text{ font-size: 18px !important;
  padding-top: 50px;
  padding-bottom: 30px;

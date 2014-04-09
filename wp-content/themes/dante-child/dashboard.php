@@ -111,7 +111,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<div class="row">
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
 							<div class="spb_wrapper clearfix">
-								<h2 style="text-align: center;"><span style="color: #ffffff;">WE ARE ENCLOTHED</span></h2>
+								<h2 style="text-align: center;"><span style="color: #ffffff;">DASHBOARD</span></h2>
 									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 							</div> 
 						</div>
@@ -128,8 +128,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
 							<div class="col-sm-10 dashboard_wrapper no-borders">
-								<h2>Dashboard</h2>								
-
+								<h1>We are building you a box. Feel free to E-mail us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></h1>
 
 							</div>
 

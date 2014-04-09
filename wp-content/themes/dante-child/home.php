@@ -535,8 +535,8 @@
 	height: 350px;
 }
 .featured_blog_box_left h2{
-	font-size:34px !important;
-	letter-spacing: 3px;
+	font-size:36px !important;
+	letter-spacing: 3px !important;
 	color:#fff;
 	margin-top: 15%;
 	line-height: 40px !important;
@@ -607,7 +607,10 @@
 	padding: 20px;
 	max-width: 475px;
 }
-.brands_box_left h2{font-size:34px !important;
+.brands_box_left h2{
+	font-size:36px !important;
+	letter-spacing: 3px !important;
+	line-height: 40px !important;
 	color:#625f5e;
 	margin-top: 20%;
 }
