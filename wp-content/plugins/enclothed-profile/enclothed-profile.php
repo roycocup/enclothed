@@ -28,7 +28,7 @@ function enc_profile_init(){
 class EnclothedProfile {
 
 	public $main; //main class
-	const BYPASS_VALIDATION = true; //turn this off when going to production
+	const BYPASS_VALIDATION = false; //turn this off when going to production
 
 	public function __construct(){
 		$this->main = new EnclothedMain(); 
@@ -218,10 +218,11 @@ class EnclothedProfile {
 			$data['post_code'] = sanitize_text_field($section['post_code']);
 			$data['password'] = $section['password'];
 			$data['feedback_1'] = sanitize_text_field($section['feedback_1']);
-			$data['feedback_2'] = sanitize_text_field($section['feedback_2']);
+			$data['feedback_2'] =  (!empty($section['feedback_2']))? sanitize_text_field($section['feedback_2']) : '';
 			$data['occupation'] = sanitize_text_field($section['occupation']);
 
-			
+
+			// $this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 			$this->saveNewProfile($data);
 			wp_redirect( home_url().'/profile/style' ); 
 			exit;	

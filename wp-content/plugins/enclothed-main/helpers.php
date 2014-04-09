@@ -83,9 +83,11 @@ if (!function_exists('flashMessagesDisplay')){
 		if (!sessionHasMessages()) return false; 
 		foreach($_SESSION['messages'] as $typename => $type){
 			foreach ($type as $key => $message) {
-				if ($in_div){
+				if ($in_div == 'full'){
 					echo "<div class='flashmessage {$typename}'>$message</div>";		
-				} else {
+				} elseif ($in_div == 'li') {
+					echo '<li>'.$message.'</li>';
+				} else{
 					echo $message;
 				}
 				

@@ -8,9 +8,30 @@
 <?php get_header(); ?>
 <script>
 	jQuery(document).ready(function($){
-		$( "#datepicker" ).datepicker();
+		$( "#datepicker" ).datepicker({
+			dateFormat: 'dd/mm/yy', 
+			changeMonth: true,
+      		changeYear: true,
+      		yearRange: '1920:2010',
+      		defaultDate: "10/09/1976",
+		});
+		$('.flashmessages').show();
 	});
+
 </script>
+
+<style>
+	#datepicker input, #datepicker textarea, #datepicker select{
+		background: transparent !important;
+		color:#fff !important;
+		border: none; 
+	}
+
+	#datepicker ui-datepicker-month{
+		margin: 0 !important;
+		float: left !important;
+	}
+</style>
 
 <?php 
 if (isset($_SESSION['section_1'])){
@@ -152,11 +173,9 @@ if (isset($_SESSION['section_1'])){
 	<form action="" method="POST" name='section_1'>
 		<?php $nonce = wp_create_nonce( get_uri() ); ?>
 		<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-			<?php flashMessagesDisplay(); ?>
 			<p class="error_message">Please correct the following errors</p>
 			<ul class="error_fields">
-				<li>Full Name</li>
-				<li>Address</li>            		
+				<?php flashMessagesDisplay('li'); ?>  
 			</ul>
 		</div>
 			<div class="title-forms">
@@ -172,7 +191,7 @@ if (isset($_SESSION['section_1'])){
 				<input type="text" class="key-info" tabindex="7" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
 				<input type="password" class="key-info"  name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
 
-				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth' value="<?php @echo_if_exists($section['dob']); ?>">
+				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth dd/mm/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
 				
 			
 			
