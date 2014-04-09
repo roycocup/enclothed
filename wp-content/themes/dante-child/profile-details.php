@@ -202,7 +202,7 @@ if (isset($_SESSION['section_1'])){
 		 	  	</div><!--mini-wrapper-forms-->
 		 	  	
 		  <div class="mini-wrapper5">
-            		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+           		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
                 <button class="button4" onclick="submit()">Save and Continue</button>
 		 </div><!--mini-wrapper4-->
 		 

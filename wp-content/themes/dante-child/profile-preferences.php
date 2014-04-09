@@ -315,7 +315,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								</div>
 							</div>
 
-
+							<!-- HIDDEN SECTION -->
 							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
@@ -366,7 +366,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area4" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">03</div>
+									<div class="numbering">02</div>
 									<p>How do you wear your shirts?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -414,7 +414,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area5" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">04</div>
+									<div class="numbering">03</div>
 									<p>What trouser do you wear most?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -466,7 +466,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area6" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
+									<div class="numbering">04</div>
 									<p>How do you wear your jeans?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -508,7 +508,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area7" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">06</div>
+									<div class="numbering">05</div>
 									<p>What colour denim do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -554,7 +554,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area8" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">07</div>
+									<div class="numbering">06</div>
 									<p>How do you wear your shorts?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -584,10 +584,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area9" style="border-bottom:1px solid #e3e3e3;">
+							<div class="title-forms area9">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">08</div>
+									<div class="numbering">07</div>
 									<p>Which style of shoes do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -647,7 +647,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-
+								<!-- HIDDEN SECTION -->
 							<div class="title-forms area10" style=" display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
@@ -680,7 +680,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-								<button class="button4" onclick="submit()">Save and Continue</button>
+				                <a href="/profile/style/" class="button4">Go Back</a>
+				                <div class="button_spacer col-sm-1 hidden-xs"></div>
+				                <button class="button4" onclick="submit()">Save and Continue</button>
 							</div><!--mini-wrapper4-->
 					</form>
 								<!--styles-block-->

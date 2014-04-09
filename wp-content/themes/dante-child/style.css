@@ -695,6 +695,12 @@ img.line{ margin-top:20px;
  .flashmessages .error_message{ color: #e98b8b; font-family: proxregular; font-size: 16px; letter-spacing: 0; }
  .flashmessages ul.error_fields{ color: #cc5050; font-family: proxbold; font-size: 16px; }
  .flashmessages ul.error_fields li{  padding-left: 20px; background-image: url(images/error_bullet.png); background-repeat: no-repeat; background-position: 0px 7px;}
+
+.button_spacer{float:none !important; display:inline-block !important;}
+
+@media only screen and (max-width: 767px) {
+.button_spacer{display:none !important;}
+}
 /* --------------------------------------------
 	HOME PAGE
 -------------------------------------------- */
