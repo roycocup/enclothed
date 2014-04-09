@@ -151,7 +151,15 @@ if (isset($_SESSION['section_1'])){
  	<div class="fade-border-right"></div>
     <form action="" method="POST" name='section_1'>
         <?php $nonce = wp_create_nonce( get_uri() ); ?>
-            <div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+            <div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            	<?php flashMessagesDisplay(); ?>
+            	<p class="error_message">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            	<ul class="error_fields">
+            		<li>Full Name</li>
+            		<li>Address</li>            		
+            	</ul>
+            </div>
+
 			<div class="title-forms">
 				<div class="mini-wrapper-forms">
 		 	  	<div class="numbering">01</div>
