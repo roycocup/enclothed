@@ -159,7 +159,6 @@ if (isset($_SESSION['section_1'])){
 				<li>Address</li>            		
 			</ul>
 		</div>
-
 			<div class="title-forms">
 				<div class="mini-wrapper-forms">
 				<div class="numbering">01</div>
