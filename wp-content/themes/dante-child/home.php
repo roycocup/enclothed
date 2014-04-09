@@ -255,7 +255,7 @@
 					?>
 				</div>
 				<div class="col-sm-6 social_boxes_wrapper">
-					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(1); ?>); background-size: cover">
+					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(); ?>); background-size: cover">
 					</div>
 					<div class="col-sm-6 social_box_right">
 						<div class="instagram_icon"></div>
