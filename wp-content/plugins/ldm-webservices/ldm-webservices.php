@@ -12,10 +12,11 @@
 **/
 
 
-class ldm-webservices {
-	$form = '<Message>
-				<CustomerID>  </CustomerID>
-				<OrderNumberReference> </OrderNumberReference>
+class ldmwebservices {
+
+	public $xmlform = '<Message>
+				<CustomerID>1</CustomerID>
+				<OrderNumberReference>1</OrderNumberReference>
 				<Email>mike@gmail.com </Email>
 				<Password> 1 </Password>
 				<FirstName>PaulAlan</FirstName>
@@ -93,84 +94,101 @@ class ldm-webservices {
 				<ForceLead>false</ForceLead>
 			</Message>';
 
-			$form = array(Message,
-					CustomerID,
-					OrderNumberReference,
-					Email,
-					Password,
-					FirstName,
-					LastName,
-					AddressLine1,
-					AddressLine2,
-					TownCity,
-					PostCode,
-					Telephone,
-					Occupation,
-					DOB,
-					BuyingForAnotherPerson,
-					BuyingForWho,
-					HowDidYouHearAboutEnclothed,
-					HowDidYouHearAboutEnclothedOther,
-					StyleChoices,
-					BrandChoices,
-					FavouriteBrands,
-					JacketTypeChoices,
-					WhereDoYouWearYourJacketChoices,
-					ShirtTypeChoice,
-					WhereDoYouWearYourShirtChoices,
-					TrouserTypeChoice,
-					TrouserColourChoices,
-					JeanStyleChoice,
-					DenimColourChoice,
-					ShortStyleChoice,
-					ShoeStyleChoices,
-					ShoeColourChoices,
-					UnderwearStyleChoices,
-					StyleDislikeDescription,
-					TShirtSize,
-					NeckSize,
-					SleeveLength,
-					ShoeSize,
-					JacketSize,
-					TrouserWaist,
-					TrouserInsideLeg,
-					AdditionalSizeInfo,
-					BrandsThatFitYouWell,
-					ContactMeAboutSizing,
-					ShirtPriceMin,
-					ShirtPriceMax,
-					TrouserPriceMin,
-					TrouserPriceMax,
-					CoatPriceMin,
-					CoatPriceMax,
-					ShoePriceMin,
-					ShoePriceMax,
-					AdditionalInfo,
-					CustomerAddressLine1,
-					CustomerAddressLine2,
-					CustomerTownCity,
-					CustomerPostCode,
-					CustomerAddressName,
-					AlternativeAddressLine1,
-					AlternativeAddressLine2,
-					AlternativeTownCity,
-					AlternativePostCode,
-					AlternativeAddressName,
-					BillingAddressSameAsCustomerAddress,
-					BillingAddressLine1,
-					BillingAddressLine2,
-					BillingTownCity,
-					BillingPostCode,
-					BillingAddressName,
-					DeliveryInstructions,
-					CollectionNotes,
-					CommentsToStylist,
-					TermsAndConditions,
-					PromotionalCode,
-					GiftCardNumber,
-					PageNumber,
-					WebsiteRef,
-					ForceLead);
+	public $form = array(
+			'CustomerID',
+			'OrderNumberReference',
+			'Email',
+			'Password',
+			'FirstName',
+			'LastName',
+			'AddressLine1',
+			'AddressLine2',
+			'TownCity',
+			'PostCode',
+			'Telephone',
+			'Occupation',
+			'DOB',
+			'BuyingForAnotherPerson',
+			'BuyingForWho',
+			'HowDidYouHearAboutEnclothed',
+			'HowDidYouHearAboutEnclothedOther',
+			'StyleChoices',
+			'BrandChoices',
+			'FavouriteBrands',
+			'JacketTypeChoices',
+			'WhereDoYouWearYourJacketChoices',
+			'ShirtTypeChoice',
+			'WhereDoYouWearYourShirtChoices',
+			'TrouserTypeChoice',
+			'TrouserColourChoices',
+			'JeanStyleChoice',
+			'DenimColourChoice',
+			'ShortStyleChoice',
+			'ShoeStyleChoices',
+			'ShoeColourChoices',
+			'UnderwearStyleChoices',
+			'StyleDislikeDescription',
+			'TShirtSize',
+			'NeckSize',
+			'SleeveLength',
+			'ShoeSize',
+			'JacketSize',
+			'TrouserWaist',
+			'TrouserInsideLeg',
+			'AdditionalSizeInfo',
+			'BrandsThatFitYouWell',
+			'ContactMeAboutSizing',
+			'ShirtPriceMin',
+			'ShirtPriceMax',
+			'TrouserPriceMin',
+			'TrouserPriceMax',
+			'CoatPriceMin',
+			'CoatPriceMax',
+			'ShoePriceMin',
+			'ShoePriceMax',
+			'AdditionalInfo',
+			'CustomerAddressLine1',
+			'CustomerAddressLine2',
+			'CustomerTownCity',
+			'CustomerPostCode',
+			'CustomerAddressName',
+			'AlternativeAddressLine1',
+			'AlternativeAddressLine2',
+			'AlternativeTownCity',
+			'AlternativePostCode',
+			'AlternativeAddressName',
+			'BillingAddressSameAsCustomerAddress',
+			'BillingAddressLine1',
+			'BillingAddressLine2',
+			'BillingTownCity',
+			'BillingPostCode',
+			'BillingAddressName',
+			'DeliveryInstructions',
+			'CollectionNotes',
+			'CommentsToStylist',
+			'TermsAndConditions',
+			'PromotionalCode',
+			'GiftCardNumber',
+			'PageNumber',
+			'WebsiteRef',
+			'ForceLead',
+		);
+
+
+	public $get = 'https://www.income-systemsltd.com/test%20apps/enclothed/registercustomer.aspx?customerId=&orderReferenceNumber=&email=paul@gmail-yahoo.com&password=1312&firstName=Sally&lastName=Warnold&addressLine1=apt 41&addressLine2=12 Spring Street&townCity=Hull&postcode=HU28RD&telephone=02081234567&occupation=softwaredeveloper&dob=1980-02-03&isBuyingForPerson=&buyingForWho=&howDidYouHearAboutEnclothed=&howDidYouHearAboutEnclothedOther=&styleChoices=&brandChoices=&jacketTypeChoices=&whereDoYouWhereYourJacketChoices=&shirtTypeChoice=&whereDoYouWearYourShirtChoices=&trouserTypeChoice=&trouserColourChoices=&jeanStyleChoice=&denimColourChoice=&shortStyleChoice=&shoeStyleChoices=&shoeColourChoices=&underwearStyleChoices=&styleDislikeDescription=&tShirtSize=&neckSize=&sleeveLength=&shoeSize=&jacketSize=&trouserWaist=&trouserInsideLeg=&additionalSizeInfo=&brandsThatFitYouWell=&favouriteBrands=&contactMeAboutSizing=&shirtPriceMin=&shirtPriceMax=&trouserPriceMin=&trouserPriceMax=&coatPriceMin=&coatPriceMax=&shoePriceMin=&shoePriceMax=&additionalInfo=&customerAddressLine1=&customerAddressLine2=&customerTownCity=&customerPostCode=&customerAddressName=&alternativeAddressLine1=&alternativeAddressLine2=&alternativeTownCity=&alternativePostCode=&alternativeAddressName=&billingAddressSameAsCustomerAddress=&billingAddressLine1=&billingAddressLine2=&billingTownCity=&billingPostCode=&billingAddressName=&deliveryInstructions=&collectionNotes=&commentsToStylist=&termsAndConditionsChecked=&promotionalCode=&giftCardNumber=&pageNumber=&websiteRef=gsdfgsdf35324&forceLead=false';
+
+	public function __construct(){
+		$t = file_get_contents($this->get); 
+		var_dump($t); die;	
+	}
+	
+
+
+
+
+
+
+
 
 
 

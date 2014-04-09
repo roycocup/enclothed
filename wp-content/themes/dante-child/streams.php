@@ -12,4 +12,7 @@
 // dump($streams->getInstagramLastPostImage());  
 
 
-dump(pc_lookup('e34HH'));
+// dump(pc_lookup('e34HH'));
+
+$ws = new ldmwebservices();
+
