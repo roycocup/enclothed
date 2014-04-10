@@ -226,9 +226,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					<!-- the form -->
 					<?php $nonce = wp_create_nonce( get_uri() ); ?>
 					<form action="" method="POST" name='section_3'>								
-					<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-            			<?php flashMessagesDisplay(); ?>
-           			</div>				
+						<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+	            			<?php flashMessagesDisplay(); ?>
+	           			</div>				
 
 							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="mini-wrapper-forms">
@@ -617,13 +617,13 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-loafers.png" class="img-responsive" />
-											<div id="area9_5" class="option_image_overlay click">
+											<div id="shoe_type_loafers" class="option_image_overlay click">
 												<div class="option_image_label">Loafers</div>
 											</div>
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shoes-formal.png" class="img-responsive" />
-											<div id="area9_6" class="option_image_overlay click">
+											<div id="shoe_type_formal" class="option_image_overlay click">
 												<div class="option_image_label">Formal</div>
 											</div>
 										</div>

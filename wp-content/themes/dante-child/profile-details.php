@@ -4,6 +4,8 @@
 * template name: Profile Details
 *
 **/
+// session_destroy();
+// var_dump($_SESSION); die;
 ?>
 <?php get_header(); ?>
 <script>

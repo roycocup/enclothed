@@ -26,7 +26,7 @@ if (isset($_SESSION['section_4'])){
 		// This is what enables the images to be added to the form 
 		// when they are clicked and removed when clicked again
 		$('.click').toggle(function(){
-			var image = $(this).attr('id');
+			var image = $(this).attr('name');
 			$('<input>').attr({
 				type: 'hidden',
 				name: 'section_4['+image+']',
@@ -36,6 +36,8 @@ if (isset($_SESSION['section_4'])){
 			var image = $(this).attr('id'); 
 			$('form input[name="section_4['+image+']"').remove();
 		});
+
+		
 
 		//This I dont know what its for... I didnt wrote it... 
 		jQuery( ".click" ).click(function() {
@@ -147,6 +149,51 @@ if (isset($_SESSION['section_4'])){
 				42: "LONG"
 			};
 			$( "#inside_leg_selection" ).val(increments[40]);
+		});
+
+
+		$('.submit-button').click(function(e){
+			
+			var tshirt_size 	= $( "#tshirt_selection" ).val();
+			var neck_size 		= $( "#neck_size_selection" ).val();
+			var shoes_size 		= $( "#shoes_selection" ).val();
+			var trouser_size 	= $( "#trouser_selection" ).val();
+			var inside_leg 		= $( "#inside_leg_selection" ).val();
+			
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[tshirt_size]',
+				value: tshirt_size,
+			}).appendTo('form[name="section_4"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[neck_size]',
+				value: neck_size,
+			}).appendTo('form[name="section_4"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[shoes_size]',
+				value: shoes_size,
+			}).appendTo('form[name="section_4"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[trouser_size]',
+				value: trouser_size,
+			}).appendTo('form[name="section_4"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[inside_leg]',
+				value: inside_leg,
+			}).appendTo('form[name="section_4"]');
+
+			
+			
+			$('form').submit();
 		});
 
 	});
@@ -279,6 +326,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
 
+								
 								<form action="" method="POST" name='section_4'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 									<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
@@ -305,7 +353,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="tshirt_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="tshirt_selection" class="slider_selection" disabled="disabled" name="tshirt_selection">
 													</div>
 												</div>
 
@@ -330,7 +378,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="neck_size_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="neck_size_selection" class="slider_selection" disabled="disabled" name="neck_size_selection">
 													</div>
 												</div>
 
@@ -341,9 +389,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-10">
 														<div class="box_options">
 															<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-															<div class="col-sm-4 box_option click">Short</div>
-															<div class="col-sm-4 box_option click selected">Regular</div>
-															<div class="col-sm-4 box_option click" style="border-bottom: none !important; border-right: none !important;">Long</div>
+															<div class="col-sm-4 box_option click" name="sleve_lenght_short">Short</div>
+															<div class="col-sm-4 box_option click" name="sleve_lenght_regular">Regular</div>
+															<div class="col-sm-4 box_option click" name="sleve_lenght_long" style="border-bottom: none !important; border-right: none !important;">Long</div>
 														</div>
 													</div>
 													<div style="clear:both;"></div>
@@ -375,7 +423,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="shoes_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="shoes_selection" class="slider_selection" disabled="disabled" name="shoes_selection">
 													</div>
 												</div>
 
@@ -403,7 +451,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="jacket_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="jacket_selection" class="slider_selection" disabled="disabled" name="jacket_selection">
 													</div>
 												</div>
 
@@ -431,7 +479,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="trouser_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="trouser_selection" class="slider_selection" disabled="disabled" name="trouser_selection">
 													</div>
 												</div>
 
@@ -454,7 +502,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 														</div>
 													</div>
 													<div class="col-sm-2">
-														<input type="text" id="inside_leg_selection" class="slider_selection" disabled="disabled">
+														<input type="text" id="inside_leg_selection" class="slider_selection" disabled="disabled" name="inside_leg_selection">
 													</div>
 												</div>
 
@@ -473,9 +521,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<p>The more you can tell us the better the fit will be.</p>
 
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about your size?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[extra]" value=""></textarea>
 									<label for="checkbox1"class="css-label">Is there any particular brands that fit you well?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[more_brands]" value=""></textarea>
 											<p class="georgia_text no-margin-bottom">(This won't affect what brands we send you, it's just about fit)</p>
 					
 											</div><!--mini-wrapper-forms-->
@@ -484,7 +532,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 								                <a href="/profile/preferences/" class="button4">Go Back</a>
 								                <div class="button_spacer col-sm-1 hidden-xs"></div>
-								                <button class="button4" onclick="submit()">Save and Continue</button>
+								                <button class="button4 submit-button">Save and Continue</button>
                 							</div><!--mini-wrapper4-->
 
 										</div>

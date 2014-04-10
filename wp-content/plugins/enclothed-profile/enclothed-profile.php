@@ -311,7 +311,7 @@ class EnclothedProfile {
 
 		//just fail if no user in the session
 		if (empty($_SESSION['user'])){
-			debug_log('Trying to save section 2 but no user on the session. Redirecting to homepage.');
+			debug_log('Trying to save section 3 but no user on the session. Redirecting to homepage.');
 			wp_redirect( home_url() ); 	
 			exit;
 		}
@@ -330,7 +330,36 @@ class EnclothedProfile {
 
 
 	public function process_sizing_form(){
-		$data = 'this is the data';
+		$section_4 = $_POST['section_4'];
+		
+		
+		// $sizes = array_keys($section_4);
+		// $sizes = implode(',', $sizes);
+
+
+		//just fail if no user in the session
+		if (empty($_SESSION['user'])){
+			debug_log('Trying to save section 4 but no user on the session. Redirecting to homepage.');
+			wp_redirect( home_url() ); 	
+			exit;
+		}
+
+		$data['extra_info_size'] 			= $section_4['extra'];
+        $data['more_brands_size'] 			= $section_4['more_brands'];
+        $data['tshirt_size'] 				= $section_4['tshirt_size'];
+        $data['neck_size'] 					= $section_4['neck_size'];
+        $data['shoe_size'] 					= $section_4['shoes_size'];
+        $data['trouser_size'] 				= $section_4['trouser_size'];
+        $data['trouser_inside_leg_size'] 	= $section_4['inside_leg'];
+
+		// $data['sizes'] 		= $sizes;
+		$data['profile_id'] 	= $_SESSION['user']['id'];
+		$data['email'] 			= $_SESSION['user']['email'];
+
+		//save it
+		$res = $this->main->profiles_model->save($data);
+		unset($_SESSION['section_4']);
+		$_SESSION['section_4'] = $data;
 		wp_redirect( home_url().'/profile/pricing' ); 
 		exit;
 	}
