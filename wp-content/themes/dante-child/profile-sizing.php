@@ -353,7 +353,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 												<div class="slider_wrapper">
-													<div class="col-sm-2 slider_label">Shoes</div>
+													<div class="col-sm-2 slider_label">Shoes (UK)</div>
 													<div class="col-sm-8 slider">
 														<div id="shoes_slider" style="margin-top:20px;">
 															<div class="notch_big" style="left:0%;"><div class="notch_label">7</div></div>

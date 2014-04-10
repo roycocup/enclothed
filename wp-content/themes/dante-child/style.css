@@ -1870,6 +1870,100 @@ text-align: center;
 
 
 
+
+
+/* --------------------------------------------
+	TESTIMONIALS
+-------------------------------------------- */
+.testimonials_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.testimonials_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ max-width: 970px;
+ min-height: 600px;
+}
+.testimonials_page .styles-block h1{ margin-top: 50px !important;
+}
+.testimonials_page h2{ margin-top: 50px !important;
+}
+.testimonials_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important;
+}
+
+.testimonials_page .georgia_text{
+line-height: 26px;
+ font-size: 16px !important;
+ padding-top: 100px;
+ padding-bottom: 0px;
+ text-align: center;
+}
+.testimonials_page .author_name{
+	font-family: font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+	padding-bottom: 30px;
+}
+.testimonials_page .area2{ 
+	border-top:1px solid #e3e3e3; 
+	border-bottom:1px solid #e3e3e3;
+	background: rgba(153, 153, 153, 0.05); 
+}
+.testimonials_page .area2 .container{ 
+	width: auto;
+	max-width: 600px;
+	margin:auto;
+}
+.testimonials_page .area3 .container{ 
+	width: auto;
+	max-width: 600px;
+	margin:auto;
+}
+.testimonials_page .area4{ 
+	border-top:1px solid #e3e3e3; 
+	border-bottom:1px solid #e3e3e3;
+	background: rgba(153, 153, 153, 0.05); 
+}
+.testimonials_page .area4 .container{ 
+	width: auto;
+	max-width: 600px;
+	margin:auto;
+}
+.testimonials_page .area5 .container{ 
+	width: auto;
+	max-width: 600px;
+	margin:auto;
+}
+.testimonials_page .area6{ 
+	border-top:1px solid #e3e3e3; 
+	background: rgba(153, 153, 153, 0.05); 
+}
+.testimonials_page .area6 .container{ 
+	width: auto;
+	max-width: 600px;
+	margin:auto;
+}
+.testimonials_page  .spb-row-container { margin:0 !important; padding:0 !important;}
+
+@media only screen and (max-width: 991px) {
+
+.testimonials_page .styles-block{ 
+ max-width: 750px;
+}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+
+}
+
+
+
+
+
+
+
+
+
+
 /* --------------------------------------------
 	GIFT CARD
 -------------------------------------------- */
