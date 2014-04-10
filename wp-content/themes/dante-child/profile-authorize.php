@@ -11,7 +11,21 @@ get_header();
 <?php 
 $ldm_sagepay = new ldm_sagepay();
 $config = $ldm_sagepay->getConfig();
-$config['total'] = '500';
+
+$config['vendor_name'] 		= 'EnclothedLtd';
+$config['currency'] 		= 'GBP';
+$config['total'] 			= '500.00';
+$config['description'] 		= 'Enclothed concierge service.';
+$config['customer_name']	= 'Customer 1';
+$config['billing_first_names'] = 'Costumer 1';
+$config['billing_surname'] 	= 'Costumer 1 last name';
+$config['billing_address1']	= '14';
+$config['billing_address2']	= 'Old Street';
+$config['billing_city']		= 'London';
+$config['billing_postcode']	= 'E3 3HR';
+$config['billing_country']	= 'GB';
+$config['billing_phone']	= '';
+
 $sagepay = $ldm_sagepay->getInstance($config);
 $form = $sagepay->renderForm();
 ?>
