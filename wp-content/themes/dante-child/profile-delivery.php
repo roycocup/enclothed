@@ -165,10 +165,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<div class="mini-wrapper-forms">
-										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="section_6[delivery_add_1]" value="">		 	  	
+										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="section_6[delivery_add_1]" value="<?php @echo_if_exists($_SESSION['section_1']['address']); ?>">		 	  	
 										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="section_6[delivery_add_2]" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="section_6[town]" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="section_6[post_code]" value="">
+										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="section_6[town]" value="<?php @echo_if_exists($_SESSION['section_1']['town']); ?>">
+										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="section_6[post_code]" value="<?php @echo_if_exists($_SESSION['section_1']['post_code']); ?>">
 										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="section_6[delivery_add_name]" value="">		 	  
 										<div class="checkbox_wrap" >
 											<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_6[same_as_delivery]" checked>
