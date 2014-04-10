@@ -1821,25 +1821,6 @@ text-align: center;
 	height:96px; 
 	width:118px; }
 									
-.dashboard_page .dashboard_info.edit_profile { 
-
-}							
-.dashboard_page .dashboard_info.edit_style { 
-
-}	
-.dashboard_page .dashboard_info.edit_sizes { 
-
-}
-.dashboard_page .dashboard_info.edit_prices { 
-
-}							
-.dashboard_page .dashboard_info.edit_delivery { 
-
-}	
-.dashboard_page .dashboard_info.edit_collection { 
-
-}
-
 .dashboard_page .dashboard_info.edit_profile .dashboard_icon{ 
 	background: url(images/icon_profile.png) no-repeat;
 }							
@@ -1961,7 +1942,7 @@ text-align: center;
 .terms_and_conditions_page h2{ margin-top: 50px !important;
 }
 .terms_and_conditions_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
- font-size: 18px !important; text-align: left;
+ font-size: 18px !important; text-align: left; letter-spacing: 0 !important;
 }
 
 .terms_and_conditions_page p{
@@ -1977,17 +1958,59 @@ text-align: center;
 	margin-bottom: 10px;
 }
 
-.terms_and_conditions_page .georgia_text{ font-size: 18px !important;
- padding-top: 40px;
- padding-bottom: 30px;
- text-align: center;
+@media only screen and (max-width: 991px) {
+
+.terms_and_conditions_page .styles-block{ 
+ max-width: 750px;
+}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
 
 }
 
 
+
+
+
+
+/* --------------------------------------------
+	FAQS
+-------------------------------------------- */
+.faq_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.faq_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ max-width: 970px;
+ min-height: 600px;
+}
+.faq_page .styles-block h1{ margin-top: 50px !important;
+	margin-bottom: 50px !important;
+}
+.faq_page h2{ margin-top: 50px !important;
+}
+.faq_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important; text-align: left; letter-spacing: 0 !important;
+}
+
+.faq_page p{
+	letter-spacing: 0;
+}
+
+.faq_page ul{
+	margin-left: 30px;
+	color: #000;
+}
+.faq_page li{
+	color: #000;
+	margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 991px) {
 
-.terms_and_conditions_page .styles-block{ 
+.faq_page .styles-block{ 
  max-width: 750px;
 }
 	
