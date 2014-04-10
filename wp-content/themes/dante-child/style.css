@@ -1943,6 +1943,67 @@ text-align: center;
 
 
 
+
+
+/* --------------------------------------------
+	TERMS & CONDITIONS
+-------------------------------------------- */
+.terms_and_conditions_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.terms_and_conditions_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ max-width: 970px;
+ min-height: 600px;
+}
+.terms_and_conditions_page .styles-block h1{ margin-top: 50px !important;
+	margin-bottom: 50px !important;
+}
+.terms_and_conditions_page h2{ margin-top: 50px !important;
+}
+.terms_and_conditions_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important; text-align: left;
+}
+
+.terms_and_conditions_page p{
+	letter-spacing: 0;
+}
+
+.terms_and_conditions_page ul{
+	margin-left: 30px;
+	color: #000;
+}
+.terms_and_conditions_page li{
+	color: #000;
+	margin-bottom: 10px;
+}
+
+.terms_and_conditions_page .georgia_text{ font-size: 18px !important;
+ padding-top: 40px;
+ padding-bottom: 30px;
+ text-align: center;
+
+}
+
+
+@media only screen and (max-width: 991px) {
+
+.terms_and_conditions_page .styles-block{ 
+ max-width: 750px;
+}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+
+}
+
+
+
+
+
+
+
 /* --------------------------------------------
 	CONTACT US
 -------------------------------------------- */
