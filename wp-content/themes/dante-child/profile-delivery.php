@@ -26,10 +26,10 @@
 </script>
 
 <?php 
-if (isset($_SESSION['section_5'])){
-	$section = $_SESSION['section_5'];	
-}else if(isset($_POST['section_5'])){
-	$section = $_POST['section_5'];
+if (isset($_SESSION['section_6'])){
+	$section = $_SESSION['section_6'];	
+}else if(isset($_POST['section_6'])){
+	$section = $_POST['section_6'];
 } else {
 	$section = array();
 }
@@ -153,7 +153,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="styles-block">
 								<div class="fade-border-left"></div>
 								<div class="fade-border-right"></div>
-								<form action="" method="POST" name='section_2'>
+								<form action="" method="POST" name='section_6'>
 									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 
 
@@ -165,14 +165,14 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<div class="mini-wrapper-forms">
-										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="" value="">		 	  	
-										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="" value="">
-										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">		 	  
+										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="section_6[delivery_add_1]" value="">		 	  	
+										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="section_6[delivery_add_2]" value="">
+										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="section_6[town]" value="">
+										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="section_6[post_code]" value="">
+										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="section_6[delivery_add_name]" value="">		 	  
 										<div class="checkbox_wrap" >
-											<input type="checkbox" class="css-checkbox" id="checkbox1" checked>
-											<label for="checkbox1" name="checkbox1_lbl" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS THIS ADDRESS</label>
+											<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_6[same_as_delivery]" checked>
+											<label for="checkbox1" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS THIS ADDRESS</label>
 										</div>	
 									</div>
 									
@@ -187,11 +187,11 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 
 										<div class="mini-wrapper-forms ">
-											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="" value="">		 	  	
-											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="" value="">	  	
-											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="" value="">
-											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="" value="">
-											<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="" value="">
+											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 1" name="section_6[bill_add_1]" value="">		 	  	
+											<input type="text" class="customer-info" tabindex="1" placeholder="Alternative Address Line 2" name="section_6[bill_add_2]" value="">	  	
+											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Town/City" name="section_6[bill_town]" value="">
+											<input type="text" class="key-info" tabindex="1" placeholder="Alternative Post Code" name="section_6[bill_post_code]" value="">
+											<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="section_6[bill_add_name]" value="">
 										</div>
 									</div>	
 
@@ -221,9 +221,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about delivery?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_6[extra_delivery]" value=""></textarea>
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about collection?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_6[extra_collection]" value=""></textarea>
 
 									<div class="mini-wrapper5">
 										<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>

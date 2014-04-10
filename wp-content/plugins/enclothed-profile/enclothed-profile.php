@@ -418,7 +418,42 @@ class EnclothedProfile {
 	}
 
 	public function process_delivery_form(){
-		$data = 'this is the data';
+
+		$section_6 = $_POST['section_6'];
+		
+
+		//just fail if no user in the session
+		if (empty($_SESSION['user'])){
+			debug_log('Trying to save section 6 but no user on the session. Redirecting to homepage.');
+			wp_redirect( home_url() ); 	
+			exit;
+		}
+
+		$data['delivery_add_1'] 	= $section_6['delivery_add_1'];
+		$data['delivery_add_2'] 	= $section_6['delivery_add_2'];
+		$data['delivery_town'] 		= $section_6['town'];
+		$data['delivery_post_code'] = $section_6['post_code'];
+		$data['delivery_add_name'] 	= $section_6['delivery_add_name'];
+
+		if (!empty($section_6['same_as_delivery'])){
+			$data['bill_add_1'] = $section_6['delivery_add_1'];
+			$data['bill_add_2'] = $section_6['delivery_add_2'];
+			$data['bill_town'] = $section_6['town'];
+			$data['bill_post_code'] = $section_6['post_code'];
+		} else {
+			$data['bill_add_1'] = $section_6['bill_add_1'];
+			$data['bill_add_2'] = $section_6['bill_add_2'];
+			$data['bill_town'] = $section_6['bill_town'];
+			$data['bill_post_code'] = $section_6['bill_post_code'];
+			$data['bill_add_name'] = $section_6['bill_add_name'];	
+		}
+
+		$data['extra_delivery'] = $section_6['extra_delivery'];
+		$data['extra_collection'] = $section_6['extra_collection'];
+
+		$res = $this->main->profiles_model->save($data);
+		unset($_SESSION['section_6']);
+		$_SESSION['section_6'] = $data;
 		wp_redirect( home_url().'/profile/authorize' ); 
 		exit;
 	}
