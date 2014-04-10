@@ -8,6 +8,8 @@
 <?php get_header(); ?>
 <script>
 	jQuery(document).ready(function($){
+
+		//defaults for datepicker
 		$( "#datepicker" ).datepicker({
 			dateFormat: 'dd/mm/yy', 
 			changeMonth: true,
@@ -15,7 +17,14 @@
       		yearRange: '1920:2010',
       		defaultDate: "10/09/1976",
 		});
-		$('.flashmessages').show();
+		
+		//Flashmessages
+		//controling the display of errors in the flash messages, depending if there are messages in the session or not
+		var has_messages = <?php echo (sessionHasMessages()) ? 'true':'false';?>;
+		if (has_messages) {
+			$('.flashmessages').show();	
+		} 
+		
 	});
 
 </script>
