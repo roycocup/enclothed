@@ -389,9 +389,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-10">
 														<div class="box_options">
 															<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-															<div class="col-sm-4 box_option click" name="sleve_lenght_short">Short</div>
-															<div class="col-sm-4 box_option click" name="sleve_lenght_regular">Regular</div>
-															<div class="col-sm-4 box_option click" name="sleve_lenght_long" style="border-bottom: none !important; border-right: none !important;">Long</div>
+															<div class="col-sm-4 box_option click" name="sleeve_lenght_short">Short</div>
+															<div class="col-sm-4 box_option click" name="sleeve_lenght_regular">Regular</div>
+															<div class="col-sm-4 box_option click" name="sleeve_lenght_long" style="border-bottom: none !important; border-right: none !important;">Long</div>
 														</div>
 													</div>
 													<div style="clear:both;"></div>

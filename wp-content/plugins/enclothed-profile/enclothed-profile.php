@@ -332,7 +332,6 @@ class EnclothedProfile {
 	public function process_sizing_form(){
 		$section_4 = $_POST['section_4'];
 		
-		
 		// $sizes = array_keys($section_4);
 		// $sizes = implode(',', $sizes);
 
@@ -352,6 +351,15 @@ class EnclothedProfile {
         $data['trouser_size'] 				= $section_4['trouser_size'];
         $data['trouser_inside_leg_size'] 	= $section_4['inside_leg'];
 
+        $sleeve_lenght = '';
+        if ($section_4['sleeve_lenght_regular'] || $section_4['sleeve_lenght_long'] || $section_4['sleeve_lenght_short']){
+        	$sleeve_lenght .= (!empty($section_4['sleeve_lenght_regular']))? 'regular,' : '';
+        	$sleeve_lenght .= (!empty($section_4['sleeve_lenght_long']))? 'long,' : '';
+        	$sleeve_lenght .= (!empty($section_4['sleeve_lenght_short']))? 'short,' : '';
+        }
+
+        $data['sleeve_lenght'] = $sleeve_lenght;
+        
 		// $data['sizes'] 		= $sizes;
 		$data['profile_id'] 	= $_SESSION['user']['id'];
 		$data['email'] 			= $_SESSION['user']['email'];
@@ -365,7 +373,8 @@ class EnclothedProfile {
 	}
 
 	public function process_pricing_form(){
-		//$this->redeemGiftCode($_POST['section_4']['giftcode']); 
+
+		//$this->redeemGiftCode($_POST['section_5']['giftcode']); 
 		if (!empty($_POST['section_5'])){
 			if (!empty($_POST['section_5']['shirt_price'])){
 				$shirt_price = utf8_decode($_POST['section_5']['shirt_price']);
@@ -383,8 +392,27 @@ class EnclothedProfile {
 
 		// var_dump($shirt_price, $trousers_price, $coat_price, $shoe_price); 
 		// die;
+
+		$shirt_prices 		= explode('-', $shirt_price);
+		$trousers_prices 	= explode('-', $trousers_price);
+		$coat_prices 		= explode('-', $coat_price);
+		$shoe_prices 		= explode('-', $shoe_price);
+
 		
-		$data = 'this is the data';
+		$data['shirt_min_price'] = $shirt_prices[0];
+		$data['shirt_max_price'] = $shirt_prices[1];
+		$data['trouser_min_price'] = $trousers_prices[0];
+		$data['trouser_max_price'] = $trousers_prices[1];
+		$data['coat_min_price'] = $coat_prices[0];
+		$data['coat_max_price'] = $coat_prices[1];
+		$data['shoes_min_price'] = $shoe_prices[0];
+		$data['shoes_max_price'] = $shoe_prices[1];
+
+
+		//save it
+		$res = $this->main->profiles_model->save($data);
+		unset($_SESSION['section_5']);
+		$_SESSION['section_5'] = $data;
 		wp_redirect( home_url().'/profile/delivery' ); 
 		exit;
 	}
