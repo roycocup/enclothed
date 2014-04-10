@@ -92,6 +92,9 @@ p{ font-size:16px;
  letter-spacing:1px;
  margin-bottom:16px;
 }
+strong{
+font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+}
 .no-borders { border: none !important;
 }
 .no-padding { padding: 0 !important;
@@ -1873,6 +1876,106 @@ text-align: center;
 
 
 /* --------------------------------------------
+	THANK YOU
+-------------------------------------------- */
+.thankyou_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.thankyou_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ max-width: 970px;
+ min-height: 600px;
+}
+.thankyou_page .styles-block h1{ margin-top: 50px !important;
+}
+.thankyou_page h2{ margin-top: 50px !important;
+}
+.thankyou_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important;
+}
+
+.thankyou_page .georgia_text{ font-size: 18px !important;
+ padding-top: 40px;
+ padding-bottom: 30px;
+ text-align: center;
+
+}
+
+
+@media only screen and (max-width: 991px) {
+
+.thankyou_page .styles-block{ 
+ max-width: 750px;
+}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+
+}
+
+
+
+
+
+
+
+/* --------------------------------------------
+	CONTACT US
+-------------------------------------------- */
+.contact_us_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+.contact_us_page .styles-block{ margin-top: 50px;
+ border-top:1px solid #e3e3e3;
+ max-width: 970px;
+ min-height: 600px;
+}
+.contact_us_page .styles-block h1{ margin-top: 50px !important;
+}
+.contact_us_page h2{ margin-top: 50px !important;
+}
+.contact_us_page h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important;
+}
+
+.contact_us_page .georgia_text{ font-size: 18px !important;
+ padding-top: 40px;
+ padding-bottom: 50px;
+ text-align: center;
+}
+
+.contact_us_page .area1 a{ font-weight: bold; color: #000 !important; }
+.contact_us_page .area1 a:hover{ color:#b08536 !important;}
+
+
+.contact_us_page .area1 .sf-icon.sf-icon-medium { font-size:34px !important;
+ width: auto;
+height: auto;
+  color:#000;
+}
+.contact_us_page .area1 .sf-icon.sf-icon-medium:hover { 
+  color:#fff;
+}
+
+.contact_us_page .area1 .sf-icon-cont{ border-color:#999 !important;}
+@media only screen and (max-width: 991px) {
+
+.contact_us_page .styles-block{ 
+ max-width: 750px;
+}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+
+}
+
+
+
+
+
+/* --------------------------------------------
 	TESTIMONIALS
 -------------------------------------------- */
 .testimonials_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
@@ -1954,8 +2057,6 @@ line-height: 26px;
 
 
 }
-
-
 
 
 
