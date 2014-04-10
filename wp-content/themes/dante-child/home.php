@@ -606,6 +606,7 @@
 	background-size: cover;
 	padding: 20px;
 	max-width: 475px;
+	max-height: 337px;
 }
 .brands_box_left h2{
 	font-size:36px !important;
@@ -627,6 +628,8 @@
 	float: left; 
 	padding:0; 
 	max-width: 475px;
+	max-height: 337px;
+
  }
 .brands_box_right img{ float:left; }
 
