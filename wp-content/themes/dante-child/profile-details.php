@@ -20,18 +20,6 @@
 
 </script>
 
-<style>
-	#datepicker input, #datepicker textarea, #datepicker select{
-		background: transparent !important;
-		color:#fff !important;
-		border: none; 
-	}
-
-	#datepicker ui-datepicker-month{
-		margin: 0 !important;
-		float: left !important;
-	}
-</style>
 
 <?php 
 if (isset($_SESSION['section_1'])){
@@ -191,7 +179,7 @@ if (isset($_SESSION['section_1'])){
 				<input type="text" class="key-info" tabindex="7" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
 				<input type="password" class="key-info"  name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
 
-				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth dd/mm/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
+				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth DD/MM/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
 				
 			
 			
