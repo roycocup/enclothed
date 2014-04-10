@@ -170,7 +170,7 @@ get_header();
 						<div class="styles-block">
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
-							<?php echo $form; ?>
+							<?php //echo $form; ?>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 				<?php the_content(); ?>
