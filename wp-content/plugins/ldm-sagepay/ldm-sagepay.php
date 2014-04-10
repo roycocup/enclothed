@@ -35,7 +35,7 @@ class ldm_sagepay {
 		$this->config['billing_country']	= 'GB';
 		$this->config['billing_phone']		= '';
 		$this->config['success_url']		= 'http://enclothed.dev/thank-you';
-		$this->config['failure_url']		= 'http://enclothed.dev/failure';
+		$this->config['failure_url']		= 'http://enclothed.dev/unsuccessful';
 	}
 
 	public function getConfig(){
