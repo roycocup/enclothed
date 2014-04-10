@@ -395,7 +395,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<div class="box_options">
 												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 													<div class="col-sm-3 box_option click">Work</div>
-													<div class="col-sm-3 box_option click selected">Casual</div>
+													<div class="col-sm-3 box_option click">Casual</div>
 													<div class="col-sm-3 box_option click">Friday</div>
 													<div class="col-sm-3 box_option click" style="border-bottom: none !important; border-right: none !important;">Linen/Holiday</div>
 												</div>
