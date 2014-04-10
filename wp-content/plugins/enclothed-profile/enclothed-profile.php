@@ -185,7 +185,7 @@ class EnclothedProfile {
 
 		//dob is not right format
 		if (!empty($section['dob'])){
-			preg_match('/^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/', $section['dob'], $match);
+			preg_match('/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/', $section['dob'], $match);
 			if (empty($match[0])){
 				$str = 'Please insert a birth date using dd-mm-yyyy format.';
 				$errors[] = $str; 
