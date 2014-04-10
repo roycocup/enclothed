@@ -181,7 +181,7 @@ if (isset($_SESSION['section_1'])){
 				<p>Some Key Pieces of information we need about you.</p>
 				<input type="text" class="key-info" tabindex="1" name="section_1[name]" placeholder='Full Name' value="<?php @echo_if_exists($section['name']); ?>" >
 				<input type="text" class="key-info" tabindex="2" name="section_1[address]" placeholder='Address' value="<?php @echo_if_exists($section['address']); ?>">
-				<input type="text" class="key-info" tabindex="3" name="section_1[city]" placeholder='Town / City' value="<?php @echo_if_exists($section['city']); ?>">
+				<input type="text" class="key-info" tabindex="3" name="section_1[town]" placeholder='Town / City' value="<?php @echo_if_exists($section['town']); ?>">
 				<input type="text" class="key-info" tabindex="4" name="section_1[email]" placeholder='Email' value="<?php @echo_if_exists($section['email']); ?>">
 				<input type="text" class="key-info" tabindex="5" name="section_1[post_code]" placeholder='Post Code' value="<?php @echo_if_exists($section['post_code']); ?>">
 				<input type="text" class="key-info" tabindex="6" name="section_1[phone]" placeholder='Phone Number' value="<?php @echo_if_exists($section['phone']); ?>">
@@ -193,11 +193,11 @@ if (isset($_SESSION['section_1'])){
 			
 			
 			<span class="date">
-			(Click in the box for date picker, or click again just to type it.)
+			(Click in the box for date picker, or click again just to type it. dd/mm/yyyy)
 			</span>
 			
 			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
-					<option value="Date of Birth">How did you hear about enclothed?</option>
+					<option value="none">How did you hear about enclothed?</option>
 					<option value="The Internet">The Internet</option>
 					<option value="Word of Mouth">Word of Mouth</option>
 					<option value="A Friend ">A Friend </option>
@@ -208,8 +208,8 @@ if (isset($_SESSION['section_1'])){
 					<option value="Other">Other</option>
 			</select>
 			
-			<select class="selectmenu" tabindex="11" name="section_1[another_person]">
-					<option value="Date of Birth">Are you purchasing for another person?</option>
+			<select class="selectmenu" tabindex="11" name="section_1[other_person]">
+					<option value="none">Are you purchasing for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 			</select>

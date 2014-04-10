@@ -13,6 +13,8 @@ class Profiles_model extends db{
 	public $phone  = '';
 	public $mobile = '';
 	public $dob = '';
+	public $town = '';
+	public $post_code = '';
 	public $occupation = '';
 	public $other_person = '';
 	public $other_person_name = '';
@@ -43,7 +45,40 @@ class Profiles_model extends db{
 		parent::__construct();
 	}
 
+	/**
+	*
+	* Saves the profile of a user
+	* to update just pass the profile_id
+	*
+	**/
 	public function save($data) {
-		$this->replace($data, null, $this->table);
+		// if profile exists just update
+		$sql = "SELECT * FROM wp_enc_profile t1 where 1
+				AND t1.profile_id = %d"; 
+		$sttm = $this->wpdb->prepare($sql, $data['profile_id']);
+		$res = $this->wpdb->get_results($sttm);
+
+		if (empty($res)){
+			$new_id = $this->insert($data, $this->table);
+		}
+
+		if (!empty($res)){
+			$where = array('profile_id'=>$data['profile_id']);
+			$this->update($data, $where, $this->table);	
+		}
+
+		if (isset($new_id)) {
+			return $new_id; 
+		} else{
+			return $data['profile_id'];
+		}
+
+
 	}
+
+
+
+
+
+
 }

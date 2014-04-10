@@ -5,6 +5,8 @@
 *
 **/
 get_header();
+
+
 if (isset($_SESSION['section_2'])){
 	$section = $_SESSION['section_2'];	
 }else if(isset($_POST['section_2'])){
@@ -182,73 +184,73 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
-										<div id="area1_1" class="grid_box_overlay click"></div>
+										<div id="style_1" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
-										<div id="area1_2" class="grid_box_overlay click"></div>
+										<div id="style_2" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
-										<div id="area1_3" class="grid_box_overlay click"></div>
+										<div id="style_3" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
-										<div id="area1_4" class="grid_box_overlay click"></div>
+										<div id="style_4" class="grid_box_overlay click"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
-										<div id="area1_5" class="grid_box_overlay click"></div>
+										<div id="style_5" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
-										<div id="area1_6" class="grid_box_overlay click"></div>
+										<div id="style_6" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
-										<div id="area1_7" class="grid_box_overlay click"></div>
+										<div id="style_7" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
-										<div id="area1_8" class="grid_box_overlay click"></div>
+										<div id="style_8" class="grid_box_overlay click"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img1.png" class="img-responsive" />
-										<div id="area1_9" class="grid_box_overlay click"></div>
+										<div id="style_9" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img2.png" class="img-responsive" />
-										<div id="area1_10" class="grid_box_overlay click"></div>
+										<div id="style_10" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img6.png" class="img-responsive" />
-										<div id="area1_11" class="grid_box_overlay click"></div>
+										<div id="style_11" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img5.png" class="img-responsive" />
-										<div id="area1_12" class="grid_box_overlay click"></div>
+										<div id="style_12" class="grid_box_overlay click"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img3.png" class="img-responsive" />
-										<div id="area1_13" class="grid_box_overlay click"></div>
+										<div id="style_13" class="grid_box_overlay click"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
 										<img src="<?php bloginfo('template_url') ?>-child/images/grid-img4.png" class="img-responsive" />
-										<div id="area1_14" class="grid_box_overlay click"></div>
+										<div id="style_14" class="grid_box_overlay click"></div>
 									</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/grid-img8.png" class="img-responsive" />
-											<div id="area1_15" class="grid_box_overlay click"></div>
+											<div id="style_15" class="grid_box_overlay click"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/grid-img7.png" class="img-responsive" />
-											<div id="area1_16" class="grid_box_overlay click"></div>
+											<div id="style_16" class="grid_box_overlay click"></div>
 										</div>
 									</div>
 								</div>

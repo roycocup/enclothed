@@ -9,8 +9,7 @@
 wp_enqueue_script('jquery-ui-autocomplete');
 get_header();
 ?>
-<!-- <link href="<?php echo bloginfo('stylesheet_directory').'/css/select2.css'; ?>" rel="stylesheet" /> -->
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.2/select2.min.js"></script> -->
+
 <?php
 if (isset($_SESSION['section_3'])){
 	$section = $_SESSION['section_3'];	

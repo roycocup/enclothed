@@ -65,39 +65,79 @@ class EnclothedProfile {
 		}
 	}
 
-
+	/**
+	*
+	* This creates a new user in wordpress and a new profile on a custom table enc_profile.
+	* @param array - email, name, phone, dob, occupation
+	* @return int (id for new user) or string for error 
+	*
+	**/
 	public function saveNewProfile($profile){
-		debug_log('Trying to create user without either password or email');
 		
+
 		//check that we have what it takes to create the user
 		if (empty($profile['email']) || empty($profile['password'])) {
 			debug_log('Trying to create user without either password or email');
 			wp_redirect(home_url());
 			exit;
 		}
+
 		//create a new user
 		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
+		// $new_user_id = 1; 
 
 		//if there is a problem creating
 		if (is_object($new_user_id)){
 			debug_log('There was a problem creating the user '.__FILE__);
-
-			if (!empty($new_user_id['existing_user_login'])){
-				debug_log('The user already exists. Needs to login instead of register');
+			
+			if (!empty($new_user_id->errors['existing_user_login'])){
+				debug_log('The user already exists. Maybe coming back to update?');
+				$user_id = get_user_by( 'email', $profile['email'] )->data->ID; 
 			}
-			wp_redirect(home_url());
-			exit;
+			// debug_log('Something bad happen when trying to create a new user. Redirecting to homepage.'); 
+			// wp_redirect(home_url());
+			// exit;
 		}
+		debug_log('Saving new profile for '. $profile['email'] ); 
+		
+
+
+		//the form only takes the full name so we need to break it into several
+		$names = explode(' ', $profile['name']); 		
+		$last_names = '';
+		foreach ($names as $k => $value) {
+			if ($k == 0) continue; //bypass the first name
+			$last_names .= $value.' '; 
+		}
+
+		//if the user is coming back to update its details just use this id
+		$new_user_id = (!empty($user_id))? $user_id : $new_user_id;
+
+		//formating the date for the db
+		$dob = strtotime($profile['dob']);
+		$dob = date('Y-m-d', $dob);
 
 		$data = array();
 		$data['profile_id'] = (int) $new_user_id;
 		$data['email'] 		= $profile['email'];
-		$data['first_name'] = $profile['name'];
-		$data['phone'] 		= $profile['phone'];
-		$data['dob'] 		= $profile['dob'];
-		$data['occupation'] = $profile['occupation'];
-		$this->main->profiles_model->save($data);
+		$data['customer_id'] 		= substr(md5($new_user_id), 0, 5); //This is the customer unique reference
+		$data['first_name'] 		= $names[0];
+		$data['last_name'] 			= $last_names;
+		$data['phone'] 				= $profile['phone'];
+		$data['dob'] 				= $dob;
+		$data['town'] 				= $profile['town'];
+		$data['post_code'] 			= $profile['post_code'];
+		$data['occupation'] 		= $profile['occupation'];
+		$data['feedback_1'] 		= $profile['feedback_1'];
+		$data['other_person'] 		= $profile['other_person'];
+
+		//save it
+		debug_log('Creating or updating a profile now.');
+		$res = $this->main->profiles_model->save($data);
+
+		return $new_user_id;
 	}
+
 
 
 	public function process_details_form(){
@@ -210,20 +250,30 @@ class EnclothedProfile {
 		} else {
 
 			//sanitization before db
-			$data['name'] = sanitize_text_field($section['name']); 
-			$data['email'] = sanitize_email($section['email']);
-			$data['dob'] = sanitize_text_field($section['dob']);
-			$data['address'] = sanitize_text_field($section['address']);
-			$data['phone'] = sanitize_text_field($section['phone']);
-			$data['post_code'] = sanitize_text_field($section['post_code']);
-			$data['password'] = $section['password'];
-			$data['feedback_1'] = sanitize_text_field($section['feedback_1']);
-			$data['feedback_2'] =  (!empty($section['feedback_2']))? sanitize_text_field($section['feedback_2']) : '';
-			$data['occupation'] = sanitize_text_field($section['occupation']);
-
+			$data['name'] 			= sanitize_text_field($section['name']); 
+			$data['email'] 			= sanitize_email($section['email']);
+			$data['dob'] 			= sanitize_text_field($section['dob']);
+			$data['address'] 		= sanitize_text_field($section['address']);
+			$data['phone'] 			= sanitize_text_field($section['phone']);
+			$data['post_code'] 		= sanitize_text_field($section['post_code']);
+			$data['town'] 			= sanitize_text_field($section['town']);
+			$data['password'] 		= $section['password'];
+			$data['feedback_1'] 	= (!empty($section['feedback_1']))? sanitize_text_field($section['feedback_1']) : '';
+			$data['other_person'] 	=  (!empty($section['other_person']))? sanitize_text_field($section['other_person']) : '';
+			$data['occupation'] 	= sanitize_text_field($section['occupation']);
 
 			// $this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
-			$this->saveNewProfile($data);
+			$new_user_id = $this->saveNewProfile($data);
+
+			//everything seems to be ok so lets store this in the session before redirecting
+			unset($_SESSION['section_1']);
+			$_SESSION['section_1'] = $data;
+			//clear before changing
+			unset($_SESSION['user']);
+			$_SESSION['user']['id'] = $new_user_id;
+			$_SESSION['user']['email'] = $data['email'];
+
+			//send to next page
 			wp_redirect( home_url().'/profile/style' ); 
 			exit;	
 		}
@@ -231,8 +281,25 @@ class EnclothedProfile {
 	}
 
 	public function process_style_form(){
-		// dump($_POST); die;
-		$data = 'this is the data';
+		$section_2 = $_POST['section_2'];
+		$styles = array_keys($section_2);
+		$styles = implode(',', $styles);
+
+		//just fail if no user in the session
+		if (empty($_SESSION['user'])){
+			debug_log('Trying to save section 2 but no user on the session. Redirecting to homepage.');
+			wp_redirect( home_url() ); 	
+			exit;
+		}
+
+		$data['styles'] = $styles;
+		$data['profile_id'] = $_SESSION['user']['id'];
+		$data['email'] = $_SESSION['user']['email'];
+
+		//save it
+		$res = $this->main->profiles_model->save($data);
+		unset($_SESSION['section_2']);
+		$_SESSION['section_2'] = $data;
 		wp_redirect( home_url().'/profile/preferences' ); 
 		exit;
 	}
