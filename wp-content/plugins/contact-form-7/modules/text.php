@@ -74,7 +74,7 @@ function wpcf7_text_shortcode_handler( $tag ) {
 	$atts = wpcf7_format_atts( $atts );
 
 	$html = sprintf(
-		'<span class="wpcf7-form-control-wrap %1$s"><input %2$s />%3$s</span>',
+		'<input %2$s />',
 		$tag->name, $atts, $validation_error );
 
 	return $html;

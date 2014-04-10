@@ -486,7 +486,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .tickbox{background-image:url(images/check.gif);
 }
-.customer-info3 {
+.wpcf7 textarea, .customer-info3 {
 width: 90%;
 max-width: 637px;
 height: 120px;
@@ -503,6 +503,29 @@ border-radius: 0px;
 -webkit-appearance: none;
 letter-spacing: 1px;
 }
+.wpcf7-form .wpcf7-form-control.wpcf7-submit.button4{
+	width: 90% !important;
+	max-width: 290px !important;
+	height: 55px !important;
+	position: relative !important;
+	display: inline-block !important;
+	border: 3px solid #0e2334 !important;
+	margin: 10px 0 10px 0 !important;
+	background-color: #0e2334  !important;
+	font: 18px proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+	color: #fff !important;
+	text-transform: uppercase !important;
+	letter-spacing: 2px !important;
+	line-height: 00px !important;
+	font-size:16px !important;
+	border-radius: 0  !important;
+}
+
+.wpcf7-form .wpcf7-form-control.wpcf7-submit.button4:hover{
+	background-color: #0e2334  !important;
+	color: #b08536 !important;
+}
+
 .line_separator {
 position: relative;
 width: 100%;
@@ -665,7 +688,7 @@ img.line{ margin-top:20px;
 
 
 /*Styling for the placeholders*/
-::-webkit-input-placeholder {
+textarea::-webkit-input-placeholder {
 	font-style: italic;
 	font-size: 12px;
 	font-family: georgia;
@@ -674,7 +697,7 @@ img.line{ margin-top:20px;
 	text-align: center;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+textarea::-moz-placeholder {  /* Firefox 19+ */
 	font-style: italic;
 	font-size: 12px;
 	font-family: georgia;
@@ -683,7 +706,7 @@ img.line{ margin-top:20px;
 	text-align: center;
 }
 
-:-ms-input-placeholder {  
+textarea:-ms-input-placeholder {  
 	font-style: italic;
 	font-size: 12px;
 	font-family: georgia;
