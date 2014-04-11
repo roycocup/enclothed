@@ -22,6 +22,7 @@ if (isset($_SESSION['section_4'])){
 ?>
 
 
+
 <?php 
 // dump($_SESSION['section_4']);
 function echo_if_present($word){
@@ -79,6 +80,16 @@ function echo_if_present($word){
 <script>
 	jQuery(document).ready(function($){
 
+		// setting variables in the prototype to have the previously selected bits
+		$(function(){
+			var previous_selections = <?php echo (empty($_SESSION['section_4']))? 'false':'true'; ?>;
+			Object.previous_selections = previous_selections;
+			Object.tshirt_size = '<?php echo @$_SESSION['section_4']['tshirt_size']; ?>';
+			Object.neck_size = '<?php echo @$_SESSION['section_4']['neck_size']; ?>';
+			Object.shoe_size = '<?php echo @$_SESSION['section_4']['shoe_size']; ?>';
+			Object.trouser_size = '<?php echo @$_SESSION['section_4']['trouser_size']; ?>';
+			Object.trouser_inside_leg_size = '<?php echo @$_SESSION['section_4']['trouser_inside_leg_size']; ?>';
+		});
 
 		$(function() {
 			$( "#tshirt_slider" ).slider({
@@ -87,10 +98,10 @@ function echo_if_present($word){
 				max: 100,
 				step: 20,
 				slide: function( event, ui ) {
-					$( "#tshirt_selection" ).val(increments[ui.value]);
+					$( "#tshirt_selection" ).val(tshirt_slider_increments[ui.value]);
 				}
 			});
-			var increments = {
+			var tshirt_slider_increments = {
 				0: "XS", 
 				20: "S",
 				40: "M",
@@ -99,7 +110,22 @@ function echo_if_present($word){
 				100: "XXL"
 			};
 
-			$( "#tshirt_selection" ).val(increments[40]);
+			// displaying the previously saved values
+			if (Object.previous_selections){
+				var amount = 0;
+				for(key in tshirt_slider_increments){
+					if (tshirt_slider_increments[key] == Object.tshirt_size){
+						amount = key;
+					}
+				}
+				$( "#tshirt_selection" ).val(tshirt_slider_increments[amount]);	
+				$( "#tshirt_slider" ).slider({value:amount});
+			}else{
+				console.log(10);
+				$( "#tshirt_selection" ).val(tshirt_slider_increments[40]);	
+			}
+
+			
 		});
 		$(function() {
 			$( "#neck_size_slider" ).slider({
@@ -160,10 +186,10 @@ function echo_if_present($word){
 				max: 42,
 				step: 2,
 				slide: function( event, ui ) {
-					$( "#inside_leg_selection" ).val(increments[ui.value]);
+					$( "#inside_leg_selection" ).val(inside_leg_increments[ui.value]);
 				}
 			});
-			var increments = {
+			var inside_leg_increments = {
 				28: "28", 
 				30: "30",
 				32: "32",
@@ -173,15 +199,26 @@ function echo_if_present($word){
 				40: "REG",
 				42: "LONG"
 			};
-			$( "#inside_leg_selection" ).val(increments[40]);
+
+			// displaying the previously saved values
+			if (Object.previous_selections){
+				var amount = 0;
+				for(key in inside_leg_increments){
+					if (inside_leg_increments[key] == Object.trouser_inside_leg_size){
+						amount = key;
+					}
+				}
+				$( "#inside_leg_selection" ).val(inside_leg_selection[amount]);	
+				$( "#inside_leg_slider" ).slider({value:amount});
+			} else {
+				console.log(10);
+				$( "#inside_leg_selection" ).val(inside_leg_increments[40]);
+			}
+			
 		});
 
 
-		// Preset stuff based on previous selections
-		$(function() {
-			// $( "#tshirt_slider" ).slider({value:50});
-			// $( "#tshirt_selection" ).val(200);
-		});
+		
 
 
 		$('.submit-button').click(function(e){
