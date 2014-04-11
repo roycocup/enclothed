@@ -182,15 +182,15 @@ if (isset($_SESSION['section_1'])){
 				<div class="numbering">01</div>
 				<p>Some Key Pieces of information we need about you.</p>
 				<input type="text" class="key-info" tabindex="1" name="section_1[name]" placeholder='Full Name' value="<?php @echo_if_exists($section['name']); ?>" >
-				<input type="text" class="key-info" tabindex="2" name="section_1[address]" placeholder='Address' value="<?php @echo_if_exists($section['address']); ?>">
-				<input type="text" class="key-info" tabindex="3" name="section_1[town]" placeholder='Town / City' value="<?php @echo_if_exists($section['town']); ?>">
-				<input type="text" class="key-info" tabindex="4" name="section_1[email]" placeholder='Email' value="<?php @echo_if_exists($section['email']); ?>">
+				<input type="text" class="key-info" tabindex="2" name="section_1[email]" placeholder='Email' value="<?php @echo_if_exists($section['email']); ?>">
+				<input type="text" class="key-info" tabindex="3" name="section_1[address]" placeholder='Address' value="<?php @echo_if_exists($section['address']); ?>">
+				<input type="text" class="key-info" tabindex="4" name="section_1[town]" placeholder='Town / City' value="<?php @echo_if_exists($section['town']); ?>">
 				<input type="text" class="key-info" tabindex="5" name="section_1[post_code]" placeholder='Post Code' value="<?php @echo_if_exists($section['post_code']); ?>">
 				<input type="text" class="key-info" tabindex="6" name="section_1[phone]" placeholder='Phone Number' value="<?php @echo_if_exists($section['phone']); ?>">
-				<input type="text" class="key-info" tabindex="7" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
-				<input type="password" class="key-info"  name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
-
-				<input type='text' class="selectmenu" id='datepicker' tabindex="9" name='section_1[dob]' placeholder='Date of Birth DD/MM/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
+				<input type="password" class="key-info"  tabindex="7" name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
+				<input type="password" class="key-info"  tabindex="8" name="section_1[cpassword]" placeholder='Confirm Password' value="<?php @echo_if_exists($section['cpassword']); ?>">
+				<input type="text" class="selectmenu" tabindex="9" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
+				<input type='text' class="selectmenu" id='datepicker' tabindex="10" name='section_1[dob]' placeholder='Date of Birth DD/MM/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
 				
 			
 			
