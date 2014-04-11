@@ -75,7 +75,7 @@ function echo_if_present($word){
 
 	});
 </script>
-
+ 
 <!-- sliders -->
 <script>
 	jQuery(document).ready(function($){

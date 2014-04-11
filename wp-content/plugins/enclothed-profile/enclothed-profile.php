@@ -135,6 +135,26 @@ class EnclothedProfile {
 		debug_log('Creating or updating a profile now.');
 		$res = $this->main->profiles_model->save($data);
 
+		$ws = new ldmwebservices();
+		$fields = array();
+		$fields['customerId'] 				= '98669';
+		$fields['orderReferenceNumber'] 	= '23423';
+		$fields['firstName'] 				= 'yourname';
+		$fields['lastName'] 				= 'lastnamemaman';
+		$fields['addressLine1'] 			= 'add_1';
+		$fields['addressLine2'] 			= 'nothinghere';
+		$fields['townCity'] 				= 'London';
+		$fields['Email'] 					= 'rod@likedigitalmedia.com';
+		$fields['postcode'] 				= 'e16ql';
+		$fields['telephone'] 				= '36345643565463';
+		$fields['password'] 				= 'thisisanicepass';
+		$fields['occupation'] 				= 'somestuff';
+		$fields['dob'] 						= '1976-09-10';
+		$fields['forceLead'] 				= 'true';
+		
+		//create a lead
+		$ws->sendForm($fields);
+
 		return $new_user_id;
 	}
 
