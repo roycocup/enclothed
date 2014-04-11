@@ -297,6 +297,10 @@ padding: 5px !important;
 }
 .social_buttons{ text-align:center;
 }
+
+.get_started_banner { border:none ;}
+.get_started_banner { border:none ; background-image: none !important; background-color: #f6f7f6 ; margin:-20px 0 20px 0 !important;}
+.get_started_banner a.sf-button{ margin: 0 auto !important;}
 .spb_box_text.whitestroke .box-content-wrap {
 background-color: transparent !important;
 border-color: transparent !important;
@@ -609,6 +613,9 @@ border-bottom: 1px solid #d1d1d1;
 }
 img.line{ margin-top:20px;
 }
+#top-header .th-right > nav .menu li a{ font-size: 13px; color: #000; font-weight: normal;}
+#top-header .th-right > nav .menu li a:hover{ font-size: 13px; color: #b08536 !important;}
+#top-header .th-right > nav .menu li a.get_started_link{ font-weight: bold;}
 .box_options{
 	border:1px solid #e3e3e3;
 	float:left;
@@ -732,6 +739,8 @@ textarea:-ms-input-placeholder {
 -------------------------------------------- */
 .home_page #top-bar, .home_page #top-header {
 }
+.home_page #top-header .th-right > nav .menu li a{ font-size: 13px; color: #fff;}
+
 .home_page #header-section:before {
 background: transparent;
 }
@@ -770,6 +779,9 @@ color: #fff;
 }
 .home_page nav .menu > li a {
 color: #fff;
+}
+.home_page nav .menu > li a:hover {
+color: #b08536;
 }
 .home_page #header .is-sticky .sticky-header.sticky-header-resized, .home_page .is-sticky #header.sticky-header.sticky-header-resized {
 background: #fff!important;
@@ -1006,7 +1018,9 @@ margin-top: 0px;
  margin: auto;
  margin-bottom: 10px;
 }
-
+@media only screen and (max-width: 991px) {
+.pricing_page .get_started_banner { margin-top: 0 ; border:none ;}
+}
 
 
 

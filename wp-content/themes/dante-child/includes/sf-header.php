@@ -541,6 +541,7 @@
 			$aux_links_output .= '<ul class="menu">'. "\n";
 			if ($show_account) {
 				if (is_user_logged_in()) {
+					$aux_links_output .= '<li><a class="get_started_link" href="/profile/details">Get Started</a>'. "\n";			
 					$aux_links_output .= '<li><a href="'.wp_logout_url(home_url()).'">'. __("Logout", "swiftframework") .'</a></li>'. "\n";
 					// $aux_links_output .= '<li><a href="'.home_url()."/dashboard"'">'. "Profile & Order" .'</a></li>'. "\n";
 					$aux_links_output .= '<li><a href="'.home_url().'/dashboard">Profile & Order</a></li>'."\n";
@@ -551,6 +552,7 @@
 					}
 				} else {
 					// $aux_links_output .= '<li><a href="'.$login_url.'">'. __("Login", "swiftframework") .'</a></li>'. "\n";
+					$aux_links_output .= '<li><a class="get_started_link" href="/profile">Get Started</a>'. "\n";			
 					$aux_links_output .= '<li><a href="/login">'. __("Login", "swiftframework") .'</a></li>'. "\n";			
 				}
 			}
