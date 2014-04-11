@@ -153,7 +153,7 @@ class EnclothedProfile {
 		$fields['forceLead'] 				= 'true';
 		
 		//create a lead
-		$ws->sendForm($fields);
+		//$ws->sendForm($fields);
 
 		return $new_user_id;
 	}

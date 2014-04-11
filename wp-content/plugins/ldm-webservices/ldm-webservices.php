@@ -279,7 +279,7 @@ public function sendForm($fields){
 
 	//$sf_form = stream_get_contents($match[1]);
 
-	return $sf_form;
+	// var_dump($sf_form);
 }
 
 
