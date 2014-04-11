@@ -850,6 +850,9 @@ color:#fff !important;
 	max-width:700px;
 	margin: auto;
 }
+.home_page .area2 a.sf-button{ 
+ margin-top:30px;
+}
 .home_page .area3{
 	margin-top: -160px;
 }
@@ -866,6 +869,46 @@ color:#fff !important;
 .home_page .menu_get_started{ display: none !important;
 }
 
+.mens_health_link{
+	position:absolute; 
+	width:17%;
+	height:100%;
+	top:0;
+	left: 28%;
+	z-index: 1;
+}
+.timeout_link{
+	position:absolute; 
+	width:13%;
+	height:100%;
+	top:0;
+	left: 45%;
+	z-index: 1;
+}
+.square_mile_link{
+	position:absolute; 
+	width:25%;
+	height:100%;
+	top:0;
+	left: 58%;
+	z-index: 1;
+}
+.bbc_link{
+	position:absolute; 
+	width:17%;
+	height:100%;
+	top:0;
+	left: 83%;
+	z-index: 1;
+}				
+.link_cover{
+	position:absolute; 
+	width:100%;
+	height:100%;
+	top:0;
+	left: 0;
+	z-index: 1;
+}
 
 
 
