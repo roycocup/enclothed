@@ -229,8 +229,12 @@ class EnclothedProfile {
 			$str = 'Please enter a password.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
-		}else if (strlen($section['password']) < 6) {
+		} else if (strlen($section['password']) < 6) {
 			$str = 'Password needs to be at least 6 characters.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		} else if ($section['password'] != $section['cpassword']) {
+			$str = 'Passwords do not match.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
 		}
@@ -271,6 +275,8 @@ class EnclothedProfile {
 
 			//everything seems to be ok so lets store this in the session before redirecting
 			unset($_SESSION['section_1']);
+			unset($data['password']); 
+			unset($data['cpassword']); 
 			$_SESSION['section_1'] = $data;
 			//clear before changing
 			unset($_SESSION['user']);
