@@ -968,7 +968,7 @@ max-width: 600px;
 margin: auto;}
 
 .about_us_page .area6 .author_name{
-	font-family: font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+	font-family: proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
 .about_us_page .area6 .georgia_text{color: #ffffff;
 font-size: 18px !important;
@@ -1004,6 +1004,12 @@ text-align:center;
 .pricing_page .inner-page-wrap {
 margin-top: 0px;
 }
+.pricing_page .parallax {
+	margin-top: 0 !important;
+	padding-top: 120px;
+	padding-bottom: 120px;
+	margin-bottom: 20px;
+}
 .pricing_page  .area3 p{max-width: 550px;
  margin: auto;
  margin-bottom: 10px;
@@ -1027,73 +1033,49 @@ margin-top: 0px;
 /* --------------------------------------------
 	HOW IT WORKS
 -------------------------------------------- */
-.how_it_works_page .area1 {
-	margin-top: 0 !important;
-	padding-top: 120px;
-	padding-bottom: 120px;
-}
-.how_it_works_page .area1 .spb_content_wrapper{
-	max-width:600px;
-	margin: auto;
-}
-.how_it_works_page  .area2_right p img.line{ margin-top:30px ;
+ .how_it_works_page  .area4 p { 
+ 	max-width: 600px !important; 
+ 	float: none !important;
+ 	margin: auto !important;
  }
-.how_it_works_page  .area2_right p img.line{ margin-top:30px ;
- }
- .how_it_works_page  .area3 { padding:50px 0 20px 0;
- }
- .how_it_works_page  .area3_right { height: 460px; 
+
+ .how_it_works_page  .area5_right { height: 460px; 
  position: relative; 
  }
- .how_it_works_page  .area3_right .order_a_box_wrapper{ position: absolute;
+ .how_it_works_page  .area5_right .order_a_box_wrapper{ position: absolute;
  height: auto; 
  width: 947px; 
  display: block;
  left: -306px;
  top:0;
  }
- .how_it_works_page  .area3_right .georgia_text1{ position: absolute;
+ .how_it_works_page  .area5_right .georgia_text1{ position: absolute;
  height: auto; 
 width: 190px;
 left: 380px;
 top: 60px;
 text-align: right;
  }
-.how_it_works_page  .area3_right .georgia_text2{ position: absolute;
+.how_it_works_page  .area5_right .georgia_text2{ position: absolute;
 height: auto;
 width: 230px;
 right: 0px;
 top: 280px;
 text-align: left;
  }
-.how_it_works_page  .area3_right .georgia_text3{ position: absolute;
+.how_it_works_page  .area5_right .georgia_text3{ position: absolute;
 height: auto;
 width: 300px;
 right: 110px;
 top: 411px;
 text-align: left;
  }
- .how_it_works_page  .area4_right p img.line{ margin-top:30px ;
- }
-.how_it_works_page .area5{ padding-top:50px !important;
- padding-bottom:20px !important;
- }
-.how_it_works_page .area5 .spb_content_wrapper{ max-width: 500px;
- }
-.how_it_works_page .area6{ padding-top:50px !important;
- padding-bottom:50px !important;
- }
-.how_it_works_page .area6 p{max-width: 550px;
- margin: auto;
- }
-	
+
 .how_it_works_page .inner-page-wrap{
 	margin-top: 0 !important;
  margin-bottom:0 !important;
 }
-.how_it_works_page .area_gold{ margin-top:40px !important;
- }
-.how_it_works_page p img.line{ margin-top:0px;
+.how_it_works_page p img.line{ margin-top:30px;
  }
 .how_it_works_page .fullscreen-container{ 
 	height:470px !important;
@@ -1108,9 +1090,9 @@ text-align: left;
 	visibility: hidden !important; }
 
 @media only screen and (max-width: 991px) {
-  .how_it_works_page  .area3_right { height: 364px; 
+  .how_it_works_page  .area5_right { height: 364px; 
  }
- .how_it_works_page  .area3_right .order_a_box_wrapper{ position: absolute;
+ .how_it_works_page  .area5_right .order_a_box_wrapper{ position: absolute;
  height: auto; 
  width: 750px; 
  left:-248px;
@@ -1121,11 +1103,15 @@ text-align: left;
   }
 	.how_it_works_page h2{ text-align: center !important;
   }
-	.how_it_works_page .area5 .spb_content_wrapper{ margin: auto !important;
-}
-	.how_it_works_page img.line{ margin-top:0 !important;
+
+	.how_it_works_page img.line{ margin-top:10px !important;
 text-align:center;
 }
+.how_it_works_page .area1 {
+	margin-bottom: 0 !important;
+}
+  .how_it_works_page  .area5_right { display:none;
+ }
 
 } 
 
