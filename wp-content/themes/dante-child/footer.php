@@ -264,11 +264,20 @@
 		<?php if ($options['google_analytics'] != "") {
 			echo $options['google_analytics'];
 		} ?>
-			
+		<?php if ( is_user_logged_in() ){  ?>
+		<style>
+			.login_menu_item{ display: none;}
+		</style>
+		<?php } else {  ?>	
+		<style>
+			.logout_menu_item{ display: none;}
+			.profile_and_order_menu_item{ display: none;}
+		</style>
+		<?php }  ?>	
 		<!--// WORDPRESS FOOTER HOOK //-->
 		<?php wp_footer(); ?>
 
-	
+			
 	<!--// CLOSE BODY //-->
 	</body>
 
