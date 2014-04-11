@@ -19,8 +19,31 @@ if (isset($_SESSION['section_4'])){
 	$section = array();
 }
 
-
 ?>
+
+
+<?php 
+// dump($_SESSION['section_4']);
+function echo_if_present($word){
+	if (!empty($_SESSION['section_4'])){
+		$prev_sec_4 = explode(',', $_SESSION['section_4']['sleeve_lenght']);
+
+		if (in_array($word, $prev_sec_4)){
+			echo 'selected';
+		}
+
+		$prev_extra_info_size 			= @$_SESSION['section_4']['extra_info_size'];
+		$prev_more_brands_size 			= @$_SESSION['section_4']['more_brands_size'];
+		$prev_tshirt_size 				= @$_SESSION['section_4']['tshirt_size'];
+		$prev_neck_size 				= @$_SESSION['section_4']['neck_size'];
+		$prev_shoe_size 				= @$_SESSION['section_4']['shoe_size'];
+		$prev_trouser_size 				= @$_SESSION['section_4']['trouser_size'];
+		$prev_trouser_inside_leg_size  	= @$_SESSION['section_4']['trouser_inside_leg_size'];
+	}
+}
+?>
+
+
 <script>
 	jQuery(document).ready(function($){
 		// This is what enables the images to be added to the form 
@@ -55,6 +78,8 @@ if (isset($_SESSION['section_4'])){
 <!-- sliders -->
 <script>
 	jQuery(document).ready(function($){
+
+
 		$(function() {
 			$( "#tshirt_slider" ).slider({
 				value:40,
@@ -149,6 +174,13 @@ if (isset($_SESSION['section_4'])){
 				42: "LONG"
 			};
 			$( "#inside_leg_selection" ).val(increments[40]);
+		});
+
+
+		// Preset stuff based on previous selections
+		$(function() {
+			// $( "#tshirt_slider" ).slider({value:50});
+			// $( "#tshirt_selection" ).val(200);
 		});
 
 
@@ -389,9 +421,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-10">
 														<div class="box_options">
 															<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-															<div class="col-sm-4 box_option click" name="sleeve_lenght_short">Short</div>
-															<div class="col-sm-4 box_option click" name="sleeve_lenght_regular">Regular</div>
-															<div class="col-sm-4 box_option click" name="sleeve_lenght_long" style="border-bottom: none !important; border-right: none !important;">Long</div>
+															<div class="col-sm-4 box_option click <?php echo_if_present('short'); ?>" name="sleeve_lenght_short">Short</div>
+															<div class="col-sm-4 box_option click <?php echo_if_present('regular'); ?>" name="sleeve_lenght_regular">Regular</div>
+															<div class="col-sm-4 box_option click <?php echo_if_present('long'); ?>" name="sleeve_lenght_long" style="border-bottom: none !important; border-right: none !important;">Long</div>
 														</div>
 													</div>
 													<div style="clear:both;"></div>
@@ -530,7 +562,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 											<div class="mini-wrapper5">
 												<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-								                <!-- <a href="/profile/preferences/" class="button4">Go Back</a> -->
+								                <a href="/profile/preferences/" class="button4">Go Back</a>
 								                <div class="button_spacer col-sm-1 hidden-xs"></div>
 								                <button class="button4 submit-button">Save and Continue</button>
                 							</div><!--mini-wrapper4-->

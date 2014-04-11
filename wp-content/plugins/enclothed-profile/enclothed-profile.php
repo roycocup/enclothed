@@ -139,7 +139,11 @@ class EnclothedProfile {
 	}
 
 
-
+	/**
+	*
+	* Section 1 - Details 
+	*
+	**/
 	public function process_details_form(){
 
 		if (isset($_POST['section_1'])){
@@ -280,6 +284,11 @@ class EnclothedProfile {
 		
 	}
 
+	/**
+	*
+	* Section 2 - Style 
+	*
+	**/
 	public function process_style_form(){
 		$section_2 = $_POST['section_2'];
 		$styles = array_keys($section_2);
@@ -304,6 +313,11 @@ class EnclothedProfile {
 		exit;
 	}
 
+	/**
+	*
+	* Section 3 - Preferences 
+	*
+	**/
 	public function process_preferences_form(){
 		$section_3 = $_POST['section_3'];
 		$preferences = array_keys($section_3);
@@ -329,6 +343,11 @@ class EnclothedProfile {
 	}
 
 
+	/**
+	*
+	* Section 4 - Sizing 
+	*
+	**/
 	public function process_sizing_form(){
 		$section_4 = $_POST['section_4'];
 		
@@ -372,6 +391,11 @@ class EnclothedProfile {
 		exit;
 	}
 
+	/**
+	*
+	* Section 5 - Pricing 
+	*
+	**/
 	public function process_pricing_form(){
 
 		//$this->redeemGiftCode($_POST['section_5']['giftcode']); 
@@ -417,6 +441,12 @@ class EnclothedProfile {
 		exit;
 	}
 
+
+	/**
+	*
+	* Section 6 - Delivery 
+	*
+	**/
 	public function process_delivery_form(){
 
 		$section_6 = $_POST['section_6'];
@@ -458,6 +488,11 @@ class EnclothedProfile {
 		exit;
 	}
 
+	/**
+	*
+	* Section 7 - Authorize 
+	*
+	**/
 	public function process_authorize_form(){
 		$data = 'this is the data';
 		global $current_user;
@@ -467,6 +502,11 @@ class EnclothedProfile {
 	}
 
 
+	/**
+	*
+	* Collections
+	*
+	**/
 	public function process_collections_form(){
 
 	}
