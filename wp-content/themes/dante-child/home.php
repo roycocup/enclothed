@@ -207,14 +207,16 @@
 
 
 								<div class="col-sm-6 featured_blog_boxes_wrapper featured1">
-						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(wp-content/themes/dante-child/images/featured3_bg.jpg);">
-							<h2>Hand Picked Outfits Shipped to your Door</h2>
-							<p>Delivery and collections are free of charge Only pay for what you keep.</p>
+						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(wp-content/themes/dante-child/images/tweed.jpg);">
+							<h2>Tweed lifestyle</h2>
+							<p>Originally favoured for country sports and now a fashion staple tweed jackets are resistant and durable, a timeless classic, which we think everyone should own!</p>
 						</div>
 
 				</div>
 
+
 				<div class="col-sm-6 social_boxes_wrapper">
+					<a href="https://www.facebook.com/Enclothed" target="_blank" class="link_cover"></a>
 				<?php 
 					$fb_image_url = get_fb_post_image(2);
 					if ($fb_image_url == 'default') {
@@ -277,8 +279,8 @@
 					foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
 					<?php $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'home-featured' ); ?>
 						<div class="col-sm-12 featured_blog_box_left" style="background-image: url(wp-content/themes/dante-child/images/featured4_bg.jpg);">
-							<h2>Enclothed<br/>gives you time</h2>
-							<p>Time is the one thing we can never get back - we want you to spend it on the things you want to</p>
+							<h2>Smart trainers</h2>
+							<p>Buying smart trainers can be a minefield. You want something good quality, smart that you can wear to the office on a Friday, that goes with chinos or dark jeans and that will last you well.</p>
 
 						</div>
 					<?php endforeach; 
@@ -288,6 +290,7 @@
 
 
 				<div class="col-sm-6 social_boxes_wrapper">
+					<a href="http://instagram.com/enclothed" target="_blank" class="link_cover"></a>
 					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(); ?>); background-size: cover">
 					</div>
 					<div class="col-sm-6 social_box_right">
@@ -308,12 +311,13 @@
 				</div>
 
 				<div class="col-sm-12 no-margin no-padding" style=" float:left;">
+					<a href="http://www.menshealth.co.uk/style/tips/easiest-way-to-upgrade-your-wardrobe" target="_blank" class="mens_health_link"></a>
+					<a href="#" target="_blank" class="timeout_link"></a>
+					<a href="http://www.squaremile.com/detail-therapy/27/enclothed/" target="_blank" class="square_mile_link"></a>
+					<a href="http://www.bbc.co.uk/programmes/p0151rml" target="_blank" class="bbc_link"></a>
 				<img class="image-responsive" alt="line" src="/wp-content/themes/dante-child/images/enclothed_in_the_media.jpg">
 				</div>
 	
-
-
-
 			</div>
 		</div> 
 	</div> 
