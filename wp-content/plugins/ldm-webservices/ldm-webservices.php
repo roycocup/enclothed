@@ -277,7 +277,7 @@ public function sendForm($fields){
 	$url_reg = '/href=\"(.*?)"/';
 	preg_match($url_reg, $result, $match);
 
-	$sf_form = stream_get_contents($match[1]);
+	//$sf_form = stream_get_contents($match[1]);
 
 	return $sf_form;
 }
