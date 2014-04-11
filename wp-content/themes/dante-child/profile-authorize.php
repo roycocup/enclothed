@@ -9,6 +9,12 @@ get_header();
 ?>
 
 <?php 
+// if this page is accesses directly just http_redirect
+if (empty($_SESSION['section_1']) || empty($_SESSION['section_6'])){
+	wp_redirect(home_url());
+	exit;
+}
+
 $ldm_sagepay = new ldm_sagepay();
 $config = $ldm_sagepay->getConfig();
 
@@ -16,13 +22,21 @@ $config['vendor_name'] 		= 'EnclothedLtd';
 $config['currency'] 		= 'GBP';
 $config['total'] 			= '500.00';
 $config['description'] 		= 'Enclothed concierge service.';
-$config['customer_name']	= 'Customer 1';
-$config['billing_first_names'] = 'Costumer 1';
-$config['billing_surname'] 	= 'Costumer 1 last name';
-$config['billing_address1']	= '14';
-$config['billing_address2']	= 'Old Street';
-$config['billing_city']		= 'London';
-$config['billing_postcode']	= 'E3 3HR';
+$config['customer_name']	= $_SESSION['section_1']['name'];
+
+$names = explode(' ', $_SESSION['section_1']['name']); 		
+$last_names = '';
+foreach ($names as $k => $value) {
+	if ($k == 0) continue; //bypass the first name
+	$last_names .= $value.' '; 
+}
+
+$config['billing_first_names'] = $names[0];
+$config['billing_surname'] 	= $last_names;
+$config['billing_address1']	= $_SESSION['section_6']['bill_add_1'];
+$config['billing_address2']	= $_SESSION['section_6']['bill_add_2'];
+$config['billing_city']		= $_SESSION['section_6']['bill_town'];
+$config['billing_postcode']	= $_SESSION['section_6']['bill_post_code'];
 $config['billing_country']	= 'GB';
 $config['billing_phone']	= '';
 
