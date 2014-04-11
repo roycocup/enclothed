@@ -277,7 +277,31 @@ public function sendForm($fields){
 	$url_reg = '/href=\"(.*?)"/';
 	preg_match($url_reg, $result, $match);
 
-	//$sf_form = stream_get_contents($match[1]);
+	$options = array(
+        CURLOPT_RETURNTRANSFER => true,     // return web page
+        CURLOPT_HEADER         => false,    // don't return headers
+        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+        CURLOPT_ENCODING       => "",       // handle all encodings
+        CURLOPT_USERAGENT      => "spider", // who am i
+        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+        CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+        CURLOPT_TIMEOUT        => 120,      // timeout on response
+        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+        CURLOPT_SSL_VERIFYPEER => false,
+    );
+
+	$url = $match[1];
+
+    $ch      = curl_init( $url );
+    curl_setopt_array( $ch, $options );
+    $content = curl_exec( $ch );
+    $err     = curl_errno( $ch );
+    $errmsg  = curl_error( $ch );
+    $header  = curl_getinfo( $ch );
+    curl_close( $ch );
+
+    var_dump($content, $errmsg); die;
+	// $sf_form = stream_get_contents($match[1]);
 
 	// var_dump($sf_form);
 }
