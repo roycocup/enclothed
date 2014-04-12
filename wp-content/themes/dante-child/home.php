@@ -218,7 +218,7 @@
 				<div class="col-sm-6 social_boxes_wrapper">
 					<a href="https://www.facebook.com/Enclothed" target="_blank" class="link_cover"></a>
 				<?php 
-					$fb_image_url = get_fb_post_image(2);
+					$fb_image_url = get_fb_post_image(1);
 					if ($fb_image_url == 'default') {
 						$fb_image_url = get_stylesheet_directory_uri().'/images/logo_default_icon.png';
 						$bck_size = 'contain';
