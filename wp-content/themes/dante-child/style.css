@@ -298,8 +298,8 @@ padding: 5px !important;
 .social_buttons{ text-align:center;
 }
 
-.get_started_banner { border:none ;}
-.get_started_banner { border:none ; background-image: none !important; background-color: #f6f7f6 ; margin:-20px 0 20px 0 !important;}
+
+.get_started_banner { border:none ; background-image: none !important; background-color: #f6f7f6 ; margin-top:-20px !important; margin-bottom: 20px !important;}
 .get_started_banner a.sf-button{ margin: 0 auto !important;}
 .spb_box_text.whitestroke .box-content-wrap {
 background-color: transparent !important;
@@ -561,6 +561,7 @@ margin-top:-30px !important;
 .grey_bg{background-color: #f6f7f6;
 border-top: 1px solid #d1d1d1;
 border-bottom: 1px solid #d1d1d1;
+border:none;
 }
 .checkbox_wrap{width: 90%;
 max-width: 637px;
@@ -573,6 +574,7 @@ height: 25px;
  padding-top:25px;
  padding-bottom:25px;
  border-top:1px solid #e1a35a !important;
+
 }
 .gold_bg a.sf-button{ border-color: #222 !important;
  margin:10px 30px 10px 30px;
@@ -1009,6 +1011,11 @@ margin-top: 0px;
 	padding-top: 120px;
 	padding-bottom: 120px;
 	margin-bottom: 20px;
+}
+.pricing_page .parallax p{
+	max-width: 600px;
+	margin: auto;
+	margin-bottom: 10px;
 }
 .pricing_page  .area3 p{max-width: 550px;
  margin: auto;
