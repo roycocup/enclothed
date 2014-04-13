@@ -458,6 +458,9 @@ class EnclothedProfile {
 		$data['shoes_min_price'] = $shoe_prices[0];
 		$data['shoes_max_price'] = $shoe_prices[1];
 
+		//adding stuff to save in the same session for this user
+		$data['profile_id'] 	= $_SESSION['user']['id'];
+		$data['email'] 			= $_SESSION['user']['email'];
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
@@ -506,6 +509,9 @@ class EnclothedProfile {
 
 		$data['extra_delivery'] = $section_6['extra_delivery'];
 		$data['extra_collection'] = $section_6['extra_collection'];
+
+		$data['profile_id'] 	= $_SESSION['user']['id'];
+		$data['email'] 			= $_SESSION['user']['email'];
 
 		$res = $this->main->profiles_model->save($data);
 		unset($_SESSION['section_6']);
