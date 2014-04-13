@@ -211,7 +211,7 @@ class EnclothedProfile {
 		// if (!empty($section['dob'])){
 		// 	preg_match('/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/', $section['dob'], $match);
 		// 	if (empty($match[0])){
-		// 		$str = 'Please insert a birth date using dd-mm-yyyy format.';
+		// 		$str = 'Please insert a birth date using dd/mm/yyyy format.';
 		// 		$errors[] = $str; 
 		// 		setFlashMessage('error', $str);
 		// 	}
@@ -427,16 +427,17 @@ class EnclothedProfile {
 		//$this->redeemGiftCode($_POST['section_5']['giftcode']); 
 		if (!empty($_POST['section_5'])){
 			if (!empty($_POST['section_5']['shirt_price'])){
-				$shirt_price = utf8_decode($_POST['section_5']['shirt_price']);
+				// $shirt_price = utf8_decode($_POST['section_5']['shirt_price']);
+				$shirt_price = $_POST['section_5']['shirt_price'];
 			}
 			if (!empty($_POST['section_5']['trousers_price'])){
-				$trousers_price = utf8_decode($_POST['section_5']['trousers_price']);
+				$trousers_price = $_POST['section_5']['trousers_price'];
 			}
 			if (!empty($_POST['section_5']['coat_price'])){
-				$coat_price = utf8_decode($_POST['section_5']['coat_price']);
+				$coat_price = $_POST['section_5']['coat_price'];
 			}
 			if (!empty($_POST['section_5']['shoe_price'])){
-				$shoe_price = utf8_decode($_POST['section_5']['shoe_price']);
+				$shoe_price = $_POST['section_5']['shoe_price'];
 			}
 		}
 
@@ -449,6 +450,7 @@ class EnclothedProfile {
 		$shoe_prices 		= explode('-', $shoe_price);
 
 		
+
 		$data['shirt_min_price'] = $shirt_prices[0];
 		$data['shirt_max_price'] = $shirt_prices[1];
 		$data['trouser_min_price'] = $trousers_prices[0];
@@ -458,16 +460,18 @@ class EnclothedProfile {
 		$data['shoes_min_price'] = $shoe_prices[0];
 		$data['shoes_max_price'] = $shoe_prices[1];
 
+
+
 		//adding stuff to save in the same session for this user
 		$data['profile_id'] 	= $_SESSION['user']['id'];
-		$data['email'] 			= $_SESSION['user']['email'];
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
+
 		unset($_SESSION['section_5']);
 		$_SESSION['section_5'] = $data;
-		wp_redirect( home_url().'/profile/delivery' ); 
-		exit;
+		//wp_redirect( home_url().'/profile/delivery' ); 
+		// exit;
 	}
 
 
@@ -511,7 +515,7 @@ class EnclothedProfile {
 		$data['extra_collection'] = $section_6['extra_collection'];
 
 		$data['profile_id'] 	= $_SESSION['user']['id'];
-		$data['email'] 			= $_SESSION['user']['email'];
+		
 
 		$res = $this->main->profiles_model->save($data);
 		unset($_SESSION['section_6']);
