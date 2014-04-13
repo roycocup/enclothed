@@ -470,8 +470,8 @@ class EnclothedProfile {
 
 		unset($_SESSION['section_5']);
 		$_SESSION['section_5'] = $data;
-		//wp_redirect( home_url().'/profile/delivery' ); 
-		// exit;
+		wp_redirect( home_url().'/profile/delivery' ); 
+		exit;
 	}
 
 
