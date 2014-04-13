@@ -31,7 +31,7 @@
 
 </script>
 
-
+<?php //session_destroy(); ?>
 <?php 
 if (isset($_SESSION['section_1'])){
 	$section = $_SESSION['section_1'];	
