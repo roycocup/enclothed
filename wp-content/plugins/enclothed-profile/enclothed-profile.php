@@ -63,6 +63,13 @@ class EnclothedProfile {
 				$this->process_authorize_form();
 			}
 		}
+
+		if(isset($_GET['crypt'])){
+			if(isset($_SESSION['user']['email'])){
+				// $data = array();
+				// $this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
+			}
+		}
 	}
 
 	/**
@@ -530,11 +537,7 @@ class EnclothedProfile {
 	*
 	**/
 	public function process_authorize_form(){
-		$data = 'this is the data';
-		global $current_user;
-		//$this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
-		wp_redirect( home_url().'/thank-you' ); 
-		exit;
+		//This form is pointing to sagepay so will not even touch this function
 	}
 
 

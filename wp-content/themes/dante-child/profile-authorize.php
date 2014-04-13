@@ -191,7 +191,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							
 							<!-- <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div> -->
 
-							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+							
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 					            <!-- <a href="/profile/delivery/" class="button4">Go Back</a> -->
