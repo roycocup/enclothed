@@ -157,4 +157,20 @@ class Sagepay {
 
 	}
 
+
+	public function sagepayDecrypt($strIn) {
+
+		$strEncryptionPassword = $this->encryption_key;
+
+		if (substr($strIn,0,1)=="@") 
+		{
+			$strIV = $strEncryptionPassword;
+			$strIn = substr($strIn,1); 
+			$strIn = pack('H*', $strIn);
+			return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $strEncryptionPassword, $strIn, MCRYPT_MODE_CBC, $strIV); 
+		} else {
+			return simpleXor(base64Decode($strIn),$strEncryptionPassword);
+		}
+	}
+
 }

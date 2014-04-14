@@ -179,7 +179,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								</div>
 							</div>
 
-							<div class="col-xs-6">
+							<!-- <div class="col-xs-6">
 								<label class="css-label" style="">Gift Card Code</label>
 								<input type='text' class="promo_code" id='' tabindex="9" placeholder='Do you have a Gift Card Code?' name='giftcode'  value="">
 							</div>
@@ -187,7 +187,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="col-xs-6">
 								<label class="css-label" style="">Promotion Code</label>
 								<input type='text' class="promo_code" id='' tabindex="9" placeholder='Do you have a Promotional Code?' name='promocode'  value="">
-							</div>
+							</div> -->
 							
 							<!-- <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div> -->
 

@@ -46,13 +46,24 @@ function echo_if_present($word){
 			$('form input[name="section_2['+image+']"').remove();
 		});
 
-		jQuery( ".click" ).click(function() {
-			if(jQuery(this).hasClass( "selected" )){
-				
+		//add the ones that are prepopulated / selected to the form
+		$('.selected').each(function(){
+			var image = $(this).attr('id');
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_2['+image+']',
+				value: 'checked',
+			}).appendTo('form[name="section_2"]');
+		});
+
+		$( ".click" ).click(function() {
+
+			if($(this).hasClass( "selected" )){
+
 			} else {
-				jQuery('#array').val(jQuery('#array').val() + "," + jQuery(this).attr('id'))		
+				$('#array').val( $('#array').val() + "," + $(this).attr('id') );		
 			}
-			jQuery(this).toggleClass( "selected" );
+			$(this).toggleClass( "selected" );
 		});
 
 	});

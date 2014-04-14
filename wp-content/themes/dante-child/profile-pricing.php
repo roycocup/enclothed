@@ -391,7 +391,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							                <!-- <a href="/profile/sizing/" class="button4">Go Back</a> -->
 							                <div class="button_spacer col-sm-1 hidden-xs"></div>
 							                <button class="button4 submit-button">Save and Continue</button>
-                						</div><!--mini-wrapper4-->
+                						</div>
 									</div>
 								</form>
 								<!--styles-block-->

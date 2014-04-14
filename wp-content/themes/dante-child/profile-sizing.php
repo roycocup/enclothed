@@ -121,12 +121,11 @@ function echo_if_present($word){
 				$( "#tshirt_selection" ).val(tshirt_slider_increments[amount]);	
 				$( "#tshirt_slider" ).slider({value:amount});
 			}else{
-				console.log(10);
 				$( "#tshirt_selection" ).val(tshirt_slider_increments[40]);	
 			}
-
 			
 		});
+
 		$(function() {
 			$( "#neck_size_slider" ).slider({
 				value:18.5,
@@ -202,6 +201,7 @@ function echo_if_present($word){
 
 			// displaying the previously saved values
 			if (Object.previous_selections){
+				//display this if there were previous values
 				var amount = 0;
 				for(key in inside_leg_increments){
 					if (inside_leg_increments[key] == Object.trouser_inside_leg_size){
@@ -211,7 +211,7 @@ function echo_if_present($word){
 				$( "#inside_leg_selection" ).val(inside_leg_selection[amount]);	
 				$( "#inside_leg_slider" ).slider({value:amount});
 			} else {
-				console.log(10);
+				// default value
 				$( "#inside_leg_selection" ).val(inside_leg_increments[40]);
 			}
 			
@@ -227,6 +227,7 @@ function echo_if_present($word){
 			var neck_size 		= $( "#neck_size_selection" ).val();
 			var shoes_size 		= $( "#shoes_selection" ).val();
 			var trouser_size 	= $( "#trouser_selection" ).val();
+			var jacket_size 	= $( "#jacket_selection" ).val();
 			var inside_leg 		= $( "#inside_leg_selection" ).val();
 			
 
@@ -252,6 +253,12 @@ function echo_if_present($word){
 				type: 'hidden',
 				name: 'section_4[trouser_size]',
 				value: trouser_size,
+			}).appendTo('form[name="section_4"]');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_4[jacket_size]',
+				value: jacket_size,
 			}).appendTo('form[name="section_4"]');
 
 			$('<input>').attr({

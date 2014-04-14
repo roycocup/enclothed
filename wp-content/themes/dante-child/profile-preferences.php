@@ -48,6 +48,18 @@ function echo_if_present($word){
 			$('form input[name="section_3['+image+']"').remove();
 		});
 
+		//add the ones that are prepopulated / selected to the form
+		$('.selected').each(function(){
+			var image = $(this).attr('id');
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'section_2['+image+']',
+				value: 'checked',
+			}).appendTo('form[name="section_2"]');
+		});
+
+
+
 		jQuery( ".click" ).click(function() {
 			if(jQuery(this).hasClass( "selected" )){
 				// do nothing		
@@ -322,7 +334,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="" value="" id='brands-autocomplete-box'></textarea>                                    
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_3[more_brands]" value="<?php @echo_if_exists($section['more_brands']); ?>" id='brands-autocomplete-box'></textarea>                                    
 								</div>
 							</div>
 

@@ -66,6 +66,11 @@ class EnclothedProfile {
 
 		if(isset($_GET['crypt'])){
 			if(isset($_SESSION['user']['email'])){
+				// $ldm_sagepay = new ldm_sagepay();
+				// $s = $ldm_sagepay->getInstance();
+				// $t = $s->sagepayDecrypt($_GET['crypt']); 
+
+				var_dump($t); die;
 				// $data = array();
 				// $this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
 			}
@@ -125,42 +130,48 @@ class EnclothedProfile {
 		$dob = date('Y-m-d', $dob);
 
 		$data = array();
-		$data['profile_id'] = (int) $new_user_id;
-		$data['email'] 		= $profile['email'];
+		$data['profile_id'] 		= (int) $new_user_id;
+		$data['email'] 				= $profile['email'];
 		$data['customer_id'] 		= substr(md5($new_user_id), 0, 5); //This is the customer unique reference
 		$data['first_name'] 		= $names[0];
 		$data['last_name'] 			= $last_names;
 		$data['phone'] 				= $profile['phone'];
 		$data['dob'] 				= $dob;
+		$data['address']			= $profile['address'];
 		$data['town'] 				= $profile['town'];
 		$data['post_code'] 			= $profile['post_code'];
 		$data['occupation'] 		= $profile['occupation'];
 		$data['feedback_1'] 		= $profile['feedback_1'];
 		$data['other_person'] 		= $profile['other_person'];
 
-		//save it
+		//save it to db
 		debug_log('Creating or updating a profile now.');
 		$res = $this->main->profiles_model->save($data);
 
+		//send to webservices
+		debug_log('sending to webservices');
 		$ws = new ldmwebservices();
 		$fields = array();
-		$fields['customerId'] 				= '98669';
-		$fields['orderReferenceNumber'] 	= '23423';
-		$fields['firstName'] 				= 'yourname';
-		$fields['lastName'] 				= 'lastnamemaman';
-		$fields['addressLine1'] 			= 'add_1';
-		$fields['addressLine2'] 			= 'nothinghere';
-		$fields['townCity'] 				= 'London';
-		$fields['Email'] 					= 'rod@likedigitalmedia.com';
-		$fields['postcode'] 				= 'e16ql';
-		$fields['telephone'] 				= '36345643565463';
-		$fields['password'] 				= 'thisisanicepass';
-		$fields['occupation'] 				= 'somestuff';
-		$fields['dob'] 						= '1976-09-10';
+		$fields['customerId'] 				= $new_user_id;
+		$fields['orderReferenceNumber'] 	= '';
+		$fields['firstName'] 				= $data['name'];
+		$fields['lastName'] 				= $last_names;
+		$fields['addressLine1'] 			= $data['address'];
+		$fields['addressLine2'] 			= '';
+		$fields['townCity'] 				= $data['town'];
+		$fields['Email'] 					= $data['email'];
+		$fields['postcode'] 				= $data['post_code'];
+		$fields['telephone'] 				= $data['phone'];
+		$fields['password'] 				= $profile['password'];
+		$fields['occupation'] 				= $data['occupation'];
+		$fields['dob'] 						= $dob;
 		$fields['forceLead'] 				= 'true';
-		
-		//create a lead
-		//$ws->sendForm($fields);
+
+		//send it
+		$ws_res = $ws->sendForm($fields);
+		if (empty($ws_res)){
+			debug_log('Something went wrong on the webservices lead creation'); 
+		}
 
 		return $new_user_id;
 	}
@@ -297,6 +308,7 @@ class EnclothedProfile {
 			$data['other_person'] 	=  (!empty($section['other_person']))? sanitize_text_field($section['other_person']) : '';
 			$data['occupation'] 	= sanitize_text_field($section['occupation']);
 
+
 			// $this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 			$new_user_id = $this->saveNewProfile($data);
 
@@ -311,8 +323,8 @@ class EnclothedProfile {
 			$_SESSION['user']['email'] = $data['email'];
 
 			//send to next page
-			wp_redirect( home_url().'/profile/style' ); 
-			exit;	
+			// wp_redirect( home_url().'/profile/style' ); 
+			// exit;	
 		}
 		
 	}
@@ -337,6 +349,9 @@ class EnclothedProfile {
 		$data['styles'] = $styles;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];
+		
+		//setting the stage
+		$this->main->profiles_model->updateStage(2, $data['profile_id']);
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
@@ -353,6 +368,7 @@ class EnclothedProfile {
 	**/
 	public function process_preferences_form(){
 		$section_3 = $_POST['section_3'];
+		unset($section_3['more_brands']);
 		$preferences = array_keys($section_3);
 		$preferences = implode(',', $preferences);
 
@@ -363,9 +379,16 @@ class EnclothedProfile {
 			exit;
 		}
 
+		
+		$data['more_brands'] = sanitize_text_field($_POST['section_3']['more_brands']);
 		$data['preferences'] = $preferences;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];
+		
+		var_dump($data); 
+
+		//setting the stage
+		$this->main->profiles_model->updateStage(3, $data['profile_id']);
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
@@ -401,7 +424,11 @@ class EnclothedProfile {
         $data['neck_size'] 					= $section_4['neck_size'];
         $data['shoe_size'] 					= $section_4['shoes_size'];
         $data['trouser_size'] 				= $section_4['trouser_size'];
+        $data['jacket_size'] 				= $section_4['jacket_size'];
         $data['trouser_inside_leg_size'] 	= $section_4['inside_leg'];
+        $data['add_size_info']				= $section_4['extra'];
+        $data['user_fit_brands']			= $section_4['more_brands'];
+
 
         $sleeve_lenght = '';
         if ($section_4['sleeve_lenght_regular'] || $section_4['sleeve_lenght_long'] || $section_4['sleeve_lenght_short']){
@@ -415,6 +442,8 @@ class EnclothedProfile {
 		// $data['sizes'] 		= $sizes;
 		$data['profile_id'] 	= $_SESSION['user']['id'];
 		$data['email'] 			= $_SESSION['user']['email'];
+		//setting the stage
+		$this->main->profiles_model->updateStage(4, $data['profile_id']);
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
@@ -466,11 +495,14 @@ class EnclothedProfile {
 		$data['coat_max_price'] = $coat_prices[1];
 		$data['shoes_min_price'] = $shoe_prices[0];
 		$data['shoes_max_price'] = $shoe_prices[1];
+		$data['extra_price'] = sanitize_text_field($_POST['section_5']['extra']);
 
 
 
 		//adding stuff to save in the same session for this user
 		$data['profile_id'] 	= $_SESSION['user']['id'];
+		//setting the stage
+		$this->main->profiles_model->updateStage(5, $data['profile_id']);
 
 		//save it
 		$res = $this->main->profiles_model->save($data);
@@ -522,6 +554,8 @@ class EnclothedProfile {
 		$data['extra_collection'] = $section_6['extra_collection'];
 
 		$data['profile_id'] 	= $_SESSION['user']['id'];
+		//setting the stage
+		$this->main->profiles_model->updateStage(6, $data['profile_id']);
 		
 
 		$res = $this->main->profiles_model->save($data);

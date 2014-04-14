@@ -197,113 +197,174 @@ public function renderFullForm(){
 public function sendForm($fields){
 	
 	$data = $fields;
-	$data['howDidYouHearAboutEnclothed'] = 'default';
-    $data['howDidYouHearAboutEnclothedOther'] = 'howdidyouhearaboutenclothed';
-    $data['isBuyingForPerson'] = 'default';
-    $data['buyingForWho'] = 'forwho';
-    $data['styleChoices'] = '1-1-1';
-	$data['shirtTypeChoice'] ='1-1-3';
-	$data['whereDoYouWearYourShirtChoices'] = 'work';
-    $data['trouserTypeChoice'] = 'jeans';
-    $data['trouserColourChoices'] = 'bright';
-    $data['jeanStyleChoice'] = 'skinny';
-    $data['denimColourChoice'] = 'light';
-    $data['shortStyleChoice'] = 'below-knee';
-    $data['shoeStyleChoices'] = 'boots';
-    $data['shoeColourChoices'] = 'bright';
-    $data['tShirtSize'] = 'XL';
-    $data['neckSize'] = '16';
-    $data['sleeveLength'] = 'bright';
-    $data['shoeSize'] = 'UK12';
-    $data['jacketSize'] = '48';
-    $data['trouserWaist'] = '31';
-    $data['trouserInsideLeg'] = '28';
-    $data['additionalSizeInfo'] = 	'im-a-little-bigger-in-boss-jeans';
-	$data['favouriteBrands'] = 'My-favorite-brand-is-tommy-hillfige';
-	$data['brandsThatFitYouWell'] = 'boss-fits-me-great';
-	$data['contactMeAboutSizing'] = 'true';
-    $data['shirtPriceMin'] = '100';
-    $data['shirtPriceMax'] = '150';
-    $data['trouserPriceMin'] = '100';
-    $data['trouserPriceMax'] = '150';
-    $data['coatPriceMin'] = '200';
-    $data['coatPriceMax'] = '250';
-    $data['shoePriceMin'] = '200';
-    $data['shoePriceMax'] = '250';
-    $data['additionalInfo'] = 'noadditonalinfo';
-	$data['customerAddressLine1'] = 'cust-address-line-1';
-    $data['customerAddressLine2'] = 'cust-address-line-2';
-    $data['customerTownCity'] = 'cust-town_test';
-    $data['customerPostCode'] = 'e16ql';
-    $data['customerAddressName'] = 'cust-name-this-address-alt-address';
-    $data['alternativeAddressLine1'] = 'alt-address-line-1';
-    $data['alternativeAddressLine2'] = 'alt-2';
-    $data['alternativeTownCity'] = 'alttown_test';
-    $data['alternativePostCode'] = 'e16ql';
-    $data['alternativeAddressName'] = 'namethisaddressaltaddress';
-    $data['billingAddressSameAsCustomerAddress'] = 'true';
-    $data['billingAddressLine1'] = 'billaddressline1';
-    $data['billingAddressLine2'] = 'billaddressline2';
-    $data['billingTownCity'] = 'billtown_test';
-    $data['billingPostCode'] = 'e16ql';
-    $data['billingAddressName'] = 'namethisaddressbillingaddress';
-    $data['deliveryInstructions'] = 'del-instructions';
-	$data['collectionNotes'] = 'collection-instructions';
-	$data['commentsToStylist'] = 'Comments-to-stylist';
-	$data['termsAndConditionsChecked'] = 'true';
-    $data['promotionalCode'] = 'promocode';
-    $data['giftCardNumber'] = 'giftcardtest';
-    $data['pageNumber'] = '01';
-    $data['websiteRef'] = 'f3826563928';
-    $data['jacketTypeChoices'] = 'notused';
-    $data['whereDoYouWhereYourJacketChoices'] = 'notused';
-    $data['underwearStyleChoices'] = 'notused';
-    $data['styleDislikeDescription'] = 'notused';
-    $data['brandChoices'] = 'notused';
+	// $data['howDidYouHearAboutEnclothed'] = 'default';
+	// $data['howDidYouHearAboutEnclothedOther'] = 'howdidyouhearaboutenclothed';
+	// $data['isBuyingForPerson'] = 'default';
+	// $data['buyingForWho'] = 'forwho';
+	// $data['styleChoices'] = '1-1-1';
+	// $data['shirtTypeChoice'] ='1-1-3';
+	// $data['whereDoYouWearYourShirtChoices'] = 'work';
+	// $data['trouserTypeChoice'] = 'jeans';
+	// $data['trouserColourChoices'] = 'bright';
+	// $data['jeanStyleChoice'] = 'skinny';
+	// $data['denimColourChoice'] = 'light';
+	// $data['shortStyleChoice'] = 'below-knee';
+	// $data['shoeStyleChoices'] = 'boots';
+	// $data['shoeColourChoices'] = 'bright';
+	// $data['tShirtSize'] = 'XL';
+	// $data['neckSize'] = '16';
+	// $data['sleeveLength'] = 'bright';
+	// $data['shoeSize'] = 'UK12';
+	// $data['jacketSize'] = '48';
+	// $data['trouserWaist'] = '31';
+	// $data['trouserInsideLeg'] = '28';
+	// $data['additionalSizeInfo'] = 	'im-a-little-bigger-in-boss-jeans';
+	// $data['favouriteBrands'] = 'My-favorite-brand-is-tommy-hillfige';
+	// $data['brandsThatFitYouWell'] = 'boss-fits-me-great';
+	// $data['contactMeAboutSizing'] = 'true';
+	// $data['shirtPriceMin'] = '100';
+	// $data['shirtPriceMax'] = '150';
+	// $data['trouserPriceMin'] = '100';
+	// $data['trouserPriceMax'] = '150';
+	// $data['coatPriceMin'] = '200';
+	// $data['coatPriceMax'] = '250';
+	// $data['shoePriceMin'] = '200';
+	// $data['shoePriceMax'] = '250';
+	// $data['additionalInfo'] = 'noadditonalinfo';
+	// $data['customerAddressLine1'] = 'cust-address-line-1';
+	// $data['customerAddressLine2'] = 'cust-address-line-2';
+	// $data['customerTownCity'] = 'cust-town_test';
+	// $data['customerPostCode'] = 'e16ql';
+	// $data['customerAddressName'] = 'cust-name-this-address-alt-address';
+	// $data['alternativeAddressLine1'] = 'alt-address-line-1';
+	// $data['alternativeAddressLine2'] = 'alt-2';
+	// $data['alternativeTownCity'] = 'alttown_test';
+	// $data['alternativePostCode'] = 'e16ql';
+	// $data['alternativeAddressName'] = 'namethisaddressaltaddress';
+	// $data['billingAddressSameAsCustomerAddress'] = 'true';
+	// $data['billingAddressLine1'] = 'billaddressline1';
+	// $data['billingAddressLine2'] = 'billaddressline2';
+	// $data['billingTownCity'] = 'billtown_test';
+	// $data['billingPostCode'] = 'e16ql';
+	// $data['billingAddressName'] = 'namethisaddressbillingaddress';
+	// $data['deliveryInstructions'] = 'del-instructions';
+	// $data['collectionNotes'] = 'collection-instructions';
+	// $data['commentsToStylist'] = 'Comments-to-stylist';
+	// $data['termsAndConditionsChecked'] = 'true';
+	// $data['promotionalCode'] = 'promocode';
+	// $data['giftCardNumber'] = 'giftcardtest';
+	// $data['pageNumber'] = '01';
+	// $data['websiteRef'] = 'f3826563928';
+	// $data['jacketTypeChoices'] = 'notused';
+	// $data['whereDoYouWhereYourJacketChoices'] = 'notused';
+	// $data['underwearStyleChoices'] = 'notused';
+	// $data['styleDislikeDescription'] = 'notused';
+	// $data['brandChoices'] = 'notused';
+
+	$data['howDidYouHearAboutEnclothed'] = '';
+	$data['howDidYouHearAboutEnclothedOther'] = '';
+	$data['isBuyingForPerson'] = '';
+	$data['buyingForWho'] = '';
+	$data['styleChoices'] = '1-1-';
+	$data['shirtTypeChoice'] ='1-1-';
+	$data['whereDoYouWearYourShirtChoices'] = '';
+	$data['trouserTypeChoice'] = '';
+	$data['trouserColourChoices'] = '';
+	$data['jeanStyleChoice'] = '';
+	$data['denimColourChoice'] = '';
+	$data['shortStyleChoice'] = '';
+	$data['shoeStyleChoices'] = '';
+	$data['shoeColourChoices'] = '';
+	$data['tShirtSize'] = '';
+	$data['neckSize'] = '';
+	$data['sleeveLength'] = '';
+	$data['shoeSize'] = '';
+	$data['jacketSize'] = '';
+	$data['trouserWaist'] = '';
+	$data['trouserInsideLeg'] = '';
+	$data['additionalSizeInfo'] = 	'';
+	$data['favouriteBrands'] = '';
+	$data['brandsThatFitYouWell'] = '';
+	$data['contactMeAboutSizing'] = '';
+	$data['shirtPriceMin'] = '';
+	$data['shirtPriceMax'] = '';
+	$data['trouserPriceMin'] = '';
+	$data['trouserPriceMax'] = '';
+	$data['coatPriceMin'] = '';
+	$data['coatPriceMax'] = '';
+	$data['shoePriceMin'] = '';
+	$data['shoePriceMax'] = '';
+	$data['additionalInfo'] = '';
+	$data['customerAddressLine1'] = '';
+	$data['customerAddressLine2'] = '';
+	$data['customerTownCity'] = '';
+	$data['customerPostCode'] = '';
+	$data['customerAddressName'] = '';
+	$data['alternativeAddressLine1'] = '';
+	$data['alternativeAddressLine2'] = '';
+	$data['alternativeTownCity'] = '';
+	$data['alternativePostCode'] = '';
+	$data['alternativeAddressName'] = '';
+	$data['billingAddressSameAsCustomerAddress'] = '';
+	$data['billingAddressLine1'] = '';
+	$data['billingAddressLine2'] = '';
+	$data['billingTownCity'] = '';
+	$data['billingPostCode'] = '';
+	$data['billingAddressName'] = '';
+	$data['deliveryInstructions'] = '';
+	$data['collectionNotes'] = '';
+	$data['commentsToStylist'] = '';
+	$data['termsAndConditionsChecked'] = '';
+	$data['promotionalCode'] = '';
+	$data['giftCardNumber'] = '';
+	$data['pageNumber'] = '';
+	$data['websiteRef'] = '';
+	$data['jacketTypeChoices'] = '';
+	$data['whereDoYouWhereYourJacketChoices'] = '';
+	$data['underwearStyleChoices'] = '';
+	$data['styleDislikeDescription'] = '';
+	$data['brandChoices'] = '';
 
 	// use key 'http' even if you send the request to https://...
 	$url = 'https://www.income-systemsltd.com/test%20apps/enclothed/registercustomer.aspx';
-	$options = array(
-		'http' => array(
-			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-			'method'  => 'POST',
-			'content' => http_build_query($data),
-			'follow_location' => true,
-			),
-		);
-	$context  = stream_context_create($options);
-	$result = file_get_contents($url, false, $context);
-
-	$url_reg = '/href=\"(.*?)"/';
-	preg_match($url_reg, $result, $match);
+	// $options = array(
+	// 	'http' => array(
+	// 		'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+	// 		'method'  => 'POST',
+	// 		'content' => http_build_query($data),
+	// 		'follow_location' => true,
+	// 		),
+	// 	);
+	// $context  = stream_context_create($options);
 
 	$options = array(
-        CURLOPT_RETURNTRANSFER => true,     // return web page
-        CURLOPT_HEADER         => false,    // don't return headers
-        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
-        CURLOPT_ENCODING       => "",       // handle all encodings
-        CURLOPT_USERAGENT      => "spider", // who am i
-        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
-        CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
-        CURLOPT_TIMEOUT        => 120,      // timeout on response
-        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
-        CURLOPT_SSL_VERIFYPEER => false,
-    );
+		CURLOPT_RETURNTRANSFER 	=> true,     // return web page
+		CURLOPT_HEADER         	=> false,    // don't return headers
+		CURLOPT_ENCODING       	=> "",       // handle all encodings
+		CURLOPT_USERAGENT      	=> "spider", // who am i
+		CURLOPT_AUTOREFERER    	=> true,     // set referer on redirect
+		CURLOPT_CONNECTTIMEOUT 	=> 120,      // timeout on connect
+		CURLOPT_TIMEOUT        	=> 120,      // timeout on response
+		CURLOPT_MAXREDIRS      	=> 10,       // stop after 10 redirects
+		CURLOPT_FOLLOWLOCATION 	=> true,     // follow redirects
+		CURLOPT_SSL_VERIFYPEER 	=> false,
+		CURLOPT_POST 			=> 1, 
+		CURLOPT_POSTFIELDS 		=> http_build_query($data),
+	);
 
-	$url = $match[1];
+	$ch      = curl_init( $url );
+	curl_setopt_array( $ch, $options );
+	$content = curl_exec( $ch ); //EXECUTE
+	$err     = curl_errno( $ch );
+	$errmsg  = curl_error( $ch );
+	$header  = curl_getinfo( $ch );
+	curl_close( $ch );
 
-    $ch      = curl_init( $url );
-    curl_setopt_array( $ch, $options );
-    $content = curl_exec( $ch );
-    $err     = curl_errno( $ch );
-    $errmsg  = curl_error( $ch );
-    $header  = curl_getinfo( $ch );
-    curl_close( $ch );
+	//if a field is missing - blank string response
+	//if a field is worng - redirect to thank you page
+	//if all good - redirect to form
 
-    var_dump($content, $errmsg); die;
-	// $sf_form = stream_get_contents($match[1]);
-
-	// var_dump($sf_form);
+	return $content;
 }
 
 

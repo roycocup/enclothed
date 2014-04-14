@@ -22,8 +22,8 @@ $fields = array();
 
 
 
-$fields['customerId'] 				= '98669';
-$fields['orderReferenceNumber'] 	= '23423';
+$fields['customerId'] 				= '87987987';
+$fields['orderReferenceNumber'] 	= '';
 $fields['firstName'] 				= 'yourname';
 $fields['lastName'] 				= 'lastnamemaman';
 $fields['addressLine1'] 			= 'add_1';
@@ -35,7 +35,7 @@ $fields['telephone'] 				= '36345643565463';
 $fields['password'] 				= 'thisisanicepass';
 $fields['occupation'] 				= 'somestuff';
 $fields['dob'] 						= '1976-09-10';
-$fields['forceLead'] 				= 'true';
+$fields['forceLead'] 				= 'false';
 
 // echo $ws->getCustomForm($fields);
 echo $ws->sendForm($fields);
