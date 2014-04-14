@@ -323,8 +323,8 @@ class EnclothedProfile {
 			$_SESSION['user']['email'] = $data['email'];
 
 			//send to next page
-			// wp_redirect( home_url().'/profile/style' ); 
-			// exit;	
+			wp_redirect( home_url().'/profile/style' ); 
+			exit;	
 		}
 		
 	}
