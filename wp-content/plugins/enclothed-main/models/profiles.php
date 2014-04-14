@@ -76,6 +76,20 @@ class Profiles_model extends db{
 
 	}
 
+	/**
+	*
+	* this will update the stage field with the highest number 
+	*
+	**/
+	public function updateStage ($stageNum, $profile_id){
+		$sql = "SELECT stage FROM {$this->table} where profile_id = {$profile_id}";
+		$cur_stage = $this->wpdb->get_var($sql); 
+		if ($stageNum > $cur_stage){
+			$this->wpdb->query("UPDATE {$this->table} SET stage = {$stageNum} WHERE profile_id = {$profile_id}"); 
+		}
+
+	}
+
 
 
 
