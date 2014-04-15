@@ -70,7 +70,7 @@ class EnclothedProfile {
 				// $s = $ldm_sagepay->getInstance();
 				// $t = $s->sagepayDecrypt($_GET['crypt']); 
 
-				var_dump($t); die;
+				// var_dump($t); die;
 				// $data = array();
 				// $this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
 			}
@@ -426,8 +426,6 @@ class EnclothedProfile {
         $data['trouser_size'] 				= $section_4['trouser_size'];
         $data['jacket_size'] 				= $section_4['jacket_size'];
         $data['trouser_inside_leg_size'] 	= $section_4['inside_leg'];
-        $data['add_size_info']				= $section_4['extra'];
-        $data['user_fit_brands']			= $section_4['more_brands'];
 
 
         $sleeve_lenght = '';
