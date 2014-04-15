@@ -208,79 +208,119 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img1.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img1.jpg" class="img-responsive" />
 										<div id="style_1" class="grid_box_overlay click <?php echo_if_present('style_1'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img2.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img2.jpg" class="img-responsive" />
 										<div id="style_2" class="grid_box_overlay click <?php echo_if_present('style_2'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img6.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img6.jpg" class="img-responsive" />
 										<div id="style_3" class="grid_box_overlay click <?php echo_if_present('style_3'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img5.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img5.jpg" class="img-responsive" />
 										<div id="style_4" class="grid_box_overlay click <?php echo_if_present('style_4'); ?>"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img3.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img3.jpg" class="img-responsive" />
 										<div id="style_5" class="grid_box_overlay click <?php echo_if_present('style_5'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img4.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img4.jpg" class="img-responsive" />
 										<div id="style_6" class="grid_box_overlay click <?php echo_if_present('style_6'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img8.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img8.jpg" class="img-responsive" />
 										<div id="style_7" class="grid_box_overlay click <?php echo_if_present('style_7'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img7.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img7.jpg" class="img-responsive" />
 										<div id="style_8" class="grid_box_overlay click <?php echo_if_present('style_8'); ?>"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img1.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img9.jpg" class="img-responsive" />
 										<div id="style_9" class="grid_box_overlay click <?php echo_if_present('style_9'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img2.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img10.jpg" class="img-responsive" />
 										<div id="style_10" class="grid_box_overlay click <?php echo_if_present('style_10'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img6.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img13.jpg" class="img-responsive" />
 										<div id="style_11" class="grid_box_overlay click <?php echo_if_present('style_11'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img5.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img14.jpg" class="img-responsive" />
 										<div id="style_12" class="grid_box_overlay click <?php echo_if_present('style_12'); ?>"></div>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="col-sm-6 col-xs-6 grid_box left">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img3.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img11.jpg" class="img-responsive" />
 										<div id="style_13" class="grid_box_overlay click <?php echo_if_present('style_13'); ?>"></div>
 									</div>
 									<div class="col-sm-6 col-xs-6 grid_box right">
-										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img4.png" class="img-responsive" />
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img12.jpg" class="img-responsive" />
 										<div id="style_14" class="grid_box_overlay click <?php echo_if_present('style_14'); ?>"></div>
 									</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img8.png" class="img-responsive" />
+											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img15.jpg" class="img-responsive" />
 											<div id="style_15" class="grid_box_overlay click <?php echo_if_present('style_15'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img7.png" class="img-responsive" />
+											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img16.jpg" class="img-responsive" />
 											<div id="style_16" class="grid_box_overlay click <?php echo_if_present('style_16'); ?>"></div>
 										</div>
 									</div>
-								</div>
-							</div>
+								
 
+
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img17.jpg" class="img-responsive" />
+										<div id="style_17" class="grid_box_overlay click <?php echo_if_present('style_17'); ?>"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img18.jpg" class="img-responsive" />
+										<div id="style_18" class="grid_box_overlay click <?php echo_if_present('style_18'); ?>"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img21.jpg" class="img-responsive" />
+										<div id="style_19" class="grid_box_overlay click <?php echo_if_present('style_19'); ?>"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img22.jpg" class="img-responsive" />
+										<div id="style_20" class="grid_box_overlay click <?php echo_if_present('style_20'); ?>"></div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="col-sm-6 col-xs-6 grid_box left">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img19.jpg" class="img-responsive" />
+										<div id="style_21" class="grid_box_overlay click <?php echo_if_present('style_21'); ?>"></div>
+									</div>
+									<div class="col-sm-6 col-xs-6 grid_box right">
+										<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img20.jpg" class="img-responsive" />
+										<div id="style_22" class="grid_box_overlay click <?php echo_if_present('style_22'); ?>"></div>
+									</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img23.jpg" class="img-responsive" />
+											<div id="style_23" class="grid_box_overlay click <?php echo_if_present('style_23'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php echo get_stylesheet_directory_uri();?>/images/grid-img24.jpg" class="img-responsive" />
+											<div id="style_24" class="grid_box_overlay click <?php echo_if_present('style_24'); ?>"></div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 								<!-- <a href="/profile/details/" class="button4">Go Back</a> -->
