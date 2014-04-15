@@ -112,7 +112,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
 							<div class="spb_wrapper clearfix">
 								<h2 style="text-align: center;"><span style="color: #ffffff;">DASHBOARD</span></h2>
-									<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
+								<p style="margin-bottom: 0;"><img class="size-full aligncenter" alt="line" src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/line.png"></p>
 							</div> 
 						</div>
 					</div>
@@ -128,13 +128,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 							<div class="col-sm-10 dashboard_wrapper no-borders">
 								<h1>We are building you a box. <br>Please contact us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></h1>
-
 							</div>
-
-							
-
-
-						<!--styles-block-->
 						</div>
 
 
@@ -147,7 +141,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<div class="styles-block" style=" display:none">
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
-							<?php echo $form; ?>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
@@ -210,24 +203,24 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						</form>
 
 						<!--styles-block-->
-						</div>
-
-
-
-
-
-
-
-
 					</div>
+
+
+
+
+
+
+
+
 				</div>
-				<!-- CLOSE page -->
 			</div>
-		<?php endif; ?>
-	</div>
+			<!-- CLOSE page -->
+		</div>
+	<?php endif; ?>
+</div>
 </div>
 
-	<?php get_footer(); ?>
+<?php get_footer(); ?>
 
 
 
@@ -240,40 +233,40 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-	<div class="container" style="display:none;">
-		<h2>Dashboard</h2>
+<div class="container" style="display:none;">
+	<h2>Dashboard</h2>
 
 
-		<h2>Request a box</h2>
-		<form action="" method="POST" name='more_box'>
+	<h2>Request a box</h2>
+	<form action="" method="POST" name='more_box'>
 		<?php $nonce = wp_create_nonce( get_uri() ); ?>
-			<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<select name="more_box[address]" id="more_box[addresses]">
-						<option value="1">19, Ebeneezer Street, London N1 4LS</option>
-						<option value="2">40, Gowan Stree, London EC1 5HJ</option>
-					</select>
-				</div>
-				<br><br>
+		<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-				<div class="col-xs-6">
-					<label for="promocode">You have a promotional code? Great!</label>
-					<input type="text" placeholder='Promotional Code' name='promocode'>	
-				</div>
-
-				<div class="col-xs-6">
-					<label for="promocode">Did you receive a Gift Card? Insert its code here!</label>
-					<input type="text" placeholder='Gift Card Code' name='giftcode'>
-				</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<select name="more_box[address]" id="more_box[addresses]">
+					<option value="1">19, Ebeneezer Street, London N1 4LS</option>
+					<option value="2">40, Gowan Stree, London EC1 5HJ</option>
+				</select>
 			</div>
 			<br><br>
 
-			<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-			<div class="mini-wrapper5">
-                <button class="button4" onclick="submit()">Save & Send</button>
-		 	</div>
-		</form>
-	</div>
-	<?php get_footer(); ?>
+			<div class="col-xs-6">
+				<label for="promocode">You have a promotional code? Great!</label>
+				<input type="text" placeholder='Promotional Code' name='promocode'>	
+			</div>
+
+			<div class="col-xs-6">
+				<label for="promocode">Did you receive a Gift Card? Insert its code here!</label>
+				<input type="text" placeholder='Gift Card Code' name='giftcode'>
+			</div>
+		</div>
+		<br><br>
+
+		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+		<div class="mini-wrapper5">
+			<button class="button4" onclick="submit()">Save & Send</button>
+		</div>
+	</form>
+</div>
+<?php get_footer(); ?>
