@@ -64,29 +64,50 @@ class EnclothedProfile {
 			}
 		}
 
+
+		/*===============================================
+		=            handling thank you page            =
+		===============================================*/
+
+		// The thank you page should decrypt what comes 
+		// from sagepay and also send an email to both the client and the user
 		if(isset($_GET['crypt'])){
 			if(isset($_SESSION['user']['email'])){
 				// $ldm_sagepay = new ldm_sagepay();
 				// $s = $ldm_sagepay->getInstance();
 				// $t = $s->sagepayDecrypt($_GET['crypt']); 
-
 				// var_dump($t); die;
-				// $data = array();
-				// $this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
+
+				//send the email to the user
+				$data = array();
+				$user = get_user_by('email', $_SESSION['user']['email']);
+				$data['name'] = $user->first_name.' '.$user->last_name;
+				$this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
+
+				//send the email to the agnecy
+				$data = array();
+				$user = get_user_by('email', $_SESSION['user']['email']);
+				$data['name'] = $user->first_name.' '.$user->last_name;
+				$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
 			}
 		}
+		
+		/*-----  End of handling thank you page  ------*/
+		
+		
+		
 	}
 
 	/**
 	*
 	* This creates a new user in wordpress and a new profile on a custom table enc_profile.
+	* it will also send this part of info to a restful webservice
 	* @param array - email, name, phone, dob, occupation
 	* @return int (id for new user) or string for error 
 	*
 	**/
 	public function saveNewProfile($profile){
 		
-
 		//check that we have what it takes to create the user
 		if (empty($profile['email']) || empty($profile['password'])) {
 			debug_log('Trying to create user without either password or email');
@@ -94,8 +115,17 @@ class EnclothedProfile {
 			exit;
 		}
 
-		//create a new user
-		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password']);
+		/*============================================
+		=            Create a new wp user            =
+		============================================*/
+		$names = explode(' ', $profile['name']); 		
+		$last_names = '';
+		foreach ($names as $k => $value) {
+			if ($k == 0) continue; //bypass the first name
+			$last_names .= $value.' '; 
+		}
+
+		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password'], array( 'first_name' => $names[0], 'last_name' => $last_names));
 		// $new_user_id = 1; 
 
 		//if there is a problem creating
@@ -106,21 +136,17 @@ class EnclothedProfile {
 				debug_log('The user already exists. Maybe coming back to update?');
 				$user_id = get_user_by( 'email', $profile['email'] )->data->ID; 
 			}
-			// debug_log('Something bad happen when trying to create a new user. Redirecting to homepage.'); 
-			// wp_redirect(home_url());
-			// exit;
 		}
-		debug_log('Saving new profile for '. $profile['email'] ); 
 		
-
-
-		//the form only takes the full name so we need to break it into several
-		$names = explode(' ', $profile['name']); 		
-		$last_names = '';
-		foreach ($names as $k => $value) {
-			if ($k == 0) continue; //bypass the first name
-			$last_names .= $value.' '; 
-		}
+		
+		/*-----  End of Create a new wp user  ------*/
+		
+		
+		/*==============================================
+		=            Creating a new profile            =
+		==============================================*/
+		
+		debug_log('Saving new profile for '. $profile['email'] ); 
 
 		//if the user is coming back to update its details just use this id
 		$new_user_id = (!empty($user_id))? $user_id : $new_user_id;
@@ -147,8 +173,16 @@ class EnclothedProfile {
 		//save it to db
 		debug_log('Creating or updating a profile now.');
 		$res = $this->main->profiles_model->save($data);
+		
+		/*-----  End of Creating a new profile  ------*/
+		
+		
+		
+		
 
-		//send to webservices
+		/*===========================================
+		=            Send to webservices            =
+		===========================================*/
 		debug_log('sending to webservices');
 		$ws = new ldmwebservices();
 		$fields = array();
@@ -174,6 +208,12 @@ class EnclothedProfile {
 		}
 
 		return $new_user_id;
+		
+		
+		/*-----  End of Send to webservices  ------*/
+		
+		
+		
 	}
 
 
