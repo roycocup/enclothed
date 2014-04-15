@@ -143,7 +143,6 @@ class EnclothedProfile {
 					'last_name' => $last_names,
 					)
 				);
-		$new_user_id = 1;
 		
 
 		//if there is a problem creating
