@@ -73,11 +73,6 @@ class EnclothedProfile {
 		// from sagepay and also send an email to both the client and the user
 		if(isset($_GET['crypt'])){
 			if(isset($_SESSION['user']['email'])){
-				// $ldm_sagepay = new ldm_sagepay();
-				// $s = $ldm_sagepay->getInstance();
-				// $t = $s->sagepayDecrypt($_GET['crypt']); 
-				// var_dump($t); die;
-
 				
 				$user_email = $_SESSION['user']['email'];
 				$wp_user = get_user_by('email', $user_email);
@@ -651,6 +646,16 @@ class EnclothedProfile {
 		// die;
 		//code exists and is correct?
 		// $this->main->gifts_model->validate_code($code);
+	}
+
+
+	public function killSectionsSession(){
+		if ( !empty($_SESSION['section_1']) ) unset($_SESSION['section_1']);
+		if ( !empty($_SESSION['section_2']) ) unset($_SESSION['section_2']);
+		if ( !empty($_SESSION['section_3']) ) unset($_SESSION['section_3']);
+		if ( !empty($_SESSION['section_4']) ) unset($_SESSION['section_4']);
+		if ( !empty($_SESSION['section_5']) ) unset($_SESSION['section_5']);
+		if ( !empty($_SESSION['section_6']) ) unset($_SESSION['section_6']);
 	}
 
 	
