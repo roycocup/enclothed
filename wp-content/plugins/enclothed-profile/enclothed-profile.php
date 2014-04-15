@@ -78,22 +78,26 @@ class EnclothedProfile {
 				// $t = $s->sagepayDecrypt($_GET['crypt']); 
 				// var_dump($t); die;
 
-				//send the email to the user
+				
+				$user_email = $_SESSION['user']['email'];
+				$wp_user = get_user_by('email', $user_email);
+				$profile = $this->main->profiles_model->getFullProfile($user_email); 
 				$data = array();
-				$user = get_user_by('email', $_SESSION['user']['email']);
-				$data['name'] = $user->first_name.' '.$user->last_name;
+
+				//send the email to the user
+				$data['name'] = $wp_user->first_name.' '.$wp_user->last_name;
 				$this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
 
 				//send the email to the agnecy
 				$data = array();
-				$data['name'] 		= $user->first_name.' '.$user->last_name;
-				$data['email'] 		= $user->user_email;
-				$data['phone'] 		= $_SESSION['section_1']['phone'];
-				$data['occupation'] = $_SESSION['section_1']['occupation'];
-				$data['address'] 	= $_SESSION['section_1']['address'];
-				$data['town'] 		= $_SESSION['section_1']['town'];
-				$data['post_code'] 	= $_SESSION['section_1']['post_code'];
-				$data['dob'] 		= $_SESSION['section_1']['dob'];
+				$data['name'] 		= $wp_user->first_name.' '.$wp_user->last_name;
+				$data['email'] 		= $wp_user->user_email;
+				$data['phone'] 		= $profile->phone;
+				$data['occupation'] = $profile->occupation;
+				$data['address'] 	= $profile->address;
+				$data['town'] 		= $profile->town;
+				$data['post_code'] 	= $profile->post_code;
+				$data['dob'] 		= $profile->dob;
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
 			}
 		}
@@ -139,7 +143,8 @@ class EnclothedProfile {
 					'last_name' => $last_names,
 					)
 				);
-		// $new_user_id = 1; 
+		$new_user_id = 1;
+		
 
 		//if there is a problem creating
 		if (is_object($new_user_id)){
@@ -201,7 +206,7 @@ class EnclothedProfile {
 		$fields = array();
 		$fields['customerId'] 				= $new_user_id;
 		$fields['orderReferenceNumber'] 	= '';
-		$fields['firstName'] 				= $data['name'];
+		$fields['firstName'] 				= $names[0];
 		$fields['lastName'] 				= $last_names;
 		$fields['addressLine1'] 			= $data['address'];
 		$fields['addressLine2'] 			= '';

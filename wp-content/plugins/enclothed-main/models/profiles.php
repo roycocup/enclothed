@@ -90,7 +90,14 @@ class Profiles_model extends db{
 
 	}
 
+	
+	public function getFullProfile($email){
+		$sql = "SELECT * FROM {$this->table} WHERE email = %s LIMIT 1";
+		$sttm = $this->wpdb->prepare($sql, $email);  
+		$rs = $this->wpdb->get_row($sttm);
 
+		return $rs;
+	}
 
 
 
