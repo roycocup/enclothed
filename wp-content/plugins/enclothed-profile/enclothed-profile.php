@@ -86,8 +86,14 @@ class EnclothedProfile {
 
 				//send the email to the agnecy
 				$data = array();
-				$user = get_user_by('email', $_SESSION['user']['email']);
-				$data['name'] = $user->first_name.' '.$user->last_name;
+				$data['name'] 		= $user->first_name.' '.$user->last_name;
+				$data['email'] 		= $user->user_email;
+				$data['phone'] 		= $_SESSION['section_1']['phone'];
+				$data['occupation'] = $_SESSION['section_1']['occupation'];
+				$data['address'] 	= $_SESSION['section_1']['address'];
+				$data['town'] 		= $_SESSION['section_1']['town'];
+				$data['post_code'] 	= $_SESSION['section_1']['post_code'];
+				$data['dob'] 		= $_SESSION['section_1']['dob'];
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
 			}
 		}
@@ -125,7 +131,14 @@ class EnclothedProfile {
 			$last_names .= $value.' '; 
 		}
 
-		$new_user_id = $this->main->users_model->createUser($profile['email'], $profile['password'], array( 'first_name' => $names[0], 'last_name' => $last_names));
+		$new_user_id = $this->main->users_model->createUser(
+				$profile['email'], 
+				$profile['password'], 
+				array( 
+					'first_name' => $names[0], 
+					'last_name' => $last_names,
+					)
+				);
 		// $new_user_id = 1; 
 
 		//if there is a problem creating
