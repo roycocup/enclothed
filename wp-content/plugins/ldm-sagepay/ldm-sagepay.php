@@ -42,7 +42,10 @@ class ldm_sagepay {
 		return $this->config; 
 	}
 
-	public function getInstance($config){
+	public function getInstance($config = ''){
+		if (empty($config)){
+			$config = $this->getConfig();
+		}
 		return new Sagepay($config);	
 	}
 } 
