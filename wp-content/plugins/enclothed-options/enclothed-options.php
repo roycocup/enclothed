@@ -127,10 +127,9 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<h4>Example Placeholders</h4>
 			<ul>
 				<li>%name%</li>
-				<li>%order_code%</li>
-				<li>%register_date%</li>
-				<li>%transaction_code%</li>
-				<li>%order_code%</li>
+				<li>%dob%</li>
+				<li>%email%</li>
+				<li>%postcode%</li>
 			</ul>
 			
 
