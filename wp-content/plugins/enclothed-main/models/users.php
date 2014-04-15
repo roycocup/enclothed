@@ -9,13 +9,20 @@ class Users_model extends db{
 		parent::__construct();
 	}
 
-	public function createUser($email, $password) {
+	public function createUser($email, $password, $extra = '') {
 		debug_log("Creating new user ".__FILE__."::".__LINE__);
 		//This is a new user and member
 		$username = $email;
 		$password = $password;
-		$res = wp_create_user( $username, $password, $email );
-		return $res;
+		$id = wp_create_user( $username, $password, $email );
+
+		//include other things 
+		if (!empty($extra) && is_int($id)){
+			$update_array = array('ID'=>$id);
+			$update_array = array_merge($update_array, $extra);
+			wp_update_user( $update_array );
+		}
+		return $id;
 	}
 
 }
