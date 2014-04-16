@@ -81,7 +81,7 @@ class EnclothedProfile {
 
 				//send the email to the user
 				$data['name'] = $wp_user->first_name.' '.$wp_user->last_name;
-				$this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);	
+				$this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 
 				//send the email to the agnecy
 				$data = array();
@@ -195,36 +195,35 @@ class EnclothedProfile {
 		/*===========================================
 		=            Send to webservices            =
 		===========================================*/
-		debug_log('sending to webservices');
-		$ws = new ldmwebservices();
-		$fields = array();
-		$fields['customerId'] 				= $new_user_id;
-		$fields['orderReferenceNumber'] 	= '';
-		$fields['firstName'] 				= $names[0];
-		$fields['lastName'] 				= $last_names;
-		$fields['addressLine1'] 			= $data['address'];
-		$fields['addressLine2'] 			= '';
-		$fields['townCity'] 				= $data['town'];
-		$fields['Email'] 					= $data['email'];
-		$fields['postcode'] 				= $data['post_code'];
-		$fields['telephone'] 				= $data['phone'];
-		$fields['password'] 				= $profile['password'];
-		$fields['occupation'] 				= $data['occupation'];
-		$fields['dob'] 						= $dob;
-		$fields['forceLead'] 				= 'true';
+		// debug_log('sending to webservices');
+		// $ws = new ldmwebservices();
+		// $fields = array();
+		// $fields['customerId'] 				= $new_user_id;
+		// $fields['orderReferenceNumber'] 	= '';
+		// $fields['firstName'] 				= $names[0];
+		// $fields['lastName'] 				= $last_names;
+		// $fields['addressLine1'] 			= $data['address'];
+		// $fields['addressLine2'] 			= '';
+		// $fields['townCity'] 				= $data['town'];
+		// $fields['Email'] 					= $data['email'];
+		// $fields['postcode'] 				= $data['post_code'];
+		// $fields['telephone'] 				= $data['phone'];
+		// $fields['password'] 				= $profile['password'];
+		// $fields['occupation'] 				= $data['occupation'];
+		// $fields['dob'] 						= $dob;
+		// $fields['forceLead'] 				= 'true';
 
-		//send it
-		$ws_res = $ws->sendForm($fields);
-		if (empty($ws_res)){
-			debug_log('Something went wrong on the webservices lead creation'); 
-		}
+		// //send it
+		// $ws_res = $ws->sendForm($fields);
+		// if (empty($ws_res)){
+		// 	debug_log('Something went wrong on the webservices lead creation'); 
+		// }
 
-		return $new_user_id;
-		
 		
 		/*-----  End of Send to webservices  ------*/
 		
-		
+
+		return $new_user_id;
 		
 	}
 
@@ -398,6 +397,7 @@ class EnclothedProfile {
 			exit;
 		}
 
+
 		$data['styles'] = $styles;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];
@@ -436,8 +436,6 @@ class EnclothedProfile {
 		$data['preferences'] = $preferences;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];
-		
-		var_dump($data); 
 
 		//setting the stage
 		$this->main->profiles_model->updateStage(3, $data['profile_id']);
