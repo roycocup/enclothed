@@ -263,73 +263,73 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<div class="col-sm-6 grid_left">
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_abercrombie_fitch.jpg" class="img-responsive" />
-											<div id="abercrombie_fitch" class="grid_box_overlay click <?php echo_if_present('abercrombie_fitch'); ?>"></div>
+											<div id="brand_abercrombie_fitch" class="grid_box_overlay click <?php echo_if_present('brand_abercrombie_fitch'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_barbour.jpg" class="img-responsive" />
-											<div id="barbour" class="grid_box_overlay click <?php echo_if_present('barbour'); ?>"></div>
+											<div id="brand_barbour" class="grid_box_overlay click <?php echo_if_present('brand_barbour'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_allsaints.jpg" class="img-responsive" />
-											<div id="allsaints" class="grid_box_overlay click <?php echo_if_present('allsaints'); ?>"></div>
+											<div id="brand_allsaints" class="grid_box_overlay click <?php echo_if_present('brand_allsaints'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hugo_boss.jpg" class="img-responsive" />
-											<div id="hugo_boss" class="grid_box_overlay click <?php echo_if_present('hugo_boss'); ?>"></div>
+											<div id="brand_hugo_boss" class="grid_box_overlay click <?php echo_if_present('brand_hugo_boss'); ?>"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_right">
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_apc.jpg" class="img-responsive" />
-											<div id="apc" class="grid_box_overlay click <?php echo_if_present('apc'); ?>"></div>
+											<div id="brand_apc" class="grid_box_overlay click <?php echo_if_present('brand_apc'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_jack_wills.jpg" class="img-responsive" />
-											<div id="jack_wills" class="grid_box_overlay click <?php echo_if_present('jack_wills'); ?>"></div>
+											<div id="brand_jack_wills" class="grid_box_overlay click <?php echo_if_present('brand_jack_wills'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_armani.jpg" class="img-responsive" />
-											<div id="armani" class="grid_box_overlay click <?php echo_if_present('armani'); ?>"></div>
+											<div id="brand_armani" class="grid_box_overlay click <?php echo_if_present('brand_armani'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_oliver_spencer.jpg" class="img-responsive" />
-											<div id="oliver_spencer" class="grid_box_overlay click <?php echo_if_present('oliver_spencer'); ?>"></div>
+											<div id="brand_oliver_spencer" class="grid_box_overlay click <?php echo_if_present('brand_oliver_spencer'); ?>"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_left">
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_diesel.jpg" class="img-responsive" />
-											<div id="diesel" class="grid_box_overlay click <?php echo_if_present('diesel'); ?>"></div>
+											<div id="brand_diesel" class="grid_box_overlay click <?php echo_if_present('brand_diesel'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_paul_smith.jpg" class="img-responsive" />
-											<div id="paul_smith" class="grid_box_overlay click <?php echo_if_present('paul_smith'); ?>"></div>
+											<div id="brand_paul_smith" class="grid_box_overlay click <?php echo_if_present('brand_paul_smith'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_gant.jpg" class="img-responsive" />
-											<div id="gant" class="grid_box_overlay click <?php echo_if_present('gant'); ?>"></div>
+											<div id="brand_gant" class="grid_box_overlay click <?php echo_if_present('brand_gant'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_ralph_lauren.jpg" class="img-responsive" />
-											<div id="lauren" class="grid_box_overlay click <?php echo_if_present('lauren'); ?>"></div>
+											<div id="brand_lauren" class="grid_box_overlay click <?php echo_if_present('brand_lauren'); ?>"></div>
 										</div>
 									</div>
 									<div class="col-sm-6 grid_right">
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_g-star.jpg" class="img-responsive" />
-											<div id="g-star" class="grid_box_overlay click <?php echo_if_present('g-star'); ?>"></div>
+											<div id="brand_g-star" class="grid_box_overlay click <?php echo_if_present('brand_g-star'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_reiss.jpg" class="img-responsive" />
-											<div id="reiss" class="grid_box_overlay click <?php echo_if_present('reiss'); ?>"></div>
+											<div id="brand_reiss" class="grid_box_overlay click <?php echo_if_present('brand_reiss'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box right">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hackett.jpg" class="img-responsive" />
-											<div id="hackett" class="grid_box_overlay click <?php echo_if_present('hackett'); ?>"></div>
+											<div id="brand_hackett" class="grid_box_overlay click <?php echo_if_present('brand_hackett'); ?>"></div>
 										</div>
 										<div class="col-sm-6 col-xs-6 grid_box left">
 											<img src="<?php bloginfo('template_url') ?>-child/images/brand_tommy_hilfiger.jpg" class="img-responsive" />
-											<div id="tommy_hilfinger" class="grid_box_overlay click <?php echo_if_present('tommy_hilfinger'); ?>"></div>
+											<div id="brand_tommy_hilfinger" class="grid_box_overlay click <?php echo_if_present('brand_tommy_hilfinger'); ?>"></div>
 										</div>
 									</div>
 
@@ -339,29 +339,29 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							</div>
 
 							<!-- HIDDEN SECTION -->
-							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
+							<!-- <div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
 									<div class="numbering">02</div>
 									<p>How do you wear your jackets?</p>
-								</div><!--mini-wrapper-forms-->
+								</div>
 								<div class="row">
 									<div class="col-sm-11">
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-slim.png" class="img-responsive" />
-											<div id="jacket_slim" class="option_image_overlay click <?php echo_if_present('jacket_slim'); ?>">
+											<div id="jacket_type_slim" class="option_image_overlay click <?php echo_if_present('jacket_type_slim'); ?>">
 												<div class="option_image_label">Slim</div>
 											</div>
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-regular.png" class="img-responsive" />
-											<div id="jacket_regular" class="option_image_overlay click <?php echo_if_present('jacket_regular'); ?>">
+											<div id="jacket_type_regular" class="option_image_overlay click <?php echo_if_present('jacket_type_regular'); ?>">
 												<div class="option_image_label">Regular</div>
 											</div>
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/jacket-short-sleeve.png" class="img-responsive" />
-											<div id="jacket_short" class="option_image_overlay click <?php echo_if_present('jacket_short'); ?>">
+											<div id="jacket_type_short" class="option_image_overlay click <?php echo_if_present('jacket_type_short'); ?>">
 												<div class="option_image_label">Short Sleeve</div>
 											</div>
 										</div>
@@ -381,7 +381,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<div style="clear:both;"></div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 
 
 
@@ -396,19 +396,19 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<div class="col-sm-11">
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-slim.png" class="img-responsive" />
-											<div id="shirt_slim" class="option_image_overlay click <?php echo_if_present('shirt_slim'); ?>">
+											<div id="shirt_type_slim" class="option_image_overlay click <?php echo_if_present('shirt_type_slim'); ?>">
 												<div class="option_image_label">Slim</div>
 											</div>
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-regular.png" class="img-responsive" />
-											<div id="shirt_regular" class="option_image_overlay click <?php echo_if_present('shirt_regular'); ?>">
+											<div id="shirt_type_regular" class="option_image_overlay click <?php echo_if_present('shirt_type_regular'); ?>">
 												<div class="option_image_label">Regular</div>
 											</div>
 										</div>
 										<div class="col-sm-4 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/shirt-short-sleeve.png" class="img-responsive" />
-											<div id="shirt_short_sleeve" class="option_image_overlay click <?php echo_if_present('shirt_short_sleeve'); ?>">
+											<div id="shirt_type_short_sleeve" class="option_image_overlay click <?php echo_if_present('shirt_type_short_sleeve'); ?>">
 												<div class="option_image_label">Short Sleeve</div>
 											</div>
 										</div>
