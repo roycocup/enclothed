@@ -18,77 +18,77 @@ class ldmwebservices {
 		<CustomerID>1</CustomerID>
 		<OrderNumberReference>1</OrderNumberReference>
 		<Email>mike@gmail.com </Email>
-		<Password> 1 </Password>
+		<Password>1</Password>
 		<FirstName>PaulAlan</FirstName>
 		<LastName>Harvieee</LastName>
-		<AddressLine1>74 Park Avenue </AddressLine1>
-		<AddressLine2> 12 Spring Street </AddressLine2>
-		<TownCity> Hull</TownCity>
-		<PostCode>HU2 8RD </PostCode>
-		<Telephone> 07814536328 </Telephone>
-		<Occupation> software developer </Occupation>
-		<DOB>1967-05-10 </DOB>
-		<BuyingForAnotherPerson> yes </BuyingForAnotherPerson>
-		<BuyingForWho> a friend </BuyingForWho>
-		<HowDidYouHearAboutEnclothed> Google </HowDidYouHearAboutEnclothed>
-		<HowDidYouHearAboutEnclothedOther> someText</HowDidYouHearAboutEnclothedOther>                              
-		<StyleChoices> Style1, Style2 </StyleChoices>            
-		<BrandChoices> brandImage1; brandImage2; brandImage3 </BrandChoices>       
-		<FavouriteBrands> brand1; brand2; brand3; brand4 </FavouriteBrands>                
-		<JacketTypeChoices> jacketImage1; jacketImage2 </JacketTypeChoices> 
-		<WhereDoYouWearYourJacketChoices> work; casual; friday </WhereDoYouWearYourJacketChoices>        
+		<AddressLine1>74 Park Avenue</AddressLine1>
+		<AddressLine2>12 Spring Street</AddressLine2>
+		<TownCity>Hull</TownCity>
+		<PostCode>HU2 8RD</PostCode>
+		<Telephone>07814536328</Telephone>
+		<Occupation>software developer</Occupation>
+		<DOB>1967-05-10</DOB>
+		<BuyingForAnotherPerson>yes</BuyingForAnotherPerson>
+		<BuyingForWho>a friend</BuyingForWho>
+		<HowDidYouHearAboutEnclothed>Google</HowDidYouHearAboutEnclothed>
+		<HowDidYouHearAboutEnclothedOther>someText</HowDidYouHearAboutEnclothedOther>                              
+		<StyleChoices>Style1, Style2</StyleChoices>            
+		<BrandChoices>brandImage1; brandImage2; brandImage3</BrandChoices>       
+		<FavouriteBrands>brand1; brand2; brand3; brand4</FavouriteBrands>                
+		<JacketTypeChoices>jacketImage1; jacketImage2</JacketTypeChoices> 
+		<WhereDoYouWearYourJacketChoices>work; casual; friday</WhereDoYouWearYourJacketChoices>        
 		<ShirtTypeChoice>Slim; Short Sleeve</ShirtTypeChoice> 
-		<WhereDoYouWearYourShirtChoices> Casual; Friday; Linen/Holiday </WhereDoYouWearYourShirtChoices>       
+		<WhereDoYouWearYourShirtChoices>Casual; Friday; Linen/Holiday</WhereDoYouWearYourShirtChoices>       
 		<TrouserTypeChoice> Jeans; Chinos; Formal</TrouserTypeChoice> 
-		<TrouserColourChoices> Dark; Neutral </TrouserColourChoices>                    
-		<JeanStyleChoice> Bootcut; Straight </JeanStyleChoice>
-		<DenimColourChoice> Dark; Medium</DenimColourChoice>        
-		<ShortStyleChoice> Short; Above Knee</ShortStyleChoice>
-		<ShoeStyleChoices> Trainers; Boots; Formal; Loafers </ShoeStyleChoices>         
+		<TrouserColourChoices>Dark; Neutral</TrouserColourChoices>                    
+		<JeanStyleChoice>Bootcut; Straight</JeanStyleChoice>
+		<DenimColourChoice>Dark; Medium</DenimColourChoice>        
+		<ShortStyleChoice>Short; Above Knee</ShortStyleChoice>
+		<ShoeStyleChoices>Trainers; Boots; Formal; Loafers</ShoeStyleChoices>         
 		<ShoeColourChoices>Neutral; Dark </ShoeColourChoices>
-		<UnderwearStyleChoices> Shorts </UnderwearStyleChoices>
-		<StyleDislikeDescription> tight styles with holes </StyleDislikeDescription>
+		<UnderwearStyleChoices>Shorts</UnderwearStyleChoices>
+		<StyleDislikeDescription>tight styles with holes</StyleDislikeDescription>
 		<TShirtSize>M</TShirtSize>
 		<NeckSize>16</NeckSize>
 		<SleeveLength>Reg</SleeveLength>                   
-		<ShoeSize> 10</ShoeSize>
-		<JacketSize> 44</JacketSize>
-		<TrouserWaist>34 </TrouserWaist>
-		<TrouserInsideLeg>34 </TrouserInsideLeg>
-		<AdditionalSizeInfo> I can also use waist 33</AdditionalSizeInfo>
-		<BrandsThatFitYouWell> Guess, Tommy Hilfiger</BrandsThatFitYouWell>
+		<ShoeSize>10</ShoeSize>
+		<JacketSize>44</JacketSize>
+		<TrouserWaist>34</TrouserWaist>
+		<TrouserInsideLeg>34</TrouserInsideLeg>
+		<AdditionalSizeInfo>I can also use waist 33</AdditionalSizeInfo>
+		<BrandsThatFitYouWell>Guess, Tommy Hilfiger</BrandsThatFitYouWell>
 		<ContactMeAboutSizing> true</ContactMeAboutSizing>
-		<ShirtPriceMin>30 </ShirtPriceMin>
-		<ShirtPriceMax>60 </ShirtPriceMax>
-		<TrouserPriceMin>25 </TrouserPriceMin>
-		<TrouserPriceMax> 70</TrouserPriceMax>
+		<ShirtPriceMin>30</ShirtPriceMin>
+		<ShirtPriceMax>60</ShirtPriceMax>
+		<TrouserPriceMin>25</TrouserPriceMin>
+		<TrouserPriceMax>70</TrouserPriceMax>
 		<CoatPriceMin>55</CoatPriceMin>
-		<CoatPriceMax> 180 </CoatPriceMax>
-		<ShoePriceMin> 25</ShoePriceMin>
-		<ShoePriceMax> 90 </ShoePriceMax>  
-		<AdditionalInfo> </AdditionalInfo>
-		<CustomerAddressLine1>Apt 41 </CustomerAddressLine1>
-		<CustomerAddressLine2> 12 Spring Street </CustomerAddressLine2>
-		<CustomerTownCity> Hull</CustomerTownCity>
-		<CustomerPostCode>HU2 8RD </CustomerPostCode>    
-		<CustomerAddressName> </CustomerAddressName>
-		<AlternativeAddressLine1>Apt 41 </AlternativeAddressLine1>
-		<AlternativeAddressLine2> 12 Spring Street </AlternativeAddressLine2>
-		<AlternativeTownCity> Hull</AlternativeTownCity>
-		<AlternativePostCode>HU2 8RD </AlternativePostCode>        
-		<AlternativeAddressName> </AlternativeAddressName>           
+		<CoatPriceMax>180</CoatPriceMax>
+		<ShoePriceMin>25</ShoePriceMin>
+		<ShoePriceMax>90</ShoePriceMax>  
+		<AdditionalInfo>something</AdditionalInfo>
+		<CustomerAddressLine1>Apt 41</CustomerAddressLine1>
+		<CustomerAddressLine2>12 Spring Street</CustomerAddressLine2>
+		<CustomerTownCity>Hull</CustomerTownCity>
+		<CustomerPostCode>HU2 8RD</CustomerPostCode>    
+		<CustomerAddressName>sdcsdcdczc</CustomerAddressName>
+		<AlternativeAddressLine1>Apt 41</AlternativeAddressLine1>
+		<AlternativeAddressLine2>12 Spring Street</AlternativeAddressLine2>
+		<AlternativeTownCity>Hull</AlternativeTownCity>
+		<AlternativePostCode>HU2 8RD</AlternativePostCode>        
+		<AlternativeAddressName>sdxvvxcvx</AlternativeAddressName>           
 		<BillingAddressSameAsCustomerAddress>true</BillingAddressSameAsCustomerAddress>          
-		<BillingAddressLine1>Apt 41 </BillingAddressLine1>
-		<BillingAddressLine2> 12 Spring Street </BillingAddressLine2>
-		<BillingTownCity> Hull</BillingTownCity>
-		<BillingPostCode>HU2 8RD </BillingPostCode>    
-		<BillingAddressName> </BillingAddressName>   
-		<DeliveryInstructions> </DeliveryInstructions>
-		<CollectionNotes> </CollectionNotes>
-		<CommentsToStylist> </CommentsToStylist>
-		<TermsAndConditions> true </TermsAndConditions>
-		<PromotionalCode>A1234BC </PromotionalCode>
-		<GiftCardNumber> Rtr45trz</GiftCardNumber>
+		<BillingAddressLine1>Apt 41</BillingAddressLine1>
+		<BillingAddressLine2>12 Spring Street</BillingAddressLine2>
+		<BillingTownCity>Hull</BillingTownCity>
+		<BillingPostCode>HU2 8RD</BillingPostCode>    
+		<BillingAddressName>adsczczczc</BillingAddressName>   
+		<DeliveryInstructions>ccxcxcvx</DeliveryInstructions>
+		<CollectionNotes>zxczxczxc</CollectionNotes>
+		<CommentsToStylist>zxczxcz</CommentsToStylist>
+		<TermsAndConditions>true</TermsAndConditions>
+		<PromotionalCode>A1234BC</PromotionalCode>
+		<GiftCardNumber>Rtr45trz</GiftCardNumber>
 		<PageNumber>2</PageNumber>
 		<WebsiteRef>ggtt3452hgj</WebsiteRef>
 		<ForceLead>false</ForceLead>
