@@ -4,16 +4,16 @@
 * template name: Profile Authorize
 *
 **/
-
+// if this page is accesses directly just http_redirect
+if (empty($_SESSION['section_1']) || empty($_SESSION['section_6'])){
+	echo 'This page cannot be accessed directly';
+	return false;
+}
 get_header();
 ?>
 
 <?php 
-// if this page is accesses directly just http_redirect
-if (empty($_SESSION['section_1']) || empty($_SESSION['section_6'])){
-	wp_redirect(home_url());
-	exit;
-}
+
 
 $ldm_sagepay = new ldm_sagepay();
 $config = $ldm_sagepay->getConfig();
