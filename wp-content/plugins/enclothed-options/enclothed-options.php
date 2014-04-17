@@ -75,10 +75,8 @@ $orders_buy_on = get_option('enc_orders_buy_on');
 $emails = new Emails_model();
 $ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
 $oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
-// $ref_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND);
-// $conf_template = $emails->getMailTemplate(Emails_model::TEMPLATE_CONFIRM);
-// $ref_cli_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT);
-// $ref_ag_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_AGENCY);
+$tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
+
 
 
 
@@ -91,11 +89,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 	//emails
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_YOU, stripslashes_deep($_POST['enc_email_ty']));
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_ORDER_IN, stripslashes_deep($_POST['enc_email_oi']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REFUND, stripslashes_deep($_POST['enc_email_ref']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_CONFIRM, stripslashes_deep($_POST['enc_email_conf']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT, stripslashes_deep($_POST['enc_email_ref_cli']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_AGENCY, stripslashes_deep($_POST['enc_email_ref_ag']));
-	// $emails->saveMailTemplate(Emails_model::TEMPLATE_REVIEW_SUBMITTED, stripslashes_deep($_POST['enc_email_rev_sub']));
+	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING, stripslashes_deep($_POST['enc_email_tyreg']));
 
 }
 
@@ -116,11 +110,8 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<?php 
 				$ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
 				$oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
-				// $ref_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND);
-				// $conf_template = $emails->getMailTemplate(Emails_model::TEMPLATE_CONFIRM);
-				// $ref_cli_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_CLIENT);
-				// $ref_ag_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REFUND_REQUEST_AGENCY);
-				// $rev_sub_template = $emails->getMailTemplate(Emails_model::TEMPLATE_REVIEW_SUBMITTED);
+				$tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
+				
 				
 			?>
 			<h3>Emails</h3>
@@ -141,10 +132,12 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<textarea cols='100' rows='10' name="enc_email_oi"><?php echo $oi_template->body; ?></textarea>
 			<br>
 
-			<!--
-			<label for="enc_email_ty">Confirm Email</label><br>
-			<textarea cols='100' rows='10' name="enc_email_conf"><?php echo $conf_template->body; ?></textarea>
+			
+			<label for="enc_email_ty">Thank you for Registering</label><br>
+			<textarea cols='100' rows='10' name="enc_email_tyreg"><?php echo $tyreg_template->body; ?></textarea>
 			<br>
+
+			<!--
 			<label for="enc_email_ty">Refund Email (Actual refund)</label><br>
 			<textarea cols='100' rows='10' name="enc_email_ref"><?php echo $ref_template->body; ?></textarea>
 			<br>

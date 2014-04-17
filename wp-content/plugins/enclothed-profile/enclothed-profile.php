@@ -147,7 +147,14 @@ class EnclothedProfile {
 			if (!empty($new_user_id->errors['existing_user_login'])){
 				debug_log('The user already exists. Maybe coming back to update?');
 				$user_id = get_user_by( 'email', $profile['email'] )->data->ID; 
-			}
+			} 
+		} else {
+			//send the email to the new user
+			$user_email = $profile['email'];
+			$wp_user 	= get_user_by('email', $user_email);
+			$data['name'] = $wp_user->first_name.' '.$wp_user->last_name;
+			$data['username'] = $wp_user->user_login;
+			$this->main->sendmail($profile['email'], 'Registration with Enclothed', Emails_model::TEMPLATE_THANK_REGISTERING, $data);
 		}
 		
 		
@@ -370,6 +377,25 @@ class EnclothedProfile {
 			unset($_SESSION['user']);
 			$_SESSION['user']['id'] = $new_user_id;
 			$_SESSION['user']['email'] = $data['email'];
+
+
+			//send email to user about new registration
+			$user_email = $_SESSION['user']['email'];
+			$wp_user 	= get_user_by('email', $user_email);
+			$profile 	= $this->main->profiles_model->getFullProfile($user_email); 
+			$data 		= array();
+
+			//inform enclothed of the new user
+			$data = array();
+			$data['name'] 		= $wp_user->first_name.' '.$wp_user->last_name;
+			$data['email'] 		= $wp_user->user_email;
+			$data['phone'] 		= $profile->phone;
+			$data['occupation'] = $profile->occupation;
+			$data['address'] 	= $profile->address;
+			$data['town'] 		= $profile->town;
+			$data['post_code'] 	= $profile->post_code;
+			$data['dob'] 		= $profile->dob;
+			$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
 
 			//send to next page
 			wp_redirect( home_url().'/profile/style' ); 
