@@ -141,7 +141,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<br>
 
 			<label for="enc_email_ty">User just requested another box - to Enclothed</label><br>
-			<textarea cols='100' rows='10' name="enc_email_tyreg"><?php echo $newbox_template->body; ?></textarea>
+			<textarea cols='100' rows='10' name="enc_email_newbox"><?php echo $newbox_template->body; ?></textarea>
 			<br>
 
 			<!--
