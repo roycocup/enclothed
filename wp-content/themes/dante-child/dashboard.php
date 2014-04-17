@@ -5,6 +5,11 @@
 *
 **/
 
+if (!is_user_logged_in()){
+	return false;
+}
+
+
 get_header(); ?>
 
 
@@ -124,28 +129,66 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="fade-border-right"></div>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
-							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+
+							<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+								<ul class="error_fields">
+									<?php flashMessagesDisplay('li'); ?>  
+								</ul>
+							</div>
 
 							<div class="col-sm-10 dashboard_wrapper no-borders">
-								<h1>We are building you a box. <br>Please contact us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></h1>
+								<h1><small>We are building you a box. <br>Please contact us at <a href="mailto:hello@enclothed.co.uk">hello@enclothed.co.uk</a></small></h1>
 							</div>
+
+							<?php 
+								//get all profile for this user
+								global $current_user; 
+								$main = new EnclothedMain();
+								$profile = $main->profiles_model->getFullProfile($current_user->user_email);
+								//get the addresses
+								$delivery = $profile->delivery_add_1." ".$profile->delivery_add_2.", ".$profile->delivery_town." ".$profile->delivery_post_code;
+								$billing = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
+
+								$same_address = false;
+								if ($profile->delivery_add_1 == $profile->bill_add_1){
+									$same_address = true;
+								}
+							?>
+							<h2>Request a box</h2>
+							<form action="" method="POST" name='more_box'>
+								<?php $nonce = wp_create_nonce( get_uri() ); ?>
+
+								<div class="row">
+									<div class="col-xs-6 col-xs-offset-3">
+										<?php if (!$same_address): ?>
+											<select class="selectmenu" name="more_box[address]" id="more_box[addresses]">
+												<option value="delivery"><?php echo $delivery; ?></option>
+												<option value="billing"><?php echo $billing; ?></option>
+											</select>
+										<?php else: ?>
+											<input type='text' name="more_box[address]" value='<?php echo $delivery; ?>'>
+										<?php endif; ?>
+									</div>
+								</div>
+								<br><br>
+
+								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+								<div class="mini-wrapper5">
+									<button class="button4" onclick="submit()">Send Request</button>
+								</div>
+							</form>
+
 						</div>
 
 
-
-
-
-
-
-						<!-- HIDDEN DASHBOARD ICONS -->
-						<div class="styles-block" style=" display:none">
+						<!-- <div class="styles-block">
 							<div class="fade-border-left"></div>
 							<div class="fade-border-right"></div>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
-							<div class="col-sm-10 dashboard_wrapper no-borders">
+							 <div class="col-sm-10 dashboard_wrapper no-borders">
 								<h2>Dashboard</h2>								
 								<div class="col-sm-4 dashboard_info edit_profile click" >
 									<div class="dashboard_icon"></div>
@@ -173,9 +216,9 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								</div>		
 								<div style="clear:both;"></div>
 								<div class="shadow"><img src="http://enclothed.dev/wp-content/themes/dante-child/images/shadow.png" alt=""></div>
-							</div>
+							</div> -->
 
-							<div class="col-sm-12 dashboard_wrapper no-margin-bottom">
+							<!-- <div class="col-sm-12 dashboard_wrapper no-margin-bottom">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<h2>E-card</h2>								
 								<p class="georgia_text">Please enter your details in the form below</p>
@@ -192,18 +235,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<input type="text" class="key-info" tabindex="10" placeholder="Gift Card Amount" name="" value="">
 									<input type="text" class="key-info invisible-field" >
 									<textarea type="text" class="customer-info3" tabindex="11"  placeholder="Personal Message" name="" value=""></textarea>
-								</div><!--mini-wrapper-forms-->
+								</div>
 							</div>
 
 							<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
 								<button class="button4" onclick="submit()">Proceed to Payment</button>
-							</div><!--mini-wrapper4-->
+							</div>
 						</form>
-
-						<!--styles-block-->
-					</div>
+					</div>-->
 
 
 
