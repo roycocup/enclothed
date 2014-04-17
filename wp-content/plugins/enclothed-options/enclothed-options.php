@@ -76,6 +76,7 @@ $emails = new Emails_model();
 $ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
 $oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
 $tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
+$newbox_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX);
 
 
 
@@ -90,6 +91,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_YOU, stripslashes_deep($_POST['enc_email_ty']));
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_ORDER_IN, stripslashes_deep($_POST['enc_email_oi']));
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING, stripslashes_deep($_POST['enc_email_tyreg']));
+	$emails->saveMailTemplate(Emails_model::TEMPLATE_NEW_BOX, stripslashes_deep($_POST['enc_email_newbox']));
 
 }
 
@@ -111,6 +113,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 				$ty_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_YOU);
 				$oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
 				$tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
+				$newbox_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX);
 				
 				
 			?>
@@ -133,8 +136,12 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<br>
 
 			
-			<label for="enc_email_ty">Thank you for Registering</label><br>
+			<label for="enc_email_ty">Thank you for Registering - to user</label><br>
 			<textarea cols='100' rows='10' name="enc_email_tyreg"><?php echo $tyreg_template->body; ?></textarea>
+			<br>
+
+			<label for="enc_email_ty">User just requested another box - to Enclothed</label><br>
+			<textarea cols='100' rows='10' name="enc_email_tyreg"><?php echo $newbox_template->body; ?></textarea>
 			<br>
 
 			<!--
