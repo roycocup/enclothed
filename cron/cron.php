@@ -16,7 +16,6 @@ class Cronjobs extends db{
 
 
 	public function log_it( $msg, $status = 'CRON', $file = 'debug_log.txt' ) {
-		$location = 
 		$msg = gmdate( 'Y-m-d H:i:s' ) . ' - ' . $status . ' - ' .print_r( $msg, TRUE ) . "\n\r";
 		print_r($msg);
 		file_put_contents( $file , $msg, FILE_APPEND);
@@ -33,11 +32,16 @@ class Cronjobs extends db{
 	*
 	**/
 	public function createSalesforceAccounts(){
-		echo ("\nSending to webservices\n\n");
+		$this->log_it("#######################");
+		$this->log_it("Sending to webservices");
+		$this->log_it("#######################");
 		$profiles = $this->getAllProfiles();
 		foreach ($profiles as $profile) {
 			$this->sendToSalesforce($profile);
 		}
+		$this->log_it("#######################");
+		$this->log_it("Finished");
+		$this->log_it("#######################");
 	}
 
 	/**
@@ -50,7 +54,7 @@ class Cronjobs extends db{
 	**/
 	public function getAllProfiles(){
 		$one_hour_ago = date('Y-m-d H:i:s', strtotime('-1 hour') );
-		echo "Getting profiles that were modified before $one_hour_ago\n";
+		$this->log_it("Getting profiles that were modified before $one_hour_ago");
 		$sql = "SELECT * FROM {$this->table} "; 
 		$sql .= " WHERE 1 "; 
 		$sql .= " AND salesforce IS NULL"; //never sent to salesforce
@@ -180,8 +184,8 @@ class Cronjobs extends db{
 		$fields['collectionNotes'] = ($profile->extra_collection)?$profile->extra_collection:'';
 
 		//drop off time
-		$fields['pageNumber'] = $profile->stage;
-		$fields['websiteRef'] = $profile->customer_id;
+		$fields['pageNumber'] = $profile->stage; //drop off stage
+		$fields['websiteRef'] = $profile->customer_id; //unique user
 
 		//fields that we dont have
 		$fields['contactMeAboutSizing'] = '';
@@ -211,13 +215,15 @@ class Cronjobs extends db{
 		$patt = '/\<title\>Sage\sPay/';
 		preg_match($patt, $ws_res, $match); 
 		if ( empty($match[0]) || empty($ws_res) ){
-			debug_log('Something went wrong on the webservices. '); 
+			$this->log_it("Something went wrong on the webservices."); 
+		}else{
+			$this->log_it("Just sent {$profile->email}");	
 		}
-		echo "\njust sent {$profile->email}\n";
+		
 		
 		//mark it as sent in db
 		//querying instead of using bespoke update method because that will update the modified field
-		//$this->wpdb->query("update {$this->table} set salesforce = 1, ws_sent_date = now()"); 
+		$this->wpdb->query("update {$this->table} set salesforce = 1, ws_sent_date = now()"); 
 	}
 
 
