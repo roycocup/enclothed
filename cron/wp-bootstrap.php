@@ -1,6 +1,9 @@
 <?php
 
-error_reporting( E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
+// error_reporting( E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
+error_reporting(0);
+ini_set('display_errors', 0);
+date_default_timezone_set('Europe/London');
 
 
 $path = dirname(dirname( __FILE__ ));
