@@ -33,6 +33,7 @@ class Cronjobs extends db{
 	*
 	**/
 	public function createSalesforceAccounts(){
+		echo ("\nSending to webservices\n\n");
 		$profiles = $this->getAllProfiles();
 		foreach ($profiles as $profile) {
 			$this->sendToSalesforce($profile);
@@ -48,12 +49,33 @@ class Cronjobs extends db{
 	*
 	**/
 	public function getAllProfiles(){
+		$one_hour_ago = date('Y-m-d H:i:s', strtotime('-1 hour') );
+		echo "Getting profiles that were modified before $one_hour_ago\n";
 		$sql = "SELECT * FROM {$this->table} "; 
 		$sql .= " WHERE 1 "; 
-		$sql .= "AND salesforce is null"; //never sent to salesforce
-		$sql .= " AND modified < DATE_SUB(NOW(), INTERVAL 1 HOUR) "; 
+		$sql .= " AND salesforce IS NULL"; //never sent to salesforce
+		// $sql .= " AND modified <= (now() - INTERVAL 1 HOUR) ";  //are at least an hour late
+		$sql .= " AND modified <= '{$one_hour_ago}'";
+		$sql .= " AND stage IS NOT NULL";
+		$sql .= " ORDER BY modified ASC";
 		$rs = $this->wpdb->get_results($sql); 
 		return $rs;
+	}
+
+	/**
+	*
+	* Return the part of te string that starts with $word_ 
+	*
+	**/
+	public function getSelectedOptions($word, $str){
+		$pattern = '/'.$word.'_(\w+)/';
+		preg_match_all($pattern, $str, $matches); 
+		return $matches[1]; 
+	}
+
+	public function getStageName($num){
+		$stage_names = array('details', 'style', 'preferences', 'sizing', 'pricing', 'delivery', 'authorize');
+		return $stage_names[$num];
 	}
 
 	/**
@@ -63,8 +85,6 @@ class Cronjobs extends db{
 	**/
 	public function sendToSalesforce($profile){
 
-
-		echo ("\nsending to webservices\n\n");
 		$ws = new ldmwebservices();
 		$fields = array();
 		$fields['customerId'] 				= $profile->profile_id;
@@ -98,7 +118,8 @@ class Cronjobs extends db{
 		$denim_colour 			= implode(',', $this->getSelectedOptions('denim_colours', $profile->preferences));
 		$shorts_colour 			= implode(',', $this->getSelectedOptions('shorts_colours', $profile->preferences));
 		$shorts_preferences 	= implode(',', $this->getSelectedOptions('shorts', $profile->preferences));
-		$shoes_preferences 		= implode(',', $this->getSelectedOptions('shoes', $profile->preferences));
+		$shoes_colour	 		= implode(',', $this->getSelectedOptions('colour_shoes', $profile->preferences));
+		$shoes_type		 		= implode(',', $this->getSelectedOptions('shoe_type', $profile->preferences));
 		$brands_preferences 	= implode(',', $this->getSelectedOptions('brand', $profile->preferences));
 		
 		
@@ -109,10 +130,10 @@ class Cronjobs extends db{
 		$fields['jeanStyleChoice'] 					= $denim_type;
 		$fields['denimColourChoice'] 				= $denim_colour;
 		$fields['shortStyleChoice'] 				= $shorts_preferences;
-		$fields['shoeStyleChoices'] 				= $shoes_preferences;
-		$fields['shoeColourChoices'] 				= $shoes_preferences;
+		$fields['shoeStyleChoices'] 				= $shoes_type;
+		$fields['shoeColourChoices'] 				= $shoes_colour;
 		$fields['brandChoices'] 					= $brands_preferences;
-
+		$fields['favouriteBrands'] 					= $profile->more_brands;
 		
 		// section 4 - sizing
 		$fields['tShirtSize'] 			= $profile->tshirt_size;
@@ -123,7 +144,6 @@ class Cronjobs extends db{
 		$fields['trouserWaist'] 		= $profile->trouser_size;
 		$fields['trouserInsideLeg'] 	= $profile->trouser_inside_leg_size;
 		$fields['additionalSizeInfo'] 	= $profile->extra_info_size;
-		$fields['favouriteBrands'] 		= '';
 		$fields['brandsThatFitYouWell'] = $profile->more_brands_size;
 
 		$replacebles = array('£','+');
@@ -161,7 +181,7 @@ class Cronjobs extends db{
 
 		//drop off time
 		$fields['pageNumber'] = $profile->stage;
-
+		$fields['websiteRef'] = $profile->customer_id;
 
 		//fields that we dont have
 		$fields['contactMeAboutSizing'] = '';
@@ -169,7 +189,6 @@ class Cronjobs extends db{
 		$fields['termsAndConditionsChecked'] = '';
 		$fields['promotionalCode'] = '';
 		$fields['giftCardNumber'] = '';
-		$fields['websiteRef'] = '';
 		$fields['jacketTypeChoices'] = '';
 		$fields['whereDoYouWhereYourJacketChoices'] = '';
 		$fields['underwearStyleChoices'] = '';
@@ -202,16 +221,7 @@ class Cronjobs extends db{
 	}
 
 
-	public function getSelectedOptions($word, $str){
-		$pattern = '/'.$word.'_(\w+)/';
-		preg_match_all($pattern, $str, $matches); 
-		return $matches[1]; 
-	}
-
-	public function getStageName($num){
-		$stage_names = array('details', 'style', 'preferences', 'sizing', 'pricing', 'delivery', 'authorize');
-		return $stage_names[$num];
-	}
+	
 
 }
 
