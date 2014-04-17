@@ -261,9 +261,7 @@ class EnclothedProfile {
 		}
 
 		//check that its a valid email address
-		preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/', $section['email'], $match); 
-
-		if (empty($match[0])){
+		if (!is_email($section['email'])){
 			$str = 'Please enter a valid email.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);		
