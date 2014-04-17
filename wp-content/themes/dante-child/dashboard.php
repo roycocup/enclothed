@@ -131,9 +131,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 
 							<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-								<ul class="error_fields">
-									<?php flashMessagesDisplay('li'); ?>  
-								</ul>
+									<?php flashMessagesDisplay(); ?>  
 							</div>
 
 							<div class="col-sm-10 dashboard_wrapper no-borders">
