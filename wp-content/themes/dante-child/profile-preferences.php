@@ -418,10 +418,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<div class="box_options_label">Where do you wear your shirts?</div>											
 											<div class="box_options">
 												<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
-													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_work'); ?>" id='shirt_work'>Work</div>
-													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_casual'); ?>" id='shirt_casual'>Casual</div>
-													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_friday'); ?>" id='shirt_friday'>Friday</div>
-													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_linen'); ?>" id='shirt_linen' style="border-bottom: none !important; border-right: none !important;">Linen/Holiday</div>
+													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_wear_work'); ?>" id='shirt_wear_work'>Work</div>
+													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_wear_casual'); ?>" id='shirt_wear_casual'>Casual</div>
+													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_wear_friday'); ?>" id='shirt_wear_friday'>Friday</div>
+													<div class="col-sm-3 box_option click <?php echo_if_present('shirt_wear_linen'); ?>" id='shirt_wear_linen' style="border-bottom: none !important; border-right: none !important;">Linen/Holiday</div>
 												</div>
 												<div style="clear:both;"></div>
 											</div>
@@ -444,25 +444,25 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									<div class="col-sm-11">
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-jeans.png" class="img-responsive" />
-											<div id="type_jeans" class="option_image_overlay click <?php echo_if_present('type_jeans'); ?>">
+											<div id="trouser_type_jeans" class="option_image_overlay click <?php echo_if_present('trouser_type_jeans'); ?>">
 												<div class="option_image_label">Jeans</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-chinos.png" class="img-responsive" />
-											<div id="type_chinos" class="option_image_overlay click <?php echo_if_present('type_chinos'); ?>">
+											<div id="trouser_type_chinos" class="option_image_overlay click <?php echo_if_present('trouser_type_chinos'); ?>">
 												<div class="option_image_label">Chinos</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-formal.png" class="img-responsive" />
-											<div id="type_formal" class="option_image_overlay click <?php echo_if_present('type_formal'); ?>">
+											<div id="trouser_type_formal" class="option_image_overlay click <?php echo_if_present('trouser_type_formal'); ?>">
 												<div class="option_image_label">Formal</div>
 											</div>
 										</div>
 										<div class="col-sm-3 col-xs-6 option_image" >
 	<img src="<?php bloginfo('template_url') ?>-child/images/trouser-cords.png" class="img-responsive" />
-											<div id="type_cords" class="option_image_overlay click <?php echo_if_present('type_cords'); ?>">
+											<div id="trouser_type_cords" class="option_image_overlay click <?php echo_if_present('trouser_type_cords'); ?>">
 												<div class="option_image_label">Cords</div>
 											</div>
 										</div>

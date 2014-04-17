@@ -90,48 +90,52 @@ class Cronjobs extends db{
 		$fields['styleChoices'] = $profile->styles;
 
 		// section 3 - preferences
-		$shirts_type = implode(',', $this->getSelectedOptions('shirt_type', $profile->preferences));
-		$trousers_colour = implode(',', $this->getSelectedOptions('trousers_colour', $profile->preferences));
-		$trousers_type = implode(',', $this->getSelectedOptions('type', $profile->preferences));
-		$denim_preferences = implode(',', $this->getSelectedOptions('denim', $profile->preferences));
-		$shorts_colour = implode(',', $this->getSelectedOptions('shorts_colours', $profile->preferences));
-		$shorts_preferences = implode(',', $this->getSelectedOptions('shorts', $profile->preferences));
-		$shoes_preferences = implode(',', $this->getSelectedOptions('shoes', $profile->preferences));
+		$shirts_type 			= implode(',', $this->getSelectedOptions('shirt_type', $profile->preferences));
+		$shirts_wear 			= implode(',', $this->getSelectedOptions('shirt_wear', $profile->preferences));
+		$trousers_colour 		= implode(',', $this->getSelectedOptions('trousers_colour', $profile->preferences));
+		$trousers_type 			= implode(',', $this->getSelectedOptions('trouser_type', $profile->preferences));
+		$denim_type 			= implode(',', $this->getSelectedOptions('denim_type', $profile->preferences));
+		$denim_colour 			= implode(',', $this->getSelectedOptions('denim_colours', $profile->preferences));
+		$shorts_colour 			= implode(',', $this->getSelectedOptions('shorts_colours', $profile->preferences));
+		$shorts_preferences 	= implode(',', $this->getSelectedOptions('shorts', $profile->preferences));
+		$shoes_preferences 		= implode(',', $this->getSelectedOptions('shoes', $profile->preferences));
+		$brands_preferences 	= implode(',', $this->getSelectedOptions('brand', $profile->preferences));
 		
-		// $brands = $this->getBrands($profile->preferences); 
-		$fields['shirtTypeChoice'] = $shirts_type;
-		$fields['whereDoYouWearYourShirtChoices'] = $shirts_type;
-		$fields['trouserTypeChoice'] = $trousers_type;
-		$fields['trouserColourChoices'] = $trousers_colour;
-		$fields['jeanStyleChoice'] = $denim_preferences;
-		$fields['denimColourChoice'] = $denim_preferences;
-		$fields['shortStyleChoice'] = $shorts_preferences;
-		$fields['shoeStyleChoices'] = $shoes_preferences;
-		$fields['shoeColourChoices'] = $shoes_preferences;
+		
+		$fields['shirtTypeChoice'] 					= $shirts_type;
+		$fields['whereDoYouWearYourShirtChoices'] 	= $shirts_wear;
+		$fields['trouserTypeChoice'] 				= $trousers_type;
+		$fields['trouserColourChoices'] 			= $trousers_colour;
+		$fields['jeanStyleChoice'] 					= $denim_type;
+		$fields['denimColourChoice'] 				= $denim_colour;
+		$fields['shortStyleChoice'] 				= $shorts_preferences;
+		$fields['shoeStyleChoices'] 				= $shoes_preferences;
+		$fields['shoeColourChoices'] 				= $shoes_preferences;
+		$fields['brandChoices'] 					= $brands_preferences;
 
 		
 		// section 4 - sizing
-		$fields['tShirtSize'] = $profile->tshirt_size;
-		$fields['neckSize'] = $profile->neck_size;
-		$fields['sleeveLength'] = $profile->sleeve_lenght;
-		$fields['shoeSize'] = $profile->shoe_size;
-		$fields['jacketSize'] = $profile->jacket_size;
-		$fields['trouserWaist'] = $profile->trouser_size;
-		$fields['trouserInsideLeg'] = $profile->trouser_inside_leg_size;
-		$fields['additionalSizeInfo'] = $profile->extra_info_size;
-		$fields['favouriteBrands'] = '';
+		$fields['tShirtSize'] 			= $profile->tshirt_size;
+		$fields['neckSize'] 			= $profile->neck_size;
+		$fields['sleeveLength'] 		= $profile->sleeve_lenght;
+		$fields['shoeSize'] 			= $profile->shoe_size;
+		$fields['jacketSize'] 			= $profile->jacket_size;
+		$fields['trouserWaist'] 		= $profile->trouser_size;
+		$fields['trouserInsideLeg'] 	= $profile->trouser_inside_leg_size;
+		$fields['additionalSizeInfo'] 	= $profile->extra_info_size;
+		$fields['favouriteBrands'] 		= '';
 		$fields['brandsThatFitYouWell'] = $profile->more_brands_size;
 
 		$replacebles = array('£','+');
-		$fields['shirtPriceMin'] = str_replace($replacebles, '', $profile->shirt_min_price);
-		$fields['shirtPriceMax'] = str_replace($replacebles, '', $profile->shirt_max_price);
-		$fields['trouserPriceMin'] = str_replace($replacebles, '', $profile->trouser_min_price);
-		$fields['trouserPriceMax'] = str_replace($replacebles, '', $profile->trouser_max_price);
-		$fields['coatPriceMin'] = str_replace($replacebles, '', $profile->coat_min_price);
-		$fields['coatPriceMax'] = str_replace($replacebles, '', $profile->coat_max_price);
-		$fields['shoePriceMin'] = str_replace($replacebles, '', $profile->shoes_min_price);
-		$fields['shoePriceMax'] = str_replace($replacebles, '', $profile->shoes_max_price);
-		$fields['additionalInfo'] = $profile->extra_price;
+		$fields['shirtPriceMin'] 	= str_replace($replacebles, '', $profile->shirt_min_price);
+		$fields['shirtPriceMax'] 	= str_replace($replacebles, '', $profile->shirt_max_price);
+		$fields['trouserPriceMin'] 	= str_replace($replacebles, '', $profile->trouser_min_price);
+		$fields['trouserPriceMax'] 	= str_replace($replacebles, '', $profile->trouser_max_price);
+		$fields['coatPriceMin'] 	= str_replace($replacebles, '', $profile->coat_min_price);
+		$fields['coatPriceMax'] 	= str_replace($replacebles, '', $profile->coat_max_price);
+		$fields['shoePriceMin'] 	= str_replace($replacebles, '', $profile->shoes_min_price);
+		$fields['shoePriceMax'] 	= str_replace($replacebles, '', $profile->shoes_max_price);
+		$fields['additionalInfo'] 	= $profile->extra_price;
 		
 		
 
@@ -170,7 +174,7 @@ class Cronjobs extends db{
 		$fields['whereDoYouWhereYourJacketChoices'] = '';
 		$fields['underwearStyleChoices'] = '';
 		$fields['styleDislikeDescription'] = '';
-		$fields['brandChoices'] = '';
+		
 
 
 		//fill all fields with something not null
@@ -202,13 +206,6 @@ class Cronjobs extends db{
 		$pattern = '/'.$word.'_(\w+)/';
 		preg_match_all($pattern, $str, $matches); 
 		return $matches[1]; 
-	}
-
-	public function getBrands($str){
-		$pattern = '/(?!.*_)(\w+)/';
-		preg_match_all($pattern, $str, $matches); 
-		var_dump($matches); die;
-		return $matches[1]; 	
 	}
 
 	public function getStageName($num){
