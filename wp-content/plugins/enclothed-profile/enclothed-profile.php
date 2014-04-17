@@ -62,6 +62,10 @@ class EnclothedProfile {
 			if ( wp_verify_nonce( $_POST['nonce'], '/profile/authorize/' ) ) {
 				$this->process_authorize_form();
 			}
+
+			if ( wp_verify_nonce( $_POST['nonce'], '/dashboard/' ) ) {
+				$this->process_newbox_form();
+			}
 		}
 
 
@@ -94,12 +98,13 @@ class EnclothedProfile {
 				$data['post_code'] 	= $profile->post_code;
 				$data['dob'] 		= $profile->dob;
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
+
+				//kill all sessions so there is foing back to the forms;
+				$this->killSectionsSession();
 			}
 		}
 		
 		/*-----  End of handling thank you page  ------*/
-		
-		
 		
 	}
 
@@ -282,14 +287,14 @@ class EnclothedProfile {
 		}
 
 		//dob is not right format
-		// if (!empty($section['dob'])){
-		// 	preg_match('/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/', $section['dob'], $match);
-		// 	if (empty($match[0])){
-		// 		$str = 'Please insert a birth date using dd/mm/yyyy format.';
-		// 		$errors[] = $str; 
-		// 		setFlashMessage('error', $str);
-		// 	}
-		// }
+		if (!empty($section['dob'])){
+			preg_match('/^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/](\d{4})$/', $section['dob'], $match);
+			if (empty($match[0])){
+				$str = 'Please insert a birth date using dd/mm/yyyy format.';
+				$errors[] = $str; 
+				setFlashMessage('error', $str);
+			}
+		}
 		
 		//no phone number
 		if (empty($section['phone'])){
@@ -654,6 +659,30 @@ class EnclothedProfile {
 	**/
 	public function process_collections_form(){
 
+	}
+
+	/**
+	*
+	* Deal with new requests 
+	*
+	**/
+	public function process_newbox_form(){
+		if ($_POST['more_box']){
+			if (isset($_POST['more_box']['address'])) {
+				//send email to enclothed and mark the db as ordered again
+				global $current_user;				
+				$profile = $this->main->profiles_model->getFullProfile($current_user->user_email);
+				$data = array();
+				if ($_POST['more_box']['address'] == 'delivery'){
+					$address = $profile->delivery_add_1." ".$profile->delivery_add_2.", ".$profile->delivery_town." ".$profile->delivery_post_code;
+				} else {
+					$address = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
+				}
+				$data['address'] = $address;
+				$this->main->sendmail(get_bloginfo('admin_email'), 'New box requested!', Emails_model::TEMPLATE_NEW_BOX, $data);
+				setFlashMessage('success', 'Your box has been ordered. We shall be in touch soon.'); 
+			}
+		}
 	}
 
 
