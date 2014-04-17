@@ -172,7 +172,7 @@ class EnclothedProfile {
 		$data['email'] 				= $profile['email'];
 		$data['customer_id'] 		= substr(md5($new_user_id), 0, 5); //This is the customer unique reference
 		$data['first_name'] 		= $names[0];
-		$data['last_name'] 			= $last_names;
+		$data['last_name'] 			= ($last_names)?$last_names:'unknown';
 		$data['phone'] 				= $profile['phone'];
 		$data['dob'] 				= $dob;
 		$data['address']			= $profile['address'];

@@ -94,7 +94,7 @@ class ldmwebservices {
 		<ForceLead>false</ForceLead>
 	</Message>';
 
-public $form = array(
+public $fields = array(
 	'CustomerID',
 	'OrderReferenceNumber',
 	'Email',
