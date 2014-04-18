@@ -1,6 +1,6 @@
 <?php 
 require_once(dirname(__FILE__).'/wp-bootstrap.php');
-require_once(dirname(plugin_dir_path(__FILE__)) . "/enclothed-main/enclothed-main.php");
+//require_once(dirname(plugin_dir_path(__FILE__)) . "/enclothed-main/enclothed-main.php");
 
 
 // check what cron jobs need doing
