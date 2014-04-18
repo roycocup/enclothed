@@ -223,7 +223,7 @@ class Cronjobs extends db{
 		
 		//mark it as sent in db
 		//querying instead of using bespoke update method because that will update the modified field
-		$this->wpdb->query("update {$this->table} set salesforce = 1, ws_sent_date = now()"); 
+		$this->wpdb->query("UPDATE {$this->table} SET salesforce = 1, ws_sent_date = now() WHERE profile_id = {$profile->profile_id}"); 
 	}
 
 
