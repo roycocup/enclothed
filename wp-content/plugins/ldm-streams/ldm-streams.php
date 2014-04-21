@@ -15,27 +15,30 @@ require_once('instagram.class.php');
 class ldmStreams {
 
 	public $config_filename = 'ldm-streams.ini';
-	public $config; 
 	public $facebook; 
-	public $instagram; 
+	public static $config; 
+	public static $instagram; 
 
 	public function __construct(){
-		$this->config = parse_ini_file(dirname(__FILE__)."/".$this->config_filename, true); 
+		self::$config = parse_ini_file(dirname(__FILE__)."/".$this->config_filename, true); 
 	}	
 
 
-	public function getInstagram(){
-		$config = array(
-			'apiKey' => $this->config['instagram']['client_id'],
-			'apiSecret' => $this->config['instagram']['client_secret'],
-			'apiCallback' => $this->config['instagram']['redirect_uri'],
-		);
-		return new Instagram($config);
+	public static function getInstagram(){
+		if (!isset(self::$instagram)){
+			$config = array(
+				'apiKey' => self::$config['instagram']['client_id'],
+				'apiSecret' => self::$config['instagram']['client_secret'],
+				'apiCallback' => self::$config['instagram']['redirect_uri'],
+			);
+			self::$instagram = new Instagram($config);
+		}	
+		return self::$instagram; 
 	}
 
 	public function getInstagramPosts(){
-		$id = $this->config['instagram']['enclothed_id'];
-		$instagram = $this->getInstagram();
+		$id = self::$config['instagram']['enclothed_id'];
+		$instagram = ldmStreams::getInstagram();
 		$posts = $instagram->getUserMedia($id);
 		return $posts; 
 	}
