@@ -29,6 +29,14 @@ class EnclothedProfile {
 
 	public $main; //main class
 	const BYPASS_VALIDATION = false; //turn this off when going to production
+	public $form_pages = array(
+		'/profile/details/', 
+		'/profile/style/', 
+		'/profile/preferences/', 
+		'/profile/sizing/', 
+		'/profile/delivery/', 
+		'/profile/authorize/'
+		); 
 
 	public function __construct(){
 		$this->main = new EnclothedMain(); 
@@ -38,6 +46,16 @@ class EnclothedProfile {
 	//This will process every single form for the user extended profile.
 	//it will also check the nonce from the form to make sure it comes from the right place
 	public function process_my_forms() {
+
+		// check if this is a form page
+		$cur_uri = get_uri();
+		$is_form_page = in_array($cur_uri, $this->form_pages);
+		//if this is not a profile page, clear the sessions
+		if (!$is_form_page){
+			debug_log("Clearing all section in Session for  $cur_uri and is_form_page is {$is_form_page}");
+			//$this->killSectionsSession();
+		}
+
 		if (!empty($_POST['nonce'])){
 
 			//we will call each method based on 
@@ -711,6 +729,7 @@ class EnclothedProfile {
 
 
 	public function killSectionsSession(){
+		debug_log('clearing all sections');
 		if ( !empty($_SESSION['section_1']) ) unset($_SESSION['section_1']);
 		if ( !empty($_SESSION['section_2']) ) unset($_SESSION['section_2']);
 		if ( !empty($_SESSION['section_3']) ) unset($_SESSION['section_3']);
