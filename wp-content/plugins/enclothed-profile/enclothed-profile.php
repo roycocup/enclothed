@@ -347,6 +347,14 @@ class EnclothedProfile {
 			}
 		}
 
+
+		//make sure the t&c checkbox is checked as part of validation
+		if (empty($section['tc'])) {
+			$str = 'Please agree with the terms and conditions.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}
+
 		//go back to the page if validation failed
 		if (!empty($errors)){
 			//clear the session just in case something was wrong this time.

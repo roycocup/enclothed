@@ -215,15 +215,18 @@ if (isset($_SESSION['section_1'])){
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 			</select>
-				
-				</div><!--mini-wrapper-forms-->
-				
-		  <div class="mini-wrapper5">
 
-           		<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-                <button class="button4" onclick="submit()">Save and Continue</button>
+			<div class="checkbox_wrap" style="max-width:400px; padding-bottom:0px; padding-top:30px;">
+				<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_1[tc]">
+				<label for="checkbox1" class="css-label tickbox">- AGREE WITH THE TERMS AND CONDITONS</label>
+			</div>	
+				
+		</div><!--mini-wrapper-forms-->
 
-		 </div><!--mini-wrapper4-->
+		  <div class="mini-wrapper5" style="margin:10px auto;">
+           	<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+            <button class="button4" onclick="submit()">Save and Continue</button>
+		 </div>
 		 
 				 </div>
 				</form>
