@@ -12,6 +12,25 @@ if (!is_user_logged_in()){
 
 get_header(); ?>
 
+<script>
+	jQuery(document).ready(function($) {
+		//Flashmessages
+		//controling the display of errors in the flash messages, depending if there are messages in the session or not
+		var has_messages = <?php echo (sessionHasMessages()) ? 'true':'false';?>;
+		if (has_messages) {
+			$('.flashmessages').show();
+			setTimeout(function(){
+				$('.flashmessages').fadeOut('slow');
+			},3000)	
+		} 
+	});
+</script>
+
+
+<style>
+	.flashmessages{border-color:green; background-color: rgba(0,256,0,0.3);}
+</style>
+
 
 <?php
 $options = get_option('sf_dante_options');
@@ -184,7 +203,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="fade-border-right"></div>
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
-							<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
+							
 
 							 <div class="col-sm-10 dashboard_wrapper no-borders">
 								<h2>Dashboard</h2>								
@@ -279,7 +298,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 	<h2>Request a box</h2>
 	<form action="" method="POST" name='more_box'>
 		<?php $nonce = wp_create_nonce( get_uri() ); ?>
-		<div class="flashmessages"><?php flashMessagesDisplay(); ?></div>
 
 		<div class="row">
 			<div class="col-xs-12">
