@@ -9,7 +9,7 @@ class Gifts_model extends db{
 
 	public function __construct(){
 		parent::__construct();
-		$this->iv = mcrypt_create_iv (mcrypt_get_block_size (MCRYPT_TripleDES, MCRYPT_MODE_CBC), MCRYPT_DEV_RANDOM);
+		$this->iv = mcrypt_create_iv (mcrypt_get_block_size (MCRYPT_TripleDES, MCRYPT_MODE_CBC), MCRYPT_DEV_URANDOM);
 		$this->key = 'LeeS1bae';
 		$this->delimiter = '%%';
 	}

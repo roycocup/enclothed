@@ -871,6 +871,7 @@ figure.animated-overlay figcaption {
     left: 0;
     background-image: url(images/crease.svg);
     background-size: cover;
+
     background-position: center center;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -9486,7 +9487,6 @@ ul.faqs-section {
 	border: 2px solid transparent;
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
-	-ms-box-sizing: content-box;
 	box-sizing: content-box;
 	background-size: 100% 100%;
 	background-position: center center;
@@ -9605,7 +9605,6 @@ ul.faqs-section {
 	margin-top: 10px;
 }
 .sf-icon-box[class*="sf-icon-box-boxed-"] .sf-icon-cont {
-	background-image: url(images/crease.svg);
 	background-size: 100% 100%;
 	background-position: center center;
 	position: absolute;
@@ -13521,3 +13520,5 @@ form .form-row .input-checkbox {
 .mobile-browser .spb_parallax_asset {
 	background-position: 50% 0!important;
 }
+
+

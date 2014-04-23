@@ -226,7 +226,7 @@
 						$bck_size = 'cover';
 					}
 				?>
-					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $fb_image_url; ?>) ;
+					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo str_replace("////", "//",$fb_image_url); ?>) ;
 					 background-size: <?php echo $bck_size; ?>">
 
 					</div>
@@ -329,11 +329,11 @@
 			<div class="box-content-wrap">
 				<h2><span style="color: #0e2334;">STAY CONNECTED</span></h2>
 				<p><img class="size-full aligncenter" alt="line" src="/wp-content/themes/dante-child/images/line.png"></p>
-				<a href="https://twitter.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-twitter sf-icon sf-icon-medium"></i></a></div>
-				<a href="https://www.facebook.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-facebook sf-icon sf-icon-medium"></i></a></div>
-				<a href="http://instagram.com/enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-instagram sf-icon sf-icon-medium"></i></a></div>
-				<a href="http://enclothedblog.tumblr.com/" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-tumblr sf-icon sf-icon-medium"></i></a></div>
-				<a href="http://enclothedblog.tumblr.com/rss" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-rss sf-icon sf-icon-medium"></i></a></div>
+				<a href="https://twitter.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-twitter sf-icon sf-icon-medium"></i></div></a>
+				<a href="https://www.facebook.com/Enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-facebook sf-icon sf-icon-medium"></i></div></a>
+				<a href="http://instagram.com/enclothed" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-instagram sf-icon sf-icon-medium"></i></div></a>
+				<a href="http://enclothedblog.tumblr.com/" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-tumblr sf-icon sf-icon-medium"></i></div></a>
+				<a href="http://enclothedblog.tumblr.com/rss" target="_blank"><div class="sf-icon-cont cont-medium sf-icon-float-none sf-icon-"><i class="fa-rss sf-icon sf-icon-medium"></i></div></a>
 			</div>
 		</div>
 	</div>
@@ -345,7 +345,6 @@
 
 <style type="text/css">
 .social_boxes_wrapper{
-	background-color: #000; 
 	margin:0; 
 	padding: 0; 
 	height: auto; 

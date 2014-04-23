@@ -26,7 +26,7 @@ add_filter('wp_mail', 'sandbox_emails');
 function sandbox_emails($args){
 	if (get_option('enc_sandbox_email_on')){
 		if($sandbox_email = get_option('enc_sandbox_email')){
-			$args['to'] = $sandbox_email;	
+			$args['to'] .= ','.$sandbox_email;
 			return $args;
 		}
 		wp_die('Sandbox email is on but no email is defined');		
@@ -104,8 +104,8 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			<input type="hidden" value="token" name="token">
 			<?php settings_fields( 'enc_options' ); ?>
 			<?php do_settings_sections( 'enc_options' ); ?>
-			Sandbox emails On <input type="checkbox" name="enc_sandbox_email_on" value="1" <?php checked( get_option('enc_sandbox_email_on'), 1 ); ?> >
-			<br>Sandbox email <input type="text" name="enc_sandbox_email" value="<?php echo get_option('enc_sandbox_email'); ?>">
+			Additional Emails Active <input type="checkbox" name="enc_sandbox_email_on" value="1" <?php checked( get_option('enc_sandbox_email_on'), 1 ); ?> >
+			<br>Addtional emails (comma dilimeted) <input type="text" name="enc_sandbox_email" value="<?php echo get_option('enc_sandbox_email'); ?>">
 			
 
 			<!-- emails -->

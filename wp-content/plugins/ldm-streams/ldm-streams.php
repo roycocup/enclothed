@@ -45,7 +45,9 @@ class ldmStreams {
 
 	public function getInstagramLastPostCaption($num = 0){
 		$posts = $this->getInstagramPosts();
-		return $posts->data[$num]->caption->text;
+		$postText = $posts->data[$num]->caption->text;
+		$postText = (strlen($postText) > 185)?substr($postText, 0, 185)."...":$postText;
+		return $postText;
 	}
 
 	public function getInstagramLastPostTime($num = 0){
