@@ -167,9 +167,9 @@ class EnclothedProfile {
 		if (is_object($new_user_id)){
 			debug_log('There was a problem creating the user '.__FILE__);
 			
-			if (!empty($new_user_id->errors['existing_user_login'])){
+			if (!empty($new_user_id->errors['existing_user_login']) || !empty($new_user_id->errors['existing_user_email'])){
 				debug_log('The user already exists. Maybe coming back to update?');
-				$user_id = get_user_by( 'email', $profile['email'] )->data->ID; 
+				$user_id = get_user_by( 'email', $profile['email'] )->data->ID;
 			} 
 		} else {
 			//send the email to the new user
