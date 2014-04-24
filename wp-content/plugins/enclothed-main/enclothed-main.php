@@ -12,7 +12,6 @@
 **/
 
 
-
 require_once(dirname(__FILE__)."/helpers.php");
 require_once(dirname(__FILE__)."/models/emails.php");
 require_once(dirname(__FILE__)."/models/brands.php");
@@ -46,8 +45,10 @@ class EnclothedMain {
 		$this->gifts_model = new Gifts_model();
 		add_action("wp_ajax_enc_ajax_getvars", array($this, "enc_ajax_getvars"));
 		add_action("wp_ajax_nopriv_enc_ajax_getvars", array($this, 'enc_ajax_getvars'));
+
 		
 	}
+
 
 
 	public function process_inits(){
@@ -152,6 +153,7 @@ class EnclothedMain {
 		if ( is_wp_error($user) ){
 			setFlashMessage('error', $user->get_error_message());
 			wp_redirect(home_url().'/home/login');
+			exit();
 		} else {
 			wp_redirect(home_url());
 			exit;
