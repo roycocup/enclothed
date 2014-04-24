@@ -36,16 +36,17 @@ function echo_if_present($word){
 	jQuery(document).ready(function($){
 		// This is what enables the images to be added to the form 
 		// when they are clicked and removed when clicked again
-		$('.click').toggle(function(){
+		$('.click').click(function(){
 			var image = $(this).attr('id');
-			$('<input>').attr({
-				type: 'hidden',
-				name: 'section_3['+image+']',
-				value: 'checked',
-			}).appendTo('form[name="section_3"]');
-		}, function(){
-			var image = $(this).attr('id'); 
-			$('form input[name="section_3['+image+']"').remove();
+			if (!$(this).hasClass('selected')) {
+				$('<input>').attr({
+					type: 'hidden',
+					name: 'section_3['+image+']',
+					value: 'checked',
+				}).appendTo('form[name="section_3"]');
+			} else {
+				$('form input[name="section_3['+image+']"').remove();
+			}
 		});
 
 		//add the ones that are prepopulated / selected to the form
@@ -53,9 +54,9 @@ function echo_if_present($word){
 			var image = $(this).attr('id');
 			$('<input>').attr({
 				type: 'hidden',
-				name: 'section_2['+image+']',
+				name: 'section_3['+image+']',
 				value: 'checked',
-			}).appendTo('form[name="section_2"]');
+			}).appendTo('form[name="section_3"]');
 		});
 
 
@@ -257,7 +258,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="mini-wrapper-forms">
 									<div class="numbering">01</div>
-									<p>Which brands do you wear?</p>
+									<p>Which brands do you usually wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row" style="border-top: 1px solid #e3e3e3;">
 									<div class="col-sm-6 grid_left">
@@ -334,7 +335,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_3[more_brands]" value="<?php @echo_if_exists($section['more_brands']); ?>" id='brands-autocomplete-box'></textarea>                                    
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_3[more_brands]" id='brands-autocomplete-box'><?php @echo_if_exists($section['more_brands']); ?></textarea>                                    
 								</div>
 							</div>
 
@@ -703,7 +704,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-				                <!-- <a href="/profile/style/" class="button4">Go Back</a> -->
+				                <a href="/profile/style/" class="button4">Go Back</a>
 				                <div class="button_spacer col-sm-1 hidden-xs"></div>
 				                <button class="button4" onclick="submit()">Save and Continue</button>
 							</div><!--mini-wrapper4-->

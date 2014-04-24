@@ -283,6 +283,14 @@ class EnclothedProfile {
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
 		}
+
+		//no last name
+		if (substr_count($section['name'], ' ') == 0) {
+			$str = 'Please enter a last name.';
+			$errors[] = $str; 
+			setFlashMessage('error', $str);
+		}
+
 		//no email
 		if (empty($section['email'])){
 			$str = 'Please enter an email.';

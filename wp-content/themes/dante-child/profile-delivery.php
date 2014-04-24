@@ -34,7 +34,6 @@ if (isset($_SESSION['section_6'])){
 	$section = array();
 }
 
-
 ?>
 
 <?php
@@ -163,13 +162,51 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="accordian-title">Delivery Address</div>
 										<!-- <div class="arrow-click" id='arrow1'></div> -->
 									</div>
-
+									
 									<div class="mini-wrapper-forms">
-										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="section_6[delivery_add_1]" value="<?php @echo_if_exists($_SESSION['section_1']['address']); ?>">		 	  	
-										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="section_6[delivery_add_2]" value="">
-										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="section_6[town]" value="<?php @echo_if_exists($_SESSION['section_1']['town']); ?>">
-										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="section_6[post_code]" value="<?php @echo_if_exists($_SESSION['section_1']['post_code']); ?>">
-										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="section_6[delivery_add_name]" value="">		 	  
+									<?php
+										if (array_key_exists('delivery_add_1', $section)) {
+											$customerAddressFirst = $section['delivery_add_1'];
+										} else if(array_key_exists('section_1', $_SESSION)) {
+											$customerAddressFirst = $_SESSION['section_1']['address'];
+										} else {
+											$customerAddressFirst = "";
+										}
+
+										if (array_key_exists('delivery_add_2', $section)) {
+											$customerAddressSecond = $section['delivery_add_2'];
+										} else {
+											$customerAddressSecond = "";
+										}
+
+										if (array_key_exists('delivery_town', $section)) {
+											$customerTown = $section['delivery_town'];
+										} else if(array_key_exists('section_1', $_SESSION)) {
+											$customerTown = $_SESSION['section_1']['town'];
+										} else {
+											$customerTown = "";
+										}
+
+										if (array_key_exists('delivery_post_code', $section)) {
+											$customerPostCode = $section['delivery_post_code'];
+										} else if(array_key_exists('section_1', $_SESSION)) {
+											$customerPostCode = $_SESSION['section_1']['post_code'];
+										} else {
+											$customerPostCode = "";
+										}
+
+										if (array_key_exists('delivery_add_name', $section)) {
+											$customerAddressName = $section['delivery_add_name'];
+										} else {
+											$customerAddressName = "";
+										}
+
+									?>
+										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 1" name="section_6[delivery_add_1]" value="<?php echo $customerAddressFirst; ?>">		 	  	
+										<input type="text" class="customer-info" tabindex="1" placeholder="Customer Address Line 2" name="section_6[delivery_add_2]" value="<?php echo $customerAddressSecond; ?>">
+										<input type="text" class="key-info" tabindex="1" placeholder="Town/City" name="section_6[town]" value="<?php echo $customerTown; ?>">
+										<input type="text" class="key-info" tabindex="1" placeholder="Post Code" name="section_6[post_code]" value="<?php echo $customerPostCode; ?>">
+										<input type="text" class="customer-info" tabindex="2" placeholder="Name this Address" name="section_6[delivery_add_name]" value="<?php echo $customerAddressName; ?>">		 	  
 										<div class="checkbox_wrap" >
 											<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_6[same_as_delivery]" checked>
 											<label for="checkbox1" class="css-label tickbox">- MY BILLING ADDRESS IS THE SAME AS THIS ADDRESS</label>
@@ -221,13 +258,13 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 									</div>
 
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about delivery?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_6[extra_delivery]" value=""></textarea>
+									<textarea type="text" class="customer-info3" abindex="2" placeholder="" name="section_6[extra_delivery]" value=""><?php @echo_if_exists($section['extra_delivery']); ?></textarea>
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about collection?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_6[extra_collection]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_6[extra_collection]" value=""><?php @echo_if_exists($section['extra_collection']); ?></textarea>
 
 									<div class="mini-wrapper5">
 										<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-						                <!-- <a href="/profile/pricing/" class="button4">Go Back</a> -->
+						                <a href="/profile/pricing/" class="button4">Go Back</a>
  						                <div class="button_spacer col-sm-1 hidden-xs"></div>
  						                <button class="button4" onclick="submit()">Save and Continue</button>
 									</div><!--mini-wrapper4-->

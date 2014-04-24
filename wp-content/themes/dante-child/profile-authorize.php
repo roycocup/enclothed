@@ -194,7 +194,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-					            <!-- <a href="/profile/delivery/" class="button4">Go Back</a> -->
+					            <a href="/profile/delivery/" class="button4">Go Back</a>
     				            <div class="button_spacer col-sm-1 hidden-xs"></div>
                    				<button class="button4" onclick="submit()">Proceed to Payment</button>
 							</div><!--mini-wrapper4-->

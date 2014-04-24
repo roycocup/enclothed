@@ -49,16 +49,26 @@ function echo_if_present($word){
 	jQuery(document).ready(function($){
 		// This is what enables the images to be added to the form 
 		// when they are clicked and removed when clicked again
-		$('.click').toggle(function(){
+		$('.click').click(function(){
+			var image = $(this).attr('name');
+			if (!$(this).hasClass('selected')) {
+				$('<input>').attr({
+					type: 'hidden',
+					name: 'section_4['+image+']',
+					value: 'checked',
+				}).appendTo('form[name="section_4"]');
+			} else {
+				$('form input[name="section_4['+image+']"').remove();
+			}
+		});
+
+		$('.selected').each(function(){
 			var image = $(this).attr('name');
 			$('<input>').attr({
 				type: 'hidden',
 				name: 'section_4['+image+']',
 				value: 'checked',
 			}).appendTo('form[name="section_4"]');
-		}, function(){
-			var image = $(this).attr('id'); 
-			$('form input[name="section_4['+image+']"').remove();
 		});
 
 		
@@ -87,6 +97,7 @@ function echo_if_present($word){
 			Object.tshirt_size = '<?php echo @$_SESSION['section_4']['tshirt_size']; ?>';
 			Object.neck_size = '<?php echo @$_SESSION['section_4']['neck_size']; ?>';
 			Object.shoe_size = '<?php echo @$_SESSION['section_4']['shoe_size']; ?>';
+			Object.jacket_size = '<?php echo @$_SESSION['section_4']['jacket_size']; ?>';
 			Object.trouser_size = '<?php echo @$_SESSION['section_4']['trouser_size']; ?>';
 			Object.trouser_inside_leg_size = '<?php echo @$_SESSION['section_4']['trouser_inside_leg_size']; ?>';
 		});
@@ -127,8 +138,14 @@ function echo_if_present($word){
 		});
 
 		$(function() {
+
+			var slide_selection = 18.5;
+			if (Object.previous_selections){
+				slide_selection = Object.neck_size
+			}
+
 			$( "#neck_size_slider" ).slider({
-				value:18.5,
+				value:slide_selection,
 				min: 14,
 				max: 19,
 				step: .5,
@@ -136,12 +153,19 @@ function echo_if_present($word){
 					$( "#neck_size_selection" ).val(ui.value );
 				}
 			});
-			$( "#neck_size_selection" ).val($( "#neck_size_slider" ).slider( "value" ) );
+			
+			$( "#neck_size_selection" ).val(slide_selection);
+
 		});
 
 		$(function() {
+			var slide_selection = 9.5;
+			if (Object.previous_selections){
+				slide_selection = Object.shoe_size
+			}
+
 			$( "#shoes_slider" ).slider({
-				value:9.5,
+				value:slide_selection,
 				min: 7,
 				max: 13.5,
 				step: .5,
@@ -149,12 +173,19 @@ function echo_if_present($word){
 					$( "#shoes_selection" ).val(ui.value );
 				}
 			});
-			$( "#shoes_selection" ).val($( "#shoes_slider" ).slider( "value" ) );
+
+			$( "#shoes_selection" ).val(slide_selection);
+			
 		});
 
 		$(function() {
+			var slide_selection = 48;
+			if (Object.previous_selections){
+				slide_selection = Object.jacket_size
+			}
+
 			$( "#jacket_slider" ).slider({
-				value:48,
+				value:slide_selection,
 				min: 32,
 				max: 56,
 				step: 2,
@@ -162,12 +193,19 @@ function echo_if_present($word){
 					$( "#jacket_selection" ).val(ui.value );
 				}
 			});
-			$( "#jacket_selection" ).val($( "#jacket_slider" ).slider( "value" ) );
+
+			
+			$( "#jacket_selection" ).val(slide_selection);
 		});
 
 		$(function() {
+			var slide_selection = 30;
+			if (Object.previous_selections){
+				slide_selection = Object.trouser_size
+			}	
+
 			$( "#trouser_slider" ).slider({
-				value:30,
+				value:slide_selection,
 				min: 28,
 				max: 40,
 				step: 1,
@@ -175,7 +213,9 @@ function echo_if_present($word){
 					$( "#trouser_selection" ).val(ui.value );
 				}
 			});
-			$( "#trouser_selection" ).val($( "#trouser_slider" ).slider( "value" ) );
+			
+			$( "#trouser_selection" ).val(slide_selection);
+			
 		});
 
 		$(function() {
@@ -459,7 +499,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 												</div>
 
 
-
+												
 												<div class="box_options_wrapper">
 													<div class="col-sm-2 box_options_label">Sleeve Length</div>
 													<div class="col-sm-10">
@@ -597,16 +637,16 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											<p>The more you can tell us the better the fit will be.</p>
 
 									<label for="checkbox1"class="css-label">Is there anything extra you'd like to add about your size?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[extra]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[extra]" value=""><?php echo @echo_if_exists($section['extra_info_size']); ?></textarea>
 									<label for="checkbox1"class="css-label">Is there any particular brands that fit you well?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[more_brands]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_4[more_brands]" value=""><?php echo @echo_if_exists($section['more_brands_size']); ?></textarea>
 											<p class="georgia_text no-margin-bottom">(This won't affect what brands we send you, it's just about fit)</p>
 					
 											</div><!--mini-wrapper-forms-->
 
 											<div class="mini-wrapper5">
 												<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-								                <!-- <a href="/profile/preferences/" class="button4">Go Back</a> -->
+								                <a href="/profile/preferences/" class="button4">Go Back</a>
 								                <div class="button_spacer col-sm-1 hidden-xs"></div>
 								                <button class="button4 submit-button">Save and Continue</button>
                 							</div><!--mini-wrapper4-->

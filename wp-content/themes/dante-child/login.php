@@ -192,7 +192,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 					
 					<form action="" method="post">
 						<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('home_login'); ?>" />
-						<input type="text" class="key-info" name='user' id='user' tabindex="1" placeholder="Username">
+						<input type="text" class="key-info" name='user' id='user' tabindex="1" placeholder="Email">
 						<input type="password" class="key-info" name='password' id='password' tabindex="1" placeholder="password">
 						<a href="/home/lostpass" title="Lost Password" class="lost_password">Lost Password?</a>
 						<button class="button4" id='login-bnt'>log in</button>

@@ -34,16 +34,17 @@ function echo_if_present($word){
 	jQuery(document).ready(function($){
 		// This is what enables the images to be added to the form 
 		// when they are clicked and removed when clicked again
-		$('.click').toggle(function(){
+		$('.click').click(function(){
 			var image = $(this).attr('id');
-			$('<input>').attr({
-				type: 'hidden',
-				name: 'section_2['+image+']',
-				value: 'checked',
-			}).appendTo('form[name="section_2"]');
-		}, function(){
-			var image = $(this).attr('id'); 
-			$('form input[name="section_2['+image+']"').remove();
+			if (!$(this).hasClass('selected')) {
+				$('<input>').attr({
+					type: 'hidden',
+					name: 'section_2['+image+']',
+					value: 'checked',
+				}).appendTo('form[name="section_2"]');
+			} else {
+				$('form input[name="section_2['+image+']"').remove();
+			}
 		});
 
 		//add the ones that are prepopulated / selected to the form
@@ -323,7 +324,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							
 							<div class="mini-wrapper5">
 								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-								<!-- <a href="/profile/details/" class="button4">Go Back</a> -->
+								<a href="/profile/details/" class="button4">Go Back</a>
                 				<div class="button_spacer col-sm-1 hidden-xs"></div>
                 				<button class="button4" onclick="submit()">Save and Continue</button>
 							</div><!--mini-wrapper4-->

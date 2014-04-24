@@ -8,6 +8,16 @@
 // var_dump($_SESSION); die;
 ?>
 <?php get_header(); ?>
+<?php 
+if (isset($_SESSION['section_1'])){
+	$section = $_SESSION['section_1'];	
+}else if(isset($_POST['section_1'])){
+	$section = $_POST['section_1'];
+} else {
+	$section = array();
+}
+
+?>
 <script>
 	jQuery(document).ready(function($){
 
@@ -19,6 +29,49 @@
       		yearRange: '1920:2010',
       		defaultDate: "10/09/1976",
 		});
+
+		/*for(d=1; d <= 30; d++) {
+			$('<option>').attr({
+				value: d
+			}).text(d).appendTo('#daySelect');
+		}
+
+		$("#monthSelect").change(function() {
+			var selectedValue = $(this).val();
+			console.log(selectedValue);
+			var thirtyDays = ('september,april,june,november');
+			var thirtyOneDays = ('january,march,may,july,august,october,december');
+			
+			$("#daySelect").empty();
+			
+			var numberOfDays = 29;
+			console.log(thirtyDays.indexOf(selectedValue));
+			if (thirtyDays.indexOf(selectedValue) != -1) {
+				numberOfDays = 30;
+			} else if (thirtyOneDays.indexOf(selectedValue) != -1) {
+				numberOfDays = 31;
+			}
+
+			for(d=1; d <= numberOfDays; d++) {
+				$('<option>').attr({
+					value: d
+				}).text(d).appendTo('#daySelect');
+
+			}
+
+		}); */
+
+		var howDidYouHear = "<?php @echo_if_exists($section['feedback_1']); ?>"
+		var areYouPurchasing = "<?php @echo_if_exists($section['other_person']); ?>"
+		
+		if (howDidYouHear != "") {
+			$("#howDidYouHearDropdown").val(howDidYouHear);
+		}
+
+		if (areYouPurchasing != "") {
+			$("#areYouPurchasingDropdown").val(areYouPurchasing);
+		}
+
 		
 		//Flashmessages
 		//controling the display of errors in the flash messages, depending if there are messages in the session or not
@@ -30,19 +83,8 @@
 	});
 
 </script>
-
 <?php //session_destroy(); ?>
-<?php 
-if (isset($_SESSION['section_1'])){
-	$section = $_SESSION['section_1'];	
-}else if(isset($_POST['section_1'])){
-	$section = $_POST['section_1'];
-} else {
-	$section = array();
-}
 
-
-?>
 	
 <?php
 	$options = get_option('sf_dante_options');
@@ -192,25 +234,41 @@ if (isset($_SESSION['section_1'])){
 				<input type="text" class="selectmenu" tabindex="9" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
 				<input type='text' class="selectmenu" id='datepicker' tabindex="10" name='section_1[dob]' placeholder='Date of Birth DD/MM/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
 				
+				<?php /* ?>
+				<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_day]' id="daySelect"></select>
+				<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_month]' id="monthSelect">
+				<?php 
+				$months = array('january','february','march','april','may','june','july','august','september','october','november','december');
+				foreach($months as $month) { ?>
+					<option value='<?php echo $month; ?>'><?php echo $month; ?></option>
+				<?php } ?>
+				</select>
+				<select class="selectmenu" type='dropdown' name='section_1[dob_year]' id="yearSelect">
+				<?php 
+				$currentYear = date("Y");
+				for($i=0; $i<=150; $i++) { ?>
+					<option value='<?php echo $currentYear-$i; ?>'><?php echo $currentYear-$i; ?></option>
+				<?php } ?>
+				</select>
+				<?php // */ ?>
 			
 			
 			<span class="date">
 			(Click in the box for date picker, or click again just to type it. dd/mm/yyyy)
 			</span>
 			
-			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]">
+			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]" id="howDidYouHearDropdown">
 					<option value="none">How did you hear about enclothed?</option>
-					<option value="The Internet">The Internet</option>
-					<option value="Word of Mouth">Word of Mouth</option>
-					<option value="A Friend ">A Friend </option>
-					<option value="Magazine Advert">Magazine Advert</option>
-					<option value="Email Marketing">Email Marketing</option>
-					<option value="Magazine Article">Magazine Article</option>
-					<option value="Promotional Material">Promotional Material</option>
+					<option value="From Google">From Google</option>
+					<option value="From Facebook">From Facebook</option>
+					<option value="From a blog">From a blog</option>
+					<option value="From a friend">From a friend</option>
+					<option value="From a flyer">From a flyer</option>
+					<option value="From the press">From the press</option>
 					<option value="Other">Other</option>
 			</select>
 			
-			<select class="selectmenu" tabindex="11" name="section_1[other_person]">
+			<select class="selectmenu" tabindex="11" name="section_1[other_person]" id="areYouPurchasingDropdown">
 					<option value="none">Are you purchasing for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>

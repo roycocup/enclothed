@@ -6,19 +6,45 @@
 **/
 ?>
 <?php get_header(); ?>
+<?php 
 
+if (isset($_SESSION['section_5'])){
+	$section = $_SESSION['section_5'];	
+}else if(isset($_POST['section_5'])){
+	$section = $_POST['section_5'];
+} else {
+	$section = array();
+}
+
+
+?>
 
 <script>
 	jQuery(document).ready(function($){
 		
+		// setting variables in the prototype to have the previously selected bits
+		$(function(){
+			var previous_selections = <?php echo (empty($_SESSION['section_5']))? 'false':'true'; ?>;
+			Object.previous_selections = previous_selections;
+			Object.shirt_min_price = '<?php echo @$_SESSION['section_5']['shirt_min_price']; ?>';
+			Object.shirt_max_price = '<?php echo @$_SESSION['section_5']['shirt_max_price']; ?>';
+			Object.trouser_min_price = '<?php echo @$_SESSION['section_5']['trouser_min_price']; ?>';
+			Object.trouser_max_price = '<?php echo @$_SESSION['section_5']['trouser_max_price']; ?>';
+			Object.coat_min_price = '<?php echo @$_SESSION['section_5']['coat_min_price']; ?>';
+			Object.coat_max_price = '<?php echo @$_SESSION['section_5']['coat_max_price']; ?>';
+			Object.shoes_min_price = '<?php echo @$_SESSION['section_5']['shoes_min_price']; ?>';
+			Object.shoes_max_price = '<?php echo @$_SESSION['section_5']['shoes_max_price']; ?>';
+		});
 
 		/*===============================
 		=            sliders            =
 		===============================*/
 		$(function() {
+			var amount = [2, 3];
+
 			$( "#shirt_price" ).slider({
 				range:true,
-				values:[2, 3],
+				values:amount,
 				min: 1,
 				max: 4,
 				step: 1,
@@ -26,6 +52,7 @@
 					$( "#shirt_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);
 				}
 			});
+
 			var increments = {
 				1: "£50", 
 				2: "£100",
@@ -33,13 +60,28 @@
 				4: "£150+",
 			};
 
-			$( "#shirt_price_selection" ).val('£100-£150');
+			if (Object.previous_selections){
+				for(key in increments){
+					if (increments[key] == Object.shirt_min_price){
+						amount[0] = parseInt(key);
+					}
+					if (increments[key] == Object.shirt_max_price){
+						amount[1] = parseInt(key);
+					}
+				}
+				$( "#shirt_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
+				$( "#shirt_price" ).slider({values:amount});
+			}else{
+				$( "#shirt_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+			}
 		});
 
 		$(function() {
+			var amount = [2, 3];
+
 			$( "#trousers_price" ).slider({
 				range:true,
-				values:[2,3],
+				values:amount,
 				min: 1,
 				max: 4,
 				step: 1,
@@ -54,13 +96,29 @@
 				4: "£200+",
 			};
 
-			$( "#trousers_price_selection" ).val('£100-£150');
+			if (Object.previous_selections){
+				for(key in increments){
+					if (increments[key] == Object.trouser_min_price){
+						amount[0] = parseInt(key);
+					}
+					if (increments[key] == Object.trouser_max_price){
+						amount[1] = parseInt(key);
+					}
+				
+				}
+				$( "#trousers_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
+				$( "#trousers_price" ).slider({values:amount});
+			}else{
+				$( "#trousers_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+			}
 		});
 
 		$(function() {
+			var amount = [2, 4];
+
 			$( "#coat_price" ).slider({
 				range: true,
-				values:[2,4],
+				values:amount,
 				min: 1,
 				max: 4,
 				step: 1,
@@ -75,14 +133,31 @@
 				4: "£300+",
 			};
 
-			$( "#coat_price_selection" ).val('£200-£300+');
+			if (Object.previous_selections){
+				for(key in increments){
+					if (increments[key] == Object.coat_min_price){
+						amount[0] = parseInt(key);
+					}
+					if (increments[key] == Object.coat_max_price){
+						amount[1] = parseInt(key);
+					}
+				
+				}
+				$( "#coat_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
+				$( "#coat_price" ).slider({values:amount});
+			}else{
+				$( "#coat_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+			}
+
 		});
 
 
 		$(function() {
+			var amount = [2, 4];
+
 			$( "#shoe_price" ).slider({
 				range: true,
-				values:[2,4],
+				values:amount,
 				min: 1,
 				max: 5,
 				step: 1,
@@ -98,7 +173,22 @@
 				5: "£200+",
 			};
 
-			$( "#shoe_price_selection" ).val('£100-£200');
+			if (Object.previous_selections){
+				for(key in increments){
+					if (increments[key] == Object.shoes_min_price){
+						amount[0] = parseInt(key);
+					}
+					if (increments[key] == Object.shoes_max_price){
+						amount[1] = parseInt(key);
+					}
+				
+				}
+				$( "#shoe_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
+				$( "#shoe_price" ).slider({values:amount});
+			}else{
+				$( "#shoe_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+			}
+
 		});
 		
 		
@@ -145,17 +235,7 @@
 	});
 </script>
 
-<?php 
-if (isset($_SESSION['section_5'])){
-	$section = $_SESSION['section_5'];	
-}else if(isset($_POST['section_5'])){
-	$section = $_POST['section_5'];
-} else {
-	$section = array();
-}
 
-
-?>
 
 
 
@@ -258,7 +338,6 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 			<!-- OPEN page -->
 			<div <?php post_class('clearfix ' . $post_class_extra); ?> id="<?php the_ID(); ?>">
-
 				<div class="page-content clearfix">
 					<div class="row">
 						<div class="full-width-text spb_content_element col-sm-12 spb_text_column no-padding-top">
@@ -379,7 +458,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										</div>
 
 									<label class="css-label">Is there anything extra you'd like to add?</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_5[extra]" value=""></textarea>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="e.g. I'm going on holiday to Caribbean next week." name="section_5[extra]" value=""><?php echo @echo_if_exists($section['extra_price']); ?></textarea>
 									
                                     <!-- <div class="col-md-9 col-sm-10 col-xs-11 promo_code_wrapper">
 									<label class="css-label" style="padding-top:30px; color:#fff;">Gift Card Code</label>
@@ -388,7 +467,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 										<div class="mini-wrapper5">
 											<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-							                <!-- <a href="/profile/sizing/" class="button4">Go Back</a> -->
+							                <a href="/profile/sizing/" class="button4">Go Back</a>
 							                <div class="button_spacer col-sm-1 hidden-xs"></div>
 							                <button class="button4 submit-button">Save and Continue</button>
                 						</div>
