@@ -115,6 +115,7 @@ class EnclothedProfile {
 				$data['town'] 		= $profile->town;
 				$data['post_code'] 	= $profile->post_code;
 				$data['dob'] 		= $profile->dob;
+
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New user!', Emails_model::TEMPLATE_ORDER_IN, $data);
 
 				//kill all sessions so there is foing back to the forms;
@@ -205,11 +206,14 @@ class EnclothedProfile {
 		$data['last_name'] 			= ($last_names)?$last_names:'unknown';
 		$data['phone'] 				= $profile['phone'];
 		$data['dob'] 				= $dob;
+
 		$data['address']			= $profile['address'];
 		$data['town'] 				= $profile['town'];
 		$data['post_code'] 			= $profile['post_code'];
 		$data['occupation'] 		= $profile['occupation'];
 		$data['feedback_1'] 		= $profile['feedback_1'];
+		$data['how_hear_other'] 	= $profile['how_hear_other'];
+		$data['purchasing_yes'] 	= $profile['purchasing_yes'];
 		$data['other_person'] 		= $profile['other_person'];
 
 		//save it to db
@@ -306,20 +310,10 @@ class EnclothedProfile {
 		}
 		
 		//no dob
-		if (empty($section['dob'])) {
+		if (empty($section['dob_day']) || empty($section['dob_month']) || empty($section['dob_year'])) {
 			$str = 'Please enter your date of birth.';
 			$errors[] = $str; 
 			setFlashMessage('error', $str);
-		}
-
-		//dob is not right format
-		if (!empty($section['dob'])){
-			preg_match('/^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/](\d{4})$/', $section['dob'], $match);
-			if (empty($match[0])){
-				$str = 'Please insert a birth date using dd/mm/yyyy format.';
-				$errors[] = $str; 
-				setFlashMessage('error', $str);
-			}
 		}
 		
 		//no phone number
@@ -393,25 +387,29 @@ class EnclothedProfile {
 			//sanitization before db
 			$data['name'] 			= sanitize_text_field($section['name']); 
 			$data['email'] 			= sanitize_email($section['email']);
-			$data['dob'] 			= sanitize_text_field($section['dob']);
+			$data['dob'] 			=  sanitize_text_field($section['dob_year']) . '-' . sanitize_text_field($section['dob_month']) . '-' . sanitize_text_field($section['dob_day']);
 			$data['address'] 		= sanitize_text_field($section['address']);
 			$data['phone'] 			= sanitize_text_field($section['phone']);
 			$data['post_code'] 		= sanitize_text_field($section['post_code']);
 			$data['town'] 			= sanitize_text_field($section['town']);
 			$data['password'] 		= $section['password'];
 			$data['feedback_1'] 	= (!empty($section['feedback_1']))? sanitize_text_field($section['feedback_1']) : '';
+			$data['how_hear_other'] 	= (!empty($section['how_hear_other']))? sanitize_text_field($section['how_hear_other']) : '';
+			$data['purchasing_yes'] 	= (!empty($section['purchasing_yes']))? sanitize_text_field($section['purchasing_yes']) : '';
 			$data['other_person'] 	=  (!empty($section['other_person']))? sanitize_text_field($section['other_person']) : '';
 			$data['occupation'] 	= sanitize_text_field($section['occupation']);
 
-
+	
+			
 			// $this->main->sendmail($current_user->data->user_email, 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 			$new_user_id = $this->saveNewProfile($data);
 
 			//everything seems to be ok so lets store this in the session before redirecting
 			unset($_SESSION['section_1']);
-			unset($data['password']); 
+			$data['password']; 
 			unset($data['cpassword']); 
 			$_SESSION['section_1'] = $data;
+
 			//clear before changing
 			unset($_SESSION['user']);
 			$_SESSION['user']['id'] = $new_user_id;

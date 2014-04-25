@@ -30,39 +30,75 @@ if (isset($_SESSION['section_1'])){
       		defaultDate: "10/09/1976",
 		});
 
-		/*for(d=1; d <= 30; d++) {
+		for(d=1; d <= 30; d++) {
+			var finalValue = d;
+			if (d < 10) {
+				finalValue = '0'+d;
+			}
 			$('<option>').attr({
-				value: d
+				value: finalValue
 			}).text(d).appendTo('#daySelect');
 		}
 
+		var selectedDay = 1;
+
+		$("#daySelect").change(function() {
+			selectedDay = $(this).val();
+		});
+
 		$("#monthSelect").change(function() {
 			var selectedValue = $(this).val();
-			console.log(selectedValue);
 			var thirtyDays = ('september,april,june,november');
 			var thirtyOneDays = ('january,march,may,july,august,october,december');
 			
 			$("#daySelect").empty();
 			
 			var numberOfDays = 29;
-			console.log(thirtyDays.indexOf(selectedValue));
 			if (thirtyDays.indexOf(selectedValue) != -1) {
 				numberOfDays = 30;
 			} else if (thirtyOneDays.indexOf(selectedValue) != -1) {
 				numberOfDays = 31;
 			}
+			
+			$('<option>').attr({
+					value: ''
+				}).text("DAY").appendTo('#daySelect');
 
 			for(d=1; d <= numberOfDays; d++) {
+				var finalValue = d;
+				if (d < 10) {
+					finalValue = '0'+d;
+				}
 				$('<option>').attr({
-					value: d
+					value: finalValue
 				}).text(d).appendTo('#daySelect');
 
 			}
 
-		}); */
+			$("#daySelect").val(selectedDay);
 
-		var howDidYouHear = "<?php @echo_if_exists($section['feedback_1']); ?>"
-		var areYouPurchasing = "<?php @echo_if_exists($section['other_person']); ?>"
+		});
+
+		
+
+		$('#howDidYouHearDropdown').change(function() {
+			if ($(this).val() == "Other") {
+				$('#howDidYouHearOther').show();
+			} else {
+				$('#howDidYouHearOther').hide();
+			}
+		})
+
+		$('#areYouPurchasingDropdown').change(function() {
+			if ($(this).val() == "Yes") {
+				$('#purchasingYes').show();
+			} else {
+				$('#purchasingYes').hide();
+			}
+		})
+
+		var howDidYouHear = "<?php @echo_if_exists($section['feedback_1']); ?>";
+		var areYouPurchasing = "<?php @echo_if_exists($section['other_person']); ?>";
 		
 		if (howDidYouHear != "") {
 			$("#howDidYouHearDropdown").val(howDidYouHear);
@@ -72,6 +108,27 @@ if (isset($_SESSION['section_1'])){
 			$("#areYouPurchasingDropdown").val(areYouPurchasing);
 		}
 
+		var dateofBirth = "<?php @echo_if_exists($section['dob']); ?>";
+
+		if (dateofBirth == "") {
+			var dateofBirth = "<?php @echo_if_exists($section['dob_year'])?>-<?php @echo_if_exists($section['dob_month'])?>-<?php @echo_if_exists($section['dob_day']) ?>";
+		}
+
+		if (dateofBirth != "") {
+			var dobSplit = dateofBirth.split("-");
+
+			$("#daySelect").val(dobSplit[2]);
+			$("#monthSelect").val(dobSplit[1]);
+			$("#yearSelect").val(dobSplit[0]);
+		}
+
+		if ($('#howDidYouHearDropdown').val() == "Other") {
+			$('#howDidYouHearOther').show();
+		}
+
+		if ($('#areYouPurchasingDropdown').val() == "Yes") {
+			$('#purchasingYes').show();
+		}
 		
 		//Flashmessages
 		//controling the display of errors in the flash messages, depending if there are messages in the session or not
@@ -171,6 +228,9 @@ if (isset($_SESSION['section_1'])){
 	if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] == 1) {
 	$disable_pagecomments = true;
 	}
+	//unset password at this point so relogin doesn't occur however password is required for sageway
+	unset($_SESSION['section_1']['password']);
+	unset($section['password']);
 ?>
 
 
@@ -232,30 +292,34 @@ if (isset($_SESSION['section_1'])){
 				<input type="password" class="key-info"  tabindex="7" name="section_1[password]" placeholder='Password' value="<?php @echo_if_exists($section['password']); ?>">
 				<input type="password" class="key-info"  tabindex="8" name="section_1[cpassword]" placeholder='Confirm Password' value="<?php @echo_if_exists($section['cpassword']); ?>">
 				<input type="text" class="selectmenu" tabindex="9" name="section_1[occupation]" placeholder='Occupation' value="<?php @echo_if_exists($section['occupation']); ?>">
-				<input type='text' class="selectmenu" id='datepicker' tabindex="10" name='section_1[dob]' placeholder='Date of Birth DD/MM/YYYYY' value="<?php @echo_if_exists($section['dob']); ?>">
-				
-				<?php /* ?>
-				<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_day]' id="daySelect"></select>
-				<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_month]' id="monthSelect">
-				<?php 
-				$months = array('january','february','march','april','may','june','july','august','september','october','november','december');
-				foreach($months as $month) { ?>
-					<option value='<?php echo $month; ?>'><?php echo $month; ?></option>
-				<?php } ?>
-				</select>
-				<select class="selectmenu" type='dropdown' name='section_1[dob_year]' id="yearSelect">
-				<?php 
-				$currentYear = date("Y");
-				for($i=0; $i<=150; $i++) { ?>
-					<option value='<?php echo $currentYear-$i; ?>'><?php echo $currentYear-$i; ?></option>
-				<?php } ?>
-				</select>
-				<?php // */ ?>
+				<span class="date">
+					Date of Birth
+				</span> 
+				<div class="dateWrapper">
+					<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_day]' id="daySelect"><option value=''>DAY</option></select>
+					<select class="selectmenu dateSelect" type='dropdown' name='section_1[dob_month]' id="monthSelect">
+					<option value=''>MONTH</option>
+					<?php 
+					$months = array('january','february','march','april','may','june','july','august','september','october','november','december');
+					$monthCount = 1;
+					foreach($months as $month) { ?>
+						<option value='<?php if ($monthCount < 10) { echo 0;} echo $monthCount; ?>'><?php echo $month; ?></option>
+					<?php 
+						$monthCount++;
+					} ?>
+					</select>
+					<select class="selectmenu dateSelect noRight" type='dropdown' name='section_1[dob_year]' id="yearSelect">
+					<option value=''>YEAR</option>
+					<?php 
+					$currentYear = date("Y");
+					for($i=0; $i<=150; $i++) { ?>
+						<option value='<?php echo $currentYear-$i; ?>'><?php echo $currentYear-$i; ?></option>
+					<?php } ?>
+					</select>
+				</div>
 			
 			
-			<span class="date">
-			(Click in the box for date picker, or click again just to type it. dd/mm/yyyy)
-			</span>
+			
 			
 			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]" id="howDidYouHearDropdown">
 					<option value="none">How did you hear about enclothed?</option>
@@ -267,13 +331,15 @@ if (isset($_SESSION['section_1'])){
 					<option value="From the press">From the press</option>
 					<option value="Other">Other</option>
 			</select>
+			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Explain Other" style="display:none;" name="section_1[how_hear_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['how_hear_other']); ?></textarea>
 			
 			<select class="selectmenu" tabindex="11" name="section_1[other_person]" id="areYouPurchasingDropdown">
 					<option value="none">Are you purchasing for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 			</select>
-
+			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Other Persons Name" style="display:none;" name="section_1[purchasing_yes]" id="purchasingYes"><?php @echo_if_exists($section['purchasing_yes']); ?></textarea>
+			
 			<div class="checkbox_wrap" style="max-width:400px; padding-bottom:0px; padding-top:30px;">
 				<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_1[tc]">
 				<label for="checkbox1" class="css-label tickbox">- AGREE WITH THE TERMS AND CONDITONS</label>

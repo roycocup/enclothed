@@ -34,8 +34,8 @@ class ldm_sagepay {
 		$this->config['billing_postcode']	= 'E3 3HR';
 		$this->config['billing_country']	= 'GB';
 		$this->config['billing_phone']		= '';
-		$this->config['success_url']		= 'http://enclothed.dev/thank-you';
-		$this->config['failure_url']		= 'http://enclothed.dev/unsuccessful';
+		$this->config['success_url']		= 'http://enclothed.likedigitalmedia.com/thank-you';
+		$this->config['failure_url']		= 'http://enclothed.likedigitalmedia.com/unsuccessful';
 	}
 
 	public function getConfig(){
@@ -46,7 +46,7 @@ class ldm_sagepay {
 		if (empty($config)){
 			$config = $this->getConfig();
 		}
-		return new Sagepay($config);	
+		return new Sagepay($config);
 	}
 } 
 

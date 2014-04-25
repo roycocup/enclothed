@@ -148,8 +148,14 @@ get_header(); ?>
 
 	<div <?php post_class('clearfix ' . $post_class_extra); ?> id="<?php the_ID(); ?>">
 			<div class="page-content clearfix">
-	
 				<?php the_content(); ?>
+				<h3>Recent</h3>
+				<?php foreach($posts as $post) : setup_postdata($post);
+					echo '<div class="blog-recent">';
+					echo the_title();
+					echo the_excerpt();
+					echo '</div>';
+				endforeach; ?>
 				
 				<!-- <div class="link-pages"><?php wp_link_pages(); ?></div> -->
 				

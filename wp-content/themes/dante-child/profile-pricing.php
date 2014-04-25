@@ -72,7 +72,7 @@ if (isset($_SESSION['section_5'])){
 				$( "#shirt_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 				$( "#shirt_price" ).slider({values:amount});
 			}else{
-				$( "#shirt_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+				$( "#shirt_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 			}
 		});
 
