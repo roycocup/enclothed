@@ -1,0 +1,226 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      <title>Sage Pay - Keeping Money Moving</title><style type="text/css" media="screen">@import url("../images/YourImages/vsp3.css");</style><script type="text/javascript" language="JavaScript1.2">
+	                function popUp(url)
+	                {
+	                sealWin=window.open(url,"win",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=650,height=650');
+	                self.name = "mainWin";
+	                }
+	
+	                function popUpNoMenu(url)
+	                {
+	                sealWin=window.open(url,"win",'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1');
+	                self.name = "mainWin";
+	                }
+	
+	                function popUpWithMenu(url)
+	                {
+	                sealWin=window.open(url,"win",'toolbar=1,location=0,directories=0,status=1,menubar=1,scrollbars=1,resizable=1');
+	                self.name = "mainWin";
+	                }
+	
+	                function popUpSmall(url)
+	                {
+	                sealWin=window.open(url,"win",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=1,width=590,height=600');
+	                self.name = "mainWin";
+	                }
+			</script><script type="text/javascript" language="javascript">
+				  
+				  if (document.images) {
+					 var cancel_btn = new Image()
+					 cancel_btn.src = "../images/YourImages/cancel_btn.gif"
+					 var cancel_over = new Image()
+					 cancel_over.src = "../images/YourImages/cancel_over.gif"
+					 var subsmallimg = new Image()
+					 subsmallimg.src = "../images/YourImages/subsmall.gif"
+
+					 var MC_logo = new Image()
+					 MC_logo.src = "../images/YourImages/MC_logo.gif"
+					 var MC_over = new Image()
+					 MC_over.src = "../images/YourImages/MC_over.gif"					 
+					 var VISA_logo = new Image()
+					 VISA_logo.src = "../images/YourImages/VISA_logo.gif"
+					 var VISA_over = new Image()
+					 VISA_over.src = "../images/YourImages/VISA_over.gif"
+					 var DELTA_logo = new Image()
+					 DELTA_logo.src = "../images/YourImages/DELTA_logo.gif"
+					 var DELTA_over = new Image()
+					 DELTA_over.src = "../images/YourImages/DELTA_over.gif"
+					 var SWITCH_logo = new Image()
+					 SWITCH_logo.src = "../images/YourImages/SWITCH_logo.gif"
+					 var SWITCH_over = new Image()
+					 SWITCH_over.src = "../images/YourImages/SWITCH_over.gif"
+					 var MAESTRO_logo = new Image()
+					 MAESTRO_logo.src = "../images/YourImages/MAESTRO_logo.gif"
+					 var MAESTRO_over = new Image()
+					 MAESTRO_over.src = "../images/YourImages/MAESTRO_over.gif"
+					 var UKE_logo = new Image()
+					 UKE_logo.src = "../images/YourImages/UKE_logo.gif"
+					 var UKE_over = new Image()
+					 UKE_over.src = "../images/YourImages/UKE_over.gif"
+					 var AMEX_logo = new Image()
+					 AMEX_logo.src = "../images/YourImages/AMEX_logo.gif"
+					 var AMEX_over = new Image()
+					 AMEX_over.src = "../images/YourImages/AMEX_over.gif"
+					 var DC_logo = new Image()
+					 DC_logo.src = "../images/YourImages/DC_logo.gif"
+					 var DC_over = new Image()
+					 DC_over.src = "../images/YourImages/DC_over.gif"
+					 var JCB_logo = new Image()
+					 JCB_logo.src = "../images/YourImages/JCB_logo.gif"
+					 var JCB_over = new Image()
+					 JCB_over.src = "../images/YourImages/JCB_over.gif"
+					 var PAYPAL_logo = new Image()
+					 PAYPAL_logo.src = "../images/YourImages/PAYPAL_logo.gif"
+					 var PAYPAL_over = new Image()
+					 PAYPAL_over.src = "../images/YourImages/PAYPAL_over.gif"
+					 var LASER_logo = new Image()
+					 LASER_logo.src = "../images/YourImages/LASER_logo.gif"
+					 var LASER_over = new Image()
+					 LASER_over.src = "../images/YourImages/LASER_over.gif"
+					 }
+			</script><script type="text/javascript" language="javascript" src="../images/sagepay/buttonscript.js"></script></head>
+   <body>
+      <div id="pageWrapper">
+         <div id="headerTop"><img src="../images/YourImages/logo-black.gif" id="customLogo" /></div>
+         <div class="midHeader"><span>Card Selection</span><img src="../images/YourImages/line.gif" id="payment" /></div>
+         <div class="contentWrapper">
+            <div class="innerContentWrapper">
+               <div id="header">
+                  <table id="transactionHeaderTable" border="0" cellpadding="0" cellspacing="0">
+                     <tbody>
+                        <tr>
+                           <td valign="top"><img src="../images/sagepay/sagepay_logo.gif" id="sagePayLogo" /></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="greyHzShadeBar"> </div>
+               <div class="sectionheader">Select Payment Method</div>
+               <div>
+                  <p class="indent">Please click below to select the type of card you wish to use.</p>
+                  <table>
+                     <tr>
+                        <td align="center">
+                           <form method="post" name="cardselectionVISA" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('VISA')" onmouseout="inactivatecard('VISA')" onclick="submitTheForm('cardselectionVISA','VISA')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/VISA_logo.gif" name="');
+											document.write('VISA');
+											document.write('" alt="');
+											document.write('');
+											document.write('Visa');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="VISA" src="../images/YourImages/VISA_logo.gif" alt="Visa" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="Visa" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionAMEX" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('AMEX')" onmouseout="inactivatecard('AMEX')" onclick="submitTheForm('cardselectionAMEX','AMEX')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/AMEX_logo.gif" name="');
+											document.write('AMEX');
+											document.write('" alt="');
+											document.write('');
+											document.write('American Express');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="AMEX" src="../images/YourImages/AMEX_logo.gif" alt="American Express" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="American Express" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionDELTA" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('DELTA')" onmouseout="inactivatecard('DELTA')" onclick="submitTheForm('cardselectionDELTA','DELTA')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/DELTA_logo.gif" name="');
+											document.write('DELTA');
+											document.write('" alt="');
+											document.write('');
+											document.write('Visa Debit / Delta');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="DELTA" src="../images/YourImages/DELTA_logo.gif" alt="Visa Debit / Delta" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="Visa Debit / Delta" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionJCB" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('JCB')" onmouseout="inactivatecard('JCB')" onclick="submitTheForm('cardselectionJCB','JCB')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/JCB_logo.gif" name="');
+											document.write('JCB');
+											document.write('" alt="');
+											document.write('');
+											document.write('JCB');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="JCB" src="../images/YourImages/JCB_logo.gif" alt="JCB" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="JCB" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionDC" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('DC')" onmouseout="inactivatecard('DC')" onclick="submitTheForm('cardselectionDC','DC')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/DC_logo.gif" name="');
+											document.write('DC');
+											document.write('" alt="');
+											document.write('');
+											document.write('Diners Club');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="DC" src="../images/YourImages/DC_logo.gif" alt="Diners Club" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="Diners Club" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionMC" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('MC')" onmouseout="inactivatecard('MC')" onclick="submitTheForm('cardselectionMC','MC')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/MC_logo.gif" name="');
+											document.write('MC');
+											document.write('" alt="');
+											document.write('');
+											document.write('MasterCard');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="MC" src="../images/YourImages/MC_logo.gif" alt="MasterCard" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="MasterCard" /></form>
+                        </td></tr><tr>
+                        <td align="center">
+                           <form method="post" name="cardselectionSWITCH" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('SWITCH')" onmouseout="inactivatecard('SWITCH')" onclick="submitTheForm('cardselectionSWITCH','SWITCH')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/SWITCH_logo.gif" name="');
+											document.write('SWITCH');
+											document.write('" alt="');
+											document.write('');
+											document.write('Maestro');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="SWITCH" src="../images/YourImages/SWITCH_logo.gif" alt="Maestro" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="UK Maestro" /></form>
+                        </td>
+                        <td align="center">
+                           <form method="post" name="cardselectionUKE" action="/gateway/service/cardselection"><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('UKE')" onmouseout="inactivatecard('UKE')" onclick="submitTheForm('cardselectionUKE','UKE')"><script type="text/javascript" language="javascript">
+											document.write('<img border="0" align="center" src="');
+											document.write('../images/YourImages/UKE_logo.gif" name="');
+											document.write('UKE');
+											document.write('" alt="');
+											document.write('');
+											document.write('Visa Electron');
+											document.write('"/>');
+											</script></a><noscript><input type="image" name="UKE" src="../images/YourImages/UKE_logo.gif" alt="Visa Electron" /></noscript><input name="action" type="hidden" value="proceed" /><input type="hidden" name="cardselected" value="Visa Electron" /></form>
+                        </td>
+                     </tr>
+                  </table>
+                  <form method="post" name="cancelpayment" action="/gateway/service/cancellation">
+                     <div id="templateCancel">
+                        <p class="indent">Please only click the cancel button below if you intend to abort this payment process.</p><input type="hidden" name="clickedButton" value="" /><a href="#" onmouseover="activate('cancel')" onmouseout="inactivate('cancel')" onclick="submitTheForm('cancelpayment','cancel');return false"><script type="text/javascript" language="javascript">
+					        document.write('<img border="0" name="cancel" src="');
+					        document.write('../images/YourImages/cancel_btn.gif');
+					        document.write('" alt="');
+					        document.write('Cancel');
+					        document.write('"/>');
+					        </script></a><noscript><input name="cancel" type="image" src="../images/YourImages/cancel_btn.gif" alt="Cancel" /></noscript>
+                     </div>
+                  </form>
+               </div>
+               <div class="greyHzShadeBar"> </div>
+            </div>
+         </div>
+      </div>
+      <div id="templatefooter"><script type="text/javascript" language="javascript">
+		    document.write('<a class="bodybold" href="javascript:popUp(\'');
+		    document.write('../images/YourImages/faqspop.htm');
+		    document.write('\');">FAQs</a>');
+	    </script><noscript><a class="bodybold" href="../images/YourImages/faqspop.htm" target="_blank">
+               		    FAQs</a></noscript><script type="text/javascript" language="javascript">
+            document.write('<div id="padlockContainer">');
+            document.write('<a href="javascript:top.location.href=window.location.href;"><img id="padlockimage" src="');
+            document.write('../images/YourImages/padlock_sml.gif"/></a>');
+            document.write('If your browser is not showing the secure padlock on your screen click on this padlock.');
+            document.write('</div>');
+        </script></div>
+   </body>
+</html>

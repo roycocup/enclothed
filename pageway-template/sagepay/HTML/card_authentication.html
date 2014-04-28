@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      <title>Sage Pay - Keeping Money Moving</title><style type="text/css" media="screen">
+				@import url("../images/YourImages/vsp3.css");
+				</style><script type="text/javascript" language="javascript">
+				  
+				  if (document.images) {
+					 var skip3D_btn = new Image()
+					 skip3D_btn.src = "../images/YourImages/skip3D_btn.gif"
+					 var skip3D_over = new Image()
+					 skip3D_over.src = "../images/YourImages/skip3D_over.gif"
+					 var subsmallimg = new Image()
+					 subsmallimg.src = "../images/YourImages/subsmall.gif"
+					 }
+				</script><script type="text/javascript" language="javascript" src="../images/sagepay/buttonscript.js"></script></head>
+   <body>
+      <div id="pageWrapper" title="Sage Pay - Keeping Money Moving">
+         <div id="headerTop"><img src="../images/YourImages/logo-black.gif" id="customLogo" /></div>
+         <div class="midHeader"><span>Card Authentication</span><img src="../images/YourImages/line.gif" id="payment" /></div>
+         <div class="contentWrapper">
+            <div class="innerContentWrapper">
+               <div id="header">
+                  <table border="0" id="transactionHeaderTable" cellpadding="0" cellspacing="0">
+                     <tbody>
+                        <tr>
+                           <td valign="top"><img src="../images/sagepay/sagepay_logo.gif" id="sagePayLogo" /></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <div class="sectionheader noTopMargin">Card Authentication</div>
+               </div>
+               <div class="greyHzShadeBar"> </div><br /><div id="templateamount">
+                  <table border="0" width="100%">
+                     <tr>
+                        <td width="80%" class="bodysmalltext" valign="top">To increase the security of Internet transactions Visa and Mastercard have introduced
+                           3D-Secure (like an online version of Chip and PIN).  You have chosen to use a card
+                           that is part of the 3D-Secure scheme, so you will need to authenticate yourself with
+                           your bank in the section below.
+                        </td>
+                        <td width="20%" align="center"><img align="center" src="../images/YourImages/vbv_logo_small.gif" alt="Verified By Visa" /><br /><br /><img align="center" src="../images/YourImages/mcsc_logo.gif" alt="Mastercard SecureCode" /></td>
+                     </tr>
+                  </table><br /><table border="0" width="550" title="This table is for layout purposes only" align="center">
+                     <tbody>
+                        <tr>
+                           <td align="left"><iframe name="3diframe" width="100%" height="430" frameborder="0" scrolling="auto" src="/gateway/service/authentication?action=redirect">
+                                 <html>
+                                    <head>
+                                       <SCRIPT LANGUAGE="Javascript"> function OnLoadEvent() { document.form.submit(); }</SCRIPT>
+                                       <title>3D Redirect</title>
+                                    </head>
+                                    <body OnLoad="OnLoadEvent();">
+                                       <FORM name="form" action="https://test.sagepay.com/mpitools/accesscontroler?action=pareq" method="POST">
+                                          <NOSCRIPT>
+                                             <center>
+                                                <p>Please click button below to continue with the 3D-Secure checks</p><input type="submit" value="Go" /></center>
+                                          </NOSCRIPT><input type="hidden" name="PaReq" value="eJxVUctuwkAMvPcrUD4A7yMBgswiCoiilgooqnqNNhZEJQlsEkj/vrsQCr15xvbYHuOwTvetE5kiybOBx9vMG6on3OwM0eSDdGVI4YKKItpSK4kHnmCchyKQnIWh8BnzFC5HazoqbESU1WhzhBu03UbvoqxUGOnj8/xd+SJkwkdoIKZk5hMV+NIPukxyX3ZFlyFcacyilNTS5GXdekvSpKQY4cKhzqusND+qJzoIN4CV2atdWR76AOfzuX1wnW2dpwgug3BfZ1m5qLBKdRKr6XcgXze7r/VqzLYxhNOE17P15+o0mw4QXAXGUUlKMNbljHdanPdlr89DhAuPUepWUIGU0t52BXhwM0aPmUcGrb+GMn274YaQ6kOeka0QCH8xxlToxorFcm7nOoxwv2P84kzWpfWNO38vkRNLrDNu7YuaAwiuFprXQfNhG/37/C+vE7CV" /><input type="hidden" name="TermUrl" value="https://test.sagepay.com/gateway/service/authentication?action=callback" /><input type="hidden" name="MD" value="2011925310992400" /></FORM>
+                                    </body>
+                                 </html></iframe></td>
+                        </tr>
+                     </tbody>
+                  </table><br /><div class="greyHzShadeBar"> </div><br /><form method="post" name="skipauthenticate" action="/gateway/service/authentication?action=skip"><input type="hidden" name="clickedButton" value="" /><input type="hidden" name="action" value="skip" /><table border="0" width="100%">
+                        <tr>
+                           <td width="80%" class="bodysmalltext">If your bank's validation screens do not appear in the area above, click here to skip
+                              the 3D-Authentication.  You should ONLY do this if the authentication screens do not
+                              appear.
+                           </td>
+                           <td width="20%" align="center"><a href="#" onmouseover="activate('skip3D')" onmouseout="inactivate('skip3D')" onclick="submitTheForm('skipauthenticate','skip3D');return false"><script type="text/javascript" language="JavaScript1.2">
+
+							document.write('<img border="0" name="skip3D" src="');
+							document.write('../images/YourImages/skip3D_btn.gif');
+							document.write('" alt="');
+							document.write('Abort 3D-Secure checks.');
+							document.write('"/>');
+							</script></a><noscript><input name="skip3D" type="image" src="../images/YourImages/skip3D_btn.gif" alt="Abort 3D-Secure checks." /></noscript>
+                           </td>
+                        </tr>
+                     </table>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

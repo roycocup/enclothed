@@ -450,7 +450,7 @@ public function sendForm($fields){
 
 
 public function getCustomForm($fields){
-	// $form = '<form name="enclothed_test" action="https://www.income-systemsltd.com/test apps/enclothed/registercustomer.aspx?" method="POST">';
+	// $form = ' name="enclothed_test" action="https://www.income-systemsltd.com/test apps/enclothed/registercustomer.aspx?" method="POST">';
 	$form = '<form name="enclothed_test" action="" method="POST">';
 	foreach ($fields as $key => $value) {
 		$form .= '<input type="text" name="'.$key.'" value="'.$value.'">'; 
@@ -458,6 +458,226 @@ public function getCustomForm($fields){
 
 	$form .= file_get_contents(dirname(__FILE__).'/rest_of_form.php');
 	return $form;
+}
+
+public function renderSageForm() {
+	//Create array from xml document
+	$SimpleXMLToArray = json_decode(json_encode((array)simplexml_load_string($this->xmlform)),1);
+	
+	//Instantiate array and strings					
+	$sessionArray = array();
+	$brandChoices = "";
+	$jacketTypeChoices = "";
+	$whereDoYouWhereYourJacketChoices = "";
+	$shirtTypeChoice = "";
+	$whereDoYouWearYourShirtChoices = "";
+	$trouserTypeChoice = "";
+	$trouserColourChoices = "";
+	$jeanStyleChoice = "";
+	$denimColourChoice = "";
+	$shortStyleChoice = "";
+	$shoeStyleChoices = "";
+	$shoeColourChoices = "";
+	$underwearStyleChoices = "";
+
+	foreach($_SESSION as $sessionParent) {
+		foreach($sessionParent as $Key => $Value) {
+			$sessionArray[$Key] = $Value;
+		}
+	}
+
+	//Create array from preferences fields
+	$styleChoices = explode(',', $sessionArray['preferences']);
+
+	//Instantiate keys in array
+	$styleChoicesArray = array();
+	$styleChoicesArray['brandChoices'] = "";
+	$styleChoicesArray['shirtTypeChoice'] = "";
+	$styleChoicesArray['whereDoYouWearYourShirtChoices'] = "";
+	$styleChoicesArray['trouserTypeChoice'] = "";
+	$styleChoicesArray['trouserColourChoices'] = "";
+	$styleChoicesArray['jeanStyleChoice'] = "";
+	$styleChoicesArray['denimColourChoice'] = "";
+	$styleChoicesArray['shortStyleChoice'] = "";
+	$styleChoicesArray['shoeStyleChoices'] = "";
+	$styleChoicesArray['shoeColourChoices'] = "";
+
+	//Add brands from Session field by keyname into strings available to pass via input
+	foreach($styleChoices as $styleChoice) {
+		if (strpos($styleChoice, 'brand_') !== FALSE) {
+			$styleChoicesArray['brandChoices'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'shirt_type_') !== FALSE) {
+			$styleChoicesArray['shirtTypeChoice'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'shirt_wear_') !== FALSE) {
+			$styleChoicesArray['whereDoYouWearYourShirtChoices'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'trouser_type_') !== FALSE) {
+			$styleChoicesArray['trouserTypeChoice'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'trouser_colour_') !== FALSE) {
+			$styleChoicesArray['trouserColourChoices'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'denim_type_') !== FALSE) {
+			$styleChoicesArray['jeanStyleChoice'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'denim_colours_') !== FALSE) {
+			$styleChoicesArray['denimColourChoice'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'shorts_size_') !== FALSE) {
+			$styleChoicesArray['shortStyleChoice'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'shoe_type_') !== FALSE) {
+			$styleChoicesArray['shoeStyleChoices'] .= $styleChoice . ",";
+		} else if (strpos($styleChoice, 'colour_shoes_') !== FALSE) {
+			$styleChoicesArray['shoeColourChoices'] .= $styleChoice . ",";
+		}
+	}
+
+	//Trim trailing , from the list of items in string
+	$styleChoicesArray['brandChoices'] = rtrim($styleChoicesArray['brandChoices'], ",");
+	$styleChoicesArray['shirtTypeChoice'] = rtrim($styleChoicesArray['shirtTypeChoice'], ",");
+	$styleChoicesArray['whereDoYouWearYourShirtChoices'] = rtrim($styleChoicesArray['whereDoYouWearYourShirtChoices'], ",");
+	$styleChoicesArray['trouserTypeChoice'] = rtrim($styleChoicesArray['trouserTypeChoice'], ",");
+	$styleChoicesArray['trouserColourChoices'] = rtrim($styleChoicesArray['trouserColourChoices'], ",");
+	$styleChoicesArray['jeanStyleChoice'] = rtrim($styleChoicesArray['jeanStyleChoice'], ",");
+	$styleChoicesArray['denimColourChoice'] = rtrim($styleChoicesArray['denimColourChoice'], ",");
+	$styleChoicesArray['shortStyleChoice'] = rtrim($styleChoicesArray['shortStyleChoice'], ",");
+	$styleChoicesArray['shoeStyleChoices'] = rtrim($styleChoicesArray['shoeStyleChoices'], ",");
+	$styleChoicesArray['shoeColourChoices'] = rtrim($styleChoicesArray['shoeColourChoices'], ",");
+
+	//Comparison array to match keys from session to keys required to pass to sagepay
+	$comparisonArray = array();
+	$comparisonArray['email'] = 'email';
+	$comparisonArray['password'] = 'password';
+	$comparisonArray['name'] = 'custom';
+	$comparisonArray['addressLine1'] = 'delivery_add_1';
+	$comparisonArray['addressLine2'] = 'delivery_add_2';
+	$comparisonArray['townCity'] = 'town';
+	$comparisonArray['postcode'] = 'post_code';
+	$comparisonArray['telephone'] = 'phone';
+	$comparisonArray['occupation'] = 'occupation';
+	$comparisonArray['dob'] = 'dob';
+	$comparisonArray['isBuyingForPerson'] = 'other_person';
+	$comparisonArray['buyingForWho'] = 'purchasing_yes';
+	$comparisonArray['howDidYouHearAboutEnclothed'] = 'feedback_1';
+	$comparisonArray['howDidYouHearAboutEnclothedOther'] = 'how_hear_other';
+	$comparisonArray['styleChoices'] = 'styles';
+	$comparisonArray['brandChoices'] = 'custom';
+
+	//Below doesn't exist in session array
+	$comparisonArray['jacketTypeChoices'] = 'custom';
+	$comparisonArray['whereDoYouWhereYourJacketChoices'] = 'custom';
+
+
+	$comparisonArray['shirtTypeChoice'] = 'custom';
+	$comparisonArray['whereDoYouWearYourShirtChoices'] = 'custom';
+	$comparisonArray['trouserTypeChoice'] = 'custom';
+	$comparisonArray['trouserColourChoices'] = 'custom';
+	$comparisonArray['jeanStyleChoice'] = 'custom';
+	$comparisonArray['denimColourChoice'] = 'custom';
+	$comparisonArray['shortStyleChoice'] = 'custom';
+	$comparisonArray['shoeStyleChoices'] = 'custom';
+	$comparisonArray['shoeColourChoices'] = 'custom';
+
+	//Below doesn't exist in session array
+	$comparisonArray['underwearStyleChoices'] = 'dob';
+	$comparisonArray['styleDislikeDescription'] = 'dob';
+
+	$comparisonArray['tShirtSize'] = 'tshirt_size';
+	$comparisonArray['neckSize'] = 'neck_size';
+	$comparisonArray['sleeveLength'] = 'sleeve_lenght';
+	$comparisonArray['shoeSize'] = 'shoe_size';
+	$comparisonArray['jacketSize'] = 'jacket_size';
+	$comparisonArray['trouserWaist'] = 'trouser_size';
+	$comparisonArray['trouserInsideLeg'] = 'trouser_inside_leg_size';
+	$comparisonArray['additionalSizeInfo'] = 'extra_info_size';
+	$comparisonArray['brandsThatFitYouWell'] = 'more_brands';
+	$comparisonArray['favouriteBrands'] = 'more_brands_size';
+
+	//Below doesn't exist in session array
+	$comparisonArray['contactMeAboutSizing'] = 'contactMeAboutSizing';
+
+	$comparisonArray['shirtPriceMin'] = 'shirt_min_price';
+	$comparisonArray['shirtPriceMax'] = 'shirt_max_price';
+	$comparisonArray['trouserPriceMin'] = 'trouser_min_price';
+	$comparisonArray['trouserPriceMax'] = 'trouser_max_price';
+	$comparisonArray['coatPriceMin'] = 'coat_min_price';
+	$comparisonArray['coatPriceMax'] = 'coat_max_price';
+	$comparisonArray['shoePriceMin'] = 'shoes_min_price';
+	$comparisonArray['shoePriceMax'] = 'shoes_max_price';
+	$comparisonArray['additionalInfo'] = 'extra_price';
+	$comparisonArray['customerAddressLine1'] = 'delivery_add_1';
+	$comparisonArray['customerAddressLine2'] = 'delivery_add_2';
+	$comparisonArray['customerTownCity'] = 'delivery_town';
+	$comparisonArray['customerPostCode'] = 'delivery_post_code';
+	$comparisonArray['customerAddressName'] = 'delivery_add_name';
+
+	//Below doesn't exist in session array
+	$comparisonArray['alternativeAddressLine1'] = 'alternativeAddressLine1';
+	$comparisonArray['alternativeAddressLine2'] = 'dob';
+	$comparisonArray['alternativeTownCity'] = 'dob';
+	$comparisonArray['alternativePostCode'] = 'dob';
+	$comparisonArray['alternativeAddressName'] = 'dob';
+
+	$comparisonArray['billingAddressSameAsCustomerAddress'] = '';
+	$comparisonArray['billingAddressLine1'] = 'bill_add_1';
+	$comparisonArray['billingAddressLine2'] = 'bill_add_2';
+	$comparisonArray['billingTownCity'] = 'bill_town';
+	$comparisonArray['billingPostCode'] = 'bill_post_code';
+	$comparisonArray['billingAddressName'] = 'delivery_add_name';
+	$comparisonArray['deliveryInstructions'] = 'extra_delivery';
+	$comparisonArray['collectionNotes'] = 'extra_collection';
+
+	//Below doesn't exist in session array
+	$comparisonArray['commentsToStylist'] = 'commentsToStylist';
+	$comparisonArray['termsAndConditionsChecked'] = 'termsAndConditionsChecked';
+	$comparisonArray['promotionalCode'] = 'promotionalCode';
+	$comparisonArray['giftCardNumber'] = 'giftCardNumber';
+	$comparisonArray['pageNumber'] = 'pageNumber';
+	$comparisonArray['forceLead'] = 'forceLead'; 
+
+	//Extract first and last name from single name field
+	$name = explode(' ',$sessionArray['name']);
+	$nameCount = 0;
+
+	//Instantiate output string
+	$finalOutput = "";
+
+	//Loop over array and compare with comparison array plus a few extra differences to match a key and value
+	foreach($SimpleXMLToArray as $Key => $Value){ 
+		$finalValue = $Value;
+		$finalKey = $Key;
+		if ($finalKey == 'firstName' || $finalKey == 'lastName') {
+			//Name case
+			$finalValue = $name[$nameCount];
+			$nameCount++;
+		} else if ($finalKey == "forceLead") {
+			//forceLead case
+			$finalValue = "false";
+		} else if(array_key_exists($Key, $comparisonArray)) {
+
+			$newKey = $comparisonArray[$finalKey];
+			if ($newKey == "custom") {
+				//If custom means it is in one of preferences arrays
+				if(array_key_exists($finalKey, $styleChoicesArray)) {
+					$finalValue = $styleChoicesArray[$finalKey];
+				} else {
+					$finalValue = "";
+				}
+			} else {
+				//If not in session assign no value
+				if(array_key_exists($newKey, $sessionArray)) {
+					$finalValue = $sessionArray[$newKey];
+				} else {
+					$finalValue = "";
+				}
+			}
+
+		}
+		//If array means no value
+		if(is_array($finalValue)){$finalValue = "";}
+
+		$finalValue = str_replace('+', '',str_replace('£', '', $finalValue));
+
+		$finalOutput .= '<input type="hidden" value="'.$finalValue.'" name="'.$finalKey.'" id="'.$finalKey.'">';
+	
+	}
+
+	return $finalOutput;
 }
 
 
