@@ -725,9 +725,12 @@ class EnclothedProfile {
 				} else {
 					$address = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
 				}
+
 				$data['username'] = $current_user->user_email;
 				$data['user_reference'] = $profile->customer_id;
-				$data['address'] = $address;
+				$data['address'] = $_POST['more_box']['address'];
+				$data['address_reason'] = $_POST['more_box']['address_reason'];
+
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New box requested!', Emails_model::TEMPLATE_NEW_BOX, $data);
 				setFlashMessage('success', 'Your box has been ordered. We shall be in touch soon.'); 
 			}

@@ -164,6 +164,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								$profile = $main->profiles_model->getFullProfile($current_user->user_email);
 								//get the addresses
 								$delivery = $profile->delivery_add_1." ".$profile->delivery_add_2.", ".$profile->delivery_town." ".$profile->delivery_post_code;
+								$address_reason = $profile->address_reason;
 								$billing = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
 
 								$same_address = false;
@@ -184,6 +185,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 											</select>
 										<?php else: ?>
 											<input type='text' name="more_box[address]" value='<?php echo $delivery; ?>'>
+											<textarea type='text' placeholder="Please add any additional details" name="more_box[address_reason]"><?php echo $address_reason; ?></textarea>
 										<?php endif; ?>
 									</div>
 								</div>
