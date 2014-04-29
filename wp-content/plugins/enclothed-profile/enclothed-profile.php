@@ -448,8 +448,24 @@ class EnclothedProfile {
 	**/
 	public function process_style_form(){
 		$section_2 = $_POST['section_2'];
-		$styles = array_keys($section_2);
-		$styles = implode(',', $styles);
+
+		$styleKeyArray = array_keys($section_2);
+		$styles = implode(',', $styleKeyArray);
+
+		$stylesArray = "";
+		$brandsArray = "";
+		$more_brands = $section_2['more_brands'];
+
+		foreach($styleKeyArray as $style) {
+			if (strpos($style, 'brand_') !== FALSE) {
+ 				$brandsArray .= $style . ",";
+			} elseif (strpos($style, 'style_') !== FALSE) {
+				$stylesArray .= $style . ",";
+			}
+		}
+
+		$brandsArray = rtrim($brandsArray, ",");
+		$stylesArray = rtrim($stylesArray, ",");
 
 		//just fail if no user in the session
 		if (empty($_SESSION['user'])){
@@ -459,7 +475,9 @@ class EnclothedProfile {
 		}
 
 
-		$data['styles'] = $styles;
+		$data['brands'] = $brandsArray;
+		$data['styles'] = $stylesArray;
+		$data['more_brands'] = $more_brands;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];
 		
@@ -481,7 +499,6 @@ class EnclothedProfile {
 	**/
 	public function process_preferences_form(){
 		$section_3 = $_POST['section_3'];
-		unset($section_3['more_brands']);
 		$preferences = array_keys($section_3);
 		$preferences = implode(',', $preferences);
 
@@ -492,8 +509,6 @@ class EnclothedProfile {
 			exit;
 		}
 
-		
-		$data['more_brands'] = sanitize_text_field($_POST['section_3']['more_brands']);
 		$data['preferences'] = $preferences;
 		$data['profile_id'] = $_SESSION['user']['id'];
 		$data['email'] = $_SESSION['user']['email'];

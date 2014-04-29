@@ -70,54 +70,9 @@ function echo_if_present($word){
 			jQuery(this).toggleClass( "selected" );
 		});
 
-		// Autocomplete for brands box
-		// var availableTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
-		var availableTags = ["Abercrombie & Fitch", "All Saints", "A.P.C", "Armani", "Balenciaga", "Banana Republic", "Barbour", "Brooks Brothers",
-                "Calvin Klein", "Diesel", "Dockers", "Duck and Cover", "Emmett", "Fat Face", "Fred Perry", "Gant", "Gap", "G Star",
-                "Gucci", "Hackett", "Hartford", "Hentsch Man", "Henri Lloyd", "Hugo Boss", "H&M", "Jack Wills", "Lacoste", "Lanvin",
-                "Levis", "Lyle & Scott", "Musto", "Northface", "Paul Smith", "Penguin", "Prada", "Rag & Bone", "Ralph Lauren", "Reiss",
-                "Sunspel", "Superdry", "Ted Baker", "TM Lewin", "Tods", "Tommy Hilfiger", "Thomas Pink", "Versace", "White Stuff", "Zegna"];
 		
-		// $("#brands-autocomplete-box").select2({
-			// tags: availableTags,
-		// });
 
-		// Autocomplete for the brands box
-		function split( val ) {
-			return val.split( /,\s*/ );
-		}
-		function extractLast( term ) {
-			return split( term ).pop();
-		}
-		$('#brands-autocomplete-box')// don't navigate away from the field on tab when selecting an item
-			.bind( "keydown", function( event ) {
-				if ( event.keyCode === $.ui.keyCode.TAB && $( this ).data( "ui-autocomplete" ).menu.active ) {
-					event.preventDefault();
-				}
-			})
-			.autocomplete({
-				minLength: 0,
-				source: function( request, response ) {
-				// delegate back to autocomplete, but extract the last term
-				response( $.ui.autocomplete.filter(
-					availableTags, extractLast( request.term ) ) );
-			},
-			focus: function() {
-				// prevent value inserted on focus
-				return false;
-			},
-			select: function( event, ui ) {
-				var terms = split( this.value );
-				// remove the current input
-				terms.pop();
-				// add the selected item
-				terms.push( ui.item.value );
-				// add placeholder to get the comma-and-space at the end
-				terms.push( "" );
-				this.value = terms.join( ", " );
-				return false;
-			}
-		});
+		
 
 
 	});
@@ -255,89 +210,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 	            			<?php flashMessagesDisplay(); ?>
 	           			</div>				
 
-							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
-								<div class="mini-wrapper-forms">
-									<div class="numbering">01</div>
-									<p>Which brands do you usually wear?</p>
-								</div><!--mini-wrapper-forms-->
-								<div class="row" style="border-top: 1px solid #e3e3e3;">
-									<div class="col-sm-6 grid_left">
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_abercrombie_fitch.jpg" class="img-responsive" />
-											<div id="brand_abercrombie_fitch" class="grid_box_overlay click <?php echo_if_present('brand_abercrombie_fitch'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_barbour.jpg" class="img-responsive" />
-											<div id="brand_barbour" class="grid_box_overlay click <?php echo_if_present('brand_barbour'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_allsaints.jpg" class="img-responsive" />
-											<div id="brand_allsaints" class="grid_box_overlay click <?php echo_if_present('brand_allsaints'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hugo_boss.jpg" class="img-responsive" />
-											<div id="brand_hugo_boss" class="grid_box_overlay click <?php echo_if_present('brand_hugo_boss'); ?>"></div>
-										</div>
-									</div>
-									<div class="col-sm-6 grid_right">
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_apc.jpg" class="img-responsive" />
-											<div id="brand_apc" class="grid_box_overlay click <?php echo_if_present('brand_apc'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_jack_wills.jpg" class="img-responsive" />
-											<div id="brand_jack_wills" class="grid_box_overlay click <?php echo_if_present('brand_jack_wills'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_armani.jpg" class="img-responsive" />
-											<div id="brand_armani" class="grid_box_overlay click <?php echo_if_present('brand_armani'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_oliver_spencer.jpg" class="img-responsive" />
-											<div id="brand_oliver_spencer" class="grid_box_overlay click <?php echo_if_present('brand_oliver_spencer'); ?>"></div>
-										</div>
-									</div>
-									<div class="col-sm-6 grid_left">
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_diesel.jpg" class="img-responsive" />
-											<div id="brand_diesel" class="grid_box_overlay click <?php echo_if_present('brand_diesel'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_paul_smith.jpg" class="img-responsive" />
-											<div id="brand_paul_smith" class="grid_box_overlay click <?php echo_if_present('brand_paul_smith'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_gant.jpg" class="img-responsive" />
-											<div id="brand_gant" class="grid_box_overlay click <?php echo_if_present('brand_gant'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_ralph_lauren.jpg" class="img-responsive" />
-											<div id="brand_lauren" class="grid_box_overlay click <?php echo_if_present('brand_lauren'); ?>"></div>
-										</div>
-									</div>
-									<div class="col-sm-6 grid_right">
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_g-star.jpg" class="img-responsive" />
-											<div id="brand_g-star" class="grid_box_overlay click <?php echo_if_present('brand_g-star'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_reiss.jpg" class="img-responsive" />
-											<div id="brand_reiss" class="grid_box_overlay click <?php echo_if_present('brand_reiss'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box right">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hackett.jpg" class="img-responsive" />
-											<div id="brand_hackett" class="grid_box_overlay click <?php echo_if_present('brand_hackett'); ?>"></div>
-										</div>
-										<div class="col-sm-6 col-xs-6 grid_box left">
-											<img src="<?php bloginfo('template_url') ?>-child/images/brand_tommy_hilfiger.jpg" class="img-responsive" />
-											<div id="brand_tommy_hilfinger" class="grid_box_overlay click <?php echo_if_present('brand_tommy_hilfinger'); ?>"></div>
-										</div>
-									</div>
-
-									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
-									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_3[more_brands]" id='brands-autocomplete-box'><?php @echo_if_exists($section['more_brands']); ?></textarea>                                    
-								</div>
-							</div>
+							
 
 							<!-- HIDDEN SECTION -->
 							<!-- <div class="title-forms area3" style="border-bottom:1px solid #e3e3e3;display:none;">
@@ -387,10 +260,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area4" style="border-bottom:1px solid #e3e3e3;">
+							<div class="title-forms area1" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">02</div>
+									<div class="numbering">01</div>
 									<p>How do you wear your shirts?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -435,10 +308,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area5" style="border-bottom:1px solid #e3e3e3;">
+							<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">03</div>
+									<div class="numbering">02</div>
 									<p>What trousers do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -487,10 +360,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area6" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
+							<div class="title-forms area3" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">04</div>
+									<div class="numbering">03</div>
 									<p>How do you wear your jeans?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -529,10 +402,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area7" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
+							<div class="title-forms area4" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">05</div>
+									<div class="numbering">04</div>
 									<p>Which colours of denim do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -575,10 +448,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area8" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
+							<div class="title-forms area5" style="border-bottom:1px solid #e3e3e3; padding-bottom:40px;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">06</div>
+									<div class="numbering">05</div>
 									<p>How do you wear your shorts?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -608,10 +481,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 
-							<div class="title-forms area9">
+							<div class="title-forms area6">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">07</div>
+									<div class="numbering">06</div>
 									<p>Which styles of shoes do you wear?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
@@ -672,10 +545,10 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 
 								<!-- HIDDEN SECTION -->
-							<div class="title-forms area10" style=" display:none;">
+							<div class="title-forms area7" style=" display:none;">
 								<div class="line_separator_thick"><img src="<?php bloginfo('template_url') ?>-child/images/line_thick.png" alt=""/></div>
 								<div class="mini-wrapper-forms">
-									<div class="numbering">09</div>
+									<div class="numbering">07</div>
 									<p>Which style of underwear do you prefer?</p>
 								</div><!--mini-wrapper-forms-->
 								<div class="row">
