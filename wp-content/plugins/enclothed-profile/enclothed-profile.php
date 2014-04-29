@@ -449,23 +449,35 @@ class EnclothedProfile {
 	public function process_style_form(){
 		$section_2 = $_POST['section_2'];
 
-		$styleKeyArray = array_keys($section_2);
-		$styles = implode(',', $styleKeyArray);
+
+		if ($section_2 != NULL) {
+			$styleKeyArray = array_keys($section_2);
+		} else {
+			$styleKeyArray = NULL;
+		}
+
+		if ($styleKeyArray != NULL) {
+			$styles = implode(',', $styleKeyArray);
+		} else {
+			$styleKeyArray = "";
+		}
 
 		$stylesArray = "";
 		$brandsArray = "";
 		$more_brands = $section_2['more_brands'];
 
-		foreach($styleKeyArray as $style) {
-			if (strpos($style, 'brand_') !== FALSE) {
- 				$brandsArray .= $style . ",";
-			} elseif (strpos($style, 'style_') !== FALSE) {
-				$stylesArray .= $style . ",";
+		if (is_array($styleKeyArray)) {
+			foreach($styleKeyArray as $style) {
+				if (strpos($style, 'brand_') !== FALSE) {
+	 				$brandsArray .= $style . ",";
+				} elseif (strpos($style, 'style_') !== FALSE) {
+					$stylesArray .= $style . ",";
+				}
 			}
-		}
 
-		$brandsArray = rtrim($brandsArray, ",");
-		$stylesArray = rtrim($stylesArray, ",");
+			$brandsArray = rtrim($brandsArray, ",");
+			$stylesArray = rtrim($stylesArray, ",");
+		}
 
 		//just fail if no user in the session
 		if (empty($_SESSION['user'])){
@@ -499,8 +511,19 @@ class EnclothedProfile {
 	**/
 	public function process_preferences_form(){
 		$section_3 = $_POST['section_3'];
-		$preferences = array_keys($section_3);
-		$preferences = implode(',', $preferences);
+
+		
+
+		if ($section_3 != NULL) {
+			$preferences = array_keys($section_3);
+		} else {
+			$preferences = NULL;
+		}
+		if ($preferences != NULL) {
+			$preferences = implode(',', $preferences);
+		} else {
+			$preferences = "";
+		}
 
 		//just fail if no user in the session
 		if (empty($_SESSION['user'])){
