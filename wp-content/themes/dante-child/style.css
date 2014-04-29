@@ -298,6 +298,9 @@ padding: 5px !important;
 .social_buttons{ text-align:center;
 }
 
+*{
+/* Prevent any object from being highlighted upon touch event*/
+-webkit-tap-highlight-color: rgba(0,0,0,0); }
 
 .get_started_banner { border:none ; background-image: none !important; background-color: #f6f7f6 ; margin-top:-20px !important; margin-bottom: 20px !important;}
 .get_started_banner a.sf-button{ margin: 0 auto !important;}
@@ -778,7 +781,6 @@ background: transparent url('images/logo-header.png') no-repeat;
 .home_page #logo a {
 display:block;
 color: #fff;
--webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 .home_page nav .menu > li a {
