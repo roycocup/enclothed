@@ -3543,19 +3543,9 @@ generic-menu2 li a:last-child{
 	margin-bottom: 40px;
 }
 
-.page-template-no-template-php #top-header,
-.page-template-no-template-php .header-right,
-.page-template-no-template-php .mobile-menu-show,
-.page-template-no-template-php footer .container {
+.page-template-no-template-php .header-wrap,
+.page-template-no-template-php footer {
 	display: none !important;
-}
-
-.page-template-no-template-php #header-section {
-	min-height: 50px !important;
-}
-
-.page-template-no-template-php #logo {
-	margin-top: 20px;
 }
 
 .page-template-no-template-php .page-heading .heading-text {
