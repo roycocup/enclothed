@@ -3588,12 +3588,29 @@ generic-menu2 li a:last-child{
 	}
 }
 
+
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 1)  {
 	.get_started_banner{
-		margin-top:-55px;
+		margin-top:-115px !important;
+	}
+	.page-id-197 #Parallax{
+		height: 450px;
+	}
+}
+
+/* iPad Retina (Landscape) */
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape)
+and (-webkit-min-device-pixel-ratio: 2) { 
+	
+	.page-id-197 #Parallax{
+		height: 450px;
 	}
 }
