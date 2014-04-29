@@ -779,6 +779,8 @@ background: transparent url('images/logo-header.png') no-repeat;
 	display:block;
 color: #fff;
 }
+.home_page #logo a:hover{color: transparent;}
+
 .home_page nav .menu > li a {
 color: #fff;
 }
