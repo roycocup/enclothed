@@ -212,8 +212,8 @@ class EnclothedProfile {
 		$data['post_code'] 			= $profile['post_code'];
 		$data['occupation'] 		= $profile['occupation'];
 		$data['feedback_1'] 		= $profile['feedback_1'];
-		$data['how_hear_other'] 	= $profile['how_hear_other'];
-		$data['purchasing_yes'] 	= $profile['purchasing_yes'];
+		$data['feedback1_other'] 	= $profile['feedback1_other'];
+		$data['other_person_name'] 	= $profile['other_person_name'];
 		$data['other_person'] 		= $profile['other_person'];
 
 		//save it to db
@@ -394,8 +394,8 @@ class EnclothedProfile {
 			$data['town'] 			= sanitize_text_field($section['town']);
 			$data['password'] 		= $section['password'];
 			$data['feedback_1'] 	= (!empty($section['feedback_1']))? sanitize_text_field($section['feedback_1']) : '';
-			$data['how_hear_other'] 	= (!empty($section['how_hear_other']))? sanitize_text_field($section['how_hear_other']) : '';
-			$data['purchasing_yes'] 	= (!empty($section['purchasing_yes']))? sanitize_text_field($section['purchasing_yes']) : '';
+			$data['feedback1_other'] 	= (!empty($section['feedback1_other']))? sanitize_text_field($section['feedback1_other']) : '';
+			$data['other_person_name'] 	= (!empty($section['other_person_name']))? sanitize_text_field($section['other_person_name']) : '';
 			$data['other_person'] 	=  (!empty($section['other_person']))? sanitize_text_field($section['other_person']) : '';
 			$data['occupation'] 	= sanitize_text_field($section['occupation']);
 

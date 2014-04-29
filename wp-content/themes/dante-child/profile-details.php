@@ -332,14 +332,14 @@ if (isset($_SESSION['section_1'])){
 					<option value="From the press">From the press</option>
 					<option value="Other">Other</option>
 			</select>
-			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Explain Other" style="display:none;" name="section_1[how_hear_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['how_hear_other']); ?></textarea>
+			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Explain Other" style="display:none;" name="section_1[feedback1_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['feedback1_other']); ?></textarea>
 			
 			<select class="selectmenu" tabindex="11" name="section_1[other_person]" id="areYouPurchasingDropdown">
 					<option value="none">Are you purchasing for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 			</select>
-			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Other Persons Name" style="display:none;" name="section_1[purchasing_yes]" id="purchasingYes"><?php @echo_if_exists($section['purchasing_yes']); ?></textarea>
+			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Other Persons Name" style="display:none;" name="section_1[other_person_name]" id="purchasingYes"><?php @echo_if_exists($section['other_person_name']); ?></textarea>
 			
 			<div class="checkbox_wrap" style="max-width:400px; padding-bottom:0px; padding-top:30px;">
 				<input type="checkbox" class="css-checkbox" id="checkbox1" name="section_1[tc]">
