@@ -776,10 +776,14 @@ display: none!important;
 background: transparent url('images/logo-header.png') no-repeat;
 }
 .home_page #logo a {
-	display:block;
+display:block;
 color: #fff;
+}
+
+.home_page #logo a:link {
 -webkit-tap-highlight-color: transparent;
 }
+
 
 .home_page nav .menu > li a {
 color: #fff;
