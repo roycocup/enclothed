@@ -40,7 +40,7 @@ if (isset($_SESSION['section_1'])){
 			}).text(d).appendTo('#daySelect');
 		}
 
-		var selectedDay = 1;
+		var selectedDay = 01;
 
 		$("#daySelect").change(function() {
 			selectedDay = $(this).val();
@@ -48,8 +48,8 @@ if (isset($_SESSION['section_1'])){
 
 		$("#monthSelect").change(function() {
 			var selectedValue = $(this).val();
-			var thirtyDays = ('september,april,june,november');
-			var thirtyOneDays = ('january,march,may,july,august,october,december');
+			var thirtyDays = ('09,04,06,11');
+			var thirtyOneDays = ('01,03,05,07,08,10,12');
 			
 			$("#daySelect").empty();
 			
@@ -118,6 +118,7 @@ if (isset($_SESSION['section_1'])){
 			var dobSplit = dateofBirth.split("-");
 
 			$("#daySelect").val(dobSplit[2]);
+			selectedDay = dobSplit[2];
 			$("#monthSelect").val(dobSplit[1]);
 			$("#yearSelect").val(dobSplit[0]);
 		}

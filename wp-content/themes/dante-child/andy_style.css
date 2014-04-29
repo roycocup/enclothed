@@ -3543,6 +3543,21 @@ generic-menu2 li a:last-child{
 	margin-bottom: 40px;
 }
 
+.page-template-no-template-php #top-header,
+.page-template-no-template-php .header-right,
+.page-template-no-template-php .mobile-menu-show,
+.page-template-no-template-php footer .container {
+	display: none !important;
+}
+
+.page-template-no-template-php #header-section {
+	min-height: 50px !important;
+}
+
+.page-template-no-template-php #logo {
+	margin-top: 20px;
+}
+
 @media only screen and (max-width: 767px){
 	.dateSelect {
 		max-width: 445px;
@@ -3560,6 +3575,10 @@ generic-menu2 li a:last-child{
 		width: 95%;
 		padding-left: 0px;
 		height: auto;
+	}
+
+	.page-template-no-template-php .sticky-header {
+		margin-top: 0px !important;
 	}
 }
 

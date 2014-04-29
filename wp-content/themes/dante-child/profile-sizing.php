@@ -90,6 +90,14 @@ function echo_if_present($word){
 <script>
 	jQuery(document).ready(function($){
 
+		$('#conversion_chart').click(function() {
+			var h = $(window).height() / 1.5; 
+			var w = $(window).width() / 1.5; 
+			var left = ($(window).width()/2)-(w/2);
+  			var top = ($(window).height()/2)-(h/2);
+			window.open("/profile/sizing/conversion-chart/", 'Resource', 'toolbar=no ,location=0, status=no,titlebar=no,menubar=no,width='+w +',height=' +h+' , top='+top+', left='+left);
+		});
+
 		// setting variables in the prototype to have the previously selected bits
 		$(function(){
 			var previous_selections = <?php echo (empty($_SESSION['section_4']))? 'false':'true'; ?>;
@@ -452,7 +460,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 										<div class="mini-wrapper-forms">
 											<div class="numbering">01</div>
 											<p>Your size and measurements. What fits you well.</p>
-											<p class="georgia_text">(All UK sizes - <a href="#" style="color:#b08536;">click for conversion chart</a>)</p>
+											<p class="georgia_text">(All UK sizes - <a href="#" id="conversion_chart" style="color:#b08536;">click for conversion chart</a>)</p>
 
 												<div class="slider_wrapper">
 													<div class="col-sm-2 slider_label">T-shirt</div>
