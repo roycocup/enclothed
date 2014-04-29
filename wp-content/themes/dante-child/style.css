@@ -726,9 +726,18 @@ textarea:-ms-input-placeholder {
 
 
 /*Styling for flashmessages*/
- .flashmessages{ border: 2px solid #e98b8b; background-color: #fee4e5; z-index: 10; padding: 20px; margin-top: 30px; display: none;}
- .flashmessages .error_message{ color: #e98b8b; font-family: proxregular; font-size: 16px; letter-spacing: 0; }
- .flashmessages ul.error_fields{ color: #cc5050; font-family: proxbold; font-size: 16px; }
+ .flashmessages{ border: 2px solid #e98b8b; background-color: #fee4e5; z-index: 10; padding: 20px; margin-top: 30px; display: none; float: none;}
+.flashmessages .error_message {
+color: #E98B8B;
+font-family: proxregular;
+font-size: 20px;
+letter-spacing: 0;
+padding-bottom: 17px;
+margin-bottom: 25px;
+border-bottom: 1px solid #F8D1D1;
+text-shadow: 0 1px 0px #FFF2F2;
+}
+ .flashmessages ul.error_fields{ color: #cc5050; font-family: proxbold; font-size: 16px; margin: 0px 20px 10px; }
  .flashmessages ul.error_fields li{  padding-left: 20px; background-image: url(images/error_bullet.png); background-repeat: no-repeat; background-position: 0px 7px;}
 
 .button_spacer{float:none !important; display:inline-block !important;}
@@ -2158,7 +2167,7 @@ line-height: 26px;
  text-align: center;
 }
 .testimonials_page .author_name{
-	font-family: font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+	font-family:proxregular, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 	padding-bottom: 30px;
 }
 .testimonials_page .area2{ 
@@ -2372,7 +2381,7 @@ max-width: none !important;
 @media only screen and (max-width: 479px) {
 
 .profile_details_page #main-container, .profile_style_page #main-container, .profile_preferences_page #main-container, .profile_sizing_page #main-container, .profile_pricing_page #main-container, .profile_delivery_page #main-container {
-background-size: 250%;
+background-size: 350%;
 }
 .profile_details_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_style_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_preferences_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_sizing_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_pricing_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_delivery_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top {
 padding-bottom: 0;
@@ -2396,4 +2405,74 @@ margin-bottom: 0;
 	width: 95% !important;
 }
 
+#logo {
+	background-image: url(images/logo-black_x2.png);
+	background-size: 70%;
 }
+.home_page #logo {
+background-image: url(images/logo-header_x2.png);
+background-size: 70%;
+}
+
+.home_page .area2 .spb_content_wrapper h1 {
+	font-size: 27px !important;
+	line-height: 27px !important;
+}
+.sf-icon-cont.cont-medium {
+margin: 10px 2px 10px 2px !important;
+padding: 2px !important;
+width: 38px;
+height: 38px;
+}
+.spb_box_text .box-content-wrap {
+padding: 20px 0;
+}
+.sf-icon-cont.cont-medium .sf-icon {
+line-height: 40px;
+}
+.fa-facebook.sf-icon.sf-icon-medium { font-size:25px !important;
+ }
+.fa-rss.sf-icon.sf-icon-medium { font-size:25px !important;
+}
+.fa-twitter.sf-icon.sf-icon-medium { font-size:25px !important;
+}
+.fa-instagram.sf-icon.sf-icon-medium { font-size:25px !important;
+ }
+.fa-tumblr.sf-icon.sf-icon-medium { font-size:25px !important;
+}
+div.spb_content_element.col-sm-12.social_buttons.spb_box_text.whitestroke {
+padding-bottom: 0;
+margin-bottom: 0;
+}
+div.spb_content_element.col-sm-12.social_buttons.spb_box_text.whitestroke h2 {
+	margin-top: 10px;
+}
+.home_page .fullscreen-container {
+height: 350px !important;
+}
+.tp-simpleresponsive .tp-caption p span {
+	width: 85%;
+	margin: 0 auto;
+	display: block;
+}
+.footer-menu.std-menu .menu li > a {
+ margin: 0 8px;
+}
+.testimonials_page .styles-block h1 {
+font-size: 30px !important;
+margin: 0px !important;
+}
+.spb_text_column {
+margin-bottom: 0 !important;
+}
+.testimonials_page .georgia_text {
+	padding-top: 50px;
+	margin: 0 !important;
+}
+.testimonials_page .author_name {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+}
+
