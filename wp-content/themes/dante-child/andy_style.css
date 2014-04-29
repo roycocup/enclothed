@@ -3558,6 +3558,15 @@ generic-menu2 li a:last-child{
 	margin-top: 20px;
 }
 
+.page-template-no-template-php .page-heading .heading-text {
+	float: none;
+	margin: 0 auto;
+}
+
+.page-template-no-template-php .page-heading {
+	border-bottom: none;
+}
+
 @media only screen and (max-width: 767px){
 	.dateSelect {
 		max-width: 445px;
