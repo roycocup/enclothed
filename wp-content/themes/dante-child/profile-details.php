@@ -332,7 +332,7 @@ if (isset($_SESSION['section_1'])){
 					<option value="From the press">From the press</option>
 					<option value="Other">Other</option>
 			</select>
-			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="Explain Other" style="display:none;" name="section_1[feedback1_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['feedback1_other']); ?></textarea>
+			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="If other, please specify" style="display:none;" name="section_1[feedback1_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['feedback1_other']); ?></textarea>
 			
 			<select class="selectmenu" tabindex="11" name="section_1[other_person]" id="areYouPurchasingDropdown">
 					<option value="none">Are you purchasing for another person?</option>
