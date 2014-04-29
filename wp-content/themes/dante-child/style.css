@@ -128,7 +128,7 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 #header .header-container { padding-top:0px;
 }
 #logo {
-background: transparent url('images/logo-black.png') no-repeat;
+background: transparent url('images/logo-black_x2.png') no-repeat;
 height:48px !important;
 max-height:48px !important;
 }
@@ -780,7 +780,7 @@ animation-fill-mode: both;
 display: none!important;
 }
 .home_page #logo {
-background: transparent url('images/logo-header.png') no-repeat;
+background: transparent url('images/logo-header_x2.png') no-repeat;
 }
 .home_page #logo a {
 display:block;
