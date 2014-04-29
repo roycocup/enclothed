@@ -2472,6 +2472,13 @@ margin-bottom: 0 !important;
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
+.testimonials_page .area2, .testimonials_page .area3, .testimonials_page .area4, .testimonials_page .area5, .testimonials_page .area6 {
+	margin-bottom: 0;
+	padding-bottom: 40px;
+}
+.fw-video-link-image i {
+	top:140%;
+}
 
 }
 
