@@ -2510,8 +2510,22 @@ margin-bottom: 5px;
 }
 .mini-wrapper-forms {
 padding-bottom: 0;
+}
 .slider_wrapper div.col-sm-2 {
 font-size: 22px !important;
+}
+.featured_blog_box_left {
+	float: none;
+}
+.featured_blog_boxes_wrapper.featured2 {
+	float: none;
+}
+.social_boxes_wrapper {
+	float: none;
+}
+.social_box_left {
+background-size: contain !important;
+background-color: #FFF !important;
 }
 
 
