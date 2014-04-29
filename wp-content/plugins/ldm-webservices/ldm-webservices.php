@@ -491,7 +491,6 @@ public function renderSageForm() {
 
 	//Instantiate keys in array
 	$styleChoicesArray = array();
-	$styleChoicesArray['brandChoices'] = "";
 	$styleChoicesArray['shirtTypeChoice'] = "";
 	$styleChoicesArray['whereDoYouWearYourShirtChoices'] = "";
 	$styleChoicesArray['trouserTypeChoice'] = "";
@@ -504,9 +503,7 @@ public function renderSageForm() {
 
 	//Add brands from Session field by keyname into strings available to pass via input
 	foreach($styleChoices as $styleChoice) {
-		if (strpos($styleChoice, 'brand_') !== FALSE) {
-			$styleChoicesArray['brandChoices'] .= $styleChoice . ",";
-		} else if (strpos($styleChoice, 'shirt_type_') !== FALSE) {
+		if (strpos($styleChoice, 'shirt_type_') !== FALSE) {
 			$styleChoicesArray['shirtTypeChoice'] .= $styleChoice . ",";
 		} else if (strpos($styleChoice, 'shirt_wear_') !== FALSE) {
 			$styleChoicesArray['whereDoYouWearYourShirtChoices'] .= $styleChoice . ",";
@@ -528,7 +525,6 @@ public function renderSageForm() {
 	}
 
 	//Trim trailing , from the list of items in string
-	$styleChoicesArray['brandChoices'] = rtrim($styleChoicesArray['brandChoices'], ",");
 	$styleChoicesArray['shirtTypeChoice'] = rtrim($styleChoicesArray['shirtTypeChoice'], ",");
 	$styleChoicesArray['whereDoYouWearYourShirtChoices'] = rtrim($styleChoicesArray['whereDoYouWearYourShirtChoices'], ",");
 	$styleChoicesArray['trouserTypeChoice'] = rtrim($styleChoicesArray['trouserTypeChoice'], ",");
@@ -556,7 +552,7 @@ public function renderSageForm() {
 	$comparisonArray['howDidYouHearAboutEnclothed'] = 'feedback_1';
 	$comparisonArray['howDidYouHearAboutEnclothedOther'] = 'how_hear_other';
 	$comparisonArray['styleChoices'] = 'styles';
-	$comparisonArray['brandChoices'] = 'custom';
+	$comparisonArray['brandChoices'] = 'brands';
 
 	//Below doesn't exist in session array
 	$comparisonArray['jacketTypeChoices'] = 'custom';

@@ -151,7 +151,8 @@ transition: 0.4s ease-out;
 }
 
 a:link {
--webkit-tap-highlight-color: rgba(253,215,0,0.6);
+/* Prevent any object from being highlighted upon touch event*/
+-webkit-tap-highlight-color: rgba(0,0,0,0) !important; }
 }
 
 /* Clearfix */
@@ -3543,6 +3544,20 @@ generic-menu2 li a:last-child{
 	margin-bottom: 40px;
 }
 
+.page-template-no-template-php .header-wrap,
+.page-template-no-template-php footer {
+	display: none !important;
+}
+
+.page-template-no-template-php .page-heading .heading-text {
+	float: none;
+	margin: 0 auto;
+}
+
+.page-template-no-template-php .page-heading {
+	border-bottom: none;
+}
+
 @media only screen and (max-width: 767px){
 	.dateSelect {
 		max-width: 445px;
@@ -3560,6 +3575,10 @@ generic-menu2 li a:last-child{
 		width: 95%;
 		padding-left: 0px;
 		height: auto;
+	}
+
+	.page-template-no-template-php .sticky-header {
+		margin-top: 0px !important;
 	}
 }
 

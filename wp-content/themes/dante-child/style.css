@@ -297,8 +297,6 @@ padding: 5px !important;
 }
 .social_buttons{ text-align:center;
 }
-
-
 .get_started_banner { border:none ; background-image: none !important; background-color: #f6f7f6 ; margin-top:-20px !important; margin-bottom: 20px !important;}
 .get_started_banner a.sf-button{ margin: 0 auto !important;}
 .spb_box_text.whitestroke .box-content-wrap {
@@ -785,9 +783,10 @@ display: none!important;
 background: transparent url('images/logo-header.png') no-repeat;
 }
 .home_page #logo a {
-	display:block;
+display:block;
 color: #fff;
 }
+
 .home_page nav .menu > li a {
 color: #fff;
 }

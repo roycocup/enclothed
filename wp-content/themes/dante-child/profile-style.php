@@ -28,6 +28,16 @@ function echo_if_present($word){
 		}
 	}
 }
+
+function echo_if_present_brand($word){
+	if (!empty($_SESSION['section_2'])){
+		$prev_sec_2 = explode(',', $_SESSION['section_2']['brands']);
+
+		if (in_array($word, $prev_sec_2)){
+			echo 'selected';
+		}
+	}
+}
 ?>
 
 <script>
@@ -65,6 +75,56 @@ function echo_if_present($word){
 				$('#array').val( $('#array').val() + "," + $(this).attr('id') );		
 			}
 			$(this).toggleClass( "selected" );
+		});
+
+		// Autocomplete for the brands box
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+
+		// Autocomplete for brands box
+		// var availableTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
+		var availableTags = ["Abercrombie & Fitch", "All Saints", "A.P.C", "Armani", "Balenciaga", "Banana Republic", "Barbour", "Brooks Brothers",
+                "Calvin Klein", "Diesel", "Dockers", "Duck and Cover", "Emmett", "Fat Face", "Fred Perry", "Gant", "Gap", "G Star",
+                "Gucci", "Hackett", "Hartford", "Hentsch Man", "Henri Lloyd", "Hugo Boss", "H&M", "Jack Wills", "Lacoste", "Lanvin",
+                "Levis", "Lyle & Scott", "Musto", "Northface", "Paul Smith", "Penguin", "Prada", "Rag & Bone", "Ralph Lauren", "Reiss",
+                "Sunspel", "Superdry", "Ted Baker", "TM Lewin", "Tods", "Tommy Hilfiger", "Thomas Pink", "Versace", "White Stuff", "Zegna"];
+		
+		// $("#brands-autocomplete-box").select2({
+			// tags: availableTags,
+		// });
+
+		$('#brands-autocomplete-box')// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB && $( this ).data( "ui-autocomplete" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				minLength: 0,
+				source: function( request, response ) {
+				// delegate back to autocomplete, but extract the last term
+				response( $.ui.autocomplete.filter(
+					availableTags, extractLast( request.term ) ) );
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function( event, ui ) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push( "" );
+				this.value = terms.join( ", " );
+				return false;
+			}
 		});
 
 	});
@@ -201,9 +261,94 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 						<div class="flashmessages col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 	            			<?php flashMessagesDisplay(); ?>
 	           			</div>	
-						<div class="title-forms area1">
+
+	           			<div class="title-forms area2" style="border-bottom:1px solid #e3e3e3;">
+								<div class="mini-wrapper-forms">
+									<div class="numbering">01</div>
+									<p>Which brands do you usually wear?</p>
+								</div><!--mini-wrapper-forms-->
+								<div class="row" style="border-top: 1px solid #e3e3e3;">
+									<div class="col-sm-6 grid_left">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_abercrombie_fitch.jpg" class="img-responsive" />
+											<div id="brand_abercrombie_fitch" class="grid_box_overlay click <?php echo_if_present_brand('brand_abercrombie_fitch'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_barbour.jpg" class="img-responsive" />
+											<div id="brand_barbour" class="grid_box_overlay click <?php echo_if_present_brand('brand_barbour'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_allsaints.jpg" class="img-responsive" />
+											<div id="brand_allsaints" class="grid_box_overlay click <?php echo_if_present_brand('brand_allsaints'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hugo_boss.jpg" class="img-responsive" />
+											<div id="brand_hugo_boss" class="grid_box_overlay click <?php echo_if_present_brand('brand_hugo_boss'); ?>"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_right">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_apc.jpg" class="img-responsive" />
+											<div id="brand_apc" class="grid_box_overlay click <?php echo_if_present_brand('brand_apc'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_jack_wills.jpg" class="img-responsive" />
+											<div id="brand_jack_wills" class="grid_box_overlay click <?php echo_if_present_brand('brand_jack_wills'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_armani.jpg" class="img-responsive" />
+											<div id="brand_armani" class="grid_box_overlay click <?php echo_if_present_brand('brand_armani'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_oliver_spencer.jpg" class="img-responsive" />
+											<div id="brand_oliver_spencer" class="grid_box_overlay click <?php echo_if_present_brand('brand_oliver_spencer'); ?>"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_left">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_diesel.jpg" class="img-responsive" />
+											<div id="brand_diesel" class="grid_box_overlay click <?php echo_if_present_brand('brand_diesel'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_paul_smith.jpg" class="img-responsive" />
+											<div id="brand_paul_smith" class="grid_box_overlay click <?php echo_if_present_brand('brand_paul_smith'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_gant.jpg" class="img-responsive" />
+											<div id="brand_gant" class="grid_box_overlay click <?php echo_if_present_brand('brand_gant'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_ralph_lauren.jpg" class="img-responsive" />
+											<div id="brand_lauren" class="grid_box_overlay click <?php echo_if_present_brand('brand_lauren'); ?>"></div>
+										</div>
+									</div>
+									<div class="col-sm-6 grid_right">
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_g-star.jpg" class="img-responsive" />
+											<div id="brand_g-star" class="grid_box_overlay click <?php echo_if_present_brand('brand_g-star'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_reiss.jpg" class="img-responsive" />
+											<div id="brand_reiss" class="grid_box_overlay click <?php echo_if_present_brand('brand_reiss'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box right">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_hackett.jpg" class="img-responsive" />
+											<div id="brand_hackett" class="grid_box_overlay click <?php echo_if_present_brand('brand_hackett'); ?>"></div>
+										</div>
+										<div class="col-sm-6 col-xs-6 grid_box left">
+											<img src="<?php bloginfo('template_url') ?>-child/images/brand_tommy_hilfiger.jpg" class="img-responsive" />
+											<div id="brand_tommy_hilfinger" class="grid_box_overlay click <?php echo_if_present_brand('brand_tommy_hilfinger'); ?>"></div>
+										</div>
+									</div>
+
+									<label  style="padding-top:40px;" class="css-label">Add more of your own brands</label>
+									<textarea type="text" class="customer-info3" tabindex="2" placeholder="" name="section_2[more_brands]" id='brands-autocomplete-box'><?php @echo_if_exists($section['more_brands']); ?></textarea>                                    
+								</div>
+							</div>
+
+						<div class="title-forms area2">
 							<div class="mini-wrapper-forms">
-								<div class="numbering">01</div>
+								<div class="numbering">02</div>
 								<p>Click on the pictures that best represent your style</p>
 							</div><!--mini-wrapper-forms-->
 							<div class="row">
