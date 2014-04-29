@@ -891,46 +891,6 @@ color:#fff !important;
 .home_page .menu_get_started{ display: none !important;
 }
 
-.mens_health_link{
-	position:absolute; 
-	width:17%;
-	height:100%;
-	top:0;
-	left: 28%;
-	z-index: 1;
-}
-.timeout_link{
-	position:absolute; 
-	width:13%;
-	height:100%;
-	top:0;
-	left: 45%;
-	z-index: 1;
-}
-.square_mile_link{
-	position:absolute; 
-	width:25%;
-	height:100%;
-	top:0;
-	left: 58%;
-	z-index: 1;
-}
-.bbc_link{
-	position:absolute; 
-	width:17%;
-	height:100%;
-	top:0;
-	left: 83%;
-	z-index: 1;
-}				
-.link_cover{
-	position:absolute; 
-	width:100%;
-	height:100%;
-	top:0;
-	left: 0;
-	z-index: 1;
-}
 
 
 
@@ -2376,6 +2336,25 @@ max-width: none !important;
 }
 
 
+.in-media {
+background: #333b47 url(images/media_bg.jpg) center center repeat;
+min-height: 245px;
+clear: both;
+}
+.in-media img {
+vertical-align: middle;
+}
+img.in-m-e {
+padding-left: 60px;
+padding-right: 70px;
+}
+div.in-m-wrap {
+line-height: 240px;
+}
+.in-media a {
+margin-right: 90px;
+}
+
 
 @media only screen and (max-width: 479px) {
 
@@ -2477,8 +2456,58 @@ margin-bottom: 0 !important;
 	padding-bottom: 40px;
 }
 .fw-video-link-image i {
-	top:140%;
+	top:160%;
+}
+.spb_parallax_asset {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.about_us_page h1 {
+line-height: 28px !important;
+font-size: 20px !important;
+}
+.about_us_page .full-width-text {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+img.in-m-e{
+padding: 40px 10px;
+}
+div.in-m-wrap {
+line-height: normal;
+}
+.in-media img {
+display: block;
+margin: 0 auto;
+}
+.in-media a {
+display: block;
+margin: 0;
+padding-bottom: 30px;
+}
+.slider_wrapper .notch_label {
+font-size: 10px;
 }
 
+.slider {
+padding-left: 30px;
+padding-right: 30px;
 }
+input[type="text"].slider_selection {
+	margin-bottom: 0;
+}
+.profile_sizing_page .box_options_wrapper {
+padding-bottom: 10px;
+padding-top: 20px;
+margin: 0;
+}
+.slider_wrapper {
+padding-top: 20px;
+}
+.slider_wrapper div.col-sm-2 {
+margin-bottom: 15px;
+}
+.mini-wrapper-forms {
+padding-bottom: 0;}
 
+}

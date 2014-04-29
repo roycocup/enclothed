@@ -310,12 +310,19 @@
 					</div>
 				</div>
 
-				<div class="col-sm-12 no-margin no-padding" style=" float:left;">
-					<a href="http://www.menshealth.co.uk/style/tips/easiest-way-to-upgrade-your-wardrobe" target="_blank" class="mens_health_link"></a>
-					<a href="#" target="_blank" class="timeout_link"></a>
-					<a href="http://www.squaremile.com/detail-therapy/27/enclothed/" target="_blank" class="square_mile_link"></a>
-					<a href="http://www.bbc.co.uk/programmes/p0151rml" target="_blank" class="bbc_link"></a>
-				<img class="image-responsive" alt="line" src="/wp-content/themes/dante-child/images/enclothed_in_the_media.jpg">
+				<div class="col-sm-12 no-margin no-padding in-media">
+					<div class="in-m-wrap">
+						<img src="<?php bloginfo('template_url') ?>-child/images/enclothed_media.png" class="in-m-e" alt="Enclothed in the Media"/>
+						<a href="http://www.menshealth.co.uk/style/tips/easiest-way-to-upgrade-your-wardrobe" target="_blank" class="mens_health_link">
+							<img src="<?php bloginfo('template_url') ?>-child/images/mens_health.png" alt="Mens Health"/>
+						</a>
+						<a href="http://www.squaremile.com/detail-therapy/27/enclothed/" target="_blank" class="square_mile_link">
+							<img src="<?php bloginfo('template_url') ?>-child/images/sm_logo.png" alt="Square Mile"/>
+						</a>
+						<a href="http://www.bbc.co.uk/programmes/p0151rml" target="_blank" class="bbc_link">
+							<img src="<?php bloginfo('template_url') ?>-child/images/BBC_logo.png" alt="BBC"/>
+						</a>
+					</div>
 				</div>
 	
 			</div>
