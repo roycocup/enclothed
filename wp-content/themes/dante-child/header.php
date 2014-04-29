@@ -194,6 +194,13 @@
 		
 		<!--// WORDPRESS HEAD HOOK //-->
 		<?php wp_head(); ?>
+		
+		<script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js'></script>
+		<script>
+		$(function() {
+		    FastClick.attach(document.body);
+		});
+		</script>
 	
 	<!--// CLOSE HEAD //-->
 	</head>

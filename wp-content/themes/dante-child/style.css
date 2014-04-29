@@ -2495,6 +2495,7 @@ padding-right: 30px;
 }
 input[type="text"].slider_selection {
 	margin-bottom: 0;
+	font-size: 30px !important;
 }
 .profile_sizing_page .box_options_wrapper {
 padding-bottom: 10px;
@@ -2502,12 +2503,17 @@ padding-top: 20px;
 margin: 0;
 }
 .slider_wrapper {
-padding-top: 20px;
+padding-top: 5px;
 }
 .slider_wrapper div.col-sm-2 {
-margin-bottom: 15px;
+margin-bottom: 5px;
 }
 .mini-wrapper-forms {
-padding-bottom: 0;}
+padding-bottom: 0;
+.slider_wrapper div.col-sm-2 {
+font-size: 22px !important;
+}
+
+
 
 }
