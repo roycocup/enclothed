@@ -1794,13 +1794,13 @@ border:none;
 
 
 @media only screen and (max-width: 767px) {
-.profile_authorize_page .payment_info img{background:none !important;
- }
-.profile_authorize_page .payment_info {padding-bottom:40px;
-text-align:center;
-background: url(images/payment_dot.png) no-repeat;
- background-position: center bottom;
- }
+	.profile_authorize_page .payment_info img{background:none !important;
+	 }
+	.profile_authorize_page .payment_info {padding-bottom:40px;
+	text-align:center;
+	background: url(images/payment_dot.png) no-repeat;
+	 background-position: center bottom;
+	 }
 }
 
 
@@ -2365,4 +2365,35 @@ position: relative;
 width: 90% !important;
 max-width: none !important;
 }
+}
+
+
+
+@media only screen and (max-width: 479px) {
+
+.profile_details_page #main-container, .profile_style_page #main-container, .profile_preferences_page #main-container, .profile_sizing_page #main-container, .profile_pricing_page #main-container, .profile_delivery_page #main-container {
+background-size: 250%;
+}
+.profile_details_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_style_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_preferences_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_sizing_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_pricing_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top, .profile_delivery_page div.full-width-text.spb_content_element.col-sm-12.spb_text_column.no-padding-top {
+padding-bottom: 0;
+margin-bottom: 0;
+}
+
+.title-forms p {
+	top: 35px;
+	margin-bottom: 55px;
+	padding: 0 15px;
+}
+.numbering {
+	top:5px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+.key-info {
+	max-width: 445px !important;
+	margin: 8px auto 0px auto !important;
+	width: 95% !important;
+}
+
 }

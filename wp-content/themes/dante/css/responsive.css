@@ -1597,4 +1597,15 @@
 	.sf-icon-box.sf-icon-box-left-icon-alt .sf-icon-box-content-wrap {
 		margin-left: 45px;
 	}
+	
+	.selectmenu {
+	padding-right: 50px !important;
+	width: 95% !important;
+	margin: 8px auto 8px auto !important;
+	}
+	div.dateWrapper {
+	width: 100%;
+	}
+	
+	
 }
