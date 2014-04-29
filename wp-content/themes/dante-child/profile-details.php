@@ -312,7 +312,7 @@ if (isset($_SESSION['section_1'])){
 					<option value=''>YEAR</option>
 					<?php 
 					$currentYear = date("Y");
-					for($i=0; $i<=150; $i++) { ?>
+					for($i=0; $i<=100; $i++) { ?>
 						<option value='<?php echo $currentYear-$i; ?>'><?php echo $currentYear-$i; ?></option>
 					<?php } ?>
 					</select>

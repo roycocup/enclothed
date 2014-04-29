@@ -109,7 +109,7 @@ if (isset($_SESSION['section_5'])){
 				$( "#trousers_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 				$( "#trousers_price" ).slider({values:amount});
 			}else{
-				$( "#trousers_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+				$( "#trousers_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);
 			}
 		});
 
@@ -146,7 +146,7 @@ if (isset($_SESSION['section_5'])){
 				$( "#coat_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 				$( "#coat_price" ).slider({values:amount});
 			}else{
-				$( "#coat_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+				$( "#coat_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);
 			}
 
 		});
@@ -186,7 +186,7 @@ if (isset($_SESSION['section_5'])){
 				$( "#shoe_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 				$( "#shoe_price" ).slider({values:amount});
 			}else{
-				$( "#shoe_price_selection" ).val(increments[ui.values[0]] +'-'+ increments[ui.values[1]]);	
+				$( "#shoe_price_selection" ).val(increments[amount[0]] +'-'+ increments[amount[1]]);	
 			}
 
 		});
