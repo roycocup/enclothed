@@ -778,12 +778,8 @@ background: transparent url('images/logo-header.png') no-repeat;
 .home_page #logo a {
 display:block;
 color: #fff;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-
-.home_page #logo a:link {
--webkit-tap-highlight-color: transparent;
-}
-
 
 .home_page nav .menu > li a {
 color: #fff;
