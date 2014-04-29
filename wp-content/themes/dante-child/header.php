@@ -201,7 +201,10 @@
 		    FastClick.attach(document.body);
 		});
 		</script>
-	
+		<!--[if IE]>
+			<link rel='stylesheet' id='only-ie' href='css/only-ie.css' type='text/css' media='all' />
+		<![endif]-->
+		
 	<!--// CLOSE HEAD //-->
 	</head>
 	
