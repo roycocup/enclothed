@@ -1942,7 +1942,7 @@ text-align: center;
 
 @media only screen and (max-width: 991px) {
 
-.thankyou_page .styles-block{ 
+.thankyou_page .styles-block, .page-id-926 .styles-block{ 
  max-width: 750px;
 }
 	
