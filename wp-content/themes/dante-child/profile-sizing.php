@@ -437,11 +437,11 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<!-- Main Menu -->
 							<div class="details-menu">
 								<ul>
-							<li class="hidden-sm hidden-xs"><span>Your Details</span></li>
-							<li class="hidden-sm hidden-xs"><span>Pick Your Style</span></li>
-							<li class="hidden-sm hidden-xs"><span>Preferences</span></li>
-							<li><span class='active'>Size and Color</span></li>
-							<li class="hidden-sm hidden-xs"><span style="border-right:none;">Price and Summary</span></li>
+									<li><span>Your Details</span></li>
+									<li><span>Pick Your Style</span></li>
+									<li><span>Preferences</span></li>
+									<li><span class='active'>Size and Color</span></li>
+									<li><span style="border-right:none;">Price and Summary</span></li>
 								</ul>
 								<div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
 							</div><!--details-menu-->
@@ -479,6 +479,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="tshirt_selection" class="slider_selection" disabled="disabled" name="tshirt_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 
@@ -504,6 +505,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="neck_size_selection" class="slider_selection" disabled="disabled" name="neck_size_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 
@@ -549,6 +551,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="shoes_selection" class="slider_selection" disabled="disabled" name="shoes_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 
@@ -577,6 +580,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="jacket_selection" class="slider_selection" disabled="disabled" name="jacket_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 
@@ -605,6 +609,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="trouser_selection" class="slider_selection" disabled="disabled" name="trouser_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 
@@ -628,6 +633,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 													<div class="col-sm-2">
 														<input type="text" id="inside_leg_selection" class="slider_selection" disabled="disabled" name="inside_leg_selection">
 													</div>
+													<div class="hidden-md hidden-lg">Please click to make your selection</div>
 												</div>
 
 

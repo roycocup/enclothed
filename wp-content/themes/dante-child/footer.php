@@ -277,6 +277,12 @@
 		<!--// WORDPRESS FOOTER HOOK //-->
 		<?php wp_footer(); ?>
 
+		<script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js'></script>
+		<script>
+		jQuery(function() {
+		    FastClick.attach(document.body);
+		});
+		</script>
 			
 	<!--// CLOSE BODY //-->
 	</body>

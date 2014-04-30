@@ -2498,10 +2498,8 @@ span.tooltip .arrow {
 }
 .mobile-menu-open #mobile-menu-wrap {
     visibility: visible;
-    -webkit-transition: -webkit-transform 0.5s;
-    transition: transform 0.5s;
-    -webkit-transform: translate3d(-320px, 0, 0);
-    transform: translate3d(-320px, 0, 0);
+    -webkit-transform: translate3d(-320px, 0, 100px);
+    transform: translate3d(-320px, 0, 100px);
 }
 .no-csstransforms .mobile-menu-open #mobile-menu-wrap {
 	display: block;
