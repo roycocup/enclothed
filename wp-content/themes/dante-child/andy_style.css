@@ -3073,6 +3073,7 @@ details-menu li span:last-child{
 
 /*Generic form styles for Enclothed design-------------------------------*/
 
+.page-id-690 .line_separator_thick{display: none;}
 
 .mini-wrapper-forms{
   	position: relative;
@@ -3614,3 +3615,4 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		height: 450px;
 	}
 }
+

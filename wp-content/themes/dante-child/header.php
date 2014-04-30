@@ -194,7 +194,12 @@
 		
 		<!--// WORDPRESS HEAD HOOK //-->
 		<?php wp_head(); ?>
-	
+		
+		
+		<!--[if IE]>
+			<link rel='stylesheet' id='only-ie' href='css/only-ie.css' type='text/css' media='all' />
+		<![endif]-->
+		
 	<!--// CLOSE HEAD //-->
 	</head>
 	
