@@ -2498,9 +2498,10 @@ span.tooltip .arrow {
 }
 .mobile-menu-open #mobile-menu-wrap {
     visibility: visible;
-    -webkit-transform: translate3d(-320px, 0, 100px);
-    transform: translate3d(-320px, 0, 100px);
+    right: 0;
+    z-index: 9998;
 }
+
 .no-csstransforms .mobile-menu-open #mobile-menu-wrap {
 	display: block;
 	visibility: visible;
@@ -3270,7 +3271,7 @@ nav .menu .wishlist-item ul.sub-menu li:first-child:before {
 	height: 20px;
 }
 #logo a {
-	height: auto;
+	height: 52px;
 	overflow: hidden;
 	display: block;
 }
