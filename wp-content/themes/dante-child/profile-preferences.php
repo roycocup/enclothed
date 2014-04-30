@@ -193,7 +193,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<li><span>Your Details</span></li>
 							<li><span>Pick Your Style</span></li>
 							<li><span class="active">Preferences</span></li>
-							<li><span>Size and Color</span></li>
+							<li><span>Size and Colour</span></li>
 							<li><span style="border-right:none;">Price and Summary</span></li>
 						</ul>
 						<div class="shadow">
