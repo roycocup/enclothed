@@ -165,11 +165,8 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 							<div class="fade-border-right"></div>
 
 
-							<form name="enclothed_test" action="https://www.income-systemsltd.com/test%20apps/enclothed/registercustomer.aspx" method="GET">
+							<form name="enclothed_test" action="https://www.income-systemsltd.com/test%20apps/enclothed/registercustomer.aspx" method="POST">
 							<?php echo $ldm_webservice->renderSageForm(); ?>
-
-							<input type="hidden" name="successURL" id="successURL" value="http://enclothed.likedigitalmedia.com/thank_you">
-							<input type="hidden" name="failureURL" id="failureURL" value="http://enclothed.likedigitalmedia.com/cancel">
 
 							<?php $nonce = wp_create_nonce( get_uri() ); ?>
 							<div class="col-sm-12 payment_info_wrapper relative">								
