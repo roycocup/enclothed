@@ -1928,6 +1928,28 @@ text-align: center;
 
 }
 
+/* --------------------------------------------
+	SORRY PAGE
+-------------------------------------------- */
+.page-id-926 #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
+}
+
+.page-id-926 .styles-block h1{ margin-top: 50px !important;
+}
+.page-id-926 h2{ margin-top: 50px !important;
+}
+.page-id-926 h3{font-family:proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
+ font-size: 18px !important;
+}
+.page-id-926e .georgia_text{ font-size: 18px !important;
+ padding-top: 40px;
+ padding-bottom: 30px;
+ text-align: center;
+
+}
+
+
+
 
 @media only screen and (max-width: 991px) {
 
