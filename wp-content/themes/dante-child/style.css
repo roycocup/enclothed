@@ -2557,6 +2557,7 @@ padding-bottom: 10px;
 #logo {
 	background-image: url(images/logo-black_x2.png);
 	background-size: 70%;
+	max-height: 52px !important;
 	<!--[if IE]>
 background-image: url(images/logo-black_x2.png);
 background-size: 230px;
