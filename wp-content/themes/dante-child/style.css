@@ -2323,9 +2323,32 @@ line-height: 26px;
 }
 }
 @media only screen and (max-width: 767px) {
-.title-forms{
-	padding:0;
-}
+
+	.title-forms{
+		padding:0;
+	}
+	.post-1194 p,  .post-1194 b, .post-1194 td {
+	font-size: 10px !important;
+	margin: 0;
+	}
+	.post-1194 b {
+	font-size: 9px !important;
+	}
+	.page-id-1194 .page-heading h1 {
+		font-size: 20px !important;
+	}
+	.page-id-1194 .page-heading {
+	padding: 10px 20px !important;
+	margin: 0 !important;
+	}
+	
+	.page-id-1194 .container {
+		padding: 0 2px;
+	}
+	.page-id-1194 table td {
+	padding: 6px 0;
+	}
+
 }
 
 
