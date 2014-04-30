@@ -196,6 +196,7 @@
 		<?php wp_head(); ?>
 		
 		<script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js'></script>
+		<link rel="stylesheet" type="text/css" src="<?php bloginfo('template_url'); ?>css/only-ie.css">
 		<script>
 		$(function() {
 		    FastClick.attach(document.body);
