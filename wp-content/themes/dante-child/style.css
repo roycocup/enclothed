@@ -130,8 +130,7 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 
 #logo {
 background: transparent url('images/logo-black_x2.png') no-repeat;
-height:48px !important;
-max-height:48px !important;
+background-size: contain;
 }
 
 #logo h1 { visibility: hidden;
