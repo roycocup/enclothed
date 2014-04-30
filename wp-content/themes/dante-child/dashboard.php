@@ -19,16 +19,13 @@ get_header(); ?>
 		var has_messages = <?php echo (sessionHasMessages()) ? 'true':'false';?>;
 		if (has_messages) {
 			$('.flashmessages').show();
-			setTimeout(function(){
-				$('.flashmessages').fadeOut('slow');
-			},3000)	
 		} 
 	});
 </script>
 
 
 <style>
-	.flashmessages{border-color:green; background-color: rgba(0,256,0,0.3);}
+	.flashmessages{border-color:#FFFFFF; color: #FFFFFF; background-color: #0e2334; font-size: 14px; font-weight: 700; text-align: center;}
 </style>
 
 
