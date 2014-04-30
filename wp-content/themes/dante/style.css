@@ -2480,12 +2480,11 @@ span.tooltip .arrow {
 	width: 320px;
 	height: 100%;
 	background: #0e2334;
-	-webkit-transition: all 0.45s;
-	transition: all 0.45s;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
-
 .no-csstransforms #mobile-menu-wrap {
 	position: relative;
 	width: 100%;

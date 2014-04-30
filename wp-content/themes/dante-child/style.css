@@ -2409,11 +2409,9 @@ padding-bottom: 10px;
 			
 			#logo {
 				background-image: url(images/logo-black_x2.png);
-				background-size: 70%;
 			}
 			.home_page #logo {
 			background-image: url(images/logo-header_x2.png);
-			background-size: 70%;
 			}
 			
 			.home_page .area2 .spb_content_wrapper h1 {
@@ -2556,7 +2554,6 @@ padding-bottom: 10px;
 
 #logo {
 	background-image: url(images/logo-black_x2.png);
-	background-size: 70%;
 	max-height: 52px !important;
 	<!--[if IE]>
 background-image: url(images/logo-black_x2.png);
@@ -2566,7 +2563,6 @@ background-size: 230px;
 }
 .home_page #logo {
 background-image: url(images/logo-header_x2.png);
-background-size: 70%;
 }
 
 @media only screen and (max-width: 991px) {
