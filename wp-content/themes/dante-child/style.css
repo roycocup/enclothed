@@ -117,6 +117,7 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 }
 
 .help-text .search-form{display: none;}
+.error404 .help-text a.sf-button{display: inherit; margin-top: 25px;}
 
 #top-header { border:none;
 }
