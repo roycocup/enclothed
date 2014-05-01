@@ -576,27 +576,27 @@
 
 @media only screen and (max-width: 767px) {
 
-.featured_blog_boxes_wrapper{	max-width: 475px;
-	display: block;
-/*	margin: 0 auto;
-	float: none;*/
-}
-.featured_blog_box_left{	width: 100%;
-	height: auto;
-}
-.featured_blog_box_right{
-	clear: left;
- }
+	.featured_blog_boxes_wrapper{	max-width: 475px;
+		display: block;
+	/*	margin: 0 auto;
+		float: none;*/
+	}
+	.featured_blog_box_left{	width: 100%;
+		height: auto;
+	}
+	.featured_blog_box_right{
+		clear: left;
+	 }
 }
 
 @media only screen and (max-width: 991px) {
 
 	.featured_blog_box_left h2{
 	margin-top: 18%;
-}
-.featured_blog_box_left p{
-	padding-bottom: 10%;
-}
+	}
+	.featured_blog_box_left p{
+		padding-bottom: 10%;
+	}
 
 }
 
@@ -642,34 +642,74 @@
 
  }
 .brands_box_right img{ float:left; }
+@media only screen and (max-width: 991px) {
+	.in-media a {
+	margin-right: 50px;
+	}
+	img.in-m-e {
+	padding-left: 20px;
+	padding-right: 30px;
+	}
 
+}
 @media only screen and (max-width: 767px) {
 
-.brands_boxes_wrapper{	max-width: 475px;
+	.brands_boxes_wrapper{	
+		max-width: 475px;
+		display: block;
+	/*	margin: 0 auto;
+		float: none;*/
+	}
+	.brands_box_left{
+	width: auto;
+	padding: 0 20px;
+	}
+	.brands_box_right{
+		clear: left;
+	 }
+	.dynamic_content{
+		margin:auto;
+		float: none;
+		max-width:475px; 
+	}
+	img.in-m-e {
 	display: block;
-/*	margin: 0 auto;
-	float: none;*/
-}
-.brands_box_left{	width: 100%;
-}
-.brands_box_right{
-	clear: left;
- }
-.dynamic_content{
-	margin:auto;
-	float: none;
-	max-width:475px; 
-}
+	padding: 40px 0;
+	margin: 0 auto;
+	}
+	div.in-m-wrap {
+	line-height: 30px;
+	}
+	.in-media a {
+	margin: 0;
+	display: block;
+	text-align: center;
+	padding-bottom: 30px;
+	}
+	.social_box_right .social_heading {
+		padding: 0;
+		padding-bottom: 20px;
+	}
+	.social_box_right p {
+		width: auto;
+		padding: 0;
+		padding-bottom: 10px;
+	}
+	.social_box_right, .social_boxes_wrapper {
+		width: 100%;
+	}
+
+
 }
 
 @media only screen and (max-width: 991px) {
 
 	.brands_box_left h2{
-	margin-top: 10%;
-}
-.brands_box_left p{
-	padding-bottom: 10%;
-}
+		margin-top: 10%;
+	}
+	.brands_box_left p{
+		padding-bottom: 10%;
+	}
 
 }
 </style>
