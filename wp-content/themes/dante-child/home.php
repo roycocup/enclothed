@@ -162,17 +162,6 @@
 				<?php the_content(); ?>
 				
 
-
-
-
-
-
-
-
-
-
-
-
 <div class="container">
 	<div class="row">
 		<div class="spb_content_element col-sm-12 dynamic_content area3">

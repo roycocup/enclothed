@@ -344,6 +344,7 @@ margin-top: 30px;
 margin-bottom: 60px;
 min-height: 500px;
 }
+
 input,input[type="password"], textarea, select{ 
 	border:1px solid #cccdcc !important;
  background-color:#fff !important;
@@ -2073,6 +2074,16 @@ text-align: center;
 /* --------------------------------------------
 	CONTACT US
 -------------------------------------------- */
+
+.contact_us_page .wpcf7-response-output{display: block;
+color: #FFFFFF;
+background-color: #0e2334;
+font-size: 14px;
+font-weight: 700;
+text-align: center;
+padding: 20px;
+border: none !important;}
+.contact_us_page .wpcf7-display-none{display: none;}
 .contact_us_page #main-container{ background: url(images/top-banner-section.png) no-repeat center 0px #fff;
 }
 .contact_us_page .styles-block{ margin-top: 50px;
