@@ -783,7 +783,6 @@ display: none!important;
 .home_page #logo {
 background: transparent url('images/logo-header_x2.png') no-repeat;
 background-size: 100%;
-
 <!--[if IE]>
 background: transparent url('images/logo-header_x2.png') no-repeat;
 background-size: 230px;
