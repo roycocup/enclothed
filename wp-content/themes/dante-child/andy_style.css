@@ -3239,9 +3239,12 @@ select{
 	visibility: hidden;
 }
 
-#user.key-info {
+#user.key-info,
+#wp_pass_reset .key-info {
 	text-transform: none;
 }
+
+
 
 @media only screen and (max-width: 704px) {
 	

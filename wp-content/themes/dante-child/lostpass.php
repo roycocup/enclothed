@@ -220,7 +220,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 
 					<div id="result"></div> <!-- To hold validation results -->
 					<form id="wp_pass_reset" action="" method="post">
-						<input type="text" class="key-info" name="user_login" value="" placeholder="Username or E-mail">
+						<input type="text" class="key-info" name="user_login" value="" placeholder="USERNAME OR E-MAIL">
 						<input type="hidden" name="action" value="pass_reset" />
 						<input type="hidden" name="tg_pwd_nonce" value="<?php echo wp_create_nonce("lost_pass_nonce"); ?>" />
 						<button type="submit" class="button4" id="submitbtn" name="submit" onclick="submit();">Reset</button>
