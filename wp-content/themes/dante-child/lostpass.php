@@ -41,21 +41,24 @@ if( isset( $_POST['action'] ) && 'pass_reset' == $_POST['action'] )
 		
 			// if  update user return true then lets send user an email containing the new password
 		if( $update_user ) {
-			$to = $email;
-			$subject = 'Your new password';
-			$sender = get_option('name');
+			$profileDetails = new EnclothedProfile();
+			$profile = $profileDetails->main->profiles_model->getFullProfile($email);
+			//$message = 'Your new password is: '.$random_password;
 
-			$message = 'Your new password is: '.$random_password;
+			//$headers[] = 'MIME-Version: 1.0' . "\r\n";
+			//$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			//$headers[] = "X-Mailer: PHP \r\n";
+			//$headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
 
-			$headers[] = 'MIME-Version: 1.0' . "\r\n";
-			$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-			$headers[] = "X-Mailer: PHP \r\n";
-			$headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
-
-			$mail = wp_mail( $to, $subject, $message, $headers );
-			if( $mail )
-				$success = 'Check your email address for you new password.';
-
+			//$mail = wp_mail( $to, $subject, $message, $headers );
+			$data = array();
+			$data['email'] = $email;
+			$data['name'] = $profile->first_name.' '.$profile->last_name;
+			$data['password'] = $random_password;
+			$profileDetails->main->sendmail($data['email'], 'Your new password!', Emails_model::TEMPLATE_NEW_PASS, $data);
+			
+			$success = 'Check your email address for you new password.';
+				
 		} else {
 			$error = 'Oops something went wrong updaing your account.';
 		}
