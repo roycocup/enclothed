@@ -215,7 +215,7 @@
 				</div>
 
 
-				<div class="col-sm-6 social_boxes_wrapper">
+				<div class="col-sm-6 social_boxes_wrapper facelink">
 					<a href="https://www.facebook.com/Enclothed" target="_blank" class="link_cover"></a>
 				<?php 
 					$fb_image_url = get_fb_post_image(1);
@@ -289,10 +289,11 @@
 				</div>
 
 
-				<div class="col-sm-6 social_boxes_wrapper">
+				<div class="col-sm-6 social_boxes_wrapper instalink">
 					<a href="http://instagram.com/enclothed" target="_blank" class="link_cover"></a>
 					<div class="col-sm-6 social_box_left" style="background-image: url(<?php echo $streams->getInstagramLastPostImage(); ?>); background-size: cover">
 					</div>
+					
 					<div class="col-sm-6 social_box_right">
 						<div class="instagram_icon"></div>
 						<div class="arrow_icon"></div>
