@@ -2599,6 +2599,7 @@ color: #525252;
 }
 .home_page #logo {
 	background-image: url(images/logo-header_x2.png);
+	background-size: 100%;
 }
 
 @media only screen and (max-width: 991px) {
