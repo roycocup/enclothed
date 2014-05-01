@@ -614,7 +614,7 @@ border-bottom: 1px solid #d1d1d1;
 }
 img.line{ margin-top:20px;
 }
-#top-header .th-right > nav .menu li a{ font-size: 13px; color: #000; font-weight: normal;}
+#top-header .th-right > nav .menu li a{ font-size: 13px; color: #000; font-weight: bold;}
 #top-header .th-right > nav .menu li a:hover{ font-size: 13px; color: #b08536 !important;}
 #top-header .th-right > nav .menu li a.get_started_link{ font-weight: bold;}
 .box_options{

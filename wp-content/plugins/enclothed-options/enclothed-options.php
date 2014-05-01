@@ -34,20 +34,6 @@ function sandbox_emails($args){
 	return $args;
 }
 
-function filter_reset_password_request_email_body( $message, $key, $user_id ) {
-
-    $user_login = bp_core_get_username( $user_id );
-
-    $message .= sprintf( __( 'Password reset request for %s' ), $user_login ) . "\r\n\r\n";
-    $message .= __( 'If this was not you, please ignore this email and nothing will happen.' ) . "\r\n\r\n";
-    $message .= __( 'To reset your password, visit the following link:' ) . "\r\n\r\n";
-    $message .= network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . "\r\n";
-    var_dump($messgae);
-    exit;
-    return $message;
-}
-add_filter( 'retrieve_password_message', 'filter_reset_password_request_email_body', 10, 3 );
-
 
 /**
 *

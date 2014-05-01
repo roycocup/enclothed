@@ -683,8 +683,8 @@ class EnclothedProfile {
 		$data['delivery_town'] 		= $section_6['town'];
 		$data['delivery_post_code'] = $section_6['post_code'];
 		$data['delivery_add_name'] 	= $section_6['delivery_add_name'];
-
 		if (!empty($section_6['same_as_delivery'])){
+			
 			$data['bill_add_1'] = $section_6['delivery_add_1'];
 			$data['bill_add_2'] = $section_6['delivery_add_2'];
 			$data['bill_town'] = $section_6['town'];
