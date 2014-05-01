@@ -116,6 +116,7 @@ font-family: proxbold, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif ;
 .center{ margin: auto !important;
 }
 
+.help-text .search-form{display: none;}
 
 #top-header { border:none;
 }
