@@ -97,8 +97,15 @@ input[type="text"].slider_selection{
 
 @media only screen and (max-width: 767px) {
 	.slider{ padding-left:50px; padding-right:50px; margin-top:50px;}
-	input[type="text"].slider_selection{ text-align:center; font-size:40px !important;}
+	input[type="text"].slider_selection{ text-align:center; font-size:40px !important; margin-bottom: 0;}
 	.slider_label{ text-align:center !important; font-size:30px !important;}
-	.slider_wrapper{ margin:0; padding: 40px 0 0 0;}
+	.slider_wrapper{ margin:0; padding: 20px 0 0 0;}
 	.notch_label { font-size:10px;}
+	
+	div.slider_wrapper .col-sm-3 {
+	margin-bottom: 0;
+	}
+	.m-nomargin {
+		margin-bottom:0;
+	}
 }

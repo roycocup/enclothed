@@ -263,7 +263,7 @@ if (isset($_SESSION['section_1'])){
 			<li><span class="active">Your Details</span></li>
 			<li><span>Pick Your Style</span></li>
 			<li><span>Preferences</span></li>
-			<li><span>Size and Color</span></li>
+			<li><span>Size and Colour</span></li>
 			<li><span style="border-right:none;">Price and Summary</span></li>
 		</ul>
  <div class="shadow"><img src="<?php bloginfo('template_url') ?>-child/images/shadow.png" alt="" /></div>
@@ -323,7 +323,7 @@ if (isset($_SESSION['section_1'])){
 			
 			
 			<select class="selectmenu" tabindex="10" name="section_1[feedback_1]" id="howDidYouHearDropdown">
-					<option value="none">How did you hear about enclothed?</option>
+					<option value="none">How did you hear about us?</option>
 					<option value="From Google">From Google</option>
 					<option value="From Facebook">From Facebook</option>
 					<option value="From a blog">From a blog</option>
@@ -335,7 +335,7 @@ if (isset($_SESSION['section_1'])){
 			<textarea type="text" class="smallerTextArea" tabindex="2" placeholder="If other, please specify" style="display:none;" name="section_1[feedback1_other]" id="howDidYouHearOther"><?php @echo_if_exists($section['feedback1_other']); ?></textarea>
 			
 			<select class="selectmenu" tabindex="11" name="section_1[other_person]" id="areYouPurchasingDropdown">
-					<option value="none">Are you purchasing for another person?</option>
+					<option value="none">Buying for another person?</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 			</select>

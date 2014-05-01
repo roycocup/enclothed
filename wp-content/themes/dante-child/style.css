@@ -682,8 +682,8 @@ img.line{ margin-top:20px;
 	background:url(images/tick_small.png) rgba(176, 133, 54, 0.75) no-repeat;
 	background-position: 16%;
 }		
-	.profile_sizing_page .box_options_wrapper{ margin:0;
- padding: 40px 0 0 0;
+	.profile_sizing_page .box_options_wrapper{ margin:0 !important;
+ padding: 20px 0 0 0 !important;
 }
 	.profile_sizing_page .box_options_label{ text-align:center !important;
  font-size:30px !important;
@@ -2324,9 +2324,32 @@ line-height: 26px;
 }
 }
 @media only screen and (max-width: 767px) {
-.title-forms{
-	padding:0;
-}
+
+	.title-forms{
+		padding:0;
+	}
+	.post-1194 p,  .post-1194 b, .post-1194 td {
+	font-size: 10px !important;
+	margin: 0;
+	}
+	.post-1194 b {
+	font-size: 9px !important;
+	}
+	.page-id-1194 .page-heading h1 {
+		font-size: 20px !important;
+	}
+	.page-id-1194 .page-heading {
+	padding: 10px 20px !important;
+	margin: 0 !important;
+	}
+	
+	.page-id-1194 .container {
+		padding: 0 2px;
+	}
+	.page-id-1194 table td {
+	padding: 6px 0;
+	}
+
 }
 
 
@@ -2377,7 +2400,15 @@ line-height: 240px;
 .in-media a {
 margin-right: 90px;
 }
+<<<<<<< HEAD
 
+=======
+.slider_wrapper .hidden-md.hidden-lg {
+padding-bottom: 10px;
+text-align: center;
+color: #525252;
+}
+>>>>>>> FETCH_HEAD
 
 @media only screen and (max-width: 479px) {
 
@@ -2556,6 +2587,19 @@ margin-bottom: 0;
 			.social_box_left {
 			background-size: contain !important;
 			background-color: #FFF !important;
+			}
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
+			.mini-wrapper5 {
+				margin: 0px auto;
+			}
+			.customer-info3 {
+				margin: 8px auto 20px auto;
+			}
+			.login_page .georgia_text {
+				margin: 40px 0 20px 0 !important;
+				height: auto;
 			}
 >>>>>>> FETCH_HEAD
 
