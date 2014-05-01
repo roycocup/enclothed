@@ -112,6 +112,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 }
 ?>
 
+
 <?php if ($show_page_title) { ?>
 <div class="container">
 	<div class="row">
