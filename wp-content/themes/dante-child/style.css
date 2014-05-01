@@ -2631,6 +2631,7 @@ background-size: 230px;
 }
 .home_page #logo {
 background-image: url(images/logo-header_x2.png);
+background-size: 100%;
 }
 
 .home_page .area2 .spb_content_wrapper h1 {
