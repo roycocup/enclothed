@@ -184,7 +184,7 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 				<div class="col-sm-12 login_wrapper" >
 					<?php 
 						if (sessionHasMessages()): ?>
-							<div class="georgia_text">Wrong credentials!</div>
+							<div class="georgia_text">The email or password you have entered is not valid. Please try again or reset your password below.</div>
 							<?php unset($_SESSION['messages']); ?>
 						<?php else :?>
 							<div class="georgia_text">Please login</div>
