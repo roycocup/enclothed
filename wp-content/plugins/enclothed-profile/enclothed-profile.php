@@ -755,6 +755,14 @@ class EnclothedProfile {
 				$data['address_reason'] = $_POST['more_box']['address_reason'];
 
 				$this->main->sendmail(get_bloginfo('admin_email'), 'New box requested!', Emails_model::TEMPLATE_NEW_BOX, $data);
+
+				$data = array();
+
+				$data['email'] = $current_user->user_email;
+				$data['name'] = $profile->first_name.' '.$profile->last_name;
+
+				$this->main->sendmail($data['email'], 'New box requested!', Emails_model::TEMPLATE_NEW_BOX_USER, $data);
+
 				setFlashMessage('success', 'Your box has been ordered. We shall be in touch soon.'); 
 			}
 		}

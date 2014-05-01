@@ -34,6 +34,20 @@ function sandbox_emails($args){
 	return $args;
 }
 
+function filter_reset_password_request_email_body( $message, $key, $user_id ) {
+
+    $user_login = bp_core_get_username( $user_id );
+
+    $message .= sprintf( __( 'Password reset request for %s' ), $user_login ) . "\r\n\r\n";
+    $message .= __( 'If this was not you, please ignore this email and nothing will happen.' ) . "\r\n\r\n";
+    $message .= __( 'To reset your password, visit the following link:' ) . "\r\n\r\n";
+    $message .= network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . "\r\n";
+    var_dump($messgae);
+    exit;
+    return $message;
+}
+add_filter( 'retrieve_password_message', 'filter_reset_password_request_email_body', 10, 3 );
+
 
 /**
 *
@@ -78,6 +92,7 @@ $oi_template = $emails->getMailTemplate(Emails_model::TEMPLATE_ORDER_IN);
 $tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
 $newbox_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX);
 $newbox_user_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX_USER);
+$user_newpass_remplate = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_PASS);
 
 
 
@@ -94,6 +109,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING, stripslashes_deep($_POST['enc_email_tyreg']));
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_NEW_BOX, stripslashes_deep($_POST['enc_email_newbox']));
 	$emails->saveMailTemplate(Emails_model::TEMPLATE_NEW_BOX_USER, stripslashes_deep($_POST['enc_email_newbox_user']));
+	$emails->saveMailTemplate(Emails_model::TEMPLATE_NEW_PASS, stripslashes_deep($_POST['enc_email_newpass']));
 
 }
 
@@ -117,6 +133,7 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 				$tyreg_template = $emails->getMailTemplate(Emails_model::TEMPLATE_THANK_REGISTERING);
 				$newbox_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX);
 				$newbox_user_template = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_BOX_USER);
+				$user_newpass_remplate = $emails->getMailTemplate(Emails_model::TEMPLATE_NEW_PASS);
 				
 				
 			?>
@@ -149,6 +166,10 @@ if( isset($_POST[ 'token' ]) && $_POST[ 'token' ] == 'token' ) {
 			
 			<label for="enc_email_ty">User just requested another box - to User</label><br>
 			<textarea cols='100' rows='10' name="enc_email_newbox_user"><?php echo $newbox_user_template->body; ?></textarea>
+			<br>
+
+			<label for="enc_email_ty">User requested password reset - to User</label><br>
+			<textarea cols='100' rows='10' name="enc_email_newpass"><?php echo $user_newpass_remplate->body; ?></textarea>
 			<br>
 
 			<!--

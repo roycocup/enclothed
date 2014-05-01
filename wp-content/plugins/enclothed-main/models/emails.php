@@ -11,7 +11,8 @@ class Emails_model extends db{
 	const TEMPLATE_ORDER_IN 				= 'order_in'; //an order made - to agency
 	const TEMPLATE_THANK_REGISTERING		= 'thank_registering'; //email to user with register details
 	const TEMPLATE_NEW_BOX					= 'new_box'; 
-	const TEMPLATE_NEW_BOX_USER					= 'new_box_user'; 
+	const TEMPLATE_NEW_BOX_USER				= 'new_box_user'; 
+	const TEMPLATE_NEW_PASS					= 'new_pass'; 
 
 
 	public $table = 'wp_enc_emails';
