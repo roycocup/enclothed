@@ -2595,10 +2595,11 @@ color: #525252;
 	background-image: url(images/logo-black_x2.png);
 	background-size: 230px;
 	<![endif]-->
-
+	background-size:100%;
 }
 .home_page #logo {
 	background-image: url(images/logo-header_x2.png);
+	background-size: 100% !important;
 }
 
 @media only screen and (max-width: 991px) {

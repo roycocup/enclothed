@@ -93,8 +93,8 @@ class EnclothedProfile {
 
 		// The thank you page should decrypt what comes 
 		// from sagepay and also send an email to both the client and the user
-		if(isset($_GET['crypt'])){
-			if(isset($_SESSION['user']['email'])){
+		if(isset($_GET['authstatus'])){
+			if(isset($_SESSION['user']['email']) && $_GET['authstatus'] == "Registered"){
 				
 				$user_email = $_SESSION['user']['email'];
 				$wp_user = get_user_by('email', $user_email);
@@ -102,12 +102,12 @@ class EnclothedProfile {
 				$data = array();
 
 				//send the email to the user
-				$data['name'] = $wp_user->first_name.' '.$wp_user->last_name;
+				$data['name'] = strtoupper($wp_user->first_name.' '.$wp_user->last_name);
 				$this->main->sendmail($_SESSION['user']['email'], 'Thank you!', Emails_model::TEMPLATE_THANK_YOU, $data);
 
 				//send the email to the agnecy
 				$data = array();
-				$data['name'] 		= $wp_user->first_name.' '.$wp_user->last_name;
+				$data['name'] 		= strtoupper($wp_user->first_name.' '.$wp_user->last_name);
 				$data['email'] 		= $wp_user->user_email;
 				$data['phone'] 		= $profile->phone;
 				$data['occupation'] = $profile->occupation;
@@ -759,7 +759,7 @@ class EnclothedProfile {
 				$data = array();
 
 				$data['email'] = $current_user->user_email;
-				$data['name'] = $profile->first_name.' '.$profile->last_name;
+				$data['name'] = strtoupper($profile->first_name.' '.$profile->last_name);
 
 				$this->main->sendmail($data['email'], 'New box requested!', Emails_model::TEMPLATE_NEW_BOX_USER, $data);
 

@@ -53,7 +53,7 @@ if( isset( $_POST['action'] ) && 'pass_reset' == $_POST['action'] )
 			//$mail = wp_mail( $to, $subject, $message, $headers );
 			$data = array();
 			$data['email'] = $email;
-			$data['name'] = $profile->first_name.' '.$profile->last_name;
+			$data['name'] = strtoupper($profile->first_name.' '.$profile->last_name);
 			$data['password'] = $random_password;
 			$profileDetails->main->sendmail($data['email'], 'Your new password!', Emails_model::TEMPLATE_NEW_PASS, $data);
 			
