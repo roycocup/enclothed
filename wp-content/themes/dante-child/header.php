@@ -97,20 +97,15 @@
 		
 		<!--// PINGBACK & FAVICON //-->
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-		<?php if (isset($options['custom_favicon']) && $options['custom_favicon'] != "") { ?><link rel="shortcut icon" href="<?php echo $options['custom_favicon']; ?>" /><?php } ?>
-		
-		<?php if (isset($options['custom_ios_icon144']) && $options['custom_ios_icon144'] != "") { ?>
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $options['custom_ios_icon144']; ?>" />
-		<?php } ?>
-		<?php if (isset($options['custom_ios_icon114']) && $options['custom_ios_icon114'] != "") { ?>
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $options['custom_ios_icon114']; ?>" />
-		<?php } ?>
-		<?php if (isset($options['custom_ios_icon72']) && $options['custom_ios_icon72'] != "") { ?>
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $options['custom_ios_icon72']; ?>" />
-		<?php } ?>
-		<?php if (isset($options['custom_ios_icon57']) && $options['custom_ios_icon57'] != "") { ?>
-		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo $options['custom_ios_icon57']; ?>" />
-		<?php } ?>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
 				
 		<?php
 			$custom_fonts = $google_font_one = $google_font_two = $google_font_three = $google_font_subset = $subset_output = "";

@@ -22,7 +22,7 @@ input[type="text"].slider_selection{
 .slider_wrapper .notch_big{
 	position:absolute; 
 	bottom:-9px; 
-	background: url(../images/notch_big.png) no-repeat ; 
+	background: url(./images/notch_big.png) no-repeat ; 
 	width:2px; 
 	height:52px; 
 	margin-left:-1px; 
@@ -32,7 +32,7 @@ input[type="text"].slider_selection{
 .slider_wrapper .notch_small{
 	position:absolute; 
 	bottom:-9px; 
-	background: url(../images/notch_small.png) no-repeat ; 
+	background: url(./images/notch_small.png) no-repeat ; 
 	width:2px; 
 	height:52px; 
 	margin-left:-1px; 
@@ -41,14 +41,14 @@ input[type="text"].slider_selection{
 }
 .slider_wrapper .slider_left{ 
 	float:left; 
-	background: url(../images/slider_left.jpg) no-repeat ;
+	background: url(./images/slider_left.jpg) no-repeat ;
 	width:19px;
 	height:14px;
 	margin-left:-19px;
 }
 .slider_wrapper .slider_right{ 
 	float:right;
-	background: url(../images/slider_right.jpg) no-repeat;
+	background: url(./images/slider_right.jpg) no-repeat;
 	width:19px;
 	height:14px;
 	margin-right:-19px;
@@ -77,12 +77,12 @@ input[type="text"].slider_selection{
 }
 .slider_wrapper .ui-slider{ 
 	border-radius:0; 
-	background: url(../images/slider.jpg) repeat-x ; 
+	background: url(./images/slider.jpg) repeat-x ; 
 	height:14px; border:none; 
 	cursor:pointer !important;
 }
 .slider_wrapper .ui-slider-handle{
-	background: url(../images/slider_arrow.png) !important;
+	background: url(./images/slider_arrow.png) !important;
 	height:27px !important;
 	width:20px !important;
 	border:none !important;

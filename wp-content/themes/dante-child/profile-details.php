@@ -6,9 +6,17 @@
 **/
 // session_destroy();
 // var_dump($_SESSION); die;
+
+//Redirect if user is logged in and not an admin
+if ( is_user_logged_in() && !current_user_can( 'manage_options')) { 
+	header("Location: /dashboard/");
+}
 ?>
 <?php get_header(); ?>
 <?php 
+
+
+
 if (isset($_SESSION['section_1'])){
 	$section = $_SESSION['section_1'];	
 }else if(isset($_POST['section_1'])){
