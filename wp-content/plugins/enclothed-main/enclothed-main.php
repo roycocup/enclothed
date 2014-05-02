@@ -155,7 +155,7 @@ class EnclothedMain {
 			wp_redirect(home_url().'/home/login');
 			exit();
 		} else {
-			wp_redirect(home_url());
+			wp_redirect(home_url().'/dashboard/');
 			exit;
 		}
 	}
