@@ -394,6 +394,18 @@ p {
 	margin:0 auto;
 }
 
+#templatepop {
+	background: #FFFFFF;
+}
+
+
+#hiddenlpsubmitdiv {
+	display: none !important;
+}
+
+#padlockimage {
+	margin-right: 10px;
+}
 
 
 

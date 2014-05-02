@@ -525,7 +525,7 @@
 		          <div id="templateNavigation">
 		          
 							<xsl:choose>
-								<xsl:when test="$allowbackbutton = 'true'">
+								<xsl:when test="$allowbackbutton = 'false'">
 									<a id="backButton" onmouseover="activate('back')" onmouseout="inactivate('back')" >														
 										<xsl:attribute name="href"><xsl:value-of select="payment-model/cardselection-action-url"/></xsl:attribute>
 										<img name="back">

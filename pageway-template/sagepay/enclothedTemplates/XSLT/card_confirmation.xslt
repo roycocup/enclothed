@@ -116,7 +116,6 @@
                             <tr>
                                 <td valign="top">
                                     <img src="{concat(payment-model/imagesURL,'sagepay/sagepay_logo.gif')}" id="sagePayLogo" />
-                                    <img src="{concat(payment-model/imagesURL,'sagepay/byebyeProtx.gif')}" id="protxLogo"/>
                                 </td>
                             </tr>
                         </tbody>
