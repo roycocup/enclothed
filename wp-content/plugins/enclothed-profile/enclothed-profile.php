@@ -82,7 +82,6 @@ class EnclothedProfile {
 			}
 
 			if ( wp_verify_nonce( $_POST['nonce'], '/dashboard/' ) ) {
-				if (if ( is_user_logged_in() ) { ... })
 				$this->process_newbox_form();
 			}
 		}
@@ -685,12 +684,13 @@ class EnclothedProfile {
 		$data['delivery_post_code'] = $section_6['post_code'];
 		$data['delivery_add_name'] 	= $section_6['delivery_add_name'];
 		if (!empty($section_6['same_as_delivery'])){
-			
+			$data['billingAddressSameAsCustomerAddress'] = "yes";
 			$data['bill_add_1'] = $section_6['delivery_add_1'];
 			$data['bill_add_2'] = $section_6['delivery_add_2'];
 			$data['bill_town'] = $section_6['town'];
 			$data['bill_post_code'] = $section_6['post_code'];
 		} else {
+			$data['billingAddressSameAsCustomerAddress'] = "no";
 			$data['bill_add_1'] = $section_6['bill_add_1'];
 			$data['bill_add_2'] = $section_6['bill_add_2'];
 			$data['bill_town'] = $section_6['bill_town'];

@@ -51,6 +51,14 @@
 		color:#3ca7dd;
 		text-decoration:none;
 	}
+
+	td {
+		white-space: break-word;
+	}
+
+	.tableWrapper {
+		max-width: 600px;
+	}
 	@media only screen and (max-device-width: 480px) {
 		div[class="header"] {
 			font-size: 16px !important;
@@ -97,18 +105,18 @@
 
 <body bgcolor="#fff" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="-webkit-font-smoothing: antialiased;width:100% !important;background:#fff;-webkit-text-size-adjust:none;">
 
-	<table width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#fff" style="margin:0 auto;">
+	<table width="100%" cellpadding="0" cellspacing="0" class="tableWrapper" border="0" bgcolor="#fff" style="margin:0 auto;">
 		<tr>
 			<td bgcolor="#fff" width="100%">
 
-				<table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="table">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table">
 					<tr>
-						<td width="600" class="cell">
+						<td width="100%" class="cell">
 
-							<table width="600" cellpadding="0" cellspacing="0" border="0" class="table">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0" class="table">
 								<tr>
-									<td width="60" bgcolor="#fff" class="cell"></td>
-									<td width="540" bgcolor="#fff" class="logocell">
+									<td width="10%" bgcolor="#fff" class="cell"></td>
+									<td width="90%" bgcolor="#fff" class="logocell">
 										<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="1" height="25" class="hide">
 										<br class="hide">
 										<img src="http://i.imgur.com/R7LpSAq.png" width="232" height="48" alt="Campaign Monitor" style="-ms-interpolation-mode:bicubic;">
@@ -121,18 +129,18 @@
 							<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="1" height="15" class="divider">
 							<br>
 
-							<img border="0" src="http://enclothed.likedigitalmedia.com/wp-content/themes/dante-child/images/enclothed-welcome-email.jpg" label="Main image" editable="true" width="600" height="252" id="screenshot">
+							<img border="0" src="http://enclothed.likedigitalmedia.com/wp-content/themes/dante-child/images/enclothed-welcome-email.jpg" style="width:100%" label="Main image" editable="true" width="100%" height="auto" id="screenshot">
 
 							<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="1" height="40" class="divider">
 							<br>
 
 							<repeater>
 								<layout label="New feature">
-									<table width="600" cellpadding="0" cellspacing="0" border="0">
+									<table width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr>
-											<td bgcolor="#ffffff" width="40" nowrap>
+											<td bgcolor="#ffffff" width="10%">
 											</td>
-											<td width="560" bgcolor="#ffffff">
+											<td width="90%" bgcolor="#ffffff">
 
 												<table width="100%" cellpadding="20" cellspacing="0" border="0">
 													<tr>
@@ -140,7 +148,7 @@
 
 															<h4 class="secondary">
 																<strong>
-																	<singleline label="Title">DEAR %NAME%,</singleline>
+																	<singleline label="Title">DEAR %name%,</singleline>
 																</strong>
 															</h4>
 															<multiline label="Description">
@@ -164,30 +172,30 @@
 						</td>
 					</tr>
 				</table>
-				<img src="http://i.imgur.com/ZNvJOmP.png" />
-				<table width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0e2334" style="border-top:6px solid #b08536; margin:0 auto;">
+<img width="100%" src="http://i.imgur.com/ZNvJOmP.png" />
+				<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0e2334"  style="border-top:6px solid #b08536; margin:0 auto; ">
 					<tr>
 						<td>
 
-							<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="1" height="20">
+							<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="100%" height="20">
 							<br>
 
-							<table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="table">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table">
 								<tr>
-									<td width="600" nowrap bgcolor="#0e2334" class="cell">
+									<td width="100%" bgcolor="#0e2334" class="cell">
 
-										<table width="600" cellpadding="0" cellspacing="0" border="0" class="table">
+										<table width="100%" cellpadding="0" cellspacing="0" border="0" class="table">
 											<tr>
-												<td width="60" valign="top" class="footershow"></td>
-												<td width="280" valign="top" class="footershow">
+												<td width="10%" valign="top" class="footershow"></td>
+												<td width="65%" valign="top" class="footershow">
 
 													<img border="0" src="http://i.imgur.com/ltiFTBE.gif" width="1" height="8">
 													<br>
 
-													<p style="color:#fff;font-size:12px;font-family:Helvetica,Arial,sans-serif;margin-top:0;margin-bottom:15px;padding-top:0;padding-bottom:0;line-height:18px;" class="reminder">Stay in touch, we would love to hear from you! <a href="mailto:hello@enclothed.co.uk" style="color:#b08536;text-decoration: none;">HELLO@ENCLOTHED.CO.UK</a>
-													</p>
+													<span style="color:#fff;font-size:12px;font-family:Helvetica,Arial,sans-serif;margin-top:0;margin-bottom:15px;padding-top:0;padding-bottom:0;line-height:18px; word-wrap: break-word; width:100%;" class="reminder">Stay in touch, we would love to hear from you! <a href="mailto:hello@enclothed.co.uk" style="color:#b08536;text-decoration: none;">HELLO@ENCLOTHED.CO.UK</a>
+													</span>
 												</td>
-												<td align="left" width="110" style="color:#fff;font-size:12px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" valign="middle" class="hide">
+												<td align="left" width="25%" style="color:#fff;font-size:12px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" valign="middle" class="hide">
 
 													<table cellpadding="0" cellspacing="0" border="0">
 														<tr>
@@ -207,7 +215,8 @@
 																</a>
 															</td>
 														</tr>
-													</table>																</tr>
+													</table>					
+											</tr>
 										</table>
 
 										</td>

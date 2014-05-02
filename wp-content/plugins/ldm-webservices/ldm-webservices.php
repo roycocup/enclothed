@@ -609,7 +609,7 @@ public function renderSageForm() {
 	$comparisonArray['alternativePostCode'] = 'dob';
 	$comparisonArray['alternativeAddressName'] = 'dob';
 
-	$comparisonArray['billingAddressSameAsCustomerAddress'] = '';
+	$comparisonArray['billingAddressSameAsCustomerAddress'] = 'billingAddressSameAsCustomerAddress';
 	$comparisonArray['billingAddressLine1'] = 'bill_add_1';
 	$comparisonArray['billingAddressLine2'] = 'bill_add_2';
 	$comparisonArray['billingTownCity'] = 'bill_town';
@@ -632,7 +632,7 @@ public function renderSageForm() {
 
 	//Instantiate output string
 	$finalOutput = "";
-
+	
 	//Loop over array and compare with comparison array plus a few extra differences to match a key and value
 	foreach($SimpleXMLToArray as $Key => $Value){ 
 		$finalValue = $Value;
