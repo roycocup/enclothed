@@ -702,6 +702,9 @@
 	}
 
 }
+.facelink, .instalink {
+	cursor: pointer;
+}
 </style>
 
 
@@ -763,6 +766,8 @@
 <?php if ($sidebar_config != "no-sidebars" || $pb_active != "true") { ?>
 </div>
 <?php } ?>
+
+
 
 <!--// WordPress Hook //-->
 <?php get_footer(); ?>

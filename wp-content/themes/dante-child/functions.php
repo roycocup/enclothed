@@ -222,6 +222,20 @@ if (!function_exists('enc_make_clickable')) {
 	}
 }
 
+// Block all users except admins from the /wp-admin/ url
+function block_wp_admin_init() {
+	if (strpos(strtolower($_SERVER['REQUEST_URI']),'/wp-admin/') !== false) {
+	
+		if ( !is_super_admin() ) {
+		
+			wp_redirect( get_option('siteurl'), 302 );
+		
+		}
+	
+	}
+
+}
+add_action('init','block_wp_admin_init',0);
 
 
 

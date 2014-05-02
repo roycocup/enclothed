@@ -2639,3 +2639,8 @@ color: #525252;
 	}
 	
 }
+
+
+.about_us_page .spb_parallax_asset {
+	background-attachment: inherit !important;
+}

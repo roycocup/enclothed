@@ -8,6 +8,12 @@
 	// PAGE FUNCTIONS
 	/////////////////////////////////////////////
 	
+	jQuery('.facelink, .instalink').click(function($){
+		var link = jQuery(this).find('.link_cover').attr('href');
+		window.open(link, '_blank');
+	});
+	
+	
 	var page = {
 		init: function () {
 			
@@ -2775,5 +2781,7 @@
 	
 	jQuery(document).ready(onReady.init);
 	jQuery(window).load(onLoad.init);
+	
+
 	
 })(jQuery);
