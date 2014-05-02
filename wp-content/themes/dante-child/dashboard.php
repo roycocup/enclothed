@@ -114,6 +114,8 @@ $disable_pagecomments = false;
 if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] == 1) {
 	$disable_pagecomments = true;
 }
+
+
 ?>
 
 
@@ -160,41 +162,45 @@ if (isset($options['disable_pagecomments']) && $options['disable_pagecomments'] 
 								$main = new EnclothedMain();
 								$profile = $main->profiles_model->getFullProfile($current_user->user_email);
 								//get the addresses
-								$delivery = $profile->delivery_add_1." ".$profile->delivery_add_2.", ".$profile->delivery_town." ".$profile->delivery_post_code;
-								$address_reason = $profile->address_reason;
-								$billing = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
+								if ($profile != NULL) {
+									$delivery = $profile->delivery_add_1." ".$profile->delivery_add_2.", ".$profile->delivery_town." ".$profile->delivery_post_code;
+									$address_reason = $profile->address_reason;
+									$billing = $profile->bill_add_1." ".$profile->bill_add_2.", ".$profile->bill_town." ".$profile->bill_post_code;
 
-								$same_address = false;
-								if ($profile->delivery_add_1 == $profile->bill_add_1){
-									$same_address = true;
-								}
-							?>
-							<h2>Request a box</h2>
-							<form action="" method="POST" name='more_box'>
-								<?php $nonce = wp_create_nonce( get_uri() ); ?>
+									$same_address = false;
+									if ($profile->delivery_add_1 == $profile->bill_add_1){
+										$same_address = true;
+									}
+								?>
+								<h2>Request a box</h2>
+								<form action="" method="POST" name='more_box'>
+									<?php $nonce = wp_create_nonce( get_uri() ); ?>
 
-								<div class="row">
-									<div class="col-xs-6 col-xs-offset-3">
-										<?php if (!$same_address): ?>
-											<select class="selectmenu" name="more_box[address]" id="more_box[addresses]">
-												<option value="delivery"><?php echo $delivery; ?></option>
-												<option value="billing"><?php echo $billing; ?></option>
-											</select>
-										<?php else: ?>
-											<input type='text' name="more_box[address]" value='<?php echo $delivery; ?>'>
-											<textarea type='text' placeholder="Please add any additional details" name="more_box[address_reason]"><?php echo $address_reason; ?></textarea>
-										<?php endif; ?>
+									<div class="row">
+										<div class="col-xs-6 col-xs-offset-3">
+											<?php if (!$same_address): ?>
+												<select class="selectmenu" name="more_box[address]" id="more_box[addresses]">
+													<option value="delivery"><?php echo $delivery; ?></option>
+													<option value="billing"><?php echo $billing; ?></option>
+												</select>
+											<?php else: ?>
+												<input type='text' name="more_box[address]" value='<?php echo $delivery; ?>'>
+												<textarea type='text' placeholder="Please add any additional details" name="more_box[address_reason]"><?php echo $address_reason; ?></textarea>
+											<?php endif; ?>
+										</div>
 									</div>
-								</div>
-								<br><br>
+									<br><br>
 
-								<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
-								<div class="mini-wrapper5">
-									<button class="button4" onclick="submit()">Send Request</button>
-								</div>
-							</form>
+									<input type="hidden" value="<?php echo $nonce; ?>" name='nonce'>
+									<div class="mini-wrapper5">
+										<button class="button4" onclick="submit()">Send Request</button>
+									</div>
+								</form>
 
-						</div>
+							</div>
+						<?php } else { ?>
+							<h2>Please login with a profile to request a new box</h2>
+						<?php 	} ?>
 
 
 						<!-- <div class="styles-block">
