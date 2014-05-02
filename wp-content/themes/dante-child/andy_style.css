@@ -3572,6 +3572,14 @@ generic-menu2 li a:last-child{
 	border-bottom: none;
 }
 
+.tp-caption p {
+	margin-bottom: 30px;
+}
+
+.fw-video-link-image i {
+	margin-top: -45px !important;
+}
+
 @media only screen and (max-width: 767px){
 	.dateSelect {
 		max-width: 445px;
