@@ -82,6 +82,7 @@ class EnclothedProfile {
 			}
 
 			if ( wp_verify_nonce( $_POST['nonce'], '/dashboard/' ) ) {
+				if (if ( is_user_logged_in() ) { ... })
 				$this->process_newbox_form();
 			}
 		}
@@ -176,7 +177,7 @@ class EnclothedProfile {
 			//send the email to the new user
 			$user_email = $profile['email'];
 			$wp_user 	= get_user_by('email', $user_email);
-			$data['name'] = $wp_user->first_name.' '.$wp_user->last_name;
+			$data['name'] = strtoupper($wp_user->first_name.' '.$wp_user->last_name);
 			$data['username'] = $wp_user->user_login;
 			$this->main->sendmail($profile['email'], 'Registration with Enclothed', Emails_model::TEMPLATE_THANK_REGISTERING, $data);
 		}
